@@ -10,11 +10,6 @@
   --font-weight-500: 500;
   --font-weight-600: 600;
   --font-weight-700: 700;
-  --font-weight-800: 800;
-
-  --color-transparent: transparent;
-  --color-black: #000716;
-  --color-white: #ffffff;
 
   --color-base-100: #ffffff;
   --color-base-200: #f2f2f2;
@@ -25,19 +20,6 @@
   --color-primary-content: #ffffff;
 
   --color-neutral: rgb(161, 161, 161);
-  --color-neutral-content: #ffffff;
-
-  --color-success: #009f70;
-  --color-success-content: #ffffff;
-
-  --color-warning: #d97706;
-  --color-warning-content: #ffffff;
-
-  --color-danger: #f04d44;
-  --color-danger-content: #ffffff;
-
-  --radius: 4px;
-  --radius-full: 9999px;
 }
 
 @layer base {
@@ -98,21 +80,6 @@
     font-display: swap;
   }
   @font-face {
-    font-family: "Inter";
-    src: url("/fonts/inter/Inter-ExtraBold.woff2") format("woff2");
-    font-weight: 800;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: "Inter";
-    src: url("/fonts/inter/Inter-ExtraBoldItalic.woff2") format("woff2");
-    font-weight: 800;
-    font-style: italic;
-    font-display: swap;
-  }
-
-  @font-face {
     font-family: "Roboto Mono";
     src: url("/fonts/roboto-mono/RobotoMono-Regular.woff2") format("woff2");
     font-weight: 400;
@@ -132,4 +99,67 @@
     @apply bg-base-100 text-base-content m-0 p-0 font-sans;
     font-variant-numeric: tabular-nums;
   }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Starlight token bridge                                                     */
+/* -------------------------------------------------------------------------- */
+/* Aliases Starlight's `--sl-*` tokens onto the FASTR `--color-*` tokens      */
+/* declared in @theme above. Changing a FASTR token in @theme propagates to   */
+/* the docs side automatically — no edits needed here.                        */
+/*                                                                            */
+/* Rules for this block:                                                      */
+/*   1. Every `--sl-*` value is `var(--color-*)` — never a literal hex.       */
+/*   2. No component-level overrides, no `!important`, no layout tweaks.      */
+/*      Starlight's default docs layout/typography is left alone; only        */
+/*      colours and fonts are bridged.                                        */
+/*   3. The site is light-only — ForceLightThemeProvider locks                */
+/*      `data-theme="light"`. We still target the `dark` attribute            */
+/*      defensively so colours don't flicker if the script is bypassed.       */
+/*                                                                            */
+/* Note on Starlight's grey scale: in *light* mode Starlight inverts          */
+/* `--sl-color-white` to mean "the highest-contrast text colour" and          */
+/* `--sl-color-black` to mean "the page background". We follow that           */
+/* convention so heading/body styles using those tokens render correctly.     */
+
+:root,
+:root[data-theme="light"],
+:root[data-theme="dark"] {
+  /* Fonts */
+  --sl-font: var(--font-sans);
+  --sl-font-mono: var(--font-mono);
+
+  /* Surfaces */
+  --sl-color-bg: var(--color-base-100);
+  --sl-color-bg-nav: var(--color-base-100);
+  --sl-color-bg-sidebar: var(--color-base-100);
+  --sl-color-bg-inline-code: var(--color-base-200);
+  --sl-color-bg-accent: var(--color-primary);
+
+  /* Text */
+  --sl-color-text: var(--color-base-content);
+  --sl-color-text-accent: var(--color-primary);
+  --sl-color-text-invert: var(--color-primary-content);
+
+  /* Greys */
+  --sl-color-white: var(--color-base-content);
+  --sl-color-gray-1: var(--color-base-content);
+  --sl-color-gray-2: var(--color-base-content);
+  --sl-color-gray-3: var(--color-neutral);
+  --sl-color-gray-4: var(--color-neutral);
+  --sl-color-gray-5: var(--color-base-300);
+  --sl-color-gray-6: var(--color-base-200);
+  --sl-color-gray-7: var(--color-base-200);
+  --sl-color-black: var(--color-base-100);
+
+  /* Accent scale — Starlight needs low / mid / high tints. Derive from    */
+  /* --color-primary via color-mix so a primary change cascades.           */
+  --sl-color-accent-low: color-mix(in srgb, var(--color-primary) 12%, var(--color-base-100));
+  --sl-color-accent: var(--color-primary);
+  --sl-color-accent-high: color-mix(in srgb, var(--color-primary) 70%, black);
+
+  /* Hairlines — all borders use --color-base-300 */
+  --sl-color-hairline-light: var(--color-base-300);
+  --sl-color-hairline: var(--color-base-300);
+  --sl-color-hairline-shade: var(--color-base-300);
 }

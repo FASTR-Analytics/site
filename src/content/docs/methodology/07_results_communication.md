@@ -1,0 +1,856 @@
+---
+title: "Results communication and data use"
+---
+
+> **Note:** Content in this section draws on existing FASTR presentation materials and is subject to revision.
+
+## Overview
+
+This section covers the complete process of communicating and using FASTR results:
+
+1. **Analytical thinking & interpretation** - Frameworks for interpreting FASTR outputs, connecting data patterns to programmatic meaning, common interpretation pitfalls to avoid, building analytical thinking skills
+
+2. **Data visualization, communication & message development** - Principles of effective data visualization, tailoring messages to different audiences, creating compelling narratives from data, best practices for presenting findings
+
+3. **Using data for decision-making** - Translating insights into action, decision-making frameworks, prioritization approaches, monitoring implementation of decisions
+
+4. **Stakeholder engagement & advocacy** - Identifying key stakeholders, engagement strategies, building buy-in for data-driven decisions, advocacy approaches
+
+5. **Practice: Generating quarterly reporting products** - Quarterly reporting workflow, using the FASTR platform for automated reports, quality assurance for reports, distribution and feedback mechanisms
+
+## Moving from data to key messages
+
+### What is a result?
+
+Results are what the analysis found...
+
+- Data quality scores
+- Coverage estimations
+- Service utilization numbers
+
+They are often...
+
+- Many in number
+- Complex
+- Hard to understand 'at a glance'
+- Lacking interpretation
+
+### What is a key takeaway?
+
+Key takeaways are what the results are telling us...
+
+- Why the results matter
+- The 'so what'
+
+They should be...
+
+- Few in number
+- Simple and clear
+- Easy to remember
+- Actionable
+
+### Example: result vs key takeaway
+
+**Example 1 (Result):**
+
+> In Q3 2022, the volume of ANC1 visits increased by 15% from the previous quarter—the largest quarterly rise in the period—followed by a 12% drop in Q1 2023. Since then, ANC1 volumes have remained relatively stable with no large quarter-to-quarter fluctuations from Q2 2023 through Q1 2025.
+
+**Example 2 (Key Takeaway):**
+
+> While earlier periods show sharp fluctuations in ANC1 service volumes, particularly in 2020 and 2022, the relative stability observed from mid-2023 onward suggests improvements in the consistency of service delivery. This trend may reflect strengthened systems, reduced disruptions, or more predictable care-seeking patterns — providing a stronger foundation for sustained antenatal care coverage.
+
+## Choosing the right report format
+
+### Key considerations
+
+- **Audience** – Who will be using the report?
+- **Purpose** – Inform, persuade, summarize, or analyze?
+- **Level of Detail** – High-level summary vs. in-depth analysis
+- **Accessibility** – How will the audience access and use it?
+
+### Report format options
+
+| Format | Best For | Pros | Cons |
+|--------|----------|------|------|
+| Word/PDF Reports | Policymakers, technical experts | Detailed, formal, easy to print | Can be dense, not interactive |
+| Slide Decks | Presentations, decision-makers | Visual, easy to follow, summary-focused | Less detailed, context can be lost |
+| Infographics | General audiences, advocacy | Engaging, digestible, shareable | Limited depth, requires design effort |
+| Posters | Conferences, workshops | High impact, visual summary | Not suited for complex data |
+
+### Which format works best?
+
+| Audience | Format |
+|----------|--------|
+| Government officials and policymakers | Brief slide deck + executive summary PDF |
+| Technical experts and researchers | Full word/PDF report + Data annex |
+| General public and advocacy groups | Infographics + posters |
+| Conference or workshop attendees | Poster + summary slide deck |
+
+## Storytelling with data
+
+Storytelling is a powerful communication tool to help translate data and data visualizations into compelling narratives to guide decision-making and convey important health information.
+
+### The goal of storytelling with data can vary and take various forms
+
+- Explanation of a data visualization
+- "Once upon a time story" and what we can learn from it
+- "Breaking news story"
+- "What happened" story
+- Causation or correlation story
+- "How" story
+
+### Elements of a data story
+
+- **Plot**: What questions will you answer from the data, and how?
+- **Setting**: What is the context?
+- **Audience**: Who is your target audience? (Identifying the audience is very important, and will dictate your storytelling)
+- **Issue**: What is the main health issue?
+- **Implication**: What are the actions/recommendations?
+
+### Storytelling can take different forms
+
+- Can include data visualizations/images
+- With or without numbers
+- Beginning to end or vice versa; does not need to be in chronological order
+
+Be creative and remember to tailor the story to your audience.
+
+### Example: developing a data story
+
+**Part 1: Introduction and context**
+
+Setting, audience, why we care:
+> Examining routine data quality is critical to inform targeted action by the Ministry of Health
+
+Issue:
+> In Somalia, data quality varies across indicators: ANC4, institutional deliveries and BCG vaccine indicators had fewer outliers, compared to Penta 3 and OPD.
+
+Additional data/context to help explain the issue:
+> Zooming into specific States, Hirshabelle State exhibits poorer data quality with more than 3% outliers for outpatient visits. Similarly, Puntland State had 2.5% outliers for Penta 3 vaccines.
+
+Call to action:
+> Further investigation is needed to identify the specific areas/facilities that need attention to improve data quality of OPD and Penta 3 indicators.
+
+**Part 2: Deeper analysis (OPD)**
+
+> For outpatient visits, zooming in even further into Hirshabelle and Puntland States suggests that the high proportion of outliers in Hirshabelle State are not spread throughout the State, but rather in specific regions. Hiiraan region requires further investigation to understand reasons for the high 4.7% outliers and to improve data quality.
+
+**Part 3: Deeper analysis (Penta 3)**
+
+> For Penta 3 immunization, Ayn Region and Ras-Asayr Region in Puntland State need further attention with >6% outliers. Showing disaggregated data is imperative as national and state-level estimates of data quality indicators can mask specific regions requiring further data quality investigation.
+
+## Dissemination and data use roadmap
+
+A data use roadmap is a strategic plan that outlines how data will be utilized, shared, and disseminated effectively. It serves as a guide for ensuring that the analytical product developed reaches its intended audience and achieves its goals.
+
+### Why is developing a dissemination and data use roadmap important?
+
+- Establishes metrics and indicators to evaluate the success of data use
+- Clearly identifies key stakeholders, target audiences, and dissemination platforms/forums
+- Outlines the steps needed to achieve data dissemination goals
+- Anticipates potential challenges and barriers in data dissemination and use and develops strategies to solve for them
+
+### Dissemination and data use roadmap components
+
+| Component | Description | Example |
+|-----------|-------------|---------|
+| **Who is your end user or users?** | Identify target audience | RMNCAH-N national coordination platform |
+| **Objectives of your message** | Focus on one specific objective per audience | Facilitate the use of data for decision-making and policy development |
+| **Key messages** | Define the core messages you want to communicate | RMNCAH-N trends and identification of lagging districts |
+| **Dissemination channels** | Specify existing dissemination channels or forums | Quarterly RMNCAH-N platform meetings |
+| **Timeline** | Identify the timeline with key milestones and deadlines | Next platform meeting is in Q2 |
+| **Steps required & Who is accountable** | Define steps and assign roles and responsibilities | Get on agenda for platform meeting – Director; Finalize presentation – officer |
+| **Monitoring & Evaluation** | How will you know if you are successful? | The % of quarterly reports that were disseminated in relevant forums; A list of actions that were taken as a result of the data is created and maintained |
+
+## Three spheres of influence
+
+The Three Spheres of Influence framework helps direct attention to the actions that can be taken from FASTR data. The **sphere of control** encompasses actions within a team's immediate capacity — such as defaulter tracing, register reviews, and outreach coordination. The **sphere of influence** covers actions requiring collaboration with partners, such as securing logistics or advocating for policy changes. The **sphere of concern** includes broader systemic factors like the national policy environment, external financing, and population dynamics that provide important context but are outside direct control. When planning actions from FASTR findings, teams should focus first on what they can control, then on what they can influence.
+
+## Action plan for FASTR moving forward
+
+An action plan will help guide FASTR activities at the country level over the next year. Consider:
+
+**Your use cases**
+- Is there anything you want to change or add to your data use case?
+
+**Report finalization**
+- Is the report you made at the workshop the one you want to use moving forward? If not, how will you finalize your report?
+
+**The process for continuously updating and disseminating your quarterly analyses**
+- Who will be responsible for uploading data to the analytics platform? Creating the reports?
+
+**Continued competency building and step-down**
+- How would you like to practice? (e.g., solo, in a group, in regular weekly meetings?)
+- Who wasn't at this training that needs to understand this content? What additional training is needed?
+
+### Action plan structure
+
+| Section | Description |
+|---------|-------------|
+| **Action step(s)** | List specific steps or tasks needed to achieve the objective |
+| **Responsible person** | Identify the person responsible for each action step |
+| **Resources needed** | Identify resources (e.g., time, materials) required for each step |
+| **Timeline** | When will you complete this step? |
+| **Evaluation metric** | Identify metrics or criteria to assess progress or success |
+
+## End user mapping
+
+End user mapping helps ensure that our outputs will meet the real needs of our end users.
+
+### Key questions for end user mapping
+
+1. **Who is my end user?** (e.g., head of a regional health bureau, regional health authority, national policy maker?)
+
+2. **What does this end user need to accomplish with the report?** (E.g., make a decision, discuss in a meeting, make programmatic decisions, etc.?)
+
+3. **Based on the information we can include in the report, what information are they most interested in? What do they need to know?** (e.g., high level trends, detailed insights, comparisons across states/regions/districts/woredas?)
+
+4. **What do they like about current reports? What do they dislike?** (e.g., they like maps and scorecards; they dislike too much text, complex technical details)
+
+5. **How do they like to receive their information?** (PPT, brief, key messages/bullet points, graphs, maps, dashboards?)
+
+### User mapping example
+
+| Question | Example Response |
+|----------|------------------|
+| **Who is the end user?** | Head of a regional health bureau/authority |
+| **What does this end user need to accomplish with this report?** | Make a decision; Direct their team |
+| **What kind of insights do they need?** | High-level trends by service and by sub-national area; Performance comparisons – who to hold accountable? |
+| **What do they like about current analysis? What do they dislike?** | **Like:** actionable information, simple visuals; **Dislike:** overly technical content or content not aligned with decision-making needs |
+| **How do they like to receive their information?** | Presentations at top management meeting |
+| **Design implications for your output** | Short PPT with results focused only on service trends; Add actionable recommendations |
+
+---
+
+<!--
+////////////////////////////////////////////////////////////////////
+//                                                                //
+//   _____ _     _____ ____  _____    ____ ___  _   _ _____ _   _ //
+//  / ____| |   |_   _|  _ \| ____|  / ___/ _ \| \ | |_   _| \ | |//
+//  | (___ | |     | | | | | | |__   | |  | | | |  \| | | | |  \| |//
+//   \___ \| |     | | | | | |  __|  | |  | | | | . ` | | | | . ` |//
+//   ____) | |___ _| |_| |_| | |____ | |__| |_| | |\  | | | | |\  |//
+//  |_____/|_____|_____|____/|______| \____\___/|_| \_| |_| |_| \_|//
+//                                                                //
+//            Edit workshop slides below this line                //
+//                                                                //
+////////////////////////////////////////////////////////////////////
+-->
+
+<!-- SLIDE:m7_1 -->
+## Analytical thinking & interpretation
+
+Interpretation connects **data patterns** to **programmatic meaning**.
+
+For every FASTR output, ask three questions:
+
+1. **What does it show?** — Describe the pattern accurately
+2. **Why might that be?** — Consider multiple explanations
+3. **What should we do?** — Identify next steps or actions
+
+<small>*Moving from numbers to insights requires context, critical thinking, and programmatic knowledge.*</small>
+<!-- /SLIDE -->
+
+<!-- SLIDE:m7_1a -->
+## Critical thinking checklist
+
+Before drawing conclusions from FASTR outputs, ask:
+
+- **Data quality or real change?** Could this pattern reflect reporting issues rather than service delivery changes?
+- **What external factors apply?** Policy changes, seasonal patterns, shocks, or campaigns?
+- **Does it make programmatic sense?** Would this pattern be expected given what we know about the health system?
+- **What does disaggregation reveal?** National trends can mask important regional variation
+- **What additional information is needed?** What context would strengthen or challenge this interpretation?
+<!-- /SLIDE -->
+
+<!-- SLIDE:m7_1b -->
+## Common interpretation pitfalls
+
+<div style="display: flex; gap: 2em;">
+<div style="flex: 1;">
+
+**Aggregation masking**
+National averages can hide critical regional variation. Always examine subnational patterns.
+
+<br/>
+
+**Completeness ≠ representativeness**
+High reporting completeness doesn't mean data captures all service delivery (private sector, informal care).
+
+</div>
+<div style="flex: 1;">
+
+**Missing context**
+Patterns without context are meaningless. Consider seasonality, policy changes, and external shocks.
+
+<br/>
+
+**Over-interpreting noise**
+Short-term fluctuations may be normal variation. Focus on sustained trends and significant deviations.
+
+</div>
+</div>
+<!-- /SLIDE -->
+
+<!-- SLIDE:m7_1c -->
+## Interpreting FASTR module outputs
+
+<div style="display: flex; gap: 2em;">
+<div style="flex: 1;">
+
+**Data quality assessment**
+Low DQA scores may reflect data entry practices rather than service quality. Focus on identifying the specific dimension (completeness, outliers, consistency) driving issues.
+
+<br/>
+
+**Service utilization**
+Distinguish seasonal patterns from real disruptions. Year-over-year comparisons help isolate programmatic changes from normal fluctuation.
+
+</div>
+<div style="flex: 1;">
+
+**Coverage estimates**
+Coverage >100% signals reconciliation needed between HMIS and survey data. Consider whether the denominator source matches the service delivery context.
+
+<br/>
+
+**Across all modules**
+Examine patterns at multiple geographic levels — subnational disaggregation often reveals the true story.
+
+</div>
+</div>
+<!-- /SLIDE -->
+
+<!-- SLIDE:m7_1d -->
+## Outlier detection output
+
+<div style="display: flex; gap: 1em; align-items: flex-start;">
+<div style="flex: 1.2;">
+
+![Outliers output](/methodology/resources/default_outputs/Default_1._Proportion_of_outliers.png)
+
+</div>
+<div style="flex: 1; font-size: 0.85em;">
+
+**What you see:** Heatmap showing proportion of values flagged as outliers by indicator and region.
+
+**Formula:** Outlier % = (values flagged / total values) × 100
+
+**Interpretation:** High rates may indicate data entry errors or legitimate events like campaigns. Review facility registers to distinguish between the two.
+
+</div>
+</div>
+<!-- /SLIDE -->
+
+<!-- SLIDE:m7_1e -->
+## Internal consistency output
+
+<div style="display: flex; gap: 1em; align-items: flex-start;">
+<div style="flex: 1.2;">
+
+![Consistency output](/methodology/resources/default_outputs/Default_4._Proportion_of_sub-national_areas_meeting_consistency_criteria.png)
+
+</div>
+<div style="flex: 1; font-size: 0.85em;">
+
+**What you see:** Heatmap showing the % of districts where indicator pairs meet expected relationships (e.g., ANC1 ≥ ANC4).
+
+**Formula:** Consistency % = (districts meeting criteria / total districts) × 100
+
+**Interpretation:** Low consistency may indicate data flow problems, double-counting, or systematic under-reporting at the district level.
+
+</div>
+</div>
+<!-- /SLIDE -->
+
+<!-- SLIDE:m7_1f -->
+## Overall DQA score output
+
+<div style="display: flex; gap: 1em; align-items: flex-start;">
+<div style="flex: 1.2;">
+
+![DQA score output](/methodology/resources/default_outputs/Default_5._Overall_DQA_score.png)
+
+</div>
+<div style="flex: 1; font-size: 0.85em;">
+
+**What you see:** Heatmap showing overall DQA score by indicator and region, color-coded from red (poor) to green (good).
+
+**Formula:** DQA % = (values that are complete, not outliers, and consistent) / (total values) × 100
+
+**Interpretation:** 100% = passes all checks. Use this to prioritize data quality improvement efforts by region and indicator.
+
+</div>
+</div>
+<!-- /SLIDE -->
+
+<!-- SLIDE:m7_1g -->
+## Mean DQA score output
+
+<div style="display: flex; gap: 1em; align-items: flex-start;">
+<div style="flex: 1.2;">
+
+![Mean DQA score](/methodology/resources/default_outputs/Default_6._Mean_DQA_score.png)
+
+</div>
+<div style="flex: 1; font-size: 0.85em;">
+
+**What you see:** Heatmap showing mean DQA score across facilities by indicator and region.
+
+**Formula:** Mean DQA = (values that are complete, not outliers, and consistent) / (total values) × 100
+
+**Interpretation:** Shows how close facilities are to meeting all quality criteria. A score of 100% means the data passes all DQA checks.
+
+</div>
+</div>
+<!-- /SLIDE -->
+
+<!-- SLIDE:m7_1h -->
+## Outlier adjustment output
+
+<div style="display: flex; gap: 1em; align-items: flex-start;">
+<div style="flex: 1.2;">
+
+![Outlier adjustment](/methodology/resources/default_outputs/Default_1._Percent_change_in_volume_due_to_outlier_adjustment.png)
+
+</div>
+<div style="flex: 1; font-size: 0.85em;">
+
+**What you see:** Heatmap showing how much service volume changed after replacing outliers with rolling averages.
+
+**Formula:** % change = (adjusted - original) / original × 100
+
+**Interpretation:** Values are typically negative (outliers removed reduce volume). Large adjustments warrant investigation into their source.
+
+</div>
+</div>
+<!-- /SLIDE -->
+
+<!-- SLIDE:m7_1i -->
+## Completeness adjustment output
+
+<div style="display: flex; gap: 1em; align-items: flex-start;">
+<div style="flex: 1.2;">
+
+![Completeness adjustment](/methodology/resources/default_outputs/Default_2._Percent_change_in_volume_due_to_completeness_adjustment.png)
+
+</div>
+<div style="flex: 1; font-size: 0.85em;">
+
+**What you see:** Heatmap showing how much service volume changed after imputing missing data with rolling averages.
+
+**Formula:** % change = (adjusted - original) / original × 100
+
+**Interpretation:** Values are typically positive (imputation adds volume). Large adjustments indicate areas needing completeness improvement.
+
+</div>
+</div>
+<!-- /SLIDE -->
+
+<!-- SLIDE:m7_1i2 -->
+## Combined adjustment output
+
+<div style="display: flex; gap: 1em; align-items: flex-start;">
+<div style="flex: 1.2;">
+
+![Combined adjustment](/methodology/resources/default_outputs/Default_3._Percent_change_in_volume_due_to_both_outlier_and_completeness_adjustment.png)
+
+</div>
+<div style="flex: 1; font-size: 0.85em;">
+
+**What you see:** Heatmap showing net effect of both outlier removal and completeness imputation on service volumes.
+
+**Formula:** % change = (adjusted - original) / original × 100
+
+**Interpretation:** Outliers reduce volume (negative), completeness adds volume (positive). Net effect depends on which issue is more prevalent. Compare all four scenarios to assess sensitivity.
+
+</div>
+</div>
+<!-- /SLIDE -->
+
+<!-- SLIDE:m7_1j -->
+## Service utilization output: Trends over time
+
+<div style="display: flex; gap: 1em; align-items: flex-start;">
+<div style="flex: 1.2;">
+
+![Service utilization over time](/methodology/resources/default_outputs/Module3_5_Number_of_services_reported.png)
+
+</div>
+<div style="flex: 1; font-size: 0.85em;">
+
+**What you see:** Line chart showing service volumes over time by indicator.
+
+**Interpretation:** Look for seasonal patterns, sudden changes, and long-term trends. This is the raw data before disruption analysis.
+
+</div>
+</div>
+<!-- /SLIDE -->
+
+<!-- SLIDE:m7_1k -->
+## Service utilization output: Year-over-year change
+
+<div style="display: flex; gap: 1em; align-items: flex-start;">
+<div style="flex: 1.2;">
+
+![Change in service volume](/methodology/resources/default_outputs/Module3_1_Change_in_service_volume.png)
+
+</div>
+<div style="flex: 1; font-size: 0.85em;">
+
+**What you see:** Bars show annual service volumes by region. Percentages indicate year-over-year change.
+
+**Formula:** % change = (current − previous) / previous × 100
+
+**Interpretation:** Which regions show largest changes? Are patterns consistent or concentrated?
+
+</div>
+</div>
+<!-- /SLIDE -->
+
+<!-- SLIDE:m7_1l -->
+## Disruption output: Actual vs expected (national)
+
+<div style="display: flex; gap: 1em; align-items: flex-start;">
+<div style="flex: 1.2;">
+
+![Actual vs expected national](/methodology/resources/default_outputs/Module3_2_Actual_vs_expected_national.png)
+
+</div>
+<div style="flex: 1; font-size: 0.85em;">
+
+**What you see:** National comparison of observed (actual) vs model-predicted (expected) volumes.
+
+**Interpretation:** Red shading = shortfall (actual below expected). Green = surplus. Expected values account for seasonality and trends.
+
+</div>
+</div>
+<!-- /SLIDE -->
+
+<!-- SLIDE:m7_1m -->
+## Disruption output: Actual vs expected (subnational)
+
+<div style="display: flex; gap: 1em; align-items: flex-start;">
+<div style="flex: 1.2;">
+
+![Actual vs expected subnational](/methodology/resources/default_outputs/Module3_3_Actual_vs_expected_subnational.png)
+
+</div>
+<div style="flex: 1; font-size: 0.85em;">
+
+**What you see:** Subnational comparison reveals geographic variation in disruptions.
+
+**Interpretation:** Some areas may recover while others don't. Identify where disruptions are concentrated for targeted response.
+
+</div>
+</div>
+<!-- /SLIDE -->
+
+<!-- SLIDE:m7_1n -->
+## Coverage output: National trends
+
+<div style="display: flex; gap: 1em; align-items: flex-start;">
+<div style="flex: 1.2;">
+
+![Coverage national](/methodology/resources/default_outputs/Module4_1_Coverage_HMIS_National.png)
+
+</div>
+<div style="flex: 1; font-size: 0.85em;">
+
+**What you see:** Line chart showing coverage over time. Black = survey, Grey = HMIS-derived, Red = projected.
+
+**Formula:** Coverage % = (services / target population) × 100
+
+**Interpretation:** Compare HMIS and survey values — large gaps suggest denominator issues. Projected values extend surveys using HMIS trends.
+
+</div>
+</div>
+<!-- /SLIDE -->
+
+<!-- SLIDE:m7_1o -->
+## Coverage output: Subnational comparison
+
+<div style="display: flex; gap: 1em; align-items: flex-start;">
+<div style="flex: 1.2;">
+
+![Coverage subnational](/methodology/resources/default_outputs/Module4_2_Coverage_HMIS_Admin2.png)
+
+</div>
+<div style="flex: 1; font-size: 0.85em;">
+
+**What you see:** Coverage estimates by subnational area, enabling geographic comparison.
+
+**Formula:** Coverage % = (services / target population) × 100
+
+**Interpretation:** Identify geographic disparities. Compare areas to find high/low coverage regions for program targeting.
+
+</div>
+</div>
+<!-- /SLIDE -->
+
+<!-- SLIDE:m7_2 -->
+## Moving from data to key messages
+
+### What is a result?
+Results are what the analysis found (data quality scores, coverage estimations, service utilization numbers). They are often many in number, complex, hard to understand 'at a glance', and lacking interpretation.
+
+### What is a key takeaway?
+Key takeaways are what the results are telling us — why the results matter, the 'so what'. They should be few in number, simple and clear, easy to remember, and actionable.
+<!-- /SLIDE -->
+
+<!-- SLIDE:m7_2a -->
+## Example: result vs key takeaway
+
+**Result:**
+> In Q3 2022, the volume of ANC1 visits increased by 15% from the previous quarter—the largest quarterly rise in the period—followed by a 12% drop in Q1 2023. Since then, ANC1 volumes have remained relatively stable.
+
+**Key takeaway:**
+> The relative stability observed from mid-2023 onward suggests improvements in the consistency of service delivery. This trend may reflect strengthened systems or more predictable care-seeking patterns — providing a stronger foundation for sustained antenatal care coverage.
+<!-- /SLIDE -->
+
+<!-- SLIDE:m7_2b -->
+## Choosing the right report format
+
+### Key considerations
+- **Audience** – Who will be using the report?
+- **Purpose** – Inform, persuade, summarize, or analyze?
+- **Level of Detail** – High-level summary vs. in-depth analysis
+- **Accessibility** – How will the audience access and use it?
+
+| Audience | Format |
+|----------|--------|
+| Government officials and policymakers | Brief slide deck + executive summary PDF |
+| Technical experts and researchers | Full word/PDF report + Data annex |
+| General public and advocacy groups | Infographics + posters |
+<!-- /SLIDE -->
+
+<!-- SLIDE:m7_2c -->
+## Storytelling with data
+
+Storytelling is a powerful communication tool to help translate data into compelling narratives to guide decision-making.
+
+### Elements of a data story
+- **Plot**: What questions will you answer from the data?
+- **Setting**: What is the context?
+- **Audience**: Who is your target audience?
+- **Issue**: What is the main health issue?
+- **Implication**: What are the actions/recommendations?
+
+Be creative and remember to tailor the story to your audience.
+<!-- /SLIDE -->
+
+<!-- SLIDE:m7_2d -->
+## Example: developing a data story
+
+**Setting:** Examining routine data quality is critical to inform targeted action by the Ministry of Health
+
+**Issue:** In Somalia, data quality varies across indicators: ANC4, institutional deliveries and BCG vaccine had fewer outliers, compared to Penta 3 and OPD.
+
+**Context:** Hirshabelle State exhibits poorer data quality with more than 3% outliers for outpatient visits. Puntland State had 2.5% outliers for Penta 3 vaccines.
+
+**Call to action:** Further investigation is needed to identify specific areas/facilities that need attention to improve data quality.
+<!-- /SLIDE -->
+
+<!-- SLIDE:m7_3 -->
+## Dissemination and data use roadmap
+
+A data use roadmap is a strategic plan that outlines how data will be utilized, shared, and disseminated effectively.
+
+### Why is it important?
+- Establishes metrics to evaluate the success of data use
+- Identifies key stakeholders, target audiences, and dissemination platforms
+- Outlines steps needed to achieve data dissemination goals
+- Anticipates potential challenges and develops strategies to solve for them
+<!-- /SLIDE -->
+
+<!-- SLIDE:m7_3a -->
+## Action plan for FASTR moving forward
+
+Consider these key areas:
+
+**Your use cases** - Is there anything you want to change or add?
+
+**Report finalization** - Is the report you made the one you want to use moving forward?
+
+**Process for quarterly updates** - Who will be responsible for uploading data? Creating reports?
+
+**Competency building** - How would you like to practice? Who else needs this training?
+<!-- /SLIDE -->
+
+<!-- SLIDE:m7_4 -->
+## Understanding your audience: User mapping
+
+Before creating outputs, clarify who will use them and how.
+
+**Key questions for user mapping:**
+
+1. **Who is my end user?** (Regional health bureau head, national policy maker, program manager?)
+
+2. **What do they need to accomplish?** (Make a decision, discuss in a meeting, allocate resources?)
+
+3. **What information are they most interested in?** (High-level trends, detailed insights, comparisons across districts?)
+
+4. **What format works best for them?** (Brief slide deck, detailed report, infographic?)
+
+5. **How much time do they have?** (2-minute brief, 15-minute presentation, deep-dive workshop?)
+
+Different audiences need different outputs from the same data.
+<!-- /SLIDE -->
+
+<!-- SLIDE:m7_4a -->
+## Activity: Map your users
+
+![hands-on h:40](/methodology/resources/icons/hands_on.svg) **For your country team, identify:**
+
+| Question | Your Answer |
+|----------|-------------|
+| Who is the primary end user of your FASTR outputs? | |
+| What decision or action will they take based on this data? | |
+| What 2-3 pieces of information are they most interested in? | |
+| What format/length works best for this audience? | |
+| When and where will you present to them? | |
+
+*Discuss in your country team. Share one insight with the group.*
+<!-- /SLIDE -->
+
+<!-- SLIDE:m7_5 -->
+## Storytelling with data
+
+Storytelling translates data and visualizations into compelling narratives that guide decision-making.
+
+**Elements of a data story:**
+
+| Element | Description |
+|---------|-------------|
+| **Plot** | What questions will you answer from the data? |
+| **Setting** | What is the context? |
+| **Audience** | Who are you telling this story to? |
+| **Issue** | What is the main health issue or finding? |
+| **Implication** | What actions or recommendations follow? |
+
+**Remember:** The story is not just *what* the data shows, but *why it matters* and *what to do about it*.
+<!-- /SLIDE -->
+
+<!-- SLIDE:m7_5a -->
+## From data to story: Example
+
+**The data:** ANC1 coverage increased 15% in Q3 2022, dropped 12% in Q1 2023, then stabilized through 2025.
+
+**Just the result:**
+> "ANC1 volumes fluctuated between 2022-2023 before stabilizing in 2024-2025."
+
+**The story:**
+> "After significant disruption during 2022-2023, our antenatal care services have recovered and stabilized. The consistent delivery over the past 18 months suggests our health system has built resilience. This foundation positions us to focus on quality improvements rather than crisis response."
+
+*The story answers "so what?" and points toward action.*
+<!-- /SLIDE -->
+
+<!-- SLIDE:m7_6 -->
+## Linking results to actions
+
+Data is only valuable if it leads to decisions and actions.
+
+**The gap:** Many reports are produced but never used. Findings don't translate into program changes.
+
+**Bridging the gap:**
+
+| From Results | To Actions |
+|--------------|------------|
+| "Penta3 dropped 15% in Northern Region" | Investigate root cause, reallocate vaccines, strengthen outreach |
+| "ANC4 coverage below target in 3 districts" | Target supportive supervision, review referral pathways |
+| "Data quality poor in 2 facilities" | Provide data quality training, investigate reporting barriers |
+
+**Key question:** For each finding, ask "What decision or action does this inform?"
+<!-- /SLIDE -->
+
+<!-- SLIDE:m7_6a -->
+## Activity: Link your results to actions
+
+![hands-on h:40](/methodology/resources/icons/hands_on.svg) **For your top 3 findings, complete this table:**
+
+| Finding | Who needs to know? | What decision/action? | By when? |
+|---------|-------------------|----------------------|----------|
+| 1. | | | |
+| 2. | | | |
+| 3. | | | |
+
+**Guidance:**
+- Be specific about the decision-maker (not "the ministry" but "Director of PHC")
+- Be specific about the action (not "improve" but "conduct supportive supervision in X district")
+- Set a realistic timeline
+
+*Present your action-linked findings to a peer country for feedback.*
+<!-- /SLIDE -->
+
+<!-- SLIDE:m7_6b -->
+## Three spheres of influence
+
+The Three Spheres of Influence framework helps direct attention to the actions we can take from our data.
+
+<div class="columns">
+<div>
+
+**Sphere of control** — Actions you can take directly
+- Defaulter tracing, register reviews, outreach coordination
+- These are within your team's immediate capacity
+
+**Sphere of influence** — Actions requiring collaboration
+- Engaging partners, securing logistics, advocating for policy changes
+- You can influence but not unilaterally decide
+
+**Sphere of concern** — Broader systemic factors
+- National policy environment, external financing, population dynamics
+- Important context, but outside your direct control
+
+</div>
+<div>
+
+![Three Spheres of Influence](/methodology/resources/diagrams/three_spheres_of_influence.svg)
+
+</div>
+</div>
+
+*When planning actions from your FASTR findings, focus first on what you can control, then on what you can influence.*
+<!-- /SLIDE -->
+
+<!-- SLIDE:m7_7 -->
+## Building a roadmap for sustained use
+
+Move from one-off analysis to **routine data use**.
+
+**Key components of a sustainability roadmap:**
+
+| Component | Questions to Answer |
+|-----------|-------------------|
+| **Frequency** | How often will you update and disseminate analyses? (Quarterly?) |
+| **Responsibility** | Who uploads data? Who creates reports? Who presents? |
+| **Platform integration** | Which existing meetings/forums will you use? (RMNCAH-N TWG, PHC reviews?) |
+| **Quality assurance** | Who reviews outputs before dissemination? |
+| **Feedback loop** | How will you track whether data is being used for decisions? |
+
+**Goal:** FASTR becomes part of routine M&E, not a special project.
+<!-- /SLIDE -->
+
+<!-- SLIDE:m7_7a -->
+## Activity: Country action planning
+
+![hands-on h:40](/methodology/resources/icons/hands_on.svg) **Develop your country's FASTR action plan:**
+
+| Action Step | Responsible Person | Timeline | Success Metric |
+|-------------|-------------------|----------|----------------|
+| Complete quarterly analysis | | | |
+| Disseminate to [forum] | | | |
+| Follow up on identified issues | | | |
+| Train additional team members | | | |
+
+**Also consider:**
+- What existing platform/forum will you integrate FASTR into?
+- What's your dissemination plan for the output you created this week?
+- What support do you need from facilitators over the next quarter?
+
+*Share your action plan with another country team for peer review.*
+<!-- /SLIDE -->
+
+---
+
+**Contact**: <fastr@worldbank.org>

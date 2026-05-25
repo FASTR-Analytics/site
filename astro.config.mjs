@@ -20,6 +20,7 @@ export default defineConfig({
       customCss: ["./src/styles/tailwind.css"],
       components: {
         ThemeSelect: "./src/components/EmptyThemeSelect.astro",
+        ThemeProvider: "./src/components/ForceLightThemeProvider.astro",
       },
       sidebar: [
         {
@@ -31,6 +32,21 @@ export default defineConfig({
           label: "Getting started",
           translations: { fr: "Premiers pas" },
           autogenerate: { directory: "getting-started" },
+        },
+        {
+          label: "Using the platform",
+          translations: { fr: "Utiliser la plateforme" },
+          autogenerate: { directory: "platform" },
+        },
+        {
+          label: "Methodology",
+          translations: { fr: "Méthodologie" },
+          autogenerate: { directory: "methodology" },
+        },
+        {
+          label: "Resources",
+          translations: { fr: "Ressources" },
+          autogenerate: { directory: "resources" },
         },
       ],
     }),

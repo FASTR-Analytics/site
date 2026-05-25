@@ -1,0 +1,17 @@
+---
+// Forces Starlight to always render in light mode to match the
+// wb-fastr / FASTR theme. Replaces the stock ThemeProvider so the
+// data-theme attribute is locked to "light" regardless of OS preference
+// or localStorage state. Also stubs window.StarlightThemeProvider so
+// other Starlight scripts that reference it do not break.
+---
+
+<script is:inline>
+  window.StarlightThemeProvider = (() => {
+    document.documentElement.dataset.theme = "light";
+    try {
+      localStorage.setItem("starlight-theme", "light");
+    } catch (_) {}
+    return { updatePickers() {} };
+  })();
+</script>
