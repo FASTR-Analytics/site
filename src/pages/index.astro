@@ -1,0 +1,86 @@
+---
+import "../styles/tailwind.css";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>FASTR — Analytics for health systems</title>
+    <meta name="description" content="FASTR — analytics for health systems." />
+    <meta property="og:title" content="FASTR" />
+    <meta property="og:description" content="Analytics for health systems." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://fastr-analytics.org/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="alternate" hreflang="en" href="https://fastr-analytics.org/" />
+    <link rel="alternate" hreflang="fr" href="https://fastr-analytics.org/fr/" />
+  </head>
+  <body>
+    <div>
+      <header class="max-w-6xl w-full mx-auto px-5 md:px-8 pt-6 md:pt-8 pb-4 md:pb-5 flex items-baseline justify-between gap-4">
+        <div class="text-xl md:text-2xl font-bold text-primary whitespace-nowrap">FASTR</div>
+        <nav class="flex gap-5 md:gap-8 text-sm font-medium">
+          <a href="/overview/" class="hover:underline underline-offset-4 whitespace-nowrap">Overview</a>
+          <a href="/getting-started/" class="hover:underline underline-offset-4 whitespace-nowrap">Getting started</a>
+          <a href="/fr/" class="hover:underline underline-offset-4 whitespace-nowrap text-neutral">Français</a>
+        </nav>
+      </header>
+
+      <div class="border-t border-base-300 max-w-6xl w-full mx-auto"></div>
+
+      <main class="max-w-6xl w-full mx-auto px-5 md:px-8 pt-10 md:pt-16 pb-8 md:pb-12">
+        <h1 class="text-4xl sm:text-5xl md:text-7xl leading-[1.05] mb-5 md:mb-6 max-w-4xl font-bold tracking-tight">
+          Analytics for<br/>
+          <span class="text-primary">health systems.</span>
+        </h1>
+
+        <p class="text-lg md:text-2xl leading-snug max-w-2xl mb-8 text-neutral">
+          FASTR helps health programs turn routine data into the figures, tables and briefs that drive decisions.
+        </p>
+
+        <div class="flex gap-6 text-sm font-medium">
+          <a href="/overview/" class="underline underline-offset-4 decoration-2 text-primary">
+            Read the overview →
+          </a>
+          <a href="/getting-started/" class="underline underline-offset-4 decoration-2">
+            Get started →
+          </a>
+        </div>
+      </main>
+
+      <div class="border-t border-base-300 max-w-6xl w-full mx-auto"></div>
+
+      <section class="max-w-6xl w-full mx-auto px-5 md:px-8 py-10 md:py-14 grid md:grid-cols-3 gap-8 md:gap-10">
+        <article>
+          <div class="text-xs tracking-[0.3em] uppercase mb-3 text-primary font-semibold">I.</div>
+          <h3 class="text-xl mb-2 font-bold">Routine data, ready to use.</h3>
+          <p class="text-sm leading-relaxed text-neutral">
+            Designed for the messy reality of programme data. Period formats, disaggregations and population denominators are handled for you.
+          </p>
+        </article>
+        <article>
+          <div class="text-xs tracking-[0.3em] uppercase mb-3 text-primary font-semibold">II.</div>
+          <h3 class="text-xl mb-2 font-bold">Figures that hold up.</h3>
+          <p class="text-sm leading-relaxed text-neutral">
+            A consistent visual system across charts, tables, maps and slide decks. Output you can stand behind.
+          </p>
+        </article>
+        <article>
+          <div class="text-xs tracking-[0.3em] uppercase mb-3 text-primary font-semibold">III.</div>
+          <h3 class="text-xl mb-2 font-bold">Built for teams.</h3>
+          <p class="text-sm leading-relaxed text-neutral">
+            One tool for analysts and decision-makers. Reproducible by design, easy to share.
+          </p>
+        </article>
+      </section>
+
+      <footer class="max-w-6xl w-full mx-auto px-5 md:px-8 pb-6 md:pb-8 pt-4 text-xs text-neutral">
+        FASTR · fastr-analytics.org
+      </footer>
+    </div>
+  </body>
+</html>

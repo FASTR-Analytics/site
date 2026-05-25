@@ -1,0 +1,86 @@
+---
+import "../../styles/tailwind.css";
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>FASTR — Analyses pour les systèmes de santé</title>
+    <meta name="description" content="FASTR — analyses pour les systèmes de santé." />
+    <meta property="og:title" content="FASTR" />
+    <meta property="og:description" content="Analyses pour les systèmes de santé." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://fastr-analytics.org/fr/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="alternate" hreflang="en" href="https://fastr-analytics.org/" />
+    <link rel="alternate" hreflang="fr" href="https://fastr-analytics.org/fr/" />
+  </head>
+  <body>
+    <div>
+      <header class="max-w-6xl w-full mx-auto px-5 md:px-8 pt-6 md:pt-8 pb-4 md:pb-5 flex items-baseline justify-between gap-4">
+        <div class="text-xl md:text-2xl font-bold text-primary whitespace-nowrap">FASTR</div>
+        <nav class="flex gap-5 md:gap-8 text-sm font-medium">
+          <a href="/fr/overview/" class="hover:underline underline-offset-4 whitespace-nowrap">Vue d'ensemble</a>
+          <a href="/fr/getting-started/" class="hover:underline underline-offset-4 whitespace-nowrap">Premiers pas</a>
+          <a href="/" class="hover:underline underline-offset-4 whitespace-nowrap text-neutral">English</a>
+        </nav>
+      </header>
+
+      <div class="border-t border-base-300 max-w-6xl w-full mx-auto"></div>
+
+      <main class="max-w-6xl w-full mx-auto px-5 md:px-8 pt-10 md:pt-16 pb-8 md:pb-12">
+        <h1 class="text-4xl sm:text-5xl md:text-7xl leading-[1.05] mb-5 md:mb-6 max-w-4xl font-bold tracking-tight">
+          Analyses pour<br/>
+          <span class="text-primary">les systèmes de santé.</span>
+        </h1>
+
+        <p class="text-lg md:text-2xl leading-snug max-w-2xl mb-8 text-neutral">
+          FASTR aide les programmes de santé à transformer les données de routine en figures, tableaux et notes qui orientent les décisions.
+        </p>
+
+        <div class="flex gap-6 text-sm font-medium">
+          <a href="/fr/overview/" class="underline underline-offset-4 decoration-2 text-primary">
+            Lire la vue d'ensemble →
+          </a>
+          <a href="/fr/getting-started/" class="underline underline-offset-4 decoration-2">
+            Commencer →
+          </a>
+        </div>
+      </main>
+
+      <div class="border-t border-base-300 max-w-6xl w-full mx-auto"></div>
+
+      <section class="max-w-6xl w-full mx-auto px-5 md:px-8 py-10 md:py-14 grid md:grid-cols-3 gap-8 md:gap-10">
+        <article>
+          <div class="text-xs tracking-[0.3em] uppercase mb-3 text-primary font-semibold">I.</div>
+          <h3 class="text-xl mb-2 font-bold">Données de routine, prêtes à l'emploi.</h3>
+          <p class="text-sm leading-relaxed text-neutral">
+            Conçu pour la réalité désordonnée des données de programme. Les formats de période, les désagrégations et les dénominateurs sont gérés pour vous.
+          </p>
+        </article>
+        <article>
+          <div class="text-xs tracking-[0.3em] uppercase mb-3 text-primary font-semibold">II.</div>
+          <h3 class="text-xl mb-2 font-bold">Des figures solides.</h3>
+          <p class="text-sm leading-relaxed text-neutral">
+            Un système visuel cohérent à travers graphiques, tableaux, cartes et présentations. Des résultats sur lesquels vous pouvez compter.
+          </p>
+        </article>
+        <article>
+          <div class="text-xs tracking-[0.3em] uppercase mb-3 text-primary font-semibold">III.</div>
+          <h3 class="text-xl mb-2 font-bold">Pensé pour les équipes.</h3>
+          <p class="text-sm leading-relaxed text-neutral">
+            Un seul outil pour les analystes et les décideurs. Reproductible par conception, facile à partager.
+          </p>
+        </article>
+      </section>
+
+      <footer class="max-w-6xl w-full mx-auto px-5 md:px-8 pb-6 md:pb-8 pt-4 text-xs text-neutral">
+        FASTR · fastr-analytics.org
+      </footer>
+    </div>
+  </body>
+</html>
