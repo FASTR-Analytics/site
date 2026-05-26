@@ -12,6 +12,10 @@ export default defineConfig({
     starlight({
       title: "FASTR",
       description: "FASTR — analytics for health systems.",
+      logo: {
+        src: "./src/assets/logo.png",
+        replacesTitle: true,
+      },
       defaultLocale: "root",
       locales: {
         root: { label: "English", lang: "en" },

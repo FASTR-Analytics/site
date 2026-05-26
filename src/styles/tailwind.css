@@ -163,3 +163,12 @@
   --sl-color-hairline: var(--color-base-300);
   --sl-color-hairline-shade: var(--color-base-300);
 }
+
+.site-title img {
+  height: 1.25rem;
+}
+@media (min-width: 50rem) {
+  .site-title img {
+    height: 1.5rem;
+  }
+}
