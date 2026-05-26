@@ -240,6 +240,8 @@ Example: `/screenshots/admin-guide/users-add-dialog.png`
 
 ## Terminology
 
+For general language and terminology about GFF, FASTR, and the broader project, see <https://data.gffportal.org/key-themes/FASTR>.
+
 Use these terms consistently:
 
 | Term | Not |

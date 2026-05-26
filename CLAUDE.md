@@ -11,6 +11,7 @@ Astro + Starlight site combining a marketing landing page with the FASTR documen
 - [README.md](README.md) — local dev, content folders, static assets, methodology sync, deploy.
 - [DOC_CONTENT_GUIDE.md](DOC_CONTENT_GUIDE.md) — **required reading before writing or editing any docs page.** Covers audience, page structure, prose-vs-bullets rules, terminology, screenshots, localization.
 - [DESIGN.md](DESIGN.md) — design system, colours, Starlight theming.
+- <https://data.gffportal.org/key-themes/FASTR> — reference for general language and terminology about GFF, FASTR, and the broader project.
 
 ## Key conventions (the things easy to get wrong)
 
