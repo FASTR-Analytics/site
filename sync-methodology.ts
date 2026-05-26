@@ -386,6 +386,12 @@ async function main(): Promise<void> {
       }
     }
 
+    // Bumping this marker tells scripts/build.mjs to wipe the Astro content
+    // cache before the next build, so deleted methodology pages don't linger
+    // (see Astro #9061 / #12761). Commit alongside the methodology changes.
+    console.log("→ Bumping cache-bust marker…");
+    await Deno.writeTextFile(".methodology-sync-id", `${crypto.randomUUID()}\n`);
+
     console.log("✓ Done. Review with 'git status' and commit when satisfied.");
   } finally {
     await rmrf(tmp);

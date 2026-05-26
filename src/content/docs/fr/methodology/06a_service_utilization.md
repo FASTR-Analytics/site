@@ -1224,5 +1224,3 @@ Ce module est le **module 3** du pipeline analytique FASTR :
 
 
 
-
-

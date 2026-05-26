@@ -180,9 +180,12 @@ La plate-forme d'analyse FASTR comprend cinq modules automatisés :
 
 
 
+
+
+
 ---
 
-**Dernière mise à jour** : 06-05-2026
+**Dernière mise à jour** : 26-05-2026
 **Contact** : <fastr@worldbank.org>
 
 ## Références

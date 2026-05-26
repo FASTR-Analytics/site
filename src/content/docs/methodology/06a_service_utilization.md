@@ -1132,11 +1132,9 @@ In addition to year-over-year comparisons, FASTR generates quarter-on-quarter (Q
 
 
 
-
 <!-- ═══════════════════════════════════════════════════════════════════════════
      CONDENSED SLIDES: Methods + Interpretation Combined
 ═══════════════════════════════════════════════════════════════════════════ -->
-
 
 
 
