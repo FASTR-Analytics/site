@@ -89,12 +89,14 @@ pnpm sync:methodology
 
 This:
 
-- Sparse-clones the upstream repo into a temp dir
-- Copies `.md` files (English + French) into `src/content/docs/methodology/` and `src/content/docs/fr/methodology/`
-- Copies images into `public/methodology/resources/`
-- Normalises MkDocs syntax for Starlight (strips kramdown attributes, rewrites paths, adds frontmatter)
+- Sparse-clones the upstream repo (`methodology/` and `resources/`) into a temp dir
+- Copies chapter `.md` files (English + French) into `src/content/docs/methodology/` and `src/content/docs/fr/methodology/`, skipping a small set already covered by the site's own sections (`03_fastr_analytics_platform`, `03b_ai_assistant`, `11_user_guide`, `index`, `README`, `disclaimer`)
+- Copies images from upstream `resources/` into `public/methodology/resources/`
+- Normalises for Starlight: strips kramdown attributes, rewrites paths, adds frontmatter, drops `<!-- SLIDE: ... -->` workshop-slide blocks, converts MkDocs Material `??? "title"` collapsibles to `<details>`, and resolves `[@bibkey]` citations against `references.bib` (replacing the inline cite and appending a `References` / `Références` section)
 
-After running, review with `git status` and commit. **Never edit synced files directly** — they're overwritten on the next sync. Fix upstream and re-run.
+`disclaimer.md` is site-owned and preserved across syncs — edit it directly in the site repo.
+
+After running, review with `git status` and commit. **Never edit other synced files directly** — they're overwritten on the next sync. Fix upstream and re-run.
 
 The sync is local-only — Netlify never runs it. Methodology only updates when someone runs `pnpm sync:methodology` and commits the result.
 

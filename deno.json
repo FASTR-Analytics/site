@@ -1,0 +1,6 @@
+{
+  "lock": true,
+  "tasks": {
+    "sync:methodology": "deno run --allow-read --allow-write --allow-run sync-methodology.ts"
+  }
+}

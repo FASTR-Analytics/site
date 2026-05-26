@@ -173,696 +173,803 @@ Pour la heatmap de l'ajustement combiné (résultat 3) :
 
 **Le module `m002` n'expose aucun paramètre configurable par l'utilisateur dans la plateforme FASTR** — les ajustements s'exécutent avec la même logique interne pour chaque projet. Les paramètres documentés ci-dessous sont codés en dur dans le module et sont décrits ici à des fins de transparence, et non de configuration.
 
-??? "Indicateurs exclus (codé en dur)"
+<details>
+<summary>Indicateurs exclus (codé en dur)</summary>
 
-    Certains indicateurs sont exclus de tous les ajustements en raison de leur caractère sensible. L'exclusion est effectuée via une expression régulière insensible à la casse sur `indicator_common_id` :
 
-    ```r
-    EXCLUDED_PATTERN <- "death|still_birth"
-    ```
+Certains indicateurs sont exclus de tous les ajustements en raison de leur caractère sensible. L'exclusion est effectuée via une expression régulière insensible à la casse sur `indicator_common_id` :
 
-    Ce motif correspond à tout indicateur dont le nom contient `death` (par exemple `u5_deaths`, `maternal_deaths`, `neonatal_deaths`) ou `still_birth`. Pour ces indicateurs, le `count` brut original est préservé dans toutes les colonnes de scénarios (`count_final_none`, `count_final_outliers`, `count_final_completeness`, `count_final_both`).
+```r
+EXCLUDED_PATTERN <- "death|still_birth"
+```
 
-    **Justification** : Les comptes de décès et de mortinaissances ne doivent pas être lissés ou imputés car ils représentent des événements discrets qui peuvent présenter une véritable variation temporelle. Leur ajustement pourrait masquer d'importantes tendances épidémiologiques ou des signaux d'épidémies.
+Ce motif correspond à tout indicateur dont le nom contient `death` (par exemple `u5_deaths`, `maternal_deaths`, `neonatal_deaths`) ou `still_birth`. Pour ces indicateurs, le `count` brut original est préservé dans toutes les colonnes de scénarios (`count_final_none`, `count_final_outliers`, `count_final_completeness`, `count_final_both`).
 
-??? "Exclusions de faibles volumes (codé en dur)"
+**Justification** : Les comptes de décès et de mortinaissances ne doivent pas être lissés ou imputés car ils représentent des événements discrets qui peuvent présenter une véritable variation temporelle. Leur ajustement pourrait masquer d'importantes tendances épidémiologiques ou des signaux d'épidémies.
 
-    Les indicateurs sont également automatiquement exclus des **ajustements** si aucune observation établissement-mois n'atteint jamais 100 (`count >= 100`) dans l'ensemble de la base de données. Cela permet d'éviter des ajustements statistiques inutiles sur des indicateurs dont le nombre d'observations est constamment faible. Pour les indicateurs à faible volume exclus, le `count` brut est préservé dans les quatre colonnes de scénarios, tout comme pour les indicateurs de mortalité/mortinaissance exclus.
+</details>
 
-    **Logique d'exclusion** :
+<details>
+<summary>Exclusions de faibles volumes (codé en dur)</summary>
 
-    ```r
-    low_volume_check <- raw_data[, .(has_volume = any(count >= 100, na.rm = TRUE)),
-                                 by = indicator_common_id]
-    low_volume_check[, low_volume_exclude := !has_volume]
-    LOW_VOLUME_INDICATORS <- low_volume_check[has_volume == FALSE, indicator_common_id]
-    ```
 
-    La liste complète (avec un indicateur `low_volume_exclude` TRUE/FALSE par indicateur) est enregistrée dans `M2_low_volume_exclusions.csv` pour des raisons de transparence.
+Les indicateurs sont également automatiquement exclus des **ajustements** si aucune observation établissement-mois n'atteint jamais 100 (`count >= 100`) dans l'ensemble de la base de données. Cela permet d'éviter des ajustements statistiques inutiles sur des indicateurs dont le nombre d'observations est constamment faible. Pour les indicateurs à faible volume exclus, le `count` brut est préservé dans les quatre colonnes de scénarios, tout comme pour les indicateurs de mortalité/mortinaissance exclus.
 
-??? "Configuration de la fenêtre roulante (codé en dur)"
+**Logique d'exclusion** :
 
-    Le module utilise une fenêtre de **6 mois** pour toutes les moyennes glissantes. Ce choix permet d'équilibrer :
+```r
+low_volume_check <- raw_data[, .(has_volume = any(count >= 100, na.rm = TRUE)),
+                             by = indicator_common_id]
+low_volume_check[, low_volume_exclude := !has_volume]
+LOW_VOLUME_INDICATORS <- low_volume_check[has_volume == FALSE, indicator_common_id]
+```
 
-    **Avantages** :
+La liste complète (avec un indicateur `low_volume_exclude` TRUE/FALSE par indicateur) est enregistrée dans `M2_low_volume_exclusions.csv` pour des raisons de transparence.
 
-    - Capture les tendances à moyen terme
-    - Réduit l'impact des fluctuations à court terme
-    - Suffisamment de points de données pour obtenir des moyennes stables
-    - Fonctionne bien pour les indicateurs stables et saisonniers
+</details>
 
-    **Les compromis** :
+<details>
+<summary>Configuration de la fenêtre roulante (codé en dur)</summary>
 
-    - Peut ne pas saisir les changements rapides dans la prestation de services
-    - Risque de lissage excessif en cas de véritables changements programmatiques
-    - Nécessite au moins 6 observations valides pour une moyenne centrée optimale
+
+Le module utilise une fenêtre de **6 mois** pour toutes les moyennes glissantes. Ce choix permet d'équilibrer :
+
+**Avantages** :
+
+- Capture les tendances à moyen terme
+- Réduit l'impact des fluctuations à court terme
+- Suffisamment de points de données pour obtenir des moyennes stables
+- Fonctionne bien pour les indicateurs stables et saisonniers
+
+**Les compromis** :
+
+- Peut ne pas saisir les changements rapides dans la prestation de services
+- Risque de lissage excessif en cas de véritables changements programmatiques
+- Nécessite au moins 6 observations valides pour une moyenne centrée optimale
+
+</details>
 
 ### Spécifications des entrées/sorties
 
-??? "Fichiers d'entrée"
+<details>
+<summary>Fichiers d'entrée</summary>
 
-    Le module nécessite trois fichiers d'entrée provenant des étapes de traitement précédentes :
 
-    | Fichier | Source | Description | Variables clés |
-    |------|--------|-------------|---------------|
-    | `hmis_ISO3.csv` | Données brutes du SIGS | Volumes de services au niveau de l'établissement | `facility_id`, `indicator_common_id`, `period_id`, `count`, colonnes des zones administratives |
-    | `M1_output_outliers.csv` | Module 1 | Indicateurs de valeurs aberrantes pour chaque combinaison établissement-mois-indicateur | `facility_id`, `indicator_common_id`, `period_id`, `outlier_flag` |
-    | `M1_output_completeness.csv` | Module 1 | Indicateurs d'exhaustivité pour chaque combinaison établissement-mois-indicateur | `facility_id`, `indicator_common_id`, `period_id`, `completeness_flag` |
+Le module nécessite trois fichiers d'entrée provenant des étapes de traitement précédentes :
 
-??? "Structure des données d'entrée"
+| Fichier | Source | Description | Variables clés |
+|------|--------|-------------|---------------|
+| `hmis_ISO3.csv` | Données brutes du SIGS | Volumes de services au niveau de l'établissement | `facility_id`, `indicator_common_id`, `period_id`, `count`, colonnes des zones administratives |
+| `M1_output_outliers.csv` | Module 1 | Indicateurs de valeurs aberrantes pour chaque combinaison établissement-mois-indicateur | `facility_id`, `indicator_common_id`, `period_id`, `outlier_flag` |
+| `M1_output_completeness.csv` | Module 1 | Indicateurs d'exhaustivité pour chaque combinaison établissement-mois-indicateur | `facility_id`, `indicator_common_id`, `period_id`, `completeness_flag` |
 
-    **Données brutes SIGS (`hmis_ISO3.csv`)** :
+</details>
 
-    ```text
-    facility_id | admin_area_1 | admin_area_2 | admin_area_3 | period_id | indicator_common_id | count
-    ------------|--------------|--------------|--------------|-----------|---------------------|-------
-    FAC001      | ISO3         | Province_A   | District_A   | 202301    | anc1                | 145
-    FAC001      | ISO3         | Province_A   | District_A   | 202302    | anc1                | 152
-    FAC001      | ISO3         | Province_A   | District_A   | 202303    | anc1                | 890  # outlier
-    ```
+<details>
+<summary>Structure des données d'entrée</summary>
 
-    **Drapeaux de valeurs aberrantes (`M1_output_outliers.csv`)** :
 
-    ```text
-    facility_id | indicator_common_id | period_id | outlier_flag
-    ------------|---------------------|-----------|-------------
-    FAC001      | anc1                | 202301    | 0
-    FAC001      | anc1                | 202302    | 0
-    FAC001      | anc1                | 202303    | 1           # Flagged as outlier
-    ```
+**Données brutes SIGS (`hmis_ISO3.csv`)** :
 
-    **Drapeaux de complétude (`M1_output_completeness.csv`)** :
+```text
+facility_id | admin_area_1 | admin_area_2 | admin_area_3 | period_id | indicator_common_id | count
+------------|--------------|--------------|--------------|-----------|---------------------|-------
+FAC001      | ISO3         | Province_A   | District_A   | 202301    | anc1                | 145
+FAC001      | ISO3         | Province_A   | District_A   | 202302    | anc1                | 152
+FAC001      | ISO3         | Province_A   | District_A   | 202303    | anc1                | 890  # outlier
+```
 
-    ```text
-    facility_id | indicator_common_id | period_id | completeness_flag
-    ------------|---------------------|-----------|------------------
-    FAC001      | anc1                | 202301    | 1             # Complete
-    FAC001      | anc1                | 202302    | 0             # Incomplete
-    FAC001      | anc1                | 202303    | 1             # Complete
-    ```
+**Drapeaux de valeurs aberrantes (`M1_output_outliers.csv`)** :
 
-??? "Fichiers de sortie"
+```text
+facility_id | indicator_common_id | period_id | outlier_flag
+------------|---------------------|-----------|-------------
+FAC001      | anc1                | 202301    | 0
+FAC001      | anc1                | 202302    | 0
+FAC001      | anc1                | 202303    | 1           # Flagged as outlier
+```
 
-    Le module génère quatre fichiers de sortie :
+**Drapeaux de complétude (`M1_output_completeness.csv`)** :
 
-    | Fichier | Niveau | Description | Colonnes clés |
-    |------|-------|-------------|-------------|
-    | `M2_adjusted_data.csv` | Établissement | Volumes ajustés pour tous les scénarios au niveau de l'établissement | `facility_id`, zones administratives (excl. `admin_area_1`), `period_id`, `indicator_common_id`, `count_final_*` |
-    | `M2_adjusted_data_admin_area.csv` | Sous-national | Volumes ajustés agrégés dans les zones administratives sous-nationales | Zones administratives (excl. `admin_area_1`), `period_id`, `indicator_common_id`, `count_final_*` |
-    | `M2_adjusted_data_national.csv` | National | Volumes ajustés agrégés au niveau national | `admin_area_1`, `period_id`, `indicator_common_id`, `count_final_*` |
-    | `M2_low_volume_exclusions.csv` | Métadonnées | Indicateurs exclus de l'ajustement en raison de la faiblesse des volumes | `indicator_common_id`, `low_volume_exclude` |
+```text
+facility_id | indicator_common_id | period_id | completeness_flag
+------------|---------------------|-----------|------------------
+FAC001      | anc1                | 202301    | 1             # Complete
+FAC001      | anc1                | 202302    | 0             # Incomplete
+FAC001      | anc1                | 202303    | 1             # Complete
+```
 
-??? "Structure des données de sortie"
+</details>
 
-    **Sorties au niveau de l'établissement** (`M2_adjusted_data.csv`) :
+<details>
+<summary>Fichiers de sortie</summary>
 
-    ```text
-    facility_id | admin_area_2 | admin_area_3 | period_id | indicator_common_id | count_final_none | count_final_outliers | count_final_completeness | count_final_both
-    ------------|--------------|--------------|-----------|---------------------|------------------|----------------------|--------------------------|------------------
-    FAC001      | Province_A   | District_A   | 202301    | anc1                | 145              | 145                  | 145                      | 145
-    FAC001      | Province_A   | District_A   | 202302    | anc1                | 152              | 152                  | 148                      | 148
-    FAC001      | Province_A   | District_A   | 202303    | anc1                | 890              | 148                  | 890                      | 148
-    ```
 
-    Chaque colonne `count_final_*` représente un scénario d'ajustement différent :
+Le module génère quatre fichiers de sortie :
 
-    - `count_final_none` : Aucun ajustement n'est appliqué (valeurs originales)
-    - `count_final_outliers` : Seul l'ajustement des valeurs aberrantes est appliqué
-    - `count_final_completeness` : Seul l'ajustement d'exhaustivité est appliqué
-    - `count_final_both` : Ajustement des valeurs aberrantes et de l'exhaustivité appliqués
+| Fichier | Niveau | Description | Colonnes clés |
+|------|-------|-------------|-------------|
+| `M2_adjusted_data.csv` | Établissement | Volumes ajustés pour tous les scénarios au niveau de l'établissement | `facility_id`, zones administratives (excl. `admin_area_1`), `period_id`, `indicator_common_id`, `count_final_*` |
+| `M2_adjusted_data_admin_area.csv` | Sous-national | Volumes ajustés agrégés dans les zones administratives sous-nationales | Zones administratives (excl. `admin_area_1`), `period_id`, `indicator_common_id`, `count_final_*` |
+| `M2_adjusted_data_national.csv` | National | Volumes ajustés agrégés au niveau national | `admin_area_1`, `period_id`, `indicator_common_id`, `count_final_*` |
+| `M2_low_volume_exclusions.csv` | Métadonnées | Indicateurs exclus de l'ajustement en raison de la faiblesse des volumes | `indicator_common_id`, `low_volume_exclude` |
+
+</details>
+
+<details>
+<summary>Structure des données de sortie</summary>
+
+
+**Sorties au niveau de l'établissement** (`M2_adjusted_data.csv`) :
+
+```text
+facility_id | admin_area_2 | admin_area_3 | period_id | indicator_common_id | count_final_none | count_final_outliers | count_final_completeness | count_final_both
+------------|--------------|--------------|-----------|---------------------|------------------|----------------------|--------------------------|------------------
+FAC001      | Province_A   | District_A   | 202301    | anc1                | 145              | 145                  | 145                      | 145
+FAC001      | Province_A   | District_A   | 202302    | anc1                | 152              | 152                  | 148                      | 148
+FAC001      | Province_A   | District_A   | 202303    | anc1                | 890              | 148                  | 890                      | 148
+```
+
+Chaque colonne `count_final_*` représente un scénario d'ajustement différent :
+
+- `count_final_none` : Aucun ajustement n'est appliqué (valeurs originales)
+- `count_final_outliers` : Seul l'ajustement des valeurs aberrantes est appliqué
+- `count_final_completeness` : Seul l'ajustement d'exhaustivité est appliqué
+- `count_final_both` : Ajustement des valeurs aberrantes et de l'exhaustivité appliqués
+
+</details>
 
 ### Documentation sur les fonctions clés
 
-??? "Bibliothèques requises"
+<details>
+<summary>Bibliothèques requises</summary>
 
-    Le module dépend des paquets R suivants :
 
-    -   `data.table` - Manipulation, agrégation de données haute performance, et calculs de fenêtres glissantes (`frollmean` pour les moyennes glissantes)
-    -   `zoo` - Chargé pour les utilitaires de séries temporelles
-    -   `lubridate` - Traitement des dates (`month()`, `year()`) utilisé pour le repli même-mois-année-précédente
+Le module dépend des paquets R suivants :
 
-??? "1. `apply_adjustments()`"
+-   `data.table` - Manipulation, agrégation de données haute performance, et calculs de fenêtres glissantes (`frollmean` pour les moyennes glissantes)
+-   `zoo` - Chargé pour les utilitaires de séries temporelles
+-   `lubridate` - Traitement des dates (`month()`, `year()`) utilisé pour le repli même-mois-année-précédente
 
-    Fonction de base qui met en œuvre la logique d'ajustement pour un scénario unique.
+</details>
 
-    **Objectif** :
+<details>
+<summary>1. `apply_adjustments()`</summary>
 
-    Remplace les valeurs aberrantes et/ou incomplètes en utilisant des moyennes mobiles et des modèles historiques.
 
-    **Paramètres** :
+Fonction de base qui met en œuvre la logique d'ajustement pour un scénario unique.
 
-    - `raw_data` (data.table) : Données SIGS originales avec comptage des services
-    - `completeness_data` (data.table) : Indicateurs d'exhaustivité du module 1
-    - `outlier_data` (data.table) : Indicateurs de valeurs aberrantes du module 1
-    - `adjust_outliers` (logique) : Application ou non de l'ajustement des valeurs aberrantes
-    - `adjust_completeness` (logique) : Appliquer ou non l'ajustement de l'exhaustivité
+**Objectif** :
 
-    **Retourne** :
+Remplace les valeurs aberrantes et/ou incomplètes en utilisant des moyennes mobiles et des modèles historiques.
 
-    data.table avec les valeurs ajustées dans la colonne `count_working` et les métadonnées d'ajustement
+**Paramètres** :
 
-    **Opérations clés** :
+- `raw_data` (data.table) : Données SIGS originales avec comptage des services
+- `completeness_data` (data.table) : Indicateurs d'exhaustivité du module 1
+- `outlier_data` (data.table) : Indicateurs de valeurs aberrantes du module 1
+- `adjust_outliers` (logique) : Application ou non de l'ajustement des valeurs aberrantes
+- `adjust_completeness` (logique) : Appliquer ou non l'ajustement de l'exhaustivité
 
-    1. Fusionne les ensembles de données d'entrée par `facility_id`, `indicator_common_id`, et `period_id`
-    2. Convertit les `period_id` en dates pour l'ordonnancement temporel
-    3. Calcule les moyennes glissantes (centrées, en avant, en arrière) pour les valeurs valides
-    4. Applique une hiérarchie d'ajustement basée sur la disponibilité des données
-    5. Suivi de la méthode d'ajustement utilisée pour chaque valeur remplacée
+**Retourne** :
 
-??? "2. `apply_adjustments_scenarios()`"
+data.table avec les valeurs ajustées dans la colonne `count_working` et les métadonnées d'ajustement
 
-    Fonction enveloppante qui exécute les ajustements dans les quatre scénarios.
+**Opérations clés** :
 
-    **Objectif** :
+1. Fusionne les ensembles de données d'entrée par `facility_id`, `indicator_common_id`, et `period_id`
+2. Convertit les `period_id` en dates pour l'ordonnancement temporel
+3. Calcule les moyennes glissantes (centrées, en avant, en arrière) pour les valeurs valides
+4. Applique une hiérarchie d'ajustement basée sur la disponibilité des données
+5. Suivi de la méthode d'ajustement utilisée pour chaque valeur remplacée
 
-    Appliquer la logique d'ajustement selon différentes combinaisons d'ajustements des valeurs aberrantes et de l'exhaustivité.
+</details>
 
-    **Paramètres** :
+<details>
+<summary>2. `apply_adjustments_scenarios()`</summary>
 
-    - `raw_data` (data.table) : Données SIGS d'origine
-    - `completeness_data` (data.table) : Drapeaux d'exhaustivité
-    - `outlier_data` (data.table) : Indicateurs de valeurs aberrantes
 
-    **Retourne** :
+Fonction enveloppante qui exécute les ajustements dans les quatre scénarios.
 
-    data.table avec quatre colonnes `count_final_*`, une par scénario
+**Objectif** :
 
-    **Scénarios traités** :
+Appliquer la logique d'ajustement selon différentes combinaisons d'ajustements des valeurs aberrantes et de l'exhaustivité.
 
-    1. `none` : Pas d'ajustement (ligne de base)
-    2. `outliers` : Ajustement des valeurs aberrantes uniquement
-    3. `completeness` : Ajustement de l'exhaustivité uniquement
-    4. `both` : Valeur aberrante séquentielle puis ajustement de l'exhaustivité
+**Paramètres** :
 
-    **Logique de traitement** :
+- `raw_data` (data.table) : Données SIGS d'origine
+- `completeness_data` (data.table) : Drapeaux d'exhaustivité
+- `outlier_data` (data.table) : Indicateurs de valeurs aberrantes
 
-    - Appelle `apply_adjustments()` une fois par scénario
-    - Préserve le `count` brut pour les indicateurs correspondant à la regex `death|still_birth` et pour les indicateurs de faible volume (en écrasant tout `count_working` spécifique au scénario)
-    - Fusionne tous les résultats des scénarios dans un seul tableau au format large avec quatre colonnes `count_final_*`
+**Retourne** :
+
+data.table avec quatre colonnes `count_final_*`, une par scénario
+
+**Scénarios traités** :
+
+1. `none` : Pas d'ajustement (ligne de base)
+2. `outliers` : Ajustement des valeurs aberrantes uniquement
+3. `completeness` : Ajustement de l'exhaustivité uniquement
+4. `both` : Valeur aberrante séquentielle puis ajustement de l'exhaustivité
+
+**Logique de traitement** :
+
+- Appelle `apply_adjustments()` une fois par scénario
+- Préserve le `count` brut pour les indicateurs correspondant à la regex `death|still_birth` et pour les indicateurs de faible volume (en écrasant tout `count_working` spécifique au scénario)
+- Fusionne tous les résultats des scénarios dans un seul tableau au format large avec quatre colonnes `count_final_*`
+
+</details>
 
 ### Méthodes statistiques et algorithmes
 
-??? "Méthodologie d'ajustement des valeurs aberrantes"
+<details>
+<summary>Méthodologie d'ajustement des valeurs aberrantes</summary>
 
-    L'ajustement des valeurs aberrantes est appliqué à toute valeur du mois de l'établissement signalée dans le module 1 (`outlier_flag == 1`). L'objectif est de remplacer ces valeurs aberrantes par des données historiques valides provenant du même établissement et du même indicateur.
 
-    **Approche statistique** :
+L'ajustement des valeurs aberrantes est appliqué à toute valeur du mois de l'établissement signalée dans le module 1 (`outlier_flag == 1`). L'objectif est de remplacer ces valeurs aberrantes par des données historiques valides provenant du même établissement et du même indicateur.
 
-    Les moyennes mobiles sont utilisées pour estimer les valeurs attendues. Une moyenne glissante (également appelée moyenne mobile) est la moyenne d'un ensemble de périodes entourant la période cible. Cette technique permet de lisser les fluctuations à court terme et de mettre en évidence les tendances à long terme.
+**Approche statistique** :
 
-    **Définition des valeurs valides** :
+Les moyennes mobiles sont utilisées pour estimer les valeurs attendues. Une moyenne glissante (également appelée moyenne mobile) est la moyenne d'un ensemble de périodes entourant la période cible. Cette technique permet de lisser les fluctuations à court terme et de mettre en évidence les tendances à long terme.
 
-    Seules les valeurs répondant à TOUS les critères suivants sont utilisées dans les calculs :
+**Définition des valeurs valides** :
 
-    - `!is.na(count)` (non-missing)
-    - `outlier_flag == 0` (non signalées comme aberrantes)
+Seules les valeurs répondant à TOUS les critères suivants sont utilisées dans les calculs :
 
-    **Mise en œuvre** :
+- `!is.na(count)` (non-missing)
+- `outlier_flag == 0` (non signalées comme aberrantes)
 
-    Le module utilise `frollmean()` du paquet `zoo` pour des calculs de roulement efficaces :
+**Mise en œuvre** :
 
-    ```r
-    data_adj[, valid_count := fifelse(outlier_flag == 0L & !is.na(count), count, NA_real_)]
-    data_adj[, `:=`(
-      roll6   = frollmean(valid_count, 6, na.rm = TRUE, align = "center"),
-      fwd6    = frollmean(valid_count, 6, na.rm = TRUE, align = "left"),
-      bwd6    = frollmean(valid_count, 6, na.rm = TRUE, align = "right"),
-      fallback= mean(valid_count, na.rm = TRUE)
-    ), by = .(facility_id, indicator_common_id)]
-    ```
+Le module utilise `frollmean()` du paquet `zoo` pour des calculs de roulement efficaces :
 
-??? "Hiérarchie d'ajustement pour les valeurs aberrantes"
+```r
+data_adj[, valid_count := fifelse(outlier_flag == 0L & !is.na(count), count, NA_real_)]
+data_adj[, `:=`(
+  roll6   = frollmean(valid_count, 6, na.rm = TRUE, align = "center"),
+  fwd6    = frollmean(valid_count, 6, na.rm = TRUE, align = "left"),
+  bwd6    = frollmean(valid_count, 6, na.rm = TRUE, align = "right"),
+  fallback= mean(valid_count, na.rm = TRUE)
+), by = .(facility_id, indicator_common_id)]
+```
 
-    Le processus d'ajustement suit cet **ordre hiérarchique** (en s'arrêtant à la première méthode disponible) :
+</details>
 
-    1.  **Moyenne centrée sur 6 mois (`roll6`)**
+<details>
+<summary>Hiérarchie d'ajustement pour les valeurs aberrantes</summary>
 
-        -   Utilise les trois mois précédant et les trois mois suivant le mois aberrant
-        -   Fournit une moyenne équilibrée basée sur les tendances proches
-        -   S'applique lorsqu'il existe suffisamment de valeurs valides de part et d'autre du mois
-        -   Étiquette de la méthode : `roll6`
 
-    2.  **Moyenne prévisionnelle sur 6 mois (`fwd6`)**
+Le processus d'ajustement suit cet **ordre hiérarchique** (en s'arrêtant à la première méthode disponible) :
 
-        -   Utilisée si la moyenne centrée ne peut pas être calculée (par exemple, au début de la série temporelle)
-        -   Prend la moyenne des six prochains mois valides
-        -   Étiquette de la méthode : `forward`
+1.  **Moyenne centrée sur 6 mois (`roll6`)**
 
-    3.  **Moyenne des 6 mois rétrospectifs (`bwd6`)**
+    -   Utilise les trois mois précédant et les trois mois suivant le mois aberrant
+    -   Fournit une moyenne équilibrée basée sur les tendances proches
+    -   S'applique lorsqu'il existe suffisamment de valeurs valides de part et d'autre du mois
+    -   Étiquette de la méthode : `roll6`
 
-        -   Utilisé si ni `roll6` ni `fwd6` ne sont disponibles
-        -   Prend la moyenne des six mois valides les plus récents avant la valeur aberrante
-        -   Étiquette de la méthode : `backward`
+2.  **Moyenne prévisionnelle sur 6 mois (`fwd6`)**
 
-    4.  **Même mois que l'année précédente**
+    -   Utilisée si la moyenne centrée ne peut pas être calculée (par exemple, au début de la série temporelle)
+    -   Prend la moyenne des six prochains mois valides
+    -   Étiquette de la méthode : `forward`
 
-        -   S'il n'existe pas de moyenne valable sur 6 mois, la valeur du **même mois civil de l'année précédente** est utilisée (par exemple, janvier 2023 pour janvier 2024)
-        -   Ne s'applique que si la valeur précédente est valide (non signalée comme aberrante et non manquante) et uniquement lorsqu'un seul enregistrement de l'année précédente correspond
-        -   Particulièrement utile pour les indicateurs saisonniers (par exemple, paludisme, infections respiratoires)
-        -   Étiquette de la méthode : `same_month_last_year`
-        -   **Mise en œuvre** :
+3.  **Moyenne des 6 mois rétrospectifs (`bwd6`)**
 
-        ```r
-        data_adj[, `:=`(mm = month(date), yy = year(date))]
-        data_adj <- data_adj[, {
-          for (i in which(outlier_flag == 1L & is.na(adj_method))) {
-            j <- which(mm == mm[i] & yy == yy[i] - 1 & outlier_flag == 0L & !is.na(count))
-            if (length(j) == 1L) {
-              count_working[i] <- count[j]
-              adj_method[i]    <- "same_month_last_year"
-              adjust_note[i]   <- format(date[j], "%b-%Y")
-            }
-          }
-          .SD
-        }, by = .(facility_id, indicator_common_id)]
-        ```
+    -   Utilisé si ni `roll6` ni `fwd6` ne sont disponibles
+    -   Prend la moyenne des six mois valides les plus récents avant la valeur aberrante
+    -   Étiquette de la méthode : `backward`
 
-    5.  **Moyenne de toutes les valeurs historiques (repli)**
+4.  **Même mois que l'année précédente**
 
-        -   Si toutes les méthodes précédentes échouent, la moyenne de toutes les valeurs historiques valides pour cet indicateur dans cet établissement est utilisée
-        -   Fournit une base de référence spécifique à l'établissement lorsqu'aucun modèle temporel n'est disponible
-        -   Étiquette de la méthode : `fallback`
-
-    **Cas de figure** :
-
-    Si même la moyenne de repli au niveau de l'établissement ne peut pas être calculée (par exemple, l'établissement n'a aucune observation valide non aberrante pour cet indicateur), la valeur aberrante reste à `NA` dans les colonnes de scénarios ajustées.
-
-??? "Méthodologie d'ajustement de l'exhaustivité"
-
-    L'ajustement d'exhaustivité est appliqué à tout mois-établissement où le `count_working` est manquant (`is.na(count_working)`). Dans le scénario `completeness`, cela est déclenché par un `count` original `NA` (l'établissement n'a pas déclaré ce mois-là). Dans le scénario `both`, le `count_working` peut également être `NA` parce que l'étape de traitement des valeurs aberrantes n'a pas produit de remplacement. Le `completeness_flag` du module 1 est fusionné dans les données pour référence mais n'est pas utilisé comme déclencheur du remplacement.
-
-    **Approche statistique** :
-
-    La même méthodologie de moyenne mobile est appliquée, mais la définition des "valeurs valides" diffère légèrement :
-
-    **Valeurs valides pour l'ajustement de l'exhaustivité** :
-
-    - `!is.na(count_working)` (non manquantes, peut-être déjà ajustées pour les valeurs aberrantes)
-    - `outlier_flag == 0` (non signalé comme aberrant dans les données d'origine)
-
-    **Différence essentielle par rapport à l'ajustement des valeurs aberrantes** :
-
-    - L'ajustement pour l'exhaustivité peut utiliser des valeurs qui ont déjà été ajustées pour les valeurs aberrantes (lorsque les scénarios incluent les deux ajustements)
-    - Aucune méthode du même mois et de la dernière année n'est utilisée (uniquement des moyennes glissantes et une méthode de repli)
-
-    **Mise en œuvre
+    -   S'il n'existe pas de moyenne valable sur 6 mois, la valeur du **même mois civil de l'année précédente** est utilisée (par exemple, janvier 2023 pour janvier 2024)
+    -   Ne s'applique que si la valeur précédente est valide (non signalée comme aberrante et non manquante) et uniquement lorsqu'un seul enregistrement de l'année précédente correspond
+    -   Particulièrement utile pour les indicateurs saisonniers (par exemple, paludisme, infections respiratoires)
+    -   Étiquette de la méthode : `same_month_last_year`
+    -   **Mise en œuvre** :
 
     ```r
-    data_adj[, valid_count := fifelse(!is.na(count_working) & outlier_flag == 0L, count_working, NA_real_)]
-    data_adj[, `:=`(
-      roll6   = frollmean(valid_count, 6, na.rm = TRUE, align = "center"),
-      fwd6    = frollmean(valid_count, 6, na.rm = TRUE, align = "left"),
-      bwd6    = frollmean(valid_count, 6, na.rm = TRUE, align = "right"),
-      fallback= mean(valid_count, na.rm = TRUE)
-    ), by = .(facility_id, indicator_common_id)]
+    data_adj[, `:=`(mm = month(date), yy = year(date))]
+    data_adj <- data_adj[, {
+      for (i in which(outlier_flag == 1L & is.na(adj_method))) {
+        j <- which(mm == mm[i] & yy == yy[i] - 1 & outlier_flag == 0L & !is.na(count))
+        if (length(j) == 1L) {
+          count_working[i] <- count[j]
+          adj_method[i]    <- "same_month_last_year"
+          adjust_note[i]   <- format(date[j], "%b-%Y")
+        }
+      }
+      .SD
+    }, by = .(facility_id, indicator_common_id)]
     ```
 
-??? "Hiérarchie d'ajustement pour l'exhaustivité"
+5.  **Moyenne de toutes les valeurs historiques (repli)**
 
-    Le remplacement suit cet **ordre hiérarchique** :
+    -   Si toutes les méthodes précédentes échouent, la moyenne de toutes les valeurs historiques valides pour cet indicateur dans cet établissement est utilisée
+    -   Fournit une base de référence spécifique à l'établissement lorsqu'aucun modèle temporel n'est disponible
+    -   Étiquette de la méthode : `fallback`
 
-    1.  **Moyenne centrée sur 6 mois (`roll6`)**
+**Cas de figure** :
 
-        -   Utilise trois mois valides avant et après le mois manquant ou incomplet
-        -   Méthode préférée lorsque les données environnantes sont suffisantes
-        -   Étiquette de la méthode : `roll6`
+Si même la moyenne de repli au niveau de l'établissement ne peut pas être calculée (par exemple, l'établissement n'a aucune observation valide non aberrante pour cet indicateur), la valeur aberrante reste à `NA` dans les colonnes de scénarios ajustées.
 
-    2.  **Moyenne prévisionnelle sur 6 mois (`fwd6`)**
+</details>
 
-        -   Utilisé si la moyenne centrée ne peut pas être calculée (par exemple, au début de la série temporelle)
-        -   Étiquette de la méthode : `forward`
+<details>
+<summary>Méthodologie d'ajustement de l'exhaustivité</summary>
 
-    3.  **Moyenne rétrospective sur 6 mois (`bwd6`)**
 
-        -   Utilisée si aucune valeur centrée ou prospective n'est disponible (par exemple, à la fin de la série temporelle)
-        -   Étiquette de la méthode : `backward`
+L'ajustement d'exhaustivité est appliqué à tout mois-établissement où le `count_working` est manquant (`is.na(count_working)`). Dans le scénario `completeness`, cela est déclenché par un `count` original `NA` (l'établissement n'a pas déclaré ce mois-là). Dans le scénario `both`, le `count_working` peut également être `NA` parce que l'étape de traitement des valeurs aberrantes n'a pas produit de remplacement. Le `completeness_flag` du module 1 est fusionné dans les données pour référence mais n'est pas utilisé comme déclencheur du remplacement.
 
-    4.  **Moyenne de toutes les valeurs historiques (repli)**
+**Approche statistique** :
 
-        -   Si aucune moyenne mobile ne peut être calculée, utilise la moyenne de toutes les valeurs valides pour cet indicateur dans cet établissement
-        -   Fournit une base de référence spécifique à l'établissement
-        -   Étiquette de la méthode : `fallback`
+La même méthodologie de moyenne mobile est appliquée, mais la définition des "valeurs valides" diffère légèrement :
 
-    **Cas de figure** :
+**Valeurs valides pour l'ajustement de l'exhaustivité** :
 
-    Si l'établissement n'a aucune valeur valide pour cet indicateur, la moyenne de repli est elle-même `NA` et la valeur reste manquante dans les colonnes de scénarios ajustées.
+- `!is.na(count_working)` (non manquantes, peut-être déjà ajustées pour les valeurs aberrantes)
+- `outlier_flag == 0` (non signalé comme aberrant dans les données d'origine)
 
-??? "Logique de traitement des scénarios"
+**Différence essentielle par rapport à l'ajustement des valeurs aberrantes** :
 
-    Le module traite simultanément les quatre scénarios d'ajustement à l'aide de la fonction `apply_adjustments_scenarios()` :
+- L'ajustement pour l'exhaustivité peut utiliser des valeurs qui ont déjà été ajustées pour les valeurs aberrantes (lorsque les scénarios incluent les deux ajustements)
+- Aucune méthode du même mois et de la dernière année n'est utilisée (uniquement des moyennes glissantes et une méthode de repli)
 
-    **Scénario 1 : Aucun** (`count_final_none`)
+**Mise en œuvre
 
-    - `adjust_outliers = FALSE`, `adjust_completeness = FALSE`
-    - Données brutes originales sans aucune modification
-    - Sert de référence pour la comparaison
+```r
+data_adj[, valid_count := fifelse(!is.na(count_working) & outlier_flag == 0L, count_working, NA_real_)]
+data_adj[, `:=`(
+  roll6   = frollmean(valid_count, 6, na.rm = TRUE, align = "center"),
+  fwd6    = frollmean(valid_count, 6, na.rm = TRUE, align = "left"),
+  bwd6    = frollmean(valid_count, 6, na.rm = TRUE, align = "right"),
+  fallback= mean(valid_count, na.rm = TRUE)
+), by = .(facility_id, indicator_common_id)]
+```
 
-    **Scénario 2 : valeurs aberrantes** (`count_final_outliers`)
+</details>
 
-    - `adjust_outliers = TRUE`, `adjust_completeness = FALSE`
-    - Seules les valeurs aberrantes sont remplacées
-    - Les valeurs manquantes/incomplètes restent telles quelles
-    - Cas d'utilisation : Lorsque l'exhaustivité est élevée mais que les valeurs aberrantes posent problème
+<details>
+<summary>Hiérarchie d'ajustement pour l'exhaustivité</summary>
 
-    **Scénario 3 : Exhaustivité** (`count_final_completeness`)
 
-    - `adjust_outliers = FALSE`, `adjust_completeness = TRUE`
-    - Seules les valeurs manquantes/incomplètes sont imputées
-    - Les valeurs aberrantes sont conservées dans les données
-    - Cas d'utilisation : Lorsque la qualité des données est bonne mais que la déclaration est sporadique
+Le remplacement suit cet **ordre hiérarchique** :
 
-    **Scénario 4 : Les deux** (`count_final_both`)
+1.  **Moyenne centrée sur 6 mois (`roll6`)**
 
-    - `adjust_outliers = TRUE`, `adjust_completeness = TRUE`
-    - **Traitement séquentiel** : Traitement séquentiel** : les valeurs aberrantes sont d'abord corrigées, puis l'exhaustivité
-    - Ajustement le plus complet
-    - Cas d'utilisation : Lorsque les deux problèmes de qualité des données sont prévalents
+    -   Utilise trois mois valides avant et après le mois manquant ou incomplet
+    -   Méthode préférée lorsque les données environnantes sont suffisantes
+    -   Étiquette de la méthode : `roll6`
 
-    **Ordre de traitement pour le scénario "Les deux" :
+2.  **Moyenne prévisionnelle sur 6 mois (`fwd6`)**
 
-    1. L'ajustement des valeurs aberrantes crée un `count_working` où les valeurs aberrantes sont remplacées
-    2. L'ajustement de complétude opère ensuite sur `count_working`, en utilisant les valeurs déjà ajustées
-    3. Cela garantit que l'imputation de l'exhaustivité utilise des valeurs nettoyées (non aberrantes) lorsqu'elles sont disponibles
+    -   Utilisé si la moyenne centrée ne peut pas être calculée (par exemple, au début de la série temporelle)
+    -   Étiquette de la méthode : `forward`
 
-    **Important** :
+3.  **Moyenne rétrospective sur 6 mois (`bwd6`)**
 
-    Après les ajustements spécifiques au scénario, les indicateurs exclus sont réinitialisés à leur `count` brut original. Cela s'applique à la fois aux indicateurs de mortalité/mortinaissance (correspondant à la regex `EXCLUDED_PATTERN`) et aux indicateurs de faible volume :
+    -   Utilisée si aucune valeur centrée ou prospective n'est disponible (par exemple, à la fin de la série temporelle)
+    -   Étiquette de la méthode : `backward`
 
-    ```r
-    dat[grepl(EXCLUDED_PATTERN, indicator_common_id, ignore.case = TRUE) |
-        indicator_common_id %in% LOW_VOLUME_INDICATORS, count_working := count]
-    ```
+4.  **Moyenne de toutes les valeurs historiques (repli)**
 
-    Par conséquent, les quatre colonnes `count_final_*` pour ces indicateurs sont toutes égales à la valeur brute.
+    -   Si aucune moyenne mobile ne peut être calculée, utilise la moyenne de toutes les valeurs valides pour cet indicateur dans cet établissement
+    -   Fournit une base de référence spécifique à l'établissement
+    -   Étiquette de la méthode : `fallback`
 
-??? "Méthodes d'agrégation"
+**Cas de figure** :
 
-    Toutes les agrégations géographiques utilisent des **sommes simples** :
+Si l'établissement n'a aucune valeur valide pour cet indicateur, la moyenne de repli est elle-même `NA` et la valeur reste manquante dans les colonnes de scénarios ajustées.
 
-    ```r
-    sum(count_final_both, na.rm = TRUE)
-    ```
+</details>
 
-    **Raison d'être** :
+<details>
+<summary>Logique de traitement des scénarios</summary>
 
-    - Les volumes de services sont additifs (par exemple, les livraisons totales = la somme des livraisons des installations)
-    - Les valeurs manquantes (`NA`) sont considérées comme nulles dans l'agrégation
-    - Conforme aux pratiques standard de reporting du SIGS
 
-    **Avertissement** :
+Le module traite simultanément les quatre scénarios d'ajustement à l'aide de la fonction `apply_adjustments_scenarios()` :
 
-    Si de nombreux établissements ont des valeurs `NA` après ajustement, les totaux sous-nationaux/nationaux peuvent être sous-estimés. Le scénario `count_final_none` fournit un point de référence pour évaluer l'impact.
+**Scénario 1 : Aucun** (`count_final_none`)
 
-??? "Traitement des données manquantes dans les calculs"
+- `adjust_outliers = FALSE`, `adjust_completeness = FALSE`
+- Données brutes originales sans aucune modification
+- Sert de référence pour la comparaison
 
-    Le module applique `na.rm = TRUE` dans tous les calculs de roulement :
+**Scénario 2 : valeurs aberrantes** (`count_final_outliers`)
 
-    ```r
-    frollmean(valid_count, 6, na.rm = TRUE, align = "center")
-    ```
+- `adjust_outliers = TRUE`, `adjust_completeness = FALSE`
+- Seules les valeurs aberrantes sont remplacées
+- Les valeurs manquantes/incomplètes restent telles quelles
+- Cas d'utilisation : Lorsque l'exhaustivité est élevée mais que les valeurs aberrantes posent problème
 
-    **Implication** :
+**Scénario 3 : Exhaustivité** (`count_final_completeness`)
 
-    Les moyennes glissantes sont calculées à partir des seules valeurs valides disponibles. S'il existe moins de 6 valeurs, la moyenne est calculée à partir de toutes les valeurs disponibles. Si aucune valeur valide n'existe, le résultat est `NA`.
+- `adjust_outliers = FALSE`, `adjust_completeness = TRUE`
+- Seules les valeurs manquantes/incomplètes sont imputées
+- Les valeurs aberrantes sont conservées dans les données
+- Cas d'utilisation : Lorsque la qualité des données est bonne mais que la déclaration est sporadique
+
+**Scénario 4 : Les deux** (`count_final_both`)
+
+- `adjust_outliers = TRUE`, `adjust_completeness = TRUE`
+- **Traitement séquentiel** : Traitement séquentiel** : les valeurs aberrantes sont d'abord corrigées, puis l'exhaustivité
+- Ajustement le plus complet
+- Cas d'utilisation : Lorsque les deux problèmes de qualité des données sont prévalents
+
+**Ordre de traitement pour le scénario "Les deux" :
+
+1. L'ajustement des valeurs aberrantes crée un `count_working` où les valeurs aberrantes sont remplacées
+2. L'ajustement de complétude opère ensuite sur `count_working`, en utilisant les valeurs déjà ajustées
+3. Cela garantit que l'imputation de l'exhaustivité utilise des valeurs nettoyées (non aberrantes) lorsqu'elles sont disponibles
+
+**Important** :
+
+Après les ajustements spécifiques au scénario, les indicateurs exclus sont réinitialisés à leur `count` brut original. Cela s'applique à la fois aux indicateurs de mortalité/mortinaissance (correspondant à la regex `EXCLUDED_PATTERN`) et aux indicateurs de faible volume :
+
+```r
+dat[grepl(EXCLUDED_PATTERN, indicator_common_id, ignore.case = TRUE) |
+    indicator_common_id %in% LOW_VOLUME_INDICATORS, count_working := count]
+```
+
+Par conséquent, les quatre colonnes `count_final_*` pour ces indicateurs sont toutes égales à la valeur brute.
+
+</details>
+
+<details>
+<summary>Méthodes d'agrégation</summary>
+
+
+Toutes les agrégations géographiques utilisent des **sommes simples** :
+
+```r
+sum(count_final_both, na.rm = TRUE)
+```
+
+**Raison d'être** :
+
+- Les volumes de services sont additifs (par exemple, les livraisons totales = la somme des livraisons des installations)
+- Les valeurs manquantes (`NA`) sont considérées comme nulles dans l'agrégation
+- Conforme aux pratiques standard de reporting du SIGS
+
+**Avertissement** :
+
+Si de nombreux établissements ont des valeurs `NA` après ajustement, les totaux sous-nationaux/nationaux peuvent être sous-estimés. Le scénario `count_final_none` fournit un point de référence pour évaluer l'impact.
+
+</details>
+
+<details>
+<summary>Traitement des données manquantes dans les calculs</summary>
+
+
+Le module applique `na.rm = TRUE` dans tous les calculs de roulement :
+
+```r
+frollmean(valid_count, 6, na.rm = TRUE, align = "center")
+```
+
+**Implication** :
+
+Les moyennes glissantes sont calculées à partir des seules valeurs valides disponibles. S'il existe moins de 6 valeurs, la moyenne est calculée à partir de toutes les valeurs disponibles. Si aucune valeur valide n'existe, le résultat est `NA`.
+
+</details>
 
 ### Exemples de code
 
-??? "Exemple 1 : Ajustement des valeurs aberrantes"
+<details>
+<summary>Exemple 1 : Ajustement des valeurs aberrantes</summary>
 
-    **Scénario** :
 
-    Une structure sanitaire signale un nombre anormalement élevé de premières visites de soins prénatals (CPN1) en mars 2023.
+**Scénario** :
 
-    **Données** :
+Une structure sanitaire signale un nombre anormalement élevé de premières visites de soins prénatals (CPN1) en mars 2023.
 
-    ```text
-    period_id | count | outlier_flag | Surrounding valid values
-    ----------|-------|--------------|-------------------------
-    202301    | 145   | 0            | valid
-    202302    | 152   | 0            | valid
-    202303    | 890   | 1            | outlier
-    202304    | 148   | 0            | valid
-    202305    | 155   | 0            | valid
-    202306    | 147   | 0            | valid
-    ```
+**Données** :
 
-    **Calcul de l'ajustement** (moyenne centrée sur 6 mois) :
+```text
+period_id | count | outlier_flag | Surrounding valid values
+----------|-------|--------------|-------------------------
+202301    | 145   | 0            | valid
+202302    | 152   | 0            | valid
+202303    | 890   | 1            | outlier
+202304    | 148   | 0            | valid
+202305    | 155   | 0            | valid
+202306    | 147   | 0            | valid
+```
 
-    - Valeurs valides : [145, 152, 148, 155, 147] (exclut la valeur aberrante 890)
-    - Moyenne : (145 + 152 + 148 + 155 + 147) / 5 = 149,4
-    - **Valeur ajustée** : 149.4
+**Calcul de l'ajustement** (moyenne centrée sur 6 mois) :
 
-    **Méthode utilisée
+- Valeurs valides : [145, 152, 148, 155, 147] (exclut la valeur aberrante 890)
+- Moyenne : (145 + 152 + 148 + 155 + 147) / 5 = 149,4
+- **Valeur ajustée** : 149.4
 
-    `roll6`
+**Méthode utilisée
 
-??? "Exemple 2 : Ajustement de la complétude"
+`roll6`
 
-    **Scénario** :
+</details>
 
-    Un établissement ne déclare pas les tests de dépistage du paludisme en février 2023.
+<details>
+<summary>Exemple 2 : Ajustement de la complétude</summary>
 
-    **Données** :
 
-    ```text
-    period_id | count | completeness_flag | Surrounding valid values
-    ----------|-------|-------------------|-------------------------
-    202301    | 45    | 1                 | valid
-    202302    | NA    | 0                 | INCOMPLETE
-    202303    | 48    | 1                 | valid
-    202304    | 52    | 1                 | valid
-    202305    | 50    | 1                 | valid
-    ```
+**Scénario** :
 
-    **Calcul de l'ajustement** (moyenne centrée sur 6 mois) :
+Un établissement ne déclare pas les tests de dépistage du paludisme en février 2023.
 
-    - Valeurs valides : [45, 48, 52, 50, ...]
-    - Moyenne : 48.75 (en utilisant les mois environnants disponibles)
-    - **Valeur calculée** : 48.75
+**Données** :
 
-    **Méthode utilisée
+```text
+period_id | count | completeness_flag | Surrounding valid values
+----------|-------|-------------------|-------------------------
+202301    | 45    | 1                 | valid
+202302    | NA    | 0                 | INCOMPLETE
+202303    | 48    | 1                 | valid
+202304    | 52    | 1                 | valid
+202305    | 50    | 1                 | valid
+```
 
-    `roll6`
+**Calcul de l'ajustement** (moyenne centrée sur 6 mois) :
 
-??? "Exemple 3 : Indicateur saisonnier avec même mois-dernière année"
+- Valeurs valides : [45, 48, 52, 50, ...]
+- Moyenne : 48.75 (en utilisant les mois environnants disponibles)
+- **Valeur calculée** : 48.75
 
-    **Scénario** :
+**Méthode utilisée
 
-    Les cas de paludisme présentent une forte saisonnalité et une valeur aberrante de juin 2023 doit être ajustée.
+`roll6`
 
-    **Données** :
+</details>
 
-    ```text
-    period_id | count | outlier_flag | Notes
-    ----------|-------|--------------|-------
-    202206    | 234   | 0            | June 2022 (valid)
-    202306    | 1850  | 1            | June 2023 (outlier)
-    ```
+<details>
+<summary>Exemple 3 : Indicateur saisonnier avec même mois-dernière année</summary>
 
-    **Logique d'ajustement** :
 
-    1. Les moyennes mobiles centrées, avant et arrière ne sont pas disponibles (données insuffisantes)
-    2. Méthode du même mois et de la dernière année activée
-    3. Valeur juin 2022 = 234 (valide)
-    4. **Valeur ajustée** : 234
+**Scénario** :
 
-    **Méthode utilisée** :
+Les cas de paludisme présentent une forte saisonnalité et une valeur aberrante de juin 2023 doit être ajustée.
 
-    `same_month_last_year`
+**Données** :
 
-??? "Exemple 4 : Comparaison de scénarios"
+```text
+period_id | count | outlier_flag | Notes
+----------|-------|--------------|-------
+202206    | 234   | 0            | June 2022 (valid)
+202306    | 1850  | 1            | June 2023 (outlier)
+```
 
-    **établissement** :
+**Logique d'ajustement** :
 
-    FAC001
+1. Les moyennes mobiles centrées, avant et arrière ne sont pas disponibles (données insuffisantes)
+2. Méthode du même mois et de la dernière année activée
+3. Valeur juin 2022 = 234 (valide)
+4. **Valeur ajustée** : 234
 
-    **Indicateur** :
+**Méthode utilisée** :
 
-    Livraisons institutionnelles
+`same_month_last_year`
 
-    **Période** :
+</details>
 
-    Q1 2023
+<details>
+<summary>Exemple 4 : Comparaison de scénarios</summary>
 
-    **Données originales** :
 
-    ```text
-    Month    | Count | outlier? | Complete?
-    ---------|-------|----------|----------
-    Jan 2023 | 78    | No       | Yes
-    Feb 2023 | 450   | Yes      | Yes       # outlier
-    Mar 2023 | NA    | -        | No        # Incomplete
-    ```
+**établissement** :
 
-    **Scénario de résultats** :
+FAC001
 
-    | Mois - Aucun - Valeurs aberrantes - Exhaustivité - Les deux - Les deux - Les deux
-    |----------|------|----------|--------------|------|
-    | Janv. 2023 - 78 - 78 - 78 - 78 - 78 - 78 - 78 - 78 - 78 - 78 - 78 - 78 - 78 - 78 - 78 - 78 - 78 - 78
-    | Fév 2023 | 450 | 82* | 450 | 82* |
-    | Mar 2023 | NA | NA | 80** | 80** | 80** | 80** | 80** | 80** | 80** | 80** | 80**
+**Indicateur** :
 
-    *Ajusté en utilisant la moyenne mobile
+Livraisons institutionnelles
 
-    **Calculé sur la base d'une moyenne mobile
+**Période** :
 
-    **Interprétation** :
+Q1 2023
 
-    - **Aucune** : Données brutes avec des problèmes évidents
-    - **valeurs aberrantes** : Février corrigé, mais mars reste manquant
-    - **Complétude** : mars est complété, mais la valeur aberrante de février est conservée : Mars est complété, mais la valeur aberrante de février est conservée
-    - **Les deux** : Ensemble de données le plus complet et le plus propre
+**Données originales** :
 
-??? "Exemple 5 : Agrégation géographique"
+```text
+Month    | Count | outlier? | Complete?
+---------|-------|----------|----------
+Jan 2023 | 78    | No       | Yes
+Feb 2023 | 450   | Yes      | Yes       # outlier
+Mar 2023 | NA    | -        | No        # Incomplete
+```
 
-    **Code d'agrégation sous-nationale** :
+**Scénario de résultats** :
 
-    ```r
-    adjusted_data_admin_area_final <- adjusted_data_export[
-      ,
-      .(
-        count_final_none         = sum(count_final_none,         na.rm = TRUE),
-        count_final_outliers     = sum(count_final_outliers,     na.rm = TRUE),
-        count_final_completeness = sum(count_final_completeness, na.rm = TRUE),
-        count_final_both         = sum(count_final_both,         na.rm = TRUE)
-      ),
-      by = c(geo_admin_area_sub, "indicator_common_id", "period_id")
-    ]
-    ```
+| Mois - Aucun - Valeurs aberrantes - Exhaustivité - Les deux - Les deux - Les deux
+|----------|------|----------|--------------|------|
+| Janv. 2023 - 78 - 78 - 78 - 78 - 78 - 78 - 78 - 78 - 78 - 78 - 78 - 78 - 78 - 78 - 78 - 78 - 78 - 78
+| Fév 2023 | 450 | 82* | 450 | 82* |
+| Mar 2023 | NA | NA | 80** | 80** | 80** | 80** | 80** | 80** | 80** | 80** | 80**
 
-    **Code d'agrégation nationale** :
+*Ajusté en utilisant la moyenne mobile
 
-    ```r
-    adjusted_data_national_final <- adjusted_data_export[
-      ,
-      .(
-        count_final_none         = sum(count_final_none,         na.rm = TRUE),
-        count_final_outliers     = sum(count_final_outliers,     na.rm = TRUE),
-        count_final_completeness = sum(count_final_completeness, na.rm = TRUE),
-        count_final_both         = sum(count_final_both,         na.rm = TRUE)
-      ),
-      by = .(admin_area_1, indicator_common_id, period_id)
-    ]
-    ```
+**Calculé sur la base d'une moyenne mobile
+
+**Interprétation** :
+
+- **Aucune** : Données brutes avec des problèmes évidents
+- **valeurs aberrantes** : Février corrigé, mais mars reste manquant
+- **Complétude** : mars est complété, mais la valeur aberrante de février est conservée : Mars est complété, mais la valeur aberrante de février est conservée
+- **Les deux** : Ensemble de données le plus complet et le plus propre
+
+</details>
+
+<details>
+<summary>Exemple 5 : Agrégation géographique</summary>
+
+
+**Code d'agrégation sous-nationale** :
+
+```r
+adjusted_data_admin_area_final <- adjusted_data_export[
+  ,
+  .(
+    count_final_none         = sum(count_final_none,         na.rm = TRUE),
+    count_final_outliers     = sum(count_final_outliers,     na.rm = TRUE),
+    count_final_completeness = sum(count_final_completeness, na.rm = TRUE),
+    count_final_both         = sum(count_final_both,         na.rm = TRUE)
+  ),
+  by = c(geo_admin_area_sub, "indicator_common_id", "period_id")
+]
+```
+
+**Code d'agrégation nationale** :
+
+```r
+adjusted_data_national_final <- adjusted_data_export[
+  ,
+  .(
+    count_final_none         = sum(count_final_none,         na.rm = TRUE),
+    count_final_outliers     = sum(count_final_outliers,     na.rm = TRUE),
+    count_final_completeness = sum(count_final_completeness, na.rm = TRUE),
+    count_final_both         = sum(count_final_both,         na.rm = TRUE)
+  ),
+  by = .(admin_area_1, indicator_common_id, period_id)
+]
+```
+
+</details>
 
 ### Dépannage
 
-??? "Problèmes courants"
+<details>
+<summary>Problèmes courants</summary>
 
-    **Problème 1 : Toutes les valeurs restent non ajustées**
 
-    **Causes possibles** :
+**Problème 1 : Toutes les valeurs restent non ajustées**
 
-    - Le nom de l'indicateur correspond au motif d'exclusion `death|still_birth`
-    - Indicateur marqué comme étant de faible volume (aucune observation n'a jamais atteint `count >= 100`)
-    - Aucun indicateur aberrant (`outlier_flag == 1`) et aucune valeur manquante dans les données d'entrée
+**Causes possibles** :
 
-    **Solution** :
+- Le nom de l'indicateur correspond au motif d'exclusion `death|still_birth`
+- Indicateur marqué comme étant de faible volume (aucune observation n'a jamais atteint `count >= 100`)
+- Aucun indicateur aberrant (`outlier_flag == 1`) et aucune valeur manquante dans les données d'entrée
 
-    Vérifier `M2_low_volume_exclusions.csv` et vérifier que les sorties du module 1 contiennent des indicateurs
+**Solution** :
 
-    **Problème 2 : Les valeurs ajustées semblent déraisonnables
+Vérifier `M2_low_volume_exclusions.csv` et vérifier que les sorties du module 1 contiennent des indicateurs
 
-    **Causes possibles** :
+**Problème 2 : Les valeurs ajustées semblent déraisonnables
 
-    - Insuffisance de données historiques valides pour les moyennes mobiles
-    - Les modifications réelles du programme sont lissées
-    - Les tendances saisonnières ne sont pas prises en compte dans la fenêtre de 6 mois
+**Causes possibles** :
 
-    **Solution** :
+- Insuffisance de données historiques valides pour les moyennes mobiles
+- Les modifications réelles du programme sont lissées
+- Les tendances saisonnières ne sont pas prises en compte dans la fenêtre de 6 mois
 
-    - Examiner les graphiques de séries chronologiques propres à l'établissement
-    - Envisager d'utiliser le scénario "valeurs aberrantes uniquement" si l'exhaustivité est bonne
-    - Valider par rapport aux registres de mise en œuvre du programme
+**Solution** :
 
-    **Problème 3 : Nombreuses valeurs NA après ajustement**
+- Examiner les graphiques de séries chronologiques propres à l'établissement
+- Envisager d'utiliser le scénario "valeurs aberrantes uniquement" si l'exhaustivité est bonne
+- Valider par rapport aux registres de mise en œuvre du programme
 
-    **Causes possibles** :
+**Problème 3 : Nombreuses valeurs NA après ajustement**
 
-    - L'installation dispose de très peu de données
-    - Aucune valeur valide n'est disponible pour aucune méthode d'ajustement
-    - Les premiers mois de la série chronologique manquent de données historiques
+**Causes possibles** :
 
-    **Solution** :
+- L'installation dispose de très peu de données
+- Aucune valeur valide n'est disponible pour aucune méthode d'ajustement
+- Les premiers mois de la série chronologique manquent de données historiques
 
-    - Attendu pour les établissements ayant un historique de déclaration limité
-    - Envisager un filtrage de la qualité des données au niveau de l'établissement
-    - Les agrégats nationaux/sous-nationaux additionneront les valeurs disponibles
+**Solution** :
 
-    **Problème 4 : Les totaux sous-nationaux/nationaux ne correspondent pas aux attentes**
+- Attendu pour les établissements ayant un historique de déclaration limité
+- Envisager un filtrage de la qualité des données au niveau de l'établissement
+- Les agrégats nationaux/sous-nationaux additionneront les valeurs disponibles
 
-    **Causes possibles** :
+**Problème 4 : Les totaux sous-nationaux/nationaux ne correspondent pas aux attentes**
 
-    - Les valeurs NA sont considérées comme nulles lors de l'agrégation
-    - Différents scénarios produisent des totaux différents
-    - Faible exhaustivité des rapports dans l'ensemble
+**Causes possibles** :
 
-    **Solution** :
+- Les valeurs NA sont considérées comme nulles lors de l'agrégation
+- Différents scénarios produisent des totaux différents
+- Faible exhaustivité des rapports dans l'ensemble
 
-    - Comparer `count_final_none` vs `count_final_both` pour évaluer l'impact de l'ajustement
-    - Examiner les statistiques sur l'exhaustivité du module 1
-    - Considérer le seuil de qualité des données pour l'inclusion
+**Solution** :
 
-??? "Contrôles d'assurance qualité"
+- Comparer `count_final_none` vs `count_final_both` pour évaluer l'impact de l'ajustement
+- Examiner les statistiques sur l'exhaustivité du module 1
+- Considérer le seuil de qualité des données pour l'inclusion
 
-    Le module comprend plusieurs contrôles de qualité :
+</details>
 
-    1. **Exclusions des faibles volumes** : Identifie et exclut automatiquement les indicateurs qui n'atteignent jamais `count >= 100`
-    2. **Suivi des ajustements** : Compte et rapporte le nombre de valeurs ajustées par chaque méthode (`roll6`, `forward`, `backward`, `same_month_last_year`, `fallback`)
-    3. **Indicateurs exclus** : Assure que les indicateurs de mortalité et de mortinaissance (correspondant à la regex `death|still_birth`) ne sont jamais ajustés
-    4. **Journalisation de la console** : Fournit des statistiques détaillées sur l'état d'avancement et des statistiques sommaires
+<details>
+<summary>Contrôles d'assurance qualité</summary>
 
-    **Exemple de sortie de la console** :
 
-    ```text
-    Running adjustments...
-     -> Adjusting outliers...
-         Roll6 adjusted: 1,245
-         Forward-filled: 89
-         Backward-filled: 67
-         Same-month LY: 34
-         Fallback mean: 12
-     -> Adjusting for completeness...
-         Roll6 filled: 2,103
-         Forward-filled: 234
-         Backward-filled: 178
-         Fallback mean: 45
-    ```
+Le module comprend plusieurs contrôles de qualité :
 
+1. **Exclusions des faibles volumes** : Identifie et exclut automatiquement les indicateurs qui n'atteignent jamais `count >= 100`
+2. **Suivi des ajustements** : Compte et rapporte le nombre de valeurs ajustées par chaque méthode (`roll6`, `forward`, `backward`, `same_month_last_year`, `fallback`)
+3. **Indicateurs exclus** : Assure que les indicateurs de mortalité et de mortinaissance (correspondant à la regex `death|still_birth`) ne sont jamais ajustés
+4. **Journalisation de la console** : Fournit des statistiques détaillées sur l'état d'avancement et des statistiques sommaires
+
+**Exemple de sortie de la console** :
+
+```text
+Running adjustments...
+ -> Adjusting outliers...
+     Roll6 adjusted: 1,245
+     Forward-filled: 89
+     Backward-filled: 67
+     Same-month LY: 34
+     Fallback mean: 12
+ -> Adjusting for completeness...
+     Roll6 filled: 2,103
+     Forward-filled: 234
+     Backward-filled: 178
+     Fallback mean: 45
+```
+
+</details>
 
 ### Notes d'utilisation
 
-??? "Choisir le bon scénario"
+<details>
+<summary>Choisir le bon scénario</summary>
 
-    | Situation | Scénario recommandé | Raison d'être |
-    |-----------|---------------------|-----------|
-    | Données de haute qualité, problèmes minimes | `none` | Aucun ajustement n'est nécessaire |
-    | Valeurs aberrantes sporadiques, bonne exhaustivité | `outliers` | Traiter la qualité sans imputation |
-    | Bonne qualité, faible fréquence de déclaration | `completeness` | Combler les lacunes tout en préservant les valeurs réelles |
-    | Qualité et exhaustivité médiocres | `both` | Nettoyage complet |
-    | Incertitude sur la qualité des données | Comparer tous les scénarios | Analyse de sensibilité |
 
-??? "Étapes de validation"
+| Situation | Scénario recommandé | Raison d'être |
+|-----------|---------------------|-----------|
+| Données de haute qualité, problèmes minimes | `none` | Aucun ajustement n'est nécessaire |
+| Valeurs aberrantes sporadiques, bonne exhaustivité | `outliers` | Traiter la qualité sans imputation |
+| Bonne qualité, faible fréquence de déclaration | `completeness` | Combler les lacunes tout en préservant les valeurs réelles |
+| Qualité et exhaustivité médiocres | `both` | Nettoyage complet |
+| Incertitude sur la qualité des données | Comparer tous les scénarios | Analyse de sensibilité |
 
-    Après avoir exécuté ce module, considérez :
+</details>
 
-    1. **Comparer les scénarios** : Examiner les différences entre `count_final_none` et `count_final_both`
-    2. **Examiner les exclusions** : Vérifier que `M2_low_volume_exclusions.csv` ne contient pas d'indicateurs inattendus
-    3. **Analyse agrégée** : S'assurer que les totaux infranationaux et nationaux sont raisonnables
-    4. **Graphiques temporels** : Visualiser les tendances avant/après l'ajustement pour identifier le lissage excessif
-    5. **Vérifications ponctuelles au niveau de l'établissement** : Examiner les ajustements pour un échantillon d'installations
+<details>
+<summary>Étapes de validation</summary>
 
-??? "Limites"
 
-    1. **Les fenêtres mobiles supposent la stabilité** : Les ajustements fonctionnent mieux lorsque la prestation de services est relativement stable. De véritables changements de programme (par exemple, de nouvelles campagnes) peuvent être lissés de manière incorrecte.
+Après avoir exécuté ce module, considérez :
 
-    2. **Pas d'incertitude sur les ajustements** : Le module fournit des estimations ponctuelles sans intervalles de confiance. Les valeurs ajustées doivent être considérées comme des estimations.
+1. **Comparer les scénarios** : Examiner les différences entre `count_final_none` et `count_final_both`
+2. **Examiner les exclusions** : Vérifier que `M2_low_volume_exclusions.csv` ne contient pas d'indicateurs inattendus
+3. **Analyse agrégée** : S'assurer que les totaux infranationaux et nationaux sont raisonnables
+4. **Graphiques temporels** : Visualiser les tendances avant/après l'ajustement pour identifier le lissage excessif
+5. **Vérifications ponctuelles au niveau de l'établissement** : Examiner les ajustements pour un échantillon d'installations
 
-    3. **Ajustements spécifiques à l'installation** : Il n'y a pas d'emprunt d'informations entre les établissements. Les établissements disposant de très peu de données peuvent avoir des ajustements instables.
+</details>
 
-    4. **Modèles saisonniers** : Bien qu'il soit utile d'avoir le même mois que l'année précédente, une forte saisonnalité au sein de l'année peut ne pas être entièrement prise en compte par des fenêtres de 6 mois.
+<details>
+<summary>Limites</summary>
 
-    5. **Traitement des données manquantes dans l'agrégation** : Les valeurs manquantes sont considérées comme nulles lorsqu'elles sont additionnées à des niveaux géographiques plus élevés, ce qui peut entraîner une sous-estimation des totaux si les valeurs manquantes sont élevées.
+
+1. **Les fenêtres mobiles supposent la stabilité** : Les ajustements fonctionnent mieux lorsque la prestation de services est relativement stable. De véritables changements de programme (par exemple, de nouvelles campagnes) peuvent être lissés de manière incorrecte.
+
+2. **Pas d'incertitude sur les ajustements** : Le module fournit des estimations ponctuelles sans intervalles de confiance. Les valeurs ajustées doivent être considérées comme des estimations.
+
+3. **Ajustements spécifiques à l'installation** : Il n'y a pas d'emprunt d'informations entre les établissements. Les établissements disposant de très peu de données peuvent avoir des ajustements instables.
+
+4. **Modèles saisonniers** : Bien qu'il soit utile d'avoir le même mois que l'année précédente, une forte saisonnalité au sein de l'année peut ne pas être entièrement prise en compte par des fenêtres de 6 mois.
+
+5. **Traitement des données manquantes dans l'agrégation** : Les valeurs manquantes sont considérées comme nulles lorsqu'elles sont additionnées à des niveaux géographiques plus élevés, ce qui peut entraîner une sous-estimation des totaux si les valeurs manquantes sont élevées.
+
+</details>
 
 ---
 
@@ -886,179 +993,16 @@ Pour la heatmap de l'ajustement combiné (résultat 3) :
 ////////////////////////////////////////////////////////////////////
 -->
 
-<!-- SLIDE:m5_1 -->
-## Justification de l'ajustement de la qualité des données
 
-Les données de routine du SIGS présentent deux limites communes qui peuvent fausser les résultats analytiques :
-- **Valeurs aberrantes :** Les valeurs extrêmes créent des pics artificiels dans les volumes de services
-- **Rapports incomplets :** Les données manquantes créent des baisses artificielles qui ne reflètent pas la prestation réelle de services
 
-FASTR répond à ces limitations en remplaçant les valeurs problématiques par des estimations dérivées des modèles de rapports historiques de chaque établissement.
-
-**Scénarios d'ajustement :** Pour favoriser la transparence et l'analyse de sensibilité, FASTR produit quatre ensembles de données parallèles :
-- **Non ajusté :** Valeurs déclarées originales
-- **Valeurs aberrantes ajustées :** Valeurs extrêmes remplacées
-- **Complétude ajustée :** Valeurs manquantes imputées
-- **Les deux ajustés :** Toutes les corrections appliquées
-<!-- /SLIDE -->
-
-<!-- SLIDE:m5_2 -->
-## Méthodologie d'ajustement des valeurs aberrantes
-
-Les valeurs aberrantes sont remplacées par des données historiques spécifiques à l'établissement. L'ajustement suit une approche hiérarchique :
-
-| Priorité | Méthode | Application |
-|----------|--------|-------------|
-| 1 | Moyenne centrée sur 6 mois | 3 mois avant + 3 mois après la valeur aberrante |
-| 2 | Moyenne sur 6 mois vers l'avant | Lorsque les données précédentes sont insuffisantes (par exemple, début de série) |
-| 3 | Moyenne sur 6 mois vers l'arrière | Lorsque les données suivantes sont insuffisantes (par exemple, fin de série) |
-| 4 | Même mois, année précédente | Lorsque les moyennes glissantes ne sont pas disponibles ; utile pour les indicateurs saisonniers |
-| 5 | Moyenne historique de l'établissement | Moyenne de toutes les valeurs valides pour cet indicateur dans cet établissement |
-<!-- /SLIDE -->
-
-<!-- SLIDE:m5_3 -->
-## Méthodologie de l'ajustement de la complétude
-
-Pour les mois identifiés comme incomplets ou manquants, les valeurs sont imputées en utilisant la même approche de moyenne mobile sur 6 mois que celle appliquée à l'ajustement des valeurs aberrantes.
-
-| Priorité | Méthode | Application |
-|----------|--------|-------------|
-| 1 | Moyenne centrée sur 6 mois | Lorsque des données suffisantes existent avant et après la lacune |
-| 2 | Moyenne sur 6 mois vers l'avant | Pour les lacunes au début de la série temporelle |
-| 3 | Moyenne sur 6 mois vers l'arrière | Pour les lacunes à la fin de la série temporelle |
-| 4 | Moyenne historique de l'établissement | Moyenne de toutes les valeurs valides pour cet indicateur dans cet établissement |
-
-Cette approche permet d'éviter que des lacunes temporaires dans les rapports ne créent des baisses artificielles dans les volumes de services.
-<!-- /SLIDE -->
 
 
 <!-- ═══════════════════════════════════════════════════════════════════════════
      DIAPOSITIVES CONDENSEES : Méthodes + Interprétation combinées
 ═══════════════════════════════════════════════════════════════════════════ -->
 
-<!-- SLIDE:m5_s1 -->
-## Ajustement de la qualité des données
 
-**Pourquoi ajuster ?** Les valeurs aberrantes et les lacunes de rapportage identifiées dans l'évaluation de la qualité des données fausseront les estimations d'utilisation des services et de couverture si elles ne sont pas corrigées. L'objectif est de remplacer les valeurs problématiques par des estimations raisonnables basées sur les modèles historiques propres à chaque établissement.
 
-**Comment ?** Les valeurs aberrantes et les valeurs manquantes sont remplacées à l'aide de moyennes mobiles sur 6 mois calculées à partir des données historiques de l'établissement.
 
-**Quatre ensembles de données parallèles :** FASTR produit des versions non ajustées, ajustées pour les valeurs aberrantes uniquement, ajustées pour la complétude uniquement et ajustées pour les deux. Cela permet une analyse de sensibilité - comparer les résultats entre les scénarios pour évaluer dans quelle mesure les conclusions dépendent des choix d'ajustement.
 
-**Exclus de l'ajustement :** Les indicateurs de mortalité (événements discrets qui ne doivent pas être lissés) et les indicateurs de faible volume (<100 événements/mois, où l'ajustement ajoute du bruit).
 
-<!--
-PRESENTER NOTES:
-- Vue d'ensemble condensée de la justification et des méthodes d'ajustement
-- Message clé : l'ajustement permet l'analyse malgré les limitations de qualité des données
-- Quatre scénarios soutiennent l'analyse de sensibilité - important pour la transparence
-- Tout ne doit pas être ajusté - mortalité et faible volume exclus
--->
-<!-- /SLIDE -->
-
-<!-- SLIDE:m5_s2 -->
-<!-- _class: output -->
-## Résultat de l'ajustement des valeurs aberrantes
-
-<div class="output-layout">
-<div class="output-viz">
-
-![Ajustement des valeurs aberrantes](/methodology/resources/default_outputs/Default_1._Percent_change_in_volume_due_to_outlier_adjustment.png)
-
-</div>
-<div class="output-text">
-
-**Ce que vous voyez :** Heatmap montrant dans quelle mesure le volume de services a changé après le remplacement des valeurs aberrantes par des moyennes mobiles.
-
-**Formule :** % de changement = (ajusté - original) / original × 100
-
-**Interprétation :** Les valeurs sont généralement négatives (la suppression des valeurs aberrantes réduit le volume). Les ajustements importants justifient une investigation de leur source.
-
-</div>
-</div>
-<!-- /SLIDE -->
-
-<!-- SLIDE:m5_1b -->
-## Indicateurs exclus de l'ajustement
-
-Certains indicateurs sont exclus du processus d'ajustement :
-
-- **Indicateurs de mortalité** (décès maternels, décès néonatals, décès d'enfants de moins de 5 ans) : Ils représentent des événements discrets pour lesquels le lissage ou l'imputation ne sont pas appropriés
-- **Indicateurs de faible volume** : Les indicateurs qui ne dépassent jamais 100 événements déclarés au cours d'un mois donné sont exclus de l'ajustement
-
-<!--
-PRESENTER NOTES:
-- Ce module traite les problèmes identifiés dans l'évaluation de la qualité des données
-- Concept clé : nous remplaçons les valeurs problématiques par des estimations basées sur l'historique propre de l'établissement
-- Quatre ensembles de données parallèles permettent l'analyse de sensibilité - dans quelle mesure les résultats changent-ils ?
-- La mortalité est exclue car le lissage d'événements rares et discrets n'est pas approprié
-- Les faibles volumes sont exclus car l'ajustement ajoute du bruit à des données déjà éparses
--->
-<!-- /SLIDE -->
-
-<!-- SLIDE:m5_s0 -->
-## Correction des données : comment FASTR répare les problèmes
-
-Plutôt que de jeter les données problématiques, FASTR les **remplace par des estimations raisonnables** — comme remplacer une lecture de compteur défaillante par la moyenne des mois voisins.
-
-**Valeurs extrêmes →** Remplacées par la moyenne des 6 mois autour
-**Mois manquants →** Comblés avec la tendance historique de l'établissement
-
-FASTR produit **4 versions** des données pour comparaison :
-
-| Version | Ce qu'elle contient |
-|---------|-------------------|
-| Données brutes | Aucune modification |
-| Aberrantes corrigées | Pics extrêmes lissés |
-| Complétude ajustée | Mois manquants comblés |
-| Les deux ajustements | Aberrantes lissées + mois manquants comblés |
-
-Vous pouvez comparer les résultats entre les 4 versions. Si vos conclusions changent, c'est un signal que la qualité des données mérite attention.
-<!-- /SLIDE -->
-
-<!-- SLIDE:m5_s1a -->
-## Pourquoi ajuster les valeurs aberrantes ?
-
-![Pourquoi ajuster les valeurs aberrantes — avant et après](/methodology/resources/diagrams_fr/why_adjust_outliers.svg)
-
-<!--
-PRESENTER NOTES:
-- Exemple visuel montrant l'impact de l'ajustement des valeurs aberrantes
-- Le panneau de gauche montre les données brutes avec un pic causé par une erreur de saisie
-- Le panneau de droite montre les mêmes données après ajustement en utilisant des moyennes mobiles
-- Point clé : la tendance sous-jacente est préservée tandis que le pic artificiel est supprimé
-- Cela rend les estimations d'utilisation des services et de couverture plus fiables
--->
-<!-- /SLIDE -->
-
-<!-- SLIDE:m5_s2b -->
-<!-- _class: output -->
-## Résultat de l'ajustement de la complétude
-
-<div class="output-layout">
-<div class="output-viz">
-
-![Ajustement de la complétude](/methodology/resources/default_outputs/Default_2._Percent_change_in_volume_due_to_completeness_adjustment.png)
-
-</div>
-<div class="output-text">
-
-**Ce que vous voyez :** Heatmap montrant dans quelle mesure le volume de services a changé après l'imputation des données manquantes par des moyennes mobiles.
-
-**Formule :** % de changement = (ajusté - original) / original × 100
-
-**Interprétation :** Les valeurs sont généralement positives (l'imputation ajoute du volume). Les ajustements importants indiquent les zones nécessitant une amélioration de la complétude.
-
-</div>
-</div>
-
-<!--
-PRESENTER NOTES:
-- Deux résultats présentés : ajustement des valeurs aberrantes et ajustement de la complétude
-- Heatmap des valeurs aberrantes : les valeurs négatives signifient que les valeurs aberrantes ont été supprimées (réduction des comptages gonflés)
-- Heatmap de la complétude : les valeurs positives signifient que les lacunes ont été comblées (augmentation du volume total)
-- Les ajustements importants (couleurs foncées) indiquent les zones/indicateurs avec des problèmes de qualité des données
-- Utilisez ces résultats pour identifier où concentrer les efforts d'amélioration de la qualité des données
-- Comparez les régions : lesquelles ont plus de problèmes de valeurs aberrantes vs de problèmes de complétude ?
--->
-<!-- /SLIDE -->

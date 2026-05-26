@@ -4,7 +4,7 @@ title: "FASTR RMNCAH-N service use monitoring: Methodology documentation"
 
 ## Introduction to FASTR
 
-The Global Financing Facility (GFF) supports country-led efforts to improve the timely use of data for decision-making, ultimately leading to stronger primary healthcare (PHC) systems and better reproductive, maternal, newborn, child, and adolescent health and nutrition (RMNCAH-N) outcomes. This set of initiatives and technical support is referred to as **Frequent Assessments and Health System Tools for Resilience (FASTR)**.
+The Global Financing Facility (GFF) supports country-led efforts to improve the timely generation and use of data for decision-making, ultimately leading to stronger primary healthcare (PHC) systems and better reproductive, maternal, newborn, child, and adolescent health and nutrition (RMNCAH-N) outcomes. This set of initiatives and technical support is referred to as **Frequent Assessments and System Tools for Resilience (FASTR)**.
 
 FASTR encompasses four technical approaches: (1) RMNCAH-N service use monitoring using routine health management information system (HMIS) data, (2) rapid-cycle health facility phone surveys, (3) high-frequency household phone surveys, and (4) follow-on analyses. **This methodology documentation focuses specifically on the first approach: RMNCAH-N service use monitoring.**
 
@@ -18,7 +18,7 @@ The GFF collaborates with Ministries of Health to conduct rapid-cycle analyses o
 
 These analyses focus on priority indicators tied to national health reforms and World Bank investments, with findings informing country planning processes and project implementation cycles. During the COVID-19 pandemic, the GFF supported Ministries of Health in over 20 countries to monitor the impact of the pandemic on essential health services using this approach.
 
-![Steps to implement RMNCAH-N service use monitoring.](/methodology/resources/diagrams/Steps%20to%20implement%20RMNCAH-N%20service%20chart.svg)
+![Steps to implement RMNCAH-N service use monitoring.](/methodology/resources/diagrams/steps_to_implement_rmncahn_service_chart.svg)
 
 *Figure 1. Steps to implement RMNCAH-N service use monitoring*
 
@@ -32,7 +32,7 @@ Existing health systems data sources are critical but often come with challenges
 
 Rapid-cycle analytic approaches provide timely, rigorous, and high-priority data that respond to each country's specific priorities and data use needs. This continuous cycle of analyze-learn-strengthen-act seeks to improve the systematic use of data for decision-making towards improved RMNCAH-N outcomes.
 
-![FASTR rapid-cycle analytics framework showing the continuous cycle of analyze, learn, strengthen, and act.](/methodology/resources/diagrams/GFF-Rapid-Cycle-Analytics-Data-Use_Figure-1.svg)
+![FASTR rapid-cycle analytics framework showing the continuous cycle of analyze, learn, strengthen, and act.](/methodology/resources/diagrams/FASTR_rapid_cycle_analytics_approach.svg)
 
 *Figure 2. FASTR's rapid-cycle analytics approach: Analyze, learn, strengthen, act*
 
@@ -50,7 +50,7 @@ FASTR's four technical approaches, underpinned by capacity strengthening and dat
 
 Illustrative capacity-building activities include support to automate the extraction, cleaning, and analysis of routine data and support to institutionalize rapid phone survey data collection and analysis approaches. Data use support prioritizes the integration of rapid-cycle analytics into existing data review and feedback mechanisms at national and subnational levels to strengthen the systematic use of data for decision making.
 
-![Rapid-cycle analytics under the Frequent Assessments and System Tools for Resilience (FASTR) initiative.](/methodology/resources/diagrams/Technical-Rapid-cycle-analytics--V3.svg)
+![Rapid-cycle analytics under the Frequent Assessments and System Tools for Resilience (FASTR) initiative.](/methodology/resources/diagrams/Technical_approaches_image.svg)
 
 *Figure 3. Rapid-cycle analytics under the Frequent Assessments and System Tools for Resilience (FASTR) initiative*
 
@@ -70,7 +70,7 @@ FASTR outputs — whether DQA scores, service use trends, or coverage estimates 
 |---------|------------|
 | | ***Programs & organizations*** |
 | **DHS** | The Demographic and Health Surveys (DHS) Program |
-| **FASTR** | Frequent Assessments and Health System Tools for Resilience |
+| **FASTR** | Frequent Assessments and System Tools for Resilience |
 | **GFF** | Global Financing Facility |
 | **MICS** | Multiple Indicator Cluster Surveys |
 | **MoH** | Ministry of Health |
@@ -99,11 +99,11 @@ FASTR outputs — whether DQA scores, service use trends, or coverage estimates 
 
 Health-facility data collected through routine HMIS constitute a primary data source for assessing the performance of the health sector. HMIS data are widely used for a variety of purposes including health sector reviews, planning and resource allocation, program monitoring, health care quality improvement, and reporting purposes. Ministries of Health in low- and middle-income countries (LMICs) are striving to ensure equitable access to quality health services and care towards attaining universal health coverage and other national strategies. The efforts can be more successful if decision making at all levels of the sector are well informed by timely, reliable, and comprehensive data gathered through a well-established health information system. Sound decisions are based on sound data; therefore, it is essential to ensure that the data are of good quality.
 
-Poor-quality data impact various levels of the health system in different ways. For program managers, inaccurate data can lead to poor decisions that harm the program's operations and, ultimately, the population's health. At the planning level, poor-quality data can distort evidence of progress towards health-sector goals and hinder annual planning processes by providing misleading results. Additionally, when determining investments in the health sector, poor-quality data can lead to poor targeting of resources. Despite HMIS data being crucial for robust health systems, studies in Sub-Saharan Africa (SSA) have reported challenges with data quality, including issues with completeness, timeliness, accuracy, and consistency [@abouzahr2005; @mavimbe2005; @sychareun2014; @mutale2013; @amoakoh2015; @gimbel2011; @teklegiorgis2016; @rowe2009potential; @belay2013; @moukenet2021]. These concerns about the quality of routine information have undermined its use in decision-making within the health sector [@mutale2013; @belay2013; @xiao2017; @ohagan2017; @chen2014; @glele2014; @bhattacharya2019; @nshimyiryo2020; @ouedraogo2019; @endriyas2019; @mwangu2005; @rowe2009caution]. However, in recent years, countries have made substantial improvements in HMIS data quality which has been reinforced by a system of data quality assessment, data quality improvement, and data use for evidence-based decision making [@nisingizwe2014; @wagenaar2015; @mphatswe2012].
+Poor-quality data impact various levels of the health system in different ways. For program managers, inaccurate data can lead to poor decisions that harm the program's operations and, ultimately, the population's health. At the planning level, poor-quality data can distort evidence of progress towards health-sector goals and hinder annual planning processes by providing misleading results. Additionally, when determining investments in the health sector, poor-quality data can lead to poor targeting of resources. Despite HMIS data being crucial for robust health systems, studies in Sub-Saharan Africa (SSA) have reported challenges with data quality, including issues with completeness, timeliness, accuracy, and consistency (AbouZahr & Boerma, 2005; Mavimbe et al., 2005; Sychareun et al., 2014; Mutale et al., 2013; Amoakoh-Coleman et al., 2015; Gimbel et al., 2011; Teklegiorgis et al., 2016; Rowe, 2009; Belay & Lippeveld, 2013; Moukénet et al., 2021). These concerns about the quality of routine information have undermined its use in decision-making within the health sector (Mutale et al., 2013; Belay & Lippeveld, 2013; Xiao et al., 2017; O'Hagan et al., 2017; Chen et al., 2014; Glèlè Ahanhanzo et al., 2014; Bhattacharya et al., 2019; Nshimyiryo et al., 2020; Ouedraogo et al., 2019; Endriyas et al., 2019; Mwangu, 2005; Rowe et al., 2009). However, in recent years, countries have made substantial improvements in HMIS data quality which has been reinforced by a system of data quality assessment, data quality improvement, and data use for evidence-based decision making (Nisingizwe et al., 2014; Wagenaar et al., 2015; Mphatswe et al., 2012).
 
 ## Defining data quality
 
-Defining data quality is complex, and while there is no one single definition of data quality, there are four dimensions most frequently used to describe it: completeness, timeliness, consistency, and accuracy [@who2017dqa].
+Defining data quality is complex, and while there is no one single definition of data quality, there are four dimensions most frequently used to describe it: completeness, timeliness, consistency, and accuracy (World Health Organization, 2017).
 
 ### Data quality dimensions and assessment
 
@@ -166,12 +166,6 @@ The FASTR analytics platform includes five automated modules:
 - [**Service utilization analysis**](06a_service_utilization) - Module 3 in the platform. Analysis of health service usage patterns to detect and quantify disruptions
 - [**Coverage estimates**](06b_coverage_estimates) - Modules 5 & 6 in the platform (Part 1: denominator calculation, Part 2: coverage estimation). Methods for estimating service coverage and comparing trends to country targets
 
-## References
-
-\full_bibliography
-
----
-
 <!--
 ////////////////////////////////////////////////////////////////////
 //                                                                //
@@ -187,234 +181,39 @@ The FASTR analytics platform includes five automated modules:
 ////////////////////////////////////////////////////////////////////
 -->
 
-<!-- SLIDE:m0_0 -->
-## What are we trying to achieve?
 
-Rapid cycle analytics accelerates improvements in RMNCAH-N outcomes by increasing the systematic use of data for decision making
 
-![w:700](/methodology/resources/diagrams/rapid_cycle_analytics.png)
-<!-- /SLIDE -->
 
-<!-- SLIDE:m0_1 -->
-## How can this be achieved?
 
-Timely, rigorous, and low-cost approaches to monitoring PHC systems, underpinned by capacity building and data use support aligned with country demand and needs
 
-![w:800](/methodology/resources/diagrams/Technical-Rapid-cycle-analytics--V3.svg)
-<!-- /SLIDE -->
-
-<!-- SLIDE:m0_2 -->
-## What is FASTR?
-
-An approach to catalyzing continuous 'analyze, learn, strengthen, act' cycles to drive the systematic use of timely data for decision making.
-
-![w:700](/methodology/resources/diagrams/what_is_fastr.png)
-
-<!--
-PRESENTER NOTES:
-- Routine health information systems are a critical source of data, but often underused due to concerns about data quality and long delays between data collection and analysis
-- Traditional household and facility surveys, while essential, are resource-intensive and infrequent
-- FASTR's rapid-cycle analytics address this gap by providing:
-  - Timely insights aligned with country decision cycles
-  - Continuous learning rather than one-off assessments
-  - Direct feedback loops between data, analysis, and action
--->
-<!-- /SLIDE -->
-
-<!-- SLIDE:m0_3 -->
-## What is the FASTR approach to RMNCAH-N service use monitoring?
-
-<div class="columns-image-right">
-<div>
-
-Quarterly analyses of DHIS2 data, focusing on prioritized national indicators
-
-Building sustainable tools to ensure that stakeholders who need to use data can generate the right analysis and visualizations, at the right time, on their indicators of interest
-
-Combining analysis and visualization with capacity strengthening and data use support for sustainability and institutionalization
-
-</div>
-<div>
-
-![Steps to implement RMNCAH-N service use monitoring](/methodology/resources/diagrams/steps_to_implement_rmncahn_service_chart.svg)
-
-</div>
-</div>
-<!-- /SLIDE -->
-
-<!-- SLIDE:m0_3a -->
-## How do countries use FASTR?
-
-FASTR is designed to support **country-defined policy questions** using routine and survey data.
-
-**Different entry points for different countries:**
-
-- **Monitoring service disruptions:** Sierra Leone, Burkina Faso, Zambia, and Liberia began with service continuity monitoring, triggered by changes in external financing for the health sector
-- **Other priorities first:** Nigeria, Ghana, and DRC initiated FASTR for different questions, with disruptions as complementary analysis
-
-**All countries can engage with FASTR to answer policy-relevant questions including:**
-
-- Monitoring service continuity and recovery
-- Identifying geographic or service-specific challenges
-- Informing prioritization, planning, and policy dialogue
-
-<!--
-PRESENTER NOTES:
-- FASTR is flexible — countries define their own priority questions
-- Service disruptions is just one entry point, not the only use case
-- Some countries start with disruptions, others add it later
-- The methodology (DQA, adjustment, analysis) applies to all use cases
--->
-<!-- /SLIDE -->
-
-<!-- SLIDE:m0_3b -->
-## From analysis to action
-
-FASTR outputs — whether DQA scores, service use trends, or coverage estimates — are **starting points, not endpoints**. They trigger investigation and inform decisions.
-
-![w:600](/methodology/resources/diagrams/from_analysis_to_action.svg)
-
-<!--
-PRESENTER NOTES:
-- This cycle applies to ALL FASTR outputs, not just disruptions
-- DQA findings → investigate data systems → improve reporting
-- Utilization changes → investigate service delivery → address bottlenecks
-- Coverage gaps → investigate access barriers → target interventions
-- FASTR provides evidence; stakeholders provide context, judgement, and action
--->
-<!-- /SLIDE -->
 
 ---
 
 **Contact**: <fastr@worldbank.org>
 
-<!-- SLIDE:m0_4 -->
-<!-- _class: compact two-panel -->
+## References
 
-## FASTR analytics: suite of outputs and products
-
-<div class="panel-layout">
-<div>
-
-### HMIS (Routine service data)
-
-**Standard FASTR HMIS report**
-- Core service-use trends
-- Data quality adjustments (completeness, outliers)
-- National and subnational analyses
-
-**Short service disruptions briefs**
-- Focused analysis of service volume changes
-- Designed for rapid interpretation and discussion
-
-**Country-specific HMIS reports**
-- Tailored indicators, geographies, and priorities
-- Customized visuals and narratives aligned with country needs
-
-</div>
-<div>
-
-### HFA (Health Facility Assessment)
-
-**Full HFA survey report**
-- Facility readiness, service availability, and inputs
-- Standardized outputs across survey rounds
-
-**Disruptions-focused outputs** (when applicable)
-- Targeted views on service interruptions or system stressors
-- Can be produced as stand-alone outputs or annexes
-
-</div>
-</div>
-
-<!--
-PRESENTER NOTES:
-- FASTR produces different products for different needs
-- HMIS outputs are routine/quarterly, HFA outputs tied to survey cycles
-- Countries can mix and match based on their priorities
-- All outputs follow consistent methodology and branding
--->
-<!-- /SLIDE -->
-
-<!-- SLIDE:m0_5 -->
-## Data triangulation: bringing together multiple sources
-
-Each source answers different questions — together they tell the full story.
-
-![Data triangulation layers h:420](/methodology/resources/diagrams/data_triangulation_layers.svg)
-
-<!--
-PRESENTER NOTES:
-- DHIS2 is the foundation: available quarterly, covers all facilities
-- Coverage estimates add the population perspective
-- HFA and household surveys add depth when available
-- Not every country has all sources — FASTR works with what's available
--->
-<!-- /SLIDE -->
-
-<!-- SLIDE:m0_5a -->
-## Why FASTR?
-
-Many countries face common challenges with health data:
-
-- **Data collected but underused** — Routine data sits in DHIS2 without driving decisions
-- **Slow analytical cycles** — Annual reviews miss opportunities for timely action
-- **Fragmented data sources** — HMIS, surveys, and facility assessments analyzed in silos
-
-**FASTR addresses this** by providing countries with tools and methods for rapid, routine analysis of multiple data sources — turning data into timely decisions for stronger PHC systems.
-<!-- /SLIDE -->
-
-<!-- SLIDE:m0_5b -->
-## Context
-
-Many countries are experiencing **sudden and dramatic reductions in funding** from external sources.
-
-This is leading to:
-- **Critical gaps** in health programs and systems
-- **Potentially severe effects** on service delivery and health outcomes for women, children, and adolescents
-
-**Key questions arising:**
-- How large are the reductions, and what effect are they having on service delivery?
-- How best to prioritize remaining resources?
-- What adaptations can protect and strengthen essential service delivery?
-<!-- /SLIDE -->
-
-<!-- SLIDE:m0_6 -->
-## Why now? Responding to disruptions in health financing
-
-![Disruptions and key questions h:450](/methodology/resources/diagrams/disruptions_questions.svg)
-
-<!--
-PRESENTER NOTES:
-- This context applies to many countries right now — it's not hypothetical
-- FASTR doesn't create new data collection — it maximizes use of existing DHIS2 data
-- The goal is to move from reactive to proactive: see disruptions early, respond quickly
-- Countries can use FASTR analyses to advocate for resources and inform planning
--->
-<!-- /SLIDE -->
-
-<!-- SLIDE:m0_7 -->
-## FASTR community of practice
-
-Join the FASTR collaboration space on the **GFF Knowledge Portal**:
-
-**https://gffklportal.org/collaboration/forum/fastr**
-
-**What you'll find:**
-- Country updates and shared analyses
-- Discussion forums for technical questions and best practices
-- Training materials and resources
-
-**Why participate?**
-- Learn from other countries' experiences
-- Share your own analyses and lessons learned
-- Get support from the FASTR team and peer network
-
-<!--
-PRESENTER NOTES:
-- The CoP is on the GFF Knowledge Portal — a secure, shared platform
-- Participation is voluntary but encouraged
-- Countries that actively share tend to learn faster and get more support
-- The FASTR team monitors the forum and responds to technical questions
--->
-<!-- /SLIDE -->
+- AbouZahr, C., & Boerma, T. (2005). Health information systems: the foundations of public health. *Bulletin of the World Health Organization*, 83(8), 578–583.
+- Amoakoh-Coleman, M., et al. (2015). Completeness and accuracy of data transfer of routine maternal health services data in the greater Accra region. *BMC Research Notes*, 8, 114. doi:10.1186/s13104-015-1058-3
+- Belay, H., & Lippeveld, T. (2013). Inventory of PRISM framework and tools: application of PRISM tools and interventions for strengthening routine health information system performance. *MEASURE Evaluation, Carolina Population Center*, Chapel Hill, NC. https://www.measureevaluation.org/resources/publications/wp-13-138/at_download/document
+- Bhattacharya, A. A., et al. (2019). Quality of routine facility data for monitoring priority maternal and newborn indicators in DHIS2: A case study from Gombe State, Nigeria. *PLoS ONE*, 14(1), e0211265. doi:10.1371/journal.pone.0211265
+- Chen, H., Hailey, D., Wang, N., & Yu, P. (2014). A review of data quality assessment methods for public health information systems. *International Journal of Environmental Research and Public Health*, 11(5), 5170–5207. doi:10.3390/ijerph110505170
+- Endriyas, M., et al. (2019). Understanding performance data: health management information system data accuracy in Southern Nations Nationalities and People's Region, Ethiopia. *BMC Health Services Research*, 19, 1–6. doi:10.1186/s12913-019-3991-7
+- Gimbel, S., et al. (2011). An assessment of routine primary care health information system data quality in Sofala Province, Mozambique. *Population Health Metrics*, 9, 12. doi:10.1186/1478-7954-9-12
+- Glèlè Ahanhanzo, Y., Ouedraogo, L. T., Kpozèhouen, A., Coppieters, Y., Makoutodé, M., & Wilmet-Dramaix, M. (2014). Factors associated with data quality in the routine health information system of Benin. *Archives of Public Health*, 72(1), 25. doi:10.1186/2049-3258-72-25
+- Mavimbe, J. C., Braa, J., & Bjune, G. (2005). Assessing immunization data quality from routine reports in Mozambique. *BMC Public Health*, 5, 108. doi:10.1186/1471-2458-5-108
+- Moukénet, A., et al. (2021). Health management information system (HMIS) data quality and associated factors in Massaguet district, Chad. *BMC Medical Informatics and Decision Making*, 21(1), 326. doi:10.1186/s12911-021-01684-7
+- Mphatswe, W., et al. (2012). Improving public health information: a data quality intervention in KwaZulu-Natal, South Africa. *Bulletin of the World Health Organization*, 90(3), 176–182. doi:10.2471/blt.11.092759
+- Mutale, W., et al. (2013). Improving health information systems for decision making across five sub-Saharan African countries: Implementation strategies from the African Health Initiative. *BMC Health Services Research*, 13(2), S9. doi:10.1186/1472-6963-13-S2-S9
+- Mwangu, M. (2005). Quality of a routine data collection system for health: case of Kinondoni district in the Dar es Salaam region, Tanzania. *South African Journal of Information Management*, 7(2).
+- Nisingizwe, M. P., et al. (2014). Toward utilization of data for program management and evaluation: quality assessment of five years of health management information system data in Rwanda. *Global Health Action*, 7(1), 25829. doi:10.3402/gha.v7.25829
+- Nshimyiryo, A., et al. (2020). Health management information system (HMIS) data verification: a case study in four districts in Rwanda. *PLoS ONE*, 15(7), e0235823. doi:10.1371/journal.pone.0235823
+- O'Hagan, R., et al. (2017). National assessment of data quality and associated systems-level factors in Malawi. *Global Health Science and Practice*, 5(3), 367–381. doi:10.9745/GHSP-D-17-00177
+- Ouedraogo, M., et al. (2019). A quality assessment of Health Management Information System (HMIS) data for maternal and child health in Jimma Zone, Ethiopia. *PLoS ONE*, 14(3), e0213600. doi:10.1371/journal.pone.0213600
+- Rowe, A. K. (2009). Potential of integrated continuous surveys and quality management to support monitoring, evaluation, and the scale-up of health interventions in developing countries. *American Journal of Tropical Medicine and Hygiene*, 80(6), 971. doi:10.4269/ajtmh.2009.80.971
+- Rowe, A. K., Kachur, S. P., Yoon, S. S., Lynch, M., Slutsker, L., & Steketee, R. W. (2009). Caution is required when using health facility-based data to evaluate the health impact of malaria control efforts in Africa. *Malaria Journal*, 8(1), 209. doi:10.1186/1475-2875-8-209
+- Sychareun, V., Hansana, V., Phengsavanh, A., Chaleunvong, K., Eunyoung, K., & Durham, J. (2014). Data verification at health centers and district health offices in Xiengkhouang and Houaphanh Provinces, Lao PDR. *BMC Health Services Research*, 14, 255. doi:10.1186/1472-6963-14-255
+- Teklegiorgis, K., Tadesse, K., Terefe, W., & Mirutse, G. (2016). Level of data quality from Health Management Information Systems in a resources limited setting and its associated factors, eastern Ethiopia. *South African Journal of Information Management*, 18(1), 1–8. doi:10.4102/sajim.v18i1.612
+- Wagenaar, B. H., Sherr, K., Fernandes, Q., & Wagenaar, A. C. (2015). Using routine health information systems for well-designed health evaluations in low- and middle-income countries. *Health Policy and Planning*, czv029. doi:10.1093/heapol/czv029
+- World Health Organization (2017). Data quality assurance: a toolkit for facility data quality assessment: module 1: framework and metrics. *World Health Organization*, Geneva, Switzerland. https://iris.who.int/bitstream/handle/10665/366086/9789240047358-eng.pdf?sequence=1
+- Xiao, Y., et al. (2017). Challenges in data quality: the influence of data quality assessments on data availability and completeness in a voluntary medical male circumcision programme in Zimbabwe. *BMJ Open*, 7(1), e013562.

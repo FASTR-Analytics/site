@@ -9,7 +9,7 @@ title: "FASTR SRMNIA-N surveillance de l'utilisation des services : Documentatio
 
 ## Introduction à FASTR
 
-Le Mécanisme de financement mondial (GFF) soutient les efforts menés par les pays pour améliorer l'utilisation opportune des données pour la prise de décision, conduisant finalement à des systèmes de soins de santé primaires (SSP) plus forts et à de meilleurs résultats en matière de santé reproductive, maternelle, néonatale, infantile et adolescente et de nutrition (SRMNIA-N). Cet ensemble d'initiatives et de soutien technique est appelé **Frequent Assessments and Health System Tools for Resilience (FASTR)**.
+Le Mécanisme de financement mondial (GFF) soutient les efforts menés par les pays pour améliorer la génération et l'utilisation opportune des données pour la prise de décision, conduisant finalement à des systèmes de soins de santé primaires (SSP) plus forts et à de meilleurs résultats en matière de santé reproductive, maternelle, néonatale, infantile et adolescente et de nutrition (SRMNIA-N). Cet ensemble d'initiatives et de soutien technique est appelé **Frequent Assessments and System Tools for Resilience (FASTR)**.
 
 FASTR englobe quatre approches techniques : (1) le suivi de l'utilisation des services du SRMNIA-N à l'aide des données du système d'information sur la gestion de la santé (SIGS), (2) des enquêtes téléphoniques à cycle rapide auprès des établissements de santé, (3) des enquêtes téléphoniques à haute fréquence auprès des ménages, et (4) des analyses de suivi. **Cette documentation méthodologique se concentre spécifiquement sur la première approche : Le suivi de l'utilisation des services du SRMNIA-N**
 
@@ -23,7 +23,7 @@ Le GFF collabore avec les ministères de la santé pour effectuer des analyses d
 
 Ces analyses se concentrent sur les indicateurs prioritaires liés aux réformes nationales en matière de santé et aux investissements de la Banque mondiale, et les résultats informent les processus de planification nationale et les cycles de mise en œuvre des projets. Pendant la pandémie de COVID-19, le GFF a aidé les ministères de la santé de plus de 20 pays à surveiller l'impact de la pandémie sur les services de santé essentiels en utilisant cette approche.
 
-![Étapes de mise en œuvre du SRMNIA-N](/methodology/resources/diagrams/Steps%20to%20implement%20RMNCAH-N%20service%20chart.svg)
+![Étapes de mise en œuvre du SRMNIA-N](/methodology/resources/diagrams/steps_to_implement_rmncahn_service_chart.svg)
 
 *Figure 1. Étapes de la mise en œuvre du contrôle de l'utilisation des services du SRMNIA-N*
 
@@ -37,7 +37,7 @@ Les sources de données des systèmes de santé existants sont essentielles, mai
 
 Les approches analytiques à cycle rapide fournissent des données opportunes, rigoureuses et prioritaires qui répondent aux priorités spécifiques de chaque pays et aux besoins en matière d'utilisation des données. Ce cycle continu d'analyse-apprentissage-renforcement-action vise à améliorer l'utilisation systématique des données pour la prise de décision en vue d'améliorer les résultats du SRMNIA-N.
 
-![Cadre analytique à cycle rapide FASTR](/methodology/resources/diagrams/GFF-Rapid-Cycle-Analytics-Data-Use_Figure-1.svg)
+![Cadre analytique à cycle rapide FASTR](/methodology/resources/diagrams/FASTR_rapid_cycle_analytics_approach.svg)
 
 *Figure 2. L'approche analytique à cycle rapide de la FASTR : Analyser, apprendre, renforcer, agir*
 
@@ -55,7 +55,7 @@ Les quatre approches techniques du FASTR, étayées par le renforcement des capa
 
 Parmi les activités de renforcement des capacités, on peut citer le soutien à l'automatisation de l'extraction, du nettoyage et de l'analyse des données de routine, ainsi que le soutien à l'institutionnalisation des méthodes de collecte et d'analyse des données issues des enquêtes téléphoniques rapides. Le soutien à l'utilisation des données donne la priorité à l'intégration de l'analyse en cycle rapide dans les mécanismes existants d'examen des données et de retour d'information aux niveaux national et infranational, afin de renforcer l'utilisation systématique des données pour la prise de décision.
 
-![Analyse en cycle rapide FASTR](/methodology/resources/diagrams/Technical-Rapid-cycle-analytics--V3.svg)
+![Analyse en cycle rapide FASTR](/methodology/resources/diagrams/Technical_approaches_image.svg)
 
 *Figure 3. Analyse en cycle rapide dans le cadre de l'initiative FASTR (Frequent Assessments and System Tools for Resilience)*
 
@@ -94,11 +94,11 @@ Parmi les activités de renforcement des capacités, on peut citer le soutien à
 
 Les données sur les établissements de santé collectées par le biais du système d'information sur la gestion de la santé (SIGS) constituent une source de données primaire pour évaluer la performance du secteur de la santé. Les données du SIGS sont largement utilisées à diverses fins, notamment pour l'examen du secteur de la santé, la planification et l'allocation des ressources, le suivi des programmes, l'amélioration de la qualité des soins de santé et l'établissement de rapports. Les ministères de la santé des pays à revenu faible et intermédiaire (PRFI) s'efforcent d'assurer un accès équitable à des services de santé et à des soins de qualité en vue d'atteindre la couverture sanitaire universelle et d'autres stratégies nationales. Ces efforts peuvent être plus fructueux si la prise de décision à tous les niveaux du secteur est bien informée par des données opportunes, fiables et complètes recueillies par le biais d'un système d'information sanitaire bien établi. Des décisions judicieuses reposent sur des données fiables ; il est donc essentiel de veiller à ce que les données soient de bonne qualité.
 
-Des données de mauvaise qualité ont un impact différent sur les différents niveaux du système de santé. Pour les gestionnaires de programmes, des données inexactes peuvent conduire à de mauvaises décisions qui nuisent aux opérations du programme et, en fin de compte, à la santé de la population. Au niveau de la planification, des données de mauvaise qualité peuvent fausser les preuves des progrès accomplis dans la réalisation des objectifs du secteur de la santé et entraver les processus de planification annuelle en fournissant des résultats trompeurs. En outre, lors de la détermination des investissements dans le secteur de la santé, des données de mauvaise qualité peuvent conduire à un mauvais ciblage des ressources. Bien que les données du SIGS soient essentielles à la solidité des systèmes de santé, des études menées en Afrique subsaharienne (ASS) ont fait état de problèmes liés à la qualité des données, notamment en ce qui concerne l'exhaustivité, l'actualité, l'exactitude et la cohérence [@abouzahr2005 ; @mavimbe2005 ; @sychareun2014 ; @mutale2013 ; @amoakoh2015 ; @gimbel2011 ; @teklegiorgis2016 ; @rowe2009potential ; @belay2013 ; @moukenet2021]. Ces préoccupations concernant la qualité des informations de routine ont compromis leur utilisation dans la prise de décision au sein du secteur de la santé [@mutale2013 ; @belay2013 ; @xiao2017 ; @ohagan2017 ; @chen2014 ; @glele2014 ; @bhattacharya2019 ; @nshimyiryo2020 ; @ouedraogo2019 ; @endriyas2019 ; @mwangu2005 ; @rowe2009caution]. Toutefois, ces dernières années, les pays ont considérablement amélioré la qualité des données du SIGS, qui a été renforcée par un système d'évaluation de la qualité des données, d'amélioration de la qualité des données et d'utilisation des données pour une prise de décision fondée sur des données probantes [@nisingizwe2014 ; @wagenaar2015 ; @mphatswe2012].
+Des données de mauvaise qualité ont un impact différent sur les différents niveaux du système de santé. Pour les gestionnaires de programmes, des données inexactes peuvent conduire à de mauvaises décisions qui nuisent aux opérations du programme et, en fin de compte, à la santé de la population. Au niveau de la planification, des données de mauvaise qualité peuvent fausser les preuves des progrès accomplis dans la réalisation des objectifs du secteur de la santé et entraver les processus de planification annuelle en fournissant des résultats trompeurs. En outre, lors de la détermination des investissements dans le secteur de la santé, des données de mauvaise qualité peuvent conduire à un mauvais ciblage des ressources. Bien que les données du SIGS soient essentielles à la solidité des systèmes de santé, des études menées en Afrique subsaharienne (ASS) ont fait état de problèmes liés à la qualité des données, notamment en ce qui concerne l'exhaustivité, l'actualité, l'exactitude et la cohérence (AbouZahr & Boerma, 2005; Mavimbe et al., 2005; Sychareun et al., 2014; Mutale et al., 2013; Amoakoh-Coleman et al., 2015; Gimbel et al., 2011; Teklegiorgis et al., 2016; Rowe, 2009; Belay & Lippeveld, 2013; Moukénet et al., 2021). Ces préoccupations concernant la qualité des informations de routine ont compromis leur utilisation dans la prise de décision au sein du secteur de la santé (Mutale et al., 2013; Belay & Lippeveld, 2013; Xiao et al., 2017; O'Hagan et al., 2017; Chen et al., 2014; Glèlè Ahanhanzo et al., 2014; Bhattacharya et al., 2019; Nshimyiryo et al., 2020; Ouedraogo et al., 2019; Endriyas et al., 2019; Mwangu, 2005; Rowe et al., 2009). Toutefois, ces dernières années, les pays ont considérablement amélioré la qualité des données du SIGS, qui a été renforcée par un système d'évaluation de la qualité des données, d'amélioration de la qualité des données et d'utilisation des données pour une prise de décision fondée sur des données probantes (Nisingizwe et al., 2014; Wagenaar et al., 2015; Mphatswe et al., 2012).
 
 ## Définir la qualité des données
 
-La définition de la qualité des données est complexe, et bien qu'il n'existe pas de définition unique de la qualité des données, quatre dimensions sont le plus souvent utilisées pour la décrire : l'exhaustivité, l'actualité, la cohérence et l'exactitude [@who2017dqa].
+La définition de la qualité des données est complexe, et bien qu'il n'existe pas de définition unique de la qualité des données, quatre dimensions sont le plus souvent utilisées pour la décrire : l'exhaustivité, l'actualité, la cohérence et l'exactitude (World Health Organization, 2017).
 
 ### Dimensions et évaluation de la qualité des données
 
@@ -161,12 +161,6 @@ La plate-forme d'analyse FASTR comprend cinq modules automatisés :
 - [**Analyse de l'utilisation des services**](06a_service_utilization) - module 3 de la plateforme. Analyse des schémas d'utilisation des services de santé pour détecter et quantifier les perturbations
 - [**Estimation de la couverture**](06b_coverage_estimates) - modules 5 et 6 de la plateforme (Partie 1 : calcul des dénominateurs, Partie 2 : estimation de la couverture). Méthodes d'estimation de la couverture des services et comparaison des tendances avec les objectifs nationaux
 
-## Références
-
-\full_bibliography
-
----
-
 <!--
 ////////////////////////////////////////////////////////////////////
 //                                                                //
@@ -182,235 +176,38 @@ La plate-forme d'analyse FASTR comprend cinq modules automatisés :
 ////////////////////////////////////////////////////////////////////
 -->
 
-<!-- SLIDE:m0_0 -->
-## Qu'essayons-nous d'accomplir ?
 
-L'analyse à cycle rapide accélère l'amélioration des résultats en matière de **SRMNIA-N** (Santé Reproductive, Maternelle, Néonatale, Infantile et de l'Adolescent et Nutrition) en renforçant l'utilisation systématique des données pour la prise de décision
 
-![w:700](/methodology/resources/diagrams_fr/rapid_cycle_analytics.png)
-<!-- /SLIDE -->
 
-<!-- SLIDE:m0_1 -->
-## Comment y parvenir ?
-
-Des approches opportunes, rigoureuses et peu coûteuses pour le suivi des systèmes de **SSP** (Soins de Santé Primaires), soutenues par le renforcement des capacités et l'appui à l'utilisation des données, en adéquation avec la demande et les besoins des pays
-
-![w:800](/methodology/resources/diagrams_fr/Technical-Rapid-cycle-analytics--V3.png)
-<!-- /SLIDE -->
-
-<!-- SLIDE:m0_2 -->
-## Qu'est-ce que FASTR ?
-
-Une approche visant à catalyser des cycles continus « analyser, apprendre, renforcer, agir » pour favoriser l'utilisation systématique de données actualisées pour la prise de décision.
-
-![w:700](/methodology/resources/diagrams_fr/what_is_fastr.png)
-
-<!--
-PRESENTER NOTES:
-- Les systèmes d'information sanitaire de routine sont une source de données essentielle, mais souvent sous-utilisée en raison des préoccupations concernant la qualité des données et des longs délais entre la collecte et l'analyse des données
-- Les enquêtes traditionnelles auprès des ménages et des établissements, bien qu'essentielles, sont gourmandes en ressources et peu fréquentes
-- L'analyse à cycle rapide de FASTR comble cette lacune en fournissant :
-  - Des informations opportunes alignées sur les cycles de décision des pays
-  - Un apprentissage continu plutôt que des évaluations ponctuelles
-  - Des boucles de rétroaction directes entre les données, l'analyse et l'action
--->
-<!-- /SLIDE -->
-
-<!-- SLIDE:m0_3 -->
-## Quelle est l'approche FASTR pour le suivi de l'utilisation des services SRMNIA-N ?
-
-<div class="columns-image-right">
-<div>
-
-Analyses trimestrielles des données **DHIS2** (District Health Information Software 2), axées sur les indicateurs nationaux prioritaires
-
-Développement d'outils durables pour garantir que les parties prenantes qui ont besoin d'utiliser les données puissent générer les analyses et visualisations appropriées, au bon moment, sur leurs indicateurs d'intérêt
-
-Combinaison de l'analyse et de la visualisation avec le renforcement des capacités et l'appui à l'utilisation des données pour assurer la durabilité et l'institutionnalisation
-
-</div>
-<div>
-
-![Processus de suivi de l'utilisation des services SRMNIA-N h:350](/methodology/resources/diagrams_fr/steps_to_implement_rmncahn_service_chart.png)
-
-</div>
-</div>
-<!-- /SLIDE -->
 
 ---
 
 **Dernière mise à jour** : 06-05-2026
 **Contact** : <fastr@worldbank.org>
 
-<!-- SLIDE:m0_3a -->
-## Comment les pays utilisent-ils FASTR ?
+## Références
 
-FASTR est conçu pour répondre à des **questions de politique définies par les pays** à partir de données de routine et d'enquêtes.
-
-**Différents points d'entrée selon les pays :**
-
-- **Suivi des perturbations de services :** La Sierra Leone, le Burkina Faso, la Zambie et le Libéria ont commencé par le suivi de la continuité des services, déclenché par des changements dans le financement extérieur du secteur de la santé
-- **Autres priorités d'abord :** Le Nigéria, le Ghana et la RDC ont initié FASTR pour d'autres questions, avec l'analyse des perturbations comme complément
-
-**Tous les pays peuvent utiliser FASTR pour répondre à des questions pertinentes pour les politiques, notamment :**
-
-- Le suivi de la continuité et de la reprise des services
-- L'identification des défis géographiques ou spécifiques à certains services
-- L'appui à la priorisation, la planification et le dialogue politique
-
-<!--
-PRESENTER NOTES:
-- FASTR est flexible — les pays définissent leurs propres questions prioritaires
-- Les perturbations de services ne sont qu'un point d'entrée, pas le seul cas d'utilisation
-- Certains pays commencent par les perturbations, d'autres l'ajoutent plus tard
-- La méthodologie (AQD, ajustement, analyse) s'applique à tous les cas d'utilisation
--->
-<!-- /SLIDE -->
-
-<!-- SLIDE:m0_3b -->
-## De l'analyse à l'action
-
-Les résultats de FASTR — qu'il s'agisse de scores AQD, de tendances d'utilisation des services ou d'estimations de couverture — sont des **points de départ, pas des conclusions**. Ils déclenchent l'investigation et éclairent les décisions.
-
-![w:850](/methodology/resources/diagrams_fr/from_analysis_to_action.svg)
-
-<!--
-PRESENTER NOTES:
-- Ce cycle s'applique à TOUS les résultats de FASTR, pas seulement aux perturbations
-- Résultats AQD → investiguer les systèmes de données → améliorer le rapportage
-- Changements d'utilisation → investiguer la prestation de services → lever les obstacles
-- Écarts de couverture → investiguer les barrières d'accès → cibler les interventions
-- FASTR fournit les preuves ; les parties prenantes apportent le contexte, le jugement et l'action
--->
-<!-- /SLIDE -->
-
-<!-- SLIDE:m0_4 -->
-<!-- _class: compact two-panel -->
-
-## Analytique FASTR : suite de produits et résultats
-
-<div class="panel-layout">
-<div>
-
-### SNIS (Données de routine des services)
-
-**Rapport SNIS FASTR standard**
-- Tendances principales d'utilisation des services
-- Ajustements de la qualité des données (complétude, valeurs aberrantes)
-- Analyses nationales et infranationales
-
-**Notes brèves sur les perturbations de services**
-- Analyse ciblée des changements de volume de services
-- Conçues pour une interprétation et une discussion rapides
-
-**Rapports SNIS spécifiques aux pays**
-- Indicateurs, géographies et priorités adaptés
-- Visuels et narratifs personnalisés alignés sur les besoins du pays
-
-</div>
-<div>
-
-### EES (Évaluation des établissements de santé)
-
-**Rapport complet d'enquête EES**
-- Disponibilité des établissements, disponibilité des services et intrants
-- Résultats standardisés entre les cycles d'enquête
-
-**Résultats axés sur les perturbations** (le cas échéant)
-- Vues ciblées sur les interruptions de services ou les facteurs de stress du système
-- Peuvent être produits comme résultats autonomes ou annexes
-
-</div>
-</div>
-
-<!--
-PRESENTER NOTES:
-- FASTR produit différents produits pour différents besoins
-- Les résultats SNIS sont routiniers/trimestriels, les résultats EES liés aux cycles d'enquête
-- Les pays peuvent combiner selon leurs priorités
-- Tous les résultats suivent une méthodologie et une image de marque cohérentes
--->
-<!-- /SLIDE -->
-
-<!-- SLIDE:m0_5 -->
-## Triangulation des données : combiner plusieurs sources
-
-Chaque source répond à des questions différentes — ensemble, elles racontent l'histoire complète.
-
-![Couches de triangulation des données h:420](/methodology/resources/diagrams_fr/data_triangulation_layers.svg)
-
-<!--
-PRESENTER NOTES:
-- Le DHIS2 est le fondement : disponible trimestriellement, couvre tous les établissements
-- Les estimations de couverture ajoutent la perspective populationnelle
-- Les EES et enquêtes ménages ajoutent de la profondeur quand elles sont disponibles
-- Tous les pays ne disposent pas de toutes les sources — FASTR fonctionne avec ce qui est disponible
--->
-<!-- /SLIDE -->
-
-<!-- SLIDE:m0_5a -->
-## Pourquoi FASTR ?
-
-De nombreux pays font face à des défis communs avec les données de santé :
-
-- **Données collectées mais sous-utilisées** — Les données de routine restent dans DHIS2 sans orienter les décisions
-- **Cycles analytiques lents** — Les revues annuelles ratent les opportunités d'action rapide
-- **Sources de données fragmentées** — SNIS, enquêtes et évaluations analysés en silos
-
-**FASTR répond à ces défis** en fournissant aux pays des outils et méthodes pour une analyse rapide et régulière de sources multiples — transformant les données en décisions pour des systèmes de SSP plus solides.
-<!-- /SLIDE -->
-
-<!-- SLIDE:m0_5b -->
-## Contexte
-
-De nombreux pays connaissent des **réductions soudaines et spectaculaires du financement** provenant de sources externes.
-
-Cela aboutit à :
-- Des **trous critiques** dans les programmes et les systèmes de santé
-- Des **effets potentiellement graves** sur la prestation de services et les résultats sanitaires pour les femmes, les enfants et les adolescents
-
-**Questions clés qui se posent :**
-- Quelle est l'ampleur des réductions, et quel effet ont-elles sur la prestation des services ?
-- Quelle est la meilleure façon de hiérarchiser les ressources restantes ?
-- Quelles adaptations peuvent protéger et renforcer la prestation de services essentiels ?
-<!-- /SLIDE -->
-
-<!-- SLIDE:m0_6 -->
-## Pourquoi maintenant ? Répondre aux perturbations du financement
-
-![Perturbations et questions clés h:450](/methodology/resources/diagrams_fr/disruptions_questions.svg)
-
-<!--
-PRESENTER NOTES:
-- Ce contexte s'applique à de nombreux pays actuellement — ce n'est pas hypothétique
-- FASTR ne crée pas de nouvelle collecte de données — il maximise l'utilisation des données DHIS2 existantes
-- L'objectif est de passer de la réaction à la proactivité : voir les perturbations tôt, répondre rapidement
-- Les pays peuvent utiliser les analyses FASTR pour plaider en faveur des ressources et éclairer la planification
--->
-<!-- /SLIDE -->
-
-<!-- SLIDE:m0_7 -->
-## Communauté de pratique FASTR
-
-Rejoignez l'espace de collaboration FASTR sur le **Portail de connaissances du GFF** :
-
-**https://gffklportal.org/collaboration/forum/fastr**
-
-**Ce que vous y trouverez :**
-- Mises à jour par pays et analyses partagées
-- Forums de discussion techniques et bonnes pratiques
-- Matériel de formation et ressources
-
-**Pourquoi participer ?**
-- Apprendre des expériences d'autres pays
-- Partager vos analyses et leçons apprises
-- Bénéficier du soutien de l'équipe FASTR et du réseau de pairs
-
-<!--
-PRESENTER NOTES:
-- La communauté de pratique est sur le Portail de connaissances du GFF — une plateforme sécurisée et partagée
-- La participation est volontaire mais encouragée
-- Les pays qui partagent activement ont tendance à apprendre plus vite et à recevoir plus de soutien
-- L'équipe FASTR surveille le forum et répond aux questions techniques
--->
-<!-- /SLIDE -->
+- AbouZahr, C., & Boerma, T. (2005). Health information systems: the foundations of public health. *Bulletin of the World Health Organization*, 83(8), 578–583.
+- Amoakoh-Coleman, M., et al. (2015). Completeness and accuracy of data transfer of routine maternal health services data in the greater Accra region. *BMC Research Notes*, 8, 114. doi:10.1186/s13104-015-1058-3
+- Belay, H., & Lippeveld, T. (2013). Inventory of PRISM framework and tools: application of PRISM tools and interventions for strengthening routine health information system performance. *MEASURE Evaluation, Carolina Population Center*, Chapel Hill, NC. https://www.measureevaluation.org/resources/publications/wp-13-138/at_download/document
+- Bhattacharya, A. A., et al. (2019). Quality of routine facility data for monitoring priority maternal and newborn indicators in DHIS2: A case study from Gombe State, Nigeria. *PLoS ONE*, 14(1), e0211265. doi:10.1371/journal.pone.0211265
+- Chen, H., Hailey, D., Wang, N., & Yu, P. (2014). A review of data quality assessment methods for public health information systems. *International Journal of Environmental Research and Public Health*, 11(5), 5170–5207. doi:10.3390/ijerph110505170
+- Endriyas, M., et al. (2019). Understanding performance data: health management information system data accuracy in Southern Nations Nationalities and People's Region, Ethiopia. *BMC Health Services Research*, 19, 1–6. doi:10.1186/s12913-019-3991-7
+- Gimbel, S., et al. (2011). An assessment of routine primary care health information system data quality in Sofala Province, Mozambique. *Population Health Metrics*, 9, 12. doi:10.1186/1478-7954-9-12
+- Glèlè Ahanhanzo, Y., Ouedraogo, L. T., Kpozèhouen, A., Coppieters, Y., Makoutodé, M., & Wilmet-Dramaix, M. (2014). Factors associated with data quality in the routine health information system of Benin. *Archives of Public Health*, 72(1), 25. doi:10.1186/2049-3258-72-25
+- Mavimbe, J. C., Braa, J., & Bjune, G. (2005). Assessing immunization data quality from routine reports in Mozambique. *BMC Public Health*, 5, 108. doi:10.1186/1471-2458-5-108
+- Moukénet, A., et al. (2021). Health management information system (HMIS) data quality and associated factors in Massaguet district, Chad. *BMC Medical Informatics and Decision Making*, 21(1), 326. doi:10.1186/s12911-021-01684-7
+- Mphatswe, W., et al. (2012). Improving public health information: a data quality intervention in KwaZulu-Natal, South Africa. *Bulletin of the World Health Organization*, 90(3), 176–182. doi:10.2471/blt.11.092759
+- Mutale, W., et al. (2013). Improving health information systems for decision making across five sub-Saharan African countries: Implementation strategies from the African Health Initiative. *BMC Health Services Research*, 13(2), S9. doi:10.1186/1472-6963-13-S2-S9
+- Mwangu, M. (2005). Quality of a routine data collection system for health: case of Kinondoni district in the Dar es Salaam region, Tanzania. *South African Journal of Information Management*, 7(2).
+- Nisingizwe, M. P., et al. (2014). Toward utilization of data for program management and evaluation: quality assessment of five years of health management information system data in Rwanda. *Global Health Action*, 7(1), 25829. doi:10.3402/gha.v7.25829
+- Nshimyiryo, A., et al. (2020). Health management information system (HMIS) data verification: a case study in four districts in Rwanda. *PLoS ONE*, 15(7), e0235823. doi:10.1371/journal.pone.0235823
+- O'Hagan, R., et al. (2017). National assessment of data quality and associated systems-level factors in Malawi. *Global Health Science and Practice*, 5(3), 367–381. doi:10.9745/GHSP-D-17-00177
+- Ouedraogo, M., et al. (2019). A quality assessment of Health Management Information System (HMIS) data for maternal and child health in Jimma Zone, Ethiopia. *PLoS ONE*, 14(3), e0213600. doi:10.1371/journal.pone.0213600
+- Rowe, A. K. (2009). Potential of integrated continuous surveys and quality management to support monitoring, evaluation, and the scale-up of health interventions in developing countries. *American Journal of Tropical Medicine and Hygiene*, 80(6), 971. doi:10.4269/ajtmh.2009.80.971
+- Rowe, A. K., Kachur, S. P., Yoon, S. S., Lynch, M., Slutsker, L., & Steketee, R. W. (2009). Caution is required when using health facility-based data to evaluate the health impact of malaria control efforts in Africa. *Malaria Journal*, 8(1), 209. doi:10.1186/1475-2875-8-209
+- Sychareun, V., Hansana, V., Phengsavanh, A., Chaleunvong, K., Eunyoung, K., & Durham, J. (2014). Data verification at health centers and district health offices in Xiengkhouang and Houaphanh Provinces, Lao PDR. *BMC Health Services Research*, 14, 255. doi:10.1186/1472-6963-14-255
+- Teklegiorgis, K., Tadesse, K., Terefe, W., & Mirutse, G. (2016). Level of data quality from Health Management Information Systems in a resources limited setting and its associated factors, eastern Ethiopia. *South African Journal of Information Management*, 18(1), 1–8. doi:10.4102/sajim.v18i1.612
+- Wagenaar, B. H., Sherr, K., Fernandes, Q., & Wagenaar, A. C. (2015). Using routine health information systems for well-designed health evaluations in low- and middle-income countries. *Health Policy and Planning*, czv029. doi:10.1093/heapol/czv029
+- World Health Organization (2017). Data quality assurance: a toolkit for facility data quality assessment: module 1: framework and metrics. *World Health Organization*, Geneva, Switzerland. https://iris.who.int/bitstream/handle/10665/366086/9789240047358-eng.pdf?sequence=1
+- Xiao, Y., et al. (2017). Challenges in data quality: the influence of data quality assessments on data availability and completeness in a voluntary medical male circumcision programme in Zimbabwe. *BMJ Open*, 7(1), e013562.

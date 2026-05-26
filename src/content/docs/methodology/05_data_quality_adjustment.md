@@ -168,696 +168,803 @@ For the combined adjustment heatmap (output 3):
 
 **Module `m002` does not expose any user-tunable parameters in the FASTR platform** — adjustments run with the same internal logic for every project. The settings documented below are hard-coded inside the module and are described here for transparency, not for configuration.
 
-??? "Excluded indicators (hard-coded)"
+<details>
+<summary>Excluded indicators (hard-coded)</summary>
 
-    Some indicators are excluded from all adjustments due to their sensitive nature. Exclusion is done via a case-insensitive regular expression match on `indicator_common_id`:
 
-    ```r
-    EXCLUDED_PATTERN <- "death|still_birth"
-    ```
+Some indicators are excluded from all adjustments due to their sensitive nature. Exclusion is done via a case-insensitive regular expression match on `indicator_common_id`:
 
-    This matches any indicator whose name contains `death` (e.g. `u5_deaths`, `maternal_deaths`, `neonatal_deaths`) or `still_birth`. For these indicators, the original raw `count` is preserved in every scenario column (`count_final_none`, `count_final_outliers`, `count_final_completeness`, `count_final_both`).
+```r
+EXCLUDED_PATTERN <- "death|still_birth"
+```
 
-    **Rationale**: Mortality and stillbirth counts should not be smoothed or imputed as they represent discrete events that may have genuine temporal variation. Adjusting these could mask important epidemiological patterns or outbreak signals.
+This matches any indicator whose name contains `death` (e.g. `u5_deaths`, `maternal_deaths`, `neonatal_deaths`) or `still_birth`. For these indicators, the original raw `count` is preserved in every scenario column (`count_final_none`, `count_final_outliers`, `count_final_completeness`, `count_final_both`).
 
-??? "Low volume exclusions (hard-coded)"
+**Rationale**: Mortality and stillbirth counts should not be smoothed or imputed as they represent discrete events that may have genuine temporal variation. Adjusting these could mask important epidemiological patterns or outbreak signals.
 
-    Indicators are also automatically excluded from **adjustment** if no facility-month observation ever reaches 100 (`count >= 100`) anywhere in the dataset. This prevents meaningless statistical adjustment on indicators with consistently low counts. Excluded low-volume indicators have their raw `count` preserved across all four scenario columns, just like the excluded mortality/stillbirth indicators.
+</details>
 
-    **Exclusion logic**:
+<details>
+<summary>Low volume exclusions (hard-coded)</summary>
 
-    ```r
-    low_volume_check <- raw_data[, .(has_volume = any(count >= 100, na.rm = TRUE)),
-                                 by = indicator_common_id]
-    low_volume_check[, low_volume_exclude := !has_volume]
-    LOW_VOLUME_INDICATORS <- low_volume_check[has_volume == FALSE, indicator_common_id]
-    ```
 
-    The full list (with a `low_volume_exclude` TRUE/FALSE flag per indicator) is saved to `M2_low_volume_exclusions.csv` for transparency.
+Indicators are also automatically excluded from **adjustment** if no facility-month observation ever reaches 100 (`count >= 100`) anywhere in the dataset. This prevents meaningless statistical adjustment on indicators with consistently low counts. Excluded low-volume indicators have their raw `count` preserved across all four scenario columns, just like the excluded mortality/stillbirth indicators.
 
-??? "Rolling window configuration (hard-coded)"
+**Exclusion logic**:
 
-    The module uses a **6-month window** for all rolling averages. This choice balances:
+```r
+low_volume_check <- raw_data[, .(has_volume = any(count >= 100, na.rm = TRUE)),
+                             by = indicator_common_id]
+low_volume_check[, low_volume_exclude := !has_volume]
+LOW_VOLUME_INDICATORS <- low_volume_check[has_volume == FALSE, indicator_common_id]
+```
 
-    **Advantages**:
+The full list (with a `low_volume_exclude` TRUE/FALSE flag per indicator) is saved to `M2_low_volume_exclusions.csv` for transparency.
 
-    - Captures medium-term trends
-    - Reduces impact of short-term fluctuations
-    - Sufficient data points for stable averages
-    - Works well for both stable and seasonal indicators
+</details>
 
-    **Trade-offs**:
+<details>
+<summary>Rolling window configuration (hard-coded)</summary>
 
-    - May not capture rapid changes in service delivery
-    - Could over-smooth in cases of genuine programmatic shifts
-    - Requires at least 6 valid observations for optimal centered average
+
+The module uses a **6-month window** for all rolling averages. This choice balances:
+
+**Advantages**:
+
+- Captures medium-term trends
+- Reduces impact of short-term fluctuations
+- Sufficient data points for stable averages
+- Works well for both stable and seasonal indicators
+
+**Trade-offs**:
+
+- May not capture rapid changes in service delivery
+- Could over-smooth in cases of genuine programmatic shifts
+- Requires at least 6 valid observations for optimal centered average
+
+</details>
 
 ### Input/output specifications
 
-??? "Input files"
+<details>
+<summary>Input files</summary>
 
-    The module requires three input files from previous processing steps:
 
-    | File | Source | Description | Key Variables |
-    |------|--------|-------------|---------------|
-    | `hmis_ISO3.csv` | Raw HMIS data | Facility-level service volumes | `facility_id`, `indicator_common_id`, `period_id`, `count`, admin area columns |
-    | `M1_output_outliers.csv` | Module 1 | Outlier flags for each facility-month-indicator | `facility_id`, `indicator_common_id`, `period_id`, `outlier_flag` |
-    | `M1_output_completeness.csv` | Module 1 | Completeness flags for each facility-month-indicator | `facility_id`, `indicator_common_id`, `period_id`, `completeness_flag` |
+The module requires three input files from previous processing steps:
 
-??? "Input data structure"
+| File | Source | Description | Key Variables |
+|------|--------|-------------|---------------|
+| `hmis_ISO3.csv` | Raw HMIS data | Facility-level service volumes | `facility_id`, `indicator_common_id`, `period_id`, `count`, admin area columns |
+| `M1_output_outliers.csv` | Module 1 | Outlier flags for each facility-month-indicator | `facility_id`, `indicator_common_id`, `period_id`, `outlier_flag` |
+| `M1_output_completeness.csv` | Module 1 | Completeness flags for each facility-month-indicator | `facility_id`, `indicator_common_id`, `period_id`, `completeness_flag` |
 
-    **Raw HMIS Data (`hmis_ISO3.csv`)**:
+</details>
 
-    ```text
-    facility_id | admin_area_1 | admin_area_2 | admin_area_3 | period_id | indicator_common_id | count
-    ------------|--------------|--------------|--------------|-----------|---------------------|-------
-    FAC001      | ISO3         | Province_A   | District_A   | 202301    | anc1                | 145
-    FAC001      | ISO3         | Province_A   | District_A   | 202302    | anc1                | 152
-    FAC001      | ISO3         | Province_A   | District_A   | 202303    | anc1                | 890  # Outlier
-    ```
+<details>
+<summary>Input data structure</summary>
 
-    **Outlier flags (`M1_output_outliers.csv`)**:
 
-    ```text
-    facility_id | indicator_common_id | period_id | outlier_flag
-    ------------|---------------------|-----------|-------------
-    FAC001      | anc1                | 202301    | 0
-    FAC001      | anc1                | 202302    | 0
-    FAC001      | anc1                | 202303    | 1           # Flagged as outlier
-    ```
+**Raw HMIS Data (`hmis_ISO3.csv`)**:
 
-    **Completeness flags (`M1_output_completeness.csv`)**:
+```text
+facility_id | admin_area_1 | admin_area_2 | admin_area_3 | period_id | indicator_common_id | count
+------------|--------------|--------------|--------------|-----------|---------------------|-------
+FAC001      | ISO3         | Province_A   | District_A   | 202301    | anc1                | 145
+FAC001      | ISO3         | Province_A   | District_A   | 202302    | anc1                | 152
+FAC001      | ISO3         | Province_A   | District_A   | 202303    | anc1                | 890  # Outlier
+```
 
-    ```text
-    facility_id | indicator_common_id | period_id | completeness_flag
-    ------------|---------------------|-----------|------------------
-    FAC001      | anc1                | 202301    | 1             # Complete
-    FAC001      | anc1                | 202302    | 0             # Incomplete
-    FAC001      | anc1                | 202303    | 1             # Complete
-    ```
+**Outlier flags (`M1_output_outliers.csv`)**:
 
-??? "Output files"
+```text
+facility_id | indicator_common_id | period_id | outlier_flag
+------------|---------------------|-----------|-------------
+FAC001      | anc1                | 202301    | 0
+FAC001      | anc1                | 202302    | 0
+FAC001      | anc1                | 202303    | 1           # Flagged as outlier
+```
 
-    The module generates four output files:
+**Completeness flags (`M1_output_completeness.csv`)**:
 
-    | File | Level | Description | Key Columns |
-    |------|-------|-------------|-------------|
-    | `M2_adjusted_data.csv` | Facility | Adjusted volumes for all scenarios at facility level | `facility_id`, admin areas (excl. admin_area_1), `period_id`, `indicator_common_id`, `count_final_*` |
-    | `M2_adjusted_data_admin_area.csv` | Subnational | Aggregated adjusted volumes at subnational admin areas | Admin areas (excl. admin_area_1), `period_id`, `indicator_common_id`, `count_final_*` |
-    | `M2_adjusted_data_national.csv` | National | Aggregated adjusted volumes at national level | `admin_area_1`, `period_id`, `indicator_common_id`, `count_final_*` |
-    | `M2_low_volume_exclusions.csv` | Metadata | Indicators excluded from adjustment due to low volumes | `indicator_common_id`, `low_volume_exclude` |
+```text
+facility_id | indicator_common_id | period_id | completeness_flag
+------------|---------------------|-----------|------------------
+FAC001      | anc1                | 202301    | 1             # Complete
+FAC001      | anc1                | 202302    | 0             # Incomplete
+FAC001      | anc1                | 202303    | 1             # Complete
+```
 
-??? "Output data structure"
+</details>
 
-    **Facility-Level Output** (`M2_adjusted_data.csv`):
+<details>
+<summary>Output files</summary>
 
-    ```text
-    facility_id | admin_area_2 | admin_area_3 | period_id | indicator_common_id | count_final_none | count_final_outliers | count_final_completeness | count_final_both
-    ------------|--------------|--------------|-----------|---------------------|------------------|----------------------|--------------------------|------------------
-    FAC001      | Province_A   | District_A   | 202301    | anc1                | 145              | 145                  | 145                      | 145
-    FAC001      | Province_A   | District_A   | 202302    | anc1                | 152              | 152                  | 148                      | 148
-    FAC001      | Province_A   | District_A   | 202303    | anc1                | 890              | 148                  | 890                      | 148
-    ```
 
-    Each `count_final_*` column represents a different adjustment scenario:
+The module generates four output files:
 
-    - `count_final_none`: No adjustments applied (original values)
-    - `count_final_outliers`: Only outlier adjustment applied
-    - `count_final_completeness`: Only completeness adjustment applied
-    - `count_final_both`: Both outlier and completeness adjustments applied
+| File | Level | Description | Key Columns |
+|------|-------|-------------|-------------|
+| `M2_adjusted_data.csv` | Facility | Adjusted volumes for all scenarios at facility level | `facility_id`, admin areas (excl. admin_area_1), `period_id`, `indicator_common_id`, `count_final_*` |
+| `M2_adjusted_data_admin_area.csv` | Subnational | Aggregated adjusted volumes at subnational admin areas | Admin areas (excl. admin_area_1), `period_id`, `indicator_common_id`, `count_final_*` |
+| `M2_adjusted_data_national.csv` | National | Aggregated adjusted volumes at national level | `admin_area_1`, `period_id`, `indicator_common_id`, `count_final_*` |
+| `M2_low_volume_exclusions.csv` | Metadata | Indicators excluded from adjustment due to low volumes | `indicator_common_id`, `low_volume_exclude` |
+
+</details>
+
+<details>
+<summary>Output data structure</summary>
+
+
+**Facility-Level Output** (`M2_adjusted_data.csv`):
+
+```text
+facility_id | admin_area_2 | admin_area_3 | period_id | indicator_common_id | count_final_none | count_final_outliers | count_final_completeness | count_final_both
+------------|--------------|--------------|-----------|---------------------|------------------|----------------------|--------------------------|------------------
+FAC001      | Province_A   | District_A   | 202301    | anc1                | 145              | 145                  | 145                      | 145
+FAC001      | Province_A   | District_A   | 202302    | anc1                | 152              | 152                  | 148                      | 148
+FAC001      | Province_A   | District_A   | 202303    | anc1                | 890              | 148                  | 890                      | 148
+```
+
+Each `count_final_*` column represents a different adjustment scenario:
+
+- `count_final_none`: No adjustments applied (original values)
+- `count_final_outliers`: Only outlier adjustment applied
+- `count_final_completeness`: Only completeness adjustment applied
+- `count_final_both`: Both outlier and completeness adjustments applied
+
+</details>
 
 ### Key functions documentation
 
-??? "Required libraries"
+<details>
+<summary>Required libraries</summary>
 
-    The module depends on the following R packages:
 
-    -   `data.table` - High-performance data manipulation, aggregation, and rolling window calculations (`frollmean` for rolling averages)
-    -   `zoo` - Loaded for time-series utilities
-    -   `lubridate` - Date handling (`month()`, `year()`) used for the same-month-last-year fallback
+The module depends on the following R packages:
 
-??? "1. `apply_adjustments()`"
+-   `data.table` - High-performance data manipulation, aggregation, and rolling window calculations (`frollmean` for rolling averages)
+-   `zoo` - Loaded for time-series utilities
+-   `lubridate` - Date handling (`month()`, `year()`) used for the same-month-last-year fallback
 
-    Core function that implements the adjustment logic for a single scenario.
+</details>
 
-    **Purpose**:
+<details>
+<summary>1. `apply_adjustments()`</summary>
 
-    Replaces outlier and/or incomplete values using rolling averages and historical patterns.
 
-    **Parameters**:
+Core function that implements the adjustment logic for a single scenario.
 
-    - `raw_data` (data.table): Original HMIS data with service counts
-    - `completeness_data` (data.table): Completeness flags from Module 1
-    - `outlier_data` (data.table): Outlier flags from Module 1
-    - `adjust_outliers` (logical): Whether to apply outlier adjustment
-    - `adjust_completeness` (logical): Whether to apply completeness adjustment
+**Purpose**:
 
-    **Returns**:
+Replaces outlier and/or incomplete values using rolling averages and historical patterns.
 
-    data.table with adjusted values in `count_working` column and adjustment metadata
+**Parameters**:
 
-    **Key operations**:
+- `raw_data` (data.table): Original HMIS data with service counts
+- `completeness_data` (data.table): Completeness flags from Module 1
+- `outlier_data` (data.table): Outlier flags from Module 1
+- `adjust_outliers` (logical): Whether to apply outlier adjustment
+- `adjust_completeness` (logical): Whether to apply completeness adjustment
 
-    1. Merges input datasets by `facility_id`, `indicator_common_id`, and `period_id`
-    2. Converts `period_id` to dates for temporal ordering
-    3. Calculates rolling averages (centered, forward, backward) for valid values
-    4. Applies adjustment hierarchy based on data availability
-    5. Tracks adjustment method used for each replaced value
+**Returns**:
 
-??? "2. `apply_adjustments_scenarios()`"
+data.table with adjusted values in `count_working` column and adjustment metadata
 
-    Wrapper function that runs adjustments across all four scenarios.
+**Key operations**:
 
-    **Purpose**:
+1. Merges input datasets by `facility_id`, `indicator_common_id`, and `period_id`
+2. Converts `period_id` to dates for temporal ordering
+3. Calculates rolling averages (centered, forward, backward) for valid values
+4. Applies adjustment hierarchy based on data availability
+5. Tracks adjustment method used for each replaced value
 
-    Applies the adjustment logic under different combinations of outlier and completeness adjustments.
+</details>
 
-    **Parameters**:
+<details>
+<summary>2. `apply_adjustments_scenarios()`</summary>
 
-    - `raw_data` (data.table): Original HMIS data
-    - `completeness_data` (data.table): Completeness flags
-    - `outlier_data` (data.table): Outlier flags
 
-    **Returns**:
+Wrapper function that runs adjustments across all four scenarios.
 
-    data.table with four `count_final_*` columns, one per scenario
+**Purpose**:
 
-    **Scenarios processed**:
+Applies the adjustment logic under different combinations of outlier and completeness adjustments.
 
-    1. `none`: No adjustments (baseline)
-    2. `outliers`: Outlier adjustment only
-    3. `completeness`: Completeness adjustment only
-    4. `both`: Sequential outlier then completeness adjustment
+**Parameters**:
 
-    **Processing logic**:
+- `raw_data` (data.table): Original HMIS data
+- `completeness_data` (data.table): Completeness flags
+- `outlier_data` (data.table): Outlier flags
 
-    - Calls `apply_adjustments()` once per scenario
-    - Preserves the raw `count` for indicators matching the `death|still_birth` regex and for low-volume indicators (overwriting any scenario-specific `count_working`)
-    - Merges all scenario results into a single wide-format table with four `count_final_*` columns
+**Returns**:
+
+data.table with four `count_final_*` columns, one per scenario
+
+**Scenarios processed**:
+
+1. `none`: No adjustments (baseline)
+2. `outliers`: Outlier adjustment only
+3. `completeness`: Completeness adjustment only
+4. `both`: Sequential outlier then completeness adjustment
+
+**Processing logic**:
+
+- Calls `apply_adjustments()` once per scenario
+- Preserves the raw `count` for indicators matching the `death|still_birth` regex and for low-volume indicators (overwriting any scenario-specific `count_working`)
+- Merges all scenario results into a single wide-format table with four `count_final_*` columns
+
+</details>
 
 ### Statistical methods & algorithms
 
-??? "Outlier adjustment methodology"
+<details>
+<summary>Outlier adjustment methodology</summary>
 
-    Outlier adjustment is applied to any facility-month value flagged in Module 1 (`outlier_flag == 1`). The goal is to replace these outlier values using valid historical data from the same facility and indicator.
 
-    **Statistical approach**:
+Outlier adjustment is applied to any facility-month value flagged in Module 1 (`outlier_flag == 1`). The goal is to replace these outlier values using valid historical data from the same facility and indicator.
 
-    Rolling averages are used to estimate expected values. A rolling average (also called moving average) is the mean of a set of time periods surrounding the target period. This technique smooths short-term fluctuations and highlights longer-term trends.
+**Statistical approach**:
 
-    **Valid values definition**:
+Rolling averages are used to estimate expected values. A rolling average (also called moving average) is the mean of a set of time periods surrounding the target period. This technique smooths short-term fluctuations and highlights longer-term trends.
 
-    Only values meeting ALL of the following criteria are used in calculations:
+**Valid values definition**:
 
-    - `!is.na(count)` (non-missing)
-    - `outlier_flag == 0` (not flagged as outlier)
+Only values meeting ALL of the following criteria are used in calculations:
 
-    **Implementation**:
+- `!is.na(count)` (non-missing)
+- `outlier_flag == 0` (not flagged as outlier)
 
-    The module uses `frollmean()` from the `zoo` package for efficient rolling calculations:
+**Implementation**:
 
-    ```r
-    data_adj[, valid_count := fifelse(outlier_flag == 0L & !is.na(count), count, NA_real_)]
-    data_adj[, `:=`(
-      roll6   = frollmean(valid_count, 6, na.rm = TRUE, align = "center"),
-      fwd6    = frollmean(valid_count, 6, na.rm = TRUE, align = "left"),
-      bwd6    = frollmean(valid_count, 6, na.rm = TRUE, align = "right"),
-      fallback= mean(valid_count, na.rm = TRUE)
-    ), by = .(facility_id, indicator_common_id)]
-    ```
+The module uses `frollmean()` from the `zoo` package for efficient rolling calculations:
 
-??? "Adjustment hierarchy for outliers"
+```r
+data_adj[, valid_count := fifelse(outlier_flag == 0L & !is.na(count), count, NA_real_)]
+data_adj[, `:=`(
+  roll6   = frollmean(valid_count, 6, na.rm = TRUE, align = "center"),
+  fwd6    = frollmean(valid_count, 6, na.rm = TRUE, align = "left"),
+  bwd6    = frollmean(valid_count, 6, na.rm = TRUE, align = "right"),
+  fallback= mean(valid_count, na.rm = TRUE)
+), by = .(facility_id, indicator_common_id)]
+```
 
-    The adjustment process follows this **hierarchical order** (stopping at the first available method):
+</details>
 
-    1.  **Centered 6-Month Average (`roll6`)**
+<details>
+<summary>Adjustment hierarchy for outliers</summary>
 
-        -   Uses the three months before and three months after the outlier month
-        -   Provides a balanced average based on nearby trends
-        -   Applied when enough valid values exist on both sides of the month
-        -   Method tag: `roll6`
 
-    2.  **Forward-Looking 6-Month Average (`fwd6`)**
+The adjustment process follows this **hierarchical order** (stopping at the first available method):
 
-        -   Used if the centered average can't be calculated (e.g. early in the time series)
-        -   Takes the average of the next six valid months
-        -   Method tag: `forward`
+1.  **Centered 6-Month Average (`roll6`)**
 
-    3.  **Backward-Looking 6-Month Average (`bwd6`)**
+    -   Uses the three months before and three months after the outlier month
+    -   Provides a balanced average based on nearby trends
+    -   Applied when enough valid values exist on both sides of the month
+    -   Method tag: `roll6`
 
-        -   Used if neither `roll6` nor `fwd6` are available
-        -   Takes the average of the six most recent valid months before the outlier
-        -   Method tag: `backward`
+2.  **Forward-Looking 6-Month Average (`fwd6`)**
 
-    4.  **Same month from previous year**
+    -   Used if the centered average can't be calculated (e.g. early in the time series)
+    -   Takes the average of the next six valid months
+    -   Method tag: `forward`
 
-        -   If no valid 6-month average exists, the value from the **same calendar month in the previous year** is used (e.g., Jan 2023 for Jan 2024)
-        -   Only applied if that previous value is valid (not flagged as an outlier and not missing) and only when exactly one matching prior-year record is found
-        -   Particularly useful for seasonal indicators (e.g., malaria, respiratory infections)
-        -   Method tag: `same_month_last_year`
-        -   **Implementation**:
+3.  **Backward-Looking 6-Month Average (`bwd6`)**
 
-        ```r
-        data_adj[, `:=`(mm = month(date), yy = year(date))]
-        data_adj <- data_adj[, {
-          for (i in which(outlier_flag == 1L & is.na(adj_method))) {
-            j <- which(mm == mm[i] & yy == yy[i] - 1 & outlier_flag == 0L & !is.na(count))
-            if (length(j) == 1L) {
-              count_working[i] <- count[j]
-              adj_method[i]    <- "same_month_last_year"
-              adjust_note[i]   <- format(date[j], "%b-%Y")
-            }
-          }
-          .SD
-        }, by = .(facility_id, indicator_common_id)]
-        ```
+    -   Used if neither `roll6` nor `fwd6` are available
+    -   Takes the average of the six most recent valid months before the outlier
+    -   Method tag: `backward`
 
-    5.  **Mean of All Historical Values (Fallback)**
+4.  **Same month from previous year**
 
-        -   If all previous methods fail, the mean of all valid historical values for that facility-indicator is used
-        -   Provides a facility-specific baseline when no temporal pattern is available
-        -   Method tag: `fallback`
-
-    **Edge case**:
-
-    If even the facility-level fallback mean cannot be computed (e.g., the facility has no valid non-outlier observations at all for that indicator), the outlier value remains as `NA` in the adjusted scenario columns.
-
-??? "Completeness adjustment methodology"
-
-    Completeness adjustment is applied to any facility-month where the working count is missing (`is.na(count_working)`). In the `completeness` scenario this is driven by the original `count` being `NA` (i.e., the facility did not report that month). In the `both` scenario, the working count may also be `NA` because the outlier step did not produce a replacement. The `completeness_flag` from Module 1 is merged in for reference but is not used as the replacement trigger.
-
-    **Statistical approach**:
-
-    The same rolling average methodology is applied, but the definition of "valid values" differs slightly:
-
-    **Valid values for completeness adjustment**:
-
-    - `!is.na(count_working)` (non-missing, possibly already adjusted for outliers)
-    - `outlier_flag == 0` (not flagged as outlier in original data)
-
-    **Key difference from outlier adjustment**:
-
-    - Completeness adjustment can use values that were already adjusted for outliers (when scenarios include both adjustments)
-    - No same-month-last-year method is used (only rolling averages and fallback)
-
-    **Implementation**:
+    -   If no valid 6-month average exists, the value from the **same calendar month in the previous year** is used (e.g., Jan 2023 for Jan 2024)
+    -   Only applied if that previous value is valid (not flagged as an outlier and not missing) and only when exactly one matching prior-year record is found
+    -   Particularly useful for seasonal indicators (e.g., malaria, respiratory infections)
+    -   Method tag: `same_month_last_year`
+    -   **Implementation**:
 
     ```r
-    data_adj[, valid_count := fifelse(!is.na(count_working) & outlier_flag == 0L, count_working, NA_real_)]
-    data_adj[, `:=`(
-      roll6   = frollmean(valid_count, 6, na.rm = TRUE, align = "center"),
-      fwd6    = frollmean(valid_count, 6, na.rm = TRUE, align = "left"),
-      bwd6    = frollmean(valid_count, 6, na.rm = TRUE, align = "right"),
-      fallback= mean(valid_count, na.rm = TRUE)
-    ), by = .(facility_id, indicator_common_id)]
+    data_adj[, `:=`(mm = month(date), yy = year(date))]
+    data_adj <- data_adj[, {
+      for (i in which(outlier_flag == 1L & is.na(adj_method))) {
+        j <- which(mm == mm[i] & yy == yy[i] - 1 & outlier_flag == 0L & !is.na(count))
+        if (length(j) == 1L) {
+          count_working[i] <- count[j]
+          adj_method[i]    <- "same_month_last_year"
+          adjust_note[i]   <- format(date[j], "%b-%Y")
+        }
+      }
+      .SD
+    }, by = .(facility_id, indicator_common_id)]
     ```
 
-??? "Adjustment hierarchy for completeness"
+5.  **Mean of All Historical Values (Fallback)**
 
-    The replacement follows this **hierarchical order**:
+    -   If all previous methods fail, the mean of all valid historical values for that facility-indicator is used
+    -   Provides a facility-specific baseline when no temporal pattern is available
+    -   Method tag: `fallback`
 
-    1.  **Centered 6-Month Average (`roll6`)**
+**Edge case**:
 
-        -   Uses three valid months before and after the missing or incomplete month
-        -   Preferred method when sufficient surrounding data exists
-        -   Method tag: `roll6`
+If even the facility-level fallback mean cannot be computed (e.g., the facility has no valid non-outlier observations at all for that indicator), the outlier value remains as `NA` in the adjusted scenario columns.
 
-    2.  **Forward-Looking 6-Month Average (`fwd6`)**
+</details>
 
-        -   Used if the centered average cannot be calculated (e.g., at start of time series)
-        -   Method tag: `forward`
+<details>
+<summary>Completeness adjustment methodology</summary>
 
-    3.  **Backward-Looking 6-Month Average (`bwd6`)**
 
-        -   Used if no centered or forward-looking values are available (e.g., at end of time series)
-        -   Method tag: `backward`
+Completeness adjustment is applied to any facility-month where the working count is missing (`is.na(count_working)`). In the `completeness` scenario this is driven by the original `count` being `NA` (i.e., the facility did not report that month). In the `both` scenario, the working count may also be `NA` because the outlier step did not produce a replacement. The `completeness_flag` from Module 1 is merged in for reference but is not used as the replacement trigger.
 
-    4.  **Mean of All Historical Values (Fallback)**
+**Statistical approach**:
 
-        -   If no rolling averages can be calculated, uses the mean of all valid values for that facility-indicator
-        -   Provides a facility-specific baseline
-        -   Method tag: `fallback`
+The same rolling average methodology is applied, but the definition of "valid values" differs slightly:
 
-    **Edge case**:
+**Valid values for completeness adjustment**:
 
-    If the facility has no valid values at all for that indicator, the fallback mean itself is `NA` and the value remains missing in the adjusted scenario columns.
+- `!is.na(count_working)` (non-missing, possibly already adjusted for outliers)
+- `outlier_flag == 0` (not flagged as outlier in original data)
 
-??? "Scenario processing logic"
+**Key difference from outlier adjustment**:
 
-    The module processes all four adjustment scenarios simultaneously using the `apply_adjustments_scenarios()` function:
+- Completeness adjustment can use values that were already adjusted for outliers (when scenarios include both adjustments)
+- No same-month-last-year method is used (only rolling averages and fallback)
 
-    **Scenario 1: None** (`count_final_none`)
+**Implementation**:
 
-    - `adjust_outliers = FALSE`, `adjust_completeness = FALSE`
-    - Original raw data with no modifications
-    - Serves as baseline for comparison
+```r
+data_adj[, valid_count := fifelse(!is.na(count_working) & outlier_flag == 0L, count_working, NA_real_)]
+data_adj[, `:=`(
+  roll6   = frollmean(valid_count, 6, na.rm = TRUE, align = "center"),
+  fwd6    = frollmean(valid_count, 6, na.rm = TRUE, align = "left"),
+  bwd6    = frollmean(valid_count, 6, na.rm = TRUE, align = "right"),
+  fallback= mean(valid_count, na.rm = TRUE)
+), by = .(facility_id, indicator_common_id)]
+```
 
-    **Scenario 2: Outliers** (`count_final_outliers`)
+</details>
 
-    - `adjust_outliers = TRUE`, `adjust_completeness = FALSE`
-    - Only outlier values are replaced
-    - Missing/incomplete values remain as-is
-    - Use case: When completeness is high but outliers are a concern
+<details>
+<summary>Adjustment hierarchy for completeness</summary>
 
-    **Scenario 3: Completeness** (`count_final_completeness`)
 
-    - `adjust_outliers = FALSE`, `adjust_completeness = TRUE`
-    - Only missing/incomplete values are imputed
-    - Outliers are retained in the data
-    - Use case: When data quality is good but reporting is sporadic
+The replacement follows this **hierarchical order**:
 
-    **Scenario 4: Both** (`count_final_both`)
+1.  **Centered 6-Month Average (`roll6`)**
 
-    - `adjust_outliers = TRUE`, `adjust_completeness = TRUE`
-    - **Sequential processing**: Outliers adjusted first, then completeness
-    - Most comprehensive adjustment
-    - Use case: When both data quality issues are prevalent
+    -   Uses three valid months before and after the missing or incomplete month
+    -   Preferred method when sufficient surrounding data exists
+    -   Method tag: `roll6`
 
-    **Processing order for "Both" scenario**:
+2.  **Forward-Looking 6-Month Average (`fwd6`)**
 
-    1. Outlier adjustment creates `count_working` with outliers replaced
-    2. Completeness adjustment then operates on `count_working`, using the already-adjusted values
-    3. This ensures completeness imputation uses cleaned (non-outlier) values when available
+    -   Used if the centered average cannot be calculated (e.g., at start of time series)
+    -   Method tag: `forward`
 
-    **Important**:
+3.  **Backward-Looking 6-Month Average (`bwd6`)**
 
-    After scenario-specific adjustments, excluded indicators are reset to their original raw `count`. This applies to both mortality/stillbirth indicators (matched via the `EXCLUDED_PATTERN` regex) and low-volume indicators:
+    -   Used if no centered or forward-looking values are available (e.g., at end of time series)
+    -   Method tag: `backward`
 
-    ```r
-    dat[grepl(EXCLUDED_PATTERN, indicator_common_id, ignore.case = TRUE) |
-        indicator_common_id %in% LOW_VOLUME_INDICATORS, count_working := count]
-    ```
+4.  **Mean of All Historical Values (Fallback)**
 
-    As a result, the four `count_final_*` columns for these indicators are all equal to the raw value.
+    -   If no rolling averages can be calculated, uses the mean of all valid values for that facility-indicator
+    -   Provides a facility-specific baseline
+    -   Method tag: `fallback`
 
-??? "Aggregation methods"
+**Edge case**:
 
-    All geographic aggregations use **simple sums**:
+If the facility has no valid values at all for that indicator, the fallback mean itself is `NA` and the value remains missing in the adjusted scenario columns.
 
-    ```r
-    sum(count_final_both, na.rm = TRUE)
-    ```
+</details>
 
-    **Rationale**:
+<details>
+<summary>Scenario processing logic</summary>
 
-    - Service volumes are additive (e.g., total deliveries = sum of facility deliveries)
-    - Missing values (`NA`) are treated as zero in aggregation
-    - Consistent with standard HMIS reporting practices
 
-    **Caution**:
+The module processes all four adjustment scenarios simultaneously using the `apply_adjustments_scenarios()` function:
 
-    If many facilities have `NA` values after adjustment, subnational/national totals may be underestimated. The `count_final_none` scenario provides a reference point for assessing impact.
+**Scenario 1: None** (`count_final_none`)
 
-??? "Handling missing data in calculations"
+- `adjust_outliers = FALSE`, `adjust_completeness = FALSE`
+- Original raw data with no modifications
+- Serves as baseline for comparison
 
-    The module applies `na.rm = TRUE` in all rolling calculations:
+**Scenario 2: Outliers** (`count_final_outliers`)
 
-    ```r
-    frollmean(valid_count, 6, na.rm = TRUE, align = "center")
-    ```
+- `adjust_outliers = TRUE`, `adjust_completeness = FALSE`
+- Only outlier values are replaced
+- Missing/incomplete values remain as-is
+- Use case: When completeness is high but outliers are a concern
 
-    **Implication**:
+**Scenario 3: Completeness** (`count_final_completeness`)
 
-    Rolling averages are calculated from available valid values only. If fewer than 6 values exist, the average is computed from whatever is available. If no valid values exist, the result is `NA`.
+- `adjust_outliers = FALSE`, `adjust_completeness = TRUE`
+- Only missing/incomplete values are imputed
+- Outliers are retained in the data
+- Use case: When data quality is good but reporting is sporadic
+
+**Scenario 4: Both** (`count_final_both`)
+
+- `adjust_outliers = TRUE`, `adjust_completeness = TRUE`
+- **Sequential processing**: Outliers adjusted first, then completeness
+- Most comprehensive adjustment
+- Use case: When both data quality issues are prevalent
+
+**Processing order for "Both" scenario**:
+
+1. Outlier adjustment creates `count_working` with outliers replaced
+2. Completeness adjustment then operates on `count_working`, using the already-adjusted values
+3. This ensures completeness imputation uses cleaned (non-outlier) values when available
+
+**Important**:
+
+After scenario-specific adjustments, excluded indicators are reset to their original raw `count`. This applies to both mortality/stillbirth indicators (matched via the `EXCLUDED_PATTERN` regex) and low-volume indicators:
+
+```r
+dat[grepl(EXCLUDED_PATTERN, indicator_common_id, ignore.case = TRUE) |
+    indicator_common_id %in% LOW_VOLUME_INDICATORS, count_working := count]
+```
+
+As a result, the four `count_final_*` columns for these indicators are all equal to the raw value.
+
+</details>
+
+<details>
+<summary>Aggregation methods</summary>
+
+
+All geographic aggregations use **simple sums**:
+
+```r
+sum(count_final_both, na.rm = TRUE)
+```
+
+**Rationale**:
+
+- Service volumes are additive (e.g., total deliveries = sum of facility deliveries)
+- Missing values (`NA`) are treated as zero in aggregation
+- Consistent with standard HMIS reporting practices
+
+**Caution**:
+
+If many facilities have `NA` values after adjustment, subnational/national totals may be underestimated. The `count_final_none` scenario provides a reference point for assessing impact.
+
+</details>
+
+<details>
+<summary>Handling missing data in calculations</summary>
+
+
+The module applies `na.rm = TRUE` in all rolling calculations:
+
+```r
+frollmean(valid_count, 6, na.rm = TRUE, align = "center")
+```
+
+**Implication**:
+
+Rolling averages are calculated from available valid values only. If fewer than 6 values exist, the average is computed from whatever is available. If no valid values exist, the result is `NA`.
+
+</details>
 
 ### Code examples
 
-??? "Example 1: Outlier adjustment"
+<details>
+<summary>Example 1: Outlier adjustment</summary>
 
-    **Scenario**:
 
-    A facility reports an unusually high first antenatal care visit (ANC1) count in March 2023.
+**Scenario**:
 
-    **Data**:
+A facility reports an unusually high first antenatal care visit (ANC1) count in March 2023.
 
-    ```text
-    period_id | count | outlier_flag | Surrounding valid values
-    ----------|-------|--------------|-------------------------
-    202301    | 145   | 0            | valid
-    202302    | 152   | 0            | valid
-    202303    | 890   | 1            | OUTLIER
-    202304    | 148   | 0            | valid
-    202305    | 155   | 0            | valid
-    202306    | 147   | 0            | valid
-    ```
+**Data**:
 
-    **Adjustment calculation** (centered 6-month average):
+```text
+period_id | count | outlier_flag | Surrounding valid values
+----------|-------|--------------|-------------------------
+202301    | 145   | 0            | valid
+202302    | 152   | 0            | valid
+202303    | 890   | 1            | OUTLIER
+202304    | 148   | 0            | valid
+202305    | 155   | 0            | valid
+202306    | 147   | 0            | valid
+```
 
-    - Valid values: [145, 152, 148, 155, 147] (excludes outlier 890)
-    - Average: (145 + 152 + 148 + 155 + 147) / 5 = 149.4
-    - **Adjusted value**: 149.4
+**Adjustment calculation** (centered 6-month average):
 
-    **Method used**:
+- Valid values: [145, 152, 148, 155, 147] (excludes outlier 890)
+- Average: (145 + 152 + 148 + 155 + 147) / 5 = 149.4
+- **Adjusted value**: 149.4
 
-    `roll6`
+**Method used**:
 
-??? "Example 2: Completeness adjustment"
+`roll6`
 
-    **Scenario**:
+</details>
 
-    A facility fails to report malaria tests in February 2023.
+<details>
+<summary>Example 2: Completeness adjustment</summary>
 
-    **Data**:
 
-    ```text
-    period_id | count | completeness_flag | Surrounding valid values
-    ----------|-------|-------------------|-------------------------
-    202301    | 45    | 1                 | valid
-    202302    | NA    | 0                 | INCOMPLETE
-    202303    | 48    | 1                 | valid
-    202304    | 52    | 1                 | valid
-    202305    | 50    | 1                 | valid
-    ```
+**Scenario**:
 
-    **Adjustment calculation** (centered 6-month average):
+A facility fails to report malaria tests in February 2023.
 
-    - Valid values: [45, 48, 52, 50, ...]
-    - Average: 48.75 (using available surrounding months)
-    - **Imputed value**: 48.75
+**Data**:
 
-    **Method used**:
+```text
+period_id | count | completeness_flag | Surrounding valid values
+----------|-------|-------------------|-------------------------
+202301    | 45    | 1                 | valid
+202302    | NA    | 0                 | INCOMPLETE
+202303    | 48    | 1                 | valid
+202304    | 52    | 1                 | valid
+202305    | 50    | 1                 | valid
+```
 
-    `roll6`
+**Adjustment calculation** (centered 6-month average):
 
-??? "Example 3: Seasonal indicator with same-month-last-year"
+- Valid values: [45, 48, 52, 50, ...]
+- Average: 48.75 (using available surrounding months)
+- **Imputed value**: 48.75
 
-    **Scenario**:
+**Method used**:
 
-    Malaria cases show strong seasonality, and a June 2023 outlier needs adjustment.
+`roll6`
 
-    **Data**:
+</details>
 
-    ```text
-    period_id | count | outlier_flag | Notes
-    ----------|-------|--------------|-------
-    202206    | 234   | 0            | June 2022 (valid)
-    202306    | 1850  | 1            | June 2023 (OUTLIER)
-    ```
+<details>
+<summary>Example 3: Seasonal indicator with same-month-last-year</summary>
 
-    **Adjustment logic**:
 
-    1. Centered, forward, and backward rolling averages unavailable (insufficient data)
-    2. Same-month-last-year method activated
-    3. June 2022 value = 234 (valid)
-    4. **Adjusted value**: 234
+**Scenario**:
 
-    **Method used**:
+Malaria cases show strong seasonality, and a June 2023 outlier needs adjustment.
 
-    `same_month_last_year`
+**Data**:
 
-??? "Example 4: Scenario comparison"
+```text
+period_id | count | outlier_flag | Notes
+----------|-------|--------------|-------
+202206    | 234   | 0            | June 2022 (valid)
+202306    | 1850  | 1            | June 2023 (OUTLIER)
+```
 
-    **Facility**:
+**Adjustment logic**:
 
-    FAC001
+1. Centered, forward, and backward rolling averages unavailable (insufficient data)
+2. Same-month-last-year method activated
+3. June 2022 value = 234 (valid)
+4. **Adjusted value**: 234
 
-    **Indicator**:
+**Method used**:
 
-    Institutional deliveries
+`same_month_last_year`
 
-    **Period**:
+</details>
 
-    Q1 2023
+<details>
+<summary>Example 4: Scenario comparison</summary>
 
-    **Original data**:
 
-    ```text
-    Month    | Count | Outlier? | Complete?
-    ---------|-------|----------|----------
-    Jan 2023 | 78    | No       | Yes
-    Feb 2023 | 450   | Yes      | Yes       # Outlier
-    Mar 2023 | NA    | -        | No        # Incomplete
-    ```
+**Facility**:
 
-    **Scenario results**:
+FAC001
 
-    | Month    | None | Outliers | Completeness | Both |
-    |----------|------|----------|--------------|------|
-    | Jan 2023 | 78   | 78       | 78           | 78   |
-    | Feb 2023 | 450  | 82*      | 450          | 82*  |
-    | Mar 2023 | NA   | NA       | 80**         | 80** |
+**Indicator**:
 
-    *Adjusted using rolling average
+Institutional deliveries
 
-    **Imputed using rolling average
+**Period**:
 
-    **Interpretation**:
+Q1 2023
 
-    - **None**: Raw data with obvious issues
-    - **Outliers**: February corrected, but March remains missing
-    - **Completeness**: March filled in, but February outlier retained
-    - **Both**: Most complete and clean dataset
+**Original data**:
 
-??? "Example 5: Geographic aggregation"
+```text
+Month    | Count | Outlier? | Complete?
+---------|-------|----------|----------
+Jan 2023 | 78    | No       | Yes
+Feb 2023 | 450   | Yes      | Yes       # Outlier
+Mar 2023 | NA    | -        | No        # Incomplete
+```
 
-    **Subnational aggregation code**:
+**Scenario results**:
 
-    ```r
-    adjusted_data_admin_area_final <- adjusted_data_export[
-      ,
-      .(
-        count_final_none         = sum(count_final_none,         na.rm = TRUE),
-        count_final_outliers     = sum(count_final_outliers,     na.rm = TRUE),
-        count_final_completeness = sum(count_final_completeness, na.rm = TRUE),
-        count_final_both         = sum(count_final_both,         na.rm = TRUE)
-      ),
-      by = c(geo_admin_area_sub, "indicator_common_id", "period_id")
-    ]
-    ```
+| Month    | None | Outliers | Completeness | Both |
+|----------|------|----------|--------------|------|
+| Jan 2023 | 78   | 78       | 78           | 78   |
+| Feb 2023 | 450  | 82*      | 450          | 82*  |
+| Mar 2023 | NA   | NA       | 80**         | 80** |
 
-    **National aggregation code**:
+*Adjusted using rolling average
 
-    ```r
-    adjusted_data_national_final <- adjusted_data_export[
-      ,
-      .(
-        count_final_none         = sum(count_final_none,         na.rm = TRUE),
-        count_final_outliers     = sum(count_final_outliers,     na.rm = TRUE),
-        count_final_completeness = sum(count_final_completeness, na.rm = TRUE),
-        count_final_both         = sum(count_final_both,         na.rm = TRUE)
-      ),
-      by = .(admin_area_1, indicator_common_id, period_id)
-    ]
-    ```
+**Imputed using rolling average
+
+**Interpretation**:
+
+- **None**: Raw data with obvious issues
+- **Outliers**: February corrected, but March remains missing
+- **Completeness**: March filled in, but February outlier retained
+- **Both**: Most complete and clean dataset
+
+</details>
+
+<details>
+<summary>Example 5: Geographic aggregation</summary>
+
+
+**Subnational aggregation code**:
+
+```r
+adjusted_data_admin_area_final <- adjusted_data_export[
+  ,
+  .(
+    count_final_none         = sum(count_final_none,         na.rm = TRUE),
+    count_final_outliers     = sum(count_final_outliers,     na.rm = TRUE),
+    count_final_completeness = sum(count_final_completeness, na.rm = TRUE),
+    count_final_both         = sum(count_final_both,         na.rm = TRUE)
+  ),
+  by = c(geo_admin_area_sub, "indicator_common_id", "period_id")
+]
+```
+
+**National aggregation code**:
+
+```r
+adjusted_data_national_final <- adjusted_data_export[
+  ,
+  .(
+    count_final_none         = sum(count_final_none,         na.rm = TRUE),
+    count_final_outliers     = sum(count_final_outliers,     na.rm = TRUE),
+    count_final_completeness = sum(count_final_completeness, na.rm = TRUE),
+    count_final_both         = sum(count_final_both,         na.rm = TRUE)
+  ),
+  by = .(admin_area_1, indicator_common_id, period_id)
+]
+```
+
+</details>
 
 ### Troubleshooting
 
-??? "Common issues"
+<details>
+<summary>Common issues</summary>
 
-    **Issue 1: All values remain unadjusted**
 
-    **Possible causes**:
+**Issue 1: All values remain unadjusted**
 
-    - Indicator name matches the `death|still_birth` exclusion pattern
-    - Indicator flagged as low-volume (no observation ever reached `count >= 100`)
-    - No outlier flags (`outlier_flag == 1`) and no missing values in the input data
+**Possible causes**:
 
-    **Solution**:
+- Indicator name matches the `death|still_birth` exclusion pattern
+- Indicator flagged as low-volume (no observation ever reached `count >= 100`)
+- No outlier flags (`outlier_flag == 1`) and no missing values in the input data
 
-    Check `M2_low_volume_exclusions.csv` and verify Module 1 outputs contain flags
+**Solution**:
 
-    **Issue 2: Adjusted values seem unreasonable**
+Check `M2_low_volume_exclusions.csv` and verify Module 1 outputs contain flags
 
-    **Possible causes**:
+**Issue 2: Adjusted values seem unreasonable**
 
-    - Insufficient valid historical data for rolling averages
-    - Genuine program changes being smoothed out
-    - Seasonal patterns not captured by 6-month window
+**Possible causes**:
 
-    **Solution**:
+- Insufficient valid historical data for rolling averages
+- Genuine program changes being smoothed out
+- Seasonal patterns not captured by 6-month window
 
-    - Review facility-specific time series plots
-    - Consider using "outliers only" scenario if completeness is good
-    - Validate against program implementation records
+**Solution**:
 
-    **Issue 3: Many NA values after adjustment**
+- Review facility-specific time series plots
+- Consider using "outliers only" scenario if completeness is good
+- Validate against program implementation records
 
-    **Possible causes**:
+**Issue 3: Many NA values after adjustment**
 
-    - Facility has very sparse data
-    - No valid values available for any adjustment method
-    - Early months in time series lack historical data
+**Possible causes**:
 
-    **Solution**:
+- Facility has very sparse data
+- No valid values available for any adjustment method
+- Early months in time series lack historical data
 
-    - Expected for facilities with limited reporting history
-    - Consider facility-level data quality filtering
-    - National/subnational aggregates will sum available values
+**Solution**:
 
-    **Issue 4: Subnational/national totals don't match expectations**
+- Expected for facilities with limited reporting history
+- Consider facility-level data quality filtering
+- National/subnational aggregates will sum available values
 
-    **Possible causes**:
+**Issue 4: Subnational/national totals don't match expectations**
 
-    - NA values treated as zero in aggregation
-    - Different scenarios produce different totals
-    - Low reporting completeness overall
+**Possible causes**:
 
-    **Solution**:
+- NA values treated as zero in aggregation
+- Different scenarios produce different totals
+- Low reporting completeness overall
 
-    - Compare `count_final_none` vs `count_final_both` to assess adjustment impact
-    - Review Module 1 completeness statistics
-    - Consider data quality threshold for inclusion
+**Solution**:
 
-??? "Quality assurance checks"
+- Compare `count_final_none` vs `count_final_both` to assess adjustment impact
+- Review Module 1 completeness statistics
+- Consider data quality threshold for inclusion
 
-    The module includes several quality checks:
+</details>
 
-    1. **Low volume exclusions**: Automatically identifies and excludes indicators that never reach `count >= 100`
-    2. **Adjustment tracking**: Counts and reports the number of values adjusted by each method (`roll6`, `forward`, `backward`, `same_month_last_year`, `fallback`)
-    3. **Excluded indicators**: Ensures mortality and stillbirth indicators (matched via `death|still_birth` regex) are never adjusted
-    4. **Console logging**: Provides detailed progress and summary statistics
+<details>
+<summary>Quality assurance checks</summary>
 
-    **Example console output**:
 
-    ```text
-    Running adjustments...
-     -> Adjusting outliers...
-         Roll6 adjusted: 1,245
-         Forward-filled: 89
-         Backward-filled: 67
-         Same-month LY: 34
-         Fallback mean: 12
-     -> Adjusting for completeness...
-         Roll6 filled: 2,103
-         Forward-filled: 234
-         Backward-filled: 178
-         Fallback mean: 45
-    ```
+The module includes several quality checks:
 
+1. **Low volume exclusions**: Automatically identifies and excludes indicators that never reach `count >= 100`
+2. **Adjustment tracking**: Counts and reports the number of values adjusted by each method (`roll6`, `forward`, `backward`, `same_month_last_year`, `fallback`)
+3. **Excluded indicators**: Ensures mortality and stillbirth indicators (matched via `death|still_birth` regex) are never adjusted
+4. **Console logging**: Provides detailed progress and summary statistics
+
+**Example console output**:
+
+```text
+Running adjustments...
+ -> Adjusting outliers...
+     Roll6 adjusted: 1,245
+     Forward-filled: 89
+     Backward-filled: 67
+     Same-month LY: 34
+     Fallback mean: 12
+ -> Adjusting for completeness...
+     Roll6 filled: 2,103
+     Forward-filled: 234
+     Backward-filled: 178
+     Fallback mean: 45
+```
+
+</details>
 
 ### Usage notes
 
-??? "Choosing the right scenario"
+<details>
+<summary>Choosing the right scenario</summary>
 
-    | Situation | Recommended Scenario | Rationale |
-    |-----------|---------------------|-----------|
-    | High data quality, minimal issues | `none` | No adjustment needed |
-    | Sporadic outliers, good completeness | `outliers` | Address quality without imputation |
-    | Good quality, poor reporting frequency | `completeness` | Fill gaps while preserving actual values |
-    | Poor quality and completeness | `both` | Comprehensive cleaning |
-    | Uncertainty about data quality | Compare all scenarios | Sensitivity analysis |
 
-??? "Validation steps"
+| Situation | Recommended Scenario | Rationale |
+|-----------|---------------------|-----------|
+| High data quality, minimal issues | `none` | No adjustment needed |
+| Sporadic outliers, good completeness | `outliers` | Address quality without imputation |
+| Good quality, poor reporting frequency | `completeness` | Fill gaps while preserving actual values |
+| Poor quality and completeness | `both` | Comprehensive cleaning |
+| Uncertainty about data quality | Compare all scenarios | Sensitivity analysis |
 
-    After running this module, consider:
+</details>
 
-    1. **Compare scenarios**: Examine differences between `count_final_none` and `count_final_both`
-    2. **Review exclusions**: Check `M2_low_volume_exclusions.csv` for unexpected indicators
-    3. **Aggregate analysis**: Ensure subnational and national totals are reasonable
-    4. **Temporal plots**: Visualize trends before/after adjustment to identify over-smoothing
-    5. **Facility-level spot checks**: Review adjustments for a sample of facilities
+<details>
+<summary>Validation steps</summary>
 
-??? "Limitations"
 
-    1. **Rolling windows assume stability**: Adjustments work best when service delivery is relatively stable. Genuine program changes (e.g., new campaigns) may be incorrectly smoothed.
+After running this module, consider:
 
-    2. **No adjustment uncertainty**: The module provides point estimates without confidence intervals. Adjusted values should be treated as estimates.
+1. **Compare scenarios**: Examine differences between `count_final_none` and `count_final_both`
+2. **Review exclusions**: Check `M2_low_volume_exclusions.csv` for unexpected indicators
+3. **Aggregate analysis**: Ensure subnational and national totals are reasonable
+4. **Temporal plots**: Visualize trends before/after adjustment to identify over-smoothing
+5. **Facility-level spot checks**: Review adjustments for a sample of facilities
 
-    3. **Facility-specific adjustments**: No cross-facility borrowing of information. Facilities with very sparse data may have unstable adjustments.
+</details>
 
-    4. **Seasonal patterns**: While same-month-last-year helps, strong within-year seasonality may not be fully captured by 6-month windows.
+<details>
+<summary>Limitations</summary>
 
-    5. **NA treatment in aggregation**: Missing values are treated as zero when summing to higher geographic levels, which may underestimate totals if missingness is high.
+
+1. **Rolling windows assume stability**: Adjustments work best when service delivery is relatively stable. Genuine program changes (e.g., new campaigns) may be incorrectly smoothed.
+
+2. **No adjustment uncertainty**: The module provides point estimates without confidence intervals. Adjusted values should be treated as estimates.
+
+3. **Facility-specific adjustments**: No cross-facility borrowing of information. Facilities with very sparse data may have unstable adjustments.
+
+4. **Seasonal patterns**: While same-month-last-year helps, strong within-year seasonality may not be fully captured by 6-month windows.
+
+5. **NA treatment in aggregation**: Missing values are treated as zero when summing to higher geographic levels, which may underestimate totals if missingness is high.
+
+</details>
 
 ---
 
@@ -880,178 +987,16 @@ For the combined adjustment heatmap (output 3):
 ////////////////////////////////////////////////////////////////////
 -->
 
-<!-- SLIDE:m5_1 -->
-## Rationale for data quality adjustment
 
-Routine HMIS data contain two common limitations that can distort analytical results:
-- **Outliers:** Extreme values create artificial spikes in service volumes
-- **Incomplete reporting:** Missing data creates artificial declines that do not reflect actual service delivery
 
-FASTR addresses these limitations by replacing problematic values with estimates derived from each facility's historical reporting patterns.
-
-**Adjustment scenarios:** To support transparency and sensitivity analysis, FASTR produces four parallel datasets:
-- **Unadjusted:** Original reported values
-- **Outliers adjusted:** Extreme values replaced
-- **Completeness adjusted:** Missing values imputed
-- **Both adjusted:** All corrections applied
-<!-- /SLIDE -->
-
-<!-- SLIDE:m5_2 -->
-## Outlier adjustment methodology
-
-Outlier values are replaced using facility-specific historical data. The adjustment follows a hierarchical approach:
-
-| Priority | Method | Application |
-|----------|--------|-------------|
-| 1 | Centered 6-month average | 3 months before + 3 months after the outlier |
-| 2 | Forward 6-month average | When insufficient preceding data (e.g., start of series) |
-| 3 | Backward 6-month average | When insufficient following data (e.g., end of series) |
-| 4 | Same month, previous year | When rolling averages unavailable; useful for seasonal indicators |
-| 5 | Facility historical mean | Mean of all valid values for this indicator at this facility |
-<!-- /SLIDE -->
-
-<!-- SLIDE:m5_3 -->
-## Completeness adjustment methodology
-
-For months identified as incomplete or missing, values are imputed using the same 6-month rolling average approach applied to outlier adjustment.
-
-| Priority | Method | Application |
-|----------|--------|-------------|
-| 1 | Centered 6-month average | When sufficient data exists before and after the gap |
-| 2 | Forward 6-month average | For gaps at the start of the time series |
-| 3 | Backward 6-month average | For gaps at the end of the time series |
-| 4 | Facility historical mean | Mean of all valid values for this indicator at this facility |
-
-This approach prevents temporary reporting gaps from creating artificial declines in service volumes.
-<!-- /SLIDE -->
 
 
 <!-- ═══════════════════════════════════════════════════════════════════════════
      CONDENSED SLIDES: Methods + Interpretation Combined
 ═══════════════════════════════════════════════════════════════════════════ -->
 
-<!-- SLIDE:m5_s1 -->
-## Data quality adjustment
 
-**Why adjust?** Outliers and reporting gaps identified in the DQA will distort service utilization and coverage estimates if left uncorrected. The goal is to replace problematic values with reasonable estimates based on each facility's own historical patterns.
 
-**How?** Outliers and missing values are replaced using 6-month rolling averages from the facility's historical data.
 
-**Four parallel datasets:** FASTR produces unadjusted, outliers-only adjusted, completeness-only adjusted, and both-adjusted versions. This enables sensitivity analysis - comparing results across scenarios to assess how much conclusions depend on adjustment choices.
 
-**Excluded from adjustment:** Mortality indicators (discrete events that shouldn't be smoothed) and low-volume indicators (<100 events/month, where adjustment adds noise).
 
-<!--
-PRESENTER NOTES:
-- Condensed overview of adjustment rationale and methods
-- Key message: adjustment enables analysis despite DQ limitations
-- Four scenarios support sensitivity analysis - important for transparency
-- Not everything should be adjusted - mortality and low-volume excluded
--->
-<!-- /SLIDE -->
-
-<!-- SLIDE:m5_s1a -->
-## Why adjust for outliers?
-
-![Why adjust for outliers — before and after](/methodology/resources/diagrams/why_adjust_outliers.svg)
-
-<!--
-PRESENTER NOTES:
-- Visual example showing the impact of outlier adjustment
-- Left panel shows raw data with a spike caused by a data entry error
-- Right panel shows the same data after outlier adjustment using rolling averages
-- Key point: the underlying trend is preserved while the artificial spike is removed
-- This makes downstream service utilization and coverage estimates more reliable
--->
-<!-- /SLIDE -->
-
-<!-- SLIDE:m5_s2 -->
-## Outlier adjustment output
-
-<div style="display: flex; gap: 1em; align-items: flex-start;">
-<div style="flex: 1.2;">
-
-![Outlier adjustment](/methodology/resources/default_outputs/Default_1._Percent_change_in_volume_due_to_outlier_adjustment.png)
-
-</div>
-<div style="flex: 1; font-size: 0.85em;">
-
-**What you see:** Heatmap showing how much service volume changed after replacing outliers with rolling averages.
-
-**Formula:** % change = (adjusted - original) / original × 100
-
-**Interpretation:** Values are typically negative (outliers removed reduce volume). Large adjustments warrant investigation into their source.
-
-</div>
-</div>
-<!-- /SLIDE -->
-
-<!-- SLIDE:m5_1b -->
-## Indicators excluded from adjustment
-
-Certain indicators are excluded from the adjustment process:
-
-- **Mortality indicators** (maternal deaths, neonatal deaths, under-5 deaths): These represent discrete events where smoothing or imputation is not appropriate
-- **Low-volume indicators**: Indicators that never exceed 100 reported events in any month are excluded from adjustment
-
-<!--
-PRESENTER NOTES:
-- This module addresses the issues identified in DQA
-- Key concept: we replace problematic values with estimates based on facility's own history
-- Four parallel datasets allow sensitivity analysis - how much do results change?
-- Mortality excluded because smoothing discrete rare events is inappropriate
-- Low-volume excluded because adjustment adds noise to already sparse data
--->
-<!-- /SLIDE -->
-
-<!-- SLIDE:m5_s0 -->
-## Data correction: how FASTR fixes problems
-
-Rather than throwing away problematic data, FASTR **replaces it with reasonable estimates** — like replacing a faulty meter reading with the average of surrounding months.
-
-**Extreme values →** Replaced by the average of the 6 months around them
-**Missing months →** Filled in with the facility's historical trend
-
-FASTR produces **4 versions** of the data for comparison:
-
-| Version | What it contains |
-|---------|-----------------|
-| Raw data | No modifications |
-| Outliers corrected | Extreme spikes smoothed |
-| Completeness adjusted | Missing months filled |
-| Both adjustments | Spikes smoothed + missing months filled |
-
-You can compare results across all 4 versions. If your conclusions change, that's a signal that data quality deserves attention.
-<!-- /SLIDE -->
-
-<!-- SLIDE:m5_s2b -->
-<!-- _class: output -->
-## Completeness adjustment output
-
-<div class="output-layout">
-<div class="output-viz">
-
-![Completeness adjustment](/methodology/resources/default_outputs/Default_2._Percent_change_in_volume_due_to_completeness_adjustment.png)
-
-</div>
-<div class="output-text">
-
-**What you see:** Heatmap showing how much service volume changed after imputing missing data with rolling averages.
-
-**Formula:** % change = (adjusted - original) / original × 100
-
-**Interpretation:** Values are typically positive (imputation adds volume). Large adjustments indicate areas needing completeness improvement.
-
-</div>
-</div>
-
-<!--
-PRESENTER NOTES:
-- Two outputs shown: outlier adjustment and completeness adjustment
-- Outlier heatmap: negative values mean outliers were removed (reduced inflated counts)
-- Completeness heatmap: positive values mean gaps were filled (increased total volume)
-- Large adjustments (dark colors) indicate areas/indicators with data quality issues
-- Use these to identify where to focus data quality improvement efforts
-- Compare regions: which have more outlier issues vs completeness issues?
--->
-<!-- /SLIDE -->

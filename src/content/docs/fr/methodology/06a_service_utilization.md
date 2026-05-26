@@ -169,954 +169,1023 @@ Pour le graphique de variation de volume (résultat 4) :
 
 ### Paramètres de configuration
 
-??? "Paramètres d'analyse de base"
+<details>
+<summary>Paramètres d'analyse de base</summary>
 
-    | Paramètre | Valeur par défaut | Type | Description | Guide de réglage |
-    |-----------|---------|------|-------------|-----------------|
-    | `COUNTRY_ISO3` | "ISO3" | Chaîne | Code de pays à trois lettres | Définissez votre code de pays (par exemple, "RWA", "UGA", "ZMB") |
-    | `SELECTEDCOUNT` | "count_final_outliers" | Chaîne | Colonne de données utilisée pour la modélisation par régression | Options : `count_final_none`, `count_final_outliers`, `count_final_completeness`, `count_final_both` |
-    | `VISUALIZATIONCOUNT` | "count_final_outliers" | Chaîne | Colonne de données utilisée pour la visualisation | Mêmes options que `SELECTEDCOUNT` ; peut différer si vous souhaitez modéliser sur l'une et représenter graphiquement l'autre |
 
-??? "Paramètres de la carte de contrôle"
+| Paramètre | Valeur par défaut | Type | Description | Guide de réglage |
+|-----------|---------|------|-------------|-----------------|
+| `COUNTRY_ISO3` | "ISO3" | Chaîne | Code de pays à trois lettres | Définissez votre code de pays (par exemple, "RWA", "UGA", "ZMB") |
+| `SELECTEDCOUNT` | "count_final_outliers" | Chaîne | Colonne de données utilisée pour la modélisation par régression | Options : `count_final_none`, `count_final_outliers`, `count_final_completeness`, `count_final_both` |
+| `VISUALIZATIONCOUNT` | "count_final_outliers" | Chaîne | Colonne de données utilisée pour la visualisation | Mêmes options que `SELECTEDCOUNT` ; peut différer si vous souhaitez modéliser sur l'une et représenter graphiquement l'autre |
 
-    | Paramètre | Valeur par défaut | Type | Description | Guide de réglage |
-    |-----------|---------|------|-------------|-----------------|
-    | `SMOOTH_K` | 7 | Entier (impair) | Taille de la fenêtre médiane mobile en mois | Valeurs plus grandes = tendances plus lisses, moins de sensibilité. Il doit s'agir d'un nombre impair (par exemple, 5, 7, 9, 11) |
-    | `MADS_THRESHOLD` | 1.5 | Numérique | Seuil des unités MAD pour les fortes perturbations | Plus bas = plus sensible (par exemple, 1.0), plus haut = plus conservateur (par exemple, 2.0) |
-    | `DIP_THRESHOLD` | 0.90 | Numérique | Seuil de proportion pour les baisses soutenues | 0.90 = marquer si en dessous de 90% de la valeur attendue (baisse de 10%). Utiliser 0.80 pour un seuil de chute de 20% |
-    | `DIFFPERCENT` | 10 | Numérique | Seuil de pourcentage pour le tracé des perturbations | Si la valeur réelle diffère de la valeur prédite de >10%, utiliser la valeur prédite dans les visualisations |
+</details>
 
-    **Note** : `RISE_THRESHOLD` est automatiquement calculé comme `1 / DIP_THRESHOLD` (par défaut : ~1.11) pour refléter symétriquement la détection de la baisse.
+<details>
+<summary>Paramètres de la carte de contrôle</summary>
 
-??? "Paramètres d'analyse géographique"
 
-    | Paramètre | Valeur par défaut | Type | Description | Guide de réglage |
-    |-----------|---------|------|-------------|-----------------|
-    | `CONTROL_CHART_LEVEL` | Auto-défini | Chaîne | Niveau géographique pour les cartes de contrôle | Réglage automatique basé sur `RUN_DISTRICT_MODEL` et `RUN_ADMIN_AREA_4_ANALYSIS` |
-    | `RUN_DISTRICT_MODEL` | FALSE | Logique | Exécuter ou non les régressions admin_area_3 | Mettre TRUE pour l'analyse au niveau du district (augmente le temps d'exécution) |
-    | `RUN_ADMIN_AREA_4_ANALYSIS` | FALSE | Logique | Exécuter ou non l'analyse admin_area_4 | Mettre TRUE pour l'analyse au niveau le plus fin (très lent pour les grands ensembles de données) |
+| Paramètre | Valeur par défaut | Type | Description | Guide de réglage |
+|-----------|---------|------|-------------|-----------------|
+| `SMOOTH_K` | 7 | Entier (impair) | Taille de la fenêtre médiane mobile en mois | Valeurs plus grandes = tendances plus lisses, moins de sensibilité. Il doit s'agir d'un nombre impair (par exemple, 5, 7, 9, 11) |
+| `MADS_THRESHOLD` | 1.5 | Numérique | Seuil des unités MAD pour les fortes perturbations | Plus bas = plus sensible (par exemple, 1.0), plus haut = plus conservateur (par exemple, 2.0) |
+| `DIP_THRESHOLD` | 0.90 | Numérique | Seuil de proportion pour les baisses soutenues | 0.90 = marquer si en dessous de 90% de la valeur attendue (baisse de 10%). Utiliser 0.80 pour un seuil de chute de 20% |
+| `DIFFPERCENT` | 10 | Numérique | Seuil de pourcentage pour le tracé des perturbations | Si la valeur réelle diffère de la valeur prédite de >10%, utiliser la valeur prédite dans les visualisations |
 
-??? "Paramètres de la source de données"
+**Note** : `RISE_THRESHOLD` est automatiquement calculé comme `1 / DIP_THRESHOLD` (par défaut : ~1.11) pour refléter symétriquement la détection de la baisse.
 
-    | Paramètre | Valeur par défaut | Type | Description |
-    |-----------|---------|------|-------------|
-    | `PROJECT_DATA_HMIS` | "hmis_ISO3.csv" | Chaîne | Nom de fichier pour les données SIGS brutes |
+</details>
 
-??? "Guide de sélection des paramètres"
+<details>
+<summary>Paramètres d'analyse géographique</summary>
 
-    **Pour l'analyse à haute sensibilité** (détection des petites perturbations) :
-    - `MADS_THRESHOLD = 1.0`
-    - `DIP_THRESHOLD = 0.95` (baisse de 5%)
-    - `SMOOTH_K = 5` (moins de lissage)
 
-    **Pour une analyse conservatrice** (seulement les perturbations majeures) :
-    - `MADS_THRESHOLD = 2.0`
-    - `DIP_THRESHOLD = 0.80` (baisse de 20%)
-    - `SMOOTH_K = 9` ou `11` (plus de lissage)
+| Paramètre | Valeur par défaut | Type | Description | Guide de réglage |
+|-----------|---------|------|-------------|-----------------|
+| `CONTROL_CHART_LEVEL` | Auto-défini | Chaîne | Niveau géographique pour les cartes de contrôle | Réglage automatique basé sur `RUN_DISTRICT_MODEL` et `RUN_ADMIN_AREA_4_ANALYSIS` |
+| `RUN_DISTRICT_MODEL` | FALSE | Logique | Exécuter ou non les régressions admin_area_3 | Mettre TRUE pour l'analyse au niveau du district (augmente le temps d'exécution) |
+| `RUN_ADMIN_AREA_4_ANALYSIS` | FALSE | Logique | Exécuter ou non l'analyse admin_area_4 | Mettre TRUE pour l'analyse au niveau le plus fin (très lent pour les grands ensembles de données) |
 
-    **Pour une exécution plus rapide** :
-    - `RUN_DISTRICT_MODEL = FALSE`
-    - `RUN_ADMIN_AREA_4_ANALYSIS = FALSE`
-    - `CONTROL_CHART_LEVEL = "admin_area_2"`
+</details>
+
+<details>
+<summary>Paramètres de la source de données</summary>
+
+
+| Paramètre | Valeur par défaut | Type | Description |
+|-----------|---------|------|-------------|
+| `PROJECT_DATA_HMIS` | "hmis_ISO3.csv" | Chaîne | Nom de fichier pour les données SIGS brutes |
+
+</details>
+
+<details>
+<summary>Guide de sélection des paramètres</summary>
+
+
+**Pour l'analyse à haute sensibilité** (détection des petites perturbations) :
+- `MADS_THRESHOLD = 1.0`
+- `DIP_THRESHOLD = 0.95` (baisse de 5%)
+- `SMOOTH_K = 5` (moins de lissage)
+
+**Pour une analyse conservatrice** (seulement les perturbations majeures) :
+- `MADS_THRESHOLD = 2.0`
+- `DIP_THRESHOLD = 0.80` (baisse de 20%)
+- `SMOOTH_K = 9` ou `11` (plus de lissage)
+
+**Pour une exécution plus rapide** :
+- `RUN_DISTRICT_MODEL = FALSE`
+- `RUN_ADMIN_AREA_4_ANALYSIS = FALSE`
+- `CONTROL_CHART_LEVEL = "admin_area_2"`
+
+</details>
 
 ### Spécifications des entrées/sorties
 
-??? "Exigences d'entrée"
+<details>
+<summary>Exigences d'entrée</summary>
 
-    #### Entrées primaires
 
-    1. **`M2_adjusted_data.csv`** (source de données principale)
-       - Résultat du module 2 (Ajustements de la qualité des données)
-       - Contient des comptes de services ajustés avec différentes hypothèses de complétude
-       - Colonnes obligatoires : `facility_id`, `indicator_common_id`, `period_id`, `count_final_none`, `count_final_outliers`, `count_final_completeness`, `count_final_both`
+#### Entrées primaires
 
-    2. **`M1_output_outliers.csv`**
-       - Résultat du module 1 (Évaluation de la qualité des données)
-       - Contient `outlier_flag` pour identifier et exclure les points de données anormaux
-       - Colonnes requises : `facility_id`, `indicator_common_id`, `period_id`, `outlier_flag`
+1. **`M2_adjusted_data.csv`** (source de données principale)
+   - Résultat du module 2 (Ajustements de la qualité des données)
+   - Contient des comptes de services ajustés avec différentes hypothèses de complétude
+   - Colonnes obligatoires : `facility_id`, `indicator_common_id`, `period_id`, `count_final_none`, `count_final_outliers`, `count_final_completeness`, `count_final_both`
 
-    3. **`hmis_ISO3.csv`** (utilisé uniquement pour la recherche géographique)
-       - Fichier SIGS brut utilisé uniquement pour extraire la correspondance facility_id → admin_area_1
-       - Requis car M2_adjusted_data.csv n'inclut pas admin_area_1
-       - Colonnes requises : `facility_id`, `admin_area_1`
+2. **`M1_output_outliers.csv`**
+   - Résultat du module 1 (Évaluation de la qualité des données)
+   - Contient `outlier_flag` pour identifier et exclure les points de données anormaux
+   - Colonnes requises : `facility_id`, `indicator_common_id`, `period_id`, `outlier_flag`
 
-    #### Exigences en matière de données
+3. **`hmis_ISO3.csv`** (utilisé uniquement pour la recherche géographique)
+   - Fichier SIGS brut utilisé uniquement pour extraire la correspondance facility_id → admin_area_1
+   - Requis car M2_adjusted_data.csv n'inclut pas admin_area_1
+   - Colonnes requises : `facility_id`, `admin_area_1`
 
-    - **Couverture temporelle** : Minimum 12 mois de données pour la modélisation saisonnière
-    - **Complétude des données** : Les mois manquants sont comblés par interpolation
-    - **Complétude géographique** : Données aux niveaux administratifs spécifiés
-    - **Données de comptage** : Chiffres entiers non négatifs (les prédictions sont limitées à zéro)
+#### Exigences en matière de données
 
-    ### Sorties
+- **Couverture temporelle** : Minimum 12 mois de données pour la modélisation saisonnière
+- **Complétude des données** : Les mois manquants sont comblés par interpolation
+- **Complétude géographique** : Données aux niveaux administratifs spécifiés
+- **Données de comptage** : Chiffres entiers non négatifs (les prédictions sont limitées à zéro)
 
-    #### 1. Résultats de la carte de contrôle
+### Sorties
 
-    **`M3_chartout.csv`**
+#### 1. Résultats de la carte de contrôle
 
-    **Objectif** : Contient les perturbations signalées lors de l'analyse de la carte de contrôle
+**`M3_chartout.csv`**
 
-    **Colonnes** :
+**Objectif** : Contient les perturbations signalées lors de l'analyse de la carte de contrôle
 
-    - `admin_area_*` : Identifiant géographique (le niveau dépend de `CONTROL_CHART_LEVEL`)
-    - `indicator_common_id` : Code de l'indicateur de service de santé
-    - `period_id` : Période au format AAAAMM
-    - `tagged` : Indicateur binaire (1 = perturbation détectée, 0 = normal)
+**Colonnes** :
 
-    **Utilisation** : Identifie les mois qui nécessitent un examen plus approfondi pour chaque combinaison indicateur-géographie
+- `admin_area_*` : Identifiant géographique (le niveau dépend de `CONTROL_CHART_LEVEL`)
+- `indicator_common_id` : Code de l'indicateur de service de santé
+- `period_id` : Période au format AAAAMM
+- `tagged` : Indicateur binaire (1 = perturbation détectée, 0 = normal)
 
-    **`M3_service_utilization.csv`**
+**Utilisation** : Identifie les mois qui nécessitent un examen plus approfondi pour chaque combinaison indicateur-géographie
 
-    **But** : Copie de passage des données ajustées pour la visualisation
+**`M3_service_utilization.csv`**
 
-    **Source** : Copie directe de `M2_adjusted_data.csv`
+**But** : Copie de passage des données ajustées pour la visualisation
 
-    **Utilisation** : Fournit des données de base pour le tracé des volumes de service réels
+**Source** : Copie directe de `M2_adjusted_data.csv`
 
-    **`M3_memory_log.txt`**
+**Utilisation** : Fournit des données de base pour le tracé des volumes de service réels
 
-    **But** : Suivi de l'utilisation de la mémoire tout au long de l'exécution
+**`M3_memory_log.txt`**
 
-    **Utilisation** : Diagnostics pour l'optimisation des performances et le dépannage
+**But** : Suivi de l'utilisation de la mémoire tout au long de l'exécution
 
-    #### 2. Résultats de l'analyse des perturbations
+**Utilisation** : Diagnostics pour l'optimisation des performances et le dépannage
 
-    **`M3_disruptions_analysis_admin_area_1.csv`** (niveau national - toujours généré)
+#### 2. Résultats de l'analyse des perturbations
 
-    **Colonnes** :
+**`M3_disruptions_analysis_admin_area_1.csv`** (niveau national - toujours généré)
 
-    - `admin_area_1` : Nom du pays
-    - `indicator_common_id` : Indicateur de service de santé
-    - `period_id` : Période (YYYYMM)
-    - `count_sum` : Volume réel des services (somme de tous les établissements)
-    - `count_expect_sum` : Volume de service attendu (somme des prévisions)
-    - `count_expected_if_above_diff_threshold` : Valeur pour le tracé (attendue si |différence| > DIFFPERCENT, sinon réelle)
+**Colonnes** :
 
-    **`M3_disruptions_analysis_admin_area_2.csv`** (niveau province - toujours généré)
+- `admin_area_1` : Nom du pays
+- `indicator_common_id` : Indicateur de service de santé
+- `period_id` : Période (YYYYMM)
+- `count_sum` : Volume réel des services (somme de tous les établissements)
+- `count_expect_sum` : Volume de service attendu (somme des prévisions)
+- `count_expected_if_above_diff_threshold` : Valeur pour le tracé (attendue si |différence| > DIFFPERCENT, sinon réelle)
 
-    **Colonne supplémentaire** : `admin_area_2` (nom de la province/région)
+**`M3_disruptions_analysis_admin_area_2.csv`** (niveau province - toujours généré)
 
-    **Même structure** : Comme le fichier admin_area_1 mais désagrégé par province
+**Colonne supplémentaire** : `admin_area_2` (nom de la province/région)
 
-    **`M3_disruptions_analysis_admin_area_3.csv`** (niveau du district - conditionnel)
+**Même structure** : Comme le fichier admin_area_1 mais désagrégé par province
 
-    **Généré quand** : `RUN_DISTRICT_MODEL = TRUE`
+**`M3_disruptions_analysis_admin_area_3.csv`** (niveau du district - conditionnel)
 
-    **Colonnes supplémentaires** : `admin_area_2`, `admin_area_3`
+**Généré quand** : `RUN_DISTRICT_MODEL = TRUE`
 
-    **Même structure** : Comme ci-dessus mais désagrégé par district
+**Colonnes supplémentaires** : `admin_area_2`, `admin_area_3`
 
-    **`M3_disruptions_analysis_admin_area_4.csv`** (niveau du quartier - conditionnel)
+**Même structure** : Comme ci-dessus mais désagrégé par district
 
-    **Généré quand** : `RUN_ADMIN_AREA_4_ANALYSIS = TRUE`
+**`M3_disruptions_analysis_admin_area_4.csv`** (niveau du quartier - conditionnel)
 
-    **Colonnes supplémentaires** : `admin_area_2`, `admin_area_3`, `admin_area_4`
+**Généré quand** : `RUN_ADMIN_AREA_4_ANALYSIS = TRUE`
 
-    **Avertissement** : Fichier très volumineux pour les pays comportant de nombreuses circonscriptions
+**Colonnes supplémentaires** : `admin_area_2`, `admin_area_3`, `admin_area_4`
 
-    #### 3. Fichiers de synthèse des déficits/excédents
+**Avertissement** : Fichier très volumineux pour les pays comportant de nombreuses circonscriptions
 
-    **`M3_all_indicators_shortfalls_admin_area_*.csv`** (un pour chaque niveau géographique)
+#### 3. Fichiers de synthèse des déficits/excédents
 
-    **But** : Mesures pré-calculées des déficits et des excédents pour les rapports
+**`M3_all_indicators_shortfalls_admin_area_*.csv`** (un pour chaque niveau géographique)
 
-    **Colonnes communes** :
+**But** : Mesures pré-calculées des déficits et des excédents pour les rapports
 
-    - Identifiant(s) géographique(s) : `admin_area_*`
-    - `indicator_common_id` : Indicateur de service de santé
-    - `period_id` : Période (YYYYMM)
-    - `count_sum` : Volume de service réel
-    - `count_expect_sum` : Volume de service attendu
-    - `shortfall_absolute` : Nombre absolu de services manquants (si perturbation négative)
-    - `shortfall_percent` : Pourcentage d'insuffisance par rapport aux prévisions
-    - `surplus_absolute` : Nombre absolu de services excédentaires (en cas de perturbation positive)
-    - `surplus_percent` : Pourcentage d'excédent par rapport aux prévisions
+**Colonnes communes** :
 
-    **Note** : Si les niveaux géographiques optionnels sont désactivés, des fichiers de remplacement vides sont créés pour assurer la compatibilité avec les processus en aval.
+- Identifiant(s) géographique(s) : `admin_area_*`
+- `indicator_common_id` : Indicateur de service de santé
+- `period_id` : Période (YYYYMM)
+- `count_sum` : Volume de service réel
+- `count_expect_sum` : Volume de service attendu
+- `shortfall_absolute` : Nombre absolu de services manquants (si perturbation négative)
+- `shortfall_percent` : Pourcentage d'insuffisance par rapport aux prévisions
+- `surplus_absolute` : Nombre absolu de services excédentaires (en cas de perturbation positive)
+- `surplus_percent` : Pourcentage d'excédent par rapport aux prévisions
 
-    #### Fichiers temporaires (nettoyés automatiquement)
+**Note** : Si les niveaux géographiques optionnels sont désactivés, des fichiers de remplacement vides sont créés pour assurer la compatibilité avec les processus en aval.
 
-    Pendant l'exécution, le module crée des fichiers batch temporaires pour la gestion de la mémoire :
-    - `M3_temp_controlchart_batch_*.csv`
-    - `M3_temp_indicator_batch_*.csv`
-    - `M3_temp_province_batch_*.csv`
-    - `M3_temp_district_batch_*.csv`
-    - `M3_temp_admin4_batch_*.csv`
+#### Fichiers temporaires (nettoyés automatiquement)
 
-    Ces fichiers sont automatiquement supprimés en cas de succès. Si le script se plante, ces fichiers peuvent subsister et seront nettoyés lors de la prochaine exécution.
+Pendant l'exécution, le module crée des fichiers batch temporaires pour la gestion de la mémoire :
+- `M3_temp_controlchart_batch_*.csv`
+- `M3_temp_indicator_batch_*.csv`
+- `M3_temp_province_batch_*.csv`
+- `M3_temp_district_batch_*.csv`
+- `M3_temp_admin4_batch_*.csv`
+
+Ces fichiers sont automatiquement supprimés en cas de succès. Si le script se plante, ces fichiers peuvent subsister et seront nettoyés lors de la prochaine exécution.
+
+</details>
 
 ### Documentation des fonctions clés
 
-??? "`robust_control_chart(panel_data, selected_count)`"
+<details>
+<summary>`robust_control_chart(panel_data, selected_count)`</summary>
 
-    **Objectif** : Identifie les anomalies dans l'utilisation des services en utilisant une régression robuste et des limites de contrôle basées sur le MAD.
 
-    **Entrées** :
+**Objectif** : Identifie les anomalies dans l'utilisation des services en utilisant une régression robuste et des limites de contrôle basées sur le MAD.
 
-    - `panel_data` : Données de séries temporelles pour une combinaison spécifique indicateur-géographie
-    - `selected_count` : Nom de la colonne contenant les comptes de volume de services à analyser
+**Entrées** :
 
-    **Processus** :
+- `panel_data` : Données de séries temporelles pour une combinaison spécifique indicateur-géographie
+- `selected_count` : Nom de la colonne contenant les comptes de volume de services à analyser
 
-    1. Ajuste un modèle linéaire robuste (en utilisant `MASS::rlm()`) avec des contrôles saisonniers et des tendances temporelles
-    2. Applique un lissage de la médiane roulante aux valeurs prédites pour réduire le bruit
-    3. Calcule les résidus et les normalise en utilisant l'écart absolu médian (MAD)
-    4. Applique une logique d'étiquetage basée sur des règles pour identifier les différents types de perturbations
-    5. Signale automatiquement les mois récents afin d'assurer une détection rapide
+**Processus** :
 
-    **Résultats** :
+1. Ajuste un modèle linéaire robuste (en utilisant `MASS::rlm()`) avec des contrôles saisonniers et des tendances temporelles
+2. Applique un lissage de la médiane roulante aux valeurs prédites pour réduire le bruit
+3. Calcule les résidus et les normalise en utilisant l'écart absolu médian (MAD)
+4. Applique une logique d'étiquetage basée sur des règles pour identifier les différents types de perturbations
+5. Signale automatiquement les mois récents afin d'assurer une détection rapide
 
-    - `count_predict` : Prédiction du volume de services à partir d'une régression robuste
-    - `count_smooth` : Prédictions lissées à l'aide de la médiane roulante
-    - `residual` : Différence entre les valeurs réelles et les valeurs lissées
-    - `robust_control` : Résidu standardisé (résidu/MAD)
-    - `tagged` : Indicateur binaire (1 = perturbation détectée, 0 = variation normale)
-    - Drapeaux supplémentaires : `tag_sharp`, `tag_sustained`, `tag_sustained_dip`, `tag_sustained_rise`, `tag_missing`
+**Résultats** :
 
-    **Caractéristiques clés** :
+- `count_predict` : Prédiction du volume de services à partir d'une régression robuste
+- `count_smooth` : Prédictions lissées à l'aide de la médiane roulante
+- `residual` : Différence entre les valeurs réelles et les valeurs lissées
+- `robust_control` : Résidu standardisé (résidu/MAD)
+- `tagged` : Indicateur binaire (1 = perturbation détectée, 0 = variation normale)
+- Drapeaux supplémentaires : `tag_sharp`, `tag_sustained`, `tag_sustained_dip`, `tag_sustained_rise`, `tag_missing`
 
-    - Traite les données manquantes avec élégance grâce à l'interpolation
-    - Utilise une régression robuste pour minimiser l'influence des valeurs aberrantes
-    - Utilise plusieurs règles de détection des perturbations pour différents modèles
-    - Assure des prédictions non négatives (les comptes ne peuvent pas être négatifs)
+**Caractéristiques clés** :
 
-    ### Modèles de régression par panel
+- Traite les données manquantes avec élégance grâce à l'interpolation
+- Utilise une régression robuste pour minimiser l'influence des valeurs aberrantes
+- Utilise plusieurs règles de détection des perturbations pour différents modèles
+- Assure des prédictions non négatives (les comptes ne peuvent pas être négatifs)
 
-    L'analyse des perturbations utilise des modèles de régression en panel (`fixest::feols()`) à plusieurs niveaux géographiques. Des régressions distinctes sont effectuées pour chaque unité géographique à chaque niveau, avec des erreurs types groupées pour tenir compte de la corrélation à l'intérieur de la zone.
+### Modèles de régression par panel
 
-    **Modèle national** (admin_area_1) :
+L'analyse des perturbations utilise des modèles de régression en panel (`fixest::feols()`) à plusieurs niveaux géographiques. Des régressions distinctes sont effectuées pour chaque unité géographique à chaque niveau, avec des erreurs types groupées pour tenir compte de la corrélation à l'intérieur de la zone.
 
-    ```r
-    count ~ date + factor(month) + tagged
-    ```
+**Modèle national** (admin_area_1) :
 
-    Régression unique sur l'ensemble des établissements, avec erreurs standard groupées au niveau du district (`admin_area_3`) lorsque plus d'un district est disponible ; sinon, sans regroupement.
+```r
+count ~ date + factor(month) + tagged
+```
 
-    **Modèles au niveau de la province** (admin_area_2) :
+Régression unique sur l'ensemble des établissements, avec erreurs standard groupées au niveau du district (`admin_area_3`) lorsque plus d'un district est disponible ; sinon, sans regroupement.
 
-    ```r
-    count ~ date + factor(month) + tagged
-    ```
+**Modèles au niveau de la province** (admin_area_2) :
 
-    Régression séparée pour chaque province, avec erreurs standard groupées au niveau du district lorsque plus d'un district est disponible ; sinon, sans regroupement.
+```r
+count ~ date + factor(month) + tagged
+```
 
-    **Modèles au niveau du district** (admin_area_3 - optionnel) :
+Régression séparée pour chaque province, avec erreurs standard groupées au niveau du district lorsque plus d'un district est disponible ; sinon, sans regroupement.
 
-    ```r
-    count ~ date + factor(month) + tagged
-    ```
+**Modèles au niveau du district** (admin_area_3 - optionnel) :
 
-    Régression séparée pour chaque district (minimum 10 observations requises), avec erreurs standard groupées au niveau du quartier (`admin_area_4`) lorsque plus d'un quartier est disponible ; sinon, sans regroupement.
+```r
+count ~ date + factor(month) + tagged
+```
 
-    **Modèles au niveau du quartier** (admin_area_4 - optionnel) :
+Régression séparée pour chaque district (minimum 10 observations requises), avec erreurs standard groupées au niveau du quartier (`admin_area_4`) lorsque plus d'un quartier est disponible ; sinon, sans regroupement.
 
-    ```r
-    count ~ date + factor(month) + tagged
-    ```
+**Modèles au niveau du quartier** (admin_area_4 - optionnel) :
 
-    Régression séparée pour chaque quartier/unité finale (minimum 8 observations requises, pas de regroupement).
+```r
+count ~ date + factor(month) + tagged
+```
 
-    ### Fonctions de soutien
+Régression séparée pour chaque quartier/unité finale (minimum 8 observations requises, pas de regroupement).
 
-    **`mem_usage(msg)`** : Suivi et enregistrement de la consommation de mémoire tout au long de l'exécution
+### Fonctions de soutien
 
-    **Traitement des données** :
+**`mem_usage(msg)`** : Suivi et enregistrement de la consommation de mémoire tout au long de l'exécution
 
-    - Traitement par lots avec des fichiers temporaires sur disque pour une meilleure efficacité de la mémoire
-    - Opérations data.table efficaces pour les grands ensembles de données
-    - Stratégies d'agrégation et de fusion progressives
+**Traitement des données** :
+
+- Traitement par lots avec des fichiers temporaires sur disque pour une meilleure efficacité de la mémoire
+- Opérations data.table efficaces pour les grands ensembles de données
+- Stratégies d'agrégation et de fusion progressives
+
+</details>
 
 ### Méthodes et algorithmes statistiques
 
-??? "Analyse des cartes de contrôle"
+<details>
+<summary>Analyse des cartes de contrôle</summary>
 
-    Les volumes de services sont agrégés au niveau géographique spécifié (configurable via `CONTROL_CHART_LEVEL`). Le pipeline supprime les valeurs aberrantes (`outlier_flag == 1`), complète les mois manquants et filtre les mois à faible volume (<50% du volume moyen global).
 
-    Un modèle de régression robuste estime les volumes de services attendus par indicateur × zone géographique (`panelvar`). Une médiane roulante centrée est appliquée pour lisser les valeurs prédites. Les résidus (réels - lissés) sont normalisés à l'aide de MAD. Les perturbations sont identifiées à l'aide d'un système de marquage basé sur des règles.
+Les volumes de services sont agrégés au niveau géographique spécifié (configurable via `CONTROL_CHART_LEVEL`). Le pipeline supprime les valeurs aberrantes (`outlier_flag == 1`), complète les mois manquants et filtre les mois à faible volume (<50% du volume moyen global).
 
-    #### Règles de détection des perturbations
+Un modèle de régression robuste estime les volumes de services attendus par indicateur × zone géographique (`panelvar`). Une médiane roulante centrée est appliquée pour lisser les valeurs prédites. Les résidus (réels - lissés) sont normalisés à l'aide de MAD. Les perturbations sont identifiées à l'aide d'un système de marquage basé sur des règles.
 
-    Chaque règle est contrôlée par des paramètres définis par l'utilisateur, ce qui permet de personnaliser la sensibilité et le comportement de la logique de détection :
+#### Règles de détection des perturbations
 
-    **Perturbations brutales** : Signale un mois unique lorsque le résidu standardisé (résidu divisé par MAD) dépasse un seuil :
+Chaque règle est contrôlée par des paramètres définis par l'utilisateur, ce qui permet de personnaliser la sensibilité et le comportement de la logique de détection :
 
-    $$ \left| \frac{\text{residual}}{\text{MAD}} \right| \geq \text{MADS\_THRESHOLD} $$
+**Perturbations brutales** : Signale un mois unique lorsque le résidu standardisé (résidu divisé par MAD) dépasse un seuil :
 
-    - **Paramètre :** `MADS_THRESHOLD` (par défaut : `1.5`)
-    - Des valeurs plus faibles rendent la détection plus sensible aux pics ou aux creux soudains.
+$$ \left| \frac{\text{residual}}{\text{MAD}} \right| \geq \text{MADS\_THRESHOLD} $$
 
-    **Chutes soutenues** : Signale une baisse soutenue si :
+- **Paramètre :** `MADS_THRESHOLD` (par défaut : `1.5`)
+- Des valeurs plus faibles rendent la détection plus sensible aux pics ou aux creux soudains.
 
-    - Trois mois consécutifs présentent de légères déviations (résidu standardisé >= 1 mais < `MADS_THRESHOLD`), et
-    - Le mois en cours a un résidu standardisé >= 1,5 (seuil codé en dur).
+**Chutes soutenues** : Signale une baisse soutenue si :
 
-    Cela permet de capter les baisses plus lentes et composées.
+- Trois mois consécutifs présentent de légères déviations (résidu standardisé >= 1 mais < `MADS_THRESHOLD`), et
+- Le mois en cours a un résidu standardisé >= 1,5 (seuil codé en dur).
 
-    **Baisses soutenues** : Signale les périodes où le volume réel tombe constamment en dessous d'une proportion définie du volume attendu (prédiction lissée) :
+Cela permet de capter les baisses plus lentes et composées.
 
-    $$ \text{count\_original} < \text{DIP\_THRESHOLD} \times \text{count\_smooth} $$
+**Baisses soutenues** : Signale les périodes où le volume réel tombe constamment en dessous d'une proportion définie du volume attendu (prédiction lissée) :
 
-    - **Paramètre :** `DIP_THRESHOLD` (par défaut : `0.90`)
-    - Les utilisateurs peuvent ajuster ce paramètre pour détecter des baisses plus ou moins importantes (par exemple, `0.80` pour une baisse de 20%).
+$$ \text{count\_original} < \text{DIP\_THRESHOLD} \times \text{count\_smooth} $$
 
-    **Hausses soutenues** : Symétrique aux baisses, signale les périodes de surperformance constante :
+- **Paramètre :** `DIP_THRESHOLD` (par défaut : `0.90`)
+- Les utilisateurs peuvent ajuster ce paramètre pour détecter des baisses plus ou moins importantes (par exemple, `0.80` pour une baisse de 20%).
 
-    $$ \text{count\_original} > \text{RISE\_THRESHOLD} \times \text{count\_smooth} $$
+**Hausses soutenues** : Symétrique aux baisses, signale les périodes de surperformance constante :
 
-    - **Paramètre :** `RISE_THRESHOLD` (par défaut : `1 / DIP_THRESHOLD`, par exemple, `1.11`)
-    - Les utilisateurs peuvent ajuster ce paramètre pour détecter les hausses de volume.
+$$ \text{count\_original} > \text{RISE\_THRESHOLD} \times \text{count\_smooth} $$
 
-    **Données manquantes** : Ce code est utilisé lorsque 2 mois ou plus sur les 3 derniers mois ont un volume de service manquant (`NA`) ou nul.
+- **Paramètre :** `RISE_THRESHOLD` (par défaut : `1 / DIP_THRESHOLD`, par exemple, `1.11`)
+- Les utilisateurs peuvent ajuster ce paramètre pour détecter les hausses de volume.
 
-    - **Règle fixe**.
+**Données manquantes** : Ce code est utilisé lorsque 2 mois ou plus sur les 3 derniers mois ont un volume de service manquant (`NA`) ou nul.
 
-    **Dérogation pour la période récente** : Marquage automatique de tous les mois des 6 derniers mois de données pour s'assurer que les tendances récentes sont examinées, même si le marquage basé sur un modèle n'est pas concluant.
+- **Règle fixe**.
 
-    - **Règle fixe**.
+**Dérogation pour la période récente** : Marquage automatique de tous les mois des 6 derniers mois de données pour s'assurer que les tendances récentes sont examinées, même si le marquage basé sur un modèle n'est pas concluant.
 
-    **Indicateur final** : Un mois se voit attribuer `tagged = 1` si **l'une** des conditions suivantes est remplie :
+- **Règle fixe**.
 
-    - `tag_sharp == 1`
-    - `tag_sustained == 1`
-    - `tag_sustained_dip == 1`
-    - `tag_sustained_rise == 1`
-    - `tag_missing == 1`
-    - Il se situe dans les 6 mois les plus récents (`last_6_months == 1`)
+**Indicateur final** : Un mois se voit attribuer `tagged = 1` si **l'une** des conditions suivantes est remplie :
 
-    ### Modèle de régression robuste
+- `tag_sharp == 1`
+- `tag_sustained == 1`
+- `tag_sustained_dip == 1`
+- `tag_sustained_rise == 1`
+- `tag_missing == 1`
+- Il se situe dans les 6 mois les plus récents (`last_6_months == 1`)
 
-    **Ajustement du modèle** :
+### Modèle de régression robuste
 
-    Si >= 12 observations et > 12 dates uniques :
+**Ajustement du modèle** :
 
-    $$Y_{it} = \beta_0 + \sum \gamma_m \cdot \text{month}_m + \beta_1 \cdot \text{date} + \epsilon_{it}$$
+Si >= 12 observations et > 12 dates uniques :
 
-    S'il n'y a que >= 12 observations :
+$$Y_{it} = \beta_0 + \sum \gamma_m \cdot \text{month}_m + \beta_1 \cdot \text{date} + \epsilon_{it}$$
 
-    $$Y_{it} = \beta_0 + \beta_1 \cdot \text{date} + \epsilon_{it}$$
+S'il n'y a que >= 12 observations :
 
-    Si les données sont insuffisantes : utiliser la médiane des valeurs observées.
+$$Y_{it} = \beta_0 + \beta_1 \cdot \text{date} + \epsilon_{it}$$
 
-    **Appliquer le lissage de la médiane roulante aux prédictions** :
+Si les données sont insuffisantes : utiliser la médiane des valeurs observées.
 
-    $$ \text{count\_smooth}_{it} = \text{Median}(\text{count\_predict}_{t-k}, \dots, \text{count\_predict}_t, \dots, \text{count\_predict}_{t+k}) $$
+**Appliquer le lissage de la médiane roulante aux prédictions** :
 
-    - **Paramètre :** `SMOOTH_K` (par défaut : 7, doit être impair)
-    - Un `SMOOTH_K` plus grand lisse davantage ; un plus petit retient plus de variations.
+$$ \text{count\_smooth}_{it} = \text{Median}(\text{count\_predict}_{t-k}, \dots, \text{count\_predict}_t, \dots, \text{count\_predict}_{t+k}) $$
 
-    **Calculer les résidus** :
+- **Paramètre :** `SMOOTH_K` (par défaut : 7, doit être impair)
+- Un `SMOOTH_K` plus grand lisse davantage ; un plus petit retient plus de variations.
 
-    $$ \text{residual}_{it} = \text{count\_original}_{it} - \text{count\_smooth}_{it} $$
+**Calculer les résidus** :
 
-    **Standardiser les résidus à l'aide de MAD** :
+$$ \text{residual}_{it} = \text{count\_original}_{it} - \text{count\_smooth}_{it} $$
 
-    $$ \text{robust\_control}_{it} = \text{residual}_{it} / \text{MAD}_i $$
+**Standardiser les résidus à l'aide de MAD** :
 
-    ### Modèles de régression pour l'analyse des perturbations
+$$ \text{robust\_control}_{it} = \text{residual}_{it} / \text{MAD}_i $$
 
-    Une fois les anomalies identifiées et enregistrées dans `M3_chartout.csv`, l'analyse des perturbations quantifie leur impact à l'aide de modèles de régression. Ces modèles estiment dans quelle mesure l'utilisation des services a changé au cours des périodes de perturbation signalées en tenant compte des tendances à long terme et des variations saisonnières.
+### Modèles de régression pour l'analyse des perturbations
 
-    Pour chaque indicateur, nous estimons :
+Une fois les anomalies identifiées et enregistrées dans `M3_chartout.csv`, l'analyse des perturbations quantifie leur impact à l'aide de modèles de régression. Ces modèles estiment dans quelle mesure l'utilisation des services a changé au cours des périodes de perturbation signalées en tenant compte des tendances à long terme et des variations saisonnières.
 
-    $$ Y_{it} = \beta_0 + \beta_1 \cdot \text{date} + \sum_{m=1}^{12} \gamma_m \cdot \text{month}_m + \beta_2 \cdot \text{tagged} + \epsilon_{it} $$
+Pour chaque indicateur, nous estimons :
 
-    où :
-    - $Y_{it}$ est le volume de service observé,
-    - $\text{date}$ capture les tendances temporelles,
-    - $\text{month}_m$ contrôle la saisonnalité,
-    - $\text{tagged}$ est la variable fictive de perturbation (issue de l'analyse de la carte de contrôle),
-    - $\epsilon_{it}$ est le terme d'erreur.
+$$ Y_{it} = \beta_0 + \beta_1 \cdot \text{date} + \sum_{m=1}^{12} \gamma_m \cdot \text{month}_m + \beta_2 \cdot \text{tagged} + \epsilon_{it} $$
 
-    Le coefficient de `tagged` ($\beta_2$) mesure le changement relatif de l'utilisation des services pendant les perturbations signalées. Des régressions distinctes sont effectuées aux niveaux national, provincial et du district afin d'évaluer l'impact à différentes échelles géographiques.
+où :
+- $Y_{it}$ est le volume de service observé,
+- $\text{date}$ capture les tendances temporelles,
+- $\text{month}_m$ contrôle la saisonnalité,
+- $\text{tagged}$ est la variable fictive de perturbation (issue de l'analyse de la carte de contrôle),
+- $\epsilon_{it}$ est le terme d'erreur.
 
-    #### Régression à l'échelle nationale
+Le coefficient de `tagged` ($\beta_2$) mesure le changement relatif de l'utilisation des services pendant les perturbations signalées. Des régressions distinctes sont effectuées aux niveaux national, provincial et du district afin d'évaluer l'impact à différentes échelles géographiques.
 
-    La régression à l'échelle nationale permet d'estimer l'évolution de l'utilisation des services au niveau national lorsqu'une perturbation se produit. Au lieu d'analyser séparément les provinces ou les districts, ce modèle prend en compte l'ensemble des données du pays dans une seule régression. Les erreurs sont regroupées au niveau géographique le plus bas disponible (`lowest_geo_level`), généralement les districts.
+#### Régression à l'échelle nationale
 
-    **Spécification du modèle :**
+La régression à l'échelle nationale permet d'estimer l'évolution de l'utilisation des services au niveau national lorsqu'une perturbation se produit. Au lieu d'analyser séparément les provinces ou les districts, ce modèle prend en compte l'ensemble des données du pays dans une seule régression. Les erreurs sont regroupées au niveau géographique le plus bas disponible (`lowest_geo_level`), généralement les districts.
 
-    $$Y_{it} = \beta_0 + \beta_1 \cdot \text{date} + \sum_{m=1}^{12} \gamma_m \cdot \text{month} + \beta_2 \cdot \text{tagged} + \epsilon_{it}$$
+**Spécification du modèle :**
 
-    Où :
-    - $Y_{it}$ = volume (par exemple, nombre d'accouchements)
-    - $\text{date}$ = tendance temporelle
-    - $\text{month}_m$ = contrôle de la saisonnalité (variable factorielle)
-    - $\text{tagged}$ = variable muette pour la période de perturbation
-    - $\epsilon_{it}$ = terme d'erreur, regroupé au niveau du district (`admin_area_3`)
+$$Y_{it} = \beta_0 + \beta_1 \cdot \text{date} + \sum_{m=1}^{12} \gamma_m \cdot \text{month} + \beta_2 \cdot \text{tagged} + \epsilon_{it}$$
 
-    #### Régression au niveau de la province
+Où :
+- $Y_{it}$ = volume (par exemple, nombre d'accouchements)
+- $\text{date}$ = tendance temporelle
+- $\text{month}_m$ = contrôle de la saisonnalité (variable factorielle)
+- $\text{tagged}$ = variable muette pour la période de perturbation
+- $\epsilon_{it}$ = terme d'erreur, regroupé au niveau du district (`admin_area_3`)
 
-    La régression des perturbations au niveau de la province permet d'estimer comment l'utilisation des services change au niveau de la province lorsqu'une perturbation se produit. Contrairement au modèle national, cette approche utilise des régressions distinctes pour chaque province afin de saisir les variations régionales.
+#### Régression au niveau de la province
 
-    **Spécification du modèle** (exécuté séparément pour chaque province) :
+La régression des perturbations au niveau de la province permet d'estimer comment l'utilisation des services change au niveau de la province lorsqu'une perturbation se produit. Contrairement au modèle national, cette approche utilise des régressions distinctes pour chaque province afin de saisir les variations régionales.
 
-    $$Y_{it} = \beta_0 + \beta_1 \cdot \text{date} + \sum_{m=1}^{12} \gamma_m \cdot \text{month} + \beta_2 \cdot \text{tagged} + \epsilon_{it}$$
+**Spécification du modèle** (exécuté séparément pour chaque province) :
 
-    Où :
-    - $Y_{it}$ = volume (par exemple, nombre d'accouchements)
-    - $\text{date}$ = tendance temporelle
-    - $\text{month}_m$ = contrôle de la saisonnalité (variable factorielle)
-    - $\text{tagged}$ = variable muette pour la période de perturbation
-    - $\epsilon_{it}$ = terme d'erreur, regroupé au niveau du district
+$$Y_{it} = \beta_0 + \beta_1 \cdot \text{date} + \sum_{m=1}^{12} \gamma_m \cdot \text{month} + \beta_2 \cdot \text{tagged} + \epsilon_{it}$$
 
-    #### Régression au niveau du district
+Où :
+- $Y_{it}$ = volume (par exemple, nombre d'accouchements)
+- $\text{date}$ = tendance temporelle
+- $\text{month}_m$ = contrôle de la saisonnalité (variable factorielle)
+- $\text{tagged}$ = variable muette pour la période de perturbation
+- $\epsilon_{it}$ = terme d'erreur, regroupé au niveau du district
 
-    La régression des perturbations au niveau du district permet d'estimer comment l'utilisation des services change au niveau du district lorsqu'une perturbation se produit. Cette approche consiste à effectuer des régressions distinctes pour chaque district afin de saisir les variations localisées.
+#### Régression au niveau du district
 
-    **Spécification du modèle** (exécutée séparément pour chaque district) :
+La régression des perturbations au niveau du district permet d'estimer comment l'utilisation des services change au niveau du district lorsqu'une perturbation se produit. Cette approche consiste à effectuer des régressions distinctes pour chaque district afin de saisir les variations localisées.
 
-    $$Y_{it} = \beta_0 + \beta_1 \cdot \text{date} + \sum_{m=1}^{12} \gamma_m \cdot \text{month} + \beta_2 \cdot \text{tagged} + \epsilon_{it}$$
+**Spécification du modèle** (exécutée séparément pour chaque district) :
 
-    Où :
-    - $Y_{it}$ = volume (par exemple, nombre d'accouchements)
-    - $\text{date}$ = tendance temporelle
-    - $\text{month}_m$ = contrôle de la saisonnalité (variable factorielle)
-    - $\text{tagged}$ = variable muette pour la période de perturbation
-    - $\epsilon_{it}$ = terme d'erreur, regroupé au niveau du quartier (`admin_area_4`) si plusieurs regroupements sont disponibles
+$$Y_{it} = \beta_0 + \beta_1 \cdot \text{date} + \sum_{m=1}^{12} \gamma_m \cdot \text{month} + \beta_2 \cdot \text{tagged} + \epsilon_{it}$$
 
-    #### Résultats de la régression
+Où :
+- $Y_{it}$ = volume (par exemple, nombre d'accouchements)
+- $\text{date}$ = tendance temporelle
+- $\text{month}_m$ = contrôle de la saisonnalité (variable factorielle)
+- $\text{tagged}$ = variable muette pour la période de perturbation
+- $\epsilon_{it}$ = terme d'erreur, regroupé au niveau du quartier (`admin_area_4`) si plusieurs regroupements sont disponibles
 
-    Chaque niveau de régression produit les résultats suivants :
+#### Résultats de la régression
 
-    **Valeurs attendues (`expect_admin_area_*`)** : Volume de service prédit, ajusté pour tenir compte de la saisonnalité et des tendances.
+Chaque niveau de régression produit les résultats suivants :
 
-    **Effet de perturbation (`b_admin_area_*`)** : Estimation de la variation relative en cas de perturbations :
+**Valeurs attendues (`expect_admin_area_*`)** : Volume de service prédit, ajusté pour tenir compte de la saisonnalité et des tendances.
 
-    $$ b_{\text{admin\_area\_*}} = -\frac{\text{diff mean}}{\text{predict mean}} $$
+**Effet de perturbation (`b_admin_area_*`)** : Estimation de la variation relative en cas de perturbations :
 
-    **Coefficient de tendance (`b_trend_admin_area_*`)** : Reflète la tendance à long terme.
+$$ b_{\text{admin\_area\_*}} = -\frac{\text{diff mean}}{\text{predict mean}} $$
 
-    - Positif = augmentation de l'utilisation des services
-    - Négatif = baisse de l'utilisation des services
-    - Proche de zéro = tendance stable
+**Coefficient de tendance (`b_trend_admin_area_*`)** : Reflète la tendance à long terme.
 
-    **P-value (`p_admin_area_*`)** : Mesure la signification statistique de l'effet de perturbation.
+- Positif = augmentation de l'utilisation des services
+- Négatif = baisse de l'utilisation des services
+- Proche de zéro = tendance stable
 
-    - Des valeurs plus faibles = une preuve plus forte d'une véritable perturbation
+**P-value (`p_admin_area_*`)** : Mesure la signification statistique de l'effet de perturbation.
 
-    ### Méthodes statistiques utilisées
+- Des valeurs plus faibles = une preuve plus forte d'une véritable perturbation
 
-    **Régression robuste (`MASS::rlm`)** :
+### Méthodes statistiques utilisées
 
-    - Utilise les moindres carrés repondérés de manière itérative (IRLS)
-    - Minimise l'influence des valeurs aberrantes et extrêmes
-    - Plus résistant à la mauvaise spécification du modèle que les moindres carrés ordinaires
-    - Par défaut : pondération de Huber avec un maximum de 100 itérations
+**Régression robuste (`MASS::rlm`)** :
 
-    **MAD (écart absolu médian)** :
+- Utilise les moindres carrés repondérés de manière itérative (IRLS)
+- Minimise l'influence des valeurs aberrantes et extrêmes
+- Plus résistant à la mauvaise spécification du modèle que les moindres carrés ordinaires
+- Par défaut : pondération de Huber avec un maximum de 100 itérations
 
-    - Mesure robuste de l'échelle/variabilité
-    - Formule : `MAD = median(|x - median(x)|)`
-    - Plus résistant aux valeurs aberrantes que l'écart-type
-    - Utilisé pour normaliser les résidus dans le cadre de la détection d'anomalies
+**MAD (écart absolu médian)** :
 
-    **Régression par panel (`fixest::feols`)** :
+- Mesure robuste de l'échelle/variabilité
+- Formule : `MAD = median(|x - median(x)|)`
+- Plus résistant aux valeurs aberrantes que l'écart-type
+- Utilisé pour normaliser les résidus dans le cadre de la détection d'anomalies
 
-    - Estimation à effets fixes avec erreurs types groupées
-    - Tient compte de la corrélation des erreurs au sein du groupe
-    - Plus efficace que les packages traditionnels de régression en panel
-    - Traite gracieusement les panels déséquilibrés
+**Régression par panel (`fixest::feols`)** :
 
-    **Regroupement géographique** :
+- Estimation à effets fixes avec erreurs types groupées
+- Tient compte de la corrélation des erreurs au sein du groupe
+- Plus efficace que les packages traditionnels de régression en panel
+- Traite gracieusement les panels déséquilibrés
 
-    - Les régressions utilisent des erreurs standard groupées au niveau géographique le plus bas disponible
-    - Cela permet de tenir compte de la corrélation entre les modèles de prestation de services à l'intérieur d'une même zone
-    - Exemple : Le modèle national est regroupé par district, le modèle provincial est regroupé par district
-    - Évite la sous-estimation des erreurs types et les faux positifs
+**Regroupement géographique** :
+
+- Les régressions utilisent des erreurs standard groupées au niveau géographique le plus bas disponible
+- Cela permet de tenir compte de la corrélation entre les modèles de prestation de services à l'intérieur d'une même zone
+- Exemple : Le modèle national est regroupé par district, le modèle provincial est regroupé par district
+- Évite la sous-estimation des erreurs types et les faux positifs
+
+</details>
 
 ### Étapes de l'analyse détaillée
 
-??? "Partie 1 : Analyse des cartes de contrôle"
+<details>
+<summary>Partie 1 : Analyse des cartes de contrôle</summary>
 
-    #### Étape 1 : Préparer les données
 
-    - Chargez les volumes de services ajustés à partir de `M2_adjusted_data.csv`.
-    - Charger les indicateurs de valeurs aberrantes à partir de `M1_output_outliers.csv`.
-    - Charger les données brutes du SIGS uniquement pour extraire la consultation `facility_id → admin_area_1` (puis les rejeter).
-    - Fusionner les indicateurs de valeurs aberrantes dans les données ajustées par établissement × indicateur × mois.
-    - Supprimer les lignes marquées comme aberrantes (`outlier_flag == 1`).
-    - Créer une variable `date` à partir de `period_id` et extraire `year` et `month`.
-    - Créer un `panelvar` unique pour chaque combinaison zone géographique-indicateur.
-    - Agréger les données au niveau géographique spécifié en additionnant les `count_model` (sur la base du `SELECTEDCOUNT`) par date.
-    - Compléter les mois manquants au sein de chaque panel pour assurer la continuité.
-    - Remplir les métadonnées manquantes à l'aide d'un remplissage en avant et en arrière.
+#### Étape 1 : Préparer les données
 
-    #### Étape 2 : Filtrer les mois à faible volume
+- Chargez les volumes de services ajustés à partir de `M2_adjusted_data.csv`.
+- Charger les indicateurs de valeurs aberrantes à partir de `M1_output_outliers.csv`.
+- Charger les données brutes du SIGS uniquement pour extraire la consultation `facility_id → admin_area_1` (puis les rejeter).
+- Fusionner les indicateurs de valeurs aberrantes dans les données ajustées par établissement × indicateur × mois.
+- Supprimer les lignes marquées comme aberrantes (`outlier_flag == 1`).
+- Créer une variable `date` à partir de `period_id` et extraire `year` et `month`.
+- Créer un `panelvar` unique pour chaque combinaison zone géographique-indicateur.
+- Agréger les données au niveau géographique spécifié en additionnant les `count_model` (sur la base du `SELECTEDCOUNT`) par date.
+- Compléter les mois manquants au sein de chaque panel pour assurer la continuité.
+- Remplir les métadonnées manquantes à l'aide d'un remplissage en avant et en arrière.
 
-    - Calculer le volume moyen global de services pour chaque `panelvar`.
-    - Si le `count_original` est < 50% de la moyenne globale, abandonner la valeur en la mettant à `NA`.
+#### Étape 2 : Filtrer les mois à faible volume
 
-    #### Étape 3 : Appliquer la régression et le lissage
+- Calculer le volume moyen global de services pour chaque `panelvar`.
+- Si le `count_original` est < 50% de la moyenne globale, abandonner la valeur en la mettant à `NA`.
 
-    Estimez le volume de service attendu à l'aide d'une régression robuste, puis lissez la tendance prédite.
+#### Étape 3 : Appliquer la régression et le lissage
 
-    - Ajuster la régression robuste (`rlm`) pour chaque panel en utilisant l'une des trois spécifications du modèle en fonction de la disponibilité des données.
-    - Appliquer le lissage de la médiane glissante aux prédictions en utilisant la taille de fenêtre `SMOOTH_K`.
-    - Si le lissage n'est pas possible (par exemple, sur les bords de la série), revenir aux prédictions du modèle.
-    - Calculer les résidus : réel - lissé
-    - Normaliser les résidus à l'aide de MAD
+Estimez le volume de service attendu à l'aide d'une régression robuste, puis lissez la tendance prédite.
 
-    Cette variable de contrôle normalisée est utilisée pour détecter les anomalies à l'étape 4.
+- Ajuster la régression robuste (`rlm`) pour chaque panel en utilisant l'une des trois spécifications du modèle en fonction de la disponibilité des données.
+- Appliquer le lissage de la médiane glissante aux prédictions en utilisant la taille de fenêtre `SMOOTH_K`.
+- Si le lissage n'est pas possible (par exemple, sur les bords de la série), revenir aux prédictions du modèle.
+- Calculer les résidus : réel - lissé
+- Normaliser les résidus à l'aide de MAD
 
-    #### Étape 4 : Identifier les perturbations
+Cette variable de contrôle normalisée est utilisée pour détecter les anomalies à l'étape 4.
 
-    Appliquer un marquage basé sur des règles pour identifier les perturbations potentielles. Chaque règle est régie par des paramètres définis par l'utilisateur et dont la sensibilité peut être ajustée :
+#### Étape 4 : Identifier les perturbations
 
-    - **Perturbations nettes** : Marquer si `|robust_control| >= MADS_THRESHOLD`
-    - **Baisses prolongées** : Marquer si 3 mois consécutifs ont des déviations légères (résidu >= 1 mais < MADS_THRESHOLD) et si le mois en cours a un résidu >= 1.5
-    - **Baisses soutenues** : Marquer toute la séquence si `count_original < DIP_THRESHOLD × count_smooth` pendant 3+ mois
-    - **Hausse soutenue** : Marquer toute la séquence si `count_original > RISE_THRESHOLD × count_smooth` pendant 3+ mois
-    - **Données manquantes** : Marquer si 2+ des 3 derniers mois sont manquants ou zéro
-    - **Dérogation pour la période récente** : Marquer automatiquement tous les mois des 6 derniers mois de données
+Appliquer un marquage basé sur des règles pour identifier les perturbations potentielles. Chaque règle est régie par des paramètres définis par l'utilisateur et dont la sensibilité peut être ajustée :
 
-    Un mois se voit attribuer `tagged = 1` si l'une des conditions ci-dessus est remplie. Les enregistrements marqués sont sauvegardés dans `M3_chartout.csv` et transmis à l'analyse des perturbations.
+- **Perturbations nettes** : Marquer si `|robust_control| >= MADS_THRESHOLD`
+- **Baisses prolongées** : Marquer si 3 mois consécutifs ont des déviations légères (résidu >= 1 mais < MADS_THRESHOLD) et si le mois en cours a un résidu >= 1.5
+- **Baisses soutenues** : Marquer toute la séquence si `count_original < DIP_THRESHOLD × count_smooth` pendant 3+ mois
+- **Hausse soutenue** : Marquer toute la séquence si `count_original > RISE_THRESHOLD × count_smooth` pendant 3+ mois
+- **Données manquantes** : Marquer si 2+ des 3 derniers mois sont manquants ou zéro
+- **Dérogation pour la période récente** : Marquer automatiquement tous les mois des 6 derniers mois de données
 
-??? "Partie 2 : Analyse des perturbations"
+Un mois se voit attribuer `tagged = 1` si l'une des conditions ci-dessus est remplie. Les enregistrements marqués sont sauvegardés dans `M3_chartout.csv` et transmis à l'analyse des perturbations.
 
-    #### Étape 1 : Préparation des données
+</details>
 
-    - L'ensemble de données `M3_chartout` est fusionné avec l'ensemble de données principal pour intégrer la variable `tagged`, qui identifie les perturbations signalées.
-    - Le niveau géographique le plus bas disponible (`lowest_geo_level`) est identifié pour le regroupement, sur la base de la colonne `admin_area_*` de la plus haute résolution disponible.
+<details>
+<summary>Partie 2 : Analyse des perturbations</summary>
 
-    #### Étape 2 : Régression au niveau national
 
-    Pour chaque `indicator_common_id`, estimer le modèle au niveau national avec les erreurs regroupées au niveau du district.
+#### Étape 1 : Préparation des données
 
-    - Un modèle de régression en panel est appliqué au niveau national, estimant le volume de services attendu (`expect_admin_area_1`) pour chaque indicateur.
-    - Le modèle contrôle les tendances à long terme et les modèles saisonniers d'utilisation des services.
-    - Lorsqu'une perturbation (`tagged = 1`) est identifiée, les volumes de services prévus sont ajustés en supprimant l'effet estimé de la perturbation afin d'isoler son impact.
+- L'ensemble de données `M3_chartout` est fusionné avec l'ensemble de données principal pour intégrer la variable `tagged`, qui identifie les perturbations signalées.
+- Le niveau géographique le plus bas disponible (`lowest_geo_level`) est identifié pour le regroupement, sur la base de la colonne `admin_area_*` de la plus haute résolution disponible.
 
-    #### Étape 3 : Régression intermédiaire au niveau infranational
+#### Étape 2 : Régression au niveau national
 
-    Pour chaque combinaison `indicator_common_id` × `admin_area_2`, des modèles infranationaux sont estimés, avec des erreurs standard regroupées à un niveau administratif inférieur.
+Pour chaque `indicator_common_id`, estimer le modèle au niveau national avec les erreurs regroupées au niveau du district.
 
-    - Un modèle de régression en panel à effets fixes est appliqué à un niveau infranational intermédiaire, estimant les volumes de service attendus (`expect_admin_area_2`) tout en tenant compte des caractéristiques géographiques invariantes dans le temps.
-    - Le modèle contrôle les tendances historiques et la saisonnalité.
-    - Lorsqu'une perturbation est identifiée, les volumes prédits sont ajustés pour isoler l'effet de la perturbation.
+- Un modèle de régression en panel est appliqué au niveau national, estimant le volume de services attendu (`expect_admin_area_1`) pour chaque indicateur.
+- Le modèle contrôle les tendances à long terme et les modèles saisonniers d'utilisation des services.
+- Lorsqu'une perturbation (`tagged = 1`) est identifiée, les volumes de services prévus sont ajustés en supprimant l'effet estimé de la perturbation afin d'isoler son impact.
 
-    #### Étape 4 : Régression fine au niveau infranational (si `RUN_DISTRICT_MODEL = TRUE`)
+#### Étape 3 : Régression intermédiaire au niveau infranational
 
-    Pour chaque combinaison `indicator_common_id` × `admin_area_3`, des modèles infranationaux sont estimés, avec des erreurs standard regroupées au niveau du quartier (`admin_area_4`) lorsque plus d'un quartier est disponible.
+Pour chaque combinaison `indicator_common_id` × `admin_area_2`, des modèles infranationaux sont estimés, avec des erreurs standard regroupées à un niveau administratif inférieur.
 
-    - Un modèle de régression en panel à effets fixes est appliqué à un niveau infranational fin, estimant les volumes de service attendus (`expect_admin_area_3`).
-    - Les panels comportant moins de 10 observations sont ignorés.
-    - Le modèle contrôle les tendances historiques et la saisonnalité.
-    - Lorsqu'une perturbation est identifiée, les volumes prédits sont ajustés pour isoler l'effet de la perturbation.
+- Un modèle de régression en panel à effets fixes est appliqué à un niveau infranational intermédiaire, estimant les volumes de service attendus (`expect_admin_area_2`) tout en tenant compte des caractéristiques géographiques invariantes dans le temps.
+- Le modèle contrôle les tendances historiques et la saisonnalité.
+- Lorsqu'une perturbation est identifiée, les volumes prédits sont ajustés pour isoler l'effet de la perturbation.
 
-    #### Étape 5 : Régression au niveau du quartier (si `RUN_ADMIN_AREA_4_ANALYSIS = TRUE`)
+#### Étape 4 : Régression fine au niveau infranational (si `RUN_DISTRICT_MODEL = TRUE`)
 
-    Pour chaque combinaison `indicator_common_id` × `admin_area_4`, des modèles au niveau du quartier sont estimés, sans regroupement.
+Pour chaque combinaison `indicator_common_id` × `admin_area_3`, des modèles infranationaux sont estimés, avec des erreurs standard regroupées au niveau du quartier (`admin_area_4`) lorsque plus d'un quartier est disponible.
 
-    - Un modèle de régression en panel est appliqué au niveau géographique le plus fin, estimant les volumes de service attendus (`expect_admin_area_4`).
-    - Les panels comportant moins de 8 observations sont ignorés.
-    - Le modèle contrôle les tendances historiques et la saisonnalité.
-    - Lorsqu'une perturbation est identifiée, les volumes prédits sont ajustés pour isoler l'effet de la perturbation.
+- Un modèle de régression en panel à effets fixes est appliqué à un niveau infranational fin, estimant les volumes de service attendus (`expect_admin_area_3`).
+- Les panels comportant moins de 10 observations sont ignorés.
+- Le modèle contrôle les tendances historiques et la saisonnalité.
+- Lorsqu'une perturbation est identifiée, les volumes prédits sont ajustés pour isoler l'effet de la perturbation.
 
-    #### Étape 6 : Préparer les résultats pour la visualisation
+#### Étape 5 : Régression au niveau du quartier (si `RUN_ADMIN_AREA_4_ANALYSIS = TRUE`)
 
-    Une fois que les valeurs attendues ont été calculées pour chaque niveau (pays, province, district), le pipeline compare les valeurs prédites et les valeurs réelles pour évaluer l'ampleur de la perturbation.
+Pour chaque combinaison `indicator_common_id` × `admin_area_4`, des modèles au niveau du quartier sont estimés, sans regroupement.
 
-    Pour chaque mois et chaque indicateur, le pipeline calcule :
+- Un modèle de régression en panel est appliqué au niveau géographique le plus fin, estimant les volumes de service attendus (`expect_admin_area_4`).
+- Les panels comportant moins de 8 observations sont ignorés.
+- Le modèle contrôle les tendances historiques et la saisonnalité.
+- Lorsqu'une perturbation est identifiée, les volumes prédits sont ajustés pour isoler l'effet de la perturbation.
 
-    - **La différence absolue et en pourcentage** entre les valeurs prévues et les valeurs réelles :
+#### Étape 6 : Préparer les résultats pour la visualisation
 
-    $$ \text{diff\_percent} = 100 \times \frac{\text{predicted} - \text{actual}}{\text{predicted}} $$
+Une fois que les valeurs attendues ont été calculées pour chaque niveau (pays, province, district), le pipeline compare les valeurs prédites et les valeurs réelles pour évaluer l'ampleur de la perturbation.
 
-    - Un paramètre de seuil configurable `DIFFPERCENT` (par défaut : `10`) est utilisé pour déterminer si une perturbation est significative.
+Pour chaque mois et chaque indicateur, le pipeline calcule :
 
-        Si la différence en pourcentage dépasse ±10%, la valeur attendue (prédite) est conservée et utilisée pour le tracé et les statistiques récapitulatives. Dans le cas contraire, c'est la valeur réelle observée qui est utilisée.
+- **La différence absolue et en pourcentage** entre les valeurs prévues et les valeurs réelles :
 
-        Cela permet d'éviter que des fluctuations mineures n'entraînent des perturbations artificielles dans la visualisation, tout en préservant les écarts significatifs.
+$$ \text{diff\_percent} = 100 \times \frac{\text{predicted} - \text{actual}}{\text{predicted}} $$
 
-    - La valeur finale ajustée pour le tracé est stockée dans un champ tel que `count_expected_if_above_diff_threshold`.
+- Un paramètre de seuil configurable `DIFFPERCENT` (par défaut : `10`) est utilisé pour déterminer si une perturbation est significative.
 
-        Cette valeur reflète soit :
-        - Le nombre prédit (si l'écart est supérieur au seuil), ou
-        - Le comptage réel (s'il se situe dans une fourchette acceptable).
+    Si la différence en pourcentage dépasse ±10%, la valeur attendue (prédite) est conservée et utilisée pour le tracé et les statistiques récapitulatives. Dans le cas contraire, c'est la valeur réelle observée qui est utilisée.
 
-    Cette logique est appliquée de manière cohérente à tous les niveaux d'administration. Ces valeurs ajustées sont ensuite exportées dans le cadre des fichiers de sortie finaux pour chaque niveau.
+    Cela permet d'éviter que des fluctuations mineures n'entraînent des perturbations artificielles dans la visualisation, tout en préservant les écarts significatifs.
 
+- La valeur finale ajustée pour le tracé est stockée dans un champ tel que `count_expected_if_above_diff_threshold`.
+
+    Cette valeur reflète soit :
+    - Le nombre prédit (si l'écart est supérieur au seuil), ou
+    - Le comptage réel (s'il se situe dans une fourchette acceptable).
+
+Cette logique est appliquée de manière cohérente à tous les niveaux d'administration. Ces valeurs ajustées sont ensuite exportées dans le cadre des fichiers de sortie finaux pour chaque niveau.
+
+</details>
 
 ### Exemples de code
 
-??? "Exemple 1 : Exécution du module avec les paramètres par défaut"
+<details>
+<summary>Exemple 1 : Exécution du module avec les paramètres par défaut</summary>
 
-    ```r
-    # Set working directory
-    setwd("/path/to/module/directory")
 
-    # Load required libraries
-    library(data.table)
-    library(lubridate)
-    library(zoo)
-    library(MASS)
-    library(fixest)
-    library(stringr)
-    library(dplyr)
-    library(tidyr)
+```r
+# Set working directory
+setwd("/path/to/module/directory")
 
-    # Configure country
-    COUNTRY_ISO3 <- "SLE"
-    PROJECT_DATA_HMIS <- "hmis_SLE.csv"
+# Load required libraries
+library(data.table)
+library(lubridate)
+library(zoo)
+library(MASS)
+library(fixest)
+library(stringr)
+library(dplyr)
+library(tidyr)
 
-    # Use default settings (admin_area_2 level analysis)
-    RUN_DISTRICT_MODEL <- FALSE
-    RUN_ADMIN_AREA_4_ANALYSIS <- FALSE
+# Configure country
+COUNTRY_ISO3 <- "SLE"
+PROJECT_DATA_HMIS <- "hmis_SLE.csv"
 
-    # Run the module
-    source("03_module_service_utilization.R")
-    ```
+# Use default settings (admin_area_2 level analysis)
+RUN_DISTRICT_MODEL <- FALSE
+RUN_ADMIN_AREA_4_ANALYSIS <- FALSE
 
-    Avec les paramètres par défaut, le module exécute l'analyse de la carte de contrôle au niveau admin_area_2 et produit des estimations de perturbations pour les niveaux national et régional.
+# Run the module
+source("03_module_service_utilization.R")
+```
 
-??? "Exemple 2 : Ajustement de la sensibilité de la détection des perturbations"
+Avec les paramètres par défaut, le module exécute l'analyse de la carte de contrôle au niveau admin_area_2 et produit des estimations de perturbations pour les niveaux national et régional.
 
-    ```r
-    # Make disruption detection more sensitive (lower thresholds)
-    MADS_THRESHOLD <- 1.0        # Flag at 1 MAD (default: 1.5)
-    DIP_THRESHOLD <- 0.95        # Flag if <95% of expected (default: 0.90)
-    SMOOTH_K <- 5                # Smaller smoothing window (default: 7)
+</details>
 
-    # Make disruption detection less sensitive (higher thresholds)
-    MADS_THRESHOLD <- 2.0        # Flag only at 2 MADs
-    DIP_THRESHOLD <- 0.80        # Flag only if <80% of expected
-    SMOOTH_K <- 9                # Larger smoothing window
+<details>
+<summary>Exemple 2 : Ajustement de la sensibilité de la détection des perturbations</summary>
 
-    source("03_module_service_utilization.R")
-    ```
 
-    **Cas d'utilisation** : Ajuster la sensibilité en fonction de la qualité des données. Les données plus bruyantes peuvent nécessiter des seuils moins sensibles pour éviter les faux positifs.
+```r
+# Make disruption detection more sensitive (lower thresholds)
+MADS_THRESHOLD <- 1.0        # Flag at 1 MAD (default: 1.5)
+DIP_THRESHOLD <- 0.95        # Flag if <95% of expected (default: 0.90)
+SMOOTH_K <- 5                # Smaller smoothing window (default: 7)
 
-??? "Exemple 3 : Exécution d'une analyse au niveau du district"
+# Make disruption detection less sensitive (higher thresholds)
+MADS_THRESHOLD <- 2.0        # Flag only at 2 MADs
+DIP_THRESHOLD <- 0.80        # Flag only if <80% of expected
+SMOOTH_K <- 9                # Larger smoothing window
 
-    ```r
-    # Enable district-level analysis (slower but more detailed)
-    RUN_DISTRICT_MODEL <- TRUE
-    RUN_ADMIN_AREA_4_ANALYSIS <- FALSE
+source("03_module_service_utilization.R")
+```
 
-    source("03_module_service_utilization.R")
-    ```
+**Cas d'utilisation** : Ajuster la sensibilité en fonction de la qualité des données. Les données plus bruyantes peuvent nécessiter des seuils moins sensibles pour éviter les faux positifs.
 
-    **Cas d'utilisation** : Lorsque des modèles de perturbation au niveau du district sont nécessaires pour la planification de programmes infranationaux.
+</details>
 
-    **Remarque** : L'analyse au niveau du district augmente considérablement la durée d'exécution. Pour les pays de grande taille, il est possible d'envisager une exécution pendant la nuit.
+<details>
+<summary>Exemple 3 : Exécution d'une analyse au niveau du district</summary>
 
-??? "Exemple 4 : Sélection d'un scénario d'ajustement pour l'analyse"
 
-    ```r
-    # Use unadjusted data for sensitivity analysis
-    SELECTEDCOUNT <- "count_final_none"
-    VISUALIZATIONCOUNT <- "count_final_none"
+```r
+# Enable district-level analysis (slower but more detailed)
+RUN_DISTRICT_MODEL <- TRUE
+RUN_ADMIN_AREA_4_ANALYSIS <- FALSE
 
-    # Use outlier-adjusted only
-    SELECTEDCOUNT <- "count_final_outliers"
-    VISUALIZATIONCOUNT <- "count_final_outliers"
+source("03_module_service_utilization.R")
+```
 
-    # Use fully adjusted data (default)
-    SELECTEDCOUNT <- "count_final_both"
-    VISUALIZATIONCOUNT <- "count_final_both"
+**Cas d'utilisation** : Lorsque des modèles de perturbation au niveau du district sont nécessaires pour la planification de programmes infranationaux.
 
-    source("03_module_service_utilization.R")
-    ```
+**Remarque** : L'analyse au niveau du district augmente considérablement la durée d'exécution. Pour les pays de grande taille, il est possible d'envisager une exécution pendant la nuit.
 
-    **Cas d'utilisation** : Comparer les estimations de perturbations entre différents scénarios d'ajustement de la qualité des données.
+</details>
 
-??? "Exemple 5 : Optimisation de la mémoire pour les grands ensembles de données"
+<details>
+<summary>Exemple 4 : Sélection d'un scénario d'ajustement pour l'analyse</summary>
 
-    ```r
-    # Reduce batch sizes for memory-constrained environments
-    BATCH_SIZE_CC <- 50      # Control chart batches (default: 100)
-    BATCH_SIZE_IND <- 3      # Indicator batches (default: 5)
-    BATCH_SIZE_PROV <- 10    # Province batches (default: 20)
-    BATCH_SIZE_DIST <- 10    # District batches (default: 15)
 
-    # Disable memory-intensive analyses
-    RUN_DISTRICT_MODEL <- FALSE
-    RUN_ADMIN_AREA_4_ANALYSIS <- FALSE
+```r
+# Use unadjusted data for sensitivity analysis
+SELECTEDCOUNT <- "count_final_none"
+VISUALIZATIONCOUNT <- "count_final_none"
 
-    source("03_module_service_utilization.R")
-    ```
+# Use outlier-adjusted only
+SELECTEDCOUNT <- "count_final_outliers"
+VISUALIZATIONCOUNT <- "count_final_outliers"
 
-    **Cas d'utilisation** : Exécution sur des machines avec une RAM limitée (<8GB).
+# Use fully adjusted data (default)
+SELECTEDCOUNT <- "count_final_both"
+VISUALIZATIONCOUNT <- "count_final_both"
 
-??? "Exemple 6 : Utilisation programmatique des sorties"
+source("03_module_service_utilization.R")
+```
 
-    ```r
-    # Load disruption analysis outputs
-    disruptions_national <- read.csv("M3_disruptions_analysis_admin_area_1.csv")
-    shortfalls_national <- read.csv("M3_all_indicators_shortfalls_admin_area_1.csv")
+**Cas d'utilisation** : Comparer les estimations de perturbations entre différents scénarios d'ajustement de la qualité des données.
 
-    # Calculate total service shortfall by indicator
-    annual_shortfalls <- shortfalls_national %>%
-      mutate(year = period_id %/% 100) %>%
-      group_by(indicator_common_id, year) %>%
-      summarise(
-        total_expected = sum(count_expect_sum, na.rm = TRUE),
-        total_actual = sum(count_sum, na.rm = TRUE),
-        total_shortfall = sum(shortfall_absolute, na.rm = TRUE),
-        avg_shortfall_pct = mean(shortfall_percent, na.rm = TRUE),
-        .groups = "drop"
-      )
+</details>
 
-    # Identify months with largest disruptions
-    worst_months <- shortfalls_national %>%
-      filter(shortfall_percent > 10) %>%
-      arrange(desc(shortfall_percent)) %>%
-      head(20)
+<details>
+<summary>Exemple 5 : Optimisation de la mémoire pour les grands ensembles de données</summary>
 
-    # Load control chart results for detailed analysis
-    control_chart <- read.csv("M3_chartout.csv")
 
-    # Count tagged periods by indicator
-    tagged_summary <- control_chart %>%
-      group_by(indicator_common_id) %>%
-      summarise(
-        total_periods = n(),
-        tagged_periods = sum(tagged, na.rm = TRUE),
-        pct_tagged = 100 * tagged_periods / total_periods,
-        .groups = "drop"
-      )
-    ```
+```r
+# Reduce batch sizes for memory-constrained environments
+BATCH_SIZE_CC <- 50      # Control chart batches (default: 100)
+BATCH_SIZE_IND <- 3      # Indicator batches (default: 5)
+BATCH_SIZE_PROV <- 10    # Province batches (default: 20)
+BATCH_SIZE_DIST <- 10    # District batches (default: 15)
 
+# Disable memory-intensive analyses
+RUN_DISTRICT_MODEL <- FALSE
+RUN_ADMIN_AREA_4_ANALYSIS <- FALSE
+
+source("03_module_service_utilization.R")
+```
+
+**Cas d'utilisation** : Exécution sur des machines avec une RAM limitée (<8GB).
+
+</details>
+
+<details>
+<summary>Exemple 6 : Utilisation programmatique des sorties</summary>
+
+
+```r
+# Load disruption analysis outputs
+disruptions_national <- read.csv("M3_disruptions_analysis_admin_area_1.csv")
+shortfalls_national <- read.csv("M3_all_indicators_shortfalls_admin_area_1.csv")
+
+# Calculate total service shortfall by indicator
+annual_shortfalls <- shortfalls_national %>%
+  mutate(year = period_id %/% 100) %>%
+  group_by(indicator_common_id, year) %>%
+  summarise(
+    total_expected = sum(count_expect_sum, na.rm = TRUE),
+    total_actual = sum(count_sum, na.rm = TRUE),
+    total_shortfall = sum(shortfall_absolute, na.rm = TRUE),
+    avg_shortfall_pct = mean(shortfall_percent, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+# Identify months with largest disruptions
+worst_months <- shortfalls_national %>%
+  filter(shortfall_percent > 10) %>%
+  arrange(desc(shortfall_percent)) %>%
+  head(20)
+
+# Load control chart results for detailed analysis
+control_chart <- read.csv("M3_chartout.csv")
+
+# Count tagged periods by indicator
+tagged_summary <- control_chart %>%
+  group_by(indicator_common_id) %>%
+  summarise(
+    total_periods = n(),
+    tagged_periods = sum(tagged, na.rm = TRUE),
+    pct_tagged = 100 * tagged_periods / total_periods,
+    .groups = "drop"
+  )
+```
+
+</details>
 
 ### Dépannage
 
-??? "Problèmes courants et solutions"
+<details>
+<summary>Problèmes courants et solutions</summary>
 
-    #### Problème : Le script se bloque avec l'erreur "out of memory" (manque de mémoire)
 
-    **Solutions** :
+#### Problème : Le script se bloque avec l'erreur "out of memory" (manque de mémoire)
 
-    - Réduire la taille des lots (par exemple, `BATCH_SIZE_IND <- 3`)
-    - Définir `RUN_DISTRICT_MODEL <- FALSE`
-    - Définir `RUN_ADMIN_AREA_4_ANALYSIS <- FALSE`
-    - Fermer les autres applications
-    - Exécuter sur une machine avec plus de RAM
+**Solutions** :
 
-    ---
+- Réduire la taille des lots (par exemple, `BATCH_SIZE_IND <- 3`)
+- Définir `RUN_DISTRICT_MODEL <- FALSE`
+- Définir `RUN_ADMIN_AREA_4_ANALYSIS <- FALSE`
+- Fermer les autres applications
+- Exécuter sur une machine avec plus de RAM
 
-    #### Problème : Avertissement "le modèle n'a pas réussi à converger"
+---
 
-    **Explication** : La régression robuste n'a pas complètement convergé dans les 100 itérations
+#### Problème : Avertissement "le modèle n'a pas réussi à converger"
 
-    **Impact** : Généralement minime - une convergence partielle est souvent suffisante
+**Explication** : La régression robuste n'a pas complètement convergé dans les 100 itérations
 
-    **Solutions** :
+**Impact** : Généralement minime - une convergence partielle est souvent suffisante
 
-    - Vérifier la qualité des données pour ce panel
-    - Augmenter le paramètre `maxit` dans l'appel `rlm()` (ligne 229, 247)
-    - Il est généralement possible de l'ignorer si seuls quelques panels sont concernés
+**Solutions** :
 
-    ---
+- Vérifier la qualité des données pour ce panel
+- Augmenter le paramètre `maxit` dans l'appel `rlm()` (ligne 229, 247)
+- Il est généralement possible de l'ignorer si seuls quelques panels sont concernés
 
-    #### Problème : Nombreuses lignes vides dans les fichiers de sortie
+---
 
-    **Explication** : Données insuffisantes pour certaines combinaisons indicateur-géographie
+#### Problème : Nombreuses lignes vides dans les fichiers de sortie
 
-    **Solutions** :
+**Explication** : Données insuffisantes pour certaines combinaisons indicateur-géographie
 
-    - Comportement attendu pour les indicateurs peu nombreux
-    - Filtrer les sorties sur les valeurs non manquantes
-    - Envisager l'agrégation à un niveau géographique plus élevé
+**Solutions** :
 
-    ---
+- Comportement attendu pour les indicateurs peu nombreux
+- Filtrer les sorties sur les valeurs non manquantes
+- Envisager l'agrégation à un niveau géographique plus élevé
 
-    #### Problème : Tous les mois récents sont signalés comme perturbations
+---
 
-    **Explication** : Marquage automatique des 6 derniers mois
+#### Problème : Tous les mois récents sont signalés comme perturbations
 
-    **But** : Permet d'examiner les tendances récentes, même en l'absence de preuves statistiques solides
+**Explication** : Marquage automatique des 6 derniers mois
 
-    **Solutions** :
+**But** : Permet d'examiner les tendances récentes, même en l'absence de preuves statistiques solides
 
-    - Comportement attendu, pas un bogue
-    - Examiner les mois récents manuellement
-    - Ajuster la logique `last_6_months` si nécessaire (ligne 333)
+**Solutions** :
 
-    ---
+- Comportement attendu, pas un bogue
+- Examiner les mois récents manuellement
+- Ajuster la logique `last_6_months` si nécessaire (ligne 333)
 
-    #### Problème : la variable `tagged` a été supprimée de la régression
+---
 
-    **Message** : La variable est automatiquement mise à 0
+#### Problème : la variable `tagged` a été supprimée de la régression
 
-    **Explication** : Aucune variation de `tagged` dans ce panneau (tout 0 ou tout 1)
+**Message** : La variable est automatiquement mise à 0
 
-    **Solutions** :
+**Explication** : Aucune variation de `tagged` dans ce panneau (tout 0 ou tout 1)
 
-    - Attendu dans les panels sans perturbations ou avec des perturbations constantes
-    - Il ne s'agit pas d'une erreur - l'effet de perturbation est correctement fixé à 0
+**Solutions** :
 
-    ---
+- Attendu dans les panels sans perturbations ou avec des perturbations constantes
+- Il ne s'agit pas d'une erreur - l'effet de perturbation est correctement fixé à 0
 
-    #### Problème : Des fichiers temporaires subsistent après l'exécution
+---
 
-    **Cause** : Le script s'est arrêté avant le nettoyage
+#### Problème : Des fichiers temporaires subsistent après l'exécution
 
-    **Solutions** :
+**Cause** : Le script s'est arrêté avant le nettoyage
 
-    - Supprimer manuellement : `M3_temp_*.csv`
-    - Ou réexécuter le script (nettoyage automatique au démarrage)
+**Solutions** :
 
-    ---
+- Supprimer manuellement : `M3_temp_*.csv`
+- Ou réexécuter le script (nettoyage automatique au démarrage)
 
-    #### Problème : Résultats très différents selon le niveau géographique
+---
 
-    **Explication** : Des agrégations géographiques différentes permettent de saisir des modèles différents
+#### Problème : Résultats très différents selon le niveau géographique
 
-    **Exemple** : La tendance nationale peut être stable alors que certains districts connaissent d'importantes perturbations
+**Explication** : Des agrégations géographiques différentes permettent de saisir des modèles différents
 
-    **Solutions** :
+**Exemple** : La tendance nationale peut être stable alors que certains districts connaissent d'importantes perturbations
 
-    - Comportement attendu - ce n'est pas un bogue
-    - Utiliser le niveau approprié pour votre question de recherche
-    - Recouper les modèles entre les différents niveaux pour en vérifier la robustesse
+**Solutions** :
+
+- Comportement attendu - ce n'est pas un bogue
+- Utiliser le niveau approprié pour votre question de recherche
+- Recouper les modèles entre les différents niveaux pour en vérifier la robustesse
+
+</details>
 
 ### Notes d'utilisation
 
-??? "Directives d'interprétation"
+<details>
+<summary>Directives d'interprétation</summary>
 
-    **Effets de perturbation (b_admin_area_*)** :
 
-    - Les valeurs négatives indiquent des déficits de volume de service pendant les périodes de perturbation
-    - Les valeurs positives indiquent des excédents de volume de service pendant les périodes de perturbation
-    - Les valeurs proches de zéro indiquent des effets de perturbation moindres
+**Effets de perturbation (b_admin_area_*)** :
 
-    **Valeurs P (p_admin_area_*)** :
+- Les valeurs négatives indiquent des déficits de volume de service pendant les périodes de perturbation
+- Les valeurs positives indiquent des excédents de volume de service pendant les périodes de perturbation
+- Les valeurs proches de zéro indiquent des effets de perturbation moindres
 
-    - Les valeurs < 0,05 indiquent des perturbations statistiquement significatives
-    - Les valeurs > 0,05 peuvent indiquer une variation normale plutôt que de véritables perturbations
+**Valeurs P (p_admin_area_*)** :
 
-    **Coefficients de tendance (b_trend_admin_area_*)** :
+- Les valeurs < 0,05 indiquent des perturbations statistiquement significatives
+- Les valeurs > 0,05 peuvent indiquer une variation normale plutôt que de véritables perturbations
 
-    - Les valeurs positives indiquent une augmentation de l'utilisation des services au fil du temps
-    - Les valeurs négatives indiquent une diminution de l'utilisation des services au fil du temps
-    - Les valeurs proches de zéro indiquent des schémas d'utilisation stables
+**Coefficients de tendance (b_trend_admin_area_*)** :
 
-    ### Considérations sur les performances
+- Les valeurs positives indiquent une augmentation de l'utilisation des services au fil du temps
+- Les valeurs négatives indiquent une diminution de l'utilisation des services au fil du temps
+- Les valeurs proches de zéro indiquent des schémas d'utilisation stables
 
-    **Facteurs de temps de fonctionnement** :
+### Considérations sur les performances
 
-    - **Nombre d'indicateurs** : Mise à l'échelle linéaire
-    - **Nombre d'unités géographiques** : Échelle linéaire à l'intérieur de chaque niveau
-    - **Longueur de la série temporelle** : Impact minimal (régression efficace)
-    - **Détails géographiques** : Échelle exponentielle (beaucoup plus d'unités à des niveaux plus fins)
+**Facteurs de temps de fonctionnement** :
 
-    **Temps d'exécution estimés** (exemple de données : 50 indicateurs, 100 districts) :
+- **Nombre d'indicateurs** : Mise à l'échelle linéaire
+- **Nombre d'unités géographiques** : Échelle linéaire à l'intérieur de chaque niveau
+- **Longueur de la série temporelle** : Impact minimal (régression efficace)
+- **Détails géographiques** : Échelle exponentielle (beaucoup plus d'unités à des niveaux plus fins)
 
-    - Modèles nationaux + provinciaux : ~5-10 minutes
-    - Ajouter des modèles de district : ~30-60 minutes
-    - Ajouter des modèles de quartiers : Plusieurs heures (en fonction du nombre de quartiers)
+**Temps d'exécution estimés** (exemple de données : 50 indicateurs, 100 districts) :
 
-    **Stratégies d'optimisation** :
+- Modèles nationaux + provinciaux : ~5-10 minutes
+- Ajouter des modèles de district : ~30-60 minutes
+- Ajouter des modèles de quartiers : Plusieurs heures (en fonction du nombre de quartiers)
 
-    - Définir `RUN_DISTRICT_MODEL = FALSE` pour une exécution plus rapide (sauter le niveau du district)
-    - Régler `RUN_ADMIN_AREA_4_ANALYSIS = FALSE` (par défaut) pour éviter l'analyse au niveau de la circonscription
-    - Réduire `SMOOTH_K` pour un calcul plus rapide de la médiane glissante
-    - Utiliser `SELECTEDCOUNT = "count_final_none"` pour éviter les ajustements de complétude
+**Stratégies d'optimisation** :
 
-    ### Détails du traitement des données
+- Définir `RUN_DISTRICT_MODEL = FALSE` pour une exécution plus rapide (sauter le niveau du district)
+- Régler `RUN_ADMIN_AREA_4_ANALYSIS = FALSE` (par défaut) pour éviter l'analyse au niveau de la circonscription
+- Réduire `SMOOTH_K` pour un calcul plus rapide de la médiane glissante
+- Utiliser `SELECTEDCOUNT = "count_final_none"` pour éviter les ajustements de complétude
 
-    **Gestion de la mémoire** :
+### Détails du traitement des données
 
-    - Utilise `data.table` pour des opérations efficaces sur de grands ensembles de données
-    - Traitement par lots : Résultats sauvegardés sur disque périodiquement
-    - Nettoyage progressif : Objets supprimés lorsqu'ils ne sont plus nécessaires
-    - Les fichiers temporaires permettent de traiter des ensembles de données plus grands que la RAM
+**Gestion de la mémoire** :
 
-    **Taille des lots** (ajustable en fonction des contraintes de mémoire) :
+- Utilise `data.table` pour des opérations efficaces sur de grands ensembles de données
+- Traitement par lots : Résultats sauvegardés sur disque périodiquement
+- Nettoyage progressif : Objets supprimés lorsqu'ils ne sont plus nécessaires
+- Les fichiers temporaires permettent de traiter des ensembles de données plus grands que la RAM
 
-    - Carte de contrôle : 100 panneaux par lot
-    - Indicateurs : 5 indicateurs par lot
-    - Provinces : 20 résultats par lot
-    - Districts : 15 résultats par lot
-    - Zone administrative 4 : 10 résultats par lot
+**Taille des lots** (ajustable en fonction des contraintes de mémoire) :
 
-    **Traitement des données manquantes** :
+- Carte de contrôle : 100 panneaux par lot
+- Indicateurs : 5 indicateurs par lot
+- Provinces : 20 résultats par lot
+- Districts : 15 résultats par lot
+- Zone administrative 4 : 10 résultats par lot
 
-    1. Les mois manquants sont remplis via `tidyr::complete()`
-    2. Remplissage avant/arrière pour les métadonnées
-    3. Interpolation linéaire (`zoo::na.approx`) pour les valeurs de comptage
-    4. Écart maximal : Illimité (règle = 2 étend les points d'extrémité)
+**Traitement des données manquantes** :
 
-    ### Logique de repli du modèle
+1. Les mois manquants sont remplis via `tidyr::complete()`
+2. Remplissage avant/arrière pour les métadonnées
+3. Interpolation linéaire (`zoo::na.approx`) pour les valeurs de comptage
+4. Écart maximal : Illimité (règle = 2 étend les points d'extrémité)
 
-    L'analyse de la carte de contrôle utilise une sélection de modèle adaptative basée sur la disponibilité des données :
+### Logique de repli du modèle
 
-    **Modèle complet** (nécessite >= 12 obs ET > 12 dates uniques) :
+L'analyse de la carte de contrôle utilise une sélection de modèle adaptative basée sur la disponibilité des données :
 
-    ```r
-    count ~ month_factor + as.numeric(date)
-    ```
+**Modèle complet** (nécessite >= 12 obs ET > 12 dates uniques) :
 
-    Tient compte à la fois de la saisonnalité et de la tendance linéaire
+```r
+count ~ month_factor + as.numeric(date)
+```
 
-    **Modèle tendance uniquement** (nécessite >= 12 obs) :
+Tient compte à la fois de la saisonnalité et de la tendance linéaire
 
-    ```r
-    count ~ as.numeric(date)
-    ```
+**Modèle tendance uniquement** (nécessite >= 12 obs) :
 
-    Tient compte uniquement de la tendance linéaire (données insuffisantes pour la saisonnalité)
+```r
+count ~ as.numeric(date)
+```
 
-    **Retour à la médiane** (< 12 observations) :
+Tient compte uniquement de la tendance linéaire (données insuffisantes pour la saisonnalité)
 
-    ```r
-    count_predict = median(count)
-    ```
+**Retour à la médiane** (< 12 observations) :
 
-    Utilise la médiane globale lorsque les données sont insuffisantes pour la régression
+```r
+count_predict = median(count)
+```
 
-    **Vérifications de convergence** :
+Utilise la médiane globale lorsque les données sont insuffisantes pour la régression
 
-    - Modèles dont l'état de convergence a été vérifié
-    - Avertissements émis pour les modèles non convergents
-    - Les modèles non convergents sont encore utilisés (une convergence partielle est souvent suffisante)
+**Vérifications de convergence** :
 
-    ### Assurance qualité
+- Modèles dont l'état de convergence a été vérifié
+- Avertissements émis pour les modèles non convergents
+- Les modèles non convergents sont encore utilisés (une convergence partielle est souvent suffisante)
 
-    **Nettoyage des données** :
+### Assurance qualité
 
-    - Les valeurs aberrantes ont été supprimées avant l'analyse de la carte de contrôle (sur la base des indicateurs du module 1)
-    - Les mois à faible volume (< 50% de la moyenne) ont été exclus pour améliorer la stabilité du modèle
-    - Prédictions limitées à zéro (les comptes ne peuvent pas être négatifs)
+**Nettoyage des données** :
 
-    **Marquage automatique** :
+- Les valeurs aberrantes ont été supprimées avant l'analyse de la carte de contrôle (sur la base des indicateurs du module 1)
+- Les mois à faible volume (< 50% de la moyenne) ont été exclus pour améliorer la stabilité du modèle
+- Prédictions limitées à zéro (les comptes ne peuvent pas être négatifs)
 
-    - Les mois récents (6 derniers mois) sont automatiquement marqués pour garantir la prise en compte des perturbations actuelles
-    - Évite de manquer des perturbations en cours en raison d'un écart insuffisant par rapport à la tendance
+**Marquage automatique** :
 
-    **Contrôles de robustesse** :
+- Les mois récents (6 derniers mois) sont automatiquement marqués pour garantir la prise en compte des perturbations actuelles
+- Évite de manquer des perturbations en cours en raison d'un écart insuffisant par rapport à la tendance
 
-    - Les coefficients du modèle sont vérifiés pour les valeurs `NA` avant d'être utilisés
-    - Si la variable `tagged` est éliminée du modèle (pas de variation), l'effet de perturbation est fixé à 0
-    - Les valeurs P ne sont calculées que si des erreurs standard valides sont disponibles
+**Contrôles de robustesse** :
 
-    **Traitement des cas limites** :
+- Les coefficients du modèle sont vérifiés pour les valeurs `NA` avant d'être utilisés
+- Si la variable `tagged` est éliminée du modèle (pas de variation), l'effet de perturbation est fixé à 0
+- Les valeurs P ne sont calculées que si des erreurs standard valides sont disponibles
 
-    - Panneaux à un seul cluster : Aucun regroupement n'est appliqué (l'analyse échouerait)
-    - Données insuffisantes : Sauter l'analyse pour ce panel/niveau
-    - Prédictions manquantes : Complétées par les valeurs originales dans la mesure du possible
+**Traitement des cas limites** :
 
-    ### Intégration du flux de travail
+- Panneaux à un seul cluster : Aucun regroupement n'est appliqué (l'analyse échouerait)
+- Données insuffisantes : Sauter l'analyse pour ce panel/niveau
+- Prédictions manquantes : Complétées par les valeurs originales dans la mesure du possible
 
-    Ce module est le **module 3** du pipeline analytique FASTR :
+### Intégration du flux de travail
 
-    **Prérequis** :
+Ce module est le **module 3** du pipeline analytique FASTR :
 
-    1. **Module 1** : Évaluation de la qualité des données (génère `M1_output_outliers.csv`)
-    2. **Module 2** : Ajustements de la qualité des données (génère `M2_adjusted_data.csv`)
+**Prérequis** :
 
-    ### Dépendances
+1. **Module 1** : Évaluation de la qualité des données (génère `M1_output_outliers.csv`)
+2. **Module 2** : Ajustements de la qualité des données (génère `M2_adjusted_data.csv`)
 
-    **Packages R requis** :
+### Dépendances
 
-    - `data.table` : Manipulation efficace des données
-    - `lubridate` : Traitement des dates
-    - `zoo` : Statistiques roulantes et interpolation
-    - `MASS` : Régression robuste (rlm)
-    - `fixest` : Régression de panel à effets fixes
-    - `dplyr` : Manipulation des données
-    - `tidyr` : Nettoyage des données
+**Packages R requis** :
 
+- `data.table` : Manipulation efficace des données
+- `lubridate` : Traitement des dates
+- `zoo` : Statistiques roulantes et interpolation
+- `MASS` : Régression robuste (rlm)
+- `fixest` : Régression de panel à effets fixes
+- `dplyr` : Manipulation des données
+- `tidyr` : Nettoyage des données
+
+</details>
 
 ---
 
@@ -1140,323 +1209,20 @@ Pour le graphique de variation de volume (résultat 4) :
 ////////////////////////////////////////////////////////////////////
 -->
 
-<!-- SLIDE:m6_1 -->
-## Analyse de l'utilisation des services
 
-L'analyse de l'utilisation des services mesure les changements dans les volumes de services de santé au fil du temps. En comparant la prestation de services sur des années consécutives, cette analyse identifie les augmentations ou les diminutions des schémas d'utilisation selon les régions et les indicateurs.
 
-La mesure principale est le **pourcentage de variation d'une année sur l'autre**, qui quantifie les changements dans la prestation de services entre deux années consécutives. La formule calcule la différence entre les volumes de l'année en cours et de l'année précédente, exprimée en pourcentage de l'année précédente. Les changements dépassant ±10% sont signalés pour examen, car ils représentent généralement des changements significatifs dans la prestation de services plutôt que des variations normales.
-<!-- /SLIDE -->
 
-<!-- SLIDE:m6_1b -->
-## Comparaison de l'utilisation des services avec DHIS2
 
-Les tendances d'utilisation des services sont couramment produites dans DHIS2. L'approche FASTR diffère de trois manières importantes :
 
-- Ajuste pour la qualité des données (valeurs aberrantes et/ou complétude)
-- Visualise les données avec l'approche du pourcentage de variation pour faciliter l'identification des fluctuations significatives dans la prestation de services
-- Examine les tendances, mais utilise également les données d'utilisation des services ajustées pour des analyses supplémentaires plus complexes
-<!-- /SLIDE -->
 
-<!-- SLIDE:m6_1c -->
-## Directionnalité des indicateurs
 
-Avant d'interpréter une tendance, demandez-vous : **une augmentation est-elle bonne ou mauvaise ?**
 
-![Directionnalité des indicateurs](/methodology/resources/diagrams_fr/indicator_directionality.svg)
-<!-- /SLIDE -->
 
-<!-- SLIDE:m6_1a -->
-<!-- _class: compact -->
-## Utilisation des services et perturbations : comparaison avec DHIS2
 
-Les tendances d'utilisation des services sont couramment produites dans DHIS2
 
-**Principales différences entre l'approche DHIS2 et FASTR**
 
-- FASTR ajuste pour la qualité des données (valeurs aberrantes et/ou complétude)
-- FASTR visualise les données avec l'approche du pourcentage de variation pour faciliter l'identification des fluctuations significatives
 
-**Extension de l'analyse de l'utilisation des services** — approches statistiques plus complexes non disponibles dans DHIS2. En utilisant un cadre de régression, nous sommes en mesure de :
 
-- Tenir compte de la saisonnalité
-- Exclure les changements inhabituels pour s'assurer que les événements ponctuels n'influencent pas les tendances normales
-- Utiliser les données historiques comme référence pour le contexte
-- Détecter les perturbations et les schémas de reprise
-- Quantifier les changements avec une méthodologie robuste par rapport à la simple observation des fluctuations dans une ligne de tendance
 
-Cela améliore la capacité à interpréter et comparer les données d'utilisation dans les zones nationales et infranationales sans avoir besoin de dénominateurs de population.
-<!-- /SLIDE -->
 
-<!-- SLIDE:m6_2 -->
-## Détection des perturbations et excédents de services
 
-L'approche FASTR pour détecter les perturbations et excédents de services utilise la **régression de séries temporelles interrompues (ITS)** avec des effets fixes au niveau de l'établissement. Ce cadre statistique permet une interprétation et une comparaison plus significatives des données de comptage entre les zones infranationales, permettant des analyses que les données brutes seules ne peuvent fournir.
-
-En se concentrant sur les changements et tendances significatifs plutôt que sur les chiffres bruts, cette approche soutient une analyse plus précise et comparable. Les changements importants et inattendus antérieurs dans les données historiques sont supprimés pour établir une référence propre. Les changements de volume inattendus sont estimés en comparant les volumes observés aux volumes attendus basés sur les tendances historiques et la saisonnalité.
-<!-- /SLIDE -->
-
-<!-- SLIDE:m6_2b -->
-<!-- _class: output -->
-## Fonctionnement de la détection des perturbations
-
-<div class="output-layout">
-<div class="output-text">
-
-L'analyse se déroule en quatre étapes. Premièrement, nous **utilisons les données passées pour établir des attentes** en examinant plusieurs années de données historiques pour comprendre les schémas mensuels typiques et les variations saisonnières.
-
-Deuxièmement, nous **repérons les changements inhabituels** en comparant les volumes de services actuels aux attentes. Les écarts importants sont signalés pour investigation.
-
-Troisièmement, nous **gérons les perturbations passées** en ajustant les données historiques pour supprimer les changements importants et inattendus. Cela empêche les événements ponctuels de fausser notre référence de prestation « normale ».
-
-Quatrièmement, nous **détectons les perturbations dans le temps** en examinant les tendances sur plusieurs mois pour distinguer les fluctuations temporaires des changements durables.
-
-</div>
-<div class="output-viz">
-
-![Détection des perturbations](/methodology/resources/diagrams/disruption_chart.png)
-
-</div>
-</div>
-
-<!--
-PRESENTER NOTES:
-1. Utiliser les données passées pour établir des attentes : Nous commençons par examiner les quelques années passées de données sur les services de santé pour comprendre le schéma typique de chaque mois. Par exemple, si nous voyons que certains services ont généralement des volumes plus élevés ou plus bas pendant certains mois, nous utilisons ce schéma pour établir des attentes "normales" pour chaque mois à venir. Cette étape nous aide à tenir compte des changements saisonniers réguliers, comme une augmentation des visites liées à la grippe pendant les mois d'hiver.
-2. Repérer les changements inhabituels : Une fois que nous savons à quoi ressemble la "normalité", nous pouvons comparer les volumes de services actuels à ces attentes. Si nous voyons que le nombre de personnes utilisant un service de santé particulier est nettement supérieur ou inférieur aux attentes, nous le signalons comme un changement inhabituel. Cela pourrait être dû à des facteurs comme une épidémie, une catastrophe naturelle ou même des changements dans la politique de santé.
-3. Gérer les perturbations passées : Pour maintenir notre analyse précise, nous ajustons nos données historiques en supprimant les grands changements inattendus antérieurs. Cela garantit que les événements ponctuels du passé ne faussent pas notre compréhension de ce qui est "normal" aujourd'hui.
-4. Détecter les perturbations dans le temps : Enfin, nous examinons les tendances au fil du temps pour voir s'il y a des changements clairs dans l'utilisation des services de santé. Par exemple, s'il y a une baisse des vaccinations de routine sur plusieurs mois, nous pouvons l'identifier comme une perturbation à plus long terme. En surveillant ces tendances, nous obtenons une meilleure idée de si les changements sont simplement saisonniers ou pourraient être dus à des problèmes plus importants et durables qui nécessitent une attention.
--->
-<!-- /SLIDE -->
-
-<!-- SLIDE:m6_2c -->
-## Comparaison de la détection des perturbations avec DHIS2
-
-La détection des perturbations étend l'analyse de l'utilisation des services en utilisant des approches statistiques non disponibles dans DHIS2. Le cadre de régression permet plusieurs capacités qui améliorent la simple visualisation des tendances.
-
-Le modèle **tient compte de la saisonnalité** lors du calcul des valeurs attendues, garantissant que les schémas saisonniers ne sont pas confondus avec des perturbations. Il **exclut les changements historiques inhabituels** afin que les événements ponctuels n'influencent pas la référence. **Les données historiques servent de contexte** pour établir les niveaux de service attendus, et le cadre **détecte systématiquement les schémas de perturbation et de reprise**.
-
-Plus important encore, cette approche **quantifie les changements avec une méthodologie robuste** plutôt que de s'appuyer sur l'observation visuelle des fluctuations de tendance. Cela améliore la capacité à interpréter et comparer les données d'utilisation entre les zones nationales et infranationales **sans nécessiter de dénominateurs de population**.
-<!-- /SLIDE -->
-
-<!-- SLIDE:m6_2a -->
-## Pourquoi détecter les perturbations est important
-
-La détection des perturbations ne consiste pas seulement à signaler des problèmes — elle déclenche une investigation sur les causes profondes.
-
-![Disruptions framing](/methodology/resources/diagrams_fr/disruptions_framing.svg)
-<!-- /SLIDE -->
-
-<!-- SLIDE:m6_5a -->
-<!-- _class: compact -->
-## Module d'utilisation des services : Paramètres de configuration
-
-**Note :** Ces paramètres s'appliquent uniquement à l'analyse des perturbations. L'analyse de l'utilisation des services d'une année sur l'autre ne nécessite pas de configuration.
-
-| Paramètre | Description |
-|-----------|-------------|
-| **Variable de comptage pour la modélisation** | Quel comptage ajusté utiliser pour calculer les valeurs attendues |
-| **Variable de comptage pour la visualisation** | Quel comptage ajusté utiliser comme valeurs observées réelles |
-| **Exécuter le modèle au niveau du district** | Exécuter les régressions au niveau admin_area_3. Mettre à Oui pour une analyse détaillée, Non pour une exécution plus rapide |
-| **Exécuter l'analyse admin_area_4** | Exécuter l'analyse au niveau le plus fin. Avertissement : peut être très lent pour les grands ensembles de données |
-| **Seuil pour les limites de contrôle basées sur MAD** | Nombre de MAD pour signaler les écarts importants. Par défaut 1,5 ; plus élevé = moins sensible |
-| **Fenêtre de lissage (k)** | Taille de la fenêtre en mois pour le lissage par médiane mobile. Doit être impair. Par défaut 7 |
-| **Seuil de baisse** | Signaler si la valeur réelle tombe en dessous de cette proportion de la valeur attendue. Par défaut 0,9 (baisse >= 10%) ; utiliser 0,8 pour ne signaler que les baisses importantes |
-| **Seuil de différence en pourcentage** | Mettre en évidence les points où la valeur réelle diffère de la valeur attendue de plus de ce pourcentage. Par défaut 10 |
-
-<!--
-PRESENTER NOTES:
-- Ces paramètres contrôlent la sensibilité de la détection des perturbations
-- Seuil MAD : plus bas = plus sensible (plus de signalements), plus haut = plus conservateur
-- Fenêtre de lissage : plus grande = tendances plus lisses, plus petite = capture les changements rapides
-- Seuil de baisse : 0,9 signifie signaler si < 90% de la valeur attendue (baisse de 10%)
-- L'analyse au niveau du district est optionnelle - augmente considérablement le temps de calcul
-- Sélection de la variable de comptage : utiliser "both" pour la plupart des analyses (ajusté pour les valeurs aberrantes + complétude)
-- Les paramètres peuvent être ajustés en fonction du contexte du pays et de la qualité des données
--->
-<!-- /SLIDE -->
-
-<!-- SLIDE:m6_s0 -->
-## Utilisation des services : détecter les changements
-
-Les volumes de services montent et descendent naturellement — plus de cas de paludisme en saison des pluies, par exemple. Comment distinguer une **variation normale** d'une **vraie perturbation** ?
-
-**FASTR apprend le rythme normal** de chaque indicateur dans chaque zone :
-- Tendance à long terme (les services augmentent-ils ou diminuent-ils ?)
-- Saisonnalité (quels mois sont habituellement plus élevés ?)
-
-Puis il compare les **volumes observés** aux **volumes attendus** :
-
-- **En dessous** de l'attendu → perturbation potentielle (rupture de stock ? grève ? conflit ?)
-- **Au-dessus** de l'attendu → hausse inhabituelle (campagne de vaccination ? nouveau programme ?)
-
-Le module mesure **combien de services ont été perdus ou gagnés** et sur quelle durée.
-<!-- /SLIDE -->
-
-<!-- SLIDE:m6_s0b -->
-## Lire un graphique de perturbation
-
-![w:750](/methodology/resources/diagrams_fr/disruption_chart_annotated.svg)
-
-<!--
-PRESENTER NOTES:
-- La ligne noire = ce qui s'est réellement passé (volumes observés)
-- La ligne pointillée = ce que FASTR attendait (basé sur la tendance et la saisonnalité)
-- Zone rouge = les services étaient en dessous de l'attendu (perturbation)
-- Zone verte = les services étaient au-dessus de l'attendu (surplus)
-- La taille de la zone colorée = l'ampleur de l'impact
-- Demandez-vous : qu'est-ce qui a causé cette perturbation ? Était-ce un problème de données ou un vrai changement ?
--->
-<!-- /SLIDE -->
-
-<!-- SLIDE:m6_s1 -->
-## Analyse de l'utilisation des services
-
-L'analyse de l'utilisation des services suit le nombre de services de santé fournis au fil du temps, identifiant les tendances, les anomalies et les comparaisons entre les zones.
-
-<!-- _class: output -->
-
-<div class="output-layout">
-<div class="output-viz">
-
-![Nombre de services déclarés h:300](/methodology/resources/default_outputs/Module3_5_Number_of_services_reported.png)
-
-</div>
-<div class="output-text">
-
-**Ce que vous voyez :** Graphique linéaire montrant les volumes de services absolus au fil du temps par indicateur.
-
-**Ce qu'il montre :** Comptage des services fournis chaque mois/trimestre.
-
-**Interprétation :** Recherchez les tendances globales (augmentation/diminution) et les baisses ou pics soudains qui peuvent nécessiter une investigation.
-
-</div>
-</div>
-<!-- /SLIDE -->
-
-<!-- SLIDE:m6_s1b -->
-<!-- _class: output -->
-## Résultat de la variation d'une année sur l'autre
-
-<div class="output-layout">
-<div class="output-viz">
-
-![Changement du volume de service h:300](/methodology/resources/default_outputs/Module3_1_Change_in_service_volume.png)
-
-</div>
-<div class="output-text">
-
-**Ce que vous voyez :** Heatmap comparant la période actuelle à la même période l'année dernière, avec les changements > ±10% signalés.
-
-**Formule :** Changement annuel % = (cette année - année dernière) / année dernière × 100
-
-**Interprétation :** Les changements signalés nécessitent un suivi - s'agit-il d'un vrai changement de programme, d'un problème de données ou d'un événement attendu ?
-
-</div>
-</div>
-
-<!--
-PRESENTER NOTES:
-- Version condensée combinant les tendances de service et la comparaison annuelle
-- Le premier graphique montre les volumes absolus - identifier les schémas globaux
-- Le deuxième graphique montre les changements relatifs - plus facile à comparer entre les indicateurs
-- Les changements annuels > ±10% sont signalés - mais le seuil est configurable
-- Pour les changements signalés, demandez : problème de qualité des données, vrai changement de programme ou événement externe ?
-- Ces résultats ne nécessitent pas de dénominateurs de population - utile quand les dénominateurs sont incertains
--->
-<!-- /SLIDE -->
-
-<!-- SLIDE:m6_s1c -->
-## Essayez par vous-même
-
-Examinez la variation d'une année sur l'autre de votre indicateur prioritaire. Posez-vous ces questions :
-
-- Le changement est-il **positif** (augmentation) ou **négatif** (diminution) ?
-- Pour cet indicateur, ce changement est-il **bon** ou **mauvais** pour les résultats de santé ?
-- Qu'est-ce qui pourrait expliquer ce changement — un vrai changement de programme, un problème de données ou un événement externe ?
-
-*Conseil : N'oubliez pas que toutes les augmentations ne sont pas bonnes. Une hausse des décès maternels est un résultat négatif même si le nombre a augmenté.*
-<!-- /SLIDE -->
-
-<!-- SLIDE:m6_s1d -->
-## Directionnalité des indicateurs
-
-Avant d'interpréter une tendance, demandez-vous : **une augmentation est-elle bonne ou mauvaise ?**
-
-![Directionnalité des indicateurs](/methodology/resources/diagrams_fr/indicator_directionality.svg)
-<!-- /SLIDE -->
-
-<!-- SLIDE:m6_s1a -->
-<!-- _class: output -->
-## Variation trimestrielle
-
-<div class="output-layout">
-<div class="output-viz">
-
-![Variation trimestrielle h:300](/methodology/resources/default_outputs/Module3_QoQ_change.png)
-
-</div>
-<div class="output-text">
-
-**Ce que vous voyez :** Heatmap comparant le trimestre en cours au trimestre précédent, avec les variations >±10 % signalées.
-
-**Formule :** Variation trimestrielle % = (trimestre en cours – trimestre précédent) / trimestre précédent × 100
-
-**Interprétation :** Les variations signalées nécessitent un suivi — s'agit-il d'un changement réel du programme, d'un problème de données ou d'un événement attendu ?
-
-</div>
-</div>
-
-<!--
-NOTES DU PRÉSENTATEUR :
-- Les variations trimestrielles >±10 % sont signalées — mais le seuil est configurable
-- Pour les variations signalées, demandez : problème de qualité des données, changement réel du programme ou événement externe ?
-- Ces résultats ne nécessitent pas de dénominateurs de population — utile lorsque les dénominateurs sont incertains
-- Complémentaire à la vue annuelle : capture les changements plus récents
--->
-<!-- /SLIDE -->
-
-<!-- SLIDE:m6_s2 -->
-## Détection des perturbations de services
-
-Au-delà des comparaisons d'une année sur l'autre, nous voulons savoir : **La prestation de services est-elle sur la bonne voie, ou quelque chose l'a-t-elle perturbée ?**
-
-**Le défi :** Les comptages bruts de services sont difficiles à interpréter. Une baisse des services pourrait être une vraie perturbation, ou simplement une variation saisonnière normale. Différentes zones ont des volumes de référence différents, rendant la comparaison directe difficile.
-
-**La solution FASTR :** Utiliser la modélisation statistique pour estimer quel volume de service nous *attendrions* basé sur les tendances historiques et la saisonnalité, puis comparer le volume réel à cette attente.
-
-- **Perturbation :** Volume observé significativement inférieur à l'attendu
-- **Excédent :** Volume observé significativement supérieur à l'attendu
-<!-- /SLIDE -->
-
-<!-- SLIDE:m6_s2b -->
-<!-- _class: output -->
-## Résultat de perturbation de service
-
-<div class="output-layout">
-<div class="output-viz">
-
-![Résultat de perturbation h:300](/methodology/resources/default_outputs/Module3_2_Actual_vs_expected_national.png)
-
-</div>
-<div class="output-text">
-
-**Ce que vous voyez :** Graphique comparant le volume de service réel au volume attendu prédit par le modèle, en tenant compte de la saisonnalité.
-
-**Ce qu'il montre :** Écarts par rapport à l'attendu - perturbations (en dessous) ou excédents (au-dessus).
-
-**Interprétation :** Considérez les facteurs externes : COVID, grèves, ruptures de stock, campagnes. Les écarts persistants justifient une investigation du programme.
-
-</div>
-</div>
-
-<!--
-PRESENTER NOTES:
-- Version condensée axée sur la méthodologie de détection des perturbations
-- Idée clé : les comptages bruts sont difficiles à interpréter sans contexte
-- Le modèle statistique fournit une référence "attendue" tenant compte de la saisonnalité
-- Perturbation = écart soutenu en dessous de l'attendu, pas juste un mauvais mois
-- Lors de l'interprétation des perturbations, considérez les facteurs externes : COVID, grèves, etc.
-- Les écarts persistants justifient une investigation plus approfondie des causes
-- Peut être exécuté au niveau national, provincial ou du district selon la qualité des données
--->
-<!-- /SLIDE -->
