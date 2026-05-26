@@ -13,7 +13,7 @@ FASTR supports two ways to bring in HMIS data. You can upload a CSV file if you 
 
 CSV uploads work well for periodic imports or historical data. Direct DHIS2 integration suits regular updates from a live national system, since you can select specific indicators and time periods without manual file preparation.
 
-## Meghan says: Starting an import
+## Starting an import
 
 Navigate to the **Data** section and select **HMIS Data**. If you have admin permissions, you'll see an **Imports** panel on the right. Click **Start new import** and choose your source type: CSV file or DHIS2.
 
