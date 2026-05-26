@@ -1,5 +1,7 @@
 # wb-fastr-site
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/ea6a69f6-205c-43a4-82b8-1e108137b6de/deploy-status)](https://app.netlify.com/projects/fastr-analytics/deploys)
+
 Marketing site and documentation for FASTR. Built with [Astro](https://astro.build) and [Starlight](https://starlight.astro.build).
 
 Production: [fastr-analytics.org](https://fastr-analytics.org)
