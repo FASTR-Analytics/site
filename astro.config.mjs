@@ -29,14 +29,14 @@ export default defineConfig({
           autogenerate: { directory: "overview" },
         },
         {
-          label: "Getting started",
-          translations: { fr: "Premiers pas" },
-          autogenerate: { directory: "getting-started" },
+          label: "Admin guide",
+          translations: { fr: "Guide administrateur" },
+          autogenerate: { directory: "admin-guide" },
         },
         {
-          label: "Using the platform",
-          translations: { fr: "Utiliser la plateforme" },
-          autogenerate: { directory: "platform" },
+          label: "User guide",
+          translations: { fr: "Guide utilisateur" },
+          autogenerate: { directory: "user-guide" },
         },
         {
           label: "Methodology",

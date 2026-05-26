@@ -1,5 +1,8 @@
 ---
 import "../../styles/tailwind.css";
+import HeroBackground from "../../components/HeroBackground.astro";
+
+const videoSrc = "/videos/" + encodeURIComponent("Demonstration of FASTR Analytics Platform - French (4K).mp4");
 ---
 
 <!doctype html>
@@ -9,7 +12,7 @@ import "../../styles/tailwind.css";
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <title>FASTR — Analyses pour les systèmes de santé</title>
-    <meta name="description" content="FASTR — analyses pour les systèmes de santé." />
+    <meta name="description" content="FASTR aide les programmes de santé à transformer les données HMIS de routine en figures, tableaux et notes qui orientent les décisions." />
     <meta property="og:title" content="FASTR" />
     <meta property="og:description" content="Analyses pour les systèmes de santé." />
     <meta property="og:type" content="website" />
@@ -20,67 +23,171 @@ import "../../styles/tailwind.css";
     <link rel="alternate" hreflang="fr" href="https://fastr-analytics.org/fr/" />
   </head>
   <body>
-    <div>
-      <header class="max-w-6xl w-full mx-auto px-5 md:px-8 pt-6 md:pt-8 pb-4 md:pb-5 flex items-baseline justify-between gap-4">
-        <div class="text-xl md:text-2xl font-bold text-primary whitespace-nowrap">FASTR</div>
+    <!-- Nav -->
+    <header class="relative z-10 bg-base-100">
+      <div class="max-w-6xl w-full mx-auto px-5 md:px-8 pt-6 md:pt-8 pb-4 md:pb-5 flex items-center justify-between gap-4">
+        <img src="/images/FASTR_Primary_01_Horiz.png" alt="FASTR" class="h-6 md:h-7 w-auto" />
         <nav class="flex gap-5 md:gap-8 text-sm font-medium">
-          <a href="/fr/overview/" class="hover:underline underline-offset-4 whitespace-nowrap">Vue d'ensemble</a>
-          <a href="/fr/getting-started/" class="hover:underline underline-offset-4 whitespace-nowrap">Premiers pas</a>
+          <a href="/fr/overview/" class="hover:underline underline-offset-4 whitespace-nowrap">Documentation</a>
           <a href="/" class="hover:underline underline-offset-4 whitespace-nowrap text-neutral">English</a>
         </nav>
-      </header>
-
+      </div>
       <div class="border-t border-base-300 max-w-6xl w-full mx-auto"></div>
+    </header>
 
-      <main class="max-w-6xl w-full mx-auto px-5 md:px-8 pt-10 md:pt-16 pb-8 md:pb-12">
+    <!-- Hero -->
+    <section class="relative overflow-hidden bg-primary/5 text-primary">
+      <HeroBackground />
+      <div class="relative max-w-6xl w-full mx-auto px-5 md:px-8 pt-16 md:pt-28 pb-16 md:pb-28 text-base-content">
         <h1 class="text-4xl sm:text-5xl md:text-7xl leading-[1.05] mb-5 md:mb-6 max-w-4xl font-bold tracking-tight">
-          Analyses pour<br/>
+          Analyses pour<br />
           <span class="text-primary">les systèmes de santé.</span>
         </h1>
-
-        <p class="text-lg md:text-2xl leading-snug max-w-2xl mb-8 text-neutral">
-          FASTR aide les programmes de santé à transformer les données de routine en figures, tableaux et notes qui orientent les décisions.
+        <p class="text-lg md:text-2xl leading-snug max-w-2xl mb-8 text-base-content/70">
+          FASTR aide les programmes de santé à transformer les données HMIS de routine en figures, tableaux et notes qui orientent les décisions.
         </p>
-
-        <div class="flex gap-6 text-sm font-medium">
-          <a href="/fr/overview/" class="underline underline-offset-4 decoration-2 text-primary">
-            Lire la vue d'ensemble →
+        <div class="flex flex-wrap gap-4 md:gap-6 items-center text-sm font-medium">
+          <a href="/fr/overview/" class="inline-flex items-center gap-2 bg-primary text-primary-content px-5 py-3 rounded hover:bg-primary/90 transition-colors">
+            Lire la documentation →
           </a>
-          <a href="/fr/getting-started/" class="underline underline-offset-4 decoration-2">
-            Commencer →
+          <a href="#what-is-fastr" class="px-2 py-2 underline underline-offset-4 decoration-2 hover:text-primary">
+            En savoir plus
           </a>
         </div>
-      </main>
+      </div>
+    </section>
 
-      <div class="border-t border-base-300 max-w-6xl w-full mx-auto"></div>
+    <!-- What is FASTR -->
+    <section id="what-is-fastr" class="bg-base-100">
+      <div class="max-w-6xl w-full mx-auto px-5 md:px-8 py-16 md:py-24">
+        <div class="text-xs tracking-[0.3em] uppercase mb-4 text-primary font-semibold">Ce que c'est</div>
+        <h2 class="text-3xl md:text-5xl font-bold tracking-tight mb-8 md:mb-10 max-w-3xl leading-tight">
+          Une plateforme d'analyse rapide des données de routine.
+        </h2>
+        <div class="grid md:grid-cols-2 gap-8 md:gap-12 text-base md:text-lg leading-relaxed max-w-5xl">
+          <p>
+            FASTR — Frequent Assessments and Health System Tools for Resilience — est une initiative du Global Financing Facility soutenant l'utilisation par les pays des données HMIS de routine pour le suivi des services de santé reproductive, maternelle, néonatale, infantile, des adolescents et de la nutrition.
+          </p>
+          <p>
+            La plateforme prend la réalité désordonnée des données de programme — rapports incomplets, formats de période changeants, désagrégations qui se chevauchent — et la transforme en figures, tableaux, cartes et présentations que les équipes peuvent utiliser directement.
+          </p>
+        </div>
+      </div>
+    </section>
 
-      <section class="max-w-6xl w-full mx-auto px-5 md:px-8 py-10 md:py-14 grid md:grid-cols-3 gap-8 md:gap-10">
-        <article>
-          <div class="text-xs tracking-[0.3em] uppercase mb-3 text-primary font-semibold">I.</div>
-          <h3 class="text-xl mb-2 font-bold">Données de routine, prêtes à l'emploi.</h3>
-          <p class="text-sm leading-relaxed text-neutral">
-            Conçu pour la réalité désordonnée des données de programme. Les formats de période, les désagrégations et les dénominateurs sont gérés pour vous.
-          </p>
-        </article>
-        <article>
-          <div class="text-xs tracking-[0.3em] uppercase mb-3 text-primary font-semibold">II.</div>
-          <h3 class="text-xl mb-2 font-bold">Des figures solides.</h3>
-          <p class="text-sm leading-relaxed text-neutral">
-            Un système visuel cohérent à travers graphiques, tableaux, cartes et présentations. Des résultats sur lesquels vous pouvez compter.
-          </p>
-        </article>
-        <article>
-          <div class="text-xs tracking-[0.3em] uppercase mb-3 text-primary font-semibold">III.</div>
-          <h3 class="text-xl mb-2 font-bold">Pensé pour les équipes.</h3>
-          <p class="text-sm leading-relaxed text-neutral">
-            Un seul outil pour les analystes et les décideurs. Reproductible par conception, facile à partager.
-          </p>
-        </article>
-      </section>
+    <!-- Video demo -->
+    <section class="bg-base-200">
+      <div class="max-w-6xl w-full mx-auto px-5 md:px-8 py-16 md:py-24">
+        <div class="text-xs tracking-[0.3em] uppercase mb-4 text-primary font-semibold">Voir la plateforme en action</div>
+        <h2 class="text-3xl md:text-5xl font-bold tracking-tight mb-8 md:mb-10 max-w-3xl leading-tight">
+          Démonstration de la plateforme.
+        </h2>
+      <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1183298242?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Démonstration de la plateforme d'analyse FASTR"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+      </div>
+    </section>
 
-      <footer class="max-w-6xl w-full mx-auto px-5 md:px-8 pb-6 md:pb-8 pt-4 text-xs text-neutral">
-        FASTR · fastr-analytics.org
-      </footer>
-    </div>
+    <!-- How it works -->
+    <section class="bg-base-100">
+      <div class="max-w-6xl w-full mx-auto px-5 md:px-8 py-16 md:py-24">
+        <div class="text-xs tracking-[0.3em] uppercase mb-4 text-primary font-semibold">Comment ça marche</div>
+        <h2 class="text-3xl md:text-5xl font-bold tracking-tight mb-12 max-w-3xl leading-tight">
+          Trois choses que FASTR fait bien.
+        </h2>
+        <div class="grid md:grid-cols-3 gap-8 md:gap-12">
+          <article>
+            <div class="text-xs tracking-[0.3em] uppercase mb-3 text-primary font-semibold">I.</div>
+            <h3 class="text-xl md:text-2xl mb-3 font-bold">Données de routine, prêtes à l'emploi.</h3>
+            <p class="text-base leading-relaxed text-base-content/70">
+              Conçu pour la réalité désordonnée des données de programme. Les formats de période, les désagrégations et les dénominateurs sont gérés pour vous.
+            </p>
+          </article>
+          <article>
+            <div class="text-xs tracking-[0.3em] uppercase mb-3 text-primary font-semibold">II.</div>
+            <h3 class="text-xl md:text-2xl mb-3 font-bold">Des figures solides.</h3>
+            <p class="text-base leading-relaxed text-base-content/70">
+              Un système visuel cohérent à travers graphiques, tableaux, cartes et présentations. Des résultats sur lesquels vous pouvez compter.
+            </p>
+          </article>
+          <article>
+            <div class="text-xs tracking-[0.3em] uppercase mb-3 text-primary font-semibold">III.</div>
+            <h3 class="text-xl md:text-2xl mb-3 font-bold">Pensé pour les équipes.</h3>
+            <p class="text-base leading-relaxed text-base-content/70">
+              Un seul outil pour les analystes et les décideurs. Reproductible par conception, facile à partager.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Methodology callout -->
+    <section class="bg-base-200">
+      <div class="max-w-6xl w-full mx-auto px-5 md:px-8 py-16 md:py-24">
+        <div class="grid md:grid-cols-5 gap-8 md:gap-16 items-start">
+          <div class="md:col-span-2">
+            <div class="text-xs tracking-[0.3em] uppercase mb-4 text-primary font-semibold">Méthodologie</div>
+            <h2 class="text-3xl md:text-4xl font-bold tracking-tight leading-tight">
+              Fondée sur des méthodes documentées.
+            </h2>
+          </div>
+          <div class="md:col-span-3">
+            <p class="text-base md:text-lg leading-relaxed mb-6">
+              La documentation méthodologique FASTR décrit l'approche complète : identification des questions et indicateurs, extraction et préparation des données HMIS, évaluation et ajustement de la qualité des données, estimation de l'utilisation des services et de la couverture, et communication des résultats.
+            </p>
+            <a href="/fr/methodology/" class="inline-flex items-center gap-2 text-primary underline underline-offset-4 decoration-2 font-medium hover:no-underline">
+              Lire la méthodologie →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="relative overflow-hidden bg-primary/5 text-primary">
+      <HeroBackground />
+      <div class="relative max-w-6xl w-full mx-auto px-5 md:px-8 py-20 md:py-32 text-center text-base-content">
+        <h2 class="text-3xl md:text-5xl font-bold tracking-tight mb-6 max-w-3xl mx-auto leading-tight">
+          Prêt à vous lancer ?
+        </h2>
+        <p class="text-lg md:text-xl text-base-content/70 mb-8 max-w-2xl mx-auto">
+          La documentation couvre tout, de la mise en place à l'analyse avancée.
+        </p>
+        <a href="/fr/overview/" class="inline-flex items-center gap-2 bg-primary text-primary-content px-6 py-3 rounded text-base font-medium hover:bg-primary/90 transition-colors">
+          Lire la documentation →
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-base-content text-base-100">
+      <div class="max-w-6xl w-full mx-auto px-5 md:px-8 py-12 md:py-16">
+        <div class="grid md:grid-cols-4 gap-8 md:gap-12">
+          <div class="md:col-span-2">
+            <img src="/images/FASTR_White_Horiz.png" alt="FASTR" class="h-6 mb-4 w-auto" />
+            <p class="text-sm leading-relaxed text-base-100/70 max-w-md">
+              Une initiative du Global Financing Facility (GFF) pour l'analyse des données HMIS de routine en appui à la prestation des services RMNCAH-N.
+            </p>
+          </div>
+          <div>
+            <h4 class="text-xs font-semibold uppercase tracking-wider mb-3 text-base-100">Documentation</h4>
+            <ul class="space-y-2 text-sm text-base-100/70">
+              <li><a href="/fr/overview/" class="hover:text-base-100">Vue d'ensemble</a></li>
+              <li><a href="/fr/admin-guide/" class="hover:text-base-100">Guide administrateur</a></li>
+              <li><a href="/fr/user-guide/" class="hover:text-base-100">Guide utilisateur</a></li>
+              <li><a href="/fr/methodology/" class="hover:text-base-100">Méthodologie</a></li>
+              <li><a href="/fr/resources/" class="hover:text-base-100">Ressources</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-xs font-semibold uppercase tracking-wider mb-3 text-base-100">Site</h4>
+            <ul class="space-y-2 text-sm text-base-100/70">
+              <li><a href="/" class="hover:text-base-100">English</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="border-t border-base-100/20 mt-10 md:mt-12 pt-6 text-xs text-base-100/50">
+          FASTR · fastr-analytics.org
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

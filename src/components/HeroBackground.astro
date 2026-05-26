@@ -1,0 +1,64 @@
+---
+// HeroBackground.astro — decorative SVG behind hero / final-CTA sections.
+// Inherits its colour from `currentColor` so the parent's text colour
+// (we set `text-primary`) controls the hue. No hex literals.
+//
+// Composition:
+//   • soft radial gradient washes (bottom-left + top-right)
+//   • concentric arcs anchored off-canvas to the right (suggesting
+//     rapid-cycle / ripple motion radiating across the hero)
+//   • a sparse scatter of small dots, with a few larger highlights —
+//     reads as a data-point scatter without being literal
+---
+
+<svg
+  class="absolute inset-0 w-full h-full pointer-events-none"
+  viewBox="0 0 1200 700"
+  preserveAspectRatio="xMidYMid slice"
+  aria-hidden="true"
+  focusable="false"
+>
+  <defs>
+    <radialGradient id="hero-blob-bl" cx="0.15" cy="0.85" r="0.8">
+      <stop offset="0%" stop-color="currentColor" stop-opacity="0.16" />
+      <stop offset="55%" stop-color="currentColor" stop-opacity="0.05" />
+      <stop offset="100%" stop-color="currentColor" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="hero-blob-tr" cx="0.95" cy="0.05" r="0.95">
+      <stop offset="0%" stop-color="currentColor" stop-opacity="0.12" />
+      <stop offset="100%" stop-color="currentColor" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="700" fill="url(#hero-blob-bl)" />
+  <rect width="1200" height="700" fill="url(#hero-blob-tr)" />
+
+  <!-- Concentric ripple arcs anchored off-canvas to the right.
+       cx > viewBox width so only the left edge of each circle sweeps
+       across the hero, giving long elegant arcs rather than corner
+       quarter-circles. -->
+  <g fill="none" stroke="currentColor" stroke-width="1.25">
+    <circle cx="1500" cy="120" r="380" stroke-opacity="0.32" />
+    <circle cx="1500" cy="120" r="480" stroke-opacity="0.26" />
+    <circle cx="1500" cy="120" r="590" stroke-opacity="0.20" />
+    <circle cx="1500" cy="120" r="710" stroke-opacity="0.15" />
+    <circle cx="1500" cy="120" r="840" stroke-opacity="0.11" />
+    <circle cx="1500" cy="120" r="980" stroke-opacity="0.08" />
+    <circle cx="1500" cy="120" r="1130" stroke-opacity="0.06" />
+    <circle cx="1500" cy="120" r="1290" stroke-opacity="0.045" />
+  </g>
+
+  <!-- Small accent dots — sit on the inner arcs like data points -->
+  <g fill="currentColor">
+    <circle cx="1124" cy="120" r="3.5" fill-opacity="0.55" />
+    <circle cx="1100" cy="282" r="2.5" fill-opacity="0.40" />
+    <circle cx="1042" cy="430" r="3" fill-opacity="0.45" />
+    <circle cx="1018" cy="-26" r="2" fill-opacity="0.35" />
+    <circle cx="920" cy="180" r="2" fill-opacity="0.30" />
+    <circle cx="870" cy="380" r="2.5" fill-opacity="0.35" />
+    <circle cx="780" cy="60" r="2" fill-opacity="0.25" />
+    <circle cx="690" cy="320" r="2" fill-opacity="0.22" />
+    <circle cx="560" cy="240" r="1.5" fill-opacity="0.18" />
+    <circle cx="420" cy="430" r="1.5" fill-opacity="0.15" />
+  </g>
+</svg>

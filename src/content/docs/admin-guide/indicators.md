@@ -1,0 +1,80 @@
+---
+title: Indicators
+description: Defining and managing health indicators.
+sidebar:
+  order: 3
+---
+
+Indicators are the health metrics your FASTR instance tracks - things like immunization coverage rates, facility reporting rates, or outpatient visit counts. Before you can analyze data, you need to define which indicators matter and how they map to raw data. This page covers indicator configuration for both HMIS and HFA data sources.
+
+## HMIS indicators
+
+HMIS data typically comes from DHIS2, where data elements have technical identifiers like `qHJdhOrhklI` that mean nothing to analysts. FASTR uses a two-layer system: raw indicators (DHIS2 identifiers) and common indicators (human-readable names).
+
+### Raw DHIS2 indicators
+
+Raw indicators are the technical identifiers from DHIS2. To import them, click **Import DHIS2 indicator**, enter your credentials, and select which data elements to bring in. FASTR creates a raw indicator for each using the DHIS2 ID and display name.
+
+:::caution[Screenshot needed]
+DHIS2 indicator import dialog showing available data elements with selection checkboxes.
+:::
+
+### Common indicators
+
+Common indicators are the standardized names analysts work with. A common indicator like "ANC1 visits" might map to different raw DHIS2 IDs in different countries. This abstraction means analysis code and visualizations reference consistent names even when underlying data sources change.
+
+Each common indicator has an ID (like `anc1_visits`), a display label, and mappings to one or more raw indicators. When multiple raw indicators map to the same common indicator, their values are summed.
+
+:::caution[Screenshot needed]
+Common indicator editor showing ID, label, and raw indicator mapping fields.
+:::
+
+### Calculated indicators
+
+Derived metrics that combine multiple indicators - like coverage rates - use calculated indicators. Each specifies a numerator (which common indicator), a denominator (another indicator, population estimate, or nothing for raw counts), and formatting rules.
+
+You also set thresholds for color coding: the green cutoff for good performance, yellow for acceptable. For example, a coverage indicator with green at 80 and yellow at 70 shows green above 80%, yellow for 70-80%, and red below 70%.
+
+:::caution[Screenshot needed]
+Calculated indicator editor showing numerator/denominator selection and threshold configuration.
+:::
+
+### Batch import
+
+For instances with many indicators, batch import lets you upload a CSV with indicator definitions. This is useful when setting up a new instance or migrating from another system.
+
+## HFA indicators
+
+Health Facility Assessment data works differently from HMIS. HFA surveys have custom question structures that vary by assessment, so HFA indicators require R code to extract values from raw survey data.
+
+### Defining HFA indicators
+
+Each HFA indicator has a variable name, category, definition, data type (binary or numeric), and aggregation method (sum or average). Keep variable names short and consistent, like `has_essential_medicines` or `staff_trained_count`.
+
+:::caution[Screenshot needed]
+HFA indicator list showing category, variable name, definition, and validation status columns.
+:::
+
+### R code for extraction
+
+Each HFA indicator requires R code specifying how to extract its value from raw survey data. The code runs for each facility and should return TRUE/FALSE for binary indicators or a number for numeric ones.
+
+The code editor shows which variables are available in your dataset at each time point. If survey structure changed between assessments, you can write different code for different time points. FASTR validates syntax and warns about missing variables.
+
+:::caution[Screenshot needed]
+HFA indicator code editor showing R code, available variables, and validation results.
+:::
+
+### Code consistency
+
+When an indicator applies to multiple time points, FASTR tracks whether extraction code is consistent. Inconsistent code may be intentional (survey questions change between rounds), but it's worth reviewing. Use **Revalidate all** after making changes to refresh validation across all indicators.
+
+### CSV upload
+
+HFA indicators support batch creation via CSV, including columns for variable name, category, definition, type, aggregation, and R code for each time point.
+
+## Best practices
+
+Choose indicator IDs that are short but descriptive. Avoid spaces and special characters - stick to lowercase letters, numbers, and underscores.
+
+Keep common indicator mappings current when DHIS2 configurations change. For calculated indicators, document your threshold choices - future analysts will want to understand the reasoning behind cutoffs.
