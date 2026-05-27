@@ -27,9 +27,7 @@ If you don't have access yet, contact your organization's FASTR administrator or
 
 The main navigation bar at the top of the screen shows tabs for the different areas you can manage. What you see depends on your permissions - instance administrators see all tabs, while users with partial permissions see only the areas they can access.
 
-:::caution[Screenshot needed]
-Main navigation bar showing Projects, Data, Assets, Users, and Settings tabs.
-:::
+![Top Nav Demo](/images/topnav-demo-en.png)
 
 The **Projects** tab lists all projects in your instance and lets you create new ones. **Data** is where you configure structure (admin areas, facilities) and import datasets. **Assets** holds uploaded files like CSV templates and GeoJSON maps. **Users** shows everyone with access to the instance and their permissions. **Settings** contains instance-wide configuration options like the instance name and language preferences.
 
