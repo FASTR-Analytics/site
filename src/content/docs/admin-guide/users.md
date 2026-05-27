@@ -44,9 +44,7 @@ For non-administrators, you can enable specific permissions:
 
 Most analysts need only "View data" and perhaps "Create projects" at the instance level. Their main work happens within projects where you'll configure more detailed permissions.
 
-:::caution[Screenshot needed]
-User profile page showing the instance permissions checkboxes.
-:::
+![Instance Users Permissions](/images/user-permissions-instance-en.png)
 
 ## Project permissions
 
@@ -58,9 +56,7 @@ Click on any project to open the permission editor for that user-project combina
 - **Data & Modules** controls access to underlying data and analytical processing. Users who need to understand methodology might need "View metrics" or "View script code" but not "Configure modules".
 - **Project Administration** covers settings, user management within the project, logs, and backups. Reserve these for project leads or technical staff.
 
-:::caution[Screenshot needed]
-Project permission editor showing the three permission categories with checkboxes.
-:::
+![Project Users Permissions](/images/user-permissions-project-en.png)
 
 Rather than checking individual boxes, you can use the preset buttons at the top:
 
@@ -89,9 +85,7 @@ The user list supports bulk selection for common operations. Check the boxes nex
 
 Bulk operations are useful when onboarding teams or when access policies change. For example, if a new project starts and several people need editor access, select them all and update their default permissions in one step.
 
-:::caution[Screenshot needed]
-User list with multiple users selected showing the bulk action buttons.
-:::
+![Project Users Permissions Bulk](/images/user-permissions-project-multiple-en.png)
 
 ## Removing users
 
