@@ -19,9 +19,7 @@ This separation means you can have someone who manages data uploads instance-wid
 
 Open the **Users** tab from the main navigation. Click **Add users** to open the add dialog. Enter one or more email addresses - you can paste a list separated by commas, semicolons, or line breaks. Click **Add** to create the accounts.
 
-:::caution[Screenshot needed]
-Add users dialog showing the email text area with example entries.
-:::
+![Add Users](/images/users-en.png)
 
 New users are created with no special permissions - they can log in but won't see any projects or data until you configure their access. After adding someone, click on their row in the user list to open their profile and set up permissions.
 
