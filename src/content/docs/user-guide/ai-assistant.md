@@ -2,7 +2,7 @@
 title: AI assistant
 description: Getting AI-powered insights from your data.
 sidebar:
-  order: 5
+  order: 7
 ---
 
 The AI assistant helps you explore and interpret your project's data through conversation. It understands your modules, metrics, and visualizations - so you can ask questions like "what does the ANC1 coverage trend show?" or "which districts have the lowest data completeness?" and get answers grounded in your actual results.

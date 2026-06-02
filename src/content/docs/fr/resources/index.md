@@ -3,4 +3,4 @@ title: Ressources
 description: Fichiers, outils et références associés.
 ---
 
-*Traduction en cours.*
+Les liens vers les fichiers, outils et documents de référence associés figureront ici.

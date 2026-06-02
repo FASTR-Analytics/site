@@ -1,8 +1,80 @@
 ---
 title: Indicateurs
-description: Définition et gestion des indicateurs de santé.
+description: Définir et gérer les indicateurs de santé.
 sidebar:
   order: 3
 ---
 
-*Traduction en cours.*
+Les indicateurs sont les mesures de santé que votre instance FASTR suit - par exemple les taux de couverture vaccinale, les taux de complétude des rapports des établissements ou le nombre de consultations externes. Avant de pouvoir analyser des données, vous devez définir quels indicateurs sont pertinents et comment ils correspondent aux données brutes. Cette page traite de la configuration des indicateurs pour les sources de données HMIS et HFA.
+
+## Indicateurs HMIS
+
+Les données HMIS proviennent généralement de DHIS2, où les éléments de données portent des identifiants techniques comme `qHJdhOrhklI` qui ne signifient rien pour les analystes. FASTR utilise un système à deux niveaux : les indicateurs bruts (identifiants DHIS2) et les indicateurs communs (noms lisibles).
+
+### Indicateurs DHIS2 bruts
+
+Les indicateurs bruts sont les identifiants techniques issus de DHIS2. Pour les importer, cliquez sur **Importer un indicateur DHIS2**, saisissez vos identifiants de connexion et sélectionnez les éléments de données à importer. FASTR crée un indicateur brut pour chacun d'eux à partir de l'identifiant DHIS2 et du nom d'affichage.
+
+:::caution[Capture d'écran à ajouter]
+Boîte de dialogue d'import des indicateurs DHIS2 montrant les éléments de données disponibles avec des cases de sélection.
+:::
+
+### Indicateurs communs
+
+Les indicateurs communs sont les noms standardisés avec lesquels les analystes travaillent. Un indicateur commun comme « visites de CPN1 » peut correspondre à différents identifiants DHIS2 bruts selon les pays. Cette abstraction permet au code d'analyse et aux visualisations de référencer des noms cohérents, même lorsque les sources de données sous-jacentes changent.
+
+Chaque indicateur commun possède un identifiant (comme `anc1_visits`), un libellé d'affichage et des correspondances vers un ou plusieurs indicateurs bruts. Lorsque plusieurs indicateurs bruts correspondent au même indicateur commun, leurs valeurs sont additionnées.
+
+:::caution[Capture d'écran à ajouter]
+Éditeur d'indicateur commun montrant les champs d'identifiant, de libellé et de correspondance avec les indicateurs bruts.
+:::
+
+### Indicateurs calculés
+
+Les mesures dérivées qui combinent plusieurs indicateurs - comme les taux de couverture - utilisent des indicateurs calculés. Chacun spécifie un numérateur (quel indicateur commun), un dénominateur (un autre indicateur, une estimation de population, ou rien pour les comptages bruts) et des règles de formatage.
+
+Vous définissez également des seuils pour le codage couleur : le seuil vert pour une bonne performance, le jaune pour une performance acceptable. Par exemple, un indicateur de couverture avec le vert à 80 et le jaune à 70 s'affiche en vert au-dessus de 80 %, en jaune entre 70 et 80 %, et en rouge en dessous de 70 %.
+
+:::caution[Capture d'écran à ajouter]
+Éditeur d'indicateur calculé montrant la sélection du numérateur et du dénominateur ainsi que la configuration des seuils.
+:::
+
+### Import par lot
+
+Pour les instances comportant de nombreux indicateurs, l'import par lot permet de téléverser un fichier CSV contenant les définitions d'indicateurs. C'est utile lors de la configuration d'une nouvelle instance ou de la migration depuis un autre système.
+
+## Indicateurs HFA
+
+Les données issues de l'évaluation des établissements de santé (Health Facility Assessment) fonctionnent différemment des données HMIS. Les enquêtes HFA ont des structures de questions personnalisées qui varient d'une évaluation à l'autre, c'est pourquoi les indicateurs HFA nécessitent du code R pour extraire les valeurs à partir des données d'enquête brutes.
+
+### Définir les indicateurs HFA
+
+Chaque indicateur HFA possède un nom de variable, une catégorie, une définition, un type de données (binaire ou numérique) et une méthode d'agrégation (somme ou moyenne). Gardez des noms de variables courts et cohérents, comme `has_essential_medicines` ou `staff_trained_count`.
+
+:::caution[Capture d'écran à ajouter]
+Liste des indicateurs HFA montrant les colonnes catégorie, nom de variable, définition et état de validation.
+:::
+
+### Code R pour l'extraction
+
+Chaque indicateur HFA nécessite du code R spécifiant comment extraire sa valeur à partir des données d'enquête brutes. Le code s'exécute pour chaque établissement et doit renvoyer TRUE/FALSE pour les indicateurs binaires, ou un nombre pour les indicateurs numériques.
+
+L'éditeur de code indique quelles variables sont disponibles dans votre jeu de données à chaque point temporel. Si la structure de l'enquête a changé entre les évaluations, vous pouvez écrire un code différent pour différents points temporels. FASTR valide la syntaxe et signale les variables manquantes.
+
+:::caution[Capture d'écran à ajouter]
+Éditeur de code d'indicateur HFA montrant le code R, les variables disponibles et les résultats de validation.
+:::
+
+### Cohérence du code
+
+Lorsqu'un indicateur s'applique à plusieurs points temporels, FASTR vérifie si le code d'extraction est cohérent. Un code incohérent peut être intentionnel (les questions de l'enquête changent d'un cycle à l'autre), mais il mérite d'être examiné. Utilisez **Tout revalider** après avoir effectué des modifications afin d'actualiser la validation de tous les indicateurs.
+
+### Téléversement CSV
+
+Les indicateurs HFA prennent en charge la création par lot via CSV, avec des colonnes pour le nom de variable, la catégorie, la définition, le type, l'agrégation et le code R pour chaque point temporel.
+
+## Bonnes pratiques
+
+Choisissez des identifiants d'indicateurs courts mais descriptifs. Évitez les espaces et les caractères spéciaux - tenez-vous-en aux lettres minuscules, aux chiffres et aux traits de soulignement.
+
+Maintenez à jour les correspondances des indicateurs communs lorsque les configurations DHIS2 changent. Pour les indicateurs calculés, documentez vos choix de seuils - les futurs analystes voudront comprendre le raisonnement derrière les valeurs limites.

@@ -2,7 +2,7 @@
 title: Slide decks
 description: Building slide decks and exporting documents.
 sidebar:
-  order: 4
+  order: 5
 ---
 
 Slide decks let you assemble visualizations into polished presentations for stakeholders. Instead of exporting individual charts and manually arranging them in PowerPoint, you build the deck directly in FASTR - complete with consistent styling, cover pages, and section dividers. When you're done, export the whole thing as a PDF or PowerPoint file.

@@ -28,6 +28,7 @@ Visualizations list view showing folders, search box, and the "Create visualizat
 :::
 
 ## Creating a visualization
+<!-- help#viz-create -->
 
 Every visualization starts with a metric. Metrics are the analytical outputs produced by your modules - things like "ANC1 coverage rate" or "data completeness score." When you create a visualization, you're deciding how to display one of these metrics.
 
@@ -58,6 +59,7 @@ Full editor view with left panel open showing the three tabs, and a chart previe
 :::
 
 ### Data tab
+<!-- help#viz-data-tab -->
 
 The Data tab controls what information appears in the visualization. This is where you narrow the time range, add or remove disaggregations, or filter to specific values.
 
@@ -112,6 +114,7 @@ Download menu showing PNG, SVG, and CSV export options.
 :::
 
 ### Sharing a link
+<!-- help#viz-share-link -->
 
 You can create a public link that lets anyone view a visualization without logging in. Click **Share**, toggle sharing on, and copy the link. This is useful for sharing with stakeholders who don't have FASTR accounts, or for embedding in reports and emails.
 
