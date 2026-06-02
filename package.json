@@ -8,7 +8,8 @@
     "build": "node scripts/build.mjs",
     "preview": "astro preview",
     "typecheck": "astro check",
-    "sync:methodology": "./sync-methodology.ts"
+    "sync:methodology": "./sync-methodology.ts",
+    "verify:help-tags": "./verify-help-tags.ts"
   },
   "dependencies": {
     "@astrojs/starlight": "^0.37.7",

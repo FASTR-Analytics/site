@@ -49,8 +49,11 @@ The tag is a normal HTML comment, so it is **invisible** on the rendered page.
    the site.
 
 3. **Put the tag directly under the heading it describes.** The deep-link anchor
-   is that **heading**, not the tag. The tag must sit immediately beneath a
-   heading (the build fails otherwise). Use it under `#` or `##` headings.
+   is that **heading**, not the tag. The tag must sit beneath a heading (the
+   build fails otherwise). **Any heading level works** (`#` through `######`) —
+   the tag binds to the nearest heading above it and links to that heading's
+   anchor. (The `pnpm verify:help-tags` coverage list only suggests untagged
+   H1/H2, but you can tag a deeper heading too.)
 
 4. **Use kebab-case ids** (`data-tab`, `viz-data-tab`, `add-users`). They are
    identifiers, not prose.
