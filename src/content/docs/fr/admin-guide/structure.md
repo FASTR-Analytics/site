@@ -8,6 +8,7 @@ sidebar:
 Dans FASTR, la structure désigne la hiérarchie organisationnelle de votre système de santé - les limites administratives qui définissent où les services sont fournis, ainsi que les établissements qui les fournissent. Configurer cela correctement est l'une des premières tâches lors de la mise en place d'une nouvelle instance, car la plupart des autres fonctionnalités en dépendent.
 
 ## Zones administratives
+<!-- help#struct-admin-areas -->
 
 Les zones administratives représentent des limites géographiques organisées de manière hiérarchique. FASTR prend en charge jusqu'à quatre niveaux, même si la plupart des pays n'en utilisent que deux ou trois. La signification exacte de chaque niveau dépend de votre pays - ce que FASTR appelle « Zone administrative 2 » peut être une région dans un pays et une province dans un autre. Vous pouvez personnaliser les libellés de chaque niveau dans les paramètres de l'instance.
 
@@ -18,6 +19,7 @@ Paramètres de l'instance montrant la configuration des libellés des niveaux de
 :::
 
 ## Établissements de santé
+<!-- help#struct-facilities -->
 
 Les établissements sont les points de prestation de services de santé où les données sont collectées. Chaque établissement appartient à une zone administrative et peut comporter des attributs facultatifs : type d'établissement (hôpital, centre de santé, dispensaire), catégorie de propriété (public, privé, confessionnel) et jusqu'à cinq attributs personnalisés permettant une catégorisation supplémentaire.
 
@@ -63,6 +65,7 @@ Vue de gestion de la structure montrant le tableau des établissements avec les 
 :::
 
 ## GeoJSON pour les cartes
+<!-- help#struct-geojson -->
 
 Les visualisations cartographiques nécessitent des données de limites géographiques au format GeoJSON. Chargez un fichier GeoJSON par niveau de zone administrative - généralement pour la Zone administrative 2 (régions) et la Zone administrative 3 (districts).
 

@@ -14,6 +14,7 @@ Un module comporte deux parties. La **définition de calcul** contient les scrip
 Lorsque vous installez un module dans un projet, vous créez une instance de module. Cette instance conserve ses paramètres de configuration, la date de sa dernière exécution et l'information indiquant si les définitions ont été mises à jour. Plusieurs projets peuvent installer le même module mais le configurer différemment.
 
 ## Installer des modules
+<!-- help#amod-install -->
 
 Ouvrez **Modules** dans la barre latérale de gauche. La page liste tous les modules disponibles pour votre instance, en indiquant ceux qui sont actuellement activés et ceux qui peuvent être installés. Les modules installés affichent leur état - prêt, en cours d'exécution ou en attente de données.
 
@@ -26,6 +27,7 @@ Page Modules montrant un ensemble de modules activés avec leurs indicateurs d'�
 :::
 
 ## Configurer les paramètres d'un module
+<!-- help#amod-configure -->
 
 De nombreux modules acceptent des paramètres qui contrôlent leur comportement. Un module de qualité des données peut vous permettre de définir des seuils pour les valeurs aberrantes. Un module de couverture peut nécessiter des chiffres de population cible.
 
@@ -36,6 +38,7 @@ Panneau de paramètres d'un module montrant des champs de saisie tels que des se
 :::
 
 ## Exécution et état des modules
+<!-- help#amod-status -->
 
 Chaque module affiche son état actuel dans la liste des modules :
 

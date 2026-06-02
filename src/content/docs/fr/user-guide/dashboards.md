@@ -8,6 +8,7 @@ sidebar:
 Un tableau de bord regroupe plusieurs visualisations sur une seule page afin que chacun puisse voir l'ensemble d'un coup d'œil. Là où une visualisation répond à une seule question, un tableau de bord en aborde tout un ensemble lié - couverture, qualité et tendances côte à côte. Les tableaux de bord restent dynamiques : les graphiques se mettent à jour au fur et à mesure que vos données évoluent, et vous pouvez en publier un sous forme de page web que les parties prenantes consultent sans compte FASTR.
 
 ## Créer un tableau de bord
+<!-- help#dash-create -->
 
 Ouvrez votre projet et accédez à la section **Tableaux de bord**. Cliquez sur **Créer un tableau de bord** et donnez-lui un **Titre**. Vous pouvez également définir un **identifiant d'URL** facultatif - un identifiant court et lisible (lettres minuscules, chiffres et traits d'union) qui devient une partie de l'adresse web publique. Si vous le laissez vide, FASTR en génère un à partir du titre.
 
@@ -18,6 +19,7 @@ La fenêtre « Créer un tableau de bord » montrant les champs Titre et identif
 :::
 
 ## Ajouter des éléments
+<!-- help#dash-add-items -->
 
 Chaque élément d'un tableau de bord est une carte affichant l'une de vos visualisations enregistrées. Cliquez sur **Ajouter un élément** et choisissez une visualisation du projet. La carte affiche le graphique, la carte ou le tableau avec ses paramètres actuels, et elle se rafraîchit automatiquement chaque fois que les données sous-jacentes changent.
 
@@ -50,6 +52,7 @@ Une carte de groupe de réplicants montrant l'apparence empilée et le nombre de
 Faites glisser les cartes pour les réorganiser ; la grille se réajuste à mesure que vous déplacez les éléments. Pour retirer plusieurs cartes à la fois, sélectionnez-les - cliquez, puis maj-clic ou cmd-clic pour en choisir plusieurs - et utilisez le menu contextuel (clic droit) pour supprimer la sélection. Consacrez un peu de temps à l'ordre et au regroupement : un tableau de bord se lit mieux lorsque les graphiques liés sont proches les uns des autres et que les chiffres les plus importants viennent en premier.
 
 ## Publier et partager
+<!-- help#dash-publish -->
 
 Un tableau de bord peut être privé (connexion FASTR requise) ou public (toute personne disposant du lien peut le consulter). Ouvrez **Paramètres** pour contrôler cela à l'aide du commutateur **Exiger l'authentification**. Laissez-le désactivé pour rendre le tableau de bord public.
 

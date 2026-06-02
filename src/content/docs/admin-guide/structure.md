@@ -8,6 +8,7 @@ sidebar:
 Structure in FASTR refers to the organizational hierarchy of your health system - the administrative boundaries that define where services are delivered, and the facilities that deliver them. Setting this up correctly is one of the first tasks when configuring a new instance, because most other features depend on it.
 
 ## Administrative areas
+<!-- help#struct-admin-areas -->
 
 Administrative areas represent geographic boundaries organized in a hierarchy. FASTR supports up to four levels, though most countries use two or three. The exact meaning of each level depends on your country - what FASTR calls "Admin Area 2" might be a region in one country and a province in another. You can customize labels for each level in instance settings.
 
@@ -18,6 +19,7 @@ Instance settings showing admin area level labels configuration.
 :::
 
 ## Health facilities
+<!-- help#struct-facilities -->
 
 Facilities are the health service delivery points where data is collected. Each facility belongs to one admin area and can have optional attributes: facility type (hospital, health center, dispensary), ownership category (public, private, faith-based), and up to five custom attributes for additional categorization.
 
@@ -63,6 +65,7 @@ Structure management view showing facility table with admin area columns.
 :::
 
 ## GeoJSON for maps
+<!-- help#struct-geojson -->
 
 Map visualizations require geographic boundary data in GeoJSON format. Upload one GeoJSON file per admin area level - typically for Admin Area 2 (regions) and Admin Area 3 (districts).
 

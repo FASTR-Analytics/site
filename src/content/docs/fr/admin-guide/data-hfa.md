@@ -12,6 +12,7 @@ Les données d'évaluation des établissements de santé (HFA) capturent des ins
 Les enquêtes HFA recueillent des informations sur les établissements qui ne sont pas saisies par le rapportage de routine : disponibilité des équipements essentiels, niveaux de stock de médicaments, présence de personnel formé et infrastructures telles que l'eau et l'électricité. Ces données complètent le HMIS en fournissant un contexte sur la capacité des établissements - ce qui aide à comprendre pourquoi certains établissements obtiennent des résultats différents des autres.
 
 ## Fichiers requis
+<!-- help#hfa-required-files -->
 
 Chaque importation HFA nécessite deux fichiers :
 
@@ -19,6 +20,7 @@ Chaque importation HFA nécessite deux fichiers :
 - **Fichier de questionnaire XLSForm** - définit la structure de l'enquête selon le standard XLSForm. FASTR le lit pour en extraire les noms de variables, les libellés des questions et les libellés des valeurs.
 
 ## Déroulement de l'importation
+<!-- help#hfa-import -->
 
 Accédez à la section **Données** et sélectionnez **Données HFA**. Cliquez sur **Démarrer une nouvelle importation** pour lancer un processus en quatre étapes.
 
@@ -39,6 +41,7 @@ Résultats de la préparation HFA montrant les statistiques de lignes et les dé
 :::
 
 ## Points temporels
+<!-- help#hfa-time-points -->
 
 Les données HFA sont organisées par points temporels plutôt que par périodes continues. Chaque importation crée un nouveau point temporel portant le libellé que vous avez indiqué. Après l'importation, utilisez **Gérer les points temporels** pour modifier les libellés, ajuster les dates, réorganiser ou supprimer des rounds d'enquête individuels.
 

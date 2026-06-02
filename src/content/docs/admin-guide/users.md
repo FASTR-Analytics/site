@@ -16,6 +16,7 @@ Instance administrators have full access to everything and don't need individual
 This separation means you can have someone who manages data uploads instance-wide but only has viewer access to certain projects, or someone who administers one project but has no access to another. The flexibility is useful when different teams work with different data or when you need to restrict sensitive analyses.
 
 ## Adding users
+<!-- help#users-add -->
 
 Open the **Users** tab from the main navigation. Click **Add users** to open the add dialog. Enter one or more email addresses - you can paste a list separated by commas, semicolons, or line breaks. Click **Add** to create the accounts.
 
@@ -26,6 +27,7 @@ New users are created with no special permissions - they can log in but won't se
 For bulk onboarding, use **Batch import from CSV** to upload a file containing email addresses and admin status. The CSV needs two columns: `email` and `is_global_admin`. This is faster than adding users one by one when you're setting up a new instance or onboarding a large team.
 
 ## Instance permissions
+<!-- help#users-instance-permissions -->
 
 Instance permissions determine what someone can access across your entire FASTR instance. Click on a user in the list to open their profile, then scroll to the permissions section.
 
@@ -47,6 +49,7 @@ Most analysts need only "View data" and perhaps "Create projects" at the instanc
 ![Instance Users Permissions](/images/user-permissions-instance-en.png)
 
 ## Project permissions
+<!-- help#users-project-permissions -->
 
 While instance permissions control platform-wide access, project permissions determine what someone can do within specific projects. From a user's profile, scroll to the project permissions section to see a grid of all projects.
 

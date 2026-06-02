@@ -8,6 +8,7 @@ sidebar:
 A project is your workspace for analysis in FASTR. It contains a defined slice of your organization's health data, analytical modules that process that data, and the visualizations and reports you create from the results. Understanding how projects work helps you find what you need and make sense of what you're seeing.
 
 ## Opening a project
+<!-- help#uproj-open -->
 
 When you sign in to FASTR, you'll see a list of projects you have access to. Click any project name to open it. The project view has a navigation sidebar on the left with tabs for different sections - typically **Slide decks**, **Visualizations**, **Modules**, **Data**, and **Settings**. What you see depends on your permissions; viewers won't see configuration options, for example.
 
@@ -18,6 +19,7 @@ Project view showing the navigation sidebar and project header with status indic
 :::
 
 ## Understanding the data window
+<!-- help#uproj-data-window -->
 
 Every project works with a specific subset of your organization's data. This subset is called the **data window**, and it defines the boundaries of everything you can analyze or visualize within that project.
 
@@ -38,6 +40,7 @@ Your project's data is a snapshot. When your administrator uploads new data at t
 Updating project data is an administrative task. If you see a staleness warning and need current figures, contact your project administrator. When they refresh the data, all modules re-run automatically to incorporate the changes.
 
 ## Locked projects
+<!-- help#uproj-locked -->
 
 Administrators can lock a project to prevent changes. A locked project works normally for viewing - you can browse visualizations, export images, and generate reports. But you can't create new visualizations, modify existing ones, or change any settings.
 

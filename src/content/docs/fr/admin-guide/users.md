@@ -16,6 +16,7 @@ Les administrateurs de l'instance disposent d'un accès complet à tout et n'ont
 Cette séparation vous permet d'avoir une personne qui gère les chargements de données à l'échelle de l'instance, mais qui ne dispose que d'un accès en lecture à certains projets, ou une personne qui administre un projet mais n'a aucun accès à un autre. Cette flexibilité est utile lorsque différentes équipes travaillent avec des données différentes ou lorsque vous devez restreindre l'accès à des analyses sensibles.
 
 ## Ajouter des utilisateurs
+<!-- help#users-add -->
 
 Ouvrez l'onglet **Utilisateurs** depuis la navigation principale. Cliquez sur **Ajouter des utilisateurs** pour ouvrir la boîte de dialogue d'ajout. Saisissez une ou plusieurs adresses e-mail - vous pouvez coller une liste séparée par des virgules, des points-virgules ou des sauts de ligne. Cliquez sur **Ajouter** pour créer les comptes.
 
@@ -26,6 +27,7 @@ Les nouveaux utilisateurs sont créés sans permission particulière - ils peuve
 Pour intégrer un grand nombre d'utilisateurs, utilisez **Importer par lot depuis un CSV** afin de charger un fichier contenant les adresses e-mail et le statut d'administrateur. Le fichier CSV doit comporter deux colonnes : `email` et `is_global_admin`. C'est plus rapide que d'ajouter les utilisateurs un par un lorsque vous configurez une nouvelle instance ou intégrez une équipe nombreuse.
 
 ## Permissions d'instance
+<!-- help#users-instance-permissions -->
 
 Les permissions d'instance déterminent ce à quoi une personne peut accéder sur l'ensemble de votre instance FASTR. Cliquez sur un utilisateur dans la liste pour ouvrir son profil, puis faites défiler jusqu'à la section des permissions.
 
@@ -47,6 +49,7 @@ La plupart des analystes n'ont besoin que de « Consulter les données » et év
 ![Permissions d'instance des utilisateurs](/images/user-permissions-instance-en.png)
 
 ## Permissions de projet
+<!-- help#users-project-permissions -->
 
 Alors que les permissions d'instance contrôlent l'accès à l'échelle de la plateforme, les permissions de projet déterminent ce qu'une personne peut faire au sein de projets spécifiques. Depuis le profil d'un utilisateur, faites défiler jusqu'à la section des permissions de projet pour voir une grille de tous les projets.
 

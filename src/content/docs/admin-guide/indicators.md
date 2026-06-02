@@ -20,6 +20,7 @@ DHIS2 indicator import dialog showing available data elements with selection che
 :::
 
 ### Common indicators
+<!-- help#ind-common -->
 
 Common indicators are the standardized names analysts work with. A common indicator like "ANC1 visits" might map to different raw DHIS2 IDs in different countries. This abstraction means analysis code and visualizations reference consistent names even when underlying data sources change.
 
@@ -30,6 +31,7 @@ Common indicator editor showing ID, label, and raw indicator mapping fields.
 :::
 
 ### Calculated indicators
+<!-- help#ind-calculated -->
 
 Derived metrics that combine multiple indicators - like coverage rates - use calculated indicators. Each specifies a numerator (which common indicator), a denominator (another indicator, population estimate, or nothing for raw counts), and formatting rules.
 
@@ -56,6 +58,7 @@ HFA indicator list showing category, variable name, definition, and validation s
 :::
 
 ### R code for extraction
+<!-- help#ind-r-code -->
 
 Each HFA indicator requires R code specifying how to extract its value from raw survey data. The code runs for each facility and should return TRUE/FALSE for binary indicators or a number for numeric ones.
 

@@ -10,6 +10,7 @@ Reports are long-form documents you write inside FASTR - a quarterly review, a c
 A report is the right tool when you need prose around your numbers. If you mainly want charts on a page, a [dashboard](/user-guide/dashboards/) fits better; if you're presenting to a room, a [slide deck](/user-guide/slide-decks/) does. Reports are for the written word.
 
 ## Creating a report
+<!-- help#report-create -->
 
 Open your project and go to the **Reports** section. Each report appears as a card showing a preview of its opening lines and a count of the figures and images inside, which makes it easy to find the one you want. Right-click a card to move it to a folder, duplicate it, or delete it.
 
@@ -34,6 +35,7 @@ The report editor in Edit mode with the Edit/View toggle and the autosave status
 :::
 
 ## Adding figures and images
+<!-- help#report-figures -->
 
 Reports hold two kinds of visual content, and the difference matters. A **figure** is a live visualization from your project - it renders from current data and updates when that data changes. An **image** is a static file you upload, such as a diagram or a photo.
 
@@ -58,6 +60,7 @@ A report with an embedded live figure selected, showing the left panel with Capt
 The **AI** button opens an assistant that can help as you write - rewriting a passage you've selected, replacing a figure with a freshly built chart, or creating new visualizations from your metrics and dropping them in. The assistant proposes changes for you to accept or reject rather than editing silently. See [AI assistant](/user-guide/ai-assistant/) for the full picture.
 
 ## Exporting
+<!-- help#report-export -->
 
 Click **Download** and choose **PDF** or **Word (.docx)**. PDF is best for a final, fixed document you're distributing or archiving; Word is best when a colleague needs to edit or comment. Both use consistent heading styles, so headings and structure carry over cleanly into the exported file. Live figures are rendered into the document at export time.
 

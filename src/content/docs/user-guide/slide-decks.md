@@ -8,6 +8,7 @@ sidebar:
 Slide decks let you assemble visualizations into polished presentations for stakeholders. Instead of exporting individual charts and manually arranging them in PowerPoint, you build the deck directly in FASTR - complete with consistent styling, cover pages, and section dividers. When you're done, export the whole thing as a PDF or PowerPoint file.
 
 ## Creating a slide deck
+<!-- help#deck-create -->
 
 Open your project and click **Slide decks** in the left sidebar. Click **Create slide deck** to start. You'll name it and optionally assign it to a folder for organization.
 
@@ -24,6 +25,7 @@ Decks contain three types of slides. **Cover slides** introduce the presentation
 When you add a slide, you choose its type. You can convert between types later using the dropdown in the editor.
 
 ## Building content slides
+<!-- help#deck-content-slides -->
 
 Content slides use a flexible layout system with one or more content blocks. A block can hold text (formatted with markdown), a visualization from your project, or an uploaded image.
 
@@ -44,6 +46,7 @@ Slide deck settings panel showing style options and color theme picker.
 :::
 
 ## Exporting and sharing
+<!-- help#deck-export -->
 
 Click **Download** to export your deck. **Native PDF** produces a high-quality vector file where text stays sharp at any zoom level. **PPTX with raster figures** creates a PowerPoint file with visualizations embedded as images - useful if recipients need to make edits.
 

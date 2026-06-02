@@ -8,6 +8,7 @@ sidebar:
 L'assistant IA vous aide à explorer et à interpréter les données de votre projet par le biais d'une conversation. Il comprend vos modules, vos indicateurs et vos visualisations - vous pouvez donc poser des questions comme « que montre la tendance de la couverture en CPN1 ? » ou « quels districts ont la plus faible complétude des données ? » et obtenir des réponses fondées sur vos résultats réels.
 
 ## Ouvrir l'assistant
+<!-- help#ai-open -->
 
 Cliquez sur **IA** dans n'importe quelle vue de projet pour ouvrir le panneau de l'assistant sur le côté droit de l'écran. Le panneau reste ouvert lorsque vous naviguez entre les visualisations, les présentations et les autres sections - l'IA suit votre contexte et adapte ses réponses en conséquence.
 
@@ -18,12 +19,14 @@ Panneau de l'assistant IA ouvert pendant la modification d'une visualisation, mo
 :::
 
 ## Poser des questions
+<!-- help#ai-ask -->
 
 Saisissez votre question dans le champ situé au bas du panneau. L'assistant peut expliquer ce que mesurent des indicateurs précis, décrire des tendances dans vos données, répondre à des questions sur les résultats des modules et vous aider à rédiger du contenu narratif pour vos rapports.
 
 Les bonnes questions sont précises. Plutôt que « parle-moi des données », essayez « comment se présente le taux d'utilisation des consultations externes dans la région X par rapport à l'année dernière ? ». Plus vous fournissez de contexte, plus la réponse est utile.
 
 ## La bibliothèque d'invites
+<!-- help#ai-prompt-library -->
 
 La bibliothèque d'invites contient des invites pré-rédigées pour les tâches d'analyse courantes. Cliquez sur l'icône de menu dans l'en-tête du panneau IA et sélectionnez **Bibliothèque d'invites** pour la parcourir. Les invites sont organisées par catégorie - interprétation, comparaison, contrôles de qualité des données, et plus encore.
 

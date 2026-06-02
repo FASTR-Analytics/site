@@ -8,6 +8,7 @@ sidebar:
 Les projets constituent l'espace de travail principal pour l'analyse dans FASTR. Chaque projet réunit un sous-ensemble des données de votre instance avec un ensemble spécifique de modules analytiques, produisant des visualisations, des rapports et des présentations dans un but précis. Vous pouvez créer des projets distincts pour différentes périodes, régions géographiques ou domaines de programme.
 
 ## Créer un projet
+<!-- help#aproj-create -->
 
 Tout utilisateur disposant de la permission « Créer des projets » peut démarrer un nouveau projet depuis l'écran d'accueil. Cliquez sur **Créer un projet**, saisissez un nom qui identifie la portée du projet, et le système met en place un espace de travail isolé avec sa propre base de données.
 
@@ -18,6 +19,7 @@ Boîte de dialogue de création de projet montrant le champ du nom du projet.
 :::
 
 ## Configurer la fenêtre de données
+<!-- help#aproj-data-window -->
 
 La fenêtre de données détermine quel sous-ensemble des données de votre instance alimente le projet. Lorsque vous importez des données HMIS au niveau de l'instance, toutes ces données deviennent disponibles pour être intégrées dans les fenêtres des projets - mais chaque projet peut sélectionner une portion différente.
 
@@ -54,6 +56,7 @@ Tableau des utilisateurs du projet avec les colonnes de permissions et les bouto
 :::
 
 ## Verrouiller des projets
+<!-- help#aproj-lock -->
 
 Lorsqu'une analyse est terminée, vous pouvez verrouiller le projet pour préserver son état. Un projet verrouillé empêche toute modification des modules, de la configuration des données et des visualisations, tout en permettant aux utilisateurs de consulter les rapports et d'exporter les résultats.
 

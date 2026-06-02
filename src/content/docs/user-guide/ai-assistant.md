@@ -8,6 +8,7 @@ sidebar:
 The AI assistant helps you explore and interpret your project's data through conversation. It understands your modules, metrics, and visualizations - so you can ask questions like "what does the ANC1 coverage trend show?" or "which districts have the lowest data completeness?" and get answers grounded in your actual results.
 
 ## Opening the assistant
+<!-- help#ai-open -->
 
 Click **AI** in any project view to open the assistant panel on the right side of the screen. The panel stays open as you navigate between visualizations, slide decks, and other sections - the AI tracks your context and adjusts its responses accordingly.
 
@@ -18,12 +19,14 @@ AI assistant panel open while editing a visualization, showing context-aware pla
 :::
 
 ## Asking questions
+<!-- help#ai-ask -->
 
 Type your question in the input field at the bottom of the panel. The assistant can explain what specific metrics measure, describe patterns in your data, answer questions about module outputs, and help draft narrative content for reports.
 
 Good questions are specific. Instead of "tell me about the data," try "what does the OPD utilization rate in Region X look like compared to last year?" The more context you provide, the more useful the response.
 
 ## The prompt library
+<!-- help#ai-prompt-library -->
 
 The prompt library contains pre-written prompts for common analysis tasks. Click the menu icon in the AI panel header and select **Prompt library** to browse. Prompts are organized by category - interpretation, comparison, data quality checks, and more.
 

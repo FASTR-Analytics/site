@@ -18,6 +18,7 @@ Onglet Modules montrant deux ou trois modules installés avec leurs indicateurs 
 :::
 
 ## État des modules
+<!-- help#umod-status -->
 
 L'onglet Modules affiche chaque module installé et son état actuel. Un badge d'état situé à côté du nom de chaque module vous indique ce qui se passe :
 
@@ -31,6 +32,7 @@ L'onglet Modules affiche chaque module installé et son état actuel. Un badge d
 Les modules se relancent automatiquement lorsque leurs entrées changent, garantissant que les visualisations reflètent toujours les calculs les plus récents. Les déclencheurs comprennent les actualisations de données, les modifications de configuration et les mises à jour de modules en amont. Vous verrez les indicateurs d'état se mettre à jour en temps réel à mesure que les modules progressent dans la file d'attente.
 
 ## Consulter les sorties des modules
+<!-- help#umod-outputs -->
 
 Bien que vous interagissiez généralement avec les résultats des modules par l'intermédiaire des visualisations, vous pouvez inspecter les sorties brutes directement depuis l'onglet Modules. Cliquez sur le bouton de menu d'un module prêt pour accéder aux **Journaux** (sortie de la console R), aux **Fichiers** (résultats CSV téléchargeables) ou au **Script** (le code R lui-même, si vous y êtes autorisé).
 
@@ -39,6 +41,7 @@ Vue détaillée d'un module montrant les options de journaux et de fichiers dans
 :::
 
 ## Métriques et visualisations
+<!-- help#umod-metrics -->
 
 Le lien entre les modules et les visualisations passe par les métriques. Lorsque vous créez une visualisation, vous sélectionnez d'abord une métrique parmi les résultats d'un module. La visualisation interroge ensuite cette métrique selon vos choix de configuration.
 

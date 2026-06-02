@@ -8,6 +8,7 @@ sidebar:
 Projects are the primary workspace for analysis in FASTR. Each project brings together a subset of your instance data with a specific set of analytical modules, producing visualizations, reports, and slide decks for a focused purpose. You might create separate projects for different time periods, geographic regions, or program areas.
 
 ## Creating a project
+<!-- help#aproj-create -->
 
 Any user with the "Create projects" permission can start a new project from the home screen. Click **Create project**, enter a name that identifies the project's scope, and the system will set up an isolated workspace with its own database.
 
@@ -18,6 +19,7 @@ Create project dialog showing the project name field.
 :::
 
 ## Configuring the data window
+<!-- help#aproj-data-window -->
 
 The data window determines which subset of your instance's data flows into the project. When you import HMIS data at the instance level, all of that data becomes available for windowing into projects - but each project can select a different slice.
 
@@ -54,6 +56,7 @@ Project users table with permission columns and edit buttons.
 :::
 
 ## Locking projects
+<!-- help#aproj-lock -->
 
 When an analysis is complete, you can lock the project to preserve its state. A locked project prevents changes to modules, data configuration, and visualizations while still allowing users to view reports and export outputs.
 

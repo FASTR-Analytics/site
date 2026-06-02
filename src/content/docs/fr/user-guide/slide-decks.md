@@ -8,6 +8,7 @@ sidebar:
 Les présentations vous permettent d'assembler des visualisations en présentations soignées destinées aux parties prenantes. Au lieu d'exporter des graphiques individuels et de les organiser manuellement dans PowerPoint, vous construisez la présentation directement dans FASTR - avec un style cohérent, des pages de couverture et des séparateurs de section. Une fois terminée, vous exportez l'ensemble sous forme de fichier PDF ou PowerPoint.
 
 ## Créer une présentation
+<!-- help#deck-create -->
 
 Ouvrez votre projet et cliquez sur **Présentations** dans la barre latérale gauche. Cliquez sur **Créer une présentation** pour commencer. Vous lui donnerez un nom et pourrez éventuellement l'affecter à un dossier pour l'organiser.
 
@@ -24,6 +25,7 @@ Les présentations contiennent trois types de diapositives. Les **diapositives d
 Lorsque vous ajoutez une diapositive, vous en choisissez le type. Vous pouvez convertir un type en un autre par la suite à l'aide du menu déroulant de l'éditeur.
 
 ## Construire des diapositives de contenu
+<!-- help#deck-content-slides -->
 
 Les diapositives de contenu utilisent un système de mise en page flexible composé d'un ou plusieurs blocs de contenu. Un bloc peut contenir du texte (mis en forme avec Markdown), une visualisation de votre projet ou une image téléversée.
 
@@ -44,6 +46,7 @@ Panneau des paramètres de la présentation montrant les options de style et le 
 :::
 
 ## Exporter et partager
+<!-- help#deck-export -->
 
 Cliquez sur **Télécharger** pour exporter votre présentation. **PDF natif** produit un fichier vectoriel de haute qualité où le texte reste net à n'importe quel niveau de zoom. **PPTX avec figures matricielles** crée un fichier PowerPoint où les visualisations sont intégrées sous forme d'images - utile si les destinataires doivent apporter des modifications.
 

@@ -22,6 +22,7 @@ Vue des données SNIS montrant le panneau Importations avec le bouton Démarrer 
 :::
 
 ## Processus d'importation CSV
+<!-- help#hmis-csv -->
 
 Lors d'une importation à partir d'un fichier CSV, vous suivez quatre étapes.
 
@@ -38,6 +39,7 @@ Interface de correspondance des colonnes montrant les quatre champs requis avec 
 :::
 
 ## Processus d'importation DHIS2
+<!-- help#hmis-dhis2 -->
 
 1. **Connectez-vous à DHIS2.** Saisissez l'URL de votre serveur et vos identifiants. FASTR valide la connexion avant de poursuivre.
 
@@ -52,6 +54,7 @@ Interface de sélection DHIS2 montrant le tableau des indicateurs avec des cases
 :::
 
 ## Validation et gestion des erreurs
+<!-- help#hmis-validation -->
 
 Le processus de préparation détecte plusieurs types de problèmes : champs requis manquants, valeurs numériques invalides, établissements absents de votre registre et indicateurs sans correspondance. Pour chaque catégorie, le résumé indique combien de lignes ont été affectées et fournit des exemples d'entrées. Si trop de lignes sont écartées, envisagez de corriger les données sources ou de mettre à jour la configuration de l'instance avant de relancer l'importation.
 

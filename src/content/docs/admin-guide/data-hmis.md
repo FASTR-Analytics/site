@@ -22,6 +22,7 @@ HMIS data view showing the Imports panel with the Start new import button.
 :::
 
 ## CSV import workflow
+<!-- help#hmis-csv -->
 
 When importing from CSV, you'll work through four steps.
 
@@ -38,6 +39,7 @@ Column mapping interface showing the four required fields with dropdown selector
 :::
 
 ## DHIS2 import workflow
+<!-- help#hmis-dhis2 -->
 
 1. **Connect to DHIS2.** Enter your server URL and credentials. FASTR validates the connection before proceeding.
 
@@ -52,6 +54,7 @@ DHIS2 selection interface showing indicator table with checkboxes and period ran
 :::
 
 ## Validation and error handling
+<!-- help#hmis-validation -->
 
 The staging process catches several types of issues: missing required fields, invalid numeric values, facilities not in your registry, and unmapped indicators. For each category, the summary shows how many rows were affected and provides sample entries. If too many rows are being dropped, consider fixing source data or updating instance configuration before re-importing.
 

@@ -8,6 +8,7 @@ sidebar:
 A dashboard collects several visualizations onto a single page so people can see the whole picture at once. Where a visualization answers one question, a dashboard answers a set of related ones - coverage, quality, and trends side by side. Dashboards stay live, so the charts update as your data does, and you can publish one as a web page that stakeholders open without a FASTR account.
 
 ## Creating a dashboard
+<!-- help#dash-create -->
 
 Open your project and go to the **Dashboards** section. Click **Create dashboard** and give it a **Title**. You can also set an optional **URL slug** - a short, readable identifier (lowercase letters, numbers, and hyphens) that becomes part of the public web address. If you leave it blank, FASTR generates one from the title.
 
@@ -18,6 +19,7 @@ The "Create dashboard" modal showing the Title and URL slug fields.
 :::
 
 ## Adding items
+<!-- help#dash-add-items -->
 
 Each item on a dashboard is a card showing one of your saved visualizations. Click **Add item** and choose a visualization from the project. The card renders the chart, map, or table with its current settings, and it refreshes automatically whenever the underlying data changes.
 
@@ -50,6 +52,7 @@ A replicant group card showing the stacked appearance and member count, with the
 Drag cards to reorder them; the grid reflows as you move things. To remove several cards at once, select them - click, then shift-click or cmd-click for multiple - and use the right-click menu to delete the selection. Spend a little time on order and grouping: a dashboard reads best when related charts sit near each other and the most important numbers come first.
 
 ## Publishing and sharing
+<!-- help#dash-publish -->
 
 A dashboard can be private (FASTR login required) or public (anyone with the link can view). Open **Settings** to control this with the **Require authentication** toggle. Leave it off to make the dashboard public.
 

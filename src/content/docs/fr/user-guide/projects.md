@@ -8,6 +8,7 @@ sidebar:
 Un projet est votre espace de travail pour l'analyse dans FASTR. Il contient une portion définie des données de santé de votre organisation, les modules analytiques qui traitent ces données, ainsi que les visualisations et les rapports que vous créez à partir des résultats. Comprendre le fonctionnement des projets vous aide à trouver ce dont vous avez besoin et à interpréter ce que vous voyez.
 
 ## Ouvrir un projet
+<!-- help#uproj-open -->
 
 Lorsque vous vous connectez à FASTR, vous voyez la liste des projets auxquels vous avez accès. Cliquez sur le nom d'un projet pour l'ouvrir. La vue du projet comporte une barre de navigation à gauche avec des onglets pour les différentes sections - généralement **Présentations**, **Visualisations**, **Modules**, **Données** et **Paramètres**. Ce que vous voyez dépend de vos permissions ; un lecteur, par exemple, ne verra pas les options de configuration.
 
@@ -18,6 +19,7 @@ Vue du projet montrant la barre de navigation et l'en-tête du projet avec l'ind
 :::
 
 ## Comprendre la fenêtre de données
+<!-- help#uproj-data-window -->
 
 Chaque projet travaille avec un sous-ensemble spécifique des données de votre organisation. Ce sous-ensemble est appelé la **fenêtre de données**, et il définit les limites de tout ce que vous pouvez analyser ou visualiser dans le projet.
 
@@ -38,6 +40,7 @@ Les données de votre projet sont un instantané. Lorsque votre administrateur c
 La mise à jour des données d'un projet est une tâche administrative. Si vous voyez un avertissement de péremption et que vous avez besoin de chiffres à jour, contactez l'administrateur du projet. Lorsqu'il actualise les données, tous les modules sont relancés automatiquement pour intégrer les changements.
 
 ## Projets verrouillés
+<!-- help#uproj-locked -->
 
 Les administrateurs peuvent verrouiller un projet pour empêcher toute modification. Un projet verrouillé fonctionne normalement en consultation - vous pouvez parcourir les visualisations, exporter des images et générer des rapports. En revanche, vous ne pouvez pas créer de nouvelles visualisations, modifier celles qui existent, ni changer aucun paramètre.
 

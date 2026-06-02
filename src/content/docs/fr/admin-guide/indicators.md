@@ -20,6 +20,7 @@ Boîte de dialogue d'import des indicateurs DHIS2 montrant les éléments de don
 :::
 
 ### Indicateurs communs
+<!-- help#ind-common -->
 
 Les indicateurs communs sont les noms standardisés avec lesquels les analystes travaillent. Un indicateur commun comme « visites de CPN1 » peut correspondre à différents identifiants DHIS2 bruts selon les pays. Cette abstraction permet au code d'analyse et aux visualisations de référencer des noms cohérents, même lorsque les sources de données sous-jacentes changent.
 
@@ -30,6 +31,7 @@ Chaque indicateur commun possède un identifiant (comme `anc1_visits`), un libel
 :::
 
 ### Indicateurs calculés
+<!-- help#ind-calculated -->
 
 Les mesures dérivées qui combinent plusieurs indicateurs - comme les taux de couverture - utilisent des indicateurs calculés. Chacun spécifie un numérateur (quel indicateur commun), un dénominateur (un autre indicateur, une estimation de population, ou rien pour les comptages bruts) et des règles de formatage.
 
@@ -56,6 +58,7 @@ Liste des indicateurs HFA montrant les colonnes catégorie, nom de variable, dé
 :::
 
 ### Code R pour l'extraction
+<!-- help#ind-r-code -->
 
 Chaque indicateur HFA nécessite du code R spécifiant comment extraire sa valeur à partir des données d'enquête brutes. Le code s'exécute pour chaque établissement et doit renvoyer TRUE/FALSE pour les indicateurs binaires, ou un nombre pour les indicateurs numériques.
 

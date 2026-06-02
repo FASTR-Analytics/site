@@ -10,6 +10,7 @@ Les rapports sont des documents détaillés que vous rédigez directement dans F
 Un rapport est l'outil approprié lorsque vous avez besoin de texte rédigé autour de vos chiffres. Si vous souhaitez surtout afficher des graphiques sur une page, un [tableau de bord](/user-guide/dashboards/) convient mieux ; si vous présentez devant un public, une [présentation](/user-guide/slide-decks/) sera plus adaptée. Les rapports sont faits pour l'écrit.
 
 ## Créer un rapport
+<!-- help#report-create -->
 
 Ouvrez votre projet et accédez à la section **Rapports**. Chaque rapport apparaît sous forme de carte affichant un aperçu de ses premières lignes ainsi que le nombre de figures et d'images qu'il contient, ce qui facilite la recherche de celui que vous souhaitez. Faites un clic droit sur une carte pour la déplacer vers un dossier, la dupliquer ou la supprimer.
 
@@ -34,6 +35,7 @@ L'éditeur de rapport en mode Édition, avec le bouton bascule Édition/Aperçu 
 :::
 
 ## Ajouter des figures et des images
+<!-- help#report-figures -->
 
 Les rapports peuvent contenir deux types de contenu visuel, et la distinction est importante. Une **figure** est une visualisation dynamique issue de votre projet - elle se génère à partir des données actuelles et se met à jour lorsque ces données changent. Une **image** est un fichier statique que vous téléversez, comme un schéma ou une photo.
 
@@ -58,6 +60,7 @@ Un rapport avec une figure dynamique intégrée sélectionnée, montrant le pann
 Le bouton **IA** ouvre un assistant qui peut vous aider pendant que vous rédigez - en reformulant un passage que vous avez sélectionné, en remplaçant une figure par un graphique fraîchement créé, ou en créant de nouvelles visualisations à partir de vos indicateurs et en les insérant. L'assistant propose des modifications que vous pouvez accepter ou refuser, au lieu de modifier le contenu en silence. Consultez [Assistant IA](/user-guide/ai-assistant/) pour une vue d'ensemble complète.
 
 ## Exporter
+<!-- help#report-export -->
 
 Cliquez sur **Télécharger** et choisissez **PDF** ou **Word (.docx)**. Le PDF est idéal pour un document final et figé que vous diffusez ou archivez ; le Word convient mieux lorsqu'un collègue doit le modifier ou le commenter. Les deux formats utilisent des styles de titres cohérents, de sorte que les titres et la structure sont repris proprement dans le fichier exporté. Les figures dynamiques sont rendues dans le document au moment de l'export.
 

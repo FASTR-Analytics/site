@@ -12,6 +12,7 @@ Health Facility Assessment (HFA) data captures point-in-time snapshots of facili
 HFA surveys collect information about facilities not captured in routine reporting: availability of essential equipment, stock levels of medicines, presence of trained staff, and infrastructure like water and electricity. This data complements HMIS by providing context about facility capacity - helping explain why some facilities perform differently than others.
 
 ## Required files
+<!-- help#hfa-required-files -->
 
 Each HFA import requires two files:
 
@@ -19,6 +20,7 @@ Each HFA import requires two files:
 - **XLSForm questionnaire file** - defines the survey structure following the XLSForm standard. FASTR reads this to extract variable names, question labels, and value labels.
 
 ## Import workflow
+<!-- help#hfa-import -->
 
 Navigate to the **Data** section and select **HFA Data**. Click **Start new import** to begin a four-step process.
 
@@ -39,6 +41,7 @@ HFA staging results showing row statistics and data dictionary counts.
 :::
 
 ## Time points
+<!-- help#hfa-time-points -->
 
 HFA data is organized by time points rather than continuous periods. Each import creates a new time point with the label you specified. After importing, use **Manage time points** to edit labels, adjust dates, reorder, or delete individual survey rounds.
 

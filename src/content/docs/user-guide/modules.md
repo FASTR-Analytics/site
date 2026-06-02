@@ -18,6 +18,7 @@ Modules tab showing two or three installed modules with their status indicators.
 :::
 
 ## Module status
+<!-- help#umod-status -->
 
 The Modules tab shows each installed module and its current state. A status badge next to each module name tells you what's happening:
 
@@ -31,6 +32,7 @@ The Modules tab shows each installed module and its current state. A status badg
 Modules automatically re-run when their inputs change, ensuring visualizations always reflect the latest calculations. Triggers include data refreshes, configuration changes, and upstream module updates. You'll see status indicators update in real-time as modules progress through the queue.
 
 ## Viewing module outputs
+<!-- help#umod-outputs -->
 
 While you typically interact with module results through visualizations, you can inspect raw outputs directly from the Modules tab. Click the menu button on any ready module to access **Logs** (R console output), **Files** (downloadable CSV results), or **Script** (the R code itself, if you have permission).
 
@@ -39,6 +41,7 @@ Module expanded view showing logs and files options in the dropdown menu.
 :::
 
 ## Metrics and visualizations
+<!-- help#umod-metrics -->
 
 The connection between modules and visualizations runs through metrics. When you create a visualization, you first select a metric from a module's results. The visualization then queries that metric according to your configuration choices.
 

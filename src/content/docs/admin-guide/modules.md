@@ -14,6 +14,7 @@ A module has two parts. The **compute definition** contains the R scripts that p
 When you install a module into a project, you create a module instance. This instance tracks its parameter settings, when it last ran, and whether definitions have been updated. Multiple projects can install the same module but configure it differently.
 
 ## Installing modules
+<!-- help#amod-install -->
 
 Navigate to **Modules** in the left sidebar. The page lists all modules available for your instance, showing which are currently enabled and which are available to install. Modules that are installed display their status - whether they're ready, running, or waiting for data.
 
@@ -26,6 +27,7 @@ Modules page showing a mix of enabled modules with status indicators and availab
 :::
 
 ## Configuring module parameters
+<!-- help#amod-configure -->
 
 Many modules accept parameters that control their behavior. A data quality module might let you set thresholds for outliers. A coverage module might need target population figures.
 
@@ -36,6 +38,7 @@ Module settings panel showing parameter inputs like thresholds and dropdown sele
 :::
 
 ## Module execution and status
+<!-- help#amod-status -->
 
 Each module displays its current status in the module list:
 

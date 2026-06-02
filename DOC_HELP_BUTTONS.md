@@ -58,6 +58,22 @@ The tag is a normal HTML comment, so it is **invisible** on the rendered page.
 4. **Use kebab-case ids** (`data-tab`, `viz-data-tab`, `add-users`). They are
    identifiers, not prose.
 
+## Verify after every change
+
+After adding, editing, or removing any help tag, run the verifier:
+
+```sh
+pnpm verify:help-tags
+```
+
+It checks every rule above at once — well-formed tags, each tag under a heading,
+and each id appearing exactly twice (once EN, once FR, on the same page) — and
+exits non-zero if anything is wrong, listing every problem rather than just the
+first. It also prints untagged H1/H2 headings as candidates for a help button
+(informational; it does not fail on those). Run it before you commit: the
+app-side `build:help-buttons` step enforces the same rules and will fail the
+build otherwise, so catching it here is faster.
+
 ## The summary shown in the modal
 
 The summary is the **first ~200 characters of the prose that follows the
