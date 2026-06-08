@@ -14,9 +14,7 @@ Administrative areas represent geographic boundaries organized in a hierarchy. F
 
 A typical hierarchy: Admin Area 1 represents the entire country, Admin Area 2 contains regions or provinces, Admin Area 3 contains districts, and Admin Area 4 (if used) contains sub-districts. Each facility links to one admin area at the lowest level you're using, and FASTR automatically rolls up data to higher levels.
 
-:::caution[Screenshot needed]
-Instance settings showing admin area level labels configuration.
-:::
+![Admin Areas](/images/admin-areas-en.png)
 
 ## Health facilities
 <!-- help#struct-facilities -->
@@ -25,9 +23,7 @@ Facilities are the health service delivery points where data is collected. Each 
 
 These attributes enable disaggregation in visualizations. If you want to compare performance between public and private facilities, you need those attributes populated in your structure data.
 
-:::caution[Screenshot needed]
-Facility columns configuration in instance settings showing type, ownership, and custom fields.
-:::
+![Health Facilities](/images/health-facilities-en.png)
 
 ## Importing structure data
 
