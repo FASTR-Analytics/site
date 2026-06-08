@@ -35,9 +35,7 @@ The CSV import follows a multi-step wizard. Upload a CSV file with one row per f
 
 FASTR then validates the data and shows a staging preview - how many admin areas and facilities will be created at each level, plus any validation warnings. Review this before proceeding.
 
-:::caution[Screenshot needed]
-Step 4 of the structure import wizard showing staging results with admin area and facility counts.
-:::
+![Structure Import](/images/structure-import-en.png)
 
 The final step asks you to choose an integration strategy:
 
@@ -56,9 +54,7 @@ Once imported, structure appears as a searchable table showing all facilities wi
 
 The "Clear admin areas and facilities" option removes everything. Use cautiously, as it affects modules and visualizations that reference the old structure.
 
-:::caution[Screenshot needed]
-Structure management view showing facility table with admin area columns.
-:::
+![Managing Structure](/images/managing-structure-en.png)
 
 ## GeoJSON for maps
 <!-- help#struct-geojson -->
@@ -67,8 +63,6 @@ Map visualizations require geographic boundary data in GeoJSON format. Upload on
 
 Each GeoJSON file should contain polygons with a property matching admin area names in your structure data. FASTR attempts to match features to admin areas during upload and reports any mismatches. Unmatched areas appear blank on maps.
 
-:::caution[Screenshot needed]
-GeoJSON manager showing uploaded map files with admin area level and upload date.
-:::
+![GeoJSON](/images/geojson-en.png)
 
 If naming differs between your GeoJSON and structure data, the GeoJSON editor lets you modify feature properties to resolve matching issues.
