@@ -53,9 +53,7 @@ Health Facility Assessment data works differently from HMIS. HFA surveys have cu
 
 Each HFA indicator has a variable name, category, definition, data type (binary or numeric), and aggregation method (sum or average). Keep variable names short and consistent, like `has_essential_medicines` or `staff_trained_count`.
 
-:::caution[Screenshot needed]
-HFA indicator list showing category, variable name, definition, and validation status columns.
-:::
+![HFA Indicators](/images/hfa-indicators-en.png)
 
 ### R code for extraction
 <!-- help#ind-r-code -->
@@ -64,9 +62,7 @@ Each HFA indicator requires R code specifying how to extract its value from raw 
 
 The code editor shows which variables are available in your dataset at each time point. If survey structure changed between assessments, you can write different code for different time points. FASTR validates syntax and warns about missing variables.
 
-:::caution[Screenshot needed]
-HFA indicator code editor showing R code, available variables, and validation results.
-:::
+![HFA Code](/images/hfa-code-en.png)
 
 ### Code consistency
 
