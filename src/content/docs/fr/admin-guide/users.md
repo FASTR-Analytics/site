@@ -39,7 +39,6 @@ Pour les non-administrateurs, vous pouvez activer des permissions spécifiques :
 - **Consulter les utilisateurs** - Voir la liste des utilisateurs sans apporter de modifications
 - **Consulter les journaux** - Accéder aux journaux d'activité pour le dépannage
 - **Configurer les paramètres** - Modifier la configuration à l'échelle de l'instance
-- **Configurer les ressources** - Charger et gérer les fichiers de la bibliothèque de ressources
 - **Configurer les données** - Importer et modifier la structure et les jeux de données
 - **Consulter les données** - Accéder aux pages de configuration des données sans les modifier
 - **Créer des projets** - Lancer de nouveaux projets d'analyse

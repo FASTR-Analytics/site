@@ -39,7 +39,6 @@ For non-administrators, you can enable specific permissions:
 - **View users** - See the user list without making changes
 - **View logs** - Access activity logs for troubleshooting
 - **Configure settings** - Modify instance-wide configuration
-- **Configure assets** - Upload and manage files in the assets library
 - **Configure data** - Import and modify structure and datasets
 - **View data** - Access data configuration pages without modifying
 - **Create projects** - Start new analysis projects
