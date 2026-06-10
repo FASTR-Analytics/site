@@ -35,7 +35,7 @@ A replicant group is one card that holds many variants of the same visualization
 
 Select the group to open its editor on the left, where you can adjust how it behaves:
 
-- **Group label** renames the group as it appears on the dashboard
+- **Group label** shows the current label; click **Rename** to change it
 - **Default replicant** chooses which variant shows first before anyone interacts
 - **Edit visualization** changes the configuration for every member at once
 - **Switch visualization** swaps the whole group for a different visualization
@@ -46,6 +46,10 @@ On a published dashboard, viewers get a dropdown on the group card to switch bet
 :::caution[Screenshot needed]
 A replicant group card showing the stacked appearance and member count, with the group editor panel open.
 :::
+
+## Renaming items and groups
+
+To rename a dashboard item or group, select it in the editor and click **Rename**. A modal opens where you type the new label and confirm. The label updates immediately across the dashboard.
 
 ## Arranging the layout
 

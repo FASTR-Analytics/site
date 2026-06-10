@@ -65,6 +65,8 @@ L'onglet Données contrôle quelles informations apparaissent dans la visualisat
 
 Les filtres de période vous permettent de vous concentrer sur une fenêtre temporelle particulière. Si votre projet contient trois années de données mais que vous souhaitez n'afficher que les six derniers mois, c'est ici que vous le définissez. Les désagrégations vous permettent de décomposer les données - ajouter une désagrégation « type d'établissement » à un graphique afficherait des barres distinctes pour les hôpitaux, les centres de santé et les dispensaires au lieu d'un total unique.
 
+Pour les désagrégations par zone administrative, vous pouvez inclure une ligne de total en cochant l'option **Inclure les résultats nationaux** (ou **Inclure les résultats : [zone parente]** lorsque la visualisation est limitée à une zone parente spécifique). Cette ligne de total apparaît en haut ou en bas du graphique ou du tableau selon le paramètre de position. L'option est disponible lorsqu'exactement un niveau de zone administrative est désagrégé et que l'indicateur le permet.
+
 Si une visualisation semble incorrecte ou affiche des résultats inattendus, l'onglet Données est généralement le premier endroit à vérifier. Un problème courant est d'avoir trop de désagrégations actives, ce qui peut rendre le résultat encombré ou difficile à lire.
 
 :::caution[Capture d'écran à ajouter]

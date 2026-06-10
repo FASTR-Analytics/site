@@ -35,7 +35,7 @@ Un groupe de réplicants est une carte unique qui contient plusieurs variantes d
 
 Sélectionnez le groupe pour ouvrir son éditeur sur la gauche, où vous pouvez ajuster son comportement :
 
-- **Libellé du groupe** renomme le groupe tel qu'il apparaît sur le tableau de bord
+- **Libellé du groupe** affiche le libellé actuel ; cliquez sur **Renommer** pour le modifier
 - **Réplicant par défaut** choisit quelle variante s'affiche en premier avant toute interaction
 - **Modifier la visualisation** change la configuration de tous les membres à la fois
 - **Changer de visualisation** remplace l'ensemble du groupe par une autre visualisation
@@ -46,6 +46,10 @@ Sur un tableau de bord publié, les utilisateurs disposent d'un menu déroulant 
 :::caution[Capture d'écran à ajouter]
 Une carte de groupe de réplicants montrant l'apparence empilée et le nombre de membres, avec le panneau d'édition du groupe ouvert.
 :::
+
+## Renommer des éléments et des groupes
+
+Pour renommer un élément ou un groupe du tableau de bord, sélectionnez-le dans l'éditeur et cliquez sur **Renommer**. Une fenêtre s'ouvre dans laquelle vous saisissez le nouveau libellé et confirmez. Le libellé est mis à jour immédiatement sur le tableau de bord.
 
 ## Agencer la mise en page
 
