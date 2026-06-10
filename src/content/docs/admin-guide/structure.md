@@ -14,20 +14,26 @@ Administrative areas represent geographic boundaries organized in a hierarchy. F
 
 A typical hierarchy: Admin Area 1 represents the entire country, Admin Area 2 contains regions or provinces, Admin Area 3 contains districts, and Admin Area 4 (if used) contains sub-districts. Each facility links to one admin area at the lowest level you're using, and FASTR automatically rolls up data to higher levels.
 
+Admin areas are created automatically when facilities are imported - each facility row carries its admin area path. They are also removed automatically when no facility in either registry references them, so you do not need to manage admin areas directly.
+
 ![Admin Areas](/images/admin-areas-en.png)
 
 ## Health facilities
 <!-- help#struct-facilities -->
 
-Facilities are the health service delivery points where data is collected. Each facility belongs to one admin area and can have optional attributes: facility type (hospital, health center, dispensary), ownership category (public, private, faith-based), and up to five custom attributes for additional categorization.
+FASTR maintains two separate facility registries: one for HMIS facilities and one for HFA facilities. Both registries share the same admin area hierarchy, but each has its own import flow and its own table of facility records.
+
+Facilities can have optional attributes: facility type (hospital, health center, dispensary), ownership category (public, private, faith-based), and up to five custom attributes for additional categorization.
 
 These attributes enable disaggregation in visualizations. If you want to compare performance between public and private facilities, you need those attributes populated in your structure data.
 
 ![Health Facilities](/images/health-facilities-en.png)
 
-## Importing structure data
+## Importing facilities
 
-Structure data can come from a CSV file or directly from a DHIS2 system.
+To import facilities, navigate to the **Data** section and open either the **HMIS Facilities** card or the **HFA Facilities** card depending on which registry you want to update. Each registry has its own import wizard.
+
+Only one facility import can be in progress at a time across both registries. If an import is already underway for one registry, finish or discard it before starting one for the other.
 
 ### CSV import
 
@@ -40,19 +46,21 @@ FASTR then validates the data and shows a staging preview - how many admin areas
 The final step asks you to choose an integration strategy:
 
 - **Add new and update existing** - the default, works for most cases
-- **Replace all** - deletes existing data first, useful for a fresh start
+- **Replace all** - deletes all existing facilities in this registry first, useful for a fresh start
 - **Add new only** - ignores records that already exist
 - **Update selected columns** - only modify specific attributes for existing facilities
 
 ### DHIS2 import
 
-If your country uses DHIS2, you can pull organizational unit data directly. Connect with your DHIS2 credentials, then select which org unit levels to import. FASTR maps DHIS2 levels to admin area levels. This keeps your structure aligned with your national HMIS system.
+DHIS2 import is available for HMIS facilities. Connect with your DHIS2 credentials, then select which org unit levels to import. FASTR maps DHIS2 levels to admin area levels. HFA facilities can only be imported from CSV.
 
-## Managing existing structure
+## Managing existing facilities
 
-Once imported, structure appears as a searchable table showing all facilities with their admin area assignments and attributes. To update - adding facilities, correcting assignments, or updating attributes - run another import with the appropriate integration strategy.
+Once imported, facilities appear as a searchable table showing all records with their admin area assignments and attributes. To update - adding facilities, correcting assignments, or updating attributes - run another import with the appropriate integration strategy.
 
-The "Clear admin areas and facilities" option removes everything. Use cautiously, as it affects modules and visualizations that reference the old structure.
+To delete all facilities in a registry, open that registry's card and click **Delete these facilities**. This removes only the facilities in that registry; admin areas shared with the other registry are preserved. Only global administrators can delete facilities, and deletion is blocked if the registry is referenced by an existing dataset.
+
+To remove all admin areas and facilities from both registries at once, open the **Admin areas** card and click **Clear all admin areas and facilities**. Use this option with caution, as it affects modules and visualizations that reference the old structure.
 
 ![Managing Structure](/images/managing-structure-en.png)
 

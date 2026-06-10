@@ -14,6 +14,8 @@ Les zones administratives représentent des limites géographiques organisées d
 
 Une hiérarchie typique : la Zone administrative 1 représente l'ensemble du pays, la Zone administrative 2 contient les régions ou les provinces, la Zone administrative 3 contient les districts, et la Zone administrative 4 (si elle est utilisée) contient les sous-districts. Chaque établissement est rattaché à une zone administrative au niveau le plus bas que vous utilisez, et FASTR agrège automatiquement les données vers les niveaux supérieurs.
 
+Les zones administratives sont créées automatiquement lors de l'importation des établissements - chaque ligne d'établissement porte son chemin d'unité administrative. Elles sont également supprimées automatiquement lorsqu'aucun établissement des deux registres n'y fait référence ; vous n'avez donc pas besoin de les gérer directement.
+
 :::caution[Capture d'écran à ajouter]
 Paramètres de l'instance montrant la configuration des libellés des niveaux de zones administratives.
 :::
@@ -21,7 +23,9 @@ Paramètres de l'instance montrant la configuration des libellés des niveaux de
 ## Établissements de santé
 <!-- help#struct-facilities -->
 
-Les établissements sont les points de prestation de services de santé où les données sont collectées. Chaque établissement appartient à une zone administrative et peut comporter des attributs facultatifs : type d'établissement (hôpital, centre de santé, dispensaire), catégorie de propriété (public, privé, confessionnel) et jusqu'à cinq attributs personnalisés permettant une catégorisation supplémentaire.
+FASTR maintient deux registres d'établissements distincts : l'un pour les établissements SNIS et l'autre pour les établissements Enquêtes FOSA. Les deux registres partagent la même hiérarchie de zones administratives, mais chacun possède son propre flux d'importation et sa propre table d'enregistrements d'établissements.
+
+Les établissements peuvent avoir des attributs facultatifs : type d'établissement (hôpital, centre de santé, dispensaire), catégorie de propriété (public, privé, confessionnel) et jusqu'à cinq attributs personnalisés permettant une catégorisation supplémentaire.
 
 Ces attributs permettent la désagrégation dans les visualisations. Si vous souhaitez comparer les performances entre les établissements publics et privés, ces attributs doivent être renseignés dans vos données de structure.
 
@@ -29,9 +33,11 @@ Ces attributs permettent la désagrégation dans les visualisations. Si vous sou
 Configuration des colonnes d'établissements dans les paramètres de l'instance, montrant le type, la propriété et les champs personnalisés.
 :::
 
-## Importer des données de structure
+## Importer des établissements
 
-Les données de structure peuvent provenir d'un fichier CSV ou directement d'un système DHIS2.
+Pour importer des établissements, accédez à la section **Données** et ouvrez la carte **Établissements SNIS** ou la carte **Établissements Enquêtes FOSA** selon le registre que vous souhaitez mettre à jour. Chaque registre dispose de son propre assistant d'importation.
+
+Une seule importation d'établissements peut être en cours à la fois, tous registres confondus. Si une importation est déjà en cours pour un registre, terminez-la ou annulez-la avant d'en démarrer une pour l'autre.
 
 ### Import CSV
 
@@ -46,19 +52,21 @@ FASTR valide ensuite les données et affiche un aperçu de préparation - combie
 La dernière étape vous demande de choisir une stratégie d'intégration :
 
 - **Ajouter les nouveaux et mettre à jour les existants** - l'option par défaut, qui convient à la plupart des cas
-- **Tout remplacer** - supprime d'abord les données existantes, utile pour repartir de zéro
+- **Tout remplacer** - supprime d'abord tous les établissements existants de ce registre, utile pour repartir de zéro
 - **Ajouter uniquement les nouveaux** - ignore les enregistrements qui existent déjà
 - **Mettre à jour les colonnes sélectionnées** - ne modifie que des attributs spécifiques des établissements existants
 
 ### Import DHIS2
 
-Si votre pays utilise DHIS2, vous pouvez récupérer directement les données des unités organisationnelles. Connectez-vous avec vos identifiants DHIS2, puis sélectionnez les niveaux d'unités organisationnelles à importer. FASTR fait correspondre les niveaux DHIS2 aux niveaux de zones administratives. Cela permet de maintenir votre structure alignée sur votre système national HMIS.
+L'import DHIS2 est disponible pour les établissements SNIS. Connectez-vous avec vos identifiants DHIS2, puis sélectionnez les niveaux d'unités organisationnelles à importer. FASTR fait correspondre les niveaux DHIS2 aux niveaux de zones administratives. Les établissements Enquêtes FOSA ne peuvent être importés qu'à partir d'un fichier CSV.
 
-## Gérer la structure existante
+## Gérer les établissements existants
 
-Une fois importée, la structure apparaît sous forme de tableau consultable affichant tous les établissements avec leurs rattachements aux zones administratives et leurs attributs. Pour la mettre à jour - ajouter des établissements, corriger des rattachements ou actualiser des attributs - lancez un nouvel import avec la stratégie d'intégration appropriée.
+Une fois importés, les établissements apparaissent sous forme de tableau consultable affichant tous les enregistrements avec leurs rattachements aux zones administratives et leurs attributs. Pour les mettre à jour - ajouter des établissements, corriger des rattachements ou actualiser des attributs - lancez un nouvel import avec la stratégie d'intégration appropriée.
 
-L'option « Effacer les zones administratives et les établissements » supprime tout. Utilisez-la avec prudence, car elle affecte les modules et les visualisations qui font référence à l'ancienne structure.
+Pour supprimer tous les établissements d'un registre, ouvrez la carte de ce registre et cliquez sur **Supprimer ces établissements**. Cela supprime uniquement les établissements de ce registre ; les zones administratives partagées avec l'autre registre sont conservées. Seuls les administrateurs globaux peuvent supprimer des établissements, et la suppression est bloquée si le registre est référencé par un jeu de données existant.
+
+Pour supprimer simultanément toutes les zones administratives et tous les établissements des deux registres, ouvrez la carte **Zones administratives** et cliquez sur **Supprimer toutes les unités administratives et tous les établissements**. Utilisez cette option avec prudence, car elle affecte les modules et les visualisations qui font référence à l'ancienne structure.
 
 :::caution[Capture d'écran à ajouter]
 Vue de gestion de la structure montrant le tableau des établissements avec les colonnes de zones administratives.

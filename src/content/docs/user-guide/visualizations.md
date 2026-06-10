@@ -65,7 +65,7 @@ The Data tab controls what information appears in the visualization. This is whe
 
 Period filters let you focus on a particular time window. If your project contains three years of data but you only want to show the last six months, you'd set that here. Disaggregations let you break down the data - adding a "facility type" disaggregation to a chart would show separate bars for hospitals, health centers, and dispensaries instead of a single total.
 
-For admin-area disaggregations, you can optionally include a total row by checking the **Include National results** option (or **Include [parent area] results** when the visualization is scoped to a specific parent area). This total row appears at the top or bottom of the chart or table depending on your position setting. The option is available when exactly one admin-area level is disaggregated and the metric supports it.
+For admin-area disaggregations, you can optionally include a total row by checking the **Include National results** option (or **Include results for all selected areas** when the visualization is scoped to a specific parent area). This total row appears at the top or bottom of the chart or table depending on your position setting. The option is available when exactly one admin-area level is disaggregated and the metric supports aggregation across areas. If the metric does not support this - for example, because its values cannot be meaningfully re-aggregated - the checkbox appears disabled with an explanation.
 
 If a visualization looks wrong or shows unexpected results, the Data tab is usually the first place to check. A common issue is having too many disaggregations active, which can make the output cluttered or hard to read.
 
