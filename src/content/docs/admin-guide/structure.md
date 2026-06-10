@@ -64,6 +64,16 @@ To remove all admin areas and facilities from both registries at once, open the 
 
 ![Managing Structure](/images/managing-structure-en.png)
 
+## HFA facility sampling weights
+
+For HFA analyses that require weighted estimates, you can upload per-facility sampling weights. The weights section appears below **Delete these facilities** when viewing the HFA Facilities card.
+
+Prepare a CSV file with three columns: `facility_id`, `time_point`, and `weight`. Each row specifies the sampling weight for one facility at one time point. Facility IDs must match your HFA facility registry, and time points must match labels already created by an HFA data import.
+
+To upload weights, select or upload your CSV using the file selector, then click **Import weights**. FASTR validates every row - rows with missing values, unrecognised facility IDs, unrecognised time points, or duplicate facility/time-point pairs are rejected with an error message listing the first few problem cases. A successful import reports how many weight rows were imported and which time points were covered. Re-uploading updates existing weights for the same facility/time-point pairs.
+
+To remove all sampling weights, click **Delete all weights**. This does not affect any facility records or HFA data. Sampling weights are preserved automatically when you re-import the facility list using the **Replace all** strategy - weights for facilities that survive the re-import are restored.
+
 ## GeoJSON for maps
 <!-- help#struct-geojson -->
 

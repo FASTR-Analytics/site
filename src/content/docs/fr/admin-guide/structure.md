@@ -72,6 +72,16 @@ Pour supprimer simultanément toutes les zones administratives et tous les étab
 Vue de gestion de la structure montrant le tableau des établissements avec les colonnes de zones administratives.
 :::
 
+## Pondérations d'échantillonnage des établissements HFA
+
+Pour les analyses HFA nécessitant des estimations pondérées, vous pouvez téléverser des pondérations d'échantillonnage par établissement. La section des pondérations apparaît sous **Supprimer ces établissements** dans la carte Établissements Enquêtes FOSA.
+
+Préparez un fichier CSV comportant trois colonnes : `facility_id`, `time_point` et `weight`. Chaque ligne indique la pondération d'échantillonnage d'un établissement à un point temporel donné. Les identifiants d'établissement doivent correspondre à ceux de votre registre d'établissements HFA, et les points temporels doivent correspondre aux libellés déjà créés par une importation de données HFA.
+
+Pour téléverser les pondérations, sélectionnez ou chargez votre CSV à l'aide du sélecteur de fichier, puis cliquez sur **Importer les pondérations**. FASTR valide chaque ligne - les lignes comportant des valeurs manquantes, des identifiants d'établissement non reconnus, des points temporels non reconnus ou des paires établissement/point temporel en double sont rejetées avec un message d'erreur listant les premiers cas problématiques. Une importation réussie indique combien de lignes de pondérations ont été importées et quels points temporels ont été couverts. Un nouveau téléversement met à jour les pondérations existantes pour les mêmes paires établissement/point temporel.
+
+Pour supprimer toutes les pondérations d'échantillonnage, cliquez sur **Supprimer toutes les pondérations**. Cela n'affecte ni les enregistrements d'établissements ni les données HFA. Les pondérations d'échantillonnage sont préservées automatiquement lorsque vous réimportez la liste des établissements avec la stratégie **Tout remplacer** - les pondérations des établissements qui survivent à la réimportation sont restaurées.
+
 ## GeoJSON pour les cartes
 <!-- help#struct-geojson -->
 

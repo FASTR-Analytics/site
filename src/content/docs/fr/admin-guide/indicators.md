@@ -51,7 +51,9 @@ Les données issues de l'évaluation des établissements de santé (Health Facil
 
 ### Définir les indicateurs HFA
 
-Chaque indicateur HFA possède un nom de variable, une catégorie, une définition, un type de données (binaire ou numérique) et une méthode d'agrégation (somme ou moyenne). Gardez des noms de variables courts et cohérents, comme `has_essential_medicines` ou `staff_trained_count`.
+Chaque indicateur HFA possède un nom de variable, une catégorie, une sous-catégorie, une catégorie de service, une définition, un type de données (binaire ou numérique) et une méthode d'agrégation (somme ou moyenne). Gardez des noms de variables courts et cohérents, comme `has_essential_medicines` ou `staff_trained_count`.
+
+Le champ **catégorie de service** est facultatif et fournit une classification transversale supplémentaire, indépendante de la hiérarchie catégorie/sous-catégorie. Les catégories de service sont gérées dans leur propre onglet du gestionnaire d'indicateurs HFA et peuvent être attribuées à n'importe quel indicateur, quelle que soit sa catégorie.
 
 :::caution[Capture d'écran à ajouter]
 Liste des indicateurs HFA montrant les colonnes catégorie, nom de variable, définition et état de validation.
@@ -72,9 +74,13 @@ L'éditeur de code indique quelles variables sont disponibles dans votre jeu de 
 
 Lorsqu'un indicateur s'applique à plusieurs points temporels, FASTR vérifie si le code d'extraction est cohérent. Un code incohérent peut être intentionnel (les questions de l'enquête changent d'un cycle à l'autre), mais il mérite d'être examiné. Utilisez **Tout revalider** après avoir effectué des modifications afin d'actualiser la validation de tous les indicateurs.
 
+### Gérer les catégories de service
+
+Les catégories de service sont créées et gérées depuis l'onglet **Catégories de service** du gestionnaire d'indicateurs HFA. Cliquez sur **Ajouter** pour créer une nouvelle catégorie de service - vous fournissez un libellé et FASTR génère automatiquement un identifiant, que vous pouvez modifier. Vous pouvez réorganiser les catégories de service par glisser-déposer, et les modifier ou les supprimer individuellement. La suppression d'une catégorie de service efface celle-ci de tous les indicateurs qui lui sont actuellement associés.
+
 ### Téléversement CSV
 
-Les indicateurs HFA prennent en charge la création par lot via CSV, avec des colonnes pour le nom de variable, la catégorie, la définition, le type, l'agrégation et le code R pour chaque point temporel.
+Les indicateurs HFA prennent en charge la création par lot via CSV. Le format du classeur comprend une feuille **Categories**, une feuille **Sub-categories**, une feuille **Service categories** facultative (colonnes : id, label) et une feuille **Indicators**. La feuille Indicators inclut une colonne `serviceCategoryId` aux côtés de `varName`, `categoryId`, `subCategoryId` et des autres champs standard. Si la feuille Service categories est absente, les indicateurs sont importés sans catégorie de service.
 
 ## Bonnes pratiques
 

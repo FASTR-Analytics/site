@@ -51,7 +51,9 @@ Health Facility Assessment data works differently from HMIS. HFA surveys have cu
 
 ### Defining HFA indicators
 
-Each HFA indicator has a variable name, category, definition, data type (binary or numeric), and aggregation method (sum or average). Keep variable names short and consistent, like `has_essential_medicines` or `staff_trained_count`.
+Each HFA indicator has a variable name, category, sub-category, service category, definition, data type (binary or numeric), and aggregation method (sum or average). Keep variable names short and consistent, like `has_essential_medicines` or `staff_trained_count`.
+
+The **service category** field is optional and provides an additional cross-cutting classification that is independent of the category/sub-category hierarchy. Service categories are managed on their own tab in the HFA indicator manager and can be assigned to any indicator regardless of its category.
 
 ![HFA Indicators](/images/hfa-indicators-en.png)
 
@@ -68,9 +70,13 @@ The code editor shows which variables are available in your dataset at each time
 
 When an indicator applies to multiple time points, FASTR tracks whether extraction code is consistent. Inconsistent code may be intentional (survey questions change between rounds), but it's worth reviewing. Use **Revalidate all** after making changes to refresh validation across all indicators.
 
+### Managing service categories
+
+Service categories are created and managed from the **Service categories** tab in the HFA indicator manager. Click **Add** to create a new service category - you provide a label and FASTR derives an ID automatically, though you can edit it. You can reorder service categories by dragging, and edit or delete them individually. Deleting a service category clears it from any indicators currently assigned to it.
+
 ### CSV upload
 
-HFA indicators support batch creation via CSV, including columns for variable name, category, definition, type, aggregation, and R code for each time point.
+HFA indicators support batch creation via CSV. The workbook format includes a **Categories** sheet, a **Sub-categories** sheet, an optional **Service categories** sheet (columns: id, label), and an **Indicators** sheet. The Indicators sheet includes a `serviceCategoryId` column alongside `varName`, `categoryId`, `subCategoryId`, and the other standard fields. If the Service categories sheet is omitted, indicators are imported with no service category assigned.
 
 ## Best practices
 
