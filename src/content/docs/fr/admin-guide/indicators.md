@@ -80,7 +80,9 @@ Les catégories de service sont créées et gérées depuis l'onglet **Catégori
 
 ### Téléversement CSV
 
-Les indicateurs HFA prennent en charge la création par lot via CSV. Le format du classeur comprend une feuille **Categories**, une feuille **Sub-categories**, une feuille **Service categories** facultative (colonnes : id, label) et une feuille **Indicators**. La feuille Indicators inclut une colonne `serviceCategoryId` aux côtés de `varName`, `categoryId`, `subCategoryId` et des autres champs standard. Si la feuille Service categories est absente, les indicateurs sont importés sans catégorie de service.
+Les indicateurs HFA prennent en charge la création par lot via un classeur Excel. Le classeur comprend une feuille **Categories**, une feuille **Sub-categories**, une feuille **Service categories** facultative (colonnes : id, label) et une feuille **Indicators**. La feuille Indicators inclut des colonnes pour `varName`, `categoryId`, `subCategoryId`, `serviceCategoryId` et les autres champs standard, ainsi qu'une paire de colonnes `r_code__<point temporel>` et `r_filter_code__<point temporel>` par point temporel. Si la feuille Service categories est absente, les indicateurs sont importés sans catégorie de service.
+
+Lors de l'importation, FASTR détecte les colonnes de points temporels intégrées dans le fichier et présente une étape de mappage où vous confirmez à quel point temporel de la plateforme chaque colonne doit être importée. Si les libellés des colonnes correspondent exactement aux points temporels de votre plateforme, le mappage est pré-rempli automatiquement.
 
 ## Bonnes pratiques
 

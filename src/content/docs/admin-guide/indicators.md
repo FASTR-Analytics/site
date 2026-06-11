@@ -76,7 +76,9 @@ Service categories are created and managed from the **Service categories** tab i
 
 ### CSV upload
 
-HFA indicators support batch creation via CSV. The workbook format includes a **Categories** sheet, a **Sub-categories** sheet, an optional **Service categories** sheet (columns: id, label), and an **Indicators** sheet. The Indicators sheet includes a `serviceCategoryId` column alongside `varName`, `categoryId`, `subCategoryId`, and the other standard fields. If the Service categories sheet is omitted, indicators are imported with no service category assigned.
+HFA indicators support batch creation via Excel workbook. The workbook includes a **Categories** sheet, a **Sub-categories** sheet, an optional **Service categories** sheet (columns: id, label), and an **Indicators** sheet. The Indicators sheet includes columns for `varName`, `categoryId`, `subCategoryId`, `serviceCategoryId`, and the other standard fields, plus one pair of `r_code__<time point>` and `r_filter_code__<time point>` columns per time point. If the Service categories sheet is omitted, indicators are imported with no service category assigned.
+
+When importing, FASTR detects the time point columns embedded in the file and presents a mapping step where you confirm which platform time point each column should import into. If the column labels match your platform time points exactly, the mapping is pre-filled automatically.
 
 ## Best practices
 

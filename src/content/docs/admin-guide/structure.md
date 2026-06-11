@@ -58,7 +58,7 @@ DHIS2 import is available for HMIS facilities. Connect with your DHIS2 credentia
 
 Once imported, facilities appear as a searchable table showing all records with their admin area assignments and attributes. To update - adding facilities, correcting assignments, or updating attributes - run another import with the appropriate integration strategy.
 
-To delete all facilities in a registry, open that registry's card and click **Delete these facilities**. This removes only the facilities in that registry; admin areas shared with the other registry are preserved. Only global administrators can delete facilities, and deletion is blocked if the registry is referenced by an existing dataset.
+To delete all facilities in a registry, open that registry's card and click **Delete facilities**. This removes only the facilities in that registry; admin areas shared with the other registry are preserved. Only global administrators can delete facilities.
 
 To remove all admin areas and facilities from both registries at once, open the **Admin areas** card and click **Clear all admin areas and facilities**. Use this option with caution, as it affects modules and visualizations that reference the old structure.
 
@@ -68,11 +68,9 @@ To remove all admin areas and facilities from both registries at once, open the 
 
 For HFA analyses that require weighted estimates, you can upload per-facility sampling weights. Open the **Data** section and click the **Sampling weights** card to open the weights manager. Only global administrators can import or delete weights; all users with data access can view the weights table.
 
-Prepare a CSV file in wide format: one row per facility, with a `facility_id` column followed by one column per time point label. A blank cell means the facility is not in that round's sample and will not have a weight stored for it. Time point column headers must exactly match labels already created by an HFA data import.
+Prepare a CSV file with a facility ID column and a weight column. Each import covers one time point. To upload weights, select or upload your CSV, then map the facility ID column, the weight column, and the target time point. A blank weight cell means the facility is not in that round's sample and will be skipped. A successful import reports how many weights were imported, how many blank cells were skipped, and which time point was covered. Re-importing updates existing weights for the same facility and time point.
 
-To upload weights, select or upload your CSV using the file selector, then click **Import weights**. FASTR validates every row. Rows with invalid facility IDs are rejected with an error message listing the first few problem cases. Cells with non-positive weight values are also rejected. Blank cells are silently skipped - they represent facilities not in that round's sample. A successful import reports how many weight cells were imported, how many blank cells were skipped, and which time points were covered. Re-uploading updates existing weights for the same facility and time point.
-
-The weights manager displays a coverage summary showing, for each time point, how many facilities with data have a corresponding weight. A warning highlight indicates time points where some facilities have data but no weight - those facilities will count with weight 1 when weighted analysis is enabled. You can download the current weights as a CSV in the same wide format, edit it, and re-import it.
+The weights manager displays a coverage summary showing, for each time point, how many facilities with data have a corresponding weight. A warning highlight indicates time points where some facilities have data but no weight - those facilities will count with weight 1 when weighted analysis is enabled. You can download the current weights as a CSV and re-import after editing.
 
 To remove all sampling weights, click **Delete all weights**. This does not affect any facility records or HFA data.
 

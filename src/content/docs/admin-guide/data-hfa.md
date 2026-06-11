@@ -26,7 +26,7 @@ Navigate to the **Data** section and select **HFA Data**. Click **Start new impo
 
 1. **Upload files.** Select or upload both your CSV data file and XLSForm questionnaire file.
 
-2. **Configure mapping.** Specify which CSV column contains facility identifiers. Then assign a label and date for this time point - use something descriptive like "Round 1" or "Baseline Dec 2024".
+2. **Configure mapping.** Specify which CSV column contains facility identifiers. Then select the time point this data belongs to from the list of time points defined in your instance.
 
 3. **Stage the data.** Click **Start staging** to validate facility IDs, match columns to XLSForm definitions, and expand "select multiple" questions into individual variables.
 
@@ -43,7 +43,9 @@ HFA staging results showing row statistics and data dictionary counts.
 ## Time points
 <!-- help#hfa-time-points -->
 
-HFA data is organized by time points rather than continuous periods. Each import creates a new time point with the label you specified. After importing, use **Manage time points** to edit labels, adjust dates, reorder, or delete individual survey rounds.
+HFA data is organized by time points rather than continuous periods. Before importing data, create your time points on the **HFA Time Points** page. Each time point has a label and a calendar period (year and month). Time points define the named rounds - such as "Round 1" or "Baseline Dec 2024" - that appear throughout the platform.
+
+After importing, use the **HFA Time Points** page to edit labels, adjust dates, reorder, add new time points, or delete individual survey rounds. Deleting a time point removes all its data and sampling weights.
 
 :::caution[Screenshot needed]
 Time points management interface showing list of imported rounds with edit and reorder controls.

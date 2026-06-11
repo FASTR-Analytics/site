@@ -26,7 +26,7 @@ Accédez à la section **Données** et sélectionnez **Données HFA**. Cliquez s
 
 1. **Charger les fichiers.** Sélectionnez ou chargez à la fois votre fichier de données CSV et votre fichier de questionnaire XLSForm.
 
-2. **Configurer la correspondance.** Indiquez quelle colonne CSV contient les identifiants d'établissement. Attribuez ensuite un libellé et une date à ce point temporel - utilisez une description claire comme « Round 1 » ou « Référence déc. 2024 ».
+2. **Configurer la correspondance.** Indiquez quelle colonne CSV contient les identifiants d'établissement. Sélectionnez ensuite le point temporel auquel ces données appartiennent dans la liste des points temporels définis dans votre instance.
 
 3. **Préparer les données.** Cliquez sur **Démarrer la préparation** pour valider les identifiants d'établissement, faire correspondre les colonnes aux définitions du XLSForm et décomposer les questions « à choix multiples » en variables individuelles.
 
@@ -43,7 +43,9 @@ Résultats de la préparation HFA montrant les statistiques de lignes et les dé
 ## Points temporels
 <!-- help#hfa-time-points -->
 
-Les données HFA sont organisées par points temporels plutôt que par périodes continues. Chaque importation crée un nouveau point temporel portant le libellé que vous avez indiqué. Après l'importation, utilisez **Gérer les points temporels** pour modifier les libellés, ajuster les dates, réorganiser ou supprimer des rounds d'enquête individuels.
+Les données HFA sont organisées par points temporels plutôt que par périodes continues. Avant d'importer des données, créez vos points temporels sur la page **Points temporels HFA**. Chaque point temporel possède un libellé et une période calendaire (année et mois). Les points temporels définissent les rounds nommés - comme « Round 1 » ou « Référence déc. 2024 » - qui apparaissent dans toute la plateforme.
+
+Après l'importation, utilisez la page **Points temporels HFA** pour modifier les libellés, ajuster les dates, réorganiser, ajouter de nouveaux points temporels ou supprimer des rounds d'enquête individuels. La suppression d'un point temporel supprime toutes ses données et ses pondérations d'échantillonnage.
 
 :::caution[Capture d'écran à ajouter]
 Interface de gestion des points temporels montrant la liste des rounds importés avec les commandes de modification et de réorganisation.
