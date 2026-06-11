@@ -33,6 +33,8 @@ Les **zones administratives** vous permettent de restreindre le projet à des r�
 
 Les **types et la propriété des établissements** offrent un filtrage supplémentaire lorsque votre instance comporte ces attributs d'établissement. Vous pouvez restreindre la fenêtre aux seuls établissements publics, ou vous concentrer sur les hôpitaux en excluant les postes de santé de niveau inférieur.
 
+Les **catégories de service HFA** contrôlent quels indicateurs HFA sont inclus lorsque les données HFA sont activées pour le projet. Lors de l'activation ou de la reconfiguration du jeu de données HFA, une boîte de dialogue de paramètres vous permet de choisir d'inclure toutes les catégories de service ou de restreindre la sélection à certaines d'entre elles. Seuls les indicateurs associés à une catégorie de service sélectionnée sont importés dans le projet. Laissez le paramètre sur « Tout inclure » si vous souhaitez tous les indicateurs HFA quelle que soit leur catégorie de service.
+
 :::caution[Capture d'écran à ajouter]
 Interface de configuration de la fenêtre de données montrant le graphique de la période temporelle avec ses sélecteurs, ainsi que le panneau de sélection des indicateurs.
 :::

@@ -51,9 +51,9 @@ Les données issues de l'évaluation des établissements de santé (Health Facil
 
 ### Définir les indicateurs HFA
 
-Chaque indicateur HFA possède un nom de variable, une catégorie, une sous-catégorie, une catégorie de service, une définition, un type de données (binaire ou numérique) et une méthode d'agrégation (somme ou moyenne). Gardez des noms de variables courts et cohérents, comme `has_essential_medicines` ou `staff_trained_count`.
+Chaque indicateur HFA possède un nom de variable, une catégorie, une sous-catégorie, des catégories de service, une définition, un type de données (binaire ou numérique) et une méthode d'agrégation (somme ou moyenne). Gardez des noms de variables courts et cohérents, comme `has_essential_medicines` ou `staff_trained_count`.
 
-Le champ **catégorie de service** est facultatif et fournit une classification transversale supplémentaire, indépendante de la hiérarchie catégorie/sous-catégorie. Les catégories de service sont gérées dans leur propre onglet du gestionnaire d'indicateurs HFA et peuvent être attribuées à n'importe quel indicateur, quelle que soit sa catégorie.
+Le champ **catégories de service** est facultatif et fournit une classification transversale supplémentaire, indépendante de la hiérarchie catégorie/sous-catégorie. Un indicateur peut appartenir à plusieurs catégories de service simultanément. Les catégories de service sont gérées dans leur propre onglet du gestionnaire d'indicateurs HFA et peuvent être attribuées à n'importe quel indicateur, quelle que soit sa catégorie.
 
 :::caution[Capture d'écran à ajouter]
 Liste des indicateurs HFA montrant les colonnes catégorie, nom de variable, définition et état de validation.
@@ -76,11 +76,11 @@ Lorsqu'un indicateur s'applique à plusieurs points temporels, FASTR vérifie si
 
 ### Gérer les catégories de service
 
-Les catégories de service sont créées et gérées depuis l'onglet **Catégories de service** du gestionnaire d'indicateurs HFA. Cliquez sur **Ajouter** pour créer une nouvelle catégorie de service - vous fournissez un libellé et FASTR génère automatiquement un identifiant, que vous pouvez modifier. Vous pouvez réorganiser les catégories de service par glisser-déposer, et les modifier ou les supprimer individuellement. La suppression d'une catégorie de service efface celle-ci de tous les indicateurs qui lui sont actuellement associés.
+Les catégories de service sont créées et gérées depuis l'onglet **Catégories de service** du gestionnaire d'indicateurs HFA. Cliquez sur **Ajouter** pour créer une nouvelle catégorie de service - vous fournissez un libellé et FASTR génère automatiquement un identifiant, que vous pouvez modifier. Vous pouvez réorganiser les catégories de service par glisser-déposer, et les modifier ou les supprimer individuellement. La suppression d'une catégorie de service la retire de tous les indicateurs qui lui sont actuellement associés. Les identifiants de catégorie de service ne peuvent pas contenir le caractère pipe (`|`).
 
 ### Téléversement CSV
 
-Les indicateurs HFA prennent en charge la création par lot via un classeur Excel. Le classeur comprend une feuille **Categories**, une feuille **Sub-categories**, une feuille **Service categories** facultative (colonnes : id, label) et une feuille **Indicators**. La feuille Indicators inclut des colonnes pour `varName`, `categoryId`, `subCategoryId`, `serviceCategoryId` et les autres champs standard, ainsi qu'une paire de colonnes `r_code__<point temporel>` et `r_filter_code__<point temporel>` par point temporel. Si la feuille Service categories est absente, les indicateurs sont importés sans catégorie de service.
+Les indicateurs HFA prennent en charge la création par lot via un classeur Excel. Le classeur comprend une feuille **Categories**, une feuille **Sub-categories**, une feuille **Service categories** facultative (colonnes : id, label) et une feuille **Indicators**. La feuille Indicators inclut des colonnes pour `varName`, `categoryId`, `subCategoryId`, `serviceCategoryId` (séparés par `|` lorsqu'un indicateur appartient à plusieurs catégories de service, par exemple `maternal|child`) et les autres champs standard, ainsi qu'une paire de colonnes `r_code__<point temporel>` et `r_filter_code__<point temporel>` par point temporel. Si la feuille Service categories est absente, les indicateurs sont importés sans catégorie de service.
 
 Lors de l'importation, FASTR détecte les colonnes de points temporels intégrées dans le fichier et présente une étape de mappage où vous confirmez à quel point temporel de la plateforme chaque colonne doit être importée. Si les libellés des colonnes correspondent exactement aux points temporels de votre plateforme, le mappage est pré-rempli automatiquement.
 

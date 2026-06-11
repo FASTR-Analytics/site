@@ -33,6 +33,8 @@ Open the project and navigate to **Data** in the left sidebar. Here you'll confi
 
 **Facility types and ownership** provide additional filtering when your instance includes these facility attributes. You might window to only public facilities, or focus on hospitals while excluding lower-level health posts.
 
+**HFA service categories** control which HFA indicators are included when HFA data is enabled for the project. When you enable or re-configure the HFA dataset, a settings dialog lets you choose to include all service categories or restrict to a specific selection. Only indicators tagged with a selected service category are imported into the project. Leave the setting on "Include all" if you want every HFA indicator regardless of service category.
+
 :::caution[Screenshot needed]
 Data windowing interface showing the time period chart with selectors, and the indicator selection panel.
 :::

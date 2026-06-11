@@ -51,9 +51,9 @@ Health Facility Assessment data works differently from HMIS. HFA surveys have cu
 
 ### Defining HFA indicators
 
-Each HFA indicator has a variable name, category, sub-category, service category, definition, data type (binary or numeric), and aggregation method (sum or average). Keep variable names short and consistent, like `has_essential_medicines` or `staff_trained_count`.
+Each HFA indicator has a variable name, category, sub-category, service categories, definition, data type (binary or numeric), and aggregation method (sum or average). Keep variable names short and consistent, like `has_essential_medicines` or `staff_trained_count`.
 
-The **service category** field is optional and provides an additional cross-cutting classification that is independent of the category/sub-category hierarchy. Service categories are managed on their own tab in the HFA indicator manager and can be assigned to any indicator regardless of its category.
+The **service categories** field is optional and provides an additional cross-cutting classification that is independent of the category/sub-category hierarchy. An indicator can belong to multiple service categories at once. Service categories are managed on their own tab in the HFA indicator manager and can be assigned to any indicator regardless of its category.
 
 ![HFA Indicators](/images/hfa-indicators-en.png)
 
@@ -72,11 +72,11 @@ When an indicator applies to multiple time points, FASTR tracks whether extracti
 
 ### Managing service categories
 
-Service categories are created and managed from the **Service categories** tab in the HFA indicator manager. Click **Add** to create a new service category - you provide a label and FASTR derives an ID automatically, though you can edit it. You can reorder service categories by dragging, and edit or delete them individually. Deleting a service category clears it from any indicators currently assigned to it.
+Service categories are created and managed from the **Service categories** tab in the HFA indicator manager. Click **Add** to create a new service category - you provide a label and FASTR derives an ID automatically, though you can edit it. You can reorder service categories by dragging, and edit or delete them individually. Deleting a service category removes it from any indicators currently assigned to it. Note that service category IDs cannot contain the pipe character (`|`).
 
 ### CSV upload
 
-HFA indicators support batch creation via Excel workbook. The workbook includes a **Categories** sheet, a **Sub-categories** sheet, an optional **Service categories** sheet (columns: id, label), and an **Indicators** sheet. The Indicators sheet includes columns for `varName`, `categoryId`, `subCategoryId`, `serviceCategoryId`, and the other standard fields, plus one pair of `r_code__<time point>` and `r_filter_code__<time point>` columns per time point. If the Service categories sheet is omitted, indicators are imported with no service category assigned.
+HFA indicators support batch creation via Excel workbook. The workbook includes a **Categories** sheet, a **Sub-categories** sheet, an optional **Service categories** sheet (columns: id, label), and an **Indicators** sheet. The Indicators sheet includes columns for `varName`, `categoryId`, `subCategoryId`, `serviceCategoryId` (pipe-separated when an indicator belongs to multiple service categories, for example `maternal|child`), and the other standard fields, plus one pair of `r_code__<time point>` and `r_filter_code__<time point>` columns per time point. If the Service categories sheet is omitted, indicators are imported with no service categories assigned.
 
 When importing, FASTR detects the time point columns embedded in the file and presents a mapping step where you confirm which platform time point each column should import into. If the column labels match your platform time points exactly, the mapping is pre-filled automatically.
 
