@@ -66,13 +66,15 @@ To remove all admin areas and facilities from both registries at once, open the 
 
 ## HFA facility sampling weights
 
-For HFA analyses that require weighted estimates, you can upload per-facility sampling weights. The weights section appears below **Delete these facilities** when viewing the HFA Facilities card.
+For HFA analyses that require weighted estimates, you can upload per-facility sampling weights. Open the **Data** section and click the **Sampling weights** card to open the weights manager. Only global administrators can import or delete weights; all users with data access can view the weights table.
 
-Prepare a CSV file with three columns: `facility_id`, `time_point`, and `weight`. Each row specifies the sampling weight for one facility at one time point. Facility IDs must match your HFA facility registry, and time points must match labels already created by an HFA data import.
+Prepare a CSV file in wide format: one row per facility, with a `facility_id` column followed by one column per time point label. A blank cell means the facility is not in that round's sample and will not have a weight stored for it. Time point column headers must exactly match labels already created by an HFA data import.
 
-To upload weights, select or upload your CSV using the file selector, then click **Import weights**. FASTR validates every row - rows with missing values, unrecognised facility IDs, unrecognised time points, or duplicate facility/time-point pairs are rejected with an error message listing the first few problem cases. A successful import reports how many weight rows were imported and which time points were covered. Re-uploading updates existing weights for the same facility/time-point pairs.
+To upload weights, select or upload your CSV using the file selector, then click **Import weights**. FASTR validates every row. Rows with invalid facility IDs are rejected with an error message listing the first few problem cases. Cells with non-positive weight values are also rejected. Blank cells are silently skipped - they represent facilities not in that round's sample. A successful import reports how many weight cells were imported, how many blank cells were skipped, and which time points were covered. Re-uploading updates existing weights for the same facility and time point.
 
-To remove all sampling weights, click **Delete all weights**. This does not affect any facility records or HFA data. Sampling weights are preserved automatically when you re-import the facility list using the **Replace all** strategy - weights for facilities that survive the re-import are restored.
+The weights manager displays a coverage summary showing, for each time point, how many facilities with data have a corresponding weight. A warning highlight indicates time points where some facilities have data but no weight - those facilities will count with weight 1 when weighted analysis is enabled. You can download the current weights as a CSV in the same wide format, edit it, and re-import it.
+
+To remove all sampling weights, click **Delete all weights**. This does not affect any facility records or HFA data.
 
 ## GeoJSON for maps
 <!-- help#struct-geojson -->

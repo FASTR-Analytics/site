@@ -59,6 +59,8 @@ FASTR extrait la structure de l'enquête à partir de votre XLSForm afin de four
 
 Pour les questions « select_multiple », FASTR décompose automatiquement chaque choix en une variable binaire distincte - une question comportant cinq options devient cinq indicateurs oui/non.
 
+Le nom de variable `weight` est réservé aux pondérations d'échantillonnage des établissements et ne peut pas être utilisé comme nom de variable d'enquête. Si votre XLSForm contient une variable nommée `weight`, renommez-la avant d'importer.
+
 ## Travailler avec les données HFA
 
 Une fois importées, les données HFA intègrent le pipeline analytique aux côtés des données HMIS. Les modules peuvent référencer des variables HFA dans leurs calculs, et les visualisations peuvent afficher les résultats de l'évaluation des établissements. Comme les données HFA représentent des rounds d'enquête distincts plutôt qu'un rapportage continu, elles servent généralement à des comparaisons transversales plutôt qu'à l'analyse de tendances temporelles.

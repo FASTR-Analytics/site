@@ -59,6 +59,8 @@ FASTR extracts survey structure from your XLSForm to provide meaningful labels t
 
 For "select_multiple" questions, FASTR automatically expands each choice into a separate binary variable - a question with five options becomes five yes/no indicators.
 
+The variable name `weight` is reserved for facility sampling weights and cannot be used as a survey variable name. If your XLSForm contains a variable named `weight`, rename it before importing.
+
 ## Working with HFA data
 
 Once imported, HFA data flows into the analytical pipeline alongside HMIS data. Modules can reference HFA variables in their calculations, and visualizations can display facility assessment results. Because HFA represents discrete survey rounds rather than continuous reporting, it's typically used for cross-sectional comparisons rather than time trends.
