@@ -14,9 +14,7 @@ Any user with the "Create projects" permission can start a new project from the 
 
 New projects start empty - no modules installed, no data windowed. Your next steps will typically be to enable the modules you need and configure the data window.
 
-:::caution[Screenshot needed]
-Create project dialog showing the project name field.
-:::
+![Project Name](/images/project-name-en.png)
 
 ## Configuring the data window
 <!-- help#aproj-data-window -->
@@ -35,9 +33,7 @@ Open the project and navigate to **Data** in the left sidebar. Here you'll confi
 
 **HFA service categories** control which HFA indicators are included when HFA data is enabled for the project. When you enable or re-configure the HFA dataset, a settings dialog lets you choose to include all service categories or restrict to a specific selection. Only indicators tagged with a selected service category are imported into the project. Leave the setting on "Include all" if you want every HFA indicator regardless of service category.
 
-:::caution[Screenshot needed]
-Data windowing interface showing the time period chart with selectors, and the indicator selection panel.
-:::
+![Data Window](/images/hmis-data-window-en.png)
 
 ## Managing project users and permissions
 
@@ -53,9 +49,7 @@ Click the edit button next to any user to modify their permissions. You can togg
 
 For bulk changes, select multiple users using the checkboxes, then click **Edit permissions**. The bulk editor uses a three-state toggle - unchanged, grant, or revoke - letting you modify specific permissions without affecting others.
 
-:::caution[Screenshot needed]
-Project users table with permission columns and edit buttons.
-:::
+![User Permissions Project](/images/user-permissions-project-en.png)
 
 ## Locking projects
 <!-- help#aproj-lock -->
@@ -70,9 +64,7 @@ Sometimes you need a project similar to an existing one - perhaps the same modul
 
 Open the source project, go to **Settings**, and click **Copy project**. Enter a name for the new project. The copy runs in the background and may take several minutes for large projects. The new project appears on the home screen once complete, with all module installations, parameter settings, visualizations, and reports included.
 
-:::caution[Screenshot needed]
-Copy project dialog showing the new project name field.
-:::
+![Copy Project](/images/copy-project-en.png)
 
 ## Project AI context
 
