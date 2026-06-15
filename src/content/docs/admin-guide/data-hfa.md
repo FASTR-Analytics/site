@@ -32,13 +32,9 @@ Navigate to the **Data** section and select **HFA Data**. Click **Start new impo
 
 4. **Review and integrate.** The summary shows valid rows, dropped rows (due to missing or invalid facility IDs), and data dictionary statistics. Click **Integrate and finalize** to complete.
 
-:::caution[Screenshot needed]
-HFA import step 1 showing the two file upload areas for CSV and XLSForm.
-:::
+![HFA Upload](/images/hfa-upload-en.png)
 
-:::caution[Screenshot needed]
-HFA staging results showing row statistics and data dictionary counts.
-:::
+![HFA Upload Round](/images/hfa-upload-round-en.png)
 
 ## Time points
 <!-- help#hfa-time-points -->
@@ -47,9 +43,7 @@ HFA data is organized by time points rather than continuous periods. Before impo
 
 After importing, use the **HFA Time Points** page to edit labels, adjust dates, reorder, add new time points, or delete individual survey rounds. Deleting a time point removes all its data and sampling weights.
 
-:::caution[Screenshot needed]
-Time points management interface showing list of imported rounds with edit and reorder controls.
-:::
+![HFA Timepoints](/images/hfa-timepoints-en.png)
 
 ## Validation details
 
