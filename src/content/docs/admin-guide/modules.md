@@ -22,9 +22,7 @@ To install a module, find it in the list and click **Enable**. Some modules depe
 
 Once enabled, a module typically enters a "waiting" state until its data requirements are met. When your project has data windowed and any prerequisite modules have run, the module will begin processing.
 
-:::caution[Screenshot needed]
-Modules page showing a mix of enabled modules with status indicators and available modules with Enable buttons.
-:::
+![Installing Modules](/images/installing-modules-en.png)
 
 ## Configuring module parameters
 <!-- help#amod-configure -->
@@ -33,9 +31,7 @@ Many modules accept parameters that control their behavior. A data quality modul
 
 Click **Settings** on any installed module to view and edit its parameters. The interface varies by module - some have numeric inputs, others have dropdowns or checkboxes. When you save parameter changes, FASTR marks the module as needing to re-run and will process it again automatically.
 
-:::caution[Screenshot needed]
-Module settings panel showing parameter inputs like thresholds and dropdown selections.
-:::
+![Module Settings](/images/module-settings-en.png)
 
 ## Module execution and status
 <!-- help#amod-status -->
@@ -49,9 +45,7 @@ Each module displays its current status in the module list:
 
 When upstream data changes, downstream modules become outdated and re-process automatically. This dependency tracking keeps results consistent with underlying data.
 
-:::caution[Screenshot needed]
-Installed module card showing ready status with definition timestamps and last run time.
-:::
+![Module Status](/images/module-status-en.png)
 
 ## Updating module definitions
 
