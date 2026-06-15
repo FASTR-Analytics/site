@@ -76,4 +76,4 @@ Copy project dialog showing the new project name field.
 
 ## Project AI context
 
-FASTR's AI assistant can interpret charts and suggest insights, but its responses are more useful when it understands the project's context. In **Settings**, you can set a **Project context for AI interpretation** - a description of what this project analyzes or the questions it aims to answer. A few sentences about the project's purpose can significantly improve the quality of AI-assisted analysis.
+FASTR's AI assistant can interpret charts and suggest insights, but its responses are more useful when it understands the project's context. In **Settings**, you can set a **Project context for AI interpretation** - a description of what this project analyzes or the questions it aims to answer. Changes to the AI context are reflected immediately across the project. A few sentences about the project's purpose can significantly improve the quality of AI-assisted analysis.
