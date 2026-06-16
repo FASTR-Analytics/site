@@ -78,11 +78,18 @@ Lorsqu'un indicateur s'applique à plusieurs points temporels, FASTR vérifie si
 
 Les catégories de service sont créées et gérées depuis l'onglet **Catégories de service** du gestionnaire d'indicateurs HFA. Cliquez sur **Ajouter** pour créer une nouvelle catégorie de service - vous fournissez un libellé et FASTR génère automatiquement un identifiant, que vous pouvez modifier. Vous pouvez réorganiser les catégories de service par glisser-déposer, et les modifier ou les supprimer individuellement. La suppression d'une catégorie de service la retire de tous les indicateurs qui lui sont actuellement associés. Les identifiants de catégorie de service ne peuvent pas contenir le caractère pipe (`|`).
 
-### Téléversement CSV
+### Téléversement de classeur Excel
 
-Les indicateurs HFA prennent en charge la création par lot via un classeur Excel. Le classeur comprend une feuille **Categories**, une feuille **Sub-categories**, une feuille **Service categories** facultative (colonnes : id, label) et une feuille **Indicators**. La feuille Indicators inclut des colonnes pour `varName`, `categoryId`, `subCategoryId`, `serviceCategoryId` (séparés par `|` lorsqu'un indicateur appartient à plusieurs catégories de service, par exemple `maternal|child`) et les autres champs standard, ainsi qu'une paire de colonnes `r_code__<point temporel>` et `r_filter_code__<point temporel>` par point temporel. Si la feuille Service categories est absente, les indicateurs sont importés sans catégorie de service.
+Les indicateurs HFA prennent en charge la création par lot via un classeur Excel. Téléversez un classeur Excel (.xlsx) comportant trois feuilles :
 
-Lors de l'importation, FASTR détecte les colonnes de points temporels intégrées dans le fichier et présente une étape de mappage où vous confirmez à quel point temporel de la plateforme chaque colonne doit être importée. Si les libellés des colonnes correspondent exactement aux points temporels de votre plateforme, le mappage est pré-rempli automatiquement.
+- **Categories** : id, label
+- **Sub-categories** : id, categoryId, label
+- **Service categories** : id, label (facultatif)
+- **Indicators** : varName, categoryId, subCategoryId, serviceCategoryId (séparés par `|` pour plusieurs), shortLabel, definition, type, aggregation, r_code__&lt;point temporel&gt;, r_filter_code__&lt;point temporel&gt;, …
+
+Si la feuille Service categories est absente, les indicateurs sont importés sans catégorie de service.
+
+Lors de l'importation, choisissez entre les modes **Ajouter aux existants** et **Remplacer tous les existants**. FASTR détecte les colonnes de points temporels intégrées dans le fichier et présente une étape de mappage où vous confirmez à quel point temporel de la plateforme chaque colonne doit être importée. Si les libellés des colonnes correspondent exactement aux points temporels de votre plateforme, le mappage est pré-rempli automatiquement.
 
 ## Bonnes pratiques
 

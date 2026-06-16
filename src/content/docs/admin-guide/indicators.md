@@ -74,11 +74,18 @@ When an indicator applies to multiple time points, FASTR tracks whether extracti
 
 Service categories are created and managed from the **Service categories** tab in the HFA indicator manager. Click **Add** to create a new service category - you provide a label and FASTR derives an ID automatically, though you can edit it. You can reorder service categories by dragging, and edit or delete them individually. Deleting a service category removes it from any indicators currently assigned to it. Note that service category IDs cannot contain the pipe character (`|`).
 
-### CSV upload
+### Excel workbook upload
 
-HFA indicators support batch creation via Excel workbook. The workbook includes a **Categories** sheet, a **Sub-categories** sheet, an optional **Service categories** sheet (columns: id, label), and an **Indicators** sheet. The Indicators sheet includes columns for `varName`, `categoryId`, `subCategoryId`, `serviceCategoryId` (pipe-separated when an indicator belongs to multiple service categories, for example `maternal|child`), and the other standard fields, plus one pair of `r_code__<time point>` and `r_filter_code__<time point>` columns per time point. If the Service categories sheet is omitted, indicators are imported with no service categories assigned.
+HFA indicators support batch creation via Excel workbook. Upload an Excel workbook (.xlsx) with three sheets:
 
-When importing, FASTR detects the time point columns embedded in the file and presents a mapping step where you confirm which platform time point each column should import into. If the column labels match your platform time points exactly, the mapping is pre-filled automatically.
+- **Categories**: id, label
+- **Sub-categories**: id, categoryId, label
+- **Service categories**: id, label (optional)
+- **Indicators**: varName, categoryId, subCategoryId, serviceCategoryId (pipe-separated for multiple), shortLabel, definition, type, aggregation, r_code__&lt;time point&gt;, r_filter_code__&lt;time point&gt;, …
+
+If the Service categories sheet is omitted, indicators are imported with no service categories assigned.
+
+When importing, choose between **Add to existing** and **Replace all existing** import modes. FASTR detects the time point columns embedded in the file and presents a mapping step where you confirm which platform time point each column should import into. If the column labels match your platform time points exactly, the mapping is pre-filled automatically.
 
 ## Best practices
 
