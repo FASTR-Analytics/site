@@ -46,6 +46,8 @@ Si aucun des modèles prédéfinis ne convient, choisissez **Personnalisé**. Ce
 
 Toutes les désagrégations ne fonctionnent pas avec tous les types de visualisations. Par exemple, la désagrégation géographique est pertinente pour les cartes mais pas pour les chronologies. L'interface vous indique quelles options sont disponibles en fonction du type que vous avez choisi.
 
+Certains types de graphiques ont des exigences spécifiques en matière de données. Le graphique des perturbations, par exemple, compare deux valeurs de données (réelle et attendue) sous forme de deux séries et ombre la différence entre elles. Si vous sélectionnez un graphique des perturbations, assurez-vous que les deux valeurs de données sont configurées - le graphique affichera un message d'erreur vous invitant à ajouter la deuxième valeur de données ou à désactiver le mode perturbations si une seule est présente.
+
 :::caution[Capture d'écran à ajouter]
 Étape 2 du processus de création montrant les cartes de modèles prédéfinis avec leurs aperçus, ainsi que l'option « Personnalisé ».
 :::
@@ -127,5 +129,7 @@ Soyez réfléchi quant à ce que vous partagez publiquement. Le lien donne accè
 **La visualisation affiche « aucune donnée »** : Vérifiez que vos modules ont terminé leur exécution et que l'indicateur dispose de données pour la période et les filtres que vous avez sélectionnés. Si la fenêtre de données du projet n'inclut pas les dates sur lesquelles vous filtrez, rien ne s'affichera.
 
 **Le graphique semble encombré ou difficile à lire** : Vous avez peut-être trop de désagrégations actives. Essayez d'en supprimer une ou de filtrer sur moins de valeurs. Parfois, un tableau est un meilleur choix qu'un graphique lorsque vous avez de nombreuses catégories.
+
+**Le graphique des perturbations affiche une erreur indiquant des valeurs de données manquantes** : Ce graphique nécessite une valeur de données réelle et une valeur attendue pour calculer la comparaison. Ouvrez l'onglet Données et ajoutez la deuxième valeur de données, ou choisissez un autre type de graphique.
 
 **Les modifications n'apparaissent pas** : Assurez-vous d'avoir cliqué sur **Enregistrer**. L'aperçu se met à jour en direct, mais vos modifications ne sont pas conservées tant que vous n'enregistrez pas. Si vous quittez la page sans enregistrer, vous perdrez vos modifications.

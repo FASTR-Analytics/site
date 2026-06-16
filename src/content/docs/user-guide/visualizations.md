@@ -46,6 +46,8 @@ If none of the presets fit, choose **Custom**. This lets you pick the visualizat
 
 Not every disaggregation works with every visualization type. For example, geographic disaggregation makes sense for maps but not for timeseries. The interface shows you which options are available based on the type you've chosen.
 
+Some chart types have specific data requirements. The disruptions chart, for example, compares two data values (actual and expected) as two series and shades the difference between them. If you select a disruptions chart, make sure both data values are configured - the chart will show an error message prompting you to add the second data value or turn off disruptions mode if only one is present.
+
 :::caution[Screenshot needed]
 Step 2 of create flow showing preset cards with previews, plus the "Custom" option.
 :::
@@ -127,5 +129,7 @@ Be thoughtful about what you share publicly. The link gives access to the visual
 **The visualization shows "no data"**: Check that your modules have finished running and that the metric has data for the time period and filters you've selected. If the project's data window doesn't include the dates you're filtering to, you won't see anything.
 
 **The chart looks cluttered or hard to read**: You may have too many disaggregations active. Try removing one or filtering to fewer values. Sometimes a table is a better choice than a chart when you have many categories.
+
+**The disruptions chart shows an error about missing data values**: This chart requires both an actual and an expected data value to compute the comparison. Open the Data tab and add the second data value, or switch to a different chart type.
 
 **Changes aren't appearing**: Make sure you've clicked **Save**. The preview updates live, but your changes aren't persisted until you save. If you navigate away without saving, you'll lose your edits.
