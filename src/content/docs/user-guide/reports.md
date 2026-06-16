@@ -51,6 +51,8 @@ Selecting a figure or image opens a panel on the left for working with it:
 
 Because figures stay linked to their visualizations, a report you wrote last quarter shows this quarter's numbers the next time you open it - no manual updating, no re-pasting charts.
 
+If a figure or image cannot be loaded when you export the report, FASTR replaces it with a short notice in place of the missing item rather than aborting the export. The rest of the report exports normally.
+
 :::caution[Screenshot needed]
 A report with an embedded live figure selected, showing the left panel with Caption and figure actions.
 :::

@@ -51,6 +51,8 @@ La sélection d'une figure ou d'une image ouvre un panneau sur la gauche pour la
 
 Comme les figures restent liées à leurs visualisations, un rapport rédigé le trimestre dernier affichera les chiffres de ce trimestre la prochaine fois que vous l'ouvrirez - sans mise à jour manuelle ni nouveau collage de graphiques.
 
+Si une figure ou une image ne peut pas être chargée lors de l'export, FASTR la remplace par une courte notice à la place de l'élément manquant plutôt que d'interrompre l'export. Le reste du rapport est exporté normalement.
+
 :::caution[Capture d'écran à ajouter]
 Un rapport avec une figure dynamique intégrée sélectionnée, montrant le panneau de gauche avec la légende et les actions sur la figure.
 :::

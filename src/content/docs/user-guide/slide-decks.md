@@ -33,6 +33,8 @@ To add a visualization, click on an empty figure block and choose **Select visua
 
 Right-click on a block to access layout options like "Split left/right" or "Delete block." You can drag dividers between blocks to adjust their relative sizes.
 
+If a visualization or image cannot be rendered - for example because of a data error or a missing file - FASTR shows a short notice in the block rather than leaving it blank or stopping the export.
+
 :::caution[Screenshot needed]
 Content slide editor showing a two-column layout with text on the left and a visualization on the right.
 :::

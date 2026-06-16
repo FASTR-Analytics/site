@@ -33,6 +33,8 @@ Pour ajouter une visualisation, cliquez sur un bloc de figure vide et choisissez
 
 Faites un clic droit sur un bloc pour accéder aux options de mise en page comme « Diviser gauche/droite » ou « Supprimer le bloc ». Vous pouvez faire glisser les séparateurs entre les blocs pour ajuster leurs tailles relatives.
 
+Si une visualisation ou une image ne peut pas être rendue - par exemple en raison d'une erreur de données ou d'un fichier manquant - FASTR affiche une courte notice dans le bloc plutôt que de le laisser vide ou d'interrompre l'export.
+
 :::caution[Capture d'écran à ajouter]
 Éditeur de diapositive de contenu montrant une mise en page à deux colonnes avec du texte à gauche et une visualisation à droite.
 :::
