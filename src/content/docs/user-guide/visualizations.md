@@ -79,6 +79,8 @@ Data tab expanded showing period filter, disaggregation options, and value filte
 
 The Presentation tab adjusts how the visualization looks. For charts, you can change colors, show or hide data labels, and configure axis ranges. For maps, you can adjust the color scale and boundary styling. Tables have options for column widths and number formatting.
 
+For scatter-style charts using the **points** display, you can enable **Add connectors** to draw lines between points in series order. This is useful when you want to show both individual data positions and the trajectory connecting them.
+
 These settings don't change what data is shown - only how it's displayed. If you want a cleaner look for a presentation, or need to match your organization's color scheme, this is where you'd make those adjustments.
 
 :::caution[Screenshot needed]
