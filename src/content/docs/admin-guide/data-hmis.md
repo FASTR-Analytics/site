@@ -62,6 +62,10 @@ The staging process catches several types of issues: missing required fields, in
 
 Each successful import creates a new dataset version. Click **View previous imports** to see all versions with their dates and row counts. You can also delete data if needed - this action is irreversible and available only to global administrators.
 
+## Deleting ICEH data
+
+The ICEH dataset has two deletion options. To delete all ICEH data, check **Delete ALL ICEH data**, type `yes please delete` in the confirmation field, and click **Delete**. To remove only specific indicators while keeping others, uncheck **Delete ALL ICEH data**, select the indicators you want to remove from the list, and click **Delete**. Only the selected indicators are removed; all other indicators are kept.
+
 ## After importing
 
 Once data is integrated, it becomes available to all projects in your instance. Projects can set their data window to include the new periods, and modules will pick up the fresh data on their next run.
