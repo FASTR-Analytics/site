@@ -7,6 +7,8 @@ sidebar:
 
 La plateforme FASTR aide les gestionnaires de programmes de santé et les analystes à transformer les données sanitaires de routine en informations exploitables. Ce guide couvre les tâches quotidiennes que vous effectuerez en tant qu'utilisateur - naviguer dans les projets, comprendre les résultats analytiques, créer des visualisations et élaborer des rapports.
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Of0z47CE8AM?si=EGeeTRNk38QcdO0u" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ## À qui s'adresse ce guide
 
 Cette section est destinée à toute personne qui travaille avec les résultats analytiques de FASTR. Cela inclut les responsables de programmes qui examinent les données de performance, les analystes de données qui créent des visualisations personnalisées et les gestionnaires qui préparent des rapports pour les parties prenantes. Vous n'avez pas besoin de gérer les utilisateurs, de charger des données ou de configurer les paramètres du système - ces tâches sont traitées dans le guide administrateur.
