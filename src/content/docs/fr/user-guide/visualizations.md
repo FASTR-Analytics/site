@@ -117,13 +117,6 @@ Parfois, vous avez besoin des chiffres sous-jacents, pas seulement de l'image. C
 Menu de téléchargement montrant les options d'export PNG, SVG et CSV.
 :::
 
-### Partager un lien
-<!-- help#viz-share-link -->
-
-Vous pouvez créer un lien public permettant à quiconque de consulter une visualisation sans se connecter. Cliquez sur **Partager**, activez le partage et copiez le lien. C'est utile pour partager avec des parties prenantes qui n'ont pas de compte FASTR, ou pour l'intégrer dans des rapports et des courriels.
-
-Soyez réfléchi quant à ce que vous partagez publiquement. Le lien donne accès à la visualisation et à ses données sous-jacentes, alors assurez-vous d'être à l'aise avec le fait que ces informations soient visibles par quiconque dispose du lien.
-
 ## Problèmes courants
 
 **La visualisation affiche « aucune donnée »** : Vérifiez que vos modules ont terminé leur exécution et que l'indicateur dispose de données pour la période et les filtres que vous avez sélectionnés. Si la fenêtre de données du projet n'inclut pas les dates sur lesquelles vous filtrez, rien ne s'affichera.

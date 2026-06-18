@@ -117,13 +117,6 @@ Sometimes you need the underlying numbers, not just the picture. Click **Downloa
 Download menu showing PNG, SVG, and CSV export options.
 :::
 
-### Sharing a link
-<!-- help#viz-share-link -->
-
-You can create a public link that lets anyone view a visualization without logging in. Click **Share**, toggle sharing on, and copy the link. This is useful for sharing with stakeholders who don't have FASTR accounts, or for embedding in reports and emails.
-
-Be thoughtful about what you share publicly. The link gives access to the visualization and its underlying data, so make sure you're comfortable with that information being visible to anyone with the link.
-
 ## Common issues
 
 **The visualization shows "no data"**: Check that your modules have finished running and that the metric has data for the time period and filters you've selected. If the project's data window doesn't include the dates you're filtering to, you won't see anything.
