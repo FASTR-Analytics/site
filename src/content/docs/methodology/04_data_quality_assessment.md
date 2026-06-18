@@ -30,7 +30,7 @@ FASTR takes a multi-pronged approach, based on the belief that data quality shou
 
 !!! warning "Reminder: input must be counts, not percentages"
 
-    This module expects **raw service counts** (e.g. number of visits, doses, deliveries reported by each facility each month). Percentages, rates, or pre-calculated coverage figures cannot be analysed here — outlier detection compares values against a facility's own volume distribution (a percentage capped at 100 has no signal), and completeness flags depend on whether a count was reported. See [Data extraction](02_data_extraction) for what to pull from your HMIS.
+    This module expects **raw service counts** (e.g. number of visits, doses, deliveries reported by each facility each month). Percentages, rates, or pre-calculated coverage figures cannot be analyzed here — outlier detection compares values against a facility's own volume distribution (a percentage capped at 100 has no signal), and completeness flags depend on whether a count was reported. See [Data extraction](02_data_extraction) for what to pull from your HMIS.
 
 ---
 
@@ -1483,12 +1483,11 @@ names(data)  # Should include: facility_id, period_id, indicator_common_id, coun
 
 
 
+
 <!-- ═══════════════════════════════════════════════════════════════════════════
      CONDENSED SLIDES: Methods + Interpretation Combined
      For workshops requiring shorter, high-level overview
 ═══════════════════════════════════════════════════════════════════════════ -->
-
-
 
 
 
