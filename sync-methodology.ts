@@ -41,6 +41,7 @@ const SKIP_FILES = new Set([
   "03_fastr_analytics_platform.md",
   "03b_ai_assistant.md",
   "11_user_guide.md",
+  "EDITING.md",
   "index.md",
   "disclaimer.md",
   "README.md",
