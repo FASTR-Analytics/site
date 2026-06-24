@@ -42,6 +42,8 @@ The assistant is particularly helpful when building slide decks. You can ask it 
 
 When you ask the assistant to create a slide, it drafts the content and shows a preview. Review the draft, request changes, and add it to your deck with one click.
 
+When editing an existing slide, the assistant can also modify figures already on the slide - for example, changing which replicant a chart displays, adjusting filters, or updating captions - without rebuilding the figure from scratch.
+
 ## Conversations and history
 
 Each conversation is saved automatically. You can start new conversations and switch between past ones using the menu. This is useful when you've asked the assistant to explain something complex - return to that explanation later without re-asking.
