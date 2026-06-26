@@ -28,10 +28,10 @@ Your work saves on its own as you type. A status indicator in the header shows w
 
 ## Edit and View modes
 
-The header has an **Edit / View** toggle. **Edit** shows the markdown editor with the writing tools. **View** renders the report the way it will read when finished - formatted headings, lists, tables, and live figures. Switch to View to proofread or to show someone the result without the editing controls in the way; the figures stay interactive there too.
+The header has an **Edit / Split / View** toggle. **Edit** shows the markdown editor with the writing tools. **Split** shows the editor and rendered preview side by side. **View** renders the report the way it will read when finished - formatted headings, lists, tables, and live figures. Switch to View to proofread or to show someone the result without the editing controls in the way; the figures stay interactive there too.
 
 :::caution[Screenshot needed]
-The report editor in Edit mode with the Edit/View toggle and the autosave status indicator in the header.
+The report editor in Edit mode with the Edit/Split/View toggle and the autosave status indicator in the header.
 :::
 
 ## Adding figures and images
@@ -59,7 +59,7 @@ A report with an embedded live figure selected, showing the left panel with Capt
 
 ## AI assistance
 
-The **AI** button opens an assistant that can help as you write - rewriting a passage you've selected, replacing a figure with a freshly built chart, or creating new visualizations from your metrics and dropping them in. The assistant proposes changes for you to accept or reject rather than editing silently. See [AI assistant](/user-guide/ai-assistant/) for the full picture.
+The **AI** button opens an assistant that can help as you write. It can rewrite a passage you've selected, insert or replace figures, and edit existing figures directly without rebuilding them from scratch - for example, changing the replicant a chart displays, adjusting its filters, or updating captions. The assistant proposes text changes for you to accept or reject in a modal before anything is applied; figure edits are applied immediately to the live preview and saved. See [AI assistant](/user-guide/ai-assistant/) for the full picture.
 
 ## Exporting
 <!-- help#report-export -->

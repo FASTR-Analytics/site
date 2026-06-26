@@ -91,6 +91,8 @@ Onglet Présentation pour un graphique montrant le sélecteur de palette de coul
 
 L'onglet Texte ajoute du contexte à votre visualisation à travers trois champs de texte. Le **titre** apparaît au-dessus de la visualisation comme titre principal. Le **sous-titre** se place sous le titre et est utile pour un contexte supplémentaire - comme la période couverte ou la source des données. La **note de bas de page** apparaît en bas et sert généralement à des remarques méthodologiques ou à des mises en garde sur les données.
 
+Dans les champs titre, sous-titre et note de bas de page, vous pouvez utiliser des mots-clés spéciaux qui sont remplacés dynamiquement lorsque la visualisation s'affiche. Utilisez `DATE_RANGE`, `PLAGE_DE_DATES` ou `INTERVALO_DE_DATAS` pour insérer la plage de dates des données affichées dans la figure (cela ne fonctionne actuellement que pour les visualisations chronologiques). Utilisez `REPLICANT` pour insérer le nom complet du réplicant, comme un indicateur ou une zone administrative (cela ne fonctionne que si un désagrégateur est défini pour différents graphiques). Ces mots doivent être écrits exactement comme indiqué, en majuscules et avec des traits de soulignement.
+
 De bons titres rendent les visualisations explicites en elles-mêmes. Une personne consultant le graphique dans une présentation ne devrait pas avoir besoin de lire le texte environnant pour comprendre ce qu'elle regarde.
 
 :::caution[Capture d'écran à ajouter]

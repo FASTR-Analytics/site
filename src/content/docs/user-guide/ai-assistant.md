@@ -30,7 +30,7 @@ Good questions are specific. Instead of "tell me about the data," try "what does
 
 The prompt library contains pre-written prompts for common analysis tasks. Click the menu icon in the AI panel header and select **Prompt library** to browse. Prompts are organized by category - interpretation, comparison, data quality checks, and more.
 
-When you select a prompt, you can customize it before running. You can also save your own prompts to the library for reuse.
+When you select a prompt, you can customize it before running. You can also save your own prompts to the library for reuse. Prompts can be saved as **My prompts** (private, visible only to you) or **Country prompts** (shared with all users in your instance).
 
 :::caution[Screenshot needed]
 Prompt library modal showing categories of pre-built prompts with the search field.
@@ -43,6 +43,10 @@ The assistant is particularly helpful when building slide decks. You can ask it 
 When you ask the assistant to create a slide, it drafts the content and shows a preview. Review the draft, request changes, and add it to your deck with one click.
 
 When editing an existing slide, the assistant can also modify figures already on the slide - for example, changing which replicant a chart displays, adjusting filters, or updating captions - without rebuilding the figure from scratch. The assistant can also update figures on slides directly from the deck view, without opening the slide editor, and saves those changes immediately.
+
+## Working with reports
+
+In the report editor, the assistant can rewrite passages, insert new figures, and edit existing figures in place. When you ask it to change text, it proposes a diff in a modal that you accept or reject before anything changes. When you ask it to edit a figure - for example, to change its replicant or period filter - it applies the change directly to the live preview and saves immediately, without a diff step. To replace a figure with a completely different chart or metric, ask the assistant to replace the figure rather than edit it.
 
 ## Conversations and history
 

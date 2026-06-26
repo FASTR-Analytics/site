@@ -62,13 +62,17 @@ The **service categories** field is optional and provides an additional cross-cu
 
 Each HFA indicator requires R code specifying how to extract its value from raw survey data. The code runs for each facility and should return TRUE/FALSE for binary indicators or a number for numeric ones.
 
-The code editor shows which variables are available in your dataset at each time point. If survey structure changed between assessments, you can write different code for different time points. FASTR validates syntax and warns about missing variables.
+The code editor shows which variables are available in your dataset at each time point. If survey structure changed between assessments, you can write different code for different time points. FASTR validates syntax and warns about missing variables. It also checks whether your code's result type matches the indicator's declared type — for example, a binary indicator whose code performs no comparison will show a type warning.
 
 ![HFA Code](/images/hfa-code-en.png)
 
 ### Code consistency
 
 When an indicator applies to multiple time points, FASTR tracks whether extraction code is consistent. Inconsistent code may be intentional (survey questions change between rounds), but it's worth reviewing. Use **Revalidate all** after making changes to refresh validation across all indicators.
+
+### AI assistant for indicators
+
+Global administrators can open an AI assistant panel directly in the HFA Indicator Manager by clicking the **AI** button in the top bar. The assistant can clean up labels, organise indicators into categories, and create new indicators from the underlying survey dataset. It reads and writes indicators through a set of dedicated tools — loading current state before proposing changes, validating R code against the data dictionary, and showing a confirmation dialog with a diff before any edits are applied. The assistant operates on instance-level HFA indicators and is fully isolated from the project AI assistant.
 
 ### Managing service categories
 

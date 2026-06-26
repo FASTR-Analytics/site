@@ -31,6 +31,8 @@ La barre de navigation principale, en haut de l'écran, affiche des onglets corr
 
 L'onglet **Projets** répertorie tous les projets de votre instance et vous permet d'en créer de nouveaux. **Données** est l'endroit où vous configurez la structure (zones administratives, établissements) et importez les jeux de données. **Ressources** contient les fichiers téléversés, comme les modèles CSV et les cartes GeoJSON - tous les utilisateurs peuvent consulter et téléverser des ressources. **Utilisateurs** affiche toutes les personnes ayant accès à l'instance ainsi que leurs permissions. **Paramètres** regroupe les options de configuration à l'échelle de l'instance, comme le nom de l'instance et les préférences de langue.
 
+L'interface est disponible en anglais, en français et en portugais. Utilisez le sélecteur de langue dans la barre de navigation supérieure pour changer de langue.
+
 ## Premières étapes courantes
 
 Lors de la mise en place d'une nouvelle instance, vous travaillerez généralement ces tâches dans l'ordre suivant :

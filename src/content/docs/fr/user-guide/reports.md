@@ -26,12 +26,12 @@ L'éditeur utilise le markdown : vous écrivez du texte brut et le mettez en for
 
 Votre travail est enregistré automatiquement au fur et à mesure que vous tapez. Un indicateur d'état dans l'en-tête montre où en sont les choses - **Enregistrement** pendant qu'une modification est en cours, **Enregistré** avec l'heure du dernier enregistrement une fois celui-ci terminé, et un état d'erreur clair si un enregistrement échoue, afin que vous sachiez vérifier votre connexion plutôt que de perdre votre travail.
 
-## Modes Édition et Aperçu
+## Modes Édition, Divisé et Aperçu
 
-L'en-tête comporte un bouton bascule **Édition / Aperçu**. **Édition** affiche l'éditeur markdown avec les outils de rédaction. **Aperçu** restitue le rapport tel qu'il se présentera une fois terminé - titres, listes, tableaux et figures dynamiques mis en forme. Passez en mode Aperçu pour relire ou pour montrer le résultat à quelqu'un sans que les commandes d'édition ne gênent ; les figures y restent également interactives.
+L'en-tête comporte un bouton bascule **Édition / Divisé / Aperçu**. **Édition** affiche l'éditeur markdown avec les outils de rédaction. **Divisé** affiche l'éditeur et l'aperçu rendu côte à côte. **Aperçu** restitue le rapport tel qu'il se présentera une fois terminé - titres, listes, tableaux et figures dynamiques mis en forme. Passez en mode Aperçu pour relire ou pour montrer le résultat à quelqu'un sans que les commandes d'édition ne gênent ; les figures y restent également interactives.
 
 :::caution[Capture d'écran à ajouter]
-L'éditeur de rapport en mode Édition, avec le bouton bascule Édition/Aperçu et l'indicateur d'état d'enregistrement automatique dans l'en-tête.
+L'éditeur de rapport en mode Édition, avec le bouton bascule Édition/Divisé/Aperçu et l'indicateur d'état d'enregistrement automatique dans l'en-tête.
 :::
 
 ## Ajouter des figures et des images
@@ -59,7 +59,7 @@ Un rapport avec une figure dynamique intégrée sélectionnée, montrant le pann
 
 ## Assistance par IA
 
-Le bouton **IA** ouvre un assistant qui peut vous aider pendant que vous rédigez - en reformulant un passage que vous avez sélectionné, en remplaçant une figure par un graphique fraîchement créé, ou en créant de nouvelles visualisations à partir de vos indicateurs et en les insérant. L'assistant propose des modifications que vous pouvez accepter ou refuser, au lieu de modifier le contenu en silence. Consultez [Assistant IA](/user-guide/ai-assistant/) pour une vue d'ensemble complète.
+Le bouton **IA** ouvre un assistant qui peut vous aider pendant que vous rédigez. Il peut reformuler un passage sélectionné, insérer ou remplacer des figures, et modifier des figures existantes directement sans les reconstruire - par exemple, changer le réplicant affiché par un graphique, ajuster ses filtres ou mettre à jour des légendes. L'assistant propose les modifications de texte dans une fenêtre modale que vous acceptez ou refusez avant toute application ; les modifications de figures sont appliquées immédiatement à l'aperçu en direct et enregistrées. Consultez [Assistant IA](/user-guide/ai-assistant/) pour une vue d'ensemble complète.
 
 ## Exporter
 <!-- help#report-export -->

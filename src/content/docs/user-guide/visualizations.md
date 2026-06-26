@@ -91,6 +91,8 @@ Presentation tab for a chart showing color palette selector and axis configurati
 
 The Text tab adds context to your visualization through three text fields. The **caption** appears above the visualization as the main title. The **sub-caption** sits below the caption and is useful for additional context - like the time period covered or the data source. The **footnote** appears at the bottom and is typically used for methodological notes or data caveats.
 
+In the caption, sub-caption, and footnote fields you can use special placeholder words that are replaced dynamically when the visualization renders. Use `DATE_RANGE`, `PLAGE_DE_DATES`, or `INTERVALO_DE_DATAS` to insert the date range of the data shown in the figure (this currently works only for timeseries visualizations). Use `REPLICANT` to insert the full replicant name, such as an indicator or an admin area (this only works when a disaggregator is set for different charts). These words must be spelled exactly as shown, using capital letters and underscores.
+
 Good captions make visualizations self-explanatory. Someone looking at the chart in a slide deck shouldn't need to read surrounding text to understand what they're seeing.
 
 :::caution[Screenshot needed]
