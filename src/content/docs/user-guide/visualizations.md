@@ -19,7 +19,7 @@ Side-by-side examples of each visualization type (chart, timeseries, map, table)
 
 ## Finding and browsing visualizations
 
-Open your project and click **Visualizations** in the left sidebar. The list shows all visualizations in the project, organized into folders. You can search by name using the search box at the top, which is helpful once a project accumulates dozens of visualizations.
+Open your project and click **Visualizations** in the left sidebar. The list shows all visualizations in the project, organized into folders. You can search by name using the search box at the top, and use the sort control to order the list by name or by recently updated.
 
 Some visualizations appear with a "default" badge - these are created automatically by modules and can't be edited directly. If you want to modify a default visualization, opening it will create an editable copy that you can customize and save as your own.
 

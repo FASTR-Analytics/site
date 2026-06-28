@@ -19,7 +19,7 @@ Exemples côte à côte de chaque type de visualisation (graphique, chronologie,
 
 ## Trouver et parcourir les visualisations
 
-Ouvrez votre projet et cliquez sur **Visualisations** dans la barre de navigation à gauche. La liste affiche toutes les visualisations du projet, organisées en dossiers. Vous pouvez effectuer une recherche par nom à l'aide de la zone de recherche en haut, ce qui est utile dès qu'un projet accumule des dizaines de visualisations.
+Ouvrez votre projet et cliquez sur **Visualisations** dans la barre de navigation à gauche. La liste affiche toutes les visualisations du projet, organisées en dossiers. Vous pouvez effectuer une recherche par nom à l'aide de la zone de recherche en haut, et utiliser le contrôle de tri pour classer la liste par nom ou par récemment mis à jour.
 
 Certaines visualisations apparaissent avec un badge « par défaut » - elles sont créées automatiquement par les modules et ne peuvent pas être modifiées directement. Si vous souhaitez modifier une visualisation par défaut, l'ouvrir créera une copie modifiable que vous pourrez personnaliser et enregistrer comme la vôtre.
 

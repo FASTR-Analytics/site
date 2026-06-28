@@ -29,7 +29,7 @@ When you add a slide, you choose its type. You can convert between types later u
 
 Content slides use a flexible layout system with one or more content blocks. A block can hold text (formatted with markdown), a visualization from your project, or an uploaded image.
 
-To add a visualization, click on an empty figure block and choose **Select visualization**. Select one from the list and it appears in the block, rendered with its current settings. If you need to adjust the display - different time period or disaggregation - you can edit the embedded visualization directly from the slide.
+To add a visualization, click on an empty figure block and choose **Select visualization**. Select one from the list and it appears in the block, rendered with its current settings. You can sort visualizations in the selection panel by name or by recently updated using the sort control at the top of the panel. If you need to adjust the display - different time period or disaggregation - you can edit the embedded visualization directly from the slide.
 
 Right-click on a block to access layout options like "Split left/right" or "Delete block." You can drag dividers between blocks to adjust their relative sizes.
 
@@ -60,4 +60,4 @@ Download dialog showing PDF and PPTX export options.
 
 ## Organization
 
-Use folders to keep decks organized as your project grows. In the list view, click **New folder** to create one, then right-click on decks to move them. You can duplicate decks when creating variations for different audiences. The search box filters decks by name.
+Use folders to keep decks organized as your project grows. In the list view, click **New folder** to create one, then right-click on decks to move them. You can duplicate decks when creating variations for different audiences. The search box filters decks by name. Use the sort control at the top of the list to order decks by name or by recently updated.

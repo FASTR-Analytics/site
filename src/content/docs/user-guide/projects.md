@@ -10,7 +10,7 @@ A project is your workspace for analysis in FASTR. It contains a defined slice o
 ## Opening a project
 <!-- help#uproj-open -->
 
-When you sign in to FASTR, you'll see a list of projects you have access to. Click any project name to open it. The project view has a navigation sidebar on the left with tabs for different sections - typically **Slide decks**, **Visualizations**, **Modules**, **Data**, and **Settings**. What you see depends on your permissions; viewers won't see configuration options, for example.
+When you sign in to FASTR, you'll see a list of projects you have access to. The list can be sorted by name or by recently updated using the sort control at the top. Click any project name to open it. The project view has a navigation sidebar on the left with tabs for different sections - typically **Slide decks**, **Visualizations**, **Modules**, **Data**, and **Settings**. What you see depends on your permissions; viewers won't see configuration options, for example.
 
 The project name appears at the top of the screen alongside a status indicator. This indicator shows whether analytical modules are up to date or if something is currently processing. A green checkmark means everything is current. A spinning indicator means modules are running. If you see a warning or error symbol, some module needs attention - usually because upstream data changed or a configuration issue occurred.
 

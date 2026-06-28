@@ -35,26 +35,31 @@ Configuration des colonnes d'établissements dans les paramètres de l'instance,
 
 ## Importer des établissements
 
-Pour importer des établissements, accédez à la section **Données** et ouvrez la carte **Établissements SNIS** ou la carte **Établissements Enquêtes FOSA** selon le registre que vous souhaitez mettre à jour. Chaque registre dispose de son propre assistant d'importation.
-
-Une seule importation d'établissements peut être en cours à la fois, tous registres confondus. Si une importation est déjà en cours pour un registre, terminez-la ou annulez-la avant d'en démarrer une pour l'autre.
+Pour importer des établissements, accédez à la section **Données** et ouvrez la carte **Établissements SNIS** ou la carte **Établissements Enquêtes FOSA** selon le registre que vous souhaitez mettre à jour. Chaque registre dispose de son propre assistant d'importation. Les importations de chaque registre sont indépendantes : vous pouvez lancer simultanément une importation SNIS et une importation FOSA.
 
 ### Import CSV
 
-L'import CSV suit un assistant en plusieurs étapes. Chargez un fichier CSV comportant une ligne par établissement, avec des colonnes pour l'identifiant de l'établissement, la hiérarchie des zones administratives (une colonne par niveau) et les attributs facultatifs. Après le chargement, faites correspondre les colonnes de votre CSV aux champs attendus par FASTR.
+L'import CSV suit un assistant en plusieurs étapes.
 
-FASTR valide ensuite les données et affiche un aperçu de préparation - combien de zones administratives et d'établissements seront créés à chaque niveau, ainsi que tout avertissement de validation. Examinez cet aperçu avant de poursuivre.
+**Étape 0 - Choisir la source.** Sélectionnez CSV comme méthode d'importation.
+
+**Étape 1 - Charger le fichier.** Chargez un fichier CSV comportant une ligne par établissement.
+
+**Étape 2 - Associer les colonnes.** Activez les colonnes que vous souhaitez importer et associez chacune à une colonne de votre fichier. Seule la colonne Identifiant d'établissement est obligatoire. Les unités administratives sont tout ou rien : soit vous associez tous les niveaux, soit aucun. Les colonnes de métadonnées facultatives (nom, type, propriété, champs personnalisés) peuvent chacune être activées ou désactivées indépendamment. Si vous ne faites que mettre à jour des métadonnées sans modifier la localisation géographique des établissements, vous pouvez laisser les unités administratives désactivées.
+
+**Étape 3 - Préparer les données.** FASTR valide le fichier et charge les lignes dans une table de préparation. La progression se met à jour automatiquement.
+
+**Étape 4 - Vérifier et intégrer.** Le résumé de la préparation indique combien d'établissements figurent dans votre fichier et combien existent déjà dans le registre. Choisissez un mode d'intégration :
+
+- **Remplacer tous les établissements existants** - supprime tous les établissements actuellement dans ce registre, puis ajoute tous les établissements de votre fichier. Ce mode nécessite que les unités administratives soient associées. FASTR bloque ce mode si un jeu de données ou des pondérations d'échantillonnage référencent encore les établissements existants.
+- **Ajouter les nouveaux établissements et mettre à jour les existants** - ajoute les établissements dont les identifiants sont nouveaux et met à jour les existants avec les colonnes que vous avez associées. Ce mode nécessite également les unités administratives.
+- **Mettre à jour uniquement les établissements existants** - ne met à jour que les établissements déjà présents dans le registre ; l'importation est rejetée si votre fichier contient un identifiant absent du registre.
+
+Avant de confirmer, le résumé indique combien d'établissements existants correspondent aux identifiants de votre fichier et combien sont nouveaux. Si aucun ne correspond alors que vous attendiez des mises à jour, la colonne Identifiant d'établissement est probablement mal associée, ou vous importez dans le mauvais registre (SNIS ou FOSA).
 
 :::caution[Capture d'écran à ajouter]
 Étape 4 de l'assistant d'import de structure montrant les résultats de préparation avec le nombre de zones administratives et d'établissements.
 :::
-
-La dernière étape vous demande de choisir une stratégie d'intégration :
-
-- **Ajouter les nouveaux et mettre à jour les existants** - l'option par défaut, qui convient à la plupart des cas
-- **Tout remplacer** - supprime d'abord tous les établissements existants de ce registre, utile pour repartir de zéro
-- **Ajouter uniquement les nouveaux** - ignore les enregistrements qui existent déjà
-- **Mettre à jour les colonnes sélectionnées** - ne modifie que des attributs spécifiques des établissements existants
 
 ### Import DHIS2
 
@@ -62,7 +67,7 @@ L'import DHIS2 est disponible pour les établissements SNIS. Connectez-vous avec
 
 ## Gérer les établissements existants
 
-Une fois importés, les établissements apparaissent sous forme de tableau consultable affichant tous les enregistrements avec leurs rattachements aux zones administratives et leurs attributs. Pour les mettre à jour - ajouter des établissements, corriger des rattachements ou actualiser des attributs - lancez un nouvel import avec la stratégie d'intégration appropriée.
+Une fois importés, les établissements apparaissent sous forme de tableau consultable affichant tous les enregistrements avec leurs rattachements aux zones administratives et leurs attributs. Pour les mettre à jour - ajouter des établissements, corriger des rattachements ou actualiser des attributs - lancez un nouvel import avec le mode d'intégration approprié.
 
 Pour supprimer tous les établissements d'un registre, ouvrez la carte de ce registre et cliquez sur **Supprimer les établissements**. Cela supprime uniquement les établissements de ce registre ; les zones administratives partagées avec l'autre registre sont conservées. Seuls les administrateurs globaux peuvent supprimer des établissements.
 

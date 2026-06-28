@@ -10,7 +10,7 @@ Un projet est votre espace de travail pour l'analyse dans FASTR. Il contient une
 ## Ouvrir un projet
 <!-- help#uproj-open -->
 
-Lorsque vous vous connectez à FASTR, vous voyez la liste des projets auxquels vous avez accès. Cliquez sur le nom d'un projet pour l'ouvrir. La vue du projet comporte une barre de navigation à gauche avec des onglets pour les différentes sections - généralement **Présentations**, **Visualisations**, **Modules**, **Données** et **Paramètres**. Ce que vous voyez dépend de vos permissions ; un lecteur, par exemple, ne verra pas les options de configuration.
+Lorsque vous vous connectez à FASTR, vous voyez la liste des projets auxquels vous avez accès. La liste peut être triée par nom ou par récemment mis à jour à l'aide du contrôle de tri en haut. Cliquez sur le nom d'un projet pour l'ouvrir. La vue du projet comporte une barre de navigation à gauche avec des onglets pour les différentes sections - généralement **Présentations**, **Visualisations**, **Modules**, **Données** et **Paramètres**. Ce que vous voyez dépend de vos permissions ; un lecteur, par exemple, ne verra pas les options de configuration.
 
 Le nom du projet apparaît en haut de l'écran, accompagné d'un indicateur d'état. Cet indicateur signale si les modules analytiques sont à jour ou si un traitement est en cours. Une coche verte indique que tout est à jour. Un indicateur qui tourne signifie que des modules sont en cours d'exécution. Si vous voyez un symbole d'avertissement ou d'erreur, c'est qu'un module nécessite votre attention - généralement parce que les données en amont ont changé ou qu'un problème de configuration est survenu.
 

@@ -29,7 +29,7 @@ Lorsque vous ajoutez une diapositive, vous en choisissez le type. Vous pouvez co
 
 Les diapositives de contenu utilisent un système de mise en page flexible composé d'un ou plusieurs blocs de contenu. Un bloc peut contenir du texte (mis en forme avec Markdown), une visualisation de votre projet ou une image téléversée.
 
-Pour ajouter une visualisation, cliquez sur un bloc de figure vide et choisissez **Sélectionner une visualisation**. Sélectionnez-en une dans la liste : elle apparaît dans le bloc, rendue avec ses paramètres actuels. Si vous devez ajuster l'affichage - période différente ou désagrégation différente - vous pouvez modifier la visualisation intégrée directement depuis la diapositive.
+Pour ajouter une visualisation, cliquez sur un bloc de figure vide et choisissez **Sélectionner une visualisation**. Sélectionnez-en une dans la liste : elle apparaît dans le bloc, rendue avec ses paramètres actuels. Vous pouvez trier les visualisations dans le panneau de sélection par nom ou par récemment mis à jour en utilisant le contrôle de tri en haut du panneau. Si vous devez ajuster l'affichage - période différente ou désagrégation différente - vous pouvez modifier la visualisation intégrée directement depuis la diapositive.
 
 Faites un clic droit sur un bloc pour accéder aux options de mise en page comme « Diviser gauche/droite » ou « Supprimer le bloc ». Vous pouvez faire glisser les séparateurs entre les blocs pour ajuster leurs tailles relatives.
 
@@ -60,4 +60,4 @@ Boîte de dialogue de téléchargement montrant les options d'export PDF et PPTX
 
 ## Organisation
 
-Utilisez des dossiers pour garder vos présentations organisées à mesure que votre projet s'agrandit. Dans la vue en liste, cliquez sur **Nouveau dossier** pour en créer un, puis faites un clic droit sur les présentations pour les déplacer. Vous pouvez dupliquer des présentations lorsque vous créez des variantes pour différents publics. Le champ de recherche filtre les présentations par nom.
+Utilisez des dossiers pour garder vos présentations organisées à mesure que votre projet s'agrandit. Dans la vue en liste, cliquez sur **Nouveau dossier** pour en créer un, puis faites un clic droit sur les présentations pour les déplacer. Vous pouvez dupliquer des présentations lorsque vous créez des variantes pour différents publics. Le champ de recherche filtre les présentations par nom. Utilisez le contrôle de tri en haut de la liste pour classer les présentations par nom ou par récemment mis à jour.
