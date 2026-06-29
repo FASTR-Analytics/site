@@ -16,9 +16,7 @@ Open your project and go to the **Reports** section. Each report appears as a ca
 
 Click **Create report**, give it a name, and optionally choose a folder. The report opens straight into the editor, ready to write.
 
-:::caution[Screenshot needed]
-The Reports list showing report cards with content previews and figure/image counts.
-:::
+![Creating a Report](/images/creating-a-report-en.png)
 
 ## Writing in the editor
 
@@ -30,9 +28,7 @@ Your work saves on its own as you type. A status indicator in the header shows w
 
 The header has an **Edit / Split / View** toggle. **Edit** shows the markdown editor with the writing tools. **Split** shows the editor and rendered preview side by side. **View** renders the report the way it will read when finished - formatted headings, lists, tables, and live figures. Switch to View to proofread or to show someone the result without the editing controls in the way; the figures stay interactive there too.
 
-:::caution[Screenshot needed]
-The report editor in Edit mode with the Edit/Split/View toggle and the autosave status indicator in the header.
-:::
+![Edit and View Modes](/images/edit-and-view-modes-en.png)
 
 ## Adding figures and images
 <!-- help#report-figures -->
@@ -53,9 +49,7 @@ Because figures stay linked to their visualizations, a report you wrote last qua
 
 If a figure or image cannot be loaded when you export the report, FASTR replaces it with a short notice in place of the missing item rather than aborting the export. The rest of the report exports normally.
 
-:::caution[Screenshot needed]
-A report with an embedded live figure selected, showing the left panel with Caption and figure actions.
-:::
+![Adding Figures and Images](/images/adding-figures-and-images-en.png)
 
 ## AI assistance
 
@@ -66,9 +60,7 @@ The **AI** button opens an assistant that can help as you write. It can rewrite 
 
 Click **Download** and choose **PDF** or **Word (.docx)**. PDF is best for a final, fixed document you're distributing or archiving; Word is best when a colleague needs to edit or comment. Both use consistent heading styles, so headings and structure carry over cleanly into the exported file. Live figures are rendered into the document at export time.
 
-:::caution[Screenshot needed]
-The Download dialog showing the PDF and Word export options.
-:::
+![Exporting Reports](/images/exporting-reports-en.png)
 
 ## Common issues
 
