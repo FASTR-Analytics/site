@@ -14,9 +14,7 @@ Ouvrez votre projet et cliquez sur **Présentations** dans la barre latérale ga
 
 Une nouvelle présentation démarre vide. Le panneau de gauche affiche vos diapositives, et la zone principale montre un aperçu de la diapositive sélectionnée. Vous construirez la présentation en ajoutant différents types de diapositives.
 
-:::caution[Capture d'écran à ajouter]
-Vue d'une présentation vide montrant le panneau de la liste des diapositives à gauche et la zone d'aperçu principale.
-:::
+![Creating Slide Deck FR](/images/creating-slide-deck-fr.png)
 
 ## Types de diapositives
 
@@ -35,17 +33,13 @@ Faites un clic droit sur un bloc pour accéder aux options de mise en page comme
 
 Si une visualisation ou une image ne peut pas être rendue - par exemple en raison d'une erreur de données ou d'un fichier manquant - FASTR affiche une courte notice dans le bloc plutôt que de le laisser vide ou d'interrompre l'export.
 
-:::caution[Capture d'écran à ajouter]
-Éditeur de diapositive de contenu montrant une mise en page à deux colonnes avec du texte à gauche et une visualisation à droite.
-:::
+![Building Content Slides FR](/images/building-content-slides-fr.png)
 
 ## Style de la présentation
 
 Cliquez sur **Paramètres** dans l'en-tête de la présentation pour configurer le style qui s'applique à toutes les diapositives. Les options incluent le thème de couleurs, la police de caractères, le modèle de mise en page et le traitement de la couverture. Vous pouvez également configurer quels logos apparaissent sur les diapositives de couverture, les en-têtes et les pieds de page.
 
-:::caution[Capture d'écran à ajouter]
-Panneau des paramètres de la présentation montrant les options de style et le sélecteur de thème de couleurs.
-:::
+![Deck Styling FR](/images/deck-styling-fr.png)
 
 ## Exporter et partager
 <!-- help#deck-export -->
@@ -54,9 +48,7 @@ Cliquez sur **Télécharger** pour exporter votre présentation. **PDF natif** p
 
 Vous pouvez aussi partager des présentations directement par e-mail. Cliquez sur **Partager**, sélectionnez les destinataires dans la liste des utilisateurs de votre instance ou ajoutez des adresses e-mail, et incluez éventuellement un message. FASTR génère un PDF et l'envoie en pièce jointe.
 
-:::caution[Capture d'écran à ajouter]
-Boîte de dialogue de téléchargement montrant les options d'export PDF et PPTX.
-:::
+![Exporting and Sharing FR](/images/exporting-and-sharing-fr.png)
 
 ## Organisation
 
