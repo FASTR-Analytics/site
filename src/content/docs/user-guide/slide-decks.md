@@ -14,9 +14,7 @@ Open your project and click **Slide decks** in the left sidebar. Click **Create 
 
 A new deck starts empty. The left panel shows your slides, and the main area shows a preview of the selected slide. You'll build out the deck by adding different slide types.
 
-:::caution[Screenshot needed]
-Empty slide deck view showing the slide list panel on the left and the main preview area.
-:::
+![Creating Slide Deck](/images/creating-slide-deck-en.png)
 
 ## Slide types
 
@@ -35,17 +33,13 @@ Right-click on a block to access layout options like "Split left/right" or "Dele
 
 If a visualization or image cannot be rendered - for example because of a data error or a missing file - FASTR shows a short notice in the block rather than leaving it blank or stopping the export.
 
-:::caution[Screenshot needed]
-Content slide editor showing a two-column layout with text on the left and a visualization on the right.
-:::
+!Building Content Slides](/building-content-slides-en.png)
 
 ## Deck styling
 
 Click **Settings** in the deck header to configure styling that applies across all slides. Options include color theme, font family, layout template, and cover treatment. You can also configure which logos appear on cover slides, headers, and footers.
 
-:::caution[Screenshot needed]
-Slide deck settings panel showing style options and color theme picker.
-:::
+![Deck Styling](/images/deck-styling-en.png)
 
 ## Exporting and sharing
 <!-- help#deck-export -->
@@ -54,9 +48,7 @@ Click **Download** to export your deck. **Native PDF** produces a high-quality v
 
 You can also share decks directly by email. Click **Share**, select recipients from your instance's user list or add email addresses, and optionally include a message. FASTR generates a PDF and sends it as an attachment.
 
-:::caution[Screenshot needed]
-Download dialog showing PDF and PPTX export options.
-:::
+![Exporting and Sharing](/images/exporting-and-sharing-en.png)
 
 ## Organization
 
