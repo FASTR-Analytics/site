@@ -16,9 +16,7 @@ Ouvrez votre projet et accédez à la section **Rapports**. Chaque rapport appar
 
 Cliquez sur **Créer un rapport**, donnez-lui un nom et, si vous le souhaitez, choisissez un dossier. Le rapport s'ouvre directement dans l'éditeur, prêt à être rédigé.
 
-:::caution[Capture d'écran à ajouter]
-La liste des rapports montrant les cartes de rapport avec des aperçus de contenu et le nombre de figures et d'images.
-:::
+![Creating a Report FR](/images/creating-a-report-fr.png)
 
 ## Rédiger dans l'éditeur
 
@@ -30,9 +28,7 @@ Votre travail est enregistré automatiquement au fur et à mesure que vous tapez
 
 L'en-tête comporte un bouton bascule **Édition / Divisé / Aperçu**. **Édition** affiche l'éditeur markdown avec les outils de rédaction. **Divisé** affiche l'éditeur et l'aperçu rendu côte à côte. **Aperçu** restitue le rapport tel qu'il se présentera une fois terminé - titres, listes, tableaux et figures dynamiques mis en forme. Passez en mode Aperçu pour relire ou pour montrer le résultat à quelqu'un sans que les commandes d'édition ne gênent ; les figures y restent également interactives.
 
-:::caution[Capture d'écran à ajouter]
-L'éditeur de rapport en mode Édition, avec le bouton bascule Édition/Divisé/Aperçu et l'indicateur d'état d'enregistrement automatique dans l'en-tête.
-:::
+![Edit and View Modes FR](/images/edit-and-view-modes-fr.png)
 
 ## Ajouter des figures et des images
 <!-- help#report-figures -->
@@ -53,9 +49,7 @@ Comme les figures restent liées à leurs visualisations, un rapport rédigé le
 
 Si une figure ou une image ne peut pas être chargée lors de l'export, FASTR la remplace par une courte notice à la place de l'élément manquant plutôt que d'interrompre l'export. Le reste du rapport est exporté normalement.
 
-:::caution[Capture d'écran à ajouter]
-Un rapport avec une figure dynamique intégrée sélectionnée, montrant le panneau de gauche avec la légende et les actions sur la figure.
-:::
+![Adding Figures and Images FR](/images/adding-figures-and-images-fr.png)
 
 ## Assistance par IA
 
@@ -66,9 +60,7 @@ Le bouton **IA** ouvre un assistant qui peut vous aider pendant que vous rédige
 
 Cliquez sur **Télécharger** et choisissez **PDF** ou **Word (.docx)**. Le PDF est idéal pour un document final et figé que vous diffusez ou archivez ; le Word convient mieux lorsqu'un collègue doit le modifier ou le commenter. Les deux formats utilisent des styles de titres cohérents, de sorte que les titres et la structure sont repris proprement dans le fichier exporté. Les figures dynamiques sont rendues dans le document au moment de l'export.
 
-:::caution[Capture d'écran à ajouter]
-La boîte de dialogue Télécharger montrant les options d'export PDF et Word.
-:::
+![Exporting Reports FR](/images/exporting-reports-fr.png)
 
 ## Problèmes courants
 
