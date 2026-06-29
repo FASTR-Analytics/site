@@ -16,9 +16,7 @@ Une hiérarchie typique : la Zone administrative 1 représente l'ensemble du pay
 
 Les zones administratives sont créées automatiquement lors de l'importation des établissements - chaque ligne d'établissement porte son chemin d'unité administrative. Elles sont également supprimées automatiquement lorsqu'aucun établissement des deux registres n'y fait référence ; vous n'avez donc pas besoin de les gérer directement.
 
-:::caution[Capture d'écran à ajouter]
-Paramètres de l'instance montrant la configuration des libellés des niveaux de zones administratives.
-:::
+![Admin Areas FR](/images/admin-areas-fr.png)
 
 ## Établissements de santé
 <!-- help#struct-facilities -->
@@ -29,9 +27,7 @@ Les établissements peuvent avoir des attributs facultatifs : type d'établissem
 
 Ces attributs permettent la désagrégation dans les visualisations. Si vous souhaitez comparer les performances entre les établissements publics et privés, ces attributs doivent être renseignés dans vos données de structure.
 
-:::caution[Capture d'écran à ajouter]
-Configuration des colonnes d'établissements dans les paramètres de l'instance, montrant le type, la propriété et les champs personnalisés.
-:::
+![Health Facilities FR](/images/health-facilities-fr.png)
 
 ## Importer des établissements
 
@@ -57,9 +53,7 @@ L'import CSV suit un assistant en plusieurs étapes.
 
 Avant de confirmer, le résumé indique combien d'établissements existants correspondent aux identifiants de votre fichier et combien sont nouveaux. Si aucun ne correspond alors que vous attendiez des mises à jour, la colonne Identifiant d'établissement est probablement mal associée, ou vous importez dans le mauvais registre (SNIS ou FOSA).
 
-:::caution[Capture d'écran à ajouter]
-Étape 4 de l'assistant d'import de structure montrant les résultats de préparation avec le nombre de zones administratives et d'établissements.
-:::
+![Structure Import FR](/images/structure-import-fr.png)
 
 ### Import DHIS2
 
@@ -73,9 +67,7 @@ Pour supprimer tous les établissements d'un registre, ouvrez la carte de ce reg
 
 Pour supprimer simultanément toutes les zones administratives et tous les établissements des deux registres, ouvrez la carte **Zones administratives** et cliquez sur **Supprimer toutes les unités administratives et tous les établissements**. Utilisez cette option avec prudence, car elle affecte les modules et les visualisations qui font référence à l'ancienne structure.
 
-:::caution[Capture d'écran à ajouter]
-Vue de gestion de la structure montrant le tableau des établissements avec les colonnes de zones administratives.
-:::
+![Managing Existing Facilities FR](/images/managing-existing-facilities-fr.png)
 
 ## Pondérations d'échantillonnage des établissements HFA
 
@@ -94,8 +86,6 @@ Les visualisations cartographiques nécessitent des données de limites géograp
 
 Chaque fichier GeoJSON doit contenir des polygones avec une propriété correspondant aux noms des zones administratives de vos données de structure. FASTR tente de faire correspondre les entités aux zones administratives lors du chargement et signale toute incohérence. Les zones non appariées apparaissent vides sur les cartes.
 
-:::caution[Capture d'écran à ajouter]
-Gestionnaire GeoJSON montrant les fichiers cartographiques chargés avec le niveau de zone administrative et la date de chargement.
-:::
+![GeoJSON FR](/images/geojson-fr.png)
 
 Si la nomenclature diffère entre votre GeoJSON et vos données de structure, l'éditeur GeoJSON vous permet de modifier les propriétés des entités pour résoudre les problèmes de correspondance.

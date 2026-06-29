@@ -67,7 +67,7 @@ To delete all facilities in a registry, open that registry's card and click **De
 
 To remove all admin areas and facilities from both registries at once, open the **Admin areas** card and click **Clear all admin areas and facilities**. Use this option with caution, as it affects modules and visualizations that reference the old structure.
 
-![Managing Structure](/images/managing-structure-en.png)
+![Managing Existing Facilities](/images/managing-existing-facilities-en.png)
 
 ## HFA facility sampling weights
 
