@@ -13,9 +13,11 @@ FASTR offers four types of visualizations, each suited to different questions. A
 
 The type you choose depends on what question you're answering. If someone asks "how do our districts compare?", a map or chart makes sense. If they ask "what's the exact number for District X in March?", a table is more useful.
 
-:::caution[Screenshot needed]
-Side-by-side examples of each visualization type (chart, timeseries, map, table) showing the same metric.
-:::
+Table
+![Example Viz Table](/images/example-viz-table-en.png)
+
+Timeseries
+![Example Viz Timeseries](/images/example-viz-timeseries-en.png)
 
 ## Finding and browsing visualizations
 
@@ -23,9 +25,7 @@ Open your project and click **Visualizations** in the left sidebar. The list sho
 
 Some visualizations appear with a "default" badge - these are created automatically by modules and can't be edited directly. If you want to modify a default visualization, opening it will create an editable copy that you can customize and save as your own.
 
-:::caution[Screenshot needed]
-Visualizations list view showing folders, search box, and the "Create visualization" button.
-:::
+![FASTR dashboard](/images/screenshot-dashboard.png)
 
 ## Creating a visualization
 <!-- help#viz-create -->
@@ -34,9 +34,7 @@ Every visualization starts with a metric. Metrics are the analytical outputs pro
 
 Click **Create visualization** to start. The first step asks you to select a metric. You can browse by module (useful if you know which analysis produced the output you want) or search by name. Once you've selected a metric, you'll choose how to visualize it.
 
-:::caution[Video needed]
-Walkthrough of creating a visualization from start to finish: selecting a metric, choosing a preset, and landing in the editor.
-:::
+![FASTR dashboard](/images/screenshot-dashboard.png)
 
 ### Presets vs. custom configuration
 
