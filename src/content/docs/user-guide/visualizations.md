@@ -25,7 +25,7 @@ Open your project and click **Visualizations** in the left sidebar. The list sho
 
 Some visualizations appear with a "default" badge - these are created automatically by modules and can't be edited directly. If you want to modify a default visualization, opening it will create an editable copy that you can customize and save as your own.
 
-![FASTR dashboard](/images/screenshot-dashboard.png)
+![Finding and browsing visualizations](/images/finding-and-browsing-vis-en.png)
 
 ## Creating a visualization
 <!-- help#viz-create -->
@@ -34,7 +34,7 @@ Every visualization starts with a metric. Metrics are the analytical outputs pro
 
 Click **Create visualization** to start. The first step asks you to select a metric. You can browse by module (useful if you know which analysis produced the output you want) or search by name. Once you've selected a metric, you'll choose how to visualize it.
 
-![FASTR dashboard](/images/screenshot-dashboard.png)
+![Creating a Viz](/images/creating-a-viz-en.png)
 
 ### Presets vs. custom configuration
 
@@ -46,17 +46,13 @@ Not every disaggregation works with every visualization type. For example, geogr
 
 Some chart types have specific data requirements. The disruptions chart, for example, compares two data values (actual and expected) as two series and shades the difference between them. If you select a disruptions chart, make sure both data values are configured - the chart will show an error message prompting you to add the second data value or turn off disruptions mode if only one is present.
 
-:::caution[Screenshot needed]
-Step 2 of create flow showing preset cards with previews, plus the "Custom" option.
-:::
+![Presets vs Custom](/images/presets-vs-custom-en.png)
 
 ## The visualization editor
 
 Once you've created or opened a visualization, you're in the editor. The left panel contains all the configuration options, organized into three tabs. The right side shows a live preview that updates as you make changes - you can see immediately how your adjustments affect the output.
 
-:::caution[Screenshot needed]
-Full editor view with left panel open showing the three tabs, and a chart preview on the right.
-:::
+![Visualization Editor](/images/viz-editor-en.png)
 
 ### Data tab
 <!-- help#viz-data-tab -->
@@ -69,9 +65,7 @@ For admin-area disaggregations, you can optionally include a total row by checki
 
 If a visualization looks wrong or shows unexpected results, the Data tab is usually the first place to check. A common issue is having too many disaggregations active, which can make the output cluttered or hard to read.
 
-:::caution[Screenshot needed]
-Data tab expanded showing period filter, disaggregation options, and value filter controls.
-:::
+![Data Tab](/images/data-tab-en.png)
 
 ### Presentation tab
 
@@ -81,9 +75,7 @@ For scatter-style charts using the **points** display, you can enable **Add conn
 
 These settings don't change what data is shown - only how it's displayed. If you want a cleaner look for a presentation, or need to match your organization's color scheme, this is where you'd make those adjustments.
 
-:::caution[Screenshot needed]
-Presentation tab for a chart showing color palette selector and axis configuration options.
-:::
+![Presentation Tab](/images/presentation-tab-en.png)
 
 ### Text tab
 
@@ -93,9 +85,7 @@ In the caption, sub-caption, and footnote fields you can use special placeholder
 
 Good captions make visualizations self-explanatory. Someone looking at the chart in a slide deck shouldn't need to read surrounding text to understand what they're seeing.
 
-:::caution[Screenshot needed]
-Text tab showing caption, sub-caption, and footnote fields with example text filled in.
-:::
+![Text Tab](/images/text-tab-en.png)
 
 ## Saving and organizing
 
