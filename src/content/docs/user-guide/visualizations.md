@@ -13,10 +13,10 @@ FASTR offers four types of visualizations, each suited to different questions. A
 
 The type you choose depends on what question you're answering. If someone asks "how do our districts compare?", a map or chart makes sense. If they ask "what's the exact number for District X in March?", a table is more useful.
 
-Table
+**Table** 
 ![Example Viz Table](/images/example-viz-table-en.png)
 
-Timeseries
+**Timeseries**
 ![Example Viz Timeseries](/images/example-viz-timeseries-en.png)
 
 ## Finding and browsing visualizations
