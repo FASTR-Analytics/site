@@ -43,7 +43,7 @@ The CSV import follows a multi-step wizard.
 
 **Step 2 - Map columns.** Turn on the columns you want to import and map each one to a column in your file. Only the Facility ID column is required. Administrative areas are all-or-nothing: either map all levels or none. Optional metadata columns (name, type, ownership, custom fields) can each be toggled on or off independently. If you are only updating metadata and not moving facilities geographically, you can leave administrative areas turned off.
 
-**Step 3 - Stage data.** FASTR validates the file and streams rows into a staging table. Progress updates automatically.
+**Step 3 - Stage data.** FASTR validates the file and streams rows into a staging table. Progress updates automatically. If the import is running as a background job, the wizard shows a live progress screen that updates automatically until the import finishes. It is safe to leave and return to this screen.
 
 **Step 4 - Review and integrate.** The staging summary shows how many facilities are in your file and how many of those already exist in the registry. Choose an integration mode:
 
@@ -59,6 +59,8 @@ Before confirming, the summary shows how many existing facilities match IDs in y
 
 DHIS2 import is available for HMIS facilities. Connect with your DHIS2 credentials, then select which org unit levels to import. FASTR maps DHIS2 levels to admin area levels. HFA facilities can only be imported from CSV.
 
+Note that DHIS2 credentials are stored securely on the server — once saved, the password is not sent back to the browser. If you return to an in-progress import, you will see that credentials were previously provided but will need to re-enter the password to change them.
+
 ## Managing existing facilities
 
 Once imported, facilities appear as a searchable table showing all records with their admin area assignments and attributes. To update - adding facilities, correcting assignments, or updating attributes - run another import with the appropriate integration mode.
@@ -71,11 +73,13 @@ To remove all admin areas and facilities from both registries at once, open the 
 
 ## HFA facility sampling weights
 
-For HFA analyses that require weighted estimates, you can upload per-facility sampling weights. Open the **Data** section and click the **Sampling weights** card to open the weights manager. Only global administrators can import or delete weights; all users with data access can view the weights table.
+For HFA analyses that require weighted estimates, you can upload per-facility sampling weights. Open the **Data** section and click the **Sampling weights** card to open the weights manager. Only global administrators can import or delete weights; all users with data access can view the weights table and download the current weights as a CSV.
 
 Prepare a CSV file with a facility ID column and a weight column. Each import covers one time point. To upload weights, select or upload your CSV, then map the facility ID column, the weight column, and the target time point. A blank weight cell means the facility is not in that round's sample and will be skipped. A successful import reports how many weights were imported, how many blank cells were skipped, and which time point was covered. Re-importing updates existing weights for the same facility and time point.
 
-The weights manager displays a coverage summary showing, for each time point, how many facilities with data have a corresponding weight. A warning highlight indicates time points where some facilities have data but no weight - those facilities will count with weight 1 when weighted analysis is enabled. You can download the current weights as a CSV and re-import after editing.
+The weights manager displays a coverage summary showing, for each time point, how many facilities with data have a corresponding weight. A warning highlight indicates time points where some facilities have data but no weight - those facilities will count with weight 1 when weighted analysis is enabled.
+
+If no sampling weights have been imported yet, the weights manager shows a message indicating that no weights are available, rather than an error.
 
 To remove all sampling weights, click **Delete all weights**. This does not affect any facility records or HFA data.
 
@@ -84,8 +88,12 @@ To remove all sampling weights, click **Delete all weights**. This does not affe
 
 Map visualizations require geographic boundary data in GeoJSON format. Upload one GeoJSON file per admin area level - typically for Admin Area 2 (regions) and Admin Area 3 (districts).
 
-Each GeoJSON file should contain polygons with a property matching admin area names in your structure data. FASTR attempts to match features to admin areas during upload and reports any mismatches. Unmatched areas appear blank on maps.
+Each GeoJSON file should contain polygons with a property matching admin area names in your structure data. FASTR attempts to match features to admin areas during upload and reports any mismatches. Unmatched areas appear blank on maps. Features without geometry are automatically skipped during both analysis and upload.
+
+When you delete a GeoJSON level, the map cache for that level is automatically cleared so that stale boundary data no longer appears in map visualizations.
 
 ![GeoJSON](/images/geojson-en.png)
 
-If naming differs between your GeoJSON and structure data, the GeoJSON editor lets you modify feature properties to resolve matching issues.
+If naming differs between your GeoJSON and structure data, the GeoJSON editor lets you modify feature properties to resolve matching issues. You can also explicitly unmap a feature by setting its area ID to empty — this removes a previously matched feature from map visualizations without needing to re-upload the file.
+
+Unmapped features in the upload wizard are kept in the file and can be mapped later using the GeoJSON editor. Previously, unmapped features were described as being excluded; they are now retained so you can complete the mapping at any time.

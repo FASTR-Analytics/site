@@ -43,7 +43,7 @@ L'import CSV suit un assistant en plusieurs étapes.
 
 **Étape 2 - Associer les colonnes.** Activez les colonnes que vous souhaitez importer et associez chacune à une colonne de votre fichier. Seule la colonne Identifiant d'établissement est obligatoire. Les unités administratives sont tout ou rien : soit vous associez tous les niveaux, soit aucun. Les colonnes de métadonnées facultatives (nom, type, propriété, champs personnalisés) peuvent chacune être activées ou désactivées indépendamment. Si vous ne faites que mettre à jour des métadonnées sans modifier la localisation géographique des établissements, vous pouvez laisser les unités administratives désactivées.
 
-**Étape 3 - Préparer les données.** FASTR valide le fichier et charge les lignes dans une table de préparation. La progression se met à jour automatiquement.
+**Étape 3 - Préparer les données.** FASTR valide le fichier et charge les lignes dans une table de préparation. La progression se met à jour automatiquement. Si l'importation s'exécute en arrière-plan, l'assistant affiche un écran de progression en direct qui se met à jour automatiquement jusqu'à la fin de l'importation. Vous pouvez quitter cette page et y revenir en toute sécurité.
 
 **Étape 4 - Vérifier et intégrer.** Le résumé de la préparation indique combien d'établissements figurent dans votre fichier et combien existent déjà dans le registre. Choisissez un mode d'intégration :
 
@@ -59,6 +59,8 @@ Avant de confirmer, le résumé indique combien d'établissements existants corr
 
 L'import DHIS2 est disponible pour les établissements SNIS. Connectez-vous avec vos identifiants DHIS2, puis sélectionnez les niveaux d'unités organisationnelles à importer. FASTR fait correspondre les niveaux DHIS2 aux niveaux de zones administratives. Les établissements Enquêtes FOSA ne peuvent être importés qu'à partir d'un fichier CSV.
 
+Notez que les identifiants DHIS2 sont stockés de manière sécurisée sur le serveur — une fois enregistré, le mot de passe n'est pas renvoyé au navigateur. Si vous revenez à une importation en cours, vous verrez que les identifiants ont été fournis précédemment, mais vous devrez saisir à nouveau le mot de passe pour les modifier.
+
 ## Gérer les établissements existants
 
 Une fois importés, les établissements apparaissent sous forme de tableau consultable affichant tous les enregistrements avec leurs rattachements aux zones administratives et leurs attributs. Pour les mettre à jour - ajouter des établissements, corriger des rattachements ou actualiser des attributs - lancez un nouvel import avec le mode d'intégration approprié.
@@ -71,11 +73,13 @@ Pour supprimer simultanément toutes les zones administratives et tous les étab
 
 ## Pondérations d'échantillonnage des établissements HFA
 
-Pour les analyses HFA nécessitant des estimations pondérées, vous pouvez téléverser des pondérations d'échantillonnage par établissement. Accédez à la section **Données** et cliquez sur la carte **Pondérations d'échantillonnage** pour ouvrir le gestionnaire de pondérations. Seuls les administrateurs globaux peuvent importer ou supprimer des pondérations ; tous les utilisateurs disposant d'un accès aux données peuvent consulter le tableau des pondérations.
+Pour les analyses HFA nécessitant des estimations pondérées, vous pouvez téléverser des pondérations d'échantillonnage par établissement. Accédez à la section **Données** et cliquez sur la carte **Pondérations d'échantillonnage** pour ouvrir le gestionnaire de pondérations. Seuls les administrateurs globaux peuvent importer ou supprimer des pondérations ; tous les utilisateurs disposant d'un accès aux données peuvent consulter le tableau des pondérations et télécharger les pondérations actuelles au format CSV.
 
 Préparez un fichier CSV avec une colonne d'identifiant d'établissement et une colonne de pondération. Chaque importation couvre un point temporel. Pour téléverser les pondérations, sélectionnez ou chargez votre CSV, puis associez la colonne d'identifiant d'établissement, la colonne de pondération et le point temporel cible. Une cellule de pondération vide signifie que l'établissement n'est pas dans l'échantillon de ce tour et sera ignorée. Une importation réussie indique combien de pondérations ont été importées, combien de cellules vides ont été ignorées et quel point temporel a été couvert. Un nouveau téléversement met à jour les pondérations existantes pour le même établissement et le même point temporel.
 
-Le gestionnaire de pondérations affiche un résumé de couverture indiquant, pour chaque point temporel, combien d'établissements disposant de données ont une pondération correspondante. Un avertissement met en évidence les points temporels où certains établissements ont des données mais aucune pondération - ces établissements compteront avec une pondération de 1 lorsque l'analyse pondérée sera activée. Vous pouvez télécharger les pondérations actuelles au format CSV et les réimporter après modification.
+Le gestionnaire de pondérations affiche un résumé de couverture indiquant, pour chaque point temporel, combien d'établissements disposant de données ont une pondération correspondante. Un avertissement met en évidence les points temporels où certains établissements ont des données mais aucune pondération - ces établissements compteront avec une pondération de 1 lorsque l'analyse pondérée sera activée.
+
+Si aucune pondération d'échantillonnage n'a encore été importée, le gestionnaire affiche un message indiquant qu'aucune pondération n'est disponible, plutôt qu'une erreur.
 
 Pour supprimer toutes les pondérations d'échantillonnage, cliquez sur **Supprimer toutes les pondérations**. Cela n'affecte ni les enregistrements d'établissements ni les données HFA.
 
@@ -84,8 +88,12 @@ Pour supprimer toutes les pondérations d'échantillonnage, cliquez sur **Suppri
 
 Les visualisations cartographiques nécessitent des données de limites géographiques au format GeoJSON. Chargez un fichier GeoJSON par niveau de zone administrative - généralement pour la Zone administrative 2 (régions) et la Zone administrative 3 (districts).
 
-Chaque fichier GeoJSON doit contenir des polygones avec une propriété correspondant aux noms des zones administratives de vos données de structure. FASTR tente de faire correspondre les entités aux zones administratives lors du chargement et signale toute incohérence. Les zones non appariées apparaissent vides sur les cartes.
+Chaque fichier GeoJSON doit contenir des polygones avec une propriété correspondant aux noms des zones administratives de vos données de structure. FASTR tente de faire correspondre les entités aux zones administratives lors du chargement et signale toute incohérence. Les zones non appariées apparaissent vides sur les cartes. Les entités sans géométrie sont automatiquement ignorées lors de l'analyse et du chargement.
+
+Lorsque vous supprimez un niveau GeoJSON, le cache cartographique de ce niveau est automatiquement vidé, de sorte que les données de limites périmées n'apparaissent plus dans les visualisations cartographiques.
 
 ![GeoJSON FR](/images/geojson-fr.png)
 
-Si la nomenclature diffère entre votre GeoJSON et vos données de structure, l'éditeur GeoJSON vous permet de modifier les propriétés des entités pour résoudre les problèmes de correspondance.
+Si la nomenclature diffère entre votre GeoJSON et vos données de structure, l'éditeur GeoJSON vous permet de modifier les propriétés des entités pour résoudre les problèmes de correspondance. Vous pouvez également désassocier explicitement une entité en définissant son identifiant de zone sur vide — cela retire une entité précédemment associée des visualisations cartographiques sans avoir besoin de recharger le fichier.
+
+Les entités non mappées dans l'assistant de chargement sont conservées dans le fichier et peuvent être mappées ultérieurement à l'aide de l'éditeur GeoJSON. Auparavant, les entités non mappées étaient décrites comme exclues ; elles sont désormais conservées afin que vous puissiez compléter le mappage à tout moment.

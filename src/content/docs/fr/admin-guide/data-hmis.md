@@ -47,20 +47,20 @@ Interface de correspondance des colonnes montrant les quatre champs requis avec 
 
 3. **Récupérez les données.** Cliquez sur **Démarrer la récupération depuis DHIS2** pour récupérer les données sélectionnées.
 
-4. **Vérifiez et intégrez.** Comme pour les importations CSV - examinez les résultats et cliquez sur **Intégrer et finaliser**.
+4. **Vérifiez et intégrez.** Le résumé de la préparation indique combien de lignes ont été récupérées. Lorsque vous cliquez sur **Intégrer et finaliser**, FASTR utilise une stratégie de suppression ciblée puis insertion : pour chaque combinaison indicateur/période récupérée avec succès, les lignes existantes dans la base de données sont supprimées pour exactement les établissements qui ont été interrogés, puis les nouvelles valeurs récupérées sont insérées. Cela garantit que les cellules que DHIS2 ne renvoie plus — parce que des données ont été supprimées ou corrigées à zéro à la source — sont correctement retirées plutôt que laissées en place. La boîte de dialogue de confirmation liste le périmètre de la suppression planifiée avant que vous confirmiez.
 
 :::caution[Capture d'écran à ajouter]
 Interface de sélection DHIS2 montrant le tableau des indicateurs avec des cases à cocher et le sélecteur de plage de périodes.
 :::
 
 ## Validation et gestion des erreurs
-<!-- help#hmis-validation -->
+<!-- hmis-validation -->
 
 Le processus de préparation détecte plusieurs types de problèmes : champs requis manquants, valeurs numériques invalides, établissements absents de votre registre et indicateurs sans correspondance. Pour chaque catégorie, le résumé indique combien de lignes ont été affectées et fournit des exemples d'entrées. Si trop de lignes sont écartées, envisagez de corriger les données sources ou de mettre à jour la configuration de l'instance avant de relancer l'importation.
 
 ## Gérer l'historique des importations
 
-Chaque importation réussie crée une nouvelle version du jeu de données. Cliquez sur **Voir les importations précédentes** pour consulter toutes les versions avec leurs dates et le nombre de lignes. Vous pouvez également supprimer des données si nécessaire - cette action est irréversible et réservée aux administrateurs globaux.
+Chaque importation réussie crée une nouvelle version du jeu de données. Cliquez sur **Voir les importations précédentes** pour consulter toutes les versions avec leurs dates et le nombre de lignes. Pour les importations DHIS2 qui ont utilisé la stratégie de suppression ciblée puis insertion, le tableau d'historique affiche **Lignes supprimées** au lieu de **Lignes mises à jour**, afin de refléter que les valeurs précédentes dans le périmètre récupéré ont été supprimées avant l'insertion des nouvelles. Vous pouvez également supprimer des données si nécessaire - cette action est irréversible et réservée aux administrateurs globaux.
 
 ## Supprimer des données ICEH
 

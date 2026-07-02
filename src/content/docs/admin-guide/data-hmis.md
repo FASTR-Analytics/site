@@ -47,7 +47,7 @@ Column mapping interface showing the four required fields with dropdown selector
 
 3. **Fetch data.** Click **Start fetching from DHIS2** to retrieve the selected data.
 
-4. **Review and integrate.** Same as CSV imports - check results and click **Integrate and finalize**.
+4. **Review and integrate.** The staging summary shows how many rows were fetched. When you click **Integrate and finalize**, FASTR uses a scoped delete-then-insert strategy: for each indicator and period combination that was successfully fetched, existing rows in the database are removed for exactly the facilities that were queried, then the newly fetched values are inserted. This ensures that cells DHIS2 no longer returns — because data was deleted or corrected to zero at source — are properly removed rather than left behind. The confirmation dialog lists the scope of the planned deletion before you confirm.
 
 :::caution[Screenshot needed]
 DHIS2 selection interface showing indicator table with checkboxes and period range selector.
@@ -60,7 +60,7 @@ The staging process catches several types of issues: missing required fields, in
 
 ## Managing import history
 
-Each successful import creates a new dataset version. Click **View previous imports** to see all versions with their dates and row counts. You can also delete data if needed - this action is irreversible and available only to global administrators.
+Each successful import creates a new dataset version. Click **View previous imports** to see all versions with their dates and row counts. For DHIS2 imports that used the scoped delete-then-insert strategy, the history table shows **Rows removed** instead of **Rows updated** to reflect that the prior values in the fetched scope were deleted before inserting new ones. You can also delete data if needed - this action is irreversible and available only to global administrators.
 
 ## Deleting ICEH data
 
