@@ -39,13 +39,13 @@ The CSV import follows a multi-step wizard.
 
 **Step 0 - Choose source.** Select CSV as your import method.
 
-**Step 1 - Upload file.** Upload a CSV file with one row per facility.
+**Step 1 - Upload file.** Upload a CSV file with one row per facility. Optionally, you can also upload an ODK questionnaire file (XLSForm) at this step. If your facility columns contain ODK select_one codes, providing the questionnaire causes those codes to be replaced with their labels during import.
 
 **Step 2 - Map columns.** Turn on the columns you want to import and map each one to a column in your file. Only the Facility ID column is required. Administrative areas are all-or-nothing: either map all levels or none. Optional metadata columns (name, type, ownership, custom fields) can each be toggled on or off independently. If you are only updating metadata and not moving facilities geographically, you can leave administrative areas turned off.
 
 **Step 3 - Stage data.** FASTR validates the file and streams rows into a staging table. Progress updates automatically. If the import is running as a background job, the wizard shows a live progress screen that updates automatically until the import finishes. It is safe to leave and return to this screen.
 
-**Step 4 - Review and integrate.** The staging summary shows how many facilities are in your file and how many of those already exist in the registry. Choose an integration mode:
+**Step 4 - Review and integrate.** The staging summary shows how many facilities are in your file and how many of those already exist in the registry. If you provided an ODK questionnaire at step 1, the summary also shows which columns had ODK codes replaced with labels, how many values were resolved, and any codes that could not be matched to the questionnaire. Choose an integration mode:
 
 - **Replace all existing facilities** - deletes every facility currently in this registry, then adds all facilities from your file. This requires administrative areas to be mapped. FASTR blocks this mode if any dataset or sampling weights still reference the existing facilities.
 - **Add new facilities and update existing ones** - adds facilities with new IDs and updates existing ones with the columns you mapped. This also requires administrative areas.

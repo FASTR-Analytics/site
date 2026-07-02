@@ -39,13 +39,13 @@ L'import CSV suit un assistant en plusieurs étapes.
 
 **Étape 0 - Choisir la source.** Sélectionnez CSV comme méthode d'importation.
 
-**Étape 1 - Charger le fichier.** Chargez un fichier CSV comportant une ligne par établissement.
+**Étape 1 - Charger le fichier.** Chargez un fichier CSV comportant une ligne par établissement. Vous pouvez également charger un fichier de questionnaire ODK (XLSForm) à cette étape. Si vos colonnes d'établissement contiennent des codes select_one ODK, fournir le questionnaire permet de remplacer ces codes par leurs libellés lors de l'importation.
 
 **Étape 2 - Associer les colonnes.** Activez les colonnes que vous souhaitez importer et associez chacune à une colonne de votre fichier. Seule la colonne Identifiant d'établissement est obligatoire. Les unités administratives sont tout ou rien : soit vous associez tous les niveaux, soit aucun. Les colonnes de métadonnées facultatives (nom, type, propriété, champs personnalisés) peuvent chacune être activées ou désactivées indépendamment. Si vous ne faites que mettre à jour des métadonnées sans modifier la localisation géographique des établissements, vous pouvez laisser les unités administratives désactivées.
 
 **Étape 3 - Préparer les données.** FASTR valide le fichier et charge les lignes dans une table de préparation. La progression se met à jour automatiquement. Si l'importation s'exécute en arrière-plan, l'assistant affiche un écran de progression en direct qui se met à jour automatiquement jusqu'à la fin de l'importation. Vous pouvez quitter cette page et y revenir en toute sécurité.
 
-**Étape 4 - Vérifier et intégrer.** Le résumé de la préparation indique combien d'établissements figurent dans votre fichier et combien existent déjà dans le registre. Choisissez un mode d'intégration :
+**Étape 4 - Vérifier et intégrer.** Le résumé de la préparation indique combien d'établissements figurent dans votre fichier et combien existent déjà dans le registre. Si vous avez fourni un questionnaire ODK à l'étape 1, le résumé indique également quelles colonnes ont eu leurs codes ODK remplacés par des libellés, combien de valeurs ont été résolues, et les codes qui n'ont pas pu être associés au questionnaire. Choisissez un mode d'intégration :
 
 - **Remplacer tous les établissements existants** - supprime tous les établissements actuellement dans ce registre, puis ajoute tous les établissements de votre fichier. Ce mode nécessite que les unités administratives soient associées. FASTR bloque ce mode si un jeu de données ou des pondérations d'échantillonnage référencent encore les établissements existants.
 - **Ajouter les nouveaux établissements et mettre à jour les existants** - ajoute les établissements dont les identifiants sont nouveaux et met à jour les existants avec les colonnes que vous avez associées. Ce mode nécessite également les unités administratives.
