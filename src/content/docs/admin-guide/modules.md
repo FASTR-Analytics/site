@@ -63,4 +63,4 @@ For complex issues, view **Script** to see the exact R code that ran. The **File
 
 If you no longer need a module's results, open the module's menu and select **Disable**. The module's results and visualizations that used its metrics will be removed.
 
-Disabling affects downstream dependencies - modules that depended on it will enter a waiting state. You must disable dependent modules before disabling their prerequisites. Disabling is reversible; you can re-enable a module later and re-run to regenerate results.
+Disabling affects downstream dependencies - modules that depended on it will enter a waiting state. You must disable dependent modules before disabling their prerequisites. FASTR enforces this server-side: attempting to disable a module that other installed modules depend on will be rejected with a message listing which modules need to be disabled first. Disabling is reversible; you can re-enable a module later and re-run to regenerate results.

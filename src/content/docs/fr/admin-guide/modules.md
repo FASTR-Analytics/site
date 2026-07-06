@@ -69,4 +69,4 @@ Pour les problèmes complexes, affichez le **Script** pour voir le code R exact 
 
 Si vous n'avez plus besoin des résultats d'un module, ouvrez le menu du module et sélectionnez **Désactiver**. Les résultats du module ainsi que les visualisations qui utilisaient ses métriques seront supprimés.
 
-La désactivation affecte les dépendances en aval - les modules qui en dépendaient passeront à l'état en attente. Vous devez désactiver les modules dépendants avant de désactiver leurs prérequis. La désactivation est réversible ; vous pouvez réactiver un module plus tard et le relancer pour régénérer les résultats.
+La désactivation affecte les dépendances en aval - les modules qui en dépendaient passeront à l'état en attente. Vous devez désactiver les modules dépendants avant de désactiver leurs prérequis. FASTR applique cette règle côté serveur : toute tentative de désactivation d'un module dont d'autres modules installés dépendent sera rejetée avec un message listant les modules à désactiver en premier. La désactivation est réversible ; vous pouvez réactiver un module plus tard et le relancer pour régénérer les résultats.

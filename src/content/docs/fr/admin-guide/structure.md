@@ -53,6 +53,8 @@ L'import CSV suit un assistant en plusieurs étapes.
 
 Avant de confirmer, le résumé indique combien d'établissements existants correspondent aux identifiants de votre fichier et combien sont nouveaux. Si aucun ne correspond alors que vous attendiez des mises à jour, la colonne Identifiant d'établissement est probablement mal associée, ou vous importez dans le mauvais registre (SNIS ou FOSA).
 
+Après une intégration réussie, si des limites de cartes GeoJSON précédemment téléversées ne correspondent plus à aucune zone administrative - par exemple parce qu'une importation a renommé des zones - le résumé affiche un avertissement. Corrigez ces incohérences dans l'éditeur GeoJSON.
+
 ![Structure Import FR](/images/structure-import-fr.png)
 
 ### Import DHIS2

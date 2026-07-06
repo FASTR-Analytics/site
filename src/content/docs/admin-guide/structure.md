@@ -53,6 +53,8 @@ The CSV import follows a multi-step wizard.
 
 Before confirming, the summary shows how many existing facilities match IDs in your file and how many are new. If none match and you expected updates, the facility ID column is probably mapped to the wrong column, or you are importing into the wrong registry (HMIS vs HFA).
 
+After a successful integration, if any previously uploaded GeoJSON map boundaries no longer match an admin area - for example because an import renamed areas - the summary displays a warning. Repair those mismatches in the GeoJSON editor.
+
 ![Structure Import](/images/structure-import-en.png)
 
 ### DHIS2 import

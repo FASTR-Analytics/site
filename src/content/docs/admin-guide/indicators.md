@@ -94,7 +94,7 @@ Before deleting an indicator or a set of indicators, FASTR checks whether any ot
 
 ### AI assistant for indicators
 
-Global administrators can open an AI assistant panel directly in the HFA Indicator Manager by clicking the **AI** button in the top bar. The assistant can clean up labels, organise indicators into categories, and create new indicators from the underlying survey dataset. It reads and writes indicators through a set of dedicated tools — loading current state before proposing changes, validating R code against the data dictionary, and showing a confirmation dialog with a diff before any edits are applied. The assistant operates on instance-level HFA indicators and is fully isolated from the project AI assistant.
+Global administrators can open an AI assistant panel directly in the HFA Indicator Manager by clicking the **AI** button in the top bar. The assistant can clean up labels, organise indicators into categories, and create new indicators from the underlying survey dataset. It reads and writes indicators through a set of dedicated tools — loading current state before proposing changes, validating R code against the data dictionary, and showing a confirmation dialog with a diff before any edits are applied. When applying bulk updates, all changes are sent to the server in a single transactional operation: either all indicators are updated or none are, so a partial failure cannot leave the dataset in an inconsistent state. The assistant operates on instance-level HFA indicators and is fully isolated from the project AI assistant.
 
 ### Managing service categories
 
@@ -102,7 +102,7 @@ Service categories are created and managed from the **Service categories** tab i
 
 ### Excel workbook upload
 
-HFA indicators support batch creation via Excel workbook. Upload an Excel workbook (.xlsx) with three sheets:
+HFA indicators support batch creation via Excel workbook. Upload an Excel workbook (.xlsx) with four sheets:
 
 - **Categories**: id, label
 - **Sub-categories**: id, categoryId, label

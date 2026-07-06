@@ -28,9 +28,9 @@ Accédez à la section **Données** et sélectionnez **Données HFA**. Cliquez s
 
 2. **Configurer la correspondance.** Indiquez quelle colonne CSV contient les identifiants d'établissement. Sélectionnez ensuite le point temporel auquel ces données appartiennent dans la liste des points temporels définis dans votre instance.
 
-3. **Préparer les données.** Cliquez sur **Démarrer la préparation** pour valider les identifiants d'établissement, faire correspondre les colonnes aux définitions du XLSForm et décomposer les questions « à choix multiples » en variables individuelles.
+3. **Préparer les données.** Cliquez sur **Démarrer la préparation** pour valider les identifiants d'établissement, faire correspondre les colonnes aux définitions du XLSForm et décomposer les questions « à choix multiples » en variables individuelles. Le résumé de la préparation affiche le total de lignes, les lignes valides, les lignes ignorées pour estimation manquante, et les lignes ignorées parce que leur valeur de désagrégation n'a pas été reconnue. Si des lignes sont ignorées pour une désagrégation non reconnue, des exemples de valeurs sont affichés pour vous aider à identifier l'incohérence.
 
-4. **Vérifier et intégrer.** Le résumé affiche les lignes valides, les lignes écartées (en raison d'identifiants d'établissement manquants ou invalides) et les statistiques du dictionnaire de données. Cliquez sur **Intégrer et finaliser** pour terminer.
+4. **Vérifier et intégrer.** Vérifiez les statistiques du résumé et cliquez sur **Intégrer et finaliser** pour terminer. Si des lignes ont été ignorées en raison d'une désagrégation non reconnue, l'écran de fin indique également ce décompte et les exemples de valeurs.
 
 :::caution[Capture d'écran à ajouter]
 Étape 1 de l'importation HFA montrant les deux zones de chargement de fichiers pour le CSV et le XLSForm.
@@ -53,7 +53,7 @@ Interface de gestion des points temporels montrant la liste des rounds importés
 
 ## Détails de la validation
 
-Des lignes peuvent être écartées au cours de la préparation pour plusieurs raisons : identifiants d'établissement manquants, identifiants d'établissement absents de votre registre, ou établissements en double au sein d'une même importation. Le résumé de la préparation présente chaque catégorie séparément. Si vous constatez de nombreuses entrées « Établissement introuvable », vérifiez si votre registre des établissements doit être mis à jour.
+Des lignes peuvent être écartées au cours de la préparation pour plusieurs raisons : identifiants d'établissement manquants, identifiants d'établissement absents de votre registre, établissements en double au sein d'une même importation, ou valeur de désagrégation non reconnue par la plateforme. Le résumé de la préparation présente chaque catégorie séparément. Si vous constatez de nombreuses entrées « Établissement introuvable », vérifiez si votre registre des établissements doit être mis à jour. Si vous constatez des lignes ignorées pour une désagrégation non reconnue, vérifiez que les valeurs de désagrégation de votre CSV correspondent aux valeurs attendues par la plateforme.
 
 ## Traitement du XLSForm
 
