@@ -30,7 +30,7 @@ Good questions are specific. Instead of "tell me about the data," try "what does
 
 The prompt library contains pre-written prompts for common analysis tasks. Click the menu icon in the AI panel header and select **Prompt library** to browse. Prompts are organized by category - interpretation, comparison, data quality checks, and more.
 
-When you select a prompt, you can customize it before running. You can also save your own prompts to the library for reuse. Prompts can be saved as **My prompts** (private, visible only to you) or **Country prompts** (shared with all users in your instance).
+When you select a prompt, you can customize it before running. You can also save your own prompts to the library for reuse. Prompts can be saved as **My prompts** (private, visible only to you) or **Country prompts** (shared with all users in your instance). Only administrators can save country-scoped prompts.
 
 :::caution[Screenshot needed]
 Prompt library modal showing categories of pre-built prompts with the search field.
@@ -48,6 +48,10 @@ When editing an existing slide, the assistant can also modify figures already on
 
 In the report editor, the assistant can rewrite passages, insert new figures, and edit existing figures in place. When you ask it to change text, it proposes a diff in a modal that you accept or reject before anything changes. When you ask it to edit a figure - for example, to change its replicant or period filter - it applies the change directly to the live preview and saves immediately, without a diff step. To replace a figure with a completely different chart or metric, ask the assistant to replace the figure rather than edit it.
 
+## Navigating tabs
+
+The assistant can switch the main project tab on your behalf. It can navigate to **Reports**, **Decks**, **Visualizations**, **Metrics**, **Modules**, **Data**, and **Settings**. Tab switching is not available while you are editing a visualization, slide deck, or slide.
+
 ## Conversations and history
 
 Each conversation is saved automatically. You can start new conversations and switch between past ones using the menu. This is useful when you've asked the assistant to explain something complex - return to that explanation later without re-asking.
@@ -56,7 +60,7 @@ Conversations are scoped to your project and include context about your data. Th
 
 ## Usage limits
 
-AI usage is subject to daily and weekly limits that apply across your instance. A usage indicator at the bottom of the panel shows how much of your daily limit you've consumed. If you reach the limit, wait until it resets - typically at midnight UTC.
+AI usage is subject to daily and weekly limits that apply across your instance. A usage indicator at the bottom of the panel shows how much of your daily limit you've consumed. If you reach the limit, wait until it resets - typically at midnight UTC. You can adjust the model and maximum token budget in the AI settings panel, accessible from the panel header.
 
 ## Tips for better results
 

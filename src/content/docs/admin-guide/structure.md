@@ -99,3 +99,11 @@ When you delete a GeoJSON level, the map cache for that level is automatically c
 If naming differs between your GeoJSON and structure data, the GeoJSON editor lets you modify feature properties to resolve matching issues. You can also explicitly unmap a feature by setting its area ID to empty — this removes a previously matched feature from map visualizations without needing to re-upload the file.
 
 Unmapped features in the upload wizard are kept in the file and can be mapped later using the GeoJSON editor. Previously, unmapped features were described as being excluded; they are now retained so you can complete the mapping at any time.
+
+### Uploading a DHIS2 GeoJSON map
+
+If your boundaries are stored in DHIS2, the GeoJSON upload wizard also accepts a DHIS2 connection. After selecting your DHIS2 server and level, FASTR fetches lightweight org-unit metadata (names and codes) to let you build the mapping without downloading the full polygon dataset. The full geometry is only downloaded when you confirm and save, which can take up to several minutes for large countries.
+
+After saving, FASTR reports how many boundaries were stored, how many matched an admin area, and how many were left unmatched (shown as a warning count). Unmatched boundaries can be mapped later using **Edit mappings**.
+
+If the match property you selected is not present on the DHIS2 GeoJSON features, FASTR rejects the save and shows an error rather than storing an empty map.

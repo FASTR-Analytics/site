@@ -99,3 +99,11 @@ Lorsque vous supprimez un niveau GeoJSON, le cache cartographique de ce niveau e
 Si la nomenclature diffère entre votre GeoJSON et vos données de structure, l'éditeur GeoJSON vous permet de modifier les propriétés des entités pour résoudre les problèmes de correspondance. Vous pouvez également désassocier explicitement une entité en définissant son identifiant de zone sur vide — cela retire une entité précédemment associée des visualisations cartographiques sans avoir besoin de recharger le fichier.
 
 Les entités non mappées dans l'assistant de chargement sont conservées dans le fichier et peuvent être mappées ultérieurement à l'aide de l'éditeur GeoJSON. Auparavant, les entités non mappées étaient décrites comme exclues ; elles sont désormais conservées afin que vous puissiez compléter le mappage à tout moment.
+
+### Charger une carte GeoJSON depuis DHIS2
+
+Si vos limites géographiques sont stockées dans DHIS2, l'assistant de chargement GeoJSON accepte également une connexion DHIS2. Après avoir sélectionné votre serveur DHIS2 et le niveau souhaité, FASTR récupère des métadonnées légères d'unités organisationnelles (noms et codes) pour vous permettre de construire la correspondance sans télécharger l'ensemble des polygones. La géométrie complète n'est téléchargée que lorsque vous confirmez et enregistrez, ce qui peut prendre plusieurs minutes pour les pays de grande taille.
+
+Après l'enregistrement, FASTR indique combien de limites ont été stockées, combien ont été associées à une zone administrative et combien sont restées sans correspondance (affichées comme un comptage d'avertissement). Les limites sans correspondance peuvent être mappées ultérieurement via **Modifier les associations**.
+
+Si la propriété de correspondance que vous avez sélectionnée n'est pas présente dans les entités GeoJSON de DHIS2, FASTR rejette l'enregistrement et affiche une erreur plutôt que de stocker une carte vide.

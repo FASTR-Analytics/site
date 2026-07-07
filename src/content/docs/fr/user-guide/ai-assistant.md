@@ -30,7 +30,7 @@ Les bonnes questions sont précises. Plutôt que « parle-moi des données », e
 
 La bibliothèque d'invites contient des invites pré-rédigées pour les tâches d'analyse courantes. Cliquez sur l'icône de menu dans l'en-tête du panneau IA et sélectionnez **Bibliothèque d'invites** pour la parcourir. Les invites sont organisées par catégorie - interprétation, comparaison, contrôles de qualité des données, et plus encore.
 
-Lorsque vous sélectionnez une invite, vous pouvez la personnaliser avant de l'exécuter. Vous pouvez également enregistrer vos propres invites dans la bibliothèque pour les réutiliser. Les invites peuvent être enregistrées comme **Mes invites** (privées, visibles uniquement par vous) ou **Invites du pays** (partagées avec tous les utilisateurs de votre instance).
+Lorsque vous sélectionnez une invite, vous pouvez la personnaliser avant de l'exécuter. Vous pouvez également enregistrer vos propres invites dans la bibliothèque pour les réutiliser. Les invites peuvent être enregistrées comme **Mes invites** (privées, visibles uniquement par vous) ou **Invites du pays** (partagées avec tous les utilisateurs de votre instance). Seuls les administrateurs peuvent enregistrer des invites à l'échelle du pays.
 
 :::caution[Capture d'écran à ajouter]
 Fenêtre modale de la bibliothèque d'invites montrant les catégories d'invites prédéfinies avec le champ de recherche.
@@ -48,6 +48,10 @@ Lors de la modification d'une diapositive existante, l'assistant peut également
 
 Dans l'éditeur de rapport, l'assistant peut réécrire des passages, insérer de nouvelles figures et modifier des figures existantes directement. Lorsque vous lui demandez de modifier du texte, il propose un diff dans une fenêtre modale que vous acceptez ou refusez avant toute application. Lorsque vous lui demandez de modifier une figure - par exemple, changer son réplicant ou son filtre de période - il applique la modification directement à l'aperçu en direct et enregistre immédiatement, sans étape de diff. Pour remplacer une figure par un graphique ou un indicateur entièrement différent, demandez à l'assistant de remplacer la figure plutôt que de la modifier.
 
+## Naviguer entre les onglets
+
+L'assistant peut changer l'onglet principal du projet en votre nom. Il peut naviguer vers **Rapports**, **Présentations**, **Visualisations**, **Métriques**, **Modules**, **Données** et **Paramètres**. La navigation par onglet n'est pas disponible pendant que vous modifiez une visualisation, une présentation ou une diapositive.
+
 ## Conversations et historique
 
 Chaque conversation est enregistrée automatiquement. Vous pouvez démarrer de nouvelles conversations et passer de l'une à l'autre à l'aide du menu. C'est utile lorsque vous avez demandé à l'assistant d'expliquer quelque chose de complexe - vous pouvez revenir à cette explication plus tard sans avoir à la redemander.
@@ -56,7 +60,7 @@ Les conversations sont limitées à votre projet et incluent le contexte de vos 
 
 ## Limites d'utilisation
 
-L'utilisation de l'IA est soumise à des limites quotidiennes et hebdomadaires qui s'appliquent à l'ensemble de votre instance. Un indicateur d'utilisation au bas du panneau montre quelle part de votre limite quotidienne vous avez consommée. Si vous atteignez la limite, attendez sa réinitialisation - généralement à minuit UTC.
+L'utilisation de l'IA est soumise à des limites quotidiennes et hebdomadaires qui s'appliquent à l'ensemble de votre instance. Un indicateur d'utilisation au bas du panneau montre quelle part de votre limite quotidienne vous avez consommée. Si vous atteignez la limite, attendez sa réinitialisation - généralement à minuit UTC. Vous pouvez ajuster le modèle et le budget de jetons maximum dans le panneau de paramètres IA, accessible depuis l'en-tête du panneau.
 
 ## Conseils pour de meilleurs résultats
 
