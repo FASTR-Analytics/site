@@ -46,6 +46,8 @@ Si aucun des modèles prédéfinis ne convient, choisissez **Personnalisé**. Ce
 
 Toutes les désagrégations ne fonctionnent pas avec tous les types de visualisations. Par exemple, la désagrégation géographique est pertinente pour les cartes mais pas pour les chronologies. L'interface vous indique quelles options sont disponibles en fonction du type que vous avez choisi.
 
+Certaines options de désagrégation sont disponibles uniquement comme filtres et ne peuvent pas être utilisées comme dimensions de désagrégation dans un graphique ou une carte. L'option de catégorie de service HFA fonctionne ainsi : vous pouvez filtrer une visualisation pour n'afficher que les indicateurs appartenant à une ou plusieurs catégories de service, mais la catégorie de service ne peut pas elle-même être utilisée comme série ou axe dans le graphique. Lors du filtrage par catégorie de service, une correspondance est établie si l'indicateur appartient à au moins l'une des catégories sélectionnées.
+
 Certains types de graphiques ont des exigences spécifiques en matière de données. Le graphique des perturbations, par exemple, compare deux valeurs de données (réelle et attendue) sous forme de deux séries et ombre la différence entre elles. Si vous sélectionnez un graphique des perturbations, assurez-vous que les deux valeurs de données sont configurées - le graphique affichera un message d'erreur vous invitant à ajouter la deuxième valeur de données ou à désactiver le mode perturbations si une seule est présente.
 
 :::caution[Capture d'écran à ajouter]

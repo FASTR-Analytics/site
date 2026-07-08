@@ -63,7 +63,7 @@ Les noms de variables doivent commencer par une lettre et ne contenir que des le
 
 Les noms de variables ne doivent pas non plus dupliquer un nom de variable d'enquête déjà présent dans votre jeu de données HFA. Utiliser un nom de variable d'enquête comme nom de variable d'indicateur masquerait la colonne du jeu de données dans le code R des autres indicateurs, produisant des résultats incorrects.
 
-Le champ **catégories de service** est facultatif et fournit une classification transversale supplémentaire, indépendante de la hiérarchie catégorie/sous-catégorie. Un indicateur peut appartenir à plusieurs catégories de service simultanément. Les catégories de service sont gérées dans leur propre onglet du gestionnaire d'indicateurs HFA et peuvent être attribuées à n'importe quel indicateur, quelle que soit sa catégorie.
+Le champ **catégories de service** est facultatif et fournit une classification transversale supplémentaire, indépendante de la hiérarchie catégorie/sous-catégorie. Un indicateur peut appartenir à plusieurs catégories de service simultanément. Les catégories de service sont gérées dans leur propre onglet du gestionnaire d'indicateurs HFA et peuvent être attribuées à n'importe quel indicateur, quelle que soit sa catégorie. Lors du filtrage des visualisations ou des données du projet par catégorie de service, une correspondance est établie si l'indicateur appartient à au moins l'une des catégories sélectionnées - il n'est pas nécessaire qu'il appartienne à toutes.
 
 :::caution[Capture d'écran à ajouter]
 Liste des indicateurs HFA montrant les colonnes catégorie, nom de variable, définition et état de validation.
