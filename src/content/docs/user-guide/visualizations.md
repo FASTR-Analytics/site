@@ -46,6 +46,8 @@ Not every disaggregation works with every visualization type. For example, geogr
 
 Some disaggregation options are available only as filters and cannot be used as disaggregation dimensions on a chart or map. The HFA service category option works this way: you can filter a visualization to show only indicators belonging to one or more service categories, but service category cannot itself be used as a series or axis in the chart. When filtering by service category, a match is made if the indicator belongs to any of the selected categories.
 
+When a disaggregation dimension has only a single value in the underlying data, that dimension is automatically disabled - it cannot be toggled on because disaggregating by it would have no effect. The editor shows a tooltip explaining that the dimension has a single value in the data.
+
 Some chart types have specific data requirements. The disruptions chart, for example, compares two data values (actual and expected) as two series and shades the difference between them. If you select a disruptions chart, make sure both data values are configured - the chart will show an error message prompting you to add the second data value or turn off disruptions mode if only one is present.
 
 ![Presets vs Custom](/images/presets-vs-custom-en.png)
