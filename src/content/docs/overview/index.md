@@ -3,7 +3,7 @@ title: Overview
 description: What the FASTR platform is, who it's for, and how the documentation is organized.
 ---
 
-The FASTR platform helps health programme teams turn routine health data into evidence they can act on. It takes the data countries already collect - monthly HMIS reporting and health facility assessments - and produces the figures, tables, maps, slide decks, and reports that teams need to monitor services, communicate results, and support decisions.
+The FASTR platform helps Ministries of Health turn routine health data into evidence they can act on. It takes the data countries already collect - monthly HMIS reporting and health facility assessments - and produces the figures, tables, maps, slide decks, and reports that teams need to monitor services, communicate results, and support decisions.
 
 The platform is part of FASTR (Frequent Assessments and System Tools for Resilience), a Global Financing Facility (GFF) initiative that supports country-led efforts to improve the timely generation and use of data for decision-making. The analyses it runs follow the published [FASTR methodology](/methodology/00_introduction/) for monitoring reproductive, maternal, newborn, child, and adolescent health and nutrition (RMNCAH-N) services using routine HMIS data.
 

@@ -9,10 +9,10 @@ import HeroBackground from "../../components/HeroBackground.astro";
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
-    <title>FASTR — Analyses pour les systèmes de santé</title>
-    <meta name="description" content="FASTR aide les programmes de santé à transformer les données HMIS de routine en figures, tableaux et notes qui orientent les décisions." />
-    <meta property="og:title" content="FASTR" />
-    <meta property="og:description" content="Analyses pour les systèmes de santé." />
+    <title>La plateforme d'analyse FASTR – L'analyse collaborative des données pour les systèmes de santé</title>
+    <meta name="description" content="La plateforme d'analyse FASTR met l'analyse statistique rigoureuse des données sanitaires de routine – qualité des données, utilisation des services, couverture – entre les mains des équipes des ministères de la Santé, en quelques minutes." />
+    <meta property="og:title" content="La plateforme d'analyse FASTR" />
+    <meta property="og:description" content="L'analyse collaborative des données pour les systèmes de santé." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://fastr-analytics.org/fr/" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -33,15 +33,17 @@ import HeroBackground from "../../components/HeroBackground.astro";
     </header>
 
     <!-- Hero -->
-    <section class="relative overflow-hidden bg-primary/5 text-primary">
-      <HeroBackground />
+    <section class="relative overflow-hidden bg-primary/10 text-primary">
       <div class="relative max-w-6xl w-full mx-auto px-5 md:px-8 pt-16 md:pt-28 pb-16 md:pb-28 text-base-content">
-        <h1 class="text-4xl sm:text-5xl md:text-7xl leading-[1.05] mb-5 md:mb-6 max-w-4xl font-bold tracking-tight">
-          Analyses pour<br />
-          <span class="text-primary">les systèmes de santé.</span>
+        <h1 class="text-4xl sm:text-5xl md:text-7xl leading-[1.05] mb-5 md:mb-6 font-bold tracking-tight">
+          La plateforme<br />
+          <span class="text-primary">d'analyse FASTR.</span>
         </h1>
-        <p class="text-lg md:text-2xl leading-snug max-w-2xl mb-8 text-base-content/70">
-          FASTR aide les programmes de santé à transformer les données HMIS de routine en figures, tableaux et notes qui orientent les décisions.
+        <p class="text-xl md:text-3xl leading-snug mb-4 md:mb-5 font-semibold tracking-tight">
+          L'analyse collaborative des données pour les systèmes de santé.
+        </p>
+        <p class="text-lg md:text-2xl leading-snug mb-8 text-base-content/70">
+          Aider les ministères de la Santé à surveiller les services de santé essentiels, évaluer la qualité des données et suivre la couverture – grâce à l'analyse en cycle rapide des données qu'ils collectent déjà.
         </p>
         <div class="flex flex-wrap gap-4 md:gap-6 items-center text-sm font-medium">
           <a href="/fr/overview/" class="inline-flex items-center gap-2 bg-primary text-primary-content px-5 py-3 rounded hover:bg-primary/90 transition-colors">
@@ -51,6 +53,9 @@ import HeroBackground from "../../components/HeroBackground.astro";
             En savoir plus
           </a>
         </div>
+        <p class="mt-8 text-sm text-base-content/60">
+          Une initiative du Global Financing Facility (GFF)
+        </p>
       </div>
     </section>
 
@@ -59,14 +64,14 @@ import HeroBackground from "../../components/HeroBackground.astro";
       <div class="max-w-6xl w-full mx-auto px-5 md:px-8 py-16 md:py-24">
         <div class="text-xs tracking-[0.3em] uppercase mb-4 text-primary font-semibold">Ce que c'est</div>
         <h2 class="text-3xl md:text-5xl font-bold tracking-tight mb-8 md:mb-10 max-w-3xl leading-tight">
-          Une plateforme d'analyse rapide des données de routine.
+          Les analyses statistiques de FASTR, entre les mains des équipes pays.
         </h2>
         <div class="grid md:grid-cols-2 gap-8 md:gap-12 text-base md:text-lg leading-relaxed max-w-5xl">
           <p>
-            FASTR — Frequent Assessments and Health System Tools for Resilience — est une initiative du Global Financing Facility soutenant l'utilisation par les pays des données HMIS de routine pour le suivi des services de santé reproductive, maternelle, néonatale, infantile, des adolescents et de la nutrition.
+            Au cœur de la plateforme se trouve la méthodologie analytique FASTR – une analyse statistique rigoureuse de la qualité des données, de l'utilisation des services et de la couverture, développée par le Global Financing Facility et appliquée avec les ministères de la Santé dans plus de 20 pays. Une analyse qui exigeait auparavant des analystes spécialisés et des semaines de travail.
           </p>
           <p>
-            La plateforme prend la réalité désordonnée des données de programme — rapports incomplets, formats de période changeants, désagrégations qui se chevauchent — et la transforme en figures, tableaux, cartes et présentations que les équipes peuvent utiliser directement.
+            La plateforme d'analyse FASTR permet aux équipes des ministères d'exécuter elles-mêmes ces analyses. Importez les données HMIS de routine et les données d'évaluation des formations sanitaires : toute la chaîne d'analyse s'exécute en quelques minutes – produisant des résultats que l'équipe peut explorer, interroger et présenter directement aux décideurs.
           </p>
         </div>
       </div>
@@ -75,60 +80,99 @@ import HeroBackground from "../../components/HeroBackground.astro";
     <!-- Video demo -->
     <section class="bg-base-200">
       <div class="max-w-6xl w-full mx-auto px-5 md:px-8 py-16 md:py-24">
-        <div class="text-xs tracking-[0.3em] uppercase mb-4 text-primary font-semibold">Voir la plateforme en action</div>
+        <div class="text-xs tracking-[0.3em] uppercase mb-4 text-primary font-semibold">En action</div>
         <h2 class="text-3xl md:text-5xl font-bold tracking-tight mb-8 md:mb-10 max-w-3xl leading-tight">
-          Démonstration de la plateforme.
+          Un aperçu de la plateforme.
         </h2>
       <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1183298242?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Démonstration de la plateforme d'analyse FASTR"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
       </div>
     </section>
 
-    <!-- How it works -->
+    <!-- The analyses -->
     <section class="bg-base-100">
       <div class="max-w-6xl w-full mx-auto px-5 md:px-8 py-16 md:py-24">
-        <div class="text-xs tracking-[0.3em] uppercase mb-4 text-primary font-semibold">Comment ça marche</div>
+        <div class="text-xs tracking-[0.3em] uppercase mb-4 text-primary font-semibold">Les analyses</div>
         <h2 class="text-3xl md:text-5xl font-bold tracking-tight mb-12 max-w-3xl leading-tight">
-          Trois choses que FASTR fait bien.
+          Des analyses statistiques robustes, exécutées en quelques minutes.
         </h2>
         <div class="grid md:grid-cols-3 gap-8 md:gap-12">
           <article>
             <div class="text-xs tracking-[0.3em] uppercase mb-3 text-primary font-semibold">I.</div>
-            <h3 class="text-xl md:text-2xl mb-3 font-bold">Données de routine, prêtes à l'emploi.</h3>
+            <h3 class="text-xl md:text-2xl mb-3 font-bold">Qualité des données.</h3>
             <p class="text-base leading-relaxed text-base-content/70">
-              Conçu pour la réalité désordonnée des données de programme. Les formats de période, les désagrégations et les dénominateurs sont gérés pour vous.
+              Évaluation automatisée de la complétude, de l'exactitude et de la cohérence – avec des ajustements pour que les tendances reflètent la prestation de services, et non les artefacts de rapportage.
             </p>
           </article>
           <article>
             <div class="text-xs tracking-[0.3em] uppercase mb-3 text-primary font-semibold">II.</div>
-            <h3 class="text-xl md:text-2xl mb-3 font-bold">Des figures solides.</h3>
+            <h3 class="text-xl md:text-2xl mb-3 font-bold">Utilisation des services.</h3>
             <p class="text-base leading-relaxed text-base-content/70">
-              Un système visuel cohérent à travers graphiques, tableaux, cartes et présentations. Des résultats sur lesquels vous pouvez compter.
+              Tendances mensuelles des services RMNCAH-N prioritaires, y compris l'analyse des perturbations comparant les volumes observés aux volumes attendus.
             </p>
           </article>
           <article>
             <div class="text-xs tracking-[0.3em] uppercase mb-3 text-primary font-semibold">III.</div>
-            <h3 class="text-xl md:text-2xl mb-3 font-bold">Pensé pour les équipes.</h3>
+            <h3 class="text-xl md:text-2xl mb-3 font-bold">Couverture.</h3>
             <p class="text-base leading-relaxed text-base-content/70">
-              Un seul outil pour les analystes et les décideurs. Reproductible par conception, facile à partager.
+              Estimations de couverture à partir des données de routine et des dénominateurs de population, suivies par rapport aux cibles et références propres à chaque pays.
             </p>
           </article>
         </div>
+        <p class="mt-10 text-base md:text-lg leading-relaxed text-base-content/70 max-w-3xl">
+          Chaque analyse s'exécute sous forme de module : du code statistique versionné et reproductible qui applique la méthodologie FASTR publiée. Importez de nouvelles données et chaque résultat s'actualise automatiquement – sans aucune programmation.
+        </p>
+      </div>
+    </section>
+
+    <!-- What you can make -->
+    <section class="bg-base-200">
+      <div class="max-w-6xl w-full mx-auto px-5 md:px-8 py-16 md:py-24">
+        <div class="text-xs tracking-[0.3em] uppercase mb-4 text-primary font-semibold">De l'analyse à l'action</div>
+        <h2 class="text-3xl md:text-5xl font-bold tracking-tight mb-12 max-w-3xl leading-tight">
+          Chaque résultat, prêt à présenter aux décideurs.
+        </h2>
+        <div class="grid md:grid-cols-3 gap-8 md:gap-12">
+          <article>
+            <img src="/images/viz-editor-en.png" alt="L'éditeur de visualisation FASTR" class="w-full rounded border border-base-300 mb-5" loading="lazy" />
+            <h3 class="text-xl md:text-2xl mb-3 font-bold">Visualisations.</h3>
+            <p class="text-base leading-relaxed text-base-content/70">
+              Chaque métrique produite par les analyses peut être explorée sous forme de graphiques, de cartes et de tableaux – filtrés, désagrégés et exportés.
+            </p>
+          </article>
+          <article>
+            <img src="/images/creating-slide-deck-fr.png" alt="L'éditeur de présentations FASTR" class="w-full rounded border border-base-300 mb-5" loading="lazy" />
+            <h3 class="text-xl md:text-2xl mb-3 font-bold">Présentations.</h3>
+            <p class="text-base leading-relaxed text-base-content/70">
+              Assemblez les résultats d'analyse en diaporamas prêts à présenter, avec des figures dynamiques – quand les données se mettent à jour, la présentation aussi.
+            </p>
+          </article>
+          <article>
+            <img src="/images/edit-and-view-modes-fr.png" alt="L'éditeur de rapports FASTR" class="w-full rounded border border-base-300 mb-5" loading="lazy" />
+            <h3 class="text-xl md:text-2xl mb-3 font-bold">Rapports.</h3>
+            <p class="text-base leading-relaxed text-base-content/70">
+              Des rapports analytiques détaillés avec figures dynamiques intégrées, prêts à exporter et à diffuser.
+            </p>
+          </article>
+        </div>
+        <p class="mt-10 text-base md:text-lg leading-relaxed text-base-content/70 max-w-3xl">
+          Sans oublier des tableaux de bord dynamiques et un assistant IA qui aide à interpréter les résultats et à rédiger le narratif – le chemin complet des données brutes à la note ministérielle, dans une seule plateforme.
+        </p>
       </div>
     </section>
 
     <!-- Methodology callout -->
-    <section class="bg-base-200">
+    <section class="bg-base-100">
       <div class="max-w-6xl w-full mx-auto px-5 md:px-8 py-16 md:py-24">
         <div class="grid md:grid-cols-5 gap-8 md:gap-16 items-start">
           <div class="md:col-span-2">
             <div class="text-xs tracking-[0.3em] uppercase mb-4 text-primary font-semibold">Méthodologie</div>
             <h2 class="text-3xl md:text-4xl font-bold tracking-tight leading-tight">
-              Fondée sur des méthodes documentées.
+              Une méthodologie ouverte.
             </h2>
           </div>
           <div class="md:col-span-3">
             <p class="text-base md:text-lg leading-relaxed mb-6">
-              La documentation méthodologique FASTR décrit l'approche complète : identification des questions et indicateurs, extraction et préparation des données HMIS, évaluation et ajustement de la qualité des données, estimation de l'utilisation des services et de la couverture, et communication des résultats.
+              La documentation méthodologique FASTR décrit l'approche complète : identification des questions et des indicateurs, extraction et préparation des données, évaluation de la qualité des données, estimation de la couverture et communication des résultats. Les mêmes méthodes s'exécutent dans les modules de la plateforme – chaque résultat est traçable à une méthode documentée et vérifiable.
             </p>
             <a href="/fr/methodology/00_introduction/" class="inline-flex items-center gap-2 text-primary underline underline-offset-4 decoration-2 font-medium hover:no-underline">
               Lire la méthodologie →
@@ -143,10 +187,10 @@ import HeroBackground from "../../components/HeroBackground.astro";
       <HeroBackground />
       <div class="relative max-w-6xl w-full mx-auto px-5 md:px-8 py-20 md:py-32 text-center text-base-content">
         <h2 class="text-3xl md:text-5xl font-bold tracking-tight mb-6 max-w-3xl mx-auto leading-tight">
-          Prêt à vous lancer ?
+          Explorer la plateforme en profondeur.
         </h2>
-        <p class="text-lg md:text-xl text-base-content/70 mb-8 max-w-2xl mx-auto">
-          La documentation couvre tout, de la mise en place à l'analyse avancée.
+        <p class="text-lg md:text-xl text-base-content/70 mb-8 max-w-3xl mx-auto text-balance">
+          La documentation couvre tout – la mise en place d'une instance, l'exécution des analyses et le partage des résultats.
         </p>
         <a href="/fr/overview/" class="inline-flex items-center gap-2 bg-primary text-primary-content px-6 py-3 rounded text-base font-medium hover:bg-primary/90 transition-colors">
           Lire la documentation →
@@ -161,7 +205,7 @@ import HeroBackground from "../../components/HeroBackground.astro";
           <div class="md:col-span-2">
             <img src="/images/FASTR_White_Horiz.png" alt="FASTR" class="h-6 mb-4 w-auto" />
             <p class="text-sm leading-relaxed text-base-100/70 max-w-md">
-              Une initiative du Global Financing Facility (GFF) pour l'analyse des données HMIS de routine en appui à la prestation des services RMNCAH-N.
+              Une initiative du Global Financing Facility (GFF) qui aide les pays à transformer les données sanitaires de routine en décisions, en appui à la prestation des services RMNCAH-N.
             </p>
           </div>
           <div>
