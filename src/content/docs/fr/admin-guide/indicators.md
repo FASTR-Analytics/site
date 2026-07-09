@@ -65,9 +65,7 @@ Les noms de variables ne doivent pas non plus dupliquer un nom de variable d'enq
 
 Le champ **catégories de service** est facultatif et fournit une classification transversale supplémentaire, indépendante de la hiérarchie catégorie/sous-catégorie. Un indicateur peut appartenir à plusieurs catégories de service simultanément. Les catégories de service sont gérées dans leur propre onglet du gestionnaire d'indicateurs HFA et peuvent être attribuées à n'importe quel indicateur, quelle que soit sa catégorie. Lors du filtrage des visualisations ou des données du projet par catégorie de service, une correspondance est établie si l'indicateur appartient à au moins l'une des catégories sélectionnées - il n'est pas nécessaire qu'il appartienne à toutes.
 
-:::caution[Capture d'écran à ajouter]
-Liste des indicateurs HFA montrant les colonnes catégorie, nom de variable, définition et état de validation.
-:::
+![Indicateurs HFA](/images/hfa-indicators-en.png)
 
 ### Code R pour l'extraction
 <!-- help#ind-r-code -->
@@ -78,9 +76,7 @@ L'éditeur de code indique quelles variables sont disponibles dans votre jeu de 
 
 Les avertissements (affichés en orange) sont consultatifs et ne bloquent pas l'enregistrement. Les erreurs (affichées en rouge) — notamment les erreurs de syntaxe et les références à des variables absentes du jeu de données — empêchent l'indicateur d'être marqué comme prêt.
 
-:::caution[Capture d'écran à ajouter]
-Éditeur de code d'indicateur HFA montrant le code R, les variables disponibles et les résultats de validation.
-:::
+![Code R d'un indicateur HFA](/images/hfa-code-en.png)
 
 ### Code filtre
 

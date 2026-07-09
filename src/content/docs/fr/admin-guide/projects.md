@@ -14,9 +14,7 @@ Tout utilisateur disposant de la permission « Créer des projets » peut démar
 
 Les nouveaux projets démarrent vides - aucun module installé, aucune fenêtre de données définie. Vos prochaines étapes consisteront généralement à activer les modules dont vous avez besoin et à configurer la fenêtre de données.
 
-:::caution[Capture d'écran à ajouter]
-Boîte de dialogue de création de projet montrant le champ du nom du projet.
-:::
+![Nom du projet](/images/project-name-en.png)
 
 ## Configurer la fenêtre de données
 <!-- help#aproj-data-window -->
@@ -35,9 +33,7 @@ Les **types et la propriété des établissements** offrent un filtrage supplém
 
 Les **catégories de service HFA** contrôlent quels indicateurs HFA sont inclus lorsque les données HFA sont activées pour le projet. Lors de l'activation ou de la reconfiguration du jeu de données HFA, une boîte de dialogue de paramètres vous permet de choisir d'inclure toutes les catégories de service ou de restreindre la sélection à certaines d'entre elles. Seuls les indicateurs associés à une catégorie de service sélectionnée sont importés dans le projet. Laissez le paramètre sur « Tout inclure » si vous souhaitez tous les indicateurs HFA quelle que soit leur catégorie de service.
 
-:::caution[Capture d'écran à ajouter]
-Interface de configuration de la fenêtre de données montrant le graphique de la période temporelle avec ses sélecteurs, ainsi que le panneau de sélection des indicateurs.
-:::
+![Fenêtre de données](/images/hmis-data-window-en.png)
 
 ## Gérer les utilisateurs et les permissions du projet
 
@@ -53,9 +49,7 @@ Cliquez sur le bouton de modification à côté d'un utilisateur pour modifier s
 
 Pour les modifications groupées, sélectionnez plusieurs utilisateurs à l'aide des cases à cocher, puis cliquez sur **Modifier les permissions**. L'éditeur groupé utilise un interrupteur à trois états - inchangé, accorder ou révoquer - ce qui vous permet de modifier des permissions spécifiques sans affecter les autres.
 
-:::caution[Capture d'écran à ajouter]
-Tableau des utilisateurs du projet avec les colonnes de permissions et les boutons de modification.
-:::
+![Utilisateurs du projet](/images/user-permissions-project-en.png)
 
 ## Verrouiller des projets
 <!-- help#aproj-lock -->
@@ -70,9 +64,7 @@ Il arrive que vous ayez besoin d'un projet similaire à un projet existant - par
 
 Ouvrez le projet source, allez dans les **Paramètres** et cliquez sur **Copier le projet**. Saisissez un nom pour le nouveau projet. La copie s'exécute en arrière-plan et peut prendre plusieurs minutes pour les projets volumineux. Le nouveau projet apparaît sur l'écran d'accueil une fois terminé, avec l'ensemble des installations de modules, des paramètres, des visualisations et des rapports.
 
-:::caution[Capture d'écran à ajouter]
-Boîte de dialogue de copie de projet montrant le champ du nom du nouveau projet.
-:::
+![Copier le projet](/images/copy-project-en.png)
 
 ## Contexte IA du projet
 

@@ -22,9 +22,7 @@ Pour installer un module, repérez-le dans la liste et cliquez sur **Activer**. 
 
 Une fois activé, un module entre généralement dans un état « en attente » jusqu'à ce que ses exigences en matière de données soient satisfaites. Lorsque votre projet dispose de données dans sa fenêtre et que les modules prérequis ont été exécutés, le module commence son traitement.
 
-:::caution[Capture d'écran à ajouter]
-Page Modules montrant un ensemble de modules activés avec leurs indicateurs d'état et de modules disponibles avec leurs boutons Activer.
-:::
+![Installer des modules](/images/installing-modules-en.png)
 
 ## Configurer les paramètres d'un module
 <!-- help#amod-configure -->
@@ -33,9 +31,7 @@ De nombreux modules acceptent des paramètres qui contrôlent leur comportement.
 
 Cliquez sur **Paramètres** pour n'importe quel module installé afin de consulter et de modifier ses paramètres. L'interface varie selon le module - certains comportent des champs numériques, d'autres des menus déroulants ou des cases à cocher. Lorsque vous enregistrez des modifications de paramètres, FASTR marque le module comme devant être relancé et le traite à nouveau automatiquement.
 
-:::caution[Capture d'écran à ajouter]
-Panneau de paramètres d'un module montrant des champs de saisie tels que des seuils et des sélections par menu déroulant.
-:::
+![Paramètres d'un module](/images/module-settings-en.png)
 
 ## Exécution et état des modules
 <!-- help#amod-status -->
@@ -49,9 +45,7 @@ Chaque module affiche son état actuel dans la liste des modules :
 
 Lorsque les données en amont changent, les modules en aval deviennent obsolètes et sont retraités automatiquement. Ce suivi des dépendances maintient les résultats cohérents avec les données sous-jacentes.
 
-:::caution[Capture d'écran à ajouter]
-Carte d'un module installé montrant l'état prêt avec les horodatages des définitions et l'heure de la dernière exécution.
-:::
+![État d'un module](/images/module-status-en.png)
 
 ## Mettre à jour les définitions des modules
 

@@ -13,9 +13,11 @@ FASTR propose quatre types de visualisations, chacun adapté à des questions di
 
 Le type que vous choisissez dépend de la question à laquelle vous répondez. Si quelqu'un demande « comment nos districts se comparent-ils ? », une carte ou un graphique est pertinent. S'il demande « quel est le chiffre exact pour le district X en mars ? », un tableau est plus utile.
 
-:::caution[Capture d'écran à ajouter]
-Exemples côte à côte de chaque type de visualisation (graphique, chronologie, carte, tableau) présentant le même indicateur.
-:::
+**Tableau**
+![Exemple de visualisation en tableau](/images/example-viz-table-en.png)
+
+**Chronologie**
+![Exemple de visualisation chronologique](/images/example-viz-timeseries-en.png)
 
 ## Trouver et parcourir les visualisations
 
@@ -23,9 +25,7 @@ Ouvrez votre projet et cliquez sur **Visualisations** dans la barre de navigatio
 
 Certaines visualisations apparaissent avec un badge « par défaut » - elles sont créées automatiquement par les modules et ne peuvent pas être modifiées directement. Si vous souhaitez modifier une visualisation par défaut, l'ouvrir créera une copie modifiable que vous pourrez personnaliser et enregistrer comme la vôtre.
 
-:::caution[Capture d'écran à ajouter]
-Vue en liste des visualisations montrant les dossiers, la zone de recherche et le bouton « Créer une visualisation ».
-:::
+![Trouver et parcourir les visualisations](/images/finding-and-browsing-vis-en.png)
 
 ## Créer une visualisation
 <!-- help#viz-create -->
@@ -34,9 +34,7 @@ Chaque visualisation commence par un indicateur. Les indicateurs sont les résul
 
 Cliquez sur **Créer une visualisation** pour commencer. La première étape vous demande de sélectionner un indicateur. Vous pouvez parcourir par module (utile si vous savez quelle analyse a produit le résultat souhaité) ou rechercher par nom. Une fois l'indicateur sélectionné, vous choisirez comment le visualiser.
 
-:::caution[Vidéo à ajouter]
-Démonstration de la création d'une visualisation du début à la fin : sélection d'un indicateur, choix d'un modèle prédéfini et arrivée dans l'éditeur.
-:::
+![Créer une visualisation](/images/creating-a-viz-en.png)
 
 ### Modèles prédéfinis vs. configuration personnalisée
 
@@ -52,17 +50,13 @@ Lorsqu'une dimension de désagrégation n'a qu'une seule valeur dans les donnée
 
 Certains types de graphiques ont des exigences spécifiques en matière de données. Le graphique des perturbations, par exemple, compare deux valeurs de données (réelle et attendue) sous forme de deux séries et ombre la différence entre elles. Si vous sélectionnez un graphique des perturbations, assurez-vous que les deux valeurs de données sont configurées - le graphique affichera un message d'erreur vous invitant à ajouter la deuxième valeur de données ou à désactiver le mode perturbations si une seule est présente.
 
-:::caution[Capture d'écran à ajouter]
-Étape 2 du processus de création montrant les cartes de modèles prédéfinis avec leurs aperçus, ainsi que l'option « Personnalisé ».
-:::
+![Modèles prédéfinis vs configuration personnalisée](/images/presets-vs-custom-en.png)
 
 ## L'éditeur de visualisation
 
 Une fois que vous avez créé ou ouvert une visualisation, vous vous trouvez dans l'éditeur. Le panneau de gauche contient toutes les options de configuration, organisées en trois onglets. La partie droite affiche un aperçu en direct qui se met à jour au fur et à mesure de vos modifications - vous pouvez voir immédiatement comment vos ajustements affectent le résultat.
 
-:::caution[Capture d'écran à ajouter]
-Vue complète de l'éditeur avec le panneau de gauche ouvert affichant les trois onglets, et un aperçu de graphique à droite.
-:::
+![Éditeur de visualisation](/images/viz-editor-en.png)
 
 ### Onglet Données
 <!-- help#viz-data-tab -->
@@ -75,9 +69,7 @@ Pour les désagrégations par zone administrative, vous pouvez inclure une ligne
 
 Si une visualisation semble incorrecte ou affiche des résultats inattendus, l'onglet Données est généralement le premier endroit à vérifier. Un problème courant est d'avoir trop de désagrégations actives, ce qui peut rendre le résultat encombré ou difficile à lire.
 
-:::caution[Capture d'écran à ajouter]
-Onglet Données déployé montrant le filtre de période, les options de désagrégation et les commandes de filtre de valeurs.
-:::
+![Onglet Données](/images/data-tab-en.png)
 
 ### Onglet Présentation
 
@@ -87,9 +79,7 @@ Pour les graphiques à nuages de points utilisant l'affichage **points**, vous p
 
 Ces paramètres ne modifient pas les données affichées - seulement la manière dont elles le sont. Si vous souhaitez un rendu plus épuré pour une présentation, ou si vous devez respecter la charte de couleurs de votre organisation, c'est ici que vous effectuez ces ajustements.
 
-:::caution[Capture d'écran à ajouter]
-Onglet Présentation pour un graphique montrant le sélecteur de palette de couleurs et les options de configuration des axes.
-:::
+![Onglet Présentation](/images/presentation-tab-en.png)
 
 ### Onglet Texte
 
@@ -99,9 +89,7 @@ Dans les champs titre, sous-titre et note de bas de page, vous pouvez utiliser d
 
 De bons titres rendent les visualisations explicites en elles-mêmes. Une personne consultant le graphique dans une présentation ne devrait pas avoir besoin de lire le texte environnant pour comprendre ce qu'elle regarde.
 
-:::caution[Capture d'écran à ajouter]
-Onglet Texte montrant les champs titre, sous-titre et note de bas de page avec un exemple de texte rempli.
-:::
+![Onglet Texte](/images/text-tab-en.png)
 
 ## Enregistrer et organiser
 

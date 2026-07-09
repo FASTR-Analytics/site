@@ -32,13 +32,9 @@ Accédez à la section **Données** et sélectionnez **Données HFA**. Cliquez s
 
 4. **Vérifier et intégrer.** Vérifiez les statistiques du résumé et cliquez sur **Intégrer et finaliser** pour terminer. Si des lignes ont été ignorées en raison d'une désagrégation non reconnue, l'écran de fin indique également ce décompte et les exemples de valeurs.
 
-:::caution[Capture d'écran à ajouter]
-Étape 1 de l'importation HFA montrant les deux zones de chargement de fichiers pour le CSV et le XLSForm.
-:::
+![Chargement des fichiers HFA](/images/hfa-upload-en.png)
 
-:::caution[Capture d'écran à ajouter]
-Résultats de la préparation HFA montrant les statistiques de lignes et les décomptes du dictionnaire de données.
-:::
+![Sélection du round HFA](/images/hfa-upload-round-en.png)
 
 ## Points temporels
 <!-- help#hfa-time-points -->
@@ -47,9 +43,7 @@ Les données HFA sont organisées par points temporels plutôt que par périodes
 
 Après l'importation, utilisez la page **Points temporels HFA** pour modifier les libellés, ajuster les dates, réorganiser, ajouter de nouveaux points temporels ou supprimer des rounds d'enquête individuels. La suppression d'un point temporel supprime toutes ses données et ses pondérations d'échantillonnage.
 
-:::caution[Capture d'écran à ajouter]
-Interface de gestion des points temporels montrant la liste des rounds importés avec les commandes de modification et de réorganisation.
-:::
+![Points temporels HFA](/images/hfa-timepoints-en.png)
 
 ## Détails de la validation
 
