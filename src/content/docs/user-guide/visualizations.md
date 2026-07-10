@@ -107,11 +107,9 @@ To download a visualization as an image, open it in the editor and click **Downl
 
 ### Data
 
-Sometimes you need the underlying numbers, not just the picture. Click **Download** and select **CSV** to get a spreadsheet-friendly file containing the data behind the visualization. This is useful when you need to do additional analysis in Excel or share exact figures with colleagues.
+Sometimes you need the underlying numbers, not just the picture. Click **Download** and select **Table data** to get a spreadsheet-friendly file containing the data behind the visualization. This is useful when you need to do additional analysis in Excel or share exact figures with colleagues.
 
-:::caution[Screenshot needed]
-Download menu showing PNG, SVG, and CSV export options.
-:::
+![Download Viz](/images/download-viz-en.png)
 
 ## Common issues
 
