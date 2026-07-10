@@ -25,7 +25,7 @@ Ouvrez votre projet et cliquez sur **Visualisations** dans la barre de navigatio
 
 Certaines visualisations apparaissent avec un badge « par défaut » - elles sont créées automatiquement par les modules et ne peuvent pas être modifiées directement. Si vous souhaitez modifier une visualisation par défaut, l'ouvrir créera une copie modifiable que vous pourrez personnaliser et enregistrer comme la vôtre.
 
-![Trouver et parcourir les visualisations](/images/finding-and-browsing-vis-fr.png)
+![Trouver et parcourir les visualisations](/images/finding-and-browsing-viz-fr.png)
 
 ## Créer une visualisation
 <!-- help#viz-create -->

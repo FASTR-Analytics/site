@@ -25,7 +25,7 @@ Open your project and click **Visualizations** in the left sidebar. The list sho
 
 Some visualizations appear with a "default" badge - these are created automatically by modules and can't be edited directly. If you want to modify a default visualization, opening it will create an editable copy that you can customize and save as your own.
 
-![Finding and browsing visualizations](/images/finding-and-browsing-vis-en.png)
+![Finding and browsing visualizations](/images/finding-and-browsing-viz-en.png)
 
 ## Creating a visualization
 <!-- help#viz-create -->
