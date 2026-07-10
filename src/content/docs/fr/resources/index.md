@@ -30,6 +30,12 @@ Chaque vidéo ci-dessous présente une fonctionnalité en quelques minutes. Elle
 ### Intro aux rapports longs
 <iframe width="560" height="315" src="https://www.youtube.com/embed/aGN1Piqx8oU?si=-vDq1SWmA69c623o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
+### Tableaux de bord
+<iframe width="560" height="315" src="https://www.youtube.com/embed/d7sUdVKH054?si=79s3mxnGAdkd5-33" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+### Vue partagée des rapports longs et légende Markdown
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Le4aoeOnuoc?si=fT2ldeZ1E83haDzF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ## Pour aller plus loin
 
 - [FASTR sur le portail de données du GFF](https://data.gffportal.org/key-themes/FASTR) - contexte sur l'initiative FASTR et son rôle au sein du GFF
