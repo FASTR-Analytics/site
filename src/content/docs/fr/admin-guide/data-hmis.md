@@ -9,22 +9,18 @@ Les données du SNIS (Système national d'information sanitaire) constituent le 
 
 ## Méthodes d'importation
 
-FASTR prend en charge deux façons d'importer les données du SNIS. Vous pouvez téléverser un fichier CSV si vous disposez de données exportées depuis un autre système ou préparées manuellement. Vous pouvez également, si votre organisation utilise DHIS2, vous connecter directement et extraire les données depuis le système en production.
+FASTR prend en charge deux façons d'importer les données du SNIS. Vous pouvez téléverser un fichier CSV si vous disposez de données exportées depuis un autre système ou préparées manuellement. Vous pouvez également, si votre organisation utilise DHIS2, vous connecter directement et importer les données via le système d'exécutions d'importation DHIS2, qui récupère les données par indicateur et par mois et les intègre de manière incrémentielle.
 
-Les téléversements CSV conviennent bien aux importations périodiques ou aux données historiques. L'intégration directe avec DHIS2 convient aux mises à jour régulières depuis un système national en production, puisque vous pouvez sélectionner des indicateurs et des périodes spécifiques sans préparation manuelle de fichiers.
+Les téléversements CSV conviennent bien aux importations périodiques ou aux données historiques. Le système d'importation DHIS2 convient aux mises à jour régulières depuis un système national en production. Il prend en charge les exécutions immédiates, les exécutions planifiées ponctuelles et les importations planifiées récurrentes.
 
 ## Démarrer une importation
 
-Accédez à la section **Données** et sélectionnez **Données SNIS**. Si vous disposez des permissions d'administration, un panneau **Importations** s'affiche sur la droite. Cliquez sur **Démarrer une nouvelle importation** et choisissez le type de source : fichier CSV ou DHIS2.
-
-:::caution[Capture d'écran à ajouter]
-Vue des données SNIS montrant le panneau Importations avec le bouton Démarrer une nouvelle importation.
-:::
+Accédez à la section **Données** et sélectionnez **Données SNIS**. Si vous disposez des permissions d'administration, un panneau **Importations** s'affiche sur la droite.
 
 ## Processus d'importation CSV
 <!-- help#hmis-csv -->
 
-Lors d'une importation à partir d'un fichier CSV, vous suivez quatre étapes.
+Cliquez sur **Téléverser un fichier CSV** pour démarrer une importation CSV. Vous suivrez quatre étapes.
 
 1. **Téléversez votre fichier.** Sélectionnez un fichier CSV existant parmi les ressources de votre instance, ou téléversez-en un nouveau.
 
@@ -41,26 +37,67 @@ Interface de correspondance des colonnes montrant les quatre champs requis avec 
 ## Processus d'importation DHIS2
 <!-- help#hmis-dhis2 -->
 
-1. **Connectez-vous à DHIS2.** Saisissez l'URL de votre serveur et vos identifiants. FASTR valide la connexion avant de poursuivre.
+Cliquez sur **Importer depuis DHIS2** pour ouvrir la vue des importations DHIS2. Cette vue comporte trois onglets : **En cours**, **À venir** et **Historique**.
 
-2. **Sélectionnez les indicateurs et les périodes.** Choisissez les indicateurs à récupérer dans un tableau présentant tous les indicateurs configurés dans votre instance, puis sélectionnez une plage de dates. Vous pouvez décider de la manière de gérer les échecs - tout interrompre si une combinaison échoue, ou poursuivre avec ce qui a réussi.
+### Lancer une importation
 
-3. **Récupérez les données.** Cliquez sur **Démarrer la récupération depuis DHIS2** pour récupérer les données sélectionnées.
+Cliquez sur **Nouvelle importation** pour ouvrir l'assistant d'importation. L'assistant vous guide à travers cinq étapes selon vos choix.
 
-4. **Vérifiez et intégrez.** Le résumé de la préparation indique combien de lignes ont été récupérées. Lorsque vous cliquez sur **Intégrer et finaliser**, FASTR utilise une stratégie de suppression ciblée puis insertion : pour chaque combinaison indicateur/période récupérée avec succès, les lignes existantes dans la base de données sont supprimées pour exactement les établissements qui ont été interrogés, puis les nouvelles valeurs récupérées sont insérées. Cela garantit que les cellules que DHIS2 ne renvoie plus — parce que des données ont été supprimées ou corrigées à zéro à la source — sont correctement retirées plutôt que laissées en place. La boîte de dialogue de confirmation liste le périmètre de la suppression planifiée avant que vous confirmiez.
+1. **Identifiants.** Choisissez d'utiliser une connexion DHIS2 enregistrée ou de saisir des identifiants de connexion pour cette seule exécution. Si une connexion enregistrée existe, elle est affichée avec l'URL et l'utilisateur qui l'a enregistrée. Vous pouvez la remplacer ou la supprimer ici. Saisir des identifiants sans les enregistrer signifie qu'ils sont utilisés uniquement pour cette exécution et ne sont pas conservés.
 
-:::caution[Capture d'écran à ajouter]
-Interface de sélection DHIS2 montrant le tableau des indicateurs avec des cases à cocher et le sélecteur de plage de périodes.
-:::
+2. **Indicateurs.** Sélectionnez les indicateurs bruts à importer dans le tableau de tous les indicateurs configurés dans votre instance.
+
+3. **Heure.** Choisissez quand l'importation s'exécute : **Maintenant** la démarre immédiatement (ou la met en file d'attente si une autre importation est active), **Une fois, à une heure donnée** planifie une exécution ponctuelle à une date et une heure précises, ou **Récurrente** configure un calendrier hebdomadaire ou bihebdomadaire un jour et une heure choisis dans un fuseau horaire choisi.
+
+4. **Configuration.** Pour les exécutions immédiates ou ponctuelles, sélectionnez la plage de périodes à importer. Pour les exécutions récurrentes, définissez le nombre de mois en arrière à partir du mois en cours à inclure à chaque déclenchement.
+
+5. **Vérifier et lancer.** Un résumé affiche la connexion, le nombre d'indicateurs, le calendrier et le nombre total de paires indicateur-mois. Si une autre importation est en cours, le lancement met la nouvelle importation en file d'attente pour qu'elle démarre automatiquement à la fin de l'exécution en cours.
+
+### Fonctionnement des importations DHIS2
+
+Chaque exécution d'importation récupère les données par paire (indicateur, mois). Pour chaque paire, le système supprime les lignes existantes pour cet indicateur et ce mois au sein des établissements interrogés, puis insère les nouvelles valeurs récupérées. Cette approche de suppression ciblée puis insertion garantit que les valeurs que DHIS2 ne renvoie plus sont correctement retirées plutôt que laissées en place.
+
+Les paires terminées sont enregistrées au fur et à mesure. Si une exécution est annulée ou rencontre une erreur, les paires déjà terminées sont conservées. Les résultats par indicateur sont visibles dans la vue **État des importations par indicateur**.
+
+### Onglet En cours
+
+L'onglet En cours affiche l'importation en cours (le cas échéant) avec une barre de progression en direct, le pourcentage, le nombre de paires et la phase (classification, récupération ou finalisation). Il liste également les importations en file d'attente. Vous pouvez annuler une importation en cours ou supprimer une importation en attente. Lorsqu'aucune importation n'est en cours, l'onglet affiche la prochaine importation planifiée si elle existe, et un bouton **Nouvelle importation**.
+
+### Onglet À venir
+
+L'onglet À venir liste les importations planifiées - aussi bien les calendriers récurrents que les exécutions ponctuelles en attente. Pour chaque planification, vous pouvez cliquer sur **Modifier** pour ouvrir l'assistant pré-rempli avec ses paramètres, ou sur **Supprimer** pour la retirer. Un calendrier récurrent qui a été refusé, manqué, ou dont la dernière exécution a échoué est mis en évidence en rouge.
+
+### Onglet Historique
+
+L'onglet Historique affiche toutes les exécutions terminées, annulées et en erreur avec leur heure de démarrage, qui les a déclenchées, la sélection (indicateurs et plage de périodes), le nombre de paires par résultat et le statut final.
+
+### Gérer la connexion DHIS2
+
+Cliquez sur **Gérer la connexion** pour ouvrir une boîte de dialogue permettant de mettre à jour ou de supprimer les identifiants DHIS2 enregistrés sans passer par l'assistant complet. Les identifiants sont chiffrés sur le serveur. Une fois enregistré, le mot de passe n'est pas renvoyé au navigateur.
+
+### Planification et protection des exécutions sans surveillance
+
+Les importations planifiées et en file d'attente utilisent toujours la connexion enregistrée. Pour créer une importation planifiée ou mettre une importation en file d'attente, des identifiants enregistrés doivent exister. De plus, la planification n'est débloquée qu'après qu'une importation contre l'URL DHIS2 enregistrée a réussi une vérification d'ombre - un contrôle croisé confirmant que les données récupérées via la route directe correspondent au moteur analytics. Exécutez d'abord une importation immédiate, puis revenez pour configurer un calendrier.
+
+### État des importations par indicateur
+<!-- help#hmis-import-ledger -->
+
+Cliquez sur **État des importations par indicateur** pour consulter le registre des importations - un tableau montrant le dernier état d'importation pour chaque paire (indicateur, mois) ayant été importée. Pour chaque indicateur, il affiche le nombre de mois avec données, la date de la dernière importation, la source (DHIS2 ou CSV) et le nombre de mois en échec. Cliquez sur une ligne d'indicateur pour voir le détail mois par mois, incluant le nombre d'enregistrements, les comptes de prestations de services, les messages d'erreur et la classification des erreurs (erreur de configuration ou erreur serveur).
+
+Si des paires ont échoué, un bouton **Réessayer les paires en échec** apparaît. En cliquant dessus, l'assistant s'ouvre pré-configuré pour réimporter exactement les paires en échec.
+
+Depuis la vue de détail par indicateur, un bouton **Réimporter cet indicateur** ouvre l'assistant pour réimporter tous les mois de la fenêtre courante pour cet indicateur.
 
 ## Validation et gestion des erreurs
 <!-- hmis-validation -->
 
-Le processus de préparation détecte plusieurs types de problèmes : champs requis manquants, valeurs numériques invalides, établissements absents de votre registre et indicateurs sans correspondance. Pour chaque catégorie, le résumé indique combien de lignes ont été affectées et fournit des exemples d'entrées. Si trop de lignes sont écartées, envisagez de corriger les données sources ou de mettre à jour la configuration de l'instance avant de relancer l'importation.
+Le processus de préparation CSV détecte plusieurs types de problèmes : champs requis manquants, valeurs numériques invalides, établissements absents de votre registre et indicateurs sans correspondance. Pour chaque catégorie, le résumé indique combien de lignes ont été affectées et fournit des exemples d'entrées. Si trop de lignes sont écartées, envisagez de corriger les données sources ou de mettre à jour la configuration de l'instance avant de relancer l'importation.
+
+Pour les importations DHIS2, les erreurs par paire sont enregistrées dans le registre des importations avec une classification. Les erreurs de configuration (par exemple un identifiant d'indicateur introuvable dans DHIS2) sont marquées comme permanentes et échoueront à nouveau jusqu'à ce que la configuration soit corrigée. Les erreurs serveur (comme les délais d'attente) sont marquées comme transitoires et peuvent réussir lors d'une nouvelle tentative ultérieure.
 
 ## Gérer l'historique des importations
 
-Chaque importation réussie crée une nouvelle version du jeu de données. Cliquez sur **Voir les importations précédentes** pour consulter toutes les versions avec leurs dates et le nombre de lignes. Pour les importations DHIS2 qui ont utilisé la stratégie de suppression ciblée puis insertion, le tableau d'historique affiche **Lignes supprimées** au lieu de **Lignes mises à jour**, afin de refléter que les valeurs précédentes dans le périmètre récupéré ont été supprimées avant l'insertion des nouvelles. Vous pouvez également supprimer des données si nécessaire - cette action est irréversible et réservée aux administrateurs globaux.
+Chaque importation réussie crée une nouvelle version du jeu de données. Cliquez sur **Voir les importations précédentes** pour consulter toutes les versions avec leurs dates et le nombre de lignes. Vous pouvez également supprimer des données si nécessaire - cette action est irréversible et réservée aux administrateurs globaux.
 
 ## Supprimer des données ICEH
 
