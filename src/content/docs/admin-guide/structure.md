@@ -59,9 +59,9 @@ After a successful integration, if any previously uploaded GeoJSON map boundarie
 
 ### DHIS2 import
 
-DHIS2 import is available for HMIS facilities. Connect with your DHIS2 credentials, then select which org unit levels to import. FASTR maps DHIS2 levels to admin area levels. HFA facilities can only be imported from CSV.
+DHIS2 import is available for HMIS facilities. The import uses the instance's stored DHIS2 connection - the same connection managed from the **DHIS2 credentials** button in the Data section header. If no stored connection exists, set one up there before starting a DHIS2 structure import. Once a stored connection is confirmed, select which org unit levels to import. FASTR maps DHIS2 levels to admin area levels. HFA facilities can only be imported from CSV.
 
-Note that DHIS2 credentials are stored securely on the server — once saved, the password is not sent back to the browser. If you return to an in-progress import, you will see that credentials were previously provided but will need to re-enter the password to change them.
+Note that DHIS2 credentials are stored securely on the server — once saved, the password is not sent back to the browser.
 
 ## Managing existing facilities
 
@@ -102,7 +102,7 @@ Unmapped features in the upload wizard are kept in the file and can be mapped la
 
 ### Uploading a DHIS2 GeoJSON map
 
-If your boundaries are stored in DHIS2, the GeoJSON upload wizard also accepts a DHIS2 connection. After selecting your DHIS2 server and level, FASTR fetches lightweight org-unit metadata (names and codes) to let you build the mapping without downloading the full polygon dataset. The full geometry is only downloaded when you confirm and save, which can take up to several minutes for large countries.
+If your boundaries are stored in DHIS2, the GeoJSON upload wizard also accepts a DHIS2 connection. The wizard checks whether a stored DHIS2 connection exists for the instance and uses it by default. If you need to connect to a different DHIS2 server for this map, you can enter alternative connection details — they are used only for this session and are not saved as the instance's stored connection. After selecting your DHIS2 server and level, FASTR fetches lightweight org-unit metadata (names and codes) to let you build the mapping without downloading the full polygon dataset. The full geometry is only downloaded when you confirm and save, which can take up to several minutes for large countries.
 
 After saving, FASTR reports how many boundaries were stored, how many matched an admin area, and how many were left unmatched (shown as a warning count). Unmatched boundaries can be mapped later using **Edit mappings**.
 

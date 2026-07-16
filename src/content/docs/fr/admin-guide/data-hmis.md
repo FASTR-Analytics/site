@@ -47,7 +47,7 @@ Cliquez sur **Nouvelle importation** pour ouvrir l'assistant d'importation. L'as
 
 2. **Indicateurs.** Sélectionnez les indicateurs bruts à importer dans le tableau de tous les indicateurs configurés dans votre instance.
 
-3. **Heure.** Choisissez quand l'importation s'exécute : **Maintenant** la démarre immédiatement (ou la met en file d'attente si une autre importation est active), **Une fois, à une heure donnée** planifie une exécution ponctuelle à une date et une heure précises, ou **Récurrente** configure un calendrier hebdomadaire ou bihebdomadaire un jour et une heure choisis dans un fuseau horaire choisi.
+3. **Heure.** Choisissez quand l'importation s'exécute : **Maintenant** la démarre immédiatement (ou la met en file d'attente si une autre importation est active), **Une fois, à une heure donnée** planifie une exécution ponctuelle à une date et une heure précises dans un fuseau horaire choisi, ou **Récurrente** configure un calendrier hebdomadaire ou bihebdomadaire un jour et une heure choisis dans un fuseau horaire choisi.
 
 4. **Configuration.** Pour les exécutions immédiates ou ponctuelles, sélectionnez la plage de périodes à importer. Pour les exécutions récurrentes, définissez le nombre de mois en arrière à partir du mois en cours à inclure à chaque déclenchement.
 
@@ -65,15 +65,15 @@ L'onglet En cours affiche l'importation en cours (le cas échéant) avec une bar
 
 ### Onglet À venir
 
-L'onglet À venir liste les importations planifiées - aussi bien les calendriers récurrents que les exécutions ponctuelles en attente. Pour chaque planification, vous pouvez cliquer sur **Modifier** pour ouvrir l'assistant pré-rempli avec ses paramètres, ou sur **Supprimer** pour la retirer. Un calendrier récurrent qui a été refusé, manqué, ou dont la dernière exécution a échoué est mis en évidence en rouge.
+L'onglet À venir liste les importations planifiées - aussi bien les calendriers récurrents que les exécutions ponctuelles en attente. Pour chaque planification, vous pouvez cliquer sur **Modifier** pour ouvrir l'assistant pré-rempli avec ses paramètres, ou sur **Supprimer** pour la retirer. Un calendrier récurrent qui a été refusé, manqué, ou dont la dernière exécution a échoué est mis en évidence en rouge, avec le détail de l'erreur affiché sous le statut.
 
 ### Onglet Historique
 
-L'onglet Historique affiche toutes les exécutions terminées, annulées et en erreur avec leur heure de démarrage, qui les a déclenchées, la sélection (indicateurs et plage de périodes), le nombre de paires par résultat et le statut final.
+L'onglet Historique affiche toutes les exécutions terminées, annulées et en erreur avec leur heure de démarrage, qui les a déclenchées, la sélection (indicateurs et plage de périodes), le nombre de paires par résultat et le statut final. Les comptages de paires en échec sont mis en évidence en rouge. Cliquez sur une ligne pour ouvrir la vue de détail de l'exécution, qui affiche le résumé complet, les indicateurs introuvables dans DHIS2, les échecs de récupération par paire avec le type et le détail de l'erreur, et les divergences de vérification d'ombre. Depuis la vue de détail, cliquez sur **Réessayer les paires en échec** pour ouvrir l'assistant pré-configuré pour réimporter exactement les paires en échec.
 
 ### Gérer la connexion DHIS2
 
-Cliquez sur **Gérer la connexion** pour ouvrir une boîte de dialogue permettant de mettre à jour ou de supprimer les identifiants DHIS2 enregistrés sans passer par l'assistant complet. Les identifiants sont chiffrés sur le serveur. Une fois enregistré, le mot de passe n'est pas renvoyé au navigateur.
+Cliquez sur **Gérer la connexion** dans la vue des importations DHIS2, ou sur **Identifiants DHIS2** dans l'en-tête de la section Données, pour ouvrir une boîte de dialogue permettant de mettre à jour ou de supprimer les identifiants DHIS2 enregistrés. Les identifiants sont chiffrés sur le serveur. Une fois enregistré, le mot de passe n'est pas renvoyé au navigateur. La connexion enregistrée est partagée par tous les flux DHIS2 de l'instance — les mêmes identifiants sont utilisés par le gestionnaire d'indicateurs, l'assistant GeoJSON et l'importation de structure.
 
 ### Planification et protection des exécutions sans surveillance
 

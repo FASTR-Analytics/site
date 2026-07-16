@@ -13,7 +13,7 @@ Les données HMIS proviennent généralement de DHIS2, où les éléments de don
 
 ### Indicateurs DHIS2 bruts
 
-Les indicateurs bruts sont les identifiants techniques issus de DHIS2. Pour les importer, cliquez sur **Importer un indicateur DHIS2**, saisissez vos identifiants de connexion et sélectionnez les éléments de données à importer. FASTR crée un indicateur brut pour chacun d'eux à partir de l'identifiant DHIS2 et du nom d'affichage.
+Les indicateurs bruts sont les identifiants techniques issus de DHIS2. Pour les importer, cliquez sur **Importer un indicateur DHIS2**. FASTR utilise la connexion DHIS2 enregistrée de l'instance pour rechercher les éléments de données — si une connexion enregistrée existe, la recherche s'ouvre immédiatement. Sinon, vous pouvez saisir des identifiants de connexion pour cette session uniquement. Sélectionnez les éléments de données à importer et FASTR crée un indicateur brut pour chacun à partir de l'identifiant DHIS2 et du nom d'affichage. Vous pouvez également changer de connexion en cours de session à l'aide du bouton **Modifier la connexion** dans la vue de recherche.
 
 Lors de la création d'un identifiant d'indicateur brut ou commun, l'identifiant ne doit pas contenir de virgules, de points-virgules ou de deux-points, et doit comporter au maximum 128 caractères. Une fois créés, les identifiants d'indicateurs ne peuvent pas être modifiés — les renommer briserait les références aux données existantes.
 

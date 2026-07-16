@@ -13,7 +13,7 @@ HMIS data typically comes from DHIS2, where data elements have technical identif
 
 ### Raw DHIS2 indicators
 
-Raw indicators are the technical identifiers from DHIS2. To import them, click **Import DHIS2 indicator**, enter your credentials, and select which data elements to bring in. FASTR creates a raw indicator for each using the DHIS2 ID and display name.
+Raw indicators are the technical identifiers from DHIS2. To import them, click **Import DHIS2 indicator**. FASTR uses the instance's stored DHIS2 connection to search for data elements — if a stored connection exists, the search opens immediately. If not, you can enter connection details for this session only. Select which data elements to bring in, and FASTR creates a raw indicator for each using the DHIS2 ID and display name. You can also change the connection mid-session using **Change connection** in the search view.
 
 When creating a new raw or common indicator ID, the ID must not contain commas, semicolons, or colons, and must be at most 128 characters. Once created, indicator IDs cannot be changed — renaming would break existing data references.
 
