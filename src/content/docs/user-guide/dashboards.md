@@ -14,9 +14,7 @@ Open your project and go to the **Dashboards** section. Click **Create dashboard
 
 The dashboard opens empty. You build it up by adding items, arranging them, and then deciding whether to keep it private or publish it.
 
-:::caution[Screenshot needed]
-The "Create dashboard" modal showing the Title and URL slug fields.
-:::
+![Creating a Dashboard](/images/creating-a-dashboard-en.png)
 
 ## Adding items
 <!-- help#dash-add-items -->
@@ -25,9 +23,7 @@ Each item on a dashboard is a card showing one of your saved visualizations. Cli
 
 If the visualization you pick is split into replicants - separate variants of the same chart, one per region or facility, for example - FASTR asks how you want to add it. You can add just the **selected replicant** as a single card, or add **all replicants as a group** so every variant travels together as one unit.
 
-:::caution[Screenshot needed]
-The add-item flow showing the choice between a single replicant and all replicants as a group.
-:::
+![Adding Items](/images/adding-items-en.png)
 
 ## Replicant groups
 
@@ -43,9 +39,7 @@ Select the group to open its editor on the left, where you can adjust how it beh
 
 On a published dashboard, viewers get a dropdown on the group card to switch between members themselves - handy for letting a regional officer jump straight to their own area.
 
-:::caution[Screenshot needed]
-A replicant group card showing the stacked appearance and member count, with the group editor panel open.
-:::
+![Replicant Groups](/images/replicant-groups-en.png)
 
 ## Renaming items and groups
 
@@ -64,9 +58,7 @@ The same panel offers two layouts for the published view. **Grid** arranges ever
 
 When you're ready to share, use **Copy link** to grab the public URL, or **Preview** to open the published dashboard in a new tab and check it the way a viewer will see it.
 
-:::caution[Screenshot needed]
-Dashboard settings showing the Require authentication toggle and the Grid / Sidebar layout choice.
-:::
+![Dashboard Settings](/images/dashboard-settings-en.png)
 
 ## Common issues
 
