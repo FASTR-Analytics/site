@@ -39,7 +39,7 @@ Sélectionnez le groupe pour ouvrir son éditeur sur la gauche, où vous pouvez 
 
 Sur un tableau de bord publié, les utilisateurs disposent d'un menu déroulant sur la carte du groupe pour basculer eux-mêmes entre les membres - pratique pour permettre à un responsable régional d'accéder directement à sa propre zone.
 
-![Replicant Groups FR](/images/replicant-groups-fr.png)
+![Replicant Group FR](/images/replicant-group-fr.png)
 
 ## Renommer des éléments et des groupes
 

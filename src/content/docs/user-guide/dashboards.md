@@ -39,7 +39,7 @@ Select the group to open its editor on the left, where you can adjust how it beh
 
 On a published dashboard, viewers get a dropdown on the group card to switch between members themselves - handy for letting a regional officer jump straight to their own area.
 
-![Replicant Groups](/images/replicant-groups-en.png)
+![Replicant Group](/images/replicant-group-en.png)
 
 ## Renaming items and groups
 
