@@ -14,9 +14,7 @@ Ouvrez votre projet et accédez à la section **Tableaux de bord**. Cliquez sur 
 
 Le tableau de bord s'ouvre vide. Vous le construisez en ajoutant des éléments, en les agençant, puis en décidant de le garder privé ou de le publier.
 
-:::caution[Capture d'écran à ajouter]
-La fenêtre « Créer un tableau de bord » montrant les champs Titre et identifiant d'URL.
-:::
+![Creating a Dashboard FR](/images/creating-a-dashboard-fr.png)
 
 ## Ajouter des éléments
 <!-- help#dash-add-items -->
@@ -25,9 +23,7 @@ Chaque élément d'un tableau de bord est une carte affichant l'une de vos visua
 
 Si la visualisation que vous choisissez est répartie en réplicants - des variantes distinctes du même graphique, une par région ou par établissement, par exemple - FASTR vous demande comment vous souhaitez l'ajouter. Vous pouvez ajouter uniquement le **réplicant sélectionné** sous forme de carte unique, ou ajouter **tous les réplicants en tant que groupe**, de sorte que toutes les variantes restent ensemble comme une seule unité.
 
-:::caution[Capture d'écran à ajouter]
-Le processus d'ajout d'élément montrant le choix entre un réplicant unique et tous les réplicants en tant que groupe.
-:::
+![Adding Items FR](/images/adding-items-fr.png)
 
 ## Groupes de réplicants
 
@@ -43,9 +39,7 @@ Sélectionnez le groupe pour ouvrir son éditeur sur la gauche, où vous pouvez 
 
 Sur un tableau de bord publié, les utilisateurs disposent d'un menu déroulant sur la carte du groupe pour basculer eux-mêmes entre les membres - pratique pour permettre à un responsable régional d'accéder directement à sa propre zone.
 
-:::caution[Capture d'écran à ajouter]
-Une carte de groupe de réplicants montrant l'apparence empilée et le nombre de membres, avec le panneau d'édition du groupe ouvert.
-:::
+![Replicant Groups FR](/images/replicant-groups-fr.png)
 
 ## Renommer des éléments et des groupes
 
@@ -64,9 +58,7 @@ Le même panneau propose deux mises en page pour la vue publiée. **Grille** dis
 
 Lorsque vous êtes prêt à partager, utilisez **Copier le lien** pour récupérer l'URL publique, ou **Aperçu** pour ouvrir le tableau de bord publié dans un nouvel onglet et le vérifier tel qu'un utilisateur le verra.
 
-:::caution[Capture d'écran à ajouter]
-Les paramètres du tableau de bord montrant le commutateur Exiger l'authentification et le choix de mise en page Grille / Barre latérale.
-:::
+![Dashboard Settings FR](/images/dashboard-settings-fr.png)
 
 ## Problèmes courants
 
