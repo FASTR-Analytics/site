@@ -56,7 +56,7 @@ Click on any project to open the permission editor for that user-project combina
 
 - **Analytical Products** controls access to visualizations, reports, and slide decks. "View" permissions let users see existing content; "Configure" permissions let them create and modify.
 - **Data & Modules** controls access to underlying data and analytical processing. Users who need to understand methodology might need "View metrics" or "View script code" but not "Configure modules".
-- **Project Administration** covers settings, user management within the project, logs, and backups. Reserve these for project leads or technical staff.
+- **Project Administration** covers settings, user management within the project, logs, and backups.
 
 ![Project Users Permissions](/images/user-permissions-project-en.png)
 
