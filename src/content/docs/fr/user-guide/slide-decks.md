@@ -39,6 +39,8 @@ Si une visualisation ou une image ne peut pas être rendue - par exemple en rais
 
 Cliquez sur **Présenter** dans l'en-tête de la liste des diapositives pour ouvrir le présentateur en plein écran. Le présentateur affiche une diapositive à la fois et précharge les diapositives voisines afin que la navigation soit instantanée. Utilisez les touches fléchées ou les commandes à l'écran pour passer d'une diapositive à l'autre. Appuyez sur **Échap** ou cliquez sur le bouton de fermeture pour quitter. Cliquez sur l'icône d'agrandissement pour passer en mode plein écran réel ; appuyer sur **Échap** en plein écran quitte entièrement la présentation.
 
+Lorsque des collaborateurs ajoutent, suppriment ou réorganisent des diapositives pendant que le présentateur est ouvert, le présentateur prend en compte ces modifications automatiquement. La liste des diapositives et le compteur de pages se mettent à jour pour refléter la présentation actuelle, et les rendus mis en cache sont actualisés dès qu'un collaborateur modifie une diapositive déjà chargée.
+
 ## Style de la présentation
 
 Cliquez sur **Paramètres** dans l'en-tête de la présentation pour configurer le style qui s'applique à toutes les diapositives. Les options incluent le thème de couleurs, la police de caractères, le modèle de mise en page et le traitement de la couverture. Vous pouvez également configurer quels logos apparaissent sur les diapositives de couverture, les en-têtes et les pieds de page.

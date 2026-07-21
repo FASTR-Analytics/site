@@ -39,6 +39,8 @@ If a visualization or image cannot be rendered - for example because of a data e
 
 Click **Present** in the slide list header to open the fullscreen presenter. The presenter shows one slide at a time and preloads neighbouring slides so navigation is instant. Use the arrow keys or the on-screen controls to move between slides. Press **Escape** or click the close button to exit. Click the maximize icon to enter true fullscreen mode; pressing **Escape** while in fullscreen exits the presentation entirely.
 
+When collaborators add, remove, or reorder slides while the presenter is open, the presenter picks up those changes automatically. The slide list and page counter update to reflect the current deck, and cached renders are refreshed whenever a peer edits a slide you have already loaded.
+
 ## Deck styling
 
 Click **Settings** in the deck header to configure styling that applies across all slides. Options include color theme, font family, layout template, and cover treatment. You can also configure which logos appear on cover slides, headers, and footers.
