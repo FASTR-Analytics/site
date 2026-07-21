@@ -25,6 +25,8 @@ Ouvrez votre projet et cliquez sur **Visualisations** dans la barre de navigatio
 
 Certaines visualisations apparaissent avec un badge « par défaut » - elles sont créées automatiquement par les modules et ne peuvent pas être modifiées directement. Si vous souhaitez modifier une visualisation par défaut, l'ouvrir créera une copie modifiable que vous pourrez personnaliser et enregistrer comme la vôtre.
 
+Lorsqu'un autre collaborateur modifie actuellement une visualisation, une petite icône d'avatar colorée apparaît sur sa carte dans la liste. Cela vous permet de voir qui travaille sur quoi avant d'ouvrir une carte.
+
 ![Trouver et parcourir les visualisations](/images/finding-and-browsing-viz-fr.png)
 
 ## Créer une visualisation
@@ -56,6 +58,8 @@ Certains types de graphiques ont des exigences spécifiques en matière de donn�
 
 Une fois que vous avez créé ou ouvert une visualisation, vous vous trouvez dans l'éditeur. Le panneau de gauche contient toutes les options de configuration, organisées en trois onglets. La partie droite affiche un aperçu en direct qui se met à jour au fur et à mesure de vos modifications - vous pouvez voir immédiatement comment vos ajustements affectent le résultat.
 
+Lorsque la collaboration en direct est active, chaque onglet du panneau affiche de petites icônes d'avatar pour les collaborateurs qui se trouvent actuellement sur cet onglet, afin que vous puissiez voir qui travaille sur les paramètres Données, Présentation ou Texte en même temps que vous. Un indicateur **En direct** apparaît dans l'en-tête, accompagné de boutons d'annulation et de rétablissement permettant d'inverser vos propres modifications sans affecter celles de vos collègues.
+
 ![Éditeur de visualisation](/images/viz-editor-fr.png)
 
 ### Onglet Données
@@ -86,6 +90,8 @@ Ces paramètres ne modifient pas les données affichées - seulement la manière
 L'onglet Texte ajoute du contexte à votre visualisation à travers trois champs de texte. Le **titre** apparaît au-dessus de la visualisation comme titre principal. Le **sous-titre** se place sous le titre et est utile pour un contexte supplémentaire - comme la période couverte ou la source des données. La **note de bas de page** apparaît en bas et sert généralement à des remarques méthodologiques ou à des mises en garde sur les données.
 
 Dans les champs titre, sous-titre et note de bas de page, vous pouvez utiliser des mots-clés spéciaux qui sont remplacés dynamiquement lorsque la visualisation s'affiche. Utilisez `DATE_RANGE`, `PLAGE_DE_DATES` ou `INTERVALO_DE_DATAS` pour insérer la plage de dates des données affichées dans la figure (cela ne fonctionne actuellement que pour les visualisations chronologiques). Utilisez `REPLICANT` pour insérer le nom complet du réplicant, comme un indicateur ou une zone administrative (cela ne fonctionne que si un désagrégateur est défini pour différents graphiques). Ces mots doivent être écrits exactement comme indiqué, en majuscules et avec des traits de soulignement.
+
+Lorsque la collaboration en direct est active, les champs de légende utilisent un éditeur de texte collaboratif afin que les curseurs des collaborateurs distants apparaissent pendant que vous tapez, de la même façon que dans les champs de texte de l'éditeur de diapositives.
 
 De bons titres rendent les visualisations explicites en elles-mêmes. Une personne consultant le graphique dans une présentation ne devrait pas avoir besoin de lire le texte environnant pour comprendre ce qu'elle regarde.
 

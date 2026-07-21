@@ -25,6 +25,8 @@ Open your project and click **Visualizations** in the left sidebar. The list sho
 
 Some visualizations appear with a "default" badge - these are created automatically by modules and can't be edited directly. If you want to modify a default visualization, opening it will create an editable copy that you can customize and save as your own.
 
+When another collaborator is currently editing a visualization, a small colored avatar appears on its card in the list. This lets you see who is working on what before you open a card.
+
 ![Finding and browsing visualizations](/images/finding-and-browsing-viz-en.png)
 
 ## Creating a visualization
@@ -56,6 +58,8 @@ Some chart types have specific data requirements. The disruptions chart, for exa
 
 Once you've created or opened a visualization, you're in the editor. The left panel contains all the configuration options, organized into three tabs. The right side shows a live preview that updates as you make changes - you can see immediately how your adjustments affect the output.
 
+When live collaboration is active, each panel tab shows small avatar icons for collaborators currently on that tab, so you can see who is working on Data, Presentation, or Text settings at the same time as you. A **Live** indicator appears in the header along with undo and redo buttons for reversing your own changes without affecting your colleagues' edits.
+
 ![Visualization Editor](/images/viz-editor-en.png)
 
 ### Data tab
@@ -86,6 +90,8 @@ These settings don't change what data is shown - only how it's displayed. If you
 The Text tab adds context to your visualization through three text fields. The **caption** appears above the visualization as the main title. The **sub-caption** sits below the caption and is useful for additional context - like the time period covered or the data source. The **footnote** appears at the bottom and is typically used for methodological notes or data caveats.
 
 In the caption, sub-caption, and footnote fields you can use special placeholder words that are replaced dynamically when the visualization renders. Use `DATE_RANGE`, `PLAGE_DE_DATES`, or `INTERVALO_DE_DATAS` to insert the date range of the data shown in the figure (this currently works only for timeseries visualizations). Use `REPLICANT` to insert the full replicant name, such as an indicator or an admin area (this only works when a disaggregator is set for different charts). These words must be spelled exactly as shown, using capital letters and underscores.
+
+When live collaboration is active, caption fields use a collaborative text editor so remote collaborators' carets appear as you type, the same way they do in the slide editor's text fields.
 
 Good captions make visualizations self-explanatory. Someone looking at the chart in a slide deck shouldn't need to read surrounding text to understand what they're seeing.
 

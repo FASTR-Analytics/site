@@ -45,3 +45,9 @@ La mise à jour des données d'un projet est une tâche administrative. Si vous 
 Les administrateurs peuvent verrouiller un projet pour empêcher toute modification. Un projet verrouillé fonctionne normalement en consultation - vous pouvez parcourir les visualisations, exporter des images et générer des rapports. En revanche, vous ne pouvez pas créer de nouvelles visualisations, modifier celles qui existent, ni changer aucun paramètre.
 
 Le verrouillage est utile lorsque vous avez finalisé une analyse et que vous souhaitez la préserver telle quelle - par exemple, avant de partager les résultats avec des parties prenantes externes ou de l'archiver pour référence ultérieure. Si vous devez apporter des modifications à un projet verrouillé, contactez votre administrateur pour le déverrouiller.
+
+## Collaborer en temps réel
+
+Lorsque plusieurs personnes ont un projet ouvert en même temps, vous pouvez voir qui d'autre est présent. Des curseurs en direct montrent où vos collègues pointent sur les pages des onglets Visualisations, Présentations, Rapports et autres - le curseur de chaque personne apparaît sous la forme d'une flèche colorée avec son nom. Les mêmes indicateurs de présence apparaissent sous forme de petites icônes d'avatar sur les cartes de visualisation, les cartes de présentation et les cartes de rapport, afin que vous puissiez voir d'un coup d'œil qui modifie quoi avant de l'ouvrir.
+
+Si vous perdez votre connexion au serveur de collaboration, une bannière s'affiche en haut de l'écran pour vous en informer. Vos modifications continuent d'être enregistrées normalement ; la bannière disparaît et affiche une brève confirmation « De nouveau en direct » une fois la connexion rétablie.

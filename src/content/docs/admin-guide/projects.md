@@ -69,3 +69,7 @@ Open the source project, go to **Settings**, and click **Copy project**. Enter a
 ## Project AI context
 
 FASTR's AI assistant can interpret charts and suggest insights, but its responses are more useful when it understands the project's context. In **Settings**, you can set a **Project context for AI interpretation** - a description of what this project analyzes or the questions it aims to answer. Changes to the AI context take effect immediately across the project and are visible to all users working in it. A few sentences about the project's purpose can significantly improve the quality of AI-assisted analysis.
+
+## Appearance
+
+Each user can switch between light and dark mode from their profile. Open your profile by clicking your avatar in the top bar, then go to the **Appearance** section and toggle **Dark mode**. The setting is saved per browser and takes effect immediately - all charts, maps, and tables adapt to the selected theme.

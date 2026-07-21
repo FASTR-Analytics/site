@@ -24,6 +24,8 @@ L'éditeur utilise le markdown : vous écrivez du texte brut et le mettez en for
 
 Votre travail est enregistré automatiquement au fur et à mesure que vous tapez. Un indicateur d'état dans l'en-tête montre où en sont les choses - **Enregistrement** pendant qu'une modification est en cours, **Enregistré** avec l'heure du dernier enregistrement une fois celui-ci terminé, et un état d'erreur clair si un enregistrement échoue, afin que vous sachiez vérifier votre connexion plutôt que de perdre votre travail.
 
+Lorsque la collaboration en direct est active, l'indicateur d'état change : il affiche **En direct** avec un point vert pendant que les modifications sont transmises en continu au serveur, **Hors ligne — reconnexion…** avec un point jaune si la connexion est interrompue, et **Non enregistré — nouvel essai…** avec un point rouge si le point de contrôle côté serveur échoue. En mode En direct, l'enregistrement automatique REST est remplacé par le point de contrôle continu de la session, de sorte que l'indicateur ne passe plus par les états Enregistrement/Enregistré.
+
 ## Modes Édition, Divisé et Aperçu
 
 L'en-tête comporte un bouton bascule **Édition / Divisé / Aperçu**. **Édition** affiche l'éditeur markdown avec les outils de rédaction. **Divisé** affiche l'éditeur et l'aperçu rendu côte à côte. **Aperçu** restitue le rapport tel qu'il se présentera une fois terminé - titres, listes, tableaux et figures dynamiques mis en forme. Passez en mode Aperçu pour relire ou pour montrer le résultat à quelqu'un sans que les commandes d'édition ne gênent ; les figures y restent également interactives.
@@ -50,6 +52,20 @@ Comme les figures restent liées à leurs visualisations, un rapport rédigé le
 Si une figure ou une image ne peut pas être chargée lors de l'export, FASTR la remplace par une courte notice à la place de l'élément manquant plutôt que d'interrompre l'export. Le reste du rapport est exporté normalement.
 
 ![Adding Figures and Images FR](/images/adding-figures-and-images-fr.png)
+
+## Collaborer sur un rapport
+
+Lorsque plusieurs personnes ont le même rapport ouvert, vous pouvez voir où travaillent vos collègues. Des curseurs en direct apparaissent à la fois dans le volet éditeur de code et dans l'aperçu rendu, afin que vous sachiez d'un coup d'œil si quelqu'un d'autre modifie la section que vous vous apprêtez à changer. Une petite icône de présence apparaît également sur la carte du rapport dans la vue en liste. Les collaborateurs qui consultent actuellement le même rapport apparaissent sous forme d'icônes d'avatar dans l'en-tête.
+
+L'éditeur est collaboratif : les sélections de texte des collaborateurs distants sont mises en évidence dans leur couleur, et survoler une sélection en surbrillance affiche le nom de la personne. Lorsque l'assistant IA propose une modification de texte que vous acceptez, la modification est rebasée sur les modifications concurrentes effectuées par vos collègues pendant que la proposition était ouverte - si un bloc ne peut pas être appliqué proprement, l'assistant vous indique quelles lignes ont été ignorées.
+
+Lorsqu'un collaborateur a une figure sélectionnée, une bordure de présence colorée apparaît autour de cette figure dans les volets éditeur et aperçu, avec son nom affiché au-dessus. Si l'éditeur de visualisation de la figure est ouvert, la bordure porte un indicateur de modification afin que les autres sachent que la configuration de la figure est en cours de modification.
+
+## Historique des versions
+
+Cliquez sur **Historique** dans l'en-tête du rapport pour ouvrir le panneau d'historique des versions. Les versions sont enregistrées automatiquement à la fin de chaque session d'édition et regroupées par jour sur la gauche. Sélectionnez une version pour voir un diff de ce que cette session a modifié - le texte ajouté est mis en évidence avec la couleur de l'éditeur, le texte supprimé est affiché barré, et survoler une modification indique qui l'a effectuée.
+
+Depuis l'aperçu de la version, vous pouvez également basculer vers une vue **Aperçu** qui restitue l'intégralité du rapport tel qu'il se présentait à ce moment-là. Utilisez **Restaurer** pour réinitialiser le rapport à cette version (votre contenu actuel est d'abord enregistré comme nouvelle version, rien n'est perdu), ou **Restaurer comme copie** pour créer un tout nouveau rapport à partir de l'instantané tout en laissant le rapport actuel intact.
 
 ## Assistance par IA
 

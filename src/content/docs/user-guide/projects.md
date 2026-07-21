@@ -45,3 +45,9 @@ Updating project data is an administrative task. If you see a staleness warning 
 Administrators can lock a project to prevent changes. A locked project works normally for viewing - you can browse visualizations, export images, and generate reports. But you can't create new visualizations, modify existing ones, or change any settings.
 
 Locking is useful when you've finalized an analysis and want to preserve it exactly as-is - for example, before sharing results with external stakeholders or archiving for future reference. If you need to make changes to a locked project, contact your administrator to unlock it.
+
+## Collaborating in real time
+
+When multiple people have a project open at the same time, you can see who else is present. Live cursors show where your colleagues are pointing on the Visualizations, Slide decks, Reports, and other tab pages - each person's cursor appears as a colored arrow with their name. The same presence indicators appear as small avatar icons on visualization cards, slide deck cards, and report cards, so you can see at a glance who is editing what before you open it.
+
+If you lose your connection to the collaboration server, a banner appears at the top of the screen letting you know. Your edits continue to save normally; the banner disappears and shows a brief "Live again" confirmation once the connection is restored.

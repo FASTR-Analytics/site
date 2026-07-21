@@ -24,6 +24,8 @@ The editor uses markdown, so you write plain text and format it with simple mark
 
 Your work saves on its own as you type. A status indicator in the header shows where things stand - **Saving** while a change is in flight, **Saved** with the time of the last save once it lands, and a clear error state if a save ever fails so you know to check your connection rather than lose work.
 
+When live collaboration is active, the save indicator changes: it shows **Live** with a green dot while edits are streaming to the server continuously, **Offline — reconnecting…** with a yellow dot if the connection drops, and **Not saving — retrying…** with a red dot if the server-side checkpoint is failing. In Live mode the REST autosave is replaced by the room's continuous checkpoint, so the indicator no longer cycles through Saving/Saved.
+
 ## Edit and View modes
 
 The header has an **Edit / Split / View** toggle. **Edit** shows the markdown editor with the writing tools. **Split** shows the editor and rendered preview side by side. **View** renders the report the way it will read when finished - formatted headings, lists, tables, and live figures. Switch to View to proofread or to show someone the result without the editing controls in the way; the figures stay interactive there too.
@@ -50,6 +52,20 @@ Because figures stay linked to their visualizations, a report you wrote last qua
 If a figure or image cannot be loaded when you export the report, FASTR replaces it with a short notice in place of the missing item rather than aborting the export. The rest of the report exports normally.
 
 ![Adding Figures and Images](/images/adding-figures-and-images-en.png)
+
+## Collaborating on a report
+
+When multiple people have the same report open, you can see where colleagues are working. Live cursors appear on both the code editor pane and the rendered preview, so you know at a glance whether someone else is editing the section you are about to change. A small presence avatar also appears on the report card in the list view. Collaborators who are currently viewing the same report appear as avatar icons in the header.
+
+The editor is collaborative: remote collaborators' text selections are highlighted in their color, and hovering over a highlighted selection shows the person's name. When the AI assistant proposes a text edit that you accept, the change is rebased over any concurrent edits your colleagues made while the proposal was open - if a hunk could not be applied cleanly, the assistant lets you know which lines were skipped.
+
+When a collaborator has a figure selected, a colored presence border appears around that figure in both the editor and preview panes, with their name shown above it. If they have the figure's visualization editor open, the border is labeled with an edit indicator so others know the figure configuration is being actively changed.
+
+## Version history
+
+Click **History** in the report header to open the version history panel. Versions are saved automatically at the end of each editing session and grouped by day on the left side. Select any version to see a diff of what that session changed - added text is highlighted in the editor's color, removed text is shown struck through, and hovering over a change shows who made it.
+
+From the version preview you can also switch to a **Preview** view that renders the full report snapshot as it looked at that point. Use **Restore** to reset the report to that version (your current content is saved as a new version first, so nothing is lost), or **Restore as copy** to create a brand-new report from the snapshot while leaving the current one untouched.
 
 ## AI assistance
 

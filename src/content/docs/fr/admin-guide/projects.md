@@ -69,3 +69,7 @@ Ouvrez le projet source, allez dans les **Paramètres** et cliquez sur **Copier 
 ## Contexte IA du projet
 
 L'assistant IA de FASTR peut interpréter les graphiques et suggérer des analyses, mais ses réponses sont plus utiles lorsqu'il comprend le contexte du projet. Dans les **Paramètres**, vous pouvez définir un **Contexte du projet pour l'interprétation par l'IA** - une description de ce que ce projet analyse ou des questions auxquelles il cherche à répondre. Les modifications apportées au contexte IA prennent effet immédiatement sur l'ensemble du projet et sont visibles par tous les utilisateurs qui y travaillent. Quelques phrases sur l'objectif du projet peuvent améliorer considérablement la qualité de l'analyse assistée par l'IA.
+
+## Apparence
+
+Chaque utilisateur peut basculer entre le mode clair et le mode sombre depuis son profil. Ouvrez votre profil en cliquant sur votre avatar dans la barre supérieure, puis accédez à la section **Apparence** et activez **Mode sombre**. Le paramètre est enregistré par navigateur et prend effet immédiatement - tous les graphiques, cartes et tableaux s'adaptent au thème sélectionné.
