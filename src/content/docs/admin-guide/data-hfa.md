@@ -22,15 +22,17 @@ Each HFA import requires two files:
 ## Import workflow
 <!-- help#hfa-import -->
 
-Navigate to the **Data** section and select **HFA Data**. Click **Start new import** to begin a four-step process.
+Navigate to the **Data** section and select **HFA Data**. Click **Start new import** to begin a five-step process.
 
 1. **Upload files.** Select or upload both your CSV data file and XLSForm questionnaire file.
 
-2. **Configure mapping.** Specify which CSV column contains facility identifiers. Then select the time point this data belongs to from the list of time points defined in your instance.
+2. **Configure mapping.** Specify which CSV column contains facility identifiers and select the time point this data belongs to. You can also add optional row filter conditions here. Each condition specifies a column, an operator (equals or does not equal), and a value. Rows that fail any condition are dropped before duplicate handling — for example, to keep only surveyed facilities, you might require a consent column to equal 1. Values are compared as exact text.
 
-3. **Stage the data.** Click **Start staging** to validate facility IDs, match columns to XLSForm definitions, and expand "select multiple" questions into individual variables. The staging summary shows total rows, valid rows, rows skipped for missing estimates, and rows skipped because their disaggregation value was not recognized. If any rows are skipped for an unrecognized disaggregation, sample values are shown to help you identify the mismatch.
+3. **Review duplicates.** If any facilities appear more than once after filtering, this step lets you choose which row to keep for each. A quick-set control lets you apply "first row" or "last row" across all duplicates at once; you can then override individual facilities. Row numbers count data rows from 1 in file order (excluding the header). Click **Save** to confirm your duplicate-handling choices before proceeding.
 
-4. **Review and integrate.** Check the summary statistics and click **Integrate and finalize** to complete. If any rows were skipped due to an unrecognized disaggregation, the completion screen also reports this count and sample values.
+4. **Stage the data.** Click **Start staging** to validate facility IDs, match columns to XLSForm definitions, and expand "select multiple" questions into individual variables. The staging summary shows total rows staged.
+
+5. **Review and integrate.** Check the summary statistics — rows in file, valid rows, total values to import, invalid rows by category, duplicate rows with the strategy applied, rows removed by filter, and dictionary statistics. Click **Integrate and finalize** to complete.
 
 ![HFA Upload](/images/hfa-upload-en.png)
 
@@ -47,7 +49,7 @@ After importing, use the **HFA Time Points** page to edit labels, adjust dates, 
 
 ## Validation details
 
-Rows can be dropped during staging for several reasons: missing facility IDs, facility IDs not in your registry, duplicate facilities within a single import, or a disaggregation value not recognized by the platform. The staging summary shows each category separately. If you see many "Facility Not Found" entries, check whether your facility registry needs updating. If you see rows skipped for an unrecognized disaggregation, check that the disaggregation values in your CSV match the platform's expected values.
+Rows can be dropped during staging for several reasons: missing facility IDs, facility IDs not in your registry, duplicate facilities within a single import (handled by the strategy you chose in step 3), or rows excluded by the filter conditions you set in step 2. The staging summary shows each category separately. If you see many "Facility Not Found" entries, check whether your facility registry needs updating.
 
 ## XLSForm handling
 
