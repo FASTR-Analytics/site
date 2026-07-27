@@ -14,9 +14,7 @@ Lorsque vous vous connectez à FASTR, vous voyez la liste des projets auxquels v
 
 Le nom du projet apparaît en haut de l'écran, accompagné d'un indicateur d'état. Cet indicateur signale si les modules analytiques sont à jour ou si un traitement est en cours. Une coche verte indique que tout est à jour. Un indicateur qui tourne signifie que des modules sont en cours d'exécution. Si vous voyez un symbole d'avertissement ou d'erreur, c'est qu'un module nécessite votre attention - généralement parce que les données en amont ont changé ou qu'un problème de configuration est survenu.
 
-:::caution[Capture d'écran à ajouter]
-Vue du projet montrant la barre de navigation et l'en-tête du projet avec l'indicateur d'état.
-:::
+![Open a Project FR](/images/open-a-project-fr.png)
 
 ## Comprendre la fenêtre de données
 <!-- help#uproj-data-window -->
@@ -27,9 +25,7 @@ La fenêtre de données comporte généralement trois contraintes. La **période
 
 Pour consulter la fenêtre de données de votre projet, ouvrez l'onglet **Données** dans la navigation. Il affiche la date du dernier export de données dans le projet et résume les paramètres actuels - plage temporelle, zones administratives incluses, types d'établissements et indicateurs sélectionnés.
 
-:::caution[Capture d'écran à ajouter]
-Onglet Données affichant le résumé de la fenêtre de données HMIS, avec la période, les zones administratives et la liste des indicateurs.
-:::
+![Understanding the Data Window FR](/images/understanding-the-data-window-fr.png)
 
 Pourquoi est-ce important ? Lorsque vous créez des visualisations, vous ne pouvez travailler qu'avec les données qui se trouvent dans votre fenêtre. Si vous filtrez un graphique sur mars 2021 mais que la période de votre projet commence en janvier 2022, aucune donnée ne s'affichera. Si la visualisation d'un collègue montre des résultats différents des vôtres, vérifiez si vos projets ont des fenêtres de données différentes - c'est souvent l'explication.
 

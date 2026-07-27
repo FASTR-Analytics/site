@@ -19,9 +19,7 @@ Before diving in, make sure you can sign in to your organization's FASTR instanc
 
 You'll also need access to at least one project. Projects are workspaces where data, modules, and visualizations come together. If you can sign in but don't see any projects on your landing page, ask your administrator to add you to the relevant project.
 
-:::caution[Screenshot needed]
-Landing page showing the project list with example projects.
-:::
+![User Guide Projects ](/images/user-guide-projects-en.png)
 
 ## How FASTR works
 

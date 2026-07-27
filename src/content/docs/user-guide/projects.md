@@ -14,9 +14,7 @@ When you sign in to FASTR, you'll see a list of projects you have access to. The
 
 The project name appears at the top of the screen alongside a status indicator. This indicator shows whether analytical modules are up to date or if something is currently processing. A green checkmark means everything is current. A spinning indicator means modules are running. If you see a warning or error symbol, some module needs attention - usually because upstream data changed or a configuration issue occurred.
 
-:::caution[Screenshot needed]
-Project view showing the navigation sidebar and project header with status indicator.
-:::
+![Open a Project](/images/open-a-project-en.png)
 
 ## Understanding the data window
 <!-- help#uproj-data-window -->
@@ -27,9 +25,7 @@ The data window typically includes three constraints. The **time period** specif
 
 To see your project's data window, look at the **Data** tab in the navigation. It shows when data was last exported into the project and summarizes the current settings - time range, included admin areas, facility types, and selected indicators.
 
-:::caution[Screenshot needed]
-Data tab showing HMIS data window summary with time period, admin areas, and indicator list.
-:::
+![Understanding the Data Window](/images/understanding-the-data-window-en.png)
 
 Why does this matter? When you create visualizations, you can only work with data inside your window. If you filter a chart to March 2021 but your project's time period starts in January 2022, you'll see no data. If a colleague's visualization shows different results than yours, check whether your projects have different data windows - that's often the explanation.
 

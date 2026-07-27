@@ -19,9 +19,7 @@ Avant de commencer, assurez-vous de pouvoir vous connecter à l'instance FASTR d
 
 Vous aurez également besoin d'accéder à au moins un projet. Les projets sont des espaces de travail où se rejoignent les données, les modules et les visualisations. Si vous parvenez à vous connecter mais qu'aucun projet n'apparaît sur votre page d'accueil, demandez à votre administrateur de vous ajouter au projet concerné.
 
-:::caution[Capture d'écran à ajouter]
-Page d'accueil affichant la liste des projets avec des projets d'exemple.
-:::
+![User Guide Projects FR ](/images/user-guide-projects-fr.png)
 
 ## Comment fonctionne FASTR
 
