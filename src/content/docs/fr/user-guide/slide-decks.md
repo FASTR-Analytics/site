@@ -45,6 +45,8 @@ Lorsque des collaborateurs ajoutent, suppriment ou réorganisent des diapositive
 
 Cliquez sur **Paramètres** dans l'en-tête de la présentation pour configurer le style qui s'applique à toutes les diapositives. Les options incluent le thème de couleurs, la police de caractères, le modèle de mise en page et le traitement de la couverture. Vous pouvez également configurer quels logos apparaissent sur les diapositives de couverture, les en-têtes et les pieds de page.
 
+Pour choisir un thème de couleurs, cliquez sur **Plus de thèmes…** à côté du libellé du thème de couleurs pour ouvrir la fenêtre de sélection de thème. La fenêtre affiche tous les thèmes de couleurs standard et spéciaux sous forme d'aperçus côte à côte rendus sur une diapositive de contenu type, afin que vous puissiez les comparer avant de choisir. Sélectionnez une carte de thème pour l'appliquer et fermer la fenêtre. Une carte **Personnalisé** vous permet de saisir un code couleur hexadécimal pour dériver un thème complet à partir de la couleur de marque de votre organisation.
+
 ![Deck Styling FR](/images/deck-styling-fr.png)
 
 ## Collaborer sur une présentation
@@ -66,7 +68,7 @@ Utilisez **Restaurer** pour réinitialiser la présentation à cette version (vo
 
 Cliquez sur **Télécharger** pour exporter votre présentation. **PDF natif** produit un fichier vectoriel de haute qualité où le texte reste net à n'importe quel niveau de zoom. **PPTX avec figures matricielles** crée un fichier PowerPoint où les visualisations sont intégrées sous forme d'images - utile si les destinataires doivent apporter des modifications.
 
-Vous pouvez aussi partager des présentations directement par e-mail. Cliquez sur **Partager**, sélectionnez les destinataires dans la liste des utilisateurs de votre instance ou ajoutez des adresses e-mail, et incluez éventuellement un message. FASTR génère un PDF et l'envoie en pièce jointe.
+Vous pouvez aussi partager des présentations directement par e-mail. Cliquez sur **Partager**, sélectionnez les destinataires dans la liste des utilisateurs de votre instance ou ajoutez des adresses e-mail, et incluez éventuellement un message. FASTR valide les adresses e-mail avant de générer le PDF, de sorte que les adresses invalides sont signalées immédiatement plutôt qu'après un export long. FASTR génère un PDF et l'envoie en pièce jointe.
 
 ![Exporting and Sharing FR](/images/exporting-and-sharing-fr.png)
 

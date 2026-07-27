@@ -79,6 +79,8 @@ If a visualization looks wrong or shows unexpected results, the Data tab is usua
 
 The Presentation tab adjusts how the visualization looks. For charts, you can change colors, show or hide data labels, and configure axis ranges. For maps, you can adjust the color scale and boundary styling. Tables have options for column widths and number formatting.
 
+For HFA survey metrics whose results are at the facility level, tables have an additional option: **Show sample sizes in column headers**. When enabled, each column header shows the number of surveyed facilities that contributed to its values — for example, "Northern (n=55)". This option only appears for metrics that carry facility-level survey data.
+
 For scatter-style charts using the **points** display, you can enable **Add connectors** to draw lines between points in series order. This is useful when you want to show both individual data positions and the trajectory connecting them.
 
 These settings don't change what data is shown - only how it's displayed. If you want a cleaner look for a presentation, or need to match your organization's color scheme, this is where you'd make those adjustments.

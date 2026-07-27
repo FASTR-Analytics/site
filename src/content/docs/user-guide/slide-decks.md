@@ -45,6 +45,8 @@ When collaborators add, remove, or reorder slides while the presenter is open, t
 
 Click **Settings** in the deck header to configure styling that applies across all slides. Options include color theme, font family, layout template, and cover treatment. You can also configure which logos appear on cover slides, headers, and footers.
 
+When choosing a color theme, click **More themes…** next to the color theme label to open the theme picker modal. The modal displays all available standard and special color themes as side-by-side previews rendered on a sample content slide, so you can compare them before committing. Select a theme card to apply it and close the modal. A **Custom** card lets you enter a hex color code to derive a full theme from your organization's brand color.
+
 ![Deck Styling](/images/deck-styling-en.png)
 
 ## Collaborating on a slide deck
@@ -66,7 +68,7 @@ Use **Restore** to reset the deck to that version (your current content is saved
 
 Click **Download** to export your deck. **Native PDF** produces a high-quality vector file where text stays sharp at any zoom level. **PPTX with raster figures** creates a PowerPoint file with visualizations embedded as images - useful if recipients need to make edits.
 
-You can also share decks directly by email. Click **Share**, select recipients from your instance's user list or add email addresses, and optionally include a message. FASTR generates a PDF and sends it as an attachment.
+You can also share decks directly by email. Click **Share**, select recipients from your instance's user list or add email addresses, and optionally include a message. FASTR validates email addresses before generating the PDF, so any invalid addresses are flagged immediately rather than after a lengthy export. FASTR generates a PDF and sends it as an attachment.
 
 ![Exporting and Sharing](/images/exporting-and-sharing-en.png)
 

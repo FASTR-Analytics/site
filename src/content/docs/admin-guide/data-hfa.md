@@ -57,7 +57,7 @@ FASTR extracts survey structure from your XLSForm to provide meaningful labels t
 
 For "select_multiple" questions, FASTR automatically expands each choice into a separate binary variable - a question with five options becomes five yes/no indicators.
 
-The variable name `weight` is reserved for facility sampling weights and cannot be used as a survey variable name. If your XLSForm contains a variable named `weight`, rename it before importing.
+Certain variable names are reserved and cannot be used as survey variable names. Reserved names include R functions and operators used in indicator code, as well as columns the analysis script generates (such as `weight`, `time_point`, and facility-related columns). If your XLSForm contains a reserved variable name, rename it before importing.
 
 ## Working with HFA data
 

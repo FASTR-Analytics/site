@@ -79,6 +79,8 @@ Si une visualisation semble incorrecte ou affiche des résultats inattendus, l'o
 
 L'onglet Présentation ajuste l'apparence de la visualisation. Pour les graphiques, vous pouvez changer les couleurs, afficher ou masquer les étiquettes de données et configurer les plages des axes. Pour les cartes, vous pouvez ajuster l'échelle de couleurs et le style des frontières. Les tableaux disposent d'options pour la largeur des colonnes et le formatage des nombres.
 
+Pour les indicateurs d'enquête HFA dont les résultats sont au niveau de l'établissement, les tableaux proposent une option supplémentaire : **Afficher les tailles d'échantillon dans les en-têtes de colonnes**. Lorsqu'elle est activée, chaque en-tête de colonne affiche le nombre d'établissements enquêtés ayant contribué à ses valeurs — par exemple, « Nord (n=55) ». Cette option n'apparaît que pour les indicateurs qui portent des données d'enquête au niveau de l'établissement.
+
 Pour les graphiques à nuages de points utilisant l'affichage **points**, vous pouvez activer **Ajouter des connecteurs** pour tracer des lignes entre les points dans l'ordre des séries. Cela est utile lorsque vous souhaitez montrer à la fois la position individuelle des données et la trajectoire qui les relie.
 
 Ces paramètres ne modifient pas les données affichées - seulement la manière dont elles le sont. Si vous souhaitez un rendu plus épuré pour une présentation, ou si vous devez respecter la charte de couleurs de votre organisation, c'est ici que vous effectuez ces ajustements.

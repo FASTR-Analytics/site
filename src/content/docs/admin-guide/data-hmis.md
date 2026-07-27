@@ -47,7 +47,7 @@ Click **New import** to open the import wizard. The wizard walks you through up 
 
 2. **Indicators.** Select which raw indicators to import from the table of all indicators configured in your instance.
 
-3. **Time.** Choose when the import runs: **Now** starts it immediately (or queues it if another import is active), **Once, at a set time** schedules a one-time run at a specific date and time in a chosen timezone, or **Recurring** sets up a weekly or fortnightly schedule on a chosen day and time in a chosen timezone.
+3. **Time.** Choose when the import runs: **Now** starts it immediately (or queues it if another import is active), **Once, at a set time** schedules a one-time run at a specific date and time in a chosen timezone, or **Recurring** sets up a schedule on a chosen cadence. Recurring schedules support daily, weekly (with a configurable interval of every 1, 2, or 4 weeks), and monthly (nth weekday of the month, with a configurable interval of every 1 or 3 months) options. For weekly schedules, pick the date of the first run — the day of the week is derived from it. For monthly schedules with a 3-month interval, also set the starting month to anchor the phase.
 
 4. **Config.** For immediate or one-time runs, select the period range to import. For recurring runs, set how many months back from the current month to include on each fire.
 
@@ -69,15 +69,15 @@ The Future tab lists scheduled imports - both recurring schedules and pending on
 
 ### History tab
 
-The History tab shows all completed, cancelled, and errored import runs with their start time, who triggered them, the selection (indicators and period range), pair outcome counts, and final status. Failed pair counts are highlighted in red. Click any row to open the run detail view, which shows the full run summary, any indicators not found in DHIS2, per-pair fetch failures with error type and detail, and shadow verification mismatches. From the run detail view you can click **Retry failed pairs** to open the wizard pre-configured to re-import exactly the failed pairs.
+The History tab shows all completed, cancelled, and errored import runs with their start time, who triggered them, the selection (indicators and period range), pair outcome counts, and final status. Failed pair counts are highlighted in red. Click any row to open the run detail view, which shows the full run summary, any indicators not found in DHIS2, and per-pair fetch failures with error type and detail. From the run detail view you can click **Retry failed pairs** to open the wizard pre-configured to re-import exactly the failed pairs.
 
 ### Managing the DHIS2 connection
 
 Click **Manage connection** in the DHIS2 imports view, or click **DHIS2 credentials** in the Data section header, to open a dialog for updating or deleting the stored DHIS2 credentials. Credentials are encrypted on the server. Once saved, the password is not sent back to the browser. The stored connection is shared across all DHIS2 flows in the instance — the same credentials are used by the indicator manager, the GeoJSON wizard, and the structure import.
 
-### Scheduling and the unattended gate
+### Scheduling requirements
 
-Scheduled and queued imports always run with the stored connection. To create a scheduled import or queue an import, stored credentials must exist. Additionally, scheduling is only unlocked after one import against the stored DHIS2 URL has completed a shadow verification pass - a cross-check that confirms the data fetched via the direct route matches the analytics engine. Run one immediate import first, then return to set up a schedule.
+Scheduled and queued imports always run with the stored connection. To create a scheduled import or queue an import, stored credentials must exist. Save credentials in step 1 of the wizard before setting up a recurring or future schedule.
 
 ### Import status by indicator
 <!-- help#hmis-import-ledger -->
