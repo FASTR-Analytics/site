@@ -13,9 +13,7 @@ Chaque module traite les données de votre projet et génère des **objets de r�
 
 Les objets de résultats contiennent des **métriques** - les valeurs précises que vous pouvez visualiser. Un seul module peut produire des dizaines de métriques réparties dans plusieurs objets de résultats. Par exemple, un module de qualité des données peut générer en une seule fois des métriques de taux de notification, de score de valeurs aberrantes et de cohérence interne. Lorsque vous créez une visualisation, vous sélectionnez l'une de ces métriques comme point de départ.
 
-:::caution[Capture d'écran à ajouter]
-Onglet Modules montrant deux ou trois modules installés avec leurs indicateurs d'état.
-:::
+![Module Status FR](/images/modules-status-fr.png)
 
 ## État des modules
 <!-- help#umod-status -->
@@ -36,9 +34,7 @@ Les modules se relancent automatiquement lorsque leurs entrées changent, garant
 
 Bien que vous interagissiez généralement avec les résultats des modules par l'intermédiaire des visualisations, vous pouvez inspecter les sorties brutes directement depuis l'onglet Modules. Cliquez sur le bouton de menu d'un module prêt pour accéder aux **Journaux** (sortie de la console R), aux **Fichiers** (résultats CSV téléchargeables) ou au **Script** (le code R lui-même, si vous y êtes autorisé).
 
-:::caution[Capture d'écran à ajouter]
-Vue détaillée d'un module montrant les options de journaux et de fichiers dans le menu déroulant.
-:::
+![Module Logs FR](/images/modules-logs-fr.png)
 
 ## Métriques et visualisations
 <!-- help#umod-metrics -->

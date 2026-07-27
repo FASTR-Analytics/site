@@ -13,9 +13,7 @@ Each module processes your project's data and generates **results objects** - st
 
 Results objects contain **metrics** - the specific values you can visualize. A single module might produce dozens of metrics across several results objects. For example, a data quality module could generate reporting rate, outlier score, and internal consistency metrics all at once. When you create a visualization, you select one of these metrics as your starting point.
 
-:::caution[Screenshot needed]
-Modules tab showing two or three installed modules with their status indicators.
-:::
+![Module Status](/images/modules-status-en.png)
 
 ## Module status
 <!-- help#umod-status -->
@@ -36,9 +34,7 @@ Modules automatically re-run when their inputs change, ensuring visualizations a
 
 While you typically interact with module results through visualizations, you can inspect raw outputs directly from the Modules tab. Click the menu button on any ready module to access **Logs** (R console output), **Files** (downloadable CSV results), or **Script** (the R code itself, if you have permission).
 
-:::caution[Screenshot needed]
-Module expanded view showing logs and files options in the dropdown menu.
-:::
+![Module Logs](/images/modules-logs-en.png)
 
 ## Metrics and visualizations
 <!-- help#umod-metrics -->
