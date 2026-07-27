@@ -69,6 +69,10 @@ The **service categories** field is optional and provides an additional cross-cu
 
 ![HFA Indicators](/images/hfa-indicators-en.png)
 
+### Searching indicators
+
+The HFA indicator manager includes a search field in the indicators panel header. Type any text to filter the indicator list by variable name, label, definition, category, sub-category, or service category. The count in the panel header updates to show how many indicators match your search out of the total. When no indicators match, the table shows "No indicators match your search."
+
 ### R code for extraction
 <!-- help#ind-r-code -->
 
@@ -116,6 +120,14 @@ If the Service categories sheet is omitted, indicators are imported with no serv
 When importing, choose between **Add to existing** and **Replace all existing** import modes. In **Add to existing** mode, indicators whose variable names already exist on the platform are skipped — only new variable names are created. After import, a summary lists any skipped indicators. In **Replace all existing** mode, all existing indicators, categories, sub-categories, and service categories are permanently deleted before importing. To confirm a replace-all import, you must type `yes please delete` in the confirmation field before the **Import** button becomes active.
 
 FASTR detects the time point columns embedded in the file and presents a mapping step where you confirm which platform time point each column should import into. If the column labels match your platform time points exactly, the mapping is pre-filled automatically. Each platform time point can only receive one workbook column — mapping two columns to the same time point is rejected.
+
+## XLSForm variable labels
+
+When FASTR reads your XLSForm questionnaire during an HFA import, it constructs labels for variables using the survey structure. For most variables the label is simply the question text. For variables inside matrix question groups (ODK `begin_group` or `begin_repeat` blocks), FASTR qualifies the label with the immediate enclosing group's label, separated by " — ". For example, a child question labelled "Infrastructure" inside a group labelled "Block B: Challenges" becomes "Block B: Challenges — Infrastructure". This ensures that matrix children, which often share identical question text across multiple groups, are identifiable in the data dictionary and in visualizations.
+
+For "select_multiple" questions, the expanded binary variables follow the same pattern: the composed variable label is joined to the choice label with the same " — " separator.
+
+FASTR also strips HTML markup and normalizes whitespace from XLSForm labels before storing them, so labels authored with on-screen formatting appear cleanly in the dictionary.
 
 ## Best practices
 
