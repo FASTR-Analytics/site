@@ -14,9 +14,7 @@ Click **AI** in any project view to open the assistant panel on the right side o
 
 The assistant works differently depending on where you are. When viewing the metrics list, it can search and explain available indicators. When editing a slide deck, it can help draft content or suggest visualizations. When in the visualization editor, it understands which metric you're working with.
 
-:::caution[Screenshot needed]
-AI assistant panel open while editing a visualization, showing context-aware placeholder text.
-:::
+![Opening the Assistant](/images/opening-the-assistant-en.png)
 
 ## Asking questions
 <!-- help#ai-ask -->
@@ -32,9 +30,7 @@ The prompt library contains pre-written prompts for common analysis tasks. Click
 
 When you select a prompt, you can customize it before running. You can also save your own prompts to the library for reuse. Prompts can be saved as **My prompts** (private, visible only to you) or **Country prompts** (shared with all users in your instance). Only administrators can save country-scoped prompts.
 
-:::caution[Screenshot needed]
-Prompt library modal showing categories of pre-built prompts with the search field.
-:::
+![Prompt Library](/images/prompt-library-en.png)
 
 ## Working with slides
 

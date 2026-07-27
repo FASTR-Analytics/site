@@ -14,9 +14,7 @@ Cliquez sur **IA** dans n'importe quelle vue de projet pour ouvrir le panneau de
 
 L'assistant fonctionne différemment selon l'endroit où vous vous trouvez. Lorsque vous consultez la liste des indicateurs, il peut rechercher et expliquer les indicateurs disponibles. Lorsque vous modifiez une présentation, il peut vous aider à rédiger du contenu ou à suggérer des visualisations. Dans l'éditeur de visualisation, il comprend avec quel indicateur vous travaillez.
 
-:::caution[Capture d'écran à ajouter]
-Panneau de l'assistant IA ouvert pendant la modification d'une visualisation, montrant le texte d'invite contextuel.
-:::
+![Opening the Assistant FR](/images/opening-the-assistant-fr.png)
 
 ## Poser des questions
 <!-- help#ai-ask -->
@@ -32,9 +30,7 @@ La bibliothèque d'invites contient des invites pré-rédigées pour les tâches
 
 Lorsque vous sélectionnez une invite, vous pouvez la personnaliser avant de l'exécuter. Vous pouvez également enregistrer vos propres invites dans la bibliothèque pour les réutiliser. Les invites peuvent être enregistrées comme **Mes invites** (privées, visibles uniquement par vous) ou **Invites du pays** (partagées avec tous les utilisateurs de votre instance). Seuls les administrateurs peuvent enregistrer des invites à l'échelle du pays.
 
-:::caution[Capture d'écran à ajouter]
-Fenêtre modale de la bibliothèque d'invites montrant les catégories d'invites prédéfinies avec le champ de recherche.
-:::
+![Prompt Library FR](/images/prompt-library-fr.png)
 
 ## Travailler avec les diapositives
 
