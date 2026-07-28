@@ -57,6 +57,10 @@ When you open the slide editor, text fields for the slide title, header, and oth
 
 The AI assistant will not edit a slide that another collaborator currently has open in the editor, to avoid overwriting live in-progress changes. If you ask the AI to modify a slide being edited by a colleague, it will let you know and wait for you to try again once the slide is free.
 
+## Undo and redo in the slide editor
+
+When editing a slide, the header includes **Undo** and **Redo** buttons. These reverse your own slide changes - adding blocks, changing layouts, moving figures - without affecting edits made by collaborators. The buttons appear only when you have permission to configure slide decks and the project is not locked. You can also use Ctrl+Z and Ctrl+Shift+Z (or Cmd+Z and Cmd+Shift+Z on Mac) as keyboard shortcuts while focus is on the slide canvas.
+
 ## Version history
 
 Click **Version history** in the deck's overflow menu to open the version history panel. Versions are saved automatically at the end of each editing session and grouped by day on the left. Select a version to see a grid of all slide thumbnails as they looked at that point. New, edited, and removed slides are badged with the name of the collaborator who made the change. Click any thumbnail to open a full-size view; edited slides also show a breakdown of which text fields and blocks changed within that session.

@@ -73,6 +73,10 @@ Si le rapport contient des modifications en direct qui ne peuvent pas être enre
 
 Le bouton **IA** ouvre un assistant qui peut vous aider pendant que vous rédigez. Il peut reformuler un passage sélectionné, insérer ou remplacer des figures, et modifier des figures existantes directement sans les reconstruire - par exemple, changer le réplicant affiché par un graphique, ajuster ses filtres ou mettre à jour des légendes. L'assistant propose les modifications de texte dans une fenêtre modale que vous acceptez ou refusez avant toute application ; les modifications de figures sont appliquées immédiatement à l'aperçu en direct et enregistrées. Consultez [Assistant IA](/user-guide/ai-assistant/) pour une vue d'ensemble complète.
 
+## Annuler et rétablir
+
+L'en-tête du rapport comporte des boutons **Annuler** et **Rétablir** qui inversent vos propres modifications du corps du texte sans affecter les modifications de vos collègues. Ces boutons n'apparaissent qu'en modes Édition et Divisé, et uniquement lorsque vous avez la permission de modifier le rapport. Ils opèrent sur le même historique que les raccourcis clavier Ctrl+Z et Ctrl+Maj+Z dans l'éditeur.
+
 ## Exporter
 <!-- help#report-export -->
 

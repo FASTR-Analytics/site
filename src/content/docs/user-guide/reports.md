@@ -73,6 +73,10 @@ If the report has unsaved live edits that cannot be saved at the moment you requ
 
 The **AI** button opens an assistant that can help as you write. It can rewrite a passage you've selected, insert or replace figures, and edit existing figures directly without rebuilding them from scratch - for example, changing the replicant a chart displays, adjusting its filters, or updating captions. The assistant proposes text changes for you to accept or reject in a modal before anything is applied; figure edits are applied immediately to the live preview and saved. See [AI assistant](/user-guide/ai-assistant/) for the full picture.
 
+## Undo and redo
+
+The report header includes **Undo** and **Redo** buttons that reverse your own body-text changes without affecting your colleagues' edits. These buttons appear only in Edit and Split modes, and only when you have permission to edit the report. They operate the same history as the keyboard shortcuts Ctrl+Z and Ctrl+Shift+Z inside the editor.
+
 ## Exporting
 <!-- help#report-export -->
 

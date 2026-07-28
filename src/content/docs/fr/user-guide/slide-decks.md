@@ -57,6 +57,10 @@ Lorsque vous ouvrez l'éditeur de diapositive, les champs de texte du titre, de 
 
 L'assistant IA ne modifie pas une diapositive qu'un autre collaborateur a actuellement ouverte dans l'éditeur, afin d'éviter d'écraser des modifications en cours. Si vous demandez à l'IA de modifier une diapositive en cours d'édition par un collègue, elle vous en informera et attendra que vous réessayiez une fois la diapositive libre.
 
+## Annuler et rétablir dans l'éditeur de diapositive
+
+Lorsque vous modifiez une diapositive, l'en-tête comporte des boutons **Annuler** et **Rétablir**. Ceux-ci inversent vos propres modifications de diapositive - ajout de blocs, changement de mise en page, déplacement de figures - sans affecter les modifications effectuées par les collaborateurs. Les boutons n'apparaissent que lorsque vous avez la permission de configurer les présentations et que le projet n'est pas verrouillé. Vous pouvez également utiliser Ctrl+Z et Ctrl+Maj+Z (ou Cmd+Z et Cmd+Maj+Z sur Mac) comme raccourcis clavier lorsque le focus est sur le canevas de la diapositive.
+
 ## Historique des versions
 
 Cliquez sur **Historique des versions** dans le menu de débordement de la présentation pour ouvrir le panneau d'historique des versions. Les versions sont enregistrées automatiquement à la fin de chaque session d'édition et regroupées par jour sur la gauche. Sélectionnez une version pour voir une grille de toutes les vignettes de diapositives telles qu'elles se présentaient à ce moment-là. Les diapositives nouvelles, modifiées et supprimées sont signalées par le nom du collaborateur qui a effectué la modification. Cliquez sur une vignette pour ouvrir une vue en grand format ; les diapositives modifiées affichent également une ventilation des champs de texte et des blocs ayant changé au cours de cette session.
