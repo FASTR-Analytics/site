@@ -61,7 +61,11 @@ L'assistant IA ne modifie pas une diapositive qu'un autre collaborateur a actuel
 
 Cliquez sur **Historique des versions** dans le menu de débordement de la présentation pour ouvrir le panneau d'historique des versions. Les versions sont enregistrées automatiquement à la fin de chaque session d'édition et regroupées par jour sur la gauche. Sélectionnez une version pour voir une grille de toutes les vignettes de diapositives telles qu'elles se présentaient à ce moment-là. Les diapositives nouvelles, modifiées et supprimées sont signalées par le nom du collaborateur qui a effectué la modification. Cliquez sur une vignette pour ouvrir une vue en grand format ; les diapositives modifiées affichent également une ventilation des champs de texte et des blocs ayant changé au cours de cette session.
 
+La détection des changements est désormais plus précise. Encapsuler des blocs dans des colonnes, supprimer un conteneur ou redimensionner un conteneur de mise en page sont tous signalés comme des changements d'arrangement dans le diff de session, même si l'ordre des blocs de contenu individuels n'a pas changé.
+
 Utilisez **Restaurer** pour réinitialiser la présentation à cette version (votre contenu actuel est d'abord enregistré comme nouvelle version), ou **Restaurer comme copie** pour créer une nouvelle présentation à partir de l'instantané.
+
+Si la présentation contient des modifications en direct qui ne peuvent pas être enregistrées au moment où vous demandez une restauration, FASTR vous en informera et vous invitera à réessayer une fois l'enregistrement rétabli.
 
 ## Exporter et partager
 <!-- help#deck-export -->

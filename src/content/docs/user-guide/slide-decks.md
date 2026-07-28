@@ -61,7 +61,11 @@ The AI assistant will not edit a slide that another collaborator currently has o
 
 Click **Version history** in the deck's overflow menu to open the version history panel. Versions are saved automatically at the end of each editing session and grouped by day on the left. Select a version to see a grid of all slide thumbnails as they looked at that point. New, edited, and removed slides are badged with the name of the collaborator who made the change. Click any thumbnail to open a full-size view; edited slides also show a breakdown of which text fields and blocks changed within that session.
 
+The change breakdown now detects layout changes more precisely. Wrapping blocks into columns, unwrapping a container, or resizing a layout container are all reported as arrangement changes in the session diff, even when the order of the individual content blocks did not change.
+
 Use **Restore** to reset the deck to that version (your current content is saved as a new version first), or **Restore as copy** to create a new deck from the snapshot.
+
+If the deck has unsaved live edits that cannot be saved at the moment you request a restore, FASTR will let you know and ask you to retry once saving has recovered.
 
 ## Exporting and sharing
 <!-- help#deck-export -->

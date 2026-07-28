@@ -67,6 +67,8 @@ Cliquez sur **Historique** dans l'en-tête du rapport pour ouvrir le panneau d'h
 
 Depuis l'aperçu de la version, vous pouvez également basculer vers une vue **Aperçu** qui restitue l'intégralité du rapport tel qu'il se présentait à ce moment-là. Utilisez **Restaurer** pour réinitialiser le rapport à cette version (votre contenu actuel est d'abord enregistré comme nouvelle version, rien n'est perdu), ou **Restaurer comme copie** pour créer un tout nouveau rapport à partir de l'instantané tout en laissant le rapport actuel intact.
 
+Si le rapport contient des modifications en direct qui ne peuvent pas être enregistrées au moment où vous demandez une restauration, FASTR vous en informera et vous invitera à réessayer une fois l'enregistrement rétabli.
+
 ## Assistance par IA
 
 Le bouton **IA** ouvre un assistant qui peut vous aider pendant que vous rédigez. Il peut reformuler un passage sélectionné, insérer ou remplacer des figures, et modifier des figures existantes directement sans les reconstruire - par exemple, changer le réplicant affiché par un graphique, ajuster ses filtres ou mettre à jour des légendes. L'assistant propose les modifications de texte dans une fenêtre modale que vous acceptez ou refusez avant toute application ; les modifications de figures sont appliquées immédiatement à l'aperçu en direct et enregistrées. Consultez [Assistant IA](/user-guide/ai-assistant/) pour une vue d'ensemble complète.
@@ -85,3 +87,5 @@ Cliquez sur **Télécharger** et choisissez **PDF** ou **Word (.docx)**. Le PDF 
 **L'état indique « Échec de l'enregistrement »** : Un enregistrement n'a pas atteint le serveur, généralement à cause d'un problème de connexion. Restez sur la page, vérifiez votre connexion et continuez à éditer - FASTR réessaie ; ne fermez pas l'onglet avant de voir **Enregistré**.
 
 **Le fichier exporté ne correspond pas à ce que je vois** : L'export restitue la version enregistrée actuelle. Assurez-vous que l'en-tête affiche **Enregistré**, puis téléchargez à nouveau.
+
+**La restauration indique que l'enregistrement doit d'abord se rétablir** : Si le rapport contient des modifications en direct qui échouent à s'enregistrer, la version de sécurité ne peut pas être créée tant que l'enregistrement ne reprend pas. Attendez que l'indicateur **Non enregistré** disparaisse, puis réessayez la restauration.

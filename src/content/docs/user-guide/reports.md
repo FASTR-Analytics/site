@@ -67,6 +67,8 @@ Click **History** in the report header to open the version history panel. Versio
 
 From the version preview you can also switch to a **Preview** view that renders the full report snapshot as it looked at that point. Use **Restore** to reset the report to that version (your current content is saved as a new version first, so nothing is lost), or **Restore as copy** to create a brand-new report from the snapshot while leaving the current one untouched.
 
+If the report has unsaved live edits that cannot be saved at the moment you request a restore, FASTR will let you know and ask you to retry once saving has recovered.
+
 ## AI assistance
 
 The **AI** button opens an assistant that can help as you write. It can rewrite a passage you've selected, insert or replace figures, and edit existing figures directly without rebuilding them from scratch - for example, changing the replicant a chart displays, adjusting its filters, or updating captions. The assistant proposes text changes for you to accept or reject in a modal before anything is applied; figure edits are applied immediately to the live preview and saved. See [AI assistant](/user-guide/ai-assistant/) for the full picture.
@@ -85,3 +87,5 @@ Click **Download** and choose **PDF** or **Word (.docx)**. PDF is best for a fin
 **The status says "Save failed"**: A save didn't reach the server, usually a connection issue. Stay on the page, check your connection, and keep editing - FASTR retries; don't close the tab until you see **Saved**.
 
 **The exported file doesn't match what I see**: Export renders the current saved version. Make sure the header shows **Saved**, then download again.
+
+**Restore says saving must recover first**: If the report has live edits that are currently failing to save, the safety version cannot be created until saving resumes. Wait for the **Not saving** indicator to clear, then retry the restore.
