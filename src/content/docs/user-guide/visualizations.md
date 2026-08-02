@@ -95,7 +95,7 @@ The Text tab adds context to your visualization through three text fields. The *
 
 In the caption, sub-caption, and footnote fields you can use special placeholder words that are replaced dynamically when the visualization renders. Use `DATE_RANGE`, `PLAGE_DE_DATES`, or `INTERVALO_DE_DATAS` to insert the date range of the data shown in the figure (this currently works only for timeseries visualizations). Use `REPLICANT` to insert the full replicant name, such as an indicator or an admin area (this only works when a disaggregator is set for different charts). These words must be spelled exactly as shown, using capital letters and underscores.
 
-When live collaboration is active, caption fields use a collaborative text editor so remote collaborators' carets appear as you type, the same way they do in the slide editor's text fields.
+When live collaboration is active, caption fields use a collaborative text editor so remote collaborators' carets appear as you type, the same way they do in the slide editor's text fields. Typing in a caption field is covered by the editor's undo and redo buttons, so Ctrl+Z inside a caption field pops the same shared history as structural changes to the visualization.
 
 Good captions make visualizations self-explanatory. Someone looking at the chart in a slide deck shouldn't need to read surrounding text to understand what they're seeing.
 

@@ -59,7 +59,7 @@ The AI assistant will not edit a slide that another collaborator currently has o
 
 ## Undo and redo in the slide editor
 
-When editing a slide, the header includes **Undo** and **Redo** buttons. These reverse your own slide changes - adding blocks, changing layouts, moving figures - without affecting edits made by collaborators. The buttons appear only when you have permission to configure slide decks and the project is not locked. You can also use Ctrl+Z and Ctrl+Shift+Z (or Cmd+Z and Cmd+Shift+Z on Mac) as keyboard shortcuts while focus is on the slide canvas.
+When editing a slide, the header includes **Undo** and **Redo** buttons. These reverse your own slide changes - adding blocks, changing layouts, moving figures, and text typed in any text field on the slide - without affecting edits made by collaborators. The buttons appear only when you have permission to configure slide decks and the project is not locked. You can also use Ctrl+Z and Ctrl+Shift+Z (or Cmd+Z and Cmd+Shift+Z on Mac) as keyboard shortcuts; these work both while focus is on the slide canvas and while you are typing inside a text field on the slide.
 
 ## Version history
 

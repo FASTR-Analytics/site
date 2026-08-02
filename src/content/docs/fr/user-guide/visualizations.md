@@ -95,7 +95,7 @@ L'onglet Texte ajoute du contexte à votre visualisation à travers trois champs
 
 Dans les champs titre, sous-titre et note de bas de page, vous pouvez utiliser des mots-clés spéciaux qui sont remplacés dynamiquement lorsque la visualisation s'affiche. Utilisez `DATE_RANGE`, `PLAGE_DE_DATES` ou `INTERVALO_DE_DATAS` pour insérer la plage de dates des données affichées dans la figure (cela ne fonctionne actuellement que pour les visualisations chronologiques). Utilisez `REPLICANT` pour insérer le nom complet du réplicant, comme un indicateur ou une zone administrative (cela ne fonctionne que si un désagrégateur est défini pour différents graphiques). Ces mots doivent être écrits exactement comme indiqué, en majuscules et avec des traits de soulignement.
 
-Lorsque la collaboration en direct est active, les champs de légende utilisent un éditeur de texte collaboratif afin que les curseurs des collaborateurs distants apparaissent pendant que vous tapez, de la même façon que dans les champs de texte de l'éditeur de diapositives.
+Lorsque la collaboration en direct est active, les champs de légende utilisent un éditeur de texte collaboratif afin que les curseurs des collaborateurs distants apparaissent pendant que vous tapez, de la même façon que dans les champs de texte de l'éditeur de diapositives. La saisie dans un champ de légende est couverte par les boutons d'annulation et de rétablissement de l'éditeur : Ctrl+Z dans un champ de légende dépile le même historique partagé que les modifications structurelles de la visualisation.
 
 De bons titres rendent les visualisations explicites en elles-mêmes. Une personne consultant le graphique dans une présentation ne devrait pas avoir besoin de lire le texte environnant pour comprendre ce qu'elle regarde.
 

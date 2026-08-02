@@ -59,7 +59,7 @@ L'assistant IA ne modifie pas une diapositive qu'un autre collaborateur a actuel
 
 ## Annuler et rétablir dans l'éditeur de diapositive
 
-Lorsque vous modifiez une diapositive, l'en-tête comporte des boutons **Annuler** et **Rétablir**. Ceux-ci inversent vos propres modifications de diapositive - ajout de blocs, changement de mise en page, déplacement de figures - sans affecter les modifications effectuées par les collaborateurs. Les boutons n'apparaissent que lorsque vous avez la permission de configurer les présentations et que le projet n'est pas verrouillé. Vous pouvez également utiliser Ctrl+Z et Ctrl+Maj+Z (ou Cmd+Z et Cmd+Maj+Z sur Mac) comme raccourcis clavier lorsque le focus est sur le canevas de la diapositive.
+Lorsque vous modifiez une diapositive, l'en-tête comporte des boutons **Annuler** et **Rétablir**. Ceux-ci inversent vos propres modifications de diapositive - ajout de blocs, changement de mise en page, déplacement de figures et texte saisi dans n'importe quel champ de texte de la diapositive - sans affecter les modifications effectuées par les collaborateurs. Les boutons n'apparaissent que lorsque vous avez la permission de configurer les présentations et que le projet n'est pas verrouillé. Vous pouvez également utiliser Ctrl+Z et Ctrl+Maj+Z (ou Cmd+Z et Cmd+Maj+Z sur Mac) comme raccourcis clavier ; ceux-ci fonctionnent aussi bien lorsque le focus est sur le canevas de la diapositive que lorsque vous tapez dans un champ de texte de la diapositive.
 
 ## Historique des versions
 
