@@ -36,6 +36,9 @@ Chaque vidéo ci-dessous présente une fonctionnalité en quelques minutes. Elle
 ### Vue partagée des rapports longs et légende Markdown
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Le4aoeOnuoc?si=fT2ldeZ1E83haDzF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
+### Aperçu de la mise à jour des paquets de résultats
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Xay5QEDnCGw?si=c1jm4MbMUoxMAFd5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ## Pour aller plus loin
 
 - [FASTR sur le portail de données du GFF](https://data.gffportal.org/key-themes/FASTR) - contexte sur l'initiative FASTR et son rôle au sein du GFF
