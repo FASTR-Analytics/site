@@ -31,6 +31,10 @@ Understanding the platform's structure will help you navigate it more effectivel
 
 **Visualizations** turn module outputs into charts, maps, and tables you can explore, customize, and share. They're the primary way you'll interact with analytical results day-to-day.
 
+## What's New announcements
+
+When FASTR is updated, a bell icon appears in the top navigation bar. A yellow dot on the bell means there are unread release announcements. Click the bell to browse all announcements, or click through to any individual post to read the full details. New announcements may also appear automatically when you sign in after an update.
+
 ## In this section
 
 The following pages walk through each part of the platform in more detail.

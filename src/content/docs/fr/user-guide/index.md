@@ -31,6 +31,10 @@ Les **modules** sont les moteurs analytiques qui traitent vos données. Ils exé
 
 Les **visualisations** transforment les résultats des modules en graphiques, cartes et tableaux que vous pouvez explorer, personnaliser et partager. C'est le principal moyen par lequel vous interagirez au quotidien avec les résultats analytiques.
 
+## Annonces de nouveautés
+
+Lorsque FASTR est mis à jour, une icône de cloche apparaît dans la barre de navigation supérieure. Un point jaune sur la cloche indique la présence d'annonces non lues. Cliquez sur la cloche pour parcourir toutes les annonces, ou cliquez sur une publication pour en lire les détails complets. De nouvelles annonces peuvent également s'afficher automatiquement lors de votre connexion après une mise à jour.
+
 ## Dans cette section
 
 Les pages suivantes présentent chaque partie de la plateforme plus en détail.

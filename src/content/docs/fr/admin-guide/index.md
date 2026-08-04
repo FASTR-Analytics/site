@@ -29,9 +29,7 @@ La barre de navigation principale, en haut de l'écran, affiche des onglets corr
 
 ![Top Nav Demo](/images/topnav-demo-en.png)
 
-L'onglet **Projets** répertorie tous les projets de votre instance et vous permet d'en créer de nouveaux. **Données** est l'endroit où vous configurez la structure (zones administratives, établissements) et importez les jeux de données. **Ressources** contient les fichiers téléversés, comme les modèles CSV et les cartes GeoJSON - tous les utilisateurs peuvent consulter et téléverser des ressources. **Utilisateurs** affiche toutes les personnes ayant accès à l'instance ainsi que leurs permissions. **Paramètres** regroupe les options de configuration à l'échelle de l'instance, comme le nom de l'instance et les préférences de langue.
-
-L'interface est disponible en anglais, en français et en portugais. Utilisez le sélecteur de langue dans la barre de navigation supérieure pour changer de langue.
+L'onglet **Projets** répertorie tous les projets de votre instance et vous permet d'en créer de nouveaux. **Données** est l'endroit où vous configurez la structure (zones administratives, établissements) et importez les jeux de données. **Ressources** contient les fichiers téléversés, comme les modèles CSV et les cartes GeoJSON - tous les utilisateurs peuvent consulter et téléverser des ressources. **Utilisateurs** affiche toutes les personnes ayant accès à l'instance ainsi que leurs permissions. **Paramètres** regroupe les options de configuration à l'échelle de l'instance, comme le nom de l'instance et les préférences de langue. Une icône de cloche dans la barre de navigation affiche les annonces de nouvelles versions - un point jaune sur l'icône indique la présence de publications non lues. Cliquez sur la cloche pour parcourir toutes les annonces.
 
 ## Premières étapes courantes
 
