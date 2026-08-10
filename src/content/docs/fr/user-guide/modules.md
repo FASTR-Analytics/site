@@ -18,21 +18,20 @@ Les objets de résultats contiennent des **métriques** - les valeurs précises 
 ## État des modules
 <!-- help#umod-status -->
 
-L'onglet Modules affiche chaque module installé et son état actuel. Un badge d'état situé à côté du nom de chaque module vous indique ce qui se passe :
+L'onglet **Lot de résultats** affiche le lot auquel votre projet est associé, notamment les modules qu'il contient et leur état de génération :
 
-- **Prêt** - Les résultats sont à jour ; vous pouvez créer des visualisations immédiatement
-- **En cours d'exécution** - Le module traite les données ; un texte de progression s'affiche à mesure qu'il travaille
-- **En attente** - Le module est en file d'attente, dans l'attente de dépendances ou de données
-- **Erreur** - Un problème est survenu ; consultez les journaux pour plus de détails (nécessite l'intervention d'un administrateur)
+- **Prêt** - Les résultats sont disponibles ; vous pouvez créer des visualisations immédiatement
+- **Indisponible** - Les résultats du module ne sont pas disponibles dans ce lot ; contactez votre administrateur pour plus de détails
+- **Erreur** - Un problème est survenu lors de la génération ; contactez votre administrateur pour plus de détails
 
-## Quand les modules sont relancés
+## Quand les résultats se mettent à jour
 
-Les modules se relancent automatiquement lorsque leurs entrées changent, garantissant que les visualisations reflètent toujours les calculs les plus récents. Les déclencheurs comprennent les actualisations de données, les modifications de configuration et les mises à jour de modules en amont. Vous verrez les indicateurs d'état se mettre à jour en temps réel à mesure que les modules progressent dans la file d'attente.
+Les résultats des modules sont fixes au sein d'un lot de résultats. Les résultats se mettent à jour lorsque votre administrateur génère un nouveau lot avec des données fraîches et l'associe au projet. Vous verrez le lot de résultats changer dans l'onglet **Lot de résultats** lorsque cela se produit.
 
 ## Consulter les sorties des modules
 <!-- help#umod-outputs -->
 
-Bien que vous interagissiez généralement avec les résultats des modules par l'intermédiaire des visualisations, vous pouvez inspecter les sorties brutes directement depuis l'onglet Modules. Cliquez sur le bouton de menu d'un module prêt pour accéder aux **Journaux** (sortie de la console R), aux **Fichiers** (résultats CSV téléchargeables) ou au **Script** (le code R lui-même, si vous y êtes autorisé).
+Bien que vous interagissiez généralement avec les résultats des modules par l'intermédiaire des visualisations, vous pouvez inspecter les sorties brutes depuis l'onglet **Lot de résultats** si vous disposez des permissions appropriées. Accédez aux **Journaux** (sortie de la console R), aux **Fichiers** (résultats CSV téléchargeables) ou au **Script** (le code R lui-même, si vous y êtes autorisé) depuis la vue de détail du lot.
 
 ![Module Logs FR](/images/modules-logs-fr.png)
 
@@ -41,10 +40,10 @@ Bien que vous interagissiez généralement avec les résultats des modules par l
 
 Le lien entre les modules et les visualisations passe par les métriques. Lorsque vous créez une visualisation, vous sélectionnez d'abord une métrique parmi les résultats d'un module. La visualisation interroge ensuite cette métrique selon vos choix de configuration.
 
-Comprendre cet enchaînement aide à résoudre les problèmes. Si une visualisation affiche « aucune donnée », vérifiez si le module sous-jacent est prêt. Si les résultats semblent dépassés, vérifiez si les modules doivent être relancés. S'il vous manque une métrique attendue, assurez-vous que le module concerné est bien installé.
+Comprendre cet enchaînement aide à résoudre les problèmes. Si une visualisation affiche « aucune donnée », vérifiez si le lot de résultats contient des résultats pour cette métrique. Si les résultats semblent dépassés, vérifiez si le projet a été mis à jour avec un lot plus récent. S'il vous manque une métrique attendue, assurez-vous que le module concerné a bien été inclus lors de la génération du lot.
 
 Certaines métriques sont accompagnées de **préréglages** - des modèles de visualisation préconfigurés créés par les auteurs des modules. Les préréglages représentent des façons courantes de visualiser cette sortie et constituent un bon point de départ lorsque vous ne connaissez pas encore les dimensions d'une métrique.
 
 ## Mises à jour des modules
 
-Les modules évoluent au fil du temps à mesure que les méthodologies s'améliorent. L'onglet Modules indique quand des mises à jour sont disponibles. Appliquer les mises à jour est une tâche administrative qui déclenche généralement une relance. Si vous voyez des badges « Mise à jour disponible » et que vous estimez que ces mises à jour sont importantes pour votre travail, contactez l'administrateur de votre projet.
+Les modules évoluent au fil du temps à mesure que les méthodologies s'améliorent. Les résultats des modules mis à jour deviennent disponibles lorsque votre administrateur génère un nouveau lot de résultats avec les définitions de modules à jour et l'associe à votre projet. Si vous estimez que les résultats de modules mis à jour sont importants pour votre travail, contactez l'administrateur de votre projet.

@@ -46,7 +46,7 @@ Dans l'éditeur de rapport, l'assistant peut réécrire des passages, insérer d
 
 ## Naviguer entre les onglets
 
-L'assistant peut changer l'onglet principal du projet en votre nom. Il peut naviguer vers **Rapports**, **Présentations**, **Visualisations**, **Métriques**, **Modules**, **Données** et **Paramètres**. La navigation par onglet n'est pas disponible pendant que vous modifiez une visualisation, une présentation ou une diapositive.
+L'assistant peut changer l'onglet principal du projet en votre nom. Il peut naviguer vers **Rapports**, **Présentations**, **Visualisations**, **Métriques** et **Paramètres**. L'onglet **Lot de résultats** n'est accessible qu'aux administrateurs d'instance et aux utilisateurs disposant de permissions de configuration des données. La navigation par onglet n'est pas disponible pendant que vous modifiez une visualisation, une présentation ou une diapositive.
 
 ## Conversations et historique
 

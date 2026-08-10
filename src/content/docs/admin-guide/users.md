@@ -75,6 +75,12 @@ When you create a new project, existing users get default permissions based on t
 
 This saves time when your organization adds projects frequently - you don't have to manually assign every user to every new project. Set defaults to "Viewer" for people who should see all analyses, or "No access" for people who only work with specific projects.
 
+## Personal access tokens
+
+FASTR supports personal access tokens (PATs) for integrations and API access. From your profile, navigate to the **Personal access tokens** section to create, list, and revoke tokens. Each token has a label you choose when creating it. The raw token value is shown only once at creation — copy it immediately. A token's last-used date updates each time it authenticates, making it easy to identify tokens that are no longer in use. Revoke any token you no longer need.
+
+Personal access tokens are self-service: you can only manage your own tokens, not those of other users.
+
 ## Bulk operations
 
 The user list supports bulk selection for common operations. Check the boxes next to multiple users, then use the action buttons that appear:

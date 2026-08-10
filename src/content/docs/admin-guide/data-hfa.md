@@ -22,17 +22,39 @@ Each HFA import requires two files:
 ## Import workflow
 <!-- help#hfa-import -->
 
-Navigate to the **Data** section and select **HFA Data**. Click **Start new import** to begin a five-step process.
+Navigate to the **Data** section and select **HFA Data**. The sidebar shows two buttons: **Start new import** opens the import wizard immediately, and **View imports** opens the imports history without launching a new wizard.
 
-1. **Upload files.** Select or upload both your CSV data file and XLSForm questionnaire file.
+The import wizard collects everything needed before any data is sent to the server. Abandoning the wizard at any point has no effect — nothing is stored until you click **Start import** on the final step.
 
-2. **Configure mapping.** Specify which CSV column contains facility identifiers and select the time point this data belongs to. You can also add optional row filter conditions here. Each condition specifies a column, an operator (equals or does not equal), and a value. Rows that fail any condition are dropped before duplicate handling — for example, to keep only surveyed facilities, you might require a consent column to equal 1. Values are compared as exact text.
+### Step 1 — Upload files
 
-3. **Review duplicates.** If any facilities appear more than once after filtering, this step lets you choose which row to keep for each. A quick-set control lets you apply "first row" or "last row" across all duplicates at once; you can then override individual facilities. Row numbers count data rows from 1 in file order (excluding the header). Click **Save** to confirm your duplicate-handling choices before proceeding.
+Select or upload your CSV data file and your XLSForm questionnaire file. Both files must be present before the wizard can proceed; the wizard parses the CSV headers against the XLSForm as soon as both are selected. If the files cannot be parsed together, an error appears and you should verify the XLSForm matches the CSV.
 
-4. **Stage the data.** Click **Start staging** to validate facility IDs, match columns to XLSForm definitions, and expand "select multiple" questions into individual variables. The staging summary shows total rows staged.
+### Step 2 — Mappings
 
-5. **Review and integrate.** Check the summary statistics — rows in file, valid rows, total values to import, invalid rows by category, duplicate rows with the strategy applied, rows removed by filter, and dictionary statistics. Click **Integrate and finalize** to complete.
+Specify which CSV column contains facility identifiers and select the time point this data belongs to. You can also add optional row filter conditions. Each condition specifies a column, an operator (equals or does not equal), and a value. Rows that fail any condition are dropped before duplicate handling — for example, to keep only surveyed facilities, you might require a consent column to equal 1. Values are compared as exact text.
+
+### Step 3 — Duplicates
+
+If any facilities appear more than once after filtering, this step lets you choose which row to keep for each. A quick-set control lets you apply "first row" or "last row" across all duplicates at once; you can then override individual facilities. Row numbers count data rows from 1 in file order (excluding the header). If no duplicates exist after filtering, this step is skipped automatically.
+
+### Step 4 — Review and launch
+
+A summary shows the data file, XLSForm file, column count, time point, facility ID column, row filters, and duplicate count. Read the notice: the import replaces all existing data for the selected time point. Click **Start import** to launch.
+
+Once launched, the import runs on the server. A fully clean file integrates automatically without further steps. If staging drops any rows, the import pauses in a **needs review** state — nothing is merged until you act.
+
+## Monitoring imports
+
+Click **View imports** to open the imports history. The **Current** section shows any running import with a live progress bar and percentage. The **History** table lists all completed, cancelled, and errored runs with their time point, file name, values imported, and status. Click any history row to see the full run detail including staging diagnostics.
+
+### Needs review
+
+When staging drops facility rows, the import holds in a **needs review** state. A card at the top of the imports view explains what happened and shows the staging results. You can choose to **Integrate anyway** — merging the surviving rows — or **Discard** to abandon the import without merging anything.
+
+### Cancelling a running import
+
+While an import is running, a **Cancel import** button appears. Cancelling stops the run; nothing already merged is affected.
 
 ![HFA Upload](/images/hfa-upload-en.png)
 
@@ -49,7 +71,7 @@ After importing, use the **HFA Time Points** page to edit labels, adjust dates, 
 
 ## Validation details
 
-Rows can be dropped during staging for several reasons: missing facility IDs, facility IDs not in your registry, duplicate facilities within a single import (handled by the strategy you chose in step 3), or rows excluded by the filter conditions you set in step 2. The staging summary shows each category separately. If you see many "Facility Not Found" entries, check whether your facility registry needs updating.
+Rows can be dropped during staging for several reasons: missing facility IDs, facility IDs not in your registry, duplicate facilities within a single import (handled by the strategy you chose in the duplicates step), or rows excluded by the filter conditions you set in the mappings step. The staging summary shows each category separately. If you see many "Facility Not Found" entries, check whether your facility registry needs updating.
 
 ## XLSForm handling
 

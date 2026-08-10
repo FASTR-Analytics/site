@@ -5,35 +5,23 @@ sidebar:
   order: 6
 ---
 
-Les projets constituent l'espace de travail principal pour l'analyse dans FASTR. Chaque projet réunit un sous-ensemble des données de votre instance avec un ensemble spécifique de modules analytiques, produisant des visualisations, des rapports et des présentations dans un but précis. Vous pouvez créer des projets distincts pour différentes périodes, régions géographiques ou domaines de programme.
+Les projets constituent l'espace de travail principal pour l'analyse dans FASTR. Chaque projet réunit un lot de résultats contenant des sorties de modules précalculées avec les visualisations, les rapports et les présentations que vous créez à partir de ces résultats. Vous pouvez créer des projets distincts pour différentes périodes, régions géographiques ou domaines de programme.
 
 ## Créer un projet
 <!-- help#aproj-create -->
 
-Tout utilisateur disposant de la permission « Créer des projets » peut démarrer un nouveau projet depuis l'écran d'accueil. Cliquez sur **Créer un projet**, saisissez un nom qui identifie la portée du projet, et le système met en place un espace de travail isolé avec sa propre base de données.
+Tout utilisateur disposant de la permission « Créer des projets » peut démarrer un nouveau projet depuis l'écran d'accueil. Cliquez sur **Créer un projet**, saisissez un nom qui identifie la portée du projet, et le système met en place un espace de travail isolé.
 
-Les nouveaux projets démarrent vides - aucun module installé, aucune fenêtre de données définie. Vos prochaines étapes consisteront généralement à activer les modules dont vous avez besoin et à configurer la fenêtre de données.
+Les nouveaux projets démarrent sans lot de résultats associé. L'étape suivante consiste à associer un lot de résultats depuis l'onglet **Lot de résultats**, qui est le point d'entrée pour accéder aux résultats des modules et aux données du projet.
 
 ![Nom du projet](/images/project-name-en.png)
 
-## Configurer la fenêtre de données
+## Associer un lot de résultats
 <!-- help#aproj-data-window -->
 
-La fenêtre de données détermine quel sous-ensemble des données de votre instance alimente le projet. Lorsque vous importez des données HMIS au niveau de l'instance, toutes ces données deviennent disponibles pour être intégrées dans les fenêtres des projets - mais chaque projet peut sélectionner une portion différente.
+Un lot de résultats est généré au niveau de l'instance et contient des résultats de modules précalculés. Pour rendre les données et les résultats analytiques disponibles dans un projet, ouvrez le projet et accédez à **Lot de résultats** dans la barre latérale gauche, puis associez l'un des lots disponibles.
 
-Ouvrez le projet et accédez à **Données** dans la barre latérale gauche. Vous y configurez les données auxquelles le projet peut accéder selon plusieurs dimensions.
-
-La **période temporelle** définit les mois ou les années à inclure. Un graphique affiche le nombre d'enregistrements par mois, ce qui vous aide à visualiser la disponibilité des données. Utilisez les sélecteurs de période pour définir vos bornes de début et de fin - les enregistrements situés hors de cette plage n'apparaîtront pas dans les résultats des modules ni dans les visualisations.
-
-Les **indicateurs** peuvent être filtrés pour n'inclure que ce qui est pertinent pour votre analyse. Si vous vous concentrez sur la santé maternelle, par exemple, vous pouvez exclure les indicateurs sans rapport afin de garder des listes de métriques faciles à gérer. Activez « Inclure tous les indicateurs » pour disposer de l'ensemble complet, ou sélectionnez des indicateurs spécifiques lorsque vous avez besoin d'une portée plus restreinte.
-
-Les **zones administratives** vous permettent de restreindre le projet à des régions ou des districts spécifiques. C'est utile lorsque vous menez des analyses distinctes pour différentes unités infranationales, ou lorsque certaines zones présentent des problèmes de qualité des données que vous souhaitez exclure pendant votre investigation.
-
-Les **types et la propriété des établissements** offrent un filtrage supplémentaire lorsque votre instance comporte ces attributs d'établissement. Vous pouvez restreindre la fenêtre aux seuls établissements publics, ou vous concentrer sur les hôpitaux en excluant les postes de santé de niveau inférieur.
-
-Les **catégories de service HFA** contrôlent quels indicateurs HFA sont inclus lorsque les données HFA sont activées pour le projet. Lors de l'activation ou de la reconfiguration du jeu de données HFA, une boîte de dialogue de paramètres vous permet de choisir d'inclure toutes les catégories de service ou de restreindre la sélection à certaines d'entre elles. Seuls les indicateurs associés à une catégorie de service sélectionnée sont importés dans le projet. Laissez le paramètre sur « Tout inclure » si vous souhaitez tous les indicateurs HFA quelle que soit leur catégorie de service.
-
-![Fenêtre de données](/images/hmis-data-window-en.png)
+Changer de lot de résultats modifie les données derrière chaque visualisation, rapport et présentation du projet. Avant qu'un changement prenne effet, FASTR affiche un rapport de compatibilité listant les visualisations qui ne se résoudraient pas avec le nouveau lot — elles restent dans le projet et indiquent pourquoi elles ne peuvent pas être tracées. Rien ne change tant que vous ne confirmez pas.
 
 ## Gérer les utilisateurs et les permissions du projet
 

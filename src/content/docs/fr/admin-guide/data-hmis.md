@@ -15,33 +15,31 @@ Les téléversements CSV conviennent bien aux importations périodiques ou aux d
 
 ## Démarrer une importation
 
-Accédez à la section **Données** et sélectionnez **Données SNIS**. Si vous disposez des permissions d'administration, un panneau **Importations** s'affiche sur la droite.
+Accédez à la section **Données** et sélectionnez **Données SNIS**. Si vous disposez des permissions d'administration, un panneau **Importations** s'affiche sur la droite avec deux boutons : **Nouvelle importation DHIS2** ouvre l'assistant d'importation DHIS2, et **Téléverser un fichier CSV** ouvre l'assistant d'importation CSV.
 
 ## Processus d'importation CSV
 <!-- help#hmis-csv -->
 
-Cliquez sur **Téléverser un fichier CSV** pour démarrer une importation CSV. Vous suivrez quatre étapes.
+Cliquez sur **Téléverser un fichier CSV** pour ouvrir l'assistant d'importation CSV. L'assistant collecte toutes les informations nécessaires avant d'envoyer quoi que ce soit au serveur — l'abandonner à n'importe quelle étape n'a aucun effet.
 
-1. **Téléversez votre fichier.** Sélectionnez un fichier CSV existant parmi les ressources de votre instance, ou téléversez-en un nouveau.
+L'assistant comporte trois étapes.
 
-2. **Faites correspondre les colonnes.** Associez les colonnes de votre fichier CSV aux quatre champs requis : facility_id, raw_indicator_id, period_id (format YYYYMM) et count. L'interface affiche toutes les colonnes disponibles afin que vous puissiez établir les correspondances correctement, même si votre source utilise des conventions de nommage différentes.
+1. **Téléversez votre fichier.** Sélectionnez un fichier CSV existant parmi les ressources de votre instance, ou téléversez-en un nouveau. L'assistant lit les en-têtes du CSV dès qu'un fichier est sélectionné. Si le fichier ne peut pas être analysé, une erreur s'affiche.
 
-3. **Préparez les données.** Cliquez sur **Démarrer la préparation** pour valider et préparer vos données. Le système vérifie chaque ligne par rapport à vos correspondances d'indicateurs et à votre registre d'établissements. La progression se met à jour automatiquement.
+2. **Faites correspondre les colonnes.** Associez les colonnes de votre fichier CSV aux quatre champs requis : facility_id, raw_indicator_id, period_id (format AAAAMM) et count.
 
-4. **Vérifiez et intégrez.** Examinez le résumé de la préparation - nombre total d'enregistrements, problèmes de validation, lignes écartées. Si les résultats vous paraissent corrects, cliquez sur **Intégrer et finaliser** pour terminer l'importation.
+3. **Vérifiez et lancez.** Un résumé affiche le fichier sélectionné et toutes les correspondances de colonnes. Lisez la notice expliquant comment la préparation valide chaque ligne et comment un fichier entièrement valide s'intègre automatiquement tandis que les lignes rejetées mettent l'importation en attente de votre vérification. Si une autre importation est en cours, le bouton devient **Mettre en file d'attente** et l'importation démarre automatiquement à la fin de l'exécution en cours.
 
-:::caution[Capture d'écran à ajouter]
-Interface de correspondance des colonnes montrant les quatre champs requis avec des sélecteurs déroulants.
-:::
+Une fois lancée, la préparation valide chaque ligne par rapport à vos correspondances d'indicateurs et à votre registre d'établissements. Un fichier entièrement valide s'intègre automatiquement. Si des lignes sont rejetées, l'importation se maintient dans un état **à vérifier** — rien n'est fusionné tant que vous n'avez pas agi depuis l'onglet **En cours** de la vue Importations.
 
 ## Processus d'importation DHIS2
 <!-- help#hmis-dhis2 -->
 
-Cliquez sur **Importer depuis DHIS2** pour ouvrir la vue des importations DHIS2. Cette vue comporte trois onglets : **En cours**, **À venir** et **Historique**.
+Cliquez sur **Nouvelle importation DHIS2** pour ouvrir l'assistant d'importation. Cette vue comporte trois onglets : **En cours**, **À venir** et **Historique**.
 
 ### Lancer une importation
 
-Cliquez sur **Nouvelle importation** pour ouvrir l'assistant d'importation. L'assistant vous guide à travers cinq étapes selon vos choix.
+Cliquez sur **Nouvelle importation DHIS2** pour ouvrir l'assistant d'importation. L'assistant vous guide à travers cinq étapes selon vos choix.
 
 1. **Identifiants.** Choisissez d'utiliser une connexion DHIS2 enregistrée ou de saisir des identifiants de connexion pour cette seule exécution. Si une connexion enregistrée existe, elle est affichée avec l'URL et l'utilisateur qui l'a enregistrée. Vous pouvez la remplacer ou la supprimer ici. Saisir des identifiants sans les enregistrer signifie qu'ils sont utilisés uniquement pour cette exécution et ne sont pas conservés.
 
@@ -61,7 +59,7 @@ Les paires terminées sont enregistrées au fur et à mesure. Si une exécution 
 
 ### Onglet En cours
 
-L'onglet En cours affiche l'importation en cours (le cas échéant) avec une barre de progression en direct, le pourcentage, le nombre de paires et la phase (classification, récupération ou finalisation). Il liste également les importations en file d'attente. Vous pouvez annuler une importation en cours ou supprimer une importation en attente. Lorsqu'aucune importation n'est en cours, l'onglet affiche la prochaine importation planifiée si elle existe, et un bouton **Nouvelle importation**.
+L'onglet En cours affiche l'importation en cours (le cas échéant) avec une barre de progression en direct et la phase actuelle, ainsi que les importations en file d'attente. Il affiche également les importations dans un état **à vérifier** — il s'agit des importations CSV dont la préparation a écarté des lignes. Pour chaque importation à vérifier, vous pouvez choisir **Intégrer malgré tout** (pour fusionner les lignes retenues) ou **Abandonner** (pour annuler l'importation sans rien fusionner). Vous pouvez annuler une importation en cours ou supprimer une importation en attente.
 
 ### Onglet À venir
 
@@ -69,11 +67,11 @@ L'onglet À venir liste les importations planifiées - aussi bien les calendrier
 
 ### Onglet Historique
 
-L'onglet Historique affiche toutes les exécutions terminées, annulées et en erreur avec leur heure de démarrage, qui les a déclenchées, la sélection (indicateurs et plage de périodes), le nombre de paires par résultat et le statut final. Les comptages de paires en échec sont mis en évidence en rouge. Cliquez sur une ligne pour ouvrir la vue de détail de l'exécution, qui affiche le résumé complet, les indicateurs introuvables dans DHIS2, et les échecs de récupération par paire avec le type et le détail de l'erreur. Depuis la vue de détail, cliquez sur **Réessayer les paires en échec** pour ouvrir l'assistant pré-configuré pour réimporter exactement les paires en échec.
+L'onglet Historique affiche toutes les exécutions terminées, annulées et en erreur. Le tableau inclut une colonne **Source** indiquant si chaque exécution provient de DHIS2 ou d'un CSV. Pour les exécutions DHIS2, les comptages de paires par résultat sont affichés ; les exécutions CSV affichent le nom du fichier à la place. Cliquez sur une ligne pour ouvrir la vue de détail de l'exécution. Pour les exécutions DHIS2, la vue de détail affiche le résumé complet, les indicateurs introuvables dans DHIS2, les échecs de récupération par paire et un bouton **Version** qui ouvre directement les informations d'importation de la version du jeu de données créée par cette exécution. Depuis le détail d'une exécution DHIS2, cliquez sur **Réessayer les paires en échec** pour ouvrir l'assistant pré-configuré pour réimporter exactement les paires en échec.
 
 ### Gérer la connexion DHIS2
 
-Cliquez sur **Gérer la connexion** dans la vue des importations DHIS2, ou sur **Identifiants DHIS2** dans l'en-tête de la section Données, pour ouvrir une boîte de dialogue permettant de mettre à jour ou de supprimer les identifiants DHIS2 enregistrés. Les identifiants sont chiffrés sur le serveur. Une fois enregistré, le mot de passe n'est pas renvoyé au navigateur. La connexion enregistrée est partagée par tous les flux DHIS2 de l'instance — les mêmes identifiants sont utilisés par le gestionnaire d'indicateurs, l'assistant GeoJSON et l'importation de structure.
+Cliquez sur **Gérer la connexion** dans la vue des importations pour ouvrir une boîte de dialogue permettant de mettre à jour ou de supprimer les identifiants DHIS2 enregistrés. Les identifiants sont chiffrés sur le serveur. Une fois enregistré, le mot de passe n'est pas renvoyé au navigateur. La connexion enregistrée est partagée par tous les flux DHIS2 de l'instance — les mêmes identifiants sont utilisés par le gestionnaire d'indicateurs, l'assistant GeoJSON et l'importation de structure.
 
 ### Exigences pour la planification
 
@@ -97,12 +95,8 @@ Pour les importations DHIS2, les erreurs par paire sont enregistrées dans le re
 
 ## Gérer l'historique des importations
 
-Chaque importation réussie crée une nouvelle version du jeu de données. Cliquez sur **Voir les importations précédentes** pour consulter toutes les versions avec leurs dates et le nombre de lignes. Vous pouvez également supprimer des données si nécessaire - cette action est irréversible et réservée aux administrateurs globaux.
-
-## Supprimer des données ICEH
-
-Le jeu de données ICEH propose deux options de suppression. Pour supprimer toutes les données ICEH, cochez **Supprimer TOUTES les données ICEH**, saisissez `yes please delete` dans le champ de confirmation, puis cliquez sur **Supprimer**. Pour supprimer uniquement certains indicateurs tout en conservant les autres, décochez **Supprimer TOUTES les données ICEH**, sélectionnez les indicateurs à supprimer dans la liste, puis cliquez sur **Supprimer**. Seuls les indicateurs sélectionnés sont supprimés ; tous les autres sont conservés.
+Chaque importation réussie crée une nouvelle version du jeu de données. Depuis la vue de détail d'une exécution DHIS2, cliquez sur le bouton **Version** pour accéder directement aux informations d'importation de cette version. Vous pouvez également supprimer des données si nécessaire - cette action est irréversible et réservée aux administrateurs globaux.
 
 ## Après l'importation
 
-Une fois les données intégrées, elles deviennent disponibles pour tous les projets de votre instance. Les projets peuvent ajuster leur fenêtre de données pour inclure les nouvelles périodes, et les modules prendront en compte les données fraîches lors de leur prochaine exécution.
+Une fois les données intégrées, elles deviennent disponibles pour la génération d'un lot de résultats. Générez un nouveau lot de résultats depuis la page **Lots de résultats** de l'instance pour inclure les données fraîches dans vos projets.

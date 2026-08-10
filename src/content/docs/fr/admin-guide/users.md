@@ -75,6 +75,12 @@ Lorsque vous créez un nouveau projet, les utilisateurs existants reçoivent des
 
 Cela fait gagner du temps lorsque votre organisation ajoute fréquemment des projets - vous n'avez pas à affecter manuellement chaque utilisateur à chaque nouveau projet. Définissez les valeurs par défaut sur « Lecteur » pour les personnes qui doivent voir toutes les analyses, ou sur « Aucun accès » pour celles qui ne travaillent que sur des projets spécifiques.
 
+## Jetons d'accès personnels
+
+FASTR prend en charge les jetons d'accès personnels (PAT) pour les intégrations et l'accès à l'API. Depuis votre profil, accédez à la section **Jetons d'accès personnels** pour créer, consulter et révoquer des jetons. Chaque jeton porte un libellé que vous choisissez à sa création. La valeur brute du jeton n'est affichée qu'une seule fois à la création — copiez-la immédiatement. La date de dernière utilisation d'un jeton se met à jour à chaque authentification, ce qui permet d'identifier facilement les jetons qui ne sont plus utilisés. Révoquez tout jeton dont vous n'avez plus besoin.
+
+Les jetons d'accès personnels sont en libre-service : vous ne pouvez gérer que vos propres jetons, pas ceux des autres utilisateurs.
+
 ## Opérations par lot
 
 La liste des utilisateurs prend en charge la sélection par lot pour les opérations courantes. Cochez les cases à côté de plusieurs utilisateurs, puis utilisez les boutons d'action qui apparaissent :

@@ -9,7 +9,7 @@ Once your modules have processed data, you'll want to see the results. Visualiza
 
 ## Visualization types
 
-FASTR offers four types of visualizations, each suited to different questions. A **chart** works well when you're comparing values across categories - for example, outpatient visits by facility type, or coverage rates across districts. **Timeseries** visualizations show how a metric changes over time, making them useful for spotting trends or seasonal patterns. **Maps** display data geographically, which helps when you want to see regional variation at a glance. **Tables** give you the full numeric detail when you need precise values or want to see multiple dimensions at once.
+FASTR offers five types of visualizations, each suited to different questions. A **chart** works well when you're comparing values across categories - for example, outpatient visits by facility type, or coverage rates across districts. **Timeseries** visualizations show how a metric changes over time, making them useful for spotting trends or seasonal patterns. **Maps** display data geographically, which helps when you want to see regional variation at a glance. **Tables** give you the full numeric detail when you need precise values or want to see multiple dimensions at once. **Pie charts** show proportional breakdowns when you need to visualize how a whole is divided among categories.
 
 The type you choose depends on what question you're answering. If someone asks "how do our districts compare?", a map or chart makes sense. If they ask "what's the exact number for District X in March?", a table is more useful.
 
@@ -23,7 +23,7 @@ The type you choose depends on what question you're answering. If someone asks "
 
 Open your project and click **Visualizations** in the left sidebar. The list shows all visualizations in the project, organized into folders. You can search by name using the search box at the top, and use the sort control to order the list by name or by recently updated.
 
-Some visualizations appear with a "default" badge - these are created automatically by modules and can't be edited directly. If you want to modify a default visualization, opening it will create an editable copy that you can customize and save as your own.
+Some visualizations appear with a "default" badge - these are created automatically from module presets in the attached results package and can't be edited directly. If you want to modify a default visualization, opening it will create an editable copy that you can customize and save as your own.
 
 When another collaborator is currently editing a visualization, a small colored avatar appears on its card in the list. This lets you see who is working on what before you open a card.
 
@@ -42,7 +42,7 @@ Click **Create visualization** to start. The first step asks you to select a met
 
 After selecting a metric, you'll see a list of presets. Presets are ready-made configurations created by the module authors - they represent common ways to view that particular metric. If a preset matches what you need, select it and you're done. The visualization opens in the editor, ready to use or fine-tune.
 
-If none of the presets fit, choose **Custom**. This lets you pick the visualization type (chart, timeseries, map, or table) and configure how to disaggregate the data. Disaggregation means breaking down a single number into more specific views - instead of "total outpatient visits," you might show visits by month, by facility type, or by district.
+If none of the presets fit, choose **Custom**. This lets you pick the visualization type (chart, timeseries, map, pie chart, or table) and configure how to disaggregate the data. Disaggregation means breaking down a single number into more specific views - instead of "total outpatient visits," you might show visits by month, by facility type, or by district.
 
 Not every disaggregation works with every visualization type. For example, geographic disaggregation makes sense for maps but not for timeseries. The interface shows you which options are available based on the type you've chosen.
 
@@ -58,7 +58,7 @@ Some chart types have specific data requirements. The disruptions chart, for exa
 
 Once you've created or opened a visualization, you're in the editor. The left panel contains all the configuration options, organized into three tabs. The right side shows a live preview that updates as you make changes - you can see immediately how your adjustments affect the output.
 
-When live collaboration is active, each panel tab shows small avatar icons for collaborators currently on that tab, so you can see who is working on Data, Presentation, or Text settings at the same time as you. A **Live** indicator appears in the header along with undo and redo buttons for reversing your own changes without affecting your colleagues' edits.
+When live collaboration is active, each panel tab shows small avatar icons for collaborators currently on that tab, so you can see who is working on Data, Presentation, or Text settings at the same time as you. A **Live** indicator appears in the header along with undo and redo buttons for reversing your own changes without affecting your colleagues' edits. If the server-side checkpoint is failing, the header shows **Not saving — retrying…** with a red dot instead of the Live indicator, so you know to check your connection.
 
 ![Visualization Editor](/images/viz-editor-en.png)
 
@@ -69,7 +69,7 @@ The Data tab controls what information appears in the visualization. This is whe
 
 Period filters let you focus on a particular time window. If your project contains three years of data but you only want to show the last six months, you'd set that here. Disaggregations let you break down the data - adding a "facility type" disaggregation to a chart would show separate bars for hospitals, health centers, and dispensaries instead of a single total.
 
-For admin-area and facility disaggregations, you can optionally include a roll-up total row by checking the option next to the relevant disaggregation. The label shown depends on context: it reads **Include National results** for a national admin-area total, **Include results for all areas** when the visualization is scoped to a specific parent area, or **Include results for all facilities** for a facility total. This total row appears at the start or end of the chart or table depending on your position setting. The option is available on a disaggregated admin-area level (admin area 2, 3, or 4) or facility column, provided that level is not shown as a replicant or map area and is not filtered to a single value; it is also not available on maps. Additionally, the metric must support aggregation — if it does not, the checkbox appears disabled with an explanation. Only one roll-up total row can be active at a time.
+For admin-area and facility disaggregations, you can optionally include a roll-up total row by checking the option next to the relevant disaggregation. The label shown depends on context: it reads **Include National results** for a national admin-area total, **Include results for all areas** when the visualization is scoped to a specific parent area, or **Include results for all facilities** for a facility total. This total row appears at the start or end of the chart or table depending on your position setting. The option is available on a disaggregated admin-area level (admin area 2, 3, or 4) or facility column, provided that level is not shown as a replicant or map area and is not filtered to a single value; it is also not available on maps or pie charts. Additionally, the metric must support aggregation — if it does not, the checkbox appears disabled with an explanation. Only one roll-up total row can be active at a time.
 
 When you enable a roll-up total for an admin-area or facility disaggregation, the platform fetches the aggregated total using a separate data request. This means toggling the roll-up option triggers a refetch of the visualization data. Changing the position of an existing roll-up row is a display-only adjustment and does not cause a refetch.
 
@@ -81,11 +81,15 @@ If a visualization looks wrong or shows unexpected results, the Data tab is usua
 
 The Presentation tab adjusts how the visualization looks. For charts, you can change colors, show or hide data labels, and configure axis ranges. For maps, you can adjust the color scale and boundary styling. Tables have options for column widths and number formatting.
 
+For pie charts, the Presentation tab lets you switch between a standard pie shape and a doughnut shape, choose a color scale, control data labels, sort slices by value, and group small slices together under an "Other" category. You can also enable **Completion mode** for percent metrics, which draws each pie against a fixed 100% envelope so the filled arc reads as the value itself — useful when comparing coverage indicators across multiple pies. When completion mode is active, you can also enable **Show center value** to print the value in the doughnut hole.
+
 For HFA survey metrics whose results are at the facility level, tables have an additional option: **Show sample sizes in column headers**. When enabled, each column header shows the number of surveyed facilities that contributed to its values — for example, "Northern (n=55)". This option only appears for metrics that carry facility-level survey data.
 
 For scatter-style charts using the **points** display, you can enable **Add connectors** to draw lines between points in series order. This is useful when you want to show both individual data positions and the trajectory connecting them.
 
 These settings don't change what data is shown - only how it's displayed. If you want a cleaner look for a presentation, or need to match your organization's color scheme, this is where you'd make those adjustments.
+
+The Presentation tab also includes a **Custom value order** section for any disaggregation dimensions shown in the visualization. Click **Set order** next to a dimension to open a modal where you can drag values into your preferred sequence, or use the search and move-to-top/bottom buttons for longer lists. Once set, the order applies whenever that dimension is displayed; a warning appears if a conflicting sort or display mode means the custom order is not currently active. Click the **×** button next to a dimension to clear its stored order.
 
 ![Presentation Tab](/images/presentation-tab-en.png)
 
@@ -123,7 +127,7 @@ Sometimes you need the underlying numbers, not just the picture. Click **Downloa
 
 ## Common issues
 
-**The visualization shows "no data"**: Check that your modules have finished running and that the metric has data for the time period and filters you've selected. If the project's data window doesn't include the dates you're filtering to, you won't see anything.
+**The visualization shows "no data"**: Check that the results package attached to your project contains results for this metric, and that the metric has data for the time period and filters you've selected.
 
 **The chart looks cluttered or hard to read**: You may have too many disaggregations active. Try removing one or filtering to fewer values. Sometimes a table is a better choice than a chart when you have many categories.
 

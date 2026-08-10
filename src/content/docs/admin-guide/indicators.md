@@ -88,6 +88,14 @@ Warnings (shown in amber) are advisory and do not block saving. Errors (shown in
 
 Each time-point code entry also supports an optional filter code field. Filter code restricts which facilities contribute to the indicator's value — only facilities where the filter expression evaluates to TRUE are included. If you enter filter code for a time point, you must also provide R code for that same time point; a filter without R code is not valid and blocks saving.
 
+### Variant groups and per-item code
+
+An indicator can be assigned to a **variant group**, which defines a set of response options (items) that the indicator can be broken down by. When a variant group is assigned, the code editor shows a per-item numerator section below the main code for each time point. Each item gets its own R code snippet that shares the time point's filter code. Use this when the same indicator needs separate numerator logic for each response option — for example, separate calculations for each ownership category.
+
+Variant groups and their items are managed on the **Variant groups** tab in the HFA indicator manager. Each item has a short ID (lowercase letters, digits, and underscores, starting with a letter, maximum 64 characters) and a display label. Items are ordered within their group and can be reordered by dragging.
+
+To assign a variant group to an indicator, open the indicator's code editor and select the group from the **Variant group** dropdown. If the indicator already has per-item code for a different group and you switch groups, FASTR asks for confirmation before clearing the old group's code.
+
 ### Code consistency
 
 When an indicator applies to multiple time points, FASTR tracks whether extraction code is consistent. Inconsistent code may be intentional (survey questions change between rounds), but it's worth reviewing. Use **Revalidate all** after making changes to refresh validation across all indicators.
@@ -96,7 +104,7 @@ The indicator list shows a summary of code status: **ready** (no errors or warni
 
 ### Deleting indicators
 
-Before deleting an indicator or a set of indicators, FASTR checks whether any other indicators reference the deleted variable names in their R code. If references are found, the confirmation dialog lists the affected indicators and warns that their code will fail validation after deletion.
+Before deleting an indicator or a set of indicators, FASTR checks whether any other indicators reference the deleted variable names in their R code or variant code. If references are found, the confirmation dialog lists the affected indicators and warns that their code will fail validation after deletion.
 
 ### AI assistant for indicators
 
@@ -106,16 +114,28 @@ Global administrators can open an AI assistant panel directly in the HFA Indicat
 
 Service categories are created and managed from the **Service categories** tab in the HFA indicator manager. Click **Add** to create a new service category - you provide a label and FASTR derives an ID automatically, though you can edit it. You can reorder service categories by dragging, and edit or delete them individually. Deleting a service category removes it from any indicators currently assigned to it. Note that service category IDs cannot contain the pipe character (`|`).
 
+### Managing variant groups
+
+Variant groups are created and managed from the **Variant groups** tab in the HFA indicator manager. The tab shows a two-panel layout: groups on the left and the selected group's items on the right.
+
+Click **Add** in the groups panel to create a new group — provide a label and FASTR derives an ID automatically. You can reorder groups by dragging. Click the pencil icon to edit a group's label, or the trash icon to delete it. Deletion is refused while any indicator is still assigned to the group.
+
+Select a group to manage its items in the right panel. Click **Add** to create a new item — provide a label and FASTR derives an ID from it, though you can edit the ID before saving. Item IDs must start with a lowercase letter and contain only lowercase letters, digits, and underscores (maximum 64 characters). You can reorder items within a group by dragging. Edit or delete individual items using the icons on each row; deleting an item removes any per-item code authored for it.
+
 ### Excel workbook upload
 
-HFA indicators support batch creation via Excel workbook. Upload an Excel workbook (.xlsx) with four sheets:
+HFA indicators support batch creation via Excel workbook. Upload an Excel workbook (.xlsx) with these sheets:
 
 - **Categories**: id, label
 - **Sub-categories**: id, categoryId, label
 - **Service categories**: id, label (optional)
-- **Indicators**: varName, categoryId, subCategoryId, serviceCategoryId (pipe-separated for multiple), shortLabel, definition, type, aggregation, r_code__&lt;time point&gt;, r_filter_code__&lt;time point&gt;, …
+- **Variant groups**: id, label (optional)
+- **Variant items**: id, groupId, label (optional)
+- **Indicators**: varName, categoryId, subCategoryId, serviceCategoryId (pipe-separated for multiple), shortLabel, definition, type, aggregation, variantGroupId (optional), r_code__&lt;time point&gt;, r_filter_code__&lt;time point&gt;, r_variant_code__&lt;itemId&gt;__&lt;time point&gt;, …
 
-If the Service categories sheet is omitted, indicators are imported with no service categories assigned.
+If the Service categories, Variant groups, or Variant items sheets are omitted, indicators are imported with no service categories or variant assignments.
+
+Variant code columns use the format `r_variant_code__<itemId>__<timePointLabel>`. Each variant code column must reference an item ID from the Variant items sheet, and the time point label must match a labeled `r_code__` column in the same file. An indicator with variant code must also have a `variantGroupId` that matches the item's group.
 
 When importing, choose between **Add to existing** and **Replace all existing** import modes. In **Add to existing** mode, indicators whose variable names already exist on the platform are skipped — only new variable names are created. After import, a summary lists any skipped indicators. In **Replace all existing** mode, all existing indicators, categories, sub-categories, and service categories are permanently deleted before importing. To confirm a replace-all import, you must type `yes please delete` in the confirmation field before the **Import** button becomes active.
 

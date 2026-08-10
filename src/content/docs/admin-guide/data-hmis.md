@@ -15,33 +15,31 @@ CSV uploads work well for periodic imports or historical data. The DHIS2 import 
 
 ## Starting an import
 
-Navigate to the **Data** section and select **HMIS Data**. If you have admin permissions, you'll see an **Imports** panel on the right.
+Navigate to the **Data** section and select **HMIS Data**. If you have admin permissions, you'll see an **Imports** panel on the right with two buttons: **New DHIS2 import** opens the DHIS2 import wizard, and **Upload CSV file** opens the CSV import wizard.
 
 ## CSV import workflow
 <!-- help#hmis-csv -->
 
-Click **Upload CSV file** to begin a CSV import. You'll work through four steps.
+Click **Upload CSV file** to open the CSV import wizard. The wizard collects everything needed before sending anything to the server — abandoning it at any point has no effect.
 
-1. **Upload your file.** Select an existing CSV from your instance's assets, or upload a new one.
+The wizard has three steps.
 
-2. **Map columns.** Match your CSV columns to the four required fields: facility_id, raw_indicator_id, period_id (YYYYMM format), and count. The interface shows all available columns so you can match them correctly even if your source uses different naming conventions.
+1. **Upload your file.** Select an existing CSV from your instance's assets, or upload a new one. The wizard reads the CSV headers as soon as a file is selected. If the file cannot be parsed, an error appears.
 
-3. **Stage the data.** Click **Start staging** to validate and prepare your data. The system checks each row against your indicator mappings and facility registry. Progress updates automatically.
+2. **Map columns.** Match your CSV columns to the four required fields: facility_id, raw_indicator_id, period_id (YYYYMM format), and count.
 
-4. **Review and integrate.** Check the staging summary - total records, validation issues, rows dropped. If results look correct, click **Integrate and finalize** to complete the import.
+3. **Review and launch.** A summary shows the selected file and all column mappings. Read the notice about how staging validates every row and how a fully clean file integrates automatically while dropped rows hold the import for your review. If another import is currently running, the button changes to **Queue import** and the import starts automatically when the running one finishes.
 
-:::caution[Screenshot needed]
-Column mapping interface showing the four required fields with dropdown selectors.
-:::
+Once launched, staging validates each row against your indicator mappings and facility registry. A fully clean file integrates automatically. If any rows are dropped, the import holds in a **needs review** state — nothing is merged until you act from the **Current** tab of the Imports view.
 
 ## DHIS2 import workflow
 <!-- help#hmis-dhis2 -->
 
-Click **Import from DHIS2** to open the DHIS2 imports view. This view has three tabs: **Current**, **Future**, and **History**.
+Click **New DHIS2 import** to open the DHIS2 import wizard. This view has three tabs: **Current**, **Future**, and **History**.
 
 ### Launching an import
 
-Click **New import** to open the import wizard. The wizard walks you through up to five steps depending on the options you choose.
+Click **New DHIS2 import** to open the import wizard. The wizard walks you through up to five steps depending on the options you choose.
 
 1. **Credentials.** Choose whether to use a stored DHIS2 connection or enter connection details for this run only. If a stored connection exists, it is shown with the URL and the user who saved it. You can replace it or delete it here. Entering credentials without saving them means they are used only for this run and are not stored.
 
@@ -61,7 +59,7 @@ Completed pairs are saved as they finish. If a run is cancelled or encounters an
 
 ### Current tab
 
-The Current tab shows the running import (if any) with a live progress bar, percentage, pair counts, and the phase (classifying, fetching, or finalizing). It also lists any queued imports. You can cancel a running import or remove a queued one. When no import is running, the tab shows the next scheduled import if one exists, and a **New import** button.
+The Current tab shows any running import with a live progress bar and the current phase, as well as any queued imports. It also shows any imports in a **needs review** state — these are CSV imports where staging dropped rows. For each needs review import, you can choose to **Integrate anyway** (merging the surviving rows) or **Discard** (abandoning the import without merging anything). You can cancel a running import or remove a queued one.
 
 ### Future tab
 
@@ -69,11 +67,11 @@ The Future tab lists scheduled imports - both recurring schedules and pending on
 
 ### History tab
 
-The History tab shows all completed, cancelled, and errored import runs with their start time, who triggered them, the selection (indicators and period range), pair outcome counts, and final status. Failed pair counts are highlighted in red. Click any row to open the run detail view, which shows the full run summary, any indicators not found in DHIS2, and per-pair fetch failures with error type and detail. From the run detail view you can click **Retry failed pairs** to open the wizard pre-configured to re-import exactly the failed pairs.
+The History tab shows all completed, cancelled, and errored import runs. The table includes a **Source** column showing whether each run came from DHIS2 or CSV. For DHIS2 runs, pair outcome counts are shown; CSV runs show the file name instead. Click any row to open the run detail view. For DHIS2 runs, the detail view shows the full run summary, any indicators not found in DHIS2, per-pair fetch failures, and a **Version** button that opens the import information for the dataset version created by that run. From a DHIS2 run detail you can also click **Retry failed pairs** to open the wizard pre-configured to re-import exactly the failed pairs.
 
 ### Managing the DHIS2 connection
 
-Click **Manage connection** in the DHIS2 imports view, or click **DHIS2 credentials** in the Data section header, to open a dialog for updating or deleting the stored DHIS2 credentials. Credentials are encrypted on the server. Once saved, the password is not sent back to the browser. The stored connection is shared across all DHIS2 flows in the instance — the same credentials are used by the indicator manager, the GeoJSON wizard, and the structure import.
+Click **Manage connection** in the Imports view to open a dialog for updating or deleting the stored DHIS2 credentials. Credentials are encrypted on the server. Once saved, the password is not sent back to the browser. The stored connection is shared across all DHIS2 flows in the instance — the same credentials are used by the indicator manager, the GeoJSON wizard, and the structure import.
 
 ### Scheduling requirements
 
@@ -97,12 +95,8 @@ For DHIS2 imports, per-pair errors are recorded in the import ledger with an err
 
 ## Managing import history
 
-Each successful import creates a new dataset version. Click **View previous imports** to see all versions with their dates and row counts. You can also delete data if needed - this action is irreversible and available only to global administrators.
-
-## Deleting ICEH data
-
-The ICEH dataset has two deletion options. To delete all ICEH data, check **Delete ALL ICEH data**, type `yes please delete` in the confirmation field, and click **Delete**. To remove only specific indicators while keeping others, uncheck **Delete ALL ICEH data**, select the indicators you want to remove from the list, and click **Delete**. Only the selected indicators are removed; all other indicators are kept.
+Each successful import creates a new dataset version. From a DHIS2 run's detail view, click the **Version** button to open the import information for that version directly. You can also delete data if needed - this action is irreversible and available only to global administrators.
 
 ## After importing
 
-Once data is integrated, it becomes available to all projects in your instance. Projects can set their data window to include the new periods, and modules will pick up the fresh data on their next run.
+Once data is integrated, it becomes available for use when generating a results package. Generate a new results package from the instance **Results packages** page to include the fresh data in your projects.

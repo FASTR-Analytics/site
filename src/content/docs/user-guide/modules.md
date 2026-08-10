@@ -18,21 +18,20 @@ Results objects contain **metrics** - the specific values you can visualize. A s
 ## Module status
 <!-- help#umod-status -->
 
-The Modules tab shows each installed module and its current state. A status badge next to each module name tells you what's happening:
+The **Results package** tab shows the package your project is served from, including which modules it contains and their generation status:
 
-- **Ready** - Results are current; you can create visualizations immediately
-- **Running** - The module is processing data; you'll see progress text as it works
-- **Waiting** - The module is queued, waiting for dependencies or data
-- **Error** - Something went wrong; view logs for details (requires admin attention)
+- **Ready** - Results are available; you can create visualizations immediately
+- **Unavailable** - The module's results are not available in this package; contact your administrator for details
+- **Error** - Something went wrong during generation; contact your administrator for details
 
-## When modules re-run
+## When results update
 
-Modules automatically re-run when their inputs change, ensuring visualizations always reflect the latest calculations. Triggers include data refreshes, configuration changes, and upstream module updates. You'll see status indicators update in real-time as modules progress through the queue.
+Module results are fixed within a results package. Results update when your administrator generates a new package with fresh data and attaches it to the project. You'll see the results package change on the **Results package** tab when this happens.
 
 ## Viewing module outputs
 <!-- help#umod-outputs -->
 
-While you typically interact with module results through visualizations, you can inspect raw outputs directly from the Modules tab. Click the menu button on any ready module to access **Logs** (R console output), **Files** (downloadable CSV results), or **Script** (the R code itself, if you have permission).
+While you typically interact with module results through visualizations, you can inspect raw outputs from the **Results package** tab if you have the appropriate permissions. Access **Logs** (R console output), **Files** (downloadable CSV results), or **Script** (the R code itself, if you have permission) from the package detail view.
 
 ![Module Logs](/images/modules-logs-en.png)
 
@@ -41,10 +40,10 @@ While you typically interact with module results through visualizations, you can
 
 The connection between modules and visualizations runs through metrics. When you create a visualization, you first select a metric from a module's results. The visualization then queries that metric according to your configuration choices.
 
-Understanding this chain helps troubleshoot issues. If a visualization shows "no data," check whether the underlying module is ready. If results look stale, check whether modules need to re-run. If you're missing a metric you expected, verify that the relevant module is installed.
+Understanding this chain helps troubleshoot issues. If a visualization shows "no data," check whether the results package contains results for that metric. If results look stale, check whether the project has been updated to use a newer package. If you're missing a metric you expected, verify that the relevant module was included when the package was generated.
 
 Some metrics come with **presets** - preconfigured visualization templates created by the module authors. Presets represent common ways to view that output and are a good starting point when you're unfamiliar with a metric's dimensions.
 
 ## Module updates
 
-Modules evolve over time as methodologies improve. The Modules tab shows when updates are available. Applying updates is an administrative task that typically triggers a re-run. If you see "Update available" badges and believe the updates matter for your work, contact your project administrator.
+Modules evolve over time as methodologies improve. Updated module outputs become available when your administrator generates a new results package using the updated module definitions and attaches it to your project. If you believe updated module results matter for your work, contact your project administrator.

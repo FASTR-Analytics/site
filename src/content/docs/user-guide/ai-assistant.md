@@ -46,7 +46,7 @@ In the report editor, the assistant can rewrite passages, insert new figures, an
 
 ## Navigating tabs
 
-The assistant can switch the main project tab on your behalf. It can navigate to **Reports**, **Decks**, **Visualizations**, **Metrics**, **Modules**, **Data**, and **Settings**. Tab switching is not available while you are editing a visualization, slide deck, or slide.
+The assistant can switch the main project tab on your behalf. It can navigate to **Reports**, **Decks**, **Visualizations**, **Metrics**, and **Settings**. The **Results package** tab is only accessible to instance administrators and users with data configuration permissions. Tab switching is not available while you are editing a visualization, slide deck, or slide.
 
 ## Conversations and history
 
