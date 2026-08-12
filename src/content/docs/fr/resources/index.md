@@ -39,6 +39,15 @@ Chaque vidéo ci-dessous présente une fonctionnalité en quelques minutes. Elle
 ### Aperçu de la mise à jour des paquets de résultats
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Xay5QEDnCGw?si=c1jm4MbMUoxMAFd5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
+### Fonctionnalités collaboratives
+<iframe width="560" height="315" src="https://www.youtube.com/embed/18FTvFkRnFk?si=sD9EkeBOw9SmaWth" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+### Historique des versions
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Z0lr78ff8_s?si=dSC-GdKmtalvoUy7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+### Annuler/rétablir
+<iframe width="560" height="315" src="https://www.youtube.com/embed/_yO67j2ZpO4?si=DZyq_Jv9fCFzKSPS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ## Pour aller plus loin
 
 - [FASTR sur le portail de données du GFF](https://data.gffportal.org/key-themes/FASTR) - contexte sur l'initiative FASTR et son rôle au sein du GFF
