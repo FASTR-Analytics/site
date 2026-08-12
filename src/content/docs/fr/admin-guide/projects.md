@@ -60,4 +60,4 @@ L'assistant IA de FASTR peut interpréter les graphiques et suggérer des analys
 
 ## Apparence
 
-Chaque utilisateur peut basculer entre le mode clair et le mode sombre depuis son profil. Ouvrez votre profil en cliquant sur votre avatar dans la barre supérieure, puis accédez à la section **Apparence** et activez **Mode sombre**. Le paramètre est enregistré par navigateur et prend effet immédiatement - tous les graphiques, cartes et tableaux s'adaptent au thème sélectionné.
+Chaque utilisateur peut choisir entre un thème clair, sombre ou basé sur les préférences du système depuis son profil. Ouvrez votre profil en cliquant sur votre avatar dans la barre supérieure, puis accédez à la section **Apparence** et sélectionnez **Clair**, **Sombre** ou **Système** pour suivre les préférences de votre système d'exploitation. Le paramètre est enregistré par navigateur et prend effet immédiatement — tous les graphiques, cartes et tableaux s'adaptent au thème sélectionné.
