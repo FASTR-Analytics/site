@@ -40,7 +40,7 @@ La documentation est organisée selon ce que vous cherchez à faire :
 - Le [Guide administrateur](/fr/admin-guide/) couvre la mise en place et la gestion d'une instance - utilisateurs, structure, importation des données, projets et modules
 - Le [Guide utilisateur](/fr/user-guide/) couvre le travail analytique au quotidien - projets, visualisations, tableaux de bord, présentations, rapports et assistant IA
 - La [Méthodologie](/fr/methodology/00_introduction/) documente l'approche analytique derrière les modules, de l'évaluation de la qualité des données à l'estimation de la couverture
-- Les [Ressources](/fr/resources/) rassemblent des tutoriels vidéo et des documents de référence
+- Les Ressources rassemblent de courts [tutoriels vidéo](/fr/resources/videos/) sur des fonctionnalités précises, ainsi que des [liens externes](/fr/resources/external-links/) pour le contexte sur FASTR et le GFF
 
 ## Obtenir un accès
 

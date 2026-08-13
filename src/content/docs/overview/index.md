@@ -40,7 +40,7 @@ The documentation is organized around what you're trying to do:
 - The [Admin guide](/admin-guide/) covers setting up and managing an instance - users, structure, data imports, projects, and modules
 - The [User guide](/user-guide/) covers day-to-day analytical work - projects, visualizations, dashboards, slide decks, reports, and the AI assistant
 - The [Methodology](/methodology/00_introduction/) documents the analytical approach behind the modules, from data quality assessment to coverage estimation
-- [Resources](/resources/) collects video tutorials and reference material
+- Resources collects short [video tutorials](/resources/videos/) on individual features, plus [external links](/resources/external-links/) for background on FASTR and the GFF
 
 ## Getting access
 

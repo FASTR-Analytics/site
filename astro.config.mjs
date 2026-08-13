@@ -5,6 +5,12 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   site: "https://fastr-analytics.org",
   server: { host: true },
+  // /resources/ was a single page before it was split into Videos + External
+  // links; keep the old URL working for anything already pointing at it.
+  redirects: {
+    "/resources": "/resources/videos/",
+    "/fr/resources": "/fr/resources/videos/",
+  },
   vite: {
     plugins: [tailwindcss()],
   },
