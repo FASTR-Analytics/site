@@ -31,6 +31,10 @@ La barre de navigation principale, en haut de l'écran, affiche des onglets corr
 
 L'onglet **Projets** répertorie tous les projets de votre instance et vous permet d'en créer de nouveaux. **Données** est l'endroit où vous configurez la structure (zones administratives, établissements) et importez les jeux de données. **Ressources** contient les fichiers téléversés, comme les modèles CSV et les cartes GeoJSON - tous les utilisateurs peuvent consulter et téléverser des ressources. **Utilisateurs** affiche toutes les personnes ayant accès à l'instance ainsi que leurs permissions. **Paramètres** regroupe les options de configuration à l'échelle de l'instance, comme le nom de l'instance et les préférences de langue. Une icône de cloche dans la barre de navigation affiche les annonces de nouvelles versions - un point jaune sur l'icône indique la présence de publications non lues. Cliquez sur la cloche pour parcourir toutes les annonces.
 
+## Obtenir de l'aide
+
+Cliquez sur le bouton **Aide** dans la barre de navigation supérieure pour ouvrir un menu proposant plusieurs options : **Visites guidées** vous accompagne pas à pas dans les zones clés de la plateforme ; **Demander de l'aide** envoie une demande d'assistance directement à l'équipe FASTR ; **Envoyer un commentaire** vous permet de signaler un bug, une suggestion ou de poser une question générale ; et **Documentation** ouvre ce site de documentation. Les visites guidées sont disponibles pour chaque section principale de l'instance et peuvent être relancées à tout moment.
+
 ## Premières étapes courantes
 
 Lors de la mise en place d'une nouvelle instance, vous travaillerez généralement ces tâches dans l'ordre suivant :
@@ -43,10 +47,6 @@ Lors de la mise en place d'une nouvelle instance, vous travaillerez généraleme
 6. Ajouter des utilisateurs et les affecter à des projets
 
 Chacune de ces étapes dispose de sa propre page dans ce guide, avec des instructions détaillées.
-
-## Obtenir de l'aide
-
-Si vous rencontrez des problèmes qui ne sont pas couverts par cette documentation, cliquez sur l'icône d'aide dans la barre de navigation supérieure pour soumettre une demande d'assistance. Donnez autant de détails que possible sur ce que vous tentiez de faire et sur ce qui n'a pas fonctionné - les captures d'écran sont particulièrement utiles pour le dépannage.
 
 ## Dans cette section
 

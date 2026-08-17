@@ -33,6 +33,10 @@ The **Projects** tab lists all projects in your instance and lets you create new
 
 The interface is available in English, French, and Portuguese. Use the language selector in the top navigation bar to switch between them. A bell icon in the top navigation bar shows release announcements - a yellow dot on the icon means there are unread posts. Click the bell to browse all announcements.
 
+## Getting help
+
+Click the **Help** button in the top navigation bar to open a menu with several options: **Guided tours** walks you through key areas of the platform step by step; **Ask for help** sends a support request directly to the FASTR team; **Send feedback** lets you report a bug, a suggestion, or ask a general question; and **Documentation** opens this documentation site. Guided tours are available for every major section of the instance and can be replayed at any time.
+
 ## Common first steps
 
 When setting up a new instance, you'll typically work through these tasks in order:
@@ -45,10 +49,6 @@ When setting up a new instance, you'll typically work through these tasks in ord
 6. Add users and assign them to projects
 
 Each of these steps has its own page in this guide with detailed instructions.
-
-## Getting help
-
-If you run into issues that aren't covered in this documentation, click the help icon in the top navigation bar to submit a support request. Include as much detail as possible about what you were trying to do and what went wrong - screenshots are particularly helpful for troubleshooting.
 
 ## In this section
 

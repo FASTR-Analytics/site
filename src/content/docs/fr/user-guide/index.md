@@ -35,6 +35,10 @@ Les **visualisations** transforment les résultats des modules en graphiques, ca
 
 Lorsque FASTR est mis à jour, une icône de cloche apparaît dans la barre de navigation supérieure. Un point jaune sur la cloche indique la présence d'annonces non lues. Cliquez sur la cloche pour parcourir toutes les annonces, ou cliquez sur une publication pour en lire les détails complets. De nouvelles annonces peuvent également s'afficher automatiquement lors de votre connexion après une mise à jour.
 
+## Obtenir de l'aide
+
+Cliquez sur **Aide** dans la barre de navigation supérieure pour ouvrir un menu proposant plusieurs options. **Visites guidées** vous accompagne pas à pas dans les zones clés de la plateforme et peut être relancé à tout moment. **Demander de l'aide** envoie une demande d'assistance à l'équipe FASTR. **Envoyer un commentaire** vous permet de signaler un bug, une suggestion ou de poser une question générale. **Documentation** ouvre ce site de documentation.
+
 ## Dans cette section
 
 Les pages suivantes présentent chaque partie de la plateforme plus en détail.

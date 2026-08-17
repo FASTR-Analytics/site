@@ -20,7 +20,7 @@ Une nouvelle présentation démarre vide. Le panneau de gauche affiche vos diapo
 
 Les présentations contiennent trois types de diapositives. Les **diapositives de couverture** introduisent la présentation avec un titre, un sous-titre, le nom du présentateur (facultatif) et une date. Les **diapositives de section** divisent le contenu en groupes logiques avec un titre de section. Les deux utilisent un design affirmé, en pleine page. Les **diapositives de contenu** sont l'endroit où vivent vos données - elles contiennent des visualisations, du texte et des images.
 
-Lorsque vous ajoutez une diapositive, vous en choisissez le type. Vous pouvez convertir un type en un autre par la suite à l'aide du menu déroulant de l'éditeur.
+Lorsque vous ajoutez une diapositive, vous en choisissez le type. Vous pouvez convertir un type en un autre par la suite à l'aide du menu déroulant de la barre d'outils de l'éditeur de diapositive.
 
 ## Construire des diapositives de contenu
 <!-- help#deck-content-slides -->
@@ -37,13 +37,13 @@ Si une visualisation ou une image ne peut pas être rendue - par exemple en rais
 
 ## Présenter des diapositives
 
-Cliquez sur **Présenter** dans l'en-tête de la liste des diapositives pour ouvrir le présentateur en plein écran. Le présentateur affiche une diapositive à la fois et précharge les diapositives voisines afin que la navigation soit instantanée. Utilisez les touches fléchées ou les commandes à l'écran pour passer d'une diapositive à l'autre. Appuyez sur **Échap** ou cliquez sur le bouton de fermeture pour quitter. Cliquez sur l'icône d'agrandissement pour passer en mode plein écran réel ; appuyer sur **Échap** en plein écran quitte entièrement la présentation.
+Cliquez sur **Présenter** dans la barre d'outils de la liste des diapositives pour ouvrir le présentateur en plein écran. Le présentateur affiche une diapositive à la fois et précharge les diapositives voisines afin que la navigation soit instantanée. Utilisez les touches fléchées ou les commandes à l'écran pour passer d'une diapositive à l'autre. Appuyez sur **Échap** ou cliquez sur le bouton de fermeture pour quitter. Cliquez sur l'icône d'agrandissement pour passer en mode plein écran réel ; appuyer sur **Échap** en plein écran quitte entièrement la présentation.
 
 Lorsque des collaborateurs ajoutent, suppriment ou réorganisent des diapositives pendant que le présentateur est ouvert, le présentateur prend en compte ces modifications automatiquement. La liste des diapositives et le compteur de pages se mettent à jour pour refléter la présentation actuelle, et les rendus mis en cache sont actualisés dès qu'un collaborateur modifie une diapositive déjà chargée.
 
 ## Style de la présentation
 
-Cliquez sur **Paramètres** dans l'en-tête de la présentation pour configurer le style qui s'applique à toutes les diapositives. Les options incluent le thème de couleurs, la police de caractères, le modèle de mise en page et le traitement de la couverture. Vous pouvez également configurer quels logos apparaissent sur les diapositives de couverture, les en-têtes et les pieds de page.
+Cliquez sur **Paramètres** dans la barre d'outils de la présentation pour configurer le style qui s'applique à toutes les diapositives. Les options incluent le thème de couleurs, la police de caractères, le modèle de mise en page et le traitement de la couverture. Vous pouvez également configurer quels logos apparaissent sur les diapositives de couverture, les en-têtes et les pieds de page.
 
 Pour choisir un thème de couleurs, cliquez sur **Plus de thèmes…** à côté du libellé du thème de couleurs pour ouvrir la fenêtre de sélection de thème. La fenêtre affiche tous les thèmes de couleurs standard et spéciaux sous forme d'aperçus côte à côte rendus sur une diapositive de contenu type, afin que vous puissiez les comparer avant de choisir. Sélectionnez une carte de thème pour l'appliquer et fermer la fenêtre. Une carte **Personnalisé** vous permet de saisir un code couleur hexadécimal pour dériver un thème complet à partir de la couleur de marque de votre organisation.
 
@@ -51,7 +51,7 @@ Pour choisir un thème de couleurs, cliquez sur **Plus de thèmes…** à côté
 
 ## Collaborer sur une présentation
 
-Lorsque plusieurs personnes ont la même présentation ouverte, le curseur de chacun apparaît sous la forme d'une flèche colorée avec son nom sur le canevas de la diapositive. Vous pouvez également voir qui modifie actuellement une diapositive spécifique - une petite icône de présence apparaît en bas des vignettes de diapositives dans la liste. Des icônes d'avatar dans l'en-tête de la présentation indiquent qui d'autre a la présentation ouverte en même temps. Cela facilite la coordination sans écraser le travail d'un autre.
+Lorsque plusieurs personnes ont la même présentation ouverte, le curseur de chacun apparaît sous la forme d'une flèche colorée avec son nom sur le canevas de la diapositive. Vous pouvez également voir qui modifie actuellement une diapositive spécifique - une petite icône de présence apparaît en bas des vignettes de diapositives dans la liste. Des icônes d'avatar dans la barre d'outils de la présentation indiquent qui d'autre a la présentation ouverte en même temps. Cela facilite la coordination sans écraser le travail d'un autre.
 
 Lorsque vous ouvrez l'éditeur de diapositive, les champs de texte du titre, de l'en-tête et des autres champs racines de la diapositive sont liés de manière collaborative : les curseurs des collaborateurs distants apparaissent dans le même champ de texte que celui dans lequel vous tapez, afin que vous puissiez voir exactement où ils se trouvent. Les blocs de texte de corps sur les diapositives de contenu fonctionnent de la même manière.
 

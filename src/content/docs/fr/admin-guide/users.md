@@ -26,6 +26,14 @@ Les nouveaux utilisateurs sont créés sans permission particulière - ils peuve
 
 Pour intégrer un grand nombre d'utilisateurs, utilisez **Importer par lot depuis un CSV** afin de charger un fichier contenant les adresses e-mail et le statut d'administrateur. Le fichier CSV doit comporter deux colonnes : `email` et `is_global_admin`. C'est plus rapide que d'ajouter les utilisateurs un par un lorsque vous configurez une nouvelle instance ou intégrez une équipe nombreuse.
 
+## Modifier l'adresse e-mail d'un utilisateur
+
+Les utilisateurs peuvent modifier leur propre adresse e-mail depuis leur profil. Ouvrez votre profil en cliquant sur votre nom ou votre avatar dans la barre de navigation supérieure, puis trouvez la carte **Adresse e-mail**. Cliquez sur **Changer d'e-mail** pour ouvrir la boîte de dialogue de changement d'e-mail.
+
+Le changement s'applique à toutes les instances FASTR auxquelles l'utilisateur a accès, en conservant toutes les permissions et l'historique. Le processus comporte trois étapes : saisir la nouvelle adresse et confirmer la liste des instances concernées ; vérifier le code envoyé à la nouvelle adresse ; puis examiner le résultat par instance. Si une instance n'a pas pu être mise à jour, l'ancienne adresse reste sur le compte et une option **Réessayer** est disponible. Une fois que toutes les instances signalent un succès, la page se recharge automatiquement.
+
+Les administrateurs disposant de la permission **Configurer les utilisateurs** peuvent également renommer l'adresse e-mail d'un autre utilisateur directement depuis l'onglet **Utilisateurs** à l'aide de l'action **Renommer l'e-mail**. Cela effectue le même renommage sur l'ensemble du réseau sans que l'utilisateur ait besoin de l'initier lui-même — utile comme solution de secours lorsqu'un utilisateur ne peut pas se connecter avec son ancienne adresse.
+
 ## Permissions d'instance
 <!-- help#users-instance-permissions -->
 

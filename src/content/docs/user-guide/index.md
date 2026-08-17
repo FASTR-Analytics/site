@@ -35,6 +35,10 @@ Understanding the platform's structure will help you navigate it more effectivel
 
 When FASTR is updated, a bell icon appears in the top navigation bar. A yellow dot on the bell means there are unread release announcements. Click the bell to browse all announcements, or click through to any individual post to read the full details. New announcements may also appear automatically when you sign in after an update.
 
+## Getting help
+
+Click **Help** in the top navigation bar to open a menu with several options. **Guided tours** walks you through key areas of the platform step by step and can be replayed at any time. **Ask for help** sends a support request to the FASTR team. **Send feedback** lets you report a bug, a suggestion, or ask a general question. **Documentation** opens this documentation site.
+
 ## In this section
 
 The following pages walk through each part of the platform in more detail.

@@ -42,4 +42,10 @@ Le verrouillage est utile lorsque vous avez finalisé une analyse et que vous so
 
 Lorsque plusieurs personnes ont un projet ouvert en même temps, vous pouvez voir qui d'autre est présent. Des curseurs en direct montrent où vos collègues pointent sur les pages des onglets Visualisations, Présentations, Rapports et autres - le curseur de chaque personne apparaît sous la forme d'une flèche colorée avec son nom. Les mêmes indicateurs de présence apparaissent sous forme de petites icônes d'avatar sur les cartes de visualisation, les cartes de présentation et les cartes de rapport, afin que vous puissiez voir d'un coup d'œil qui modifie quoi avant de l'ouvrir.
 
+Chaque personne n'apparaît qu'une seule fois dans l'affichage de présence, même si elle a le projet ouvert dans plusieurs onglets simultanément.
+
 Si vous perdez votre connexion au serveur de collaboration, une bannière s'affiche en haut de l'écran pour vous en informer. Vos modifications continuent d'être enregistrées normalement ; la bannière disparaît et affiche une brève confirmation « De nouveau en direct » une fois la connexion rétablie. Si vos permissions changent pendant que vous avez un projet ouvert - par exemple, un administrateur accorde ou révoque l'accès en modification - la session de collaboration se reconnecte automatiquement afin que vos nouvelles permissions prennent effet sans nécessiter de rechargement de la page.
+
+## Obtenir de l'aide
+
+Cliquez sur **Aide** dans l'en-tête du projet pour accéder aux visites guidées, demander de l'aide, envoyer des commentaires ou ouvrir la documentation. Les visites guidées vous accompagnent pas à pas dans des parties spécifiques de la plateforme et peuvent être lancées à tout moment depuis le menu **Aide**.

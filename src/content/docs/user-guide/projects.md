@@ -42,4 +42,10 @@ Locking is useful when you've finalized an analysis and want to preserve it exac
 
 When multiple people have a project open at the same time, you can see who else is present. Live cursors show where your colleagues are pointing on the Visualizations, Slide decks, Reports, and other tab pages - each person's cursor appears as a colored arrow with their name. The same presence indicators appear as small avatar icons on visualization cards, slide deck cards, and report cards, so you can see at a glance who is editing what before you open it.
 
+Each person appears only once in the presence display, even if they have the project open in multiple tabs at the same time.
+
 If you lose your connection to the collaboration server, a banner appears at the top of the screen letting you know. Your edits continue to save normally; the banner disappears and shows a brief "Live again" confirmation once the connection is restored. If your permissions change while you have a project open - for example, an administrator grants or revokes edit access - the collaboration session reconnects automatically so your new permissions take effect without requiring a page reload.
+
+## Getting help
+
+Click **Help** in the project header to access guided tours, ask for help, send feedback, or open the documentation. Guided tours walk you through specific parts of the platform and can be started at any time from the **Help** menu.

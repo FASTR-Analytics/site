@@ -26,6 +26,14 @@ New users are created with no special permissions - they can log in but won't se
 
 For bulk onboarding, use **Batch import from CSV** to upload a file containing email addresses and admin status. The CSV needs two columns: `email` and `is_global_admin`. This is faster than adding users one by one when you're setting up a new instance or onboarding a large team.
 
+## Changing a user's email address
+
+Users can change their own email address from their profile. Open your profile by clicking your name or avatar in the top navigation bar, then find the **Email address** card. Click **Change email** to open the change email dialog.
+
+The change applies to every FASTR instance the user has access to, keeping all permissions and history. The process has three steps: enter the new address and confirm the list of affected instances; verify the code sent to the new address; then review the per-instance outcome. If any instance could not be updated, the old address stays on the account and a **Retry** option is available. Once all instances report success, the page reloads automatically.
+
+Administrators with the **Configure users** permission can also rename another user's email address directly from the **Users** tab using the **Rename email** action. This performs the same fleet-wide rename without requiring the user to initiate it themselves — useful as a support fallback when a user cannot log in under their old address.
+
 ## Instance permissions
 <!-- help#users-instance-permissions -->
 

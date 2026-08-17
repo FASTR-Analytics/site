@@ -20,7 +20,7 @@ A new deck starts empty. The left panel shows your slides, and the main area sho
 
 Decks contain three types of slides. **Cover slides** introduce the presentation with a title, subtitle, optional presenter name, and date. **Section slides** divide content into logical groups with a section title. Both use a bold, full-bleed design. **Content slides** are where your data lives - these contain visualizations, text, and images.
 
-When you add a slide, you choose its type. You can convert between types later using the dropdown in the editor.
+When you add a slide, you choose its type. You can convert between types later using the dropdown in the slide editor toolbar.
 
 ## Building content slides
 <!-- help#deck-content-slides -->
@@ -37,13 +37,13 @@ If a visualization or image cannot be rendered - for example because of a data e
 
 ## Presenting slides
 
-Click **Present** in the slide list header to open the fullscreen presenter. The presenter shows one slide at a time and preloads neighbouring slides so navigation is instant. Use the arrow keys or the on-screen controls to move between slides. Press **Escape** or click the close button to exit. Click the maximize icon to enter true fullscreen mode; pressing **Escape** while in fullscreen exits the presentation entirely.
+Click **Present** in the slide list toolbar to open the fullscreen presenter. The presenter shows one slide at a time and preloads neighbouring slides so navigation is instant. Use the arrow keys or the on-screen controls to move between slides. Press **Escape** or click the close button to exit. Click the maximize icon to enter true fullscreen mode; pressing **Escape** while in fullscreen exits the presentation entirely.
 
 When collaborators add, remove, or reorder slides while the presenter is open, the presenter picks up those changes automatically. The slide list and page counter update to reflect the current deck, and cached renders are refreshed whenever a peer edits a slide you have already loaded.
 
 ## Deck styling
 
-Click **Settings** in the deck header to configure styling that applies across all slides. Options include color theme, font family, layout template, and cover treatment. You can also configure which logos appear on cover slides, headers, and footers.
+Click **Settings** in the deck toolbar to configure styling that applies across all slides. Options include color theme, font family, layout template, and cover treatment. You can also configure which logos appear on cover slides, headers, and footers.
 
 When choosing a color theme, click **More themes…** next to the color theme label to open the theme picker modal. The modal displays all available standard and special color themes as side-by-side previews rendered on a sample content slide, so you can compare them before committing. Select a theme card to apply it and close the modal. A **Custom** card lets you enter a hex color code to derive a full theme from your organization's brand color.
 
@@ -51,7 +51,7 @@ When choosing a color theme, click **More themes…** next to the color theme la
 
 ## Collaborating on a slide deck
 
-When multiple people have the same slide deck open, each person's cursor appears as a colored arrow with their name on the slide canvas. You can also see who is currently editing a specific slide - a small presence avatar appears at the bottom of slide thumbnails in the list. Avatar icons in the deck header show who else has the deck open at the same time. This makes it easy to coordinate without overwriting someone else's work.
+When multiple people have the same slide deck open, each person's cursor appears as a colored arrow with their name on the slide canvas. You can also see who is currently editing a specific slide - a small presence avatar appears at the bottom of slide thumbnails in the list. Avatar icons in the deck toolbar show who else has the deck open at the same time. This makes it easy to coordinate without overwriting someone else's work.
 
 When you open the slide editor, text fields for the slide title, header, and other root-level text are collaboratively bound: remote collaborators' carets appear inside the same text field you are typing in, so you can see exactly where they are. Body text blocks on content slides work the same way.
 
