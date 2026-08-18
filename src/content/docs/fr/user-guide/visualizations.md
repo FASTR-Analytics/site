@@ -32,6 +32,8 @@ Lorsqu'un autre collaborateur modifie actuellement une visualisation, une petite
 ## Créer une visualisation
 <!-- help#viz-create -->
 
+Pour créer des visualisations, le projet doit d'abord avoir un paquet de résultats rattaché.
+
 Chaque visualisation commence par un indicateur. Les indicateurs sont les résultats analytiques produits par vos modules - des éléments comme le « taux de couverture CPN1 » ou le « score de complétude des données ». Lorsque vous créez une visualisation, vous décidez comment afficher l'un de ces indicateurs.
 
 Cliquez sur **Créer une visualisation** pour commencer. La première étape vous demande de sélectionner un indicateur. Vous pouvez parcourir par module (utile si vous savez quelle analyse a produit le résultat souhaité) ou rechercher par nom. Une fois l'indicateur sélectionné, vous choisirez comment le visualiser.

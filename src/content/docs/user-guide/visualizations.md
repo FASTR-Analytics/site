@@ -32,6 +32,8 @@ When another collaborator is currently editing a visualization, a small colored 
 ## Creating a visualization
 <!-- help#viz-create -->
 
+To create visualizations, the project needs a results package attached first.
+
 Every visualization starts with a metric. Metrics are the analytical outputs produced by your modules - things like "ANC1 coverage rate" or "data completeness score." When you create a visualization, you're deciding how to display one of these metrics.
 
 Click **Create visualization** to start. The first step asks you to select a metric. You can browse by module (useful if you know which analysis produced the output you want) or search by name. Once you've selected a metric, you'll choose how to visualize it.

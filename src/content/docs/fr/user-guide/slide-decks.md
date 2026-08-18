@@ -14,6 +14,8 @@ Ouvrez votre projet et cliquez sur **Présentations** dans la barre latérale ga
 
 Une nouvelle présentation démarre vide. Le panneau de gauche affiche vos diapositives, et la zone principale montre un aperçu de la diapositive sélectionnée. Vous construirez la présentation en ajoutant différents types de diapositives.
 
+Pour créer des présentations, le projet doit d'abord avoir un paquet de résultats rattaché.
+
 ![Creating Slide Deck FR](/images/creating-slide-deck-fr.png)
 
 ## Types de diapositives

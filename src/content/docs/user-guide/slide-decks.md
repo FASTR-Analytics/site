@@ -14,6 +14,8 @@ Open your project and click **Slide decks** in the left sidebar. Click **Create 
 
 A new deck starts empty. The left panel shows your slides, and the main area shows a preview of the selected slide. You'll build out the deck by adding different slide types.
 
+To create slide decks, the project needs a results package attached first.
+
 ![Creating Slide Deck](/images/creating-slide-deck-en.png)
 
 ## Slide types
