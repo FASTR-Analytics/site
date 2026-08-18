@@ -21,7 +21,9 @@ New projects start without a results package attached. Your next step is to atta
 
 A results package is generated at the instance level and contains pre-computed module outputs. To make data and analytical results available in a project, open the project and navigate to **Results package** in the left sidebar, then attach one of the available packages.
 
-Editors can select any ready package from the instance using the dropdown in the **Package settings** card. They can also enable **Always use the instance's pinned package** to subscribe the project to whichever package an administrator designates as the instance pin — whenever the pin changes, the project switches automatically. Choosing a different package manually turns this subscription off.
+Editors can select any ready package from the instance using the dropdown in the package settings area. They can also enable **Always use the instance's pinned package** to subscribe the project to whichever package an administrator designates as the instance pin — whenever the pin changes, the project switches automatically. Choosing a different package manually turns this subscription off.
+
+When a project follows the pinned package but is currently on a different one, a warning appears with a **Switch to pinned package** button to resync it immediately.
 
 Switching a project to a different results package changes the data behind every visualization, report, and slide deck in the project. Before a switch takes effect, FASTR shows you a compatibility report listing any visualizations that would not resolve against the new package — they stay in the project and display why they cannot be drawn. Nothing changes until you confirm.
 

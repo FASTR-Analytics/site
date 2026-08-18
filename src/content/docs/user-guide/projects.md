@@ -21,7 +21,7 @@ The project name appears at the top of the screen. If the project has an Admin A
 
 Every project is served from a **results package** - a bundle of pre-computed module outputs generated at the instance level. The results package determines which metrics and data are available for visualizations, reports, and slide decks within the project.
 
-To see which package your project uses, navigate to the **Results package** tab. The tab shows the package currently in use and, for editors, a **Package settings** card with a dropdown to select a different package and an option to follow the instance's pinned package automatically.
+To see which package your project uses, navigate to the **Results package** tab. The tab shows the package currently in use and, for editors, a package settings area with a dropdown to select a different package and an option to follow the instance's pinned package automatically.
 
 Switching to a different results package changes the data behind every visualization, report, and slide deck in the project. FASTR shows a compatibility report before any switch takes effect, listing any visualizations that would not resolve against the new package. You can review the impact and decide whether to proceed.
 

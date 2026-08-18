@@ -21,7 +21,9 @@ Les nouveaux projets démarrent sans lot de résultats associé. L'étape suivan
 
 Un lot de résultats est généré au niveau de l'instance et contient des résultats de modules précalculés. Pour rendre les données et les résultats analytiques disponibles dans un projet, ouvrez le projet et accédez à **Lot de résultats** dans la barre latérale gauche, puis associez l'un des lots disponibles.
 
-Les éditeurs peuvent sélectionner n'importe quel lot prêt de l'instance via le menu déroulant de la carte **Paramètres du paquet**. Ils peuvent également activer **Toujours utiliser le paquet épinglé de l'instance** pour abonner le projet au paquet que l'administrateur désigne comme épingle de l'instance — chaque fois que l'épingle change, le projet bascule automatiquement. Choisir manuellement un autre paquet désactive cet abonnement.
+Les éditeurs peuvent sélectionner n'importe quel lot prêt de l'instance via le menu déroulant dans les paramètres du paquet. Ils peuvent également activer **Toujours utiliser le paquet épinglé de l'instance** pour abonner le projet au paquet que l'administrateur désigne comme épingle de l'instance — chaque fois que l'épingle change, le projet bascule automatiquement. Choisir manuellement un autre paquet désactive cet abonnement.
+
+Lorsqu'un projet suit le paquet épinglé mais se trouve actuellement sur un autre, un avertissement s'affiche avec un bouton **Basculer vers le paquet épinglé** pour resynchroniser immédiatement.
 
 Changer de lot de résultats modifie les données derrière chaque visualisation, rapport et présentation du projet. Avant qu'un changement prenne effet, FASTR affiche un rapport de compatibilité listant les visualisations qui ne se résoudraient pas avec le nouveau lot — elles restent dans le projet et indiquent pourquoi elles ne peuvent pas être tracées. Rien ne change tant que vous ne confirmez pas.
 

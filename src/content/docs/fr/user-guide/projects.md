@@ -21,7 +21,7 @@ Le nom du projet apparaît en haut de l'écran. Si le projet a une portée Zone 
 
 Chaque projet est servi depuis un **lot de résultats** - un ensemble de résultats de modules précalculés généré au niveau de l'instance. Le lot de résultats détermine quelles métriques et données sont disponibles pour les visualisations, les rapports et les présentations du projet.
 
-Pour voir quel lot utilise votre projet, accédez à l'onglet **Lot de résultats**. L'onglet affiche le lot actuellement utilisé et, pour les éditeurs, une carte **Paramètres du paquet** avec un menu déroulant pour sélectionner un autre lot et une option pour suivre automatiquement le lot épinglé de l'instance.
+Pour voir quel lot utilise votre projet, accédez à l'onglet **Lot de résultats**. L'onglet affiche le lot actuellement utilisé et, pour les éditeurs, une zone de paramètres de paquet avec un menu déroulant pour sélectionner un autre lot et une option pour suivre automatiquement le lot épinglé de l'instance.
 
 Changer de lot de résultats modifie les données derrière chaque visualisation, rapport et présentation du projet. FASTR affiche un rapport de compatibilité avant qu'un changement prenne effet, listant les visualisations qui ne se résoudraient pas avec le nouveau lot. Vous pouvez examiner l'impact et décider si vous souhaitez continuer.
 
