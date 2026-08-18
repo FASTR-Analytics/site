@@ -10,24 +10,36 @@ Dans FASTR, la structure désigne la hiérarchie organisationnelle de votre syst
 ## Zones administratives
 <!-- help#struct-admin-areas -->
 
-Les zones administratives représentent des limites géographiques organisées de manière hiérarchique. FASTR prend en charge jusqu'à quatre niveaux, même si la plupart des pays n'en utilisent que deux ou trois. La signification exacte de chaque niveau dépend de votre pays - ce que FASTR appelle « Zone administrative 2 » peut être une région dans un pays et une province dans un autre. Vous pouvez personnaliser les libellés de chaque niveau dans les paramètres de l'instance.
+Les zones administratives représentent des limites géographiques organisées de manière hiérarchique. FASTR prend en charge jusqu'à quatre niveaux, même si la plupart des pays n'en utilisent que deux ou trois. La signification exacte de chaque niveau dépend de votre pays - ce que FASTR appelle « Zone administrative 2 » peut être une région dans un pays et une province dans un autre. Vous pouvez personnaliser les libellés de chaque niveau depuis la carte **Libellés des zones administratives** dans la section Données.
 
 Une hiérarchie typique : la Zone administrative 1 représente l'ensemble du pays, la Zone administrative 2 contient les régions ou les provinces, la Zone administrative 3 contient les districts, et la Zone administrative 4 (si elle est utilisée) contient les sous-districts. Chaque établissement est rattaché à une zone administrative au niveau le plus bas que vous utilisez, et FASTR agrège automatiquement les données vers les niveaux supérieurs.
 
-Les zones administratives sont créées automatiquement lors de l'importation des établissements - chaque ligne d'établissement porte son chemin d'unité administrative. Elles sont également supprimées automatiquement lorsqu'aucun établissement des deux registres n'y fait référence ; vous n'avez donc pas besoin de les gérer directement.
+Les zones administratives sont dérivées des lignes d'établissements — chaque établissement porte son chemin de zone administrative, et FASTR crée et supprime les zones administratives automatiquement au fur et à mesure des importations et des suppressions d'établissements. Vous n'avez pas besoin de les gérer directement. Le nombre de zones administratives à chaque niveau s'affiche sur les cartes des établissements SNIS et FOSA après l'importation.
 
 ![Admin Areas FR](/images/admin-areas-fr.png)
 
 ## Établissements de santé
 <!-- help#struct-facilities -->
 
-FASTR maintient deux registres d'établissements distincts : l'un pour les établissements SNIS et l'autre pour les établissements Enquêtes FOSA. Les deux registres partagent la même hiérarchie de zones administratives, mais chacun possède son propre flux d'importation et sa propre table d'enregistrements d'établissements.
+FASTR maintient deux registres d'établissements distincts : l'un pour les établissements SNIS et l'autre pour les établissements Enquêtes FOSA. Les deux registres partagent la même hiérarchie de zones administratives, mais chacun possède son propre flux d'importation, sa propre table d'enregistrements d'établissements, et sa propre configuration pour le niveau de profondeur administratif et les colonnes d'établissements.
 
 Les établissements peuvent avoir des attributs facultatifs : type d'établissement (hôpital, centre de santé, dispensaire), catégorie de propriété (public, privé, confessionnel) et jusqu'à cinq attributs personnalisés permettant une catégorisation supplémentaire.
 
 Ces attributs permettent la désagrégation dans les visualisations. Si vous souhaitez comparer les performances entre les établissements publics et privés, ces attributs doivent être renseignés dans vos données de structure.
 
 ![Health Facilities FR](/images/health-facilities-fr.png)
+
+## Configuration des registres
+
+Chaque registre (SNIS et Enquêtes FOSA) possède sa propre carte de configuration accessible depuis la page Données. Ouvrez la carte **Configuration SNIS** ou **Configuration Enquêtes FOSA** pour ajuster deux paramètres indépendants.
+
+**Niveau maximal d'unité administrative** définit le nombre de niveaux administratifs utilisés par les établissements de ce registre. Les options sont 2, 3 ou 4. Toute modification de ce paramètre nécessite de supprimer au préalable tous les établissements de ce registre — le serveur l'impose pour éviter des données incohérentes.
+
+**Colonnes des établissements** contrôle les colonnes facultatives que portent les importations d'établissements de ce registre, ainsi que le libellé affiché pour chacune. Les colonnes disponibles sont Noms des établissements, Types d'établissements, Propriété des établissements et jusqu'à cinq Champs personnalisés. Activez une colonne et saisissez éventuellement un libellé personnalisé ; laissez le libellé vide pour utiliser la valeur par défaut. Les deux enregistrements — niveau administratif et colonnes — sont indépendants, de sorte qu'une modification de colonne ne déclenche jamais la vérification de profondeur.
+
+## Libellés des zones administratives
+
+Les noms des niveaux de zones administratives comme « Région » ou « District » sont partagés par les deux registres. Définissez-les depuis la carte **Libellés des zones administratives** dans la section Données. Saisissez la forme singulière du nom pour chaque niveau utilisé. Laissez un niveau vide pour utiliser la valeur par défaut. Ces libellés apparaissent partout où les données sont désagrégées par zone.
 
 ## Importer des établissements
 
@@ -55,13 +67,13 @@ L'import CSV suit un assistant en plusieurs étapes.
 
 Avant de confirmer, le résumé indique combien d'établissements existants correspondent aux identifiants de votre fichier et combien sont nouveaux. Si aucun ne correspond alors que vous attendiez des mises à jour, la colonne Identifiant d'établissement est probablement mal associée, ou vous importez dans le mauvais registre (SNIS ou FOSA).
 
-Après une intégration réussie, si des limites de cartes GeoJSON précédemment téléversées ne correspondent plus à aucune zone administrative - par exemple parce qu'une importation a renommé des zones - le résumé affiche un avertissement. Corrigez ces incohérences dans l'éditeur GeoJSON.
+Après une intégration réussie, si des limites de cartes GeoJSON précédemment téléversées ne correspondent plus à aucune zone administrative - par exemple parce qu'une importation a renommé des zones - le résumé affiche un avertissement indiquant quel registre est concerné. Corrigez ces incohérences dans l'éditeur GeoJSON.
 
 ![Structure Import FR](/images/structure-import-fr.png)
 
 ### Import DHIS2
 
-L'import DHIS2 est disponible pour les établissements SNIS. L'importation utilise la connexion DHIS2 enregistrée de l'instance - la même connexion gérée depuis le bouton **Identifiants DHIS2** dans l'en-tête de la section Données. Si aucune connexion enregistrée n'existe, configurez-en une avant de démarrer un import de structure DHIS2. Une fois la connexion enregistrée confirmée, sélectionnez les niveaux d'unités organisationnelles à importer. FASTR fait correspondre les niveaux DHIS2 aux niveaux de zones administratives. Les établissements Enquêtes FOSA ne peuvent être importés qu'à partir d'un fichier CSV.
+L'import DHIS2 est disponible pour les établissements SNIS. L'importation utilise la connexion DHIS2 enregistrée de l'instance - la même connexion gérée depuis la carte de connexion DHIS2 dans la section SNIS de la page Données. Si aucune connexion enregistrée n'existe, configurez-en une avant de démarrer un import de structure DHIS2. Une fois la connexion enregistrée confirmée, sélectionnez les niveaux d'unités organisationnelles à importer. FASTR fait correspondre les niveaux DHIS2 aux niveaux de zones administratives. Les établissements Enquêtes FOSA ne peuvent être importés qu'à partir d'un fichier CSV.
 
 Notez que les identifiants DHIS2 sont stockés de manière sécurisée sur le serveur — une fois enregistré, le mot de passe n'est pas renvoyé au navigateur.
 
@@ -69,9 +81,7 @@ Notez que les identifiants DHIS2 sont stockés de manière sécurisée sur le se
 
 Une fois importés, les établissements apparaissent sous forme de tableau consultable affichant tous les enregistrements avec leurs rattachements aux zones administratives et leurs attributs. Pour les mettre à jour - ajouter des établissements, corriger des rattachements ou actualiser des attributs - lancez un nouvel import avec le mode d'intégration approprié.
 
-Pour supprimer tous les établissements d'un registre, ouvrez la carte de ce registre et cliquez sur **Supprimer les établissements**. Cela supprime uniquement les établissements de ce registre ; les zones administratives partagées avec l'autre registre sont conservées. Seuls les administrateurs globaux peuvent supprimer des établissements.
-
-Pour supprimer simultanément toutes les zones administratives et tous les établissements des deux registres, ouvrez la carte **Zones administratives** et cliquez sur **Supprimer toutes les unités administratives et tous les établissements**. Utilisez cette option avec prudence, car elle affecte les modules et les visualisations qui font référence à l'ancienne structure.
+Pour supprimer tous les établissements d'un registre, ouvrez la carte de ce registre et cliquez sur **Supprimer les établissements**. Cela supprime uniquement les établissements de ce registre ; les zones administratives encore référencées par l'autre registre sont conservées. Seuls les administrateurs globaux peuvent supprimer des établissements.
 
 ![Managing Existing Facilities FR](/images/managing-existing-facilities-fr.png)
 
@@ -90,7 +100,7 @@ Pour supprimer toutes les pondérations d'échantillonnage, cliquez sur **Suppri
 ## GeoJSON pour les cartes
 <!-- help#struct-geojson -->
 
-Les visualisations cartographiques nécessitent des données de limites géographiques au format GeoJSON. Chargez un fichier GeoJSON par niveau de zone administrative - généralement pour la Zone administrative 2 (régions) et la Zone administrative 3 (districts).
+Les visualisations cartographiques nécessitent des données de limites géographiques au format GeoJSON. FASTR maintient des cartes GeoJSON distinctes pour le registre SNIS et le registre Enquêtes FOSA. Chargez un fichier GeoJSON par niveau de zone administrative pour chaque registre — généralement pour la Zone administrative 2 (régions) et la Zone administrative 3 (districts). Ouvrez la carte **Cartes GeoJSON** du registre concerné depuis la page Données.
 
 Chaque fichier GeoJSON doit contenir des polygones avec une propriété correspondant aux noms des zones administratives de vos données de structure. FASTR tente de faire correspondre les entités aux zones administratives lors du chargement et signale toute incohérence. Les zones non appariées apparaissent vides sur les cartes. Les entités sans géométrie sont automatiquement ignorées lors de l'analyse et du chargement.
 
@@ -100,7 +110,7 @@ Lorsque vous supprimez un niveau GeoJSON, le cache cartographique de ce niveau e
 
 Si la nomenclature diffère entre votre GeoJSON et vos données de structure, l'éditeur GeoJSON vous permet de modifier les propriétés des entités pour résoudre les problèmes de correspondance. Vous pouvez également désassocier explicitement une entité en définissant son identifiant de zone sur vide — cela retire une entité précédemment associée des visualisations cartographiques sans avoir besoin de recharger le fichier.
 
-Les entités non mappées dans l'assistant de chargement sont conservées dans le fichier et peuvent être mappées ultérieurement à l'aide de l'éditeur GeoJSON. Auparavant, les entités non mappées étaient décrites comme exclues ; elles sont désormais conservées afin que vous puissiez compléter le mappage à tout moment.
+Les entités non mappées dans l'assistant de chargement sont conservées dans le fichier et peuvent être mappées ultérieurement à l'aide de l'éditeur GeoJSON.
 
 ### Charger une carte GeoJSON depuis DHIS2
 

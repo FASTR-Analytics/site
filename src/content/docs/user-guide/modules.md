@@ -26,12 +26,12 @@ The **Results package** tab shows the package your project is served from, inclu
 
 ## When results update
 
-Module results are fixed within a results package. Results update when your administrator generates a new package with fresh data and attaches it to the project. You'll see the results package change on the **Results package** tab when this happens.
+Module results are fixed within a results package. Results update when your administrator generates a new package with fresh data and attaches it to the project. If your project follows the instance's pinned package, it switches automatically when an administrator pins a new one. You'll see the results package change on the **Results package** tab when this happens.
 
 ## Viewing module outputs
 <!-- help#umod-outputs -->
 
-While you typically interact with module results through visualizations, you can inspect raw outputs from the **Results package** tab if you have the appropriate permissions. Access **Logs** (R console output), **Files** (downloadable CSV results), or **Script** (the R code itself, if you have permission) from the package detail view.
+While you typically interact with module results through visualizations, you can inspect raw outputs from the **Results package** tab if you have the appropriate permissions. Access **Logs** (R console output, requires the View logs permission), **Files** (downloadable CSV results, requires View data), or **Script** (the R code itself, requires View data) from the package detail view.
 
 ![Module Logs](/images/modules-logs-en.png)
 

@@ -23,7 +23,7 @@ Instance administrators can set default module selections and parameter values t
 
 To produce module outputs, generate a new results package from the instance **Results packages** page. Click **Generate new results package** to open the wizard. The wizard walks you through three steps: selecting which data families to include (HMIS, HFA, ICEH equity data), choosing which modules to run and configuring their parameter values, and confirming the label and optionally attaching the package to specific projects immediately.
 
-If a configuration is already in progress, a **Resume configuration** button appears instead. Resuming picks up from where you left off.
+The wizard is an ephemeral modal — nothing is saved to the server before you click **Launch generation**. The entire configuration (data family selections, module choices, parameter values, label, and attach targets) is submitted in a single step. If you close the wizard before launching, nothing is stored.
 
 ![Installing Modules](/images/installing-modules-en.png)
 
@@ -33,11 +33,17 @@ Select which data families this results package is generated from. Each included
 
 ### Step 2 — Configure modules
 
-Choose which modules to run. Selecting a module automatically includes all modules it depends on; a module cannot be unchecked while another selected module depends on it. Modules that require data families not chosen in step 1 are shown as unavailable. For each selected module, configure its parameter values — the wizard pre-fills defaults from the module defaults settings.
+Choose which modules to run. Selecting a module automatically includes all modules it depends on; a module cannot be unchecked while another selected module depends on it. Modules that require data families not chosen in step 1 are shown as unavailable, with a note naming which family is missing so you can go back to step 1 and add it. For each selected module, configure its parameter values — the wizard pre-fills defaults from the module defaults settings.
 
 ### Step 3 — Confirm and launch
 
 Enter a label for the results package and review the data and module selections. Optionally, select projects to attach the new package to immediately — these projects will switch to the new package when generation succeeds. Click **Launch generation** to start. Generation runs in the background; you can leave the page and follow progress on the Results packages surface.
+
+## Pinning a results package
+
+Administrators can designate one ready package as the instance's **pinned package**. Projects that have **Always use the instance's pinned package** enabled are automatically repointed whenever the pin changes. To pin a package, open its detail view on the Results packages page and click **Pin**. To unpin, click **Unpin** on the currently pinned package.
+
+Before pinning, FASTR shows which follow-pinned projects will be repointed. Locked projects are skipped automatically and remain on their current package.
 
 ## Module execution and status
 <!-- help#amod-status -->
@@ -58,6 +64,8 @@ When a module errors or produces unexpected results, check the logs from the res
 
 For complex issues, view **Script** to see the exact R code that ran. The **Files** option shows data files the module produced, useful for manual inspection of intermediate results.
 
+Script and file access require the **View data** permission; log access requires the **View logs** permission. These permissions apply whether you are browsing from the instance catalogue or from a project's Results package tab.
+
 ## Deleting results packages
 
-To remove a results package, click **Delete** on its card in the instance results packages catalogue. FASTR refuses to delete a package while any project is using it or while it is still generating. The card explains the reason when deletion is blocked. Deletion permanently removes the package's files and cached results and cannot be undone.
+To remove a results package, select it in the instance results packages catalogue and click **Delete**. FASTR refuses to delete a package while any project is using it, while it is pinned, or while it is still generating. The detail pane explains the reason when deletion is blocked. Deletion permanently removes the package's files and cached results and cannot be undone.

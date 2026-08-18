@@ -10,7 +10,7 @@ Projects are the primary workspace for analysis in FASTR. Each project brings to
 ## Creating a project
 <!-- help#aproj-create -->
 
-Any user with the "Create projects" permission can start a new project from the home screen. Click **Create project**, enter a name that identifies the project's scope, and the system will set up an isolated workspace.
+Any user with the "Create projects" permission can start a new project from the home screen. Click **Create project**, enter a name that identifies the project's scope, and choose a project scope — either **National** or a specific Admin Area 2. The scope determines how the attached results package is filtered for this project: a scoped project sees the package as if it contained only that area, while metrics with no area breakdown remain national.
 
 New projects start without a results package attached. Your next step is to attach a results package from the **Results package** tab, which is where module outputs and data are made available to the project.
 
@@ -21,7 +21,15 @@ New projects start without a results package attached. Your next step is to atta
 
 A results package is generated at the instance level and contains pre-computed module outputs. To make data and analytical results available in a project, open the project and navigate to **Results package** in the left sidebar, then attach one of the available packages.
 
+Editors can select any ready package from the instance using the dropdown in the **Package settings** card. They can also enable **Always use the instance's pinned package** to subscribe the project to whichever package an administrator designates as the instance pin — whenever the pin changes, the project switches automatically. Choosing a different package manually turns this subscription off.
+
 Switching a project to a different results package changes the data behind every visualization, report, and slide deck in the project. Before a switch takes effect, FASTR shows you a compatibility report listing any visualizations that would not resolve against the new package — they stay in the project and display why they cannot be drawn. Nothing changes until you confirm.
+
+If the project has an Admin Area 2 scope set and the selected package has no data for that area, a warning appears both in the compatibility report and on the Results package tab after attaching. Area-level metrics will show no data, but national-level metrics remain visible.
+
+## Project scope
+
+Each project has a scope — either **National** or a specific Admin Area 2. The scope is set when creating the project and can be changed later by a global administrator from **Settings**. A scoped project filters the attached results package so that area-level metrics show only data for that area; national-level metrics remain visible regardless of scope. The project's scope appears as a badge next to the project name and is shown in **Settings** under **Project scope**.
 
 ## Managing project users and permissions
 

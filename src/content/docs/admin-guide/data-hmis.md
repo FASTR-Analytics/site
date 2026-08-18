@@ -15,12 +15,12 @@ CSV uploads work well for periodic imports or historical data. The DHIS2 import 
 
 ## Starting an import
 
-Navigate to the **Data** section and select **HMIS Data**. If you have admin permissions, you'll see an **Imports** panel on the right with two buttons: **New DHIS2 import** opens the DHIS2 import wizard, and **Upload CSV file** opens the CSV import wizard.
+Navigate to the **Data** section and select **HMIS Data**. If you have admin permissions, you'll see an **Imports** panel on the right. Click **Imports** to open the unified imports surface, which contains tabs for current activity, scheduled runs, history, and import status by indicator.
 
 ## CSV import workflow
 <!-- help#hmis-csv -->
 
-Click **Upload CSV file** to open the CSV import wizard. The wizard collects everything needed before sending anything to the server — abandoning it at any point has no effect.
+From the imports surface, click **Upload CSV** to open the CSV import wizard. The wizard collects everything needed before sending anything to the server — abandoning it at any point has no effect.
 
 The wizard has three steps.
 
@@ -35,11 +35,11 @@ Once launched, staging validates each row against your indicator mappings and fa
 ## DHIS2 import workflow
 <!-- help#hmis-dhis2 -->
 
-Click **New DHIS2 import** to open the DHIS2 import wizard. This view has three tabs: **Current**, **Future**, and **History**.
+From the imports surface, click **New DHIS2 import** to open the DHIS2 import wizard. This view has four tabs: **Current**, **Future**, **History**, and **By indicator**.
 
 ### Launching an import
 
-Click **New DHIS2 import** to open the import wizard. The wizard walks you through up to five steps depending on the options you choose.
+The wizard walks you through up to five steps depending on the options you choose.
 
 1. **Credentials.** Choose whether to use a stored DHIS2 connection or enter connection details for this run only. If a stored connection exists, it is shown with the URL and the user who saved it. You can replace it or delete it here. Entering credentials without saving them means they are used only for this run and are not stored.
 
@@ -55,7 +55,7 @@ Click **New DHIS2 import** to open the import wizard. The wizard walks you throu
 
 Each import run fetches data per (indicator, month) pair. For each pair, the system removes any existing rows for that indicator and month within the facilities it queried, then inserts the newly fetched values. This scoped delete-then-insert approach ensures that values DHIS2 no longer returns are properly removed rather than left behind.
 
-Completed pairs are saved as they finish. If a run is cancelled or encounters an error, the pairs that already completed are kept. Per-indicator results are visible in the **Import status by indicator** view.
+Completed pairs are saved as they finish. If a run is cancelled or encounters an error, the pairs that already completed are kept. Per-indicator results are visible in the **By indicator** tab.
 
 ### Current tab
 
@@ -69,6 +69,15 @@ The Future tab lists scheduled imports - both recurring schedules and pending on
 
 The History tab shows all completed, cancelled, and errored import runs. The table includes a **Source** column showing whether each run came from DHIS2 or CSV. For DHIS2 runs, pair outcome counts are shown; CSV runs show the file name instead. Click any row to open the run detail view. For DHIS2 runs, the detail view shows the full run summary, any indicators not found in DHIS2, per-pair fetch failures, and a **Version** button that opens the import information for the dataset version created by that run. From a DHIS2 run detail you can also click **Retry failed pairs** to open the wizard pre-configured to re-import exactly the failed pairs.
 
+### By indicator tab
+<!-- help#hmis-import-ledger -->
+
+The **By indicator** tab shows the import ledger - a table showing the latest import state for every (indicator, month) pair that has ever been imported. For each indicator it shows how many months have data, when data was last imported, the source (DHIS2 or CSV), and how many months have failed. Click on an indicator row to see the month-by-month detail including record counts, service counts, error messages, and error classification (configuration error or server error).
+
+If any pairs have failed, a **Retry failed pairs** button appears at the top of the tab. Clicking it opens the wizard pre-configured to re-import exactly the failed pairs.
+
+From the per-indicator detail view, a **Re-import this indicator** button opens the wizard to re-import all months in the current window for that indicator.
+
 ### Managing the DHIS2 connection
 
 Click **Manage connection** in the Imports view to open a dialog for updating or deleting the stored DHIS2 credentials. Credentials are encrypted on the server. Once saved, the password is not sent back to the browser. The stored connection is shared across all DHIS2 flows in the instance — the same credentials are used by the indicator manager, the GeoJSON wizard, and the structure import.
@@ -76,15 +85,6 @@ Click **Manage connection** in the Imports view to open a dialog for updating or
 ### Scheduling requirements
 
 Scheduled and queued imports always run with the stored connection. To create a scheduled import or queue an import, stored credentials must exist. Save credentials in step 1 of the wizard before setting up a recurring or future schedule.
-
-### Import status by indicator
-<!-- help#hmis-import-ledger -->
-
-Click **Import status by indicator** to see the import ledger - a table showing the latest import state for every (indicator, month) pair that has ever been imported. For each indicator it shows how many months have data, when data was last imported, the source (DHIS2 or CSV), and how many months have failed. Click on an indicator row to see the month-by-month detail including record counts, service counts, error messages, and error classification (configuration error or server error).
-
-If any pairs have failed, a **Retry failed pairs** button appears. Clicking it opens the wizard pre-configured to re-import exactly the failed pairs.
-
-From the per-indicator detail view, a **Re-import this indicator** button opens the wizard to re-import all months in the current window for that indicator.
 
 ## Validation and error handling
 <!-- help#hmis-validation -->

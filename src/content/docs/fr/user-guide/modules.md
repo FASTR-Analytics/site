@@ -26,12 +26,12 @@ L'onglet **Lot de résultats** affiche le lot auquel votre projet est associé, 
 
 ## Quand les résultats se mettent à jour
 
-Les résultats des modules sont fixes au sein d'un lot de résultats. Les résultats se mettent à jour lorsque votre administrateur génère un nouveau lot avec des données fraîches et l'associe au projet. Vous verrez le lot de résultats changer dans l'onglet **Lot de résultats** lorsque cela se produit.
+Les résultats des modules sont fixes au sein d'un lot de résultats. Les résultats se mettent à jour lorsque votre administrateur génère un nouveau lot avec des données fraîches et l'associe au projet. Si votre projet suit le lot épinglé de l'instance, il bascule automatiquement chaque fois qu'un administrateur épingle un nouveau lot. Vous verrez le lot de résultats changer dans l'onglet **Lot de résultats** lorsque cela se produit.
 
 ## Consulter les sorties des modules
 <!-- help#umod-outputs -->
 
-Bien que vous interagissiez généralement avec les résultats des modules par l'intermédiaire des visualisations, vous pouvez inspecter les sorties brutes depuis l'onglet **Lot de résultats** si vous disposez des permissions appropriées. Accédez aux **Journaux** (sortie de la console R), aux **Fichiers** (résultats CSV téléchargeables) ou au **Script** (le code R lui-même, si vous y êtes autorisé) depuis la vue de détail du lot.
+Bien que vous interagissiez généralement avec les résultats des modules par l'intermédiaire des visualisations, vous pouvez inspecter les sorties brutes depuis l'onglet **Lot de résultats** si vous disposez des permissions appropriées. Accédez aux **Journaux** (sortie de la console R, requiert la permission Consulter les journaux), aux **Fichiers** (résultats CSV téléchargeables, requiert Consulter les données) ou au **Script** (le code R lui-même, requiert Consulter les données) depuis la vue de détail du lot.
 
 ![Module Logs FR](/images/modules-logs-fr.png)
 

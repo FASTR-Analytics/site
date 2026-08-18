@@ -10,24 +10,36 @@ Structure in FASTR refers to the organizational hierarchy of your health system 
 ## Administrative areas
 <!-- help#struct-admin-areas -->
 
-Administrative areas represent geographic boundaries organized in a hierarchy. FASTR supports up to four levels, though most countries use two or three. The exact meaning of each level depends on your country - what FASTR calls "Admin Area 2" might be a region in one country and a province in another. You can customize labels for each level in instance settings.
+Administrative areas represent geographic boundaries organized in a hierarchy. FASTR supports up to four levels, though most countries use two or three. The exact meaning of each level depends on your country - what FASTR calls "Admin Area 2" might be a region in one country and a province in another. You can customize labels for each level from the **Admin area labels** card in the Data section.
 
 A typical hierarchy: Admin Area 1 represents the entire country, Admin Area 2 contains regions or provinces, Admin Area 3 contains districts, and Admin Area 4 (if used) contains sub-districts. Each facility links to one admin area at the lowest level you're using, and FASTR automatically rolls up data to higher levels.
 
-Admin areas are created automatically when facilities are imported - each facility row carries its admin area path. They are also removed automatically when no facility in either registry references them, so you do not need to manage admin areas directly.
+Admin areas are derived from the facility rows — each facility carries its admin area path, and FASTR creates and removes admin areas automatically as you import and delete facilities. You do not manage admin areas directly. A count of admin areas at each level is shown on the HMIS and HFA facility cards after importing.
 
 ![Admin Areas](/images/admin-areas-en.png)
 
 ## Health facilities
 <!-- help#struct-facilities -->
 
-FASTR maintains two separate facility registries: one for HMIS facilities and one for HFA facilities. Both registries share the same admin area hierarchy, but each has its own import flow and its own table of facility records.
+FASTR maintains two separate facility registries: one for HMIS facilities and one for HFA facilities. Both registries share the same admin area hierarchy, but each has its own import flow, its own table of facility records, and its own configuration for admin area depth and facility columns.
 
 Facilities can have optional attributes: facility type (hospital, health center, dispensary), ownership category (public, private, faith-based), and up to five custom attributes for additional categorization.
 
 These attributes enable disaggregation in visualizations. If you want to compare performance between public and private facilities, you need those attributes populated in your structure data.
 
 ![Health Facilities](/images/health-facilities-en.png)
+
+## Registry configuration
+
+Each registry (HMIS and HFA) has its own configuration card accessible from the Data page. Open the **HMIS configuration** or **HFA configuration** card to adjust two independent settings.
+
+**Max admin area level** sets how many administrative levels this registry's facilities are organised into. The options are 2, 3, or 4. Changing this setting requires deleting all of that registry's facilities first — the server enforces this to prevent mismatched data.
+
+**Facility columns** controls which optional columns this registry's facility imports carry, and the label shown for each. The available columns are Facility Names, Facility Types, Facility Ownership, and up to five Custom Fields. Enable a column and optionally enter a custom label; leave the label blank to use the default. The two saves — admin level and facility columns — are independent, so a column change never trips the depth guard.
+
+## Admin area labels
+
+Admin area level names such as "Region" or "District" are shared by both registries. Set them from the **Admin area labels** card in the Data section. Enter the singular form of the name for each level in use. Leave a level blank to use the default. These labels appear everywhere data is disaggregated by area.
 
 ## Importing facilities
 
@@ -55,13 +67,13 @@ The CSV import follows a multi-step wizard.
 
 Before confirming, the summary shows how many existing facilities match IDs in your file and how many are new. If none match and you expected updates, the facility ID column is probably mapped to the wrong column, or you are importing into the wrong registry (HMIS vs HFA).
 
-After a successful integration, if any previously uploaded GeoJSON map boundaries no longer match an admin area - for example because an import renamed areas - the summary displays a warning. Repair those mismatches in the GeoJSON editor.
+After a successful integration, if any previously uploaded GeoJSON map boundaries no longer match an admin area - for example because an import renamed areas - the summary displays a warning naming which registry's maps are affected. Repair those mismatches in the GeoJSON editor.
 
 ![Structure Import](/images/structure-import-en.png)
 
 ### DHIS2 import
 
-DHIS2 import is available for HMIS facilities. The import uses the instance's stored DHIS2 connection - the same connection managed from the **DHIS2 credentials** button in the Data section header. If no stored connection exists, set one up there before starting a DHIS2 structure import. Once a stored connection is confirmed, select which org unit levels to import. FASTR maps DHIS2 levels to admin area levels. HFA facilities can only be imported from CSV.
+DHIS2 import is available for HMIS facilities. The import uses the instance's stored DHIS2 connection - the same connection managed from the DHIS2 connection card in the HMIS section of the Data page. If no stored connection exists, set one up there before starting a DHIS2 structure import. Once a stored connection is confirmed, select which org unit levels to import. FASTR maps DHIS2 levels to admin area levels. HFA facilities can only be imported from CSV.
 
 Note that DHIS2 credentials are stored securely on the server — once saved, the password is not sent back to the browser.
 
@@ -69,9 +81,7 @@ Note that DHIS2 credentials are stored securely on the server — once saved, th
 
 Once imported, facilities appear as a searchable table showing all records with their admin area assignments and attributes. To update - adding facilities, correcting assignments, or updating attributes - run another import with the appropriate integration mode.
 
-To delete all facilities in a registry, open that registry's card and click **Delete facilities**. This removes only the facilities in that registry; admin areas shared with the other registry are preserved. Only global administrators can delete facilities.
-
-To remove all admin areas and facilities from both registries at once, open the **Admin areas** card and click **Clear all admin areas and facilities**. Use this option with caution, as it affects modules and visualizations that reference the old structure.
+To delete all facilities in a registry, open that registry's card and click **Delete facilities**. This removes only the facilities in that registry; admin areas that are still referenced by the other registry are preserved. Only global administrators can delete facilities.
 
 ![Managing Existing Facilities](/images/managing-existing-facilities-en.png)
 
@@ -90,7 +100,7 @@ To remove all sampling weights, click **Delete all weights**. This does not affe
 ## GeoJSON for maps
 <!-- help#struct-geojson -->
 
-Map visualizations require geographic boundary data in GeoJSON format. Upload one GeoJSON file per admin area level - typically for Admin Area 2 (regions) and Admin Area 3 (districts).
+Map visualizations require geographic boundary data in GeoJSON format. FASTR maintains separate GeoJSON maps for the HMIS registry and the HFA registry. Upload one GeoJSON file per admin area level for each registry — typically for Admin Area 2 (regions) and Admin Area 3 (districts). Open the **GeoJSON maps** card for the relevant registry from the Data page.
 
 Each GeoJSON file should contain polygons with a property matching admin area names in your structure data. FASTR attempts to match features to admin areas during upload and reports any mismatches. Unmatched areas appear blank on maps. Features without geometry are automatically skipped during both analysis and upload.
 
@@ -100,7 +110,7 @@ When you delete a GeoJSON level, the map cache for that level is automatically c
 
 If naming differs between your GeoJSON and structure data, the GeoJSON editor lets you modify feature properties to resolve matching issues. You can also explicitly unmap a feature by setting its area ID to empty — this removes a previously matched feature from map visualizations without needing to re-upload the file.
 
-Unmapped features in the upload wizard are kept in the file and can be mapped later using the GeoJSON editor. Previously, unmapped features were described as being excluded; they are now retained so you can complete the mapping at any time.
+Unmapped features in the upload wizard are kept in the file and can be mapped later using the GeoJSON editor.
 
 ### Uploading a DHIS2 GeoJSON map
 

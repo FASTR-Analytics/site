@@ -29,7 +29,7 @@ The main navigation bar at the top of the screen shows tabs for the different ar
 
 ![Top Nav Demo](/images/topnav-demo-en.png)
 
-The **Projects** tab lists all projects in your instance and lets you create new ones. **Data** is where you configure structure (admin areas, facilities) and import datasets. **Assets** holds uploaded files like CSV templates and GeoJSON maps - all users can view and upload assets. **Users** shows everyone with access to the instance and their permissions. **Settings** contains instance-wide configuration options like the instance name and language preferences.
+The **Projects** tab lists all projects in your instance and lets you create new ones. **Data** is where you configure structure (admin areas, facilities) and import datasets — it also includes configuration cards for admin area labels, facility columns, and GeoJSON maps. **Assets** holds uploaded files like CSV templates and GeoJSON maps - all users can view and upload assets. **Users** shows everyone with access to the instance and their permissions.
 
 The interface is available in English, French, and Portuguese. Use the language selector in the top navigation bar to switch between them. A bell icon in the top navigation bar shows release announcements - a yellow dot on the icon means there are unread posts. Click the bell to browse all announcements.
 

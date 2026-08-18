@@ -12,7 +12,7 @@ Un projet est votre espace de travail pour l'analyse dans FASTR. Il est associé
 
 Lorsque vous vous connectez à FASTR, vous voyez la liste des projets auxquels vous avez accès. La liste peut être triée par nom ou par récemment mis à jour à l'aide du contrôle de tri en haut. Cliquez sur le nom d'un projet pour l'ouvrir. La vue du projet comporte une barre de navigation à gauche avec des onglets pour les différentes sections - généralement **Présentations**, **Visualisations**, **Métriques**, **Lot de résultats** et **Paramètres**. Ce que vous voyez dépend de vos permissions ; un lecteur, par exemple, ne verra pas les options de configuration.
 
-Le nom du projet apparaît en haut de l'écran. Un indicateur d'état signale si le lot de résultats associé est prêt ou si un traitement est en cours.
+Le nom du projet apparaît en haut de l'écran. Si le projet a une portée Zone administrative 2, un badge indiquant le nom de la zone apparaît à côté du nom du projet.
 
 ![Open a Project FR](/images/open-a-project-fr.png)
 
@@ -21,15 +21,17 @@ Le nom du projet apparaît en haut de l'écran. Un indicateur d'état signale si
 
 Chaque projet est servi depuis un **lot de résultats** - un ensemble de résultats de modules précalculés généré au niveau de l'instance. Le lot de résultats détermine quelles métriques et données sont disponibles pour les visualisations, les rapports et les présentations du projet.
 
-Pour voir quel lot utilise votre projet, accédez à l'onglet **Lot de résultats**. L'onglet affiche le lot actuellement utilisé et, pour les éditeurs, liste les autres lots disponibles sur l'instance qui pourraient être associés à la place.
+Pour voir quel lot utilise votre projet, accédez à l'onglet **Lot de résultats**. L'onglet affiche le lot actuellement utilisé et, pour les éditeurs, une carte **Paramètres du paquet** avec un menu déroulant pour sélectionner un autre lot et une option pour suivre automatiquement le lot épinglé de l'instance.
 
 Changer de lot de résultats modifie les données derrière chaque visualisation, rapport et présentation du projet. FASTR affiche un rapport de compatibilité avant qu'un changement prenne effet, listant les visualisations qui ne se résoudraient pas avec le nouveau lot. Vous pouvez examiner l'impact et décider si vous souhaitez continuer.
+
+Si le projet a une portée Zone administrative 2 et que le lot sélectionné ne contient pas de données pour cette zone, un avertissement s'affiche. Les indicateurs au niveau des zones n'afficheront aucune donnée, mais les indicateurs nationaux restent visibles.
 
 ![Understanding the Data Window FR](/images/understanding-the-data-window-fr.png)
 
 ## Fraîcheur des données et mises à jour
 
-Votre projet est servi depuis un lot de résultats fixe. Lorsque votre administrateur génère un nouveau lot de résultats avec des données mises à jour et l'associe à votre projet, les visualisations refléteront les résultats du nouveau lot. Si les résultats vous semblent obsolètes, consultez l'onglet **Lot de résultats** pour voir quel lot est utilisé et contactez l'administrateur de votre projet si un lot plus récent devrait être associé.
+Votre projet est servi depuis un lot de résultats fixe. Lorsque votre administrateur génère un nouveau lot de résultats avec des données mises à jour et l'associe à votre projet, les visualisations refléteront les résultats du nouveau lot. Si votre projet suit le lot épinglé de l'instance, il bascule automatiquement chaque fois qu'un administrateur épingle un nouveau lot. Si les résultats vous semblent obsolètes, consultez l'onglet **Lot de résultats** pour voir quel lot est utilisé et contactez l'administrateur de votre projet si un lot plus récent devrait être associé.
 
 ## Projets verrouillés
 <!-- help#uproj-locked -->

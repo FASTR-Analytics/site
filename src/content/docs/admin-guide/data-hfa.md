@@ -22,7 +22,7 @@ Each HFA import requires two files:
 ## Import workflow
 <!-- help#hfa-import -->
 
-Navigate to the **Data** section and select **HFA Data**. The sidebar shows two buttons: **Start new import** opens the import wizard immediately, and **View imports** opens the imports history without launching a new wizard.
+Navigate to the **Data** section and select **HFA Data**. The sidebar shows an **Imports** button that opens the imports history and lets you start a new import from within that surface.
 
 The import wizard collects everything needed before any data is sent to the server. Abandoning the wizard at any point has no effect — nothing is stored until you click **Start import** on the final step.
 
@@ -46,7 +46,7 @@ Once launched, the import runs on the server. A fully clean file integrates auto
 
 ## Monitoring imports
 
-Click **View imports** to open the imports history. The **Current** section shows any running import with a live progress bar and percentage. The **History** table lists all completed, cancelled, and errored runs with their time point, file name, values imported, and status. Click any history row to see the full run detail including staging diagnostics.
+Click **Imports** to open the imports history. The **Current** section shows any running import with a live progress bar and percentage. The **History** table lists all completed, cancelled, and errored runs with their time point, file name, values imported, and status. Click any history row to see the full run detail including staging diagnostics.
 
 ### Needs review
 

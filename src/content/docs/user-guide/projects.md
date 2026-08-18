@@ -12,7 +12,7 @@ A project is your workspace for analysis in FASTR. It contains a results package
 
 When you sign in to FASTR, you'll see a list of projects you have access to. The list can be sorted by name or by recently updated using the sort control at the top. Click any project name to open it. The project view has a navigation sidebar on the left with tabs for different sections - typically **Slide decks**, **Visualizations**, **Metrics**, **Results package**, and **Settings**. What you see depends on your permissions; viewers won't see configuration options, for example.
 
-The project name appears at the top of the screen. A status indicator shows whether the attached results package is ready or if something is currently processing.
+The project name appears at the top of the screen. If the project has an Admin Area 2 scope, a badge showing the area name appears next to the project name.
 
 ![Open a Project](/images/open-a-project-en.png)
 
@@ -21,15 +21,17 @@ The project name appears at the top of the screen. A status indicator shows whet
 
 Every project is served from a **results package** - a bundle of pre-computed module outputs generated at the instance level. The results package determines which metrics and data are available for visualizations, reports, and slide decks within the project.
 
-To see which package your project uses, navigate to the **Results package** tab. The tab shows the package currently in use and, for editors, lists other packages available on the instance that could be attached instead.
+To see which package your project uses, navigate to the **Results package** tab. The tab shows the package currently in use and, for editors, a **Package settings** card with a dropdown to select a different package and an option to follow the instance's pinned package automatically.
 
 Switching to a different results package changes the data behind every visualization, report, and slide deck in the project. FASTR shows a compatibility report before any switch takes effect, listing any visualizations that would not resolve against the new package. You can review the impact and decide whether to proceed.
+
+If the project has an Admin Area 2 scope and the selected package has no data for that area, a warning appears. Area-level metrics will show no data, but national-level metrics remain visible.
 
 ![Understanding the Data Window](/images/understanding-the-data-window-en.png)
 
 ## Data freshness and updates
 
-Your project serves from a fixed results package. When your administrator generates a new results package with updated data and attaches it to your project, the visualizations will reflect the new package's outputs. If you see results that seem outdated, check the **Results package** tab to see which package is in use and contact your project administrator if a newer one should be attached.
+Your project serves from a fixed results package. When your administrator generates a new results package with updated data and attaches it to your project, the visualizations will reflect the new package's outputs. If your project follows the instance's pinned package, it switches automatically whenever an administrator pins a different package. If you see results that seem outdated, check the **Results package** tab to see which package is in use and contact your project administrator if a newer one should be attached.
 
 ## Locked projects
 <!-- help#uproj-locked -->

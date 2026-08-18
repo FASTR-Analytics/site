@@ -22,7 +22,7 @@ Chaque importation HFA nécessite deux fichiers :
 ## Déroulement de l'importation
 <!-- help#hfa-import -->
 
-Accédez à la section **Données** et sélectionnez **Données HFA**. La barre latérale propose deux boutons : **Démarrer une nouvelle importation** ouvre immédiatement l'assistant d'importation, et **Voir les importations** ouvre l'historique des importations sans lancer de nouvel assistant.
+Accédez à la section **Données** et sélectionnez **Données HFA**. La barre latérale propose un bouton **Importations** qui ouvre l'historique des importations et permet de démarrer une nouvelle importation depuis cette surface.
 
 L'assistant d'importation collecte toutes les informations nécessaires avant d'envoyer quoi que ce soit au serveur. Abandonner l'assistant à n'importe quelle étape n'a aucun effet — rien n'est enregistré tant que vous ne cliquez pas sur **Démarrer l'importation** à la dernière étape.
 
@@ -46,7 +46,7 @@ Une fois lancée, l'importation s'exécute sur le serveur. Un fichier entièreme
 
 ## Suivre les importations
 
-Cliquez sur **Voir les importations** pour ouvrir l'historique des importations. La section **En cours** affiche toute importation en cours avec une barre de progression en direct et un pourcentage. Le tableau **Historique** liste toutes les exécutions terminées, annulées et en erreur avec leur point temporel, leur nom de fichier, les valeurs importées et leur statut. Cliquez sur une ligne de l'historique pour voir le détail complet de l'exécution, y compris les diagnostics de préparation.
+Cliquez sur **Importations** pour ouvrir l'historique des importations. La section **En cours** affiche toute importation en cours avec une barre de progression en direct et un pourcentage. Le tableau **Historique** liste toutes les exécutions terminées, annulées et en erreur avec leur point temporel, leur nom de fichier, les valeurs importées et leur statut. Cliquez sur une ligne de l'historique pour voir le détail complet de l'exécution, y compris les diagnostics de préparation.
 
 ### À vérifier
 
