@@ -100,7 +100,11 @@ To assign a variant group to an indicator, open the indicator's code editor and 
 
 When an indicator applies to multiple time points, FASTR tracks whether extraction code is consistent. Inconsistent code may be intentional (survey questions change between rounds), but it's worth reviewing. Use **Revalidate all** after making changes to refresh validation across all indicators.
 
-The indicator list shows a summary of code status: **ready** (no errors or warnings), **warning** (advisory issues only), and **error** (syntax or unknown-variable errors). The **Revalidate all**, **Check unused variables**, **Download Excel**, and **Import Excel** buttons are disabled when no HFA data has been imported yet, because those actions depend on the survey data dictionary.
+The indicator list shows a summary of code status: **ready** (no errors or warnings), **warning** (advisory issues only), and **error** (syntax or unknown-variable errors). The **Revalidate all**, **Check unused variables**, **Download Excel**, and **Import Excel** buttons are disabled when no HFA time points have been defined yet, because those actions depend on the survey data dictionary. Add a time point from **HFA → Time points** to enable them.
+
+### Importing default indicators
+
+The HFA indicator manager includes an **Import default indicators** button alongside the **Import Excel** button. Clicking it fetches the standard FASTR HFA indicator set directly from the FASTR resource hub on GitHub — no file selection required. The form shows how many indicators and categories were retrieved before you confirm the import. You choose the same import modes as with a file upload: **Add to existing** adds only new variable names, while **Replace all existing** deletes all current indicators before importing.
 
 ### Deleting indicators
 
