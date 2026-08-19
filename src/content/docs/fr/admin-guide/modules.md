@@ -45,6 +45,8 @@ Les administrateurs peuvent désigner un lot prêt comme **lot épinglé** de l'
 
 Avant d'épingler, FASTR indique quels projets abonnés seront réorientés. Les projets verrouillés sont automatiquement ignorés et restent sur leur lot actuel.
 
+Le lot épinglé est également le lot que le connecteur MCP de FASTR utilise. Lorsque vous connectez un client IA compatible au point d'accès MCP de votre instance, il lit les métriques et les données à partir du lot actuellement épinglé.
+
 ## Exécution et état des modules
 <!-- help#amod-status -->
 

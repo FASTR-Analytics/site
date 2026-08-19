@@ -45,6 +45,8 @@ Administrators can designate one ready package as the instance's **pinned packag
 
 Before pinning, FASTR shows which follow-pinned projects will be repointed. Locked projects are skipped automatically and remain on their current package.
 
+The pinned package is also the package the FASTR MCP connector reads. When you connect a compatible AI client to your instance's MCP endpoint, it reads metrics and data from whichever package is currently pinned.
+
 ## Module execution and status
 <!-- help#amod-status -->
 
