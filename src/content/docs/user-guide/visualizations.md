@@ -52,7 +52,7 @@ Some disaggregation options are available only as filters and cannot be used as 
 
 When a disaggregation dimension has only a single value in the underlying data, that dimension is automatically disabled - it cannot be toggled on because disaggregating by it would have no effect. The editor shows a tooltip explaining that the dimension has a single value in the data.
 
-Some chart types have specific data requirements. The disruptions chart, for example, compares two data values (actual and expected) as two series and shades the difference between them. If you select a disruptions chart, make sure both data values are configured - the chart will show an error message prompting you to add the second data value or turn off disruptions mode if only one is present.
+Some chart types have specific data requirements. The disruptions chart, for example, compares two data values (actual and expected) as two series and shades the difference between them. If you select a disruptions chart, make sure both data values are configured - the chart will show an error message prompting you to add the second data value or turn off disruptions mode if only one is present. The Bayesian disruptions chart (disruptions-v2) requires all four data values — observed, expected, lower bound, and upper bound — to be present. If any are missing or filtered out, the chart will show an error prompting you to clear the data value filter or turn off disruptions mode.
 
 ![Presets vs Custom](/images/presets-vs-custom-en.png)
 
@@ -133,6 +133,6 @@ Sometimes you need the underlying numbers, not just the picture. Click **Downloa
 
 **The chart looks cluttered or hard to read**: You may have too many disaggregations active. Try removing one or filtering to fewer values. Sometimes a table is a better choice than a chart when you have many categories.
 
-**The disruptions chart shows an error about missing data values**: This chart requires both an actual and an expected data value to compute the comparison. Open the Data tab and add the second data value, or switch to a different chart type.
+**The disruptions chart shows an error about missing data values**: The standard disruptions chart requires both an actual and an expected data value to compute the comparison. The Bayesian disruptions chart requires all four data values (observed, expected, lower bound, and upper bound). Open the Data tab and add the missing data values, or switch to a different chart type.
 
 **Changes aren't appearing**: Make sure you've clicked **Save**. The preview updates live, but your changes aren't persisted until you save. If you navigate away without saving, you'll lose your edits.

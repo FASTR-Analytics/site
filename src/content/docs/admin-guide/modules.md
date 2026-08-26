@@ -37,7 +37,7 @@ Choose which modules to run. Selecting a module automatically includes all modul
 
 Available modules include:
 
-- **M11. Bayesian disruption detection (LI model)** — requires M2 as a prerequisite.
+- **M11. Bayesian disruption detection (LI model)** — detects service disruptions using a Negative Binomial Bayesian model. Produces observed, expected, lower bound, and upper bound series that power the Bayesian disruptions chart. Requires M2 as a prerequisite.
 
 ### Step 3 — Confirm and launch
 

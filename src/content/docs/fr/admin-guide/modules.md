@@ -37,7 +37,7 @@ Choisissez les modules à exécuter. La sélection d'un module inclut automatiqu
 
 Les modules disponibles comprennent :
 
-- **M11. Détection bayésienne des perturbations (modèle LI)** — nécessite M2 comme prérequis.
+- **M11. Détection bayésienne des perturbations (modèle LI)** — détecte les perturbations de service à l'aide d'un modèle bayésien binomial négatif. Produit les séries observée, attendue, borne inférieure et borne supérieure qui alimentent le graphique des perturbations bayésien. Nécessite M2 comme prérequis.
 
 ### Étape 3 — Confirmer et lancer
 

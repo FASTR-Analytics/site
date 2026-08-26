@@ -52,7 +52,7 @@ Certaines options de désagrégation sont disponibles uniquement comme filtres e
 
 Lorsqu'une dimension de désagrégation n'a qu'une seule valeur dans les données sous-jacentes, cette dimension est automatiquement désactivée - elle ne peut pas être activée car la désagréger n'aurait aucun effet. L'éditeur affiche une infobulle indiquant que la dimension contient une valeur unique dans les données.
 
-Certains types de graphiques ont des exigences spécifiques en matière de données. Le graphique des perturbations, par exemple, compare deux valeurs de données (réelle et attendue) sous forme de deux séries et ombre la différence entre elles. Si vous sélectionnez un graphique des perturbations, assurez-vous que les deux valeurs de données sont configurées - le graphique affichera un message d'erreur vous invitant à ajouter la deuxième valeur de données ou à désactiver le mode perturbations si une seule est présente.
+Certains types de graphiques ont des exigences spécifiques en matière de données. Le graphique des perturbations, par exemple, compare deux valeurs de données (réelle et attendue) sous forme de deux séries et ombre la différence entre elles. Si vous sélectionnez un graphique des perturbations, assurez-vous que les deux valeurs de données sont configurées - le graphique affichera un message d'erreur vous invitant à ajouter la deuxième valeur de données ou à désactiver le mode perturbations si une seule est présente. Le graphique des perturbations bayésien (perturbations-v2) nécessite les quatre valeurs de données — observée, attendue, borne inférieure et borne supérieure. Si l'une d'elles est absente ou filtrée, le graphique affiche une erreur vous invitant à effacer le filtre de valeurs de données ou à désactiver le mode perturbations.
 
 ![Modèles prédéfinis vs configuration personnalisée](/images/presets-vs-custom-fr.png)
 
@@ -133,6 +133,6 @@ Parfois, vous avez besoin des chiffres sous-jacents, pas seulement de l'image. C
 
 **Le graphique semble encombré ou difficile à lire** : Vous avez peut-être trop de désagrégations actives. Essayez d'en supprimer une ou de filtrer sur moins de valeurs. Parfois, un tableau est un meilleur choix qu'un graphique lorsque vous avez de nombreuses catégories.
 
-**Le graphique des perturbations affiche une erreur indiquant des valeurs de données manquantes** : Ce graphique nécessite une valeur de données réelle et une valeur attendue pour calculer la comparaison. Ouvrez l'onglet Données et ajoutez la deuxième valeur de données, ou choisissez un autre type de graphique.
+**Le graphique des perturbations affiche une erreur indiquant des valeurs de données manquantes** : Le graphique des perturbations standard nécessite une valeur de données réelle et une valeur attendue pour calculer la comparaison. Le graphique des perturbations bayésien nécessite les quatre valeurs de données (observée, attendue, borne inférieure et borne supérieure). Ouvrez l'onglet Données et ajoutez les valeurs manquantes, ou choisissez un autre type de graphique.
 
 **Les modifications n'apparaissent pas** : Assurez-vous d'avoir cliqué sur **Enregistrer**. L'aperçu se met à jour en direct, mais vos modifications ne sont pas conservées tant que vous n'enregistrez pas. Si vous quittez la page sans enregistrer, vous perdrez vos modifications.
