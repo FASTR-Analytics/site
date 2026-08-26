@@ -35,6 +35,10 @@ Select which data families this results package is generated from. Each included
 
 Choose which modules to run. Selecting a module automatically includes all modules it depends on; a module cannot be unchecked while another selected module depends on it. Modules that require data families not chosen in step 1 are shown as unavailable, with a note naming which family is missing so you can go back to step 1 and add it. For each selected module, configure its parameter values — the wizard pre-fills defaults from the module defaults settings.
 
+Available modules include:
+
+- **M11. Bayesian disruption detection (LI model)** — requires M2 as a prerequisite.
+
 ### Step 3 — Confirm and launch
 
 Enter a label for the results package and review the data and module selections. Optionally, select projects to attach the new package to immediately — these projects will switch to the new package when generation succeeds. Click **Launch generation** to start. Generation runs in the background; you can leave the page and follow progress on the Results packages surface.

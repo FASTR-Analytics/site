@@ -35,6 +35,10 @@ Sélectionnez les familles de données à partir desquelles ce lot de résultats
 
 Choisissez les modules à exécuter. La sélection d'un module inclut automatiquement tous les modules dont il dépend ; un module ne peut pas être désélectionné tant qu'un autre module sélectionné en dépend. Les modules qui nécessitent des familles de données non choisies à l'étape 1 sont affichés comme indisponibles, avec une note indiquant quelle famille est manquante afin que vous puissiez revenir à l'étape 1 pour l'ajouter. Pour chaque module sélectionné, configurez ses valeurs de paramètres — l'assistant prérenseigne les valeurs par défaut issues des paramètres par défaut des modules.
 
+Les modules disponibles comprennent :
+
+- **M11. Détection bayésienne des perturbations (modèle LI)** — nécessite M2 comme prérequis.
+
 ### Étape 3 — Confirmer et lancer
 
 Saisissez un libellé pour le lot de résultats et vérifiez les sélections de données et de modules. Sélectionnez éventuellement des projets à associer immédiatement au nouveau lot — ces projets basculeront vers le nouveau lot lorsque la génération réussira. Cliquez sur **Lancer la génération** pour démarrer. La génération s'exécute en arrière-plan ; vous pouvez quitter la page et suivre la progression sur la page Lots de résultats.
