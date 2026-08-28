@@ -32,6 +32,16 @@ Lorsque vous sélectionnez une invite, vous pouvez la personnaliser avant de l'e
 
 ![Prompt Library FR](/images/prompt-library-fr.png)
 
+## Joindre des documents
+
+Vous pouvez joindre des documents PDF à une conversation pour donner à l'assistant un contexte supplémentaire - par exemple, une note de politique, un protocole ou un rapport de référence. Cliquez sur l'icône de document dans la zone de saisie du chat pour ouvrir le sélecteur de documents.
+
+Le sélecteur affiche les fichiers PDF disponibles dans les ressources de votre projet. Sélectionnez un ou plusieurs fichiers à joindre, ou téléversez un nouveau PDF directement depuis votre appareil. Les documents que vous joignez sont en attente jusqu'à l'envoi de votre prochain message. Les pièces jointes en attente apparaissent sous forme de puces dans la zone de saisie et peuvent être supprimées avant l'envoi en cliquant sur le **×** de chaque puce.
+
+Une fois un message envoyé avec des pièces jointes, ces documents apparaissent dans l'historique de la conversation sans option de suppression - ils ont déjà été transmis à l'assistant. Les pièces jointes en attente qui n'ont pas encore été envoyées peuvent encore être supprimées.
+
+Chaque conversation gère son propre ensemble de pièces jointes. Lorsque vous passez à une autre conversation, les pièces jointes en attente se mettent à jour pour refléter l'état de cette conversation.
+
 ## Travailler avec les diapositives
 
 L'assistant est particulièrement utile lors de la création de présentations. Vous pouvez lui demander de rédiger le contenu de diapositives, de suggérer des visualisations qui appuient un récit, ou de vous aider à structurer votre présentation. Il sait quelles diapositives vous avez déjà ajoutées et peut faire référence aux indicateurs disponibles.

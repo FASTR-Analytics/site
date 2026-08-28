@@ -32,6 +32,16 @@ When you select a prompt, you can customize it before running. You can also save
 
 ![Prompt Library](/images/prompt-library-en.png)
 
+## Attaching documents
+
+You can attach PDF documents to a conversation to give the assistant additional context - for example, a policy brief, a protocol, or a background report. Click the document icon in the chat input area to open the document selector.
+
+The selector shows PDF files available in your project's assets. Select one or more files to attach them, or upload a new PDF directly from your device. Documents you attach are pending until you send your next message. Pending attachments appear as chips in the input area and can be removed before sending by clicking the **×** on each chip.
+
+Once a message is sent with attachments, those documents are shown in the conversation history without a remove option - they have already been sent to the assistant. Pending attachments that have not yet been sent can still be removed.
+
+Each conversation tracks its own set of attachments. When you switch to a different conversation, the pending attachments update to reflect that conversation's state.
+
 ## Working with slides
 
 The assistant is particularly helpful when building slide decks. You can ask it to draft content for slides, suggest visualizations that support a narrative, or help structure your presentation. It knows which slides you've already added and can reference available metrics.
