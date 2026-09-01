@@ -32,19 +32,23 @@ Each common indicator has an ID (like `anc1_visits`), a display label, and mappi
 Common indicator editor showing ID, label, and raw indicator mapping fields.
 :::
 
-### Calculated indicators
+### Derived indicators
 <!-- help#ind-calculated -->
 
-Derived metrics that combine multiple indicators - like coverage rates - use calculated indicators. Each specifies a numerator (which common indicator), a denominator (another indicator, population estimate, or nothing for raw counts), and formatting rules.
+Every common indicator has a type, chosen in the same editor. A **base** indicator is defined by the raw indicators mapped to it, which are summed. A **derived** indicator is defined by a formula over other indicators - for example `anc4 / anc1` for a coverage rate. A **population rate** is a formula divided by a population estimate.
 
-You also set thresholds for color coding: the green cutoff for good performance, yellow for acceptable. For example, a coverage indicator with green at 80 and yellow at 70 shows green above 80%, yellow for 70-80%, and red below 70%.
+A formula can use `+`, `-`, `*`, `/`, parentheses and numbers over any other indicators, and the functions `abs()`, `coalesce()` and `nullif()`. It is not limited to a numerator and a denominator: `(anc1 - anc4) / anc1` is a valid definition, and so is any combination of three or more indicators. A formula may also refer to another derived indicator, which is substituted in.
 
-When creating a calculated indicator, you can also duplicate an existing one using the copy action. The copy opens with a new suggested ID and label pre-filled, ready for you to adjust before saving.
+Any indicator ID can be used in a formula. Write it plainly when it is all lowercase letters, digits and underscores; otherwise put it in square brackets, like `[ANC.1]`.
 
-Note that only common indicators whose IDs start with a lowercase letter and contain only lowercase letters, numbers, and underscores can be used as numerators or denominators in calculated indicators. If you select a common indicator with an ID that does not meet this requirement, the editor shows a warning and will not allow saving.
+Derived indicators are computed after the data is aggregated, which means a regional or annual figure is the formula applied to the summed parts - not an average of ratios. This is what makes a national coverage rate correct rather than a mean of district rates.
+
+You also set the display format and, optionally, thresholds for color coding: the green cutoff for good performance, yellow for acceptable. For example, a coverage indicator with green at 80 and yellow at 70 shows green above 80%, yellow for 70-80%, and red below 70%.
+
+The editor checks a formula as you type. It refuses a formula that names an indicator that does not exist, that refers back to itself, or that ends up needing more than eight source indicators once the chain is followed through. An indicator that another indicator's formula depends on cannot be deleted until that formula is changed.
 
 :::caution[Screenshot needed]
-Calculated indicator editor showing numerator/denominator selection and threshold configuration.
+Indicator editor showing the type selector, formula field and threshold configuration.
 :::
 
 ### Batch import

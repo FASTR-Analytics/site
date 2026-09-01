@@ -54,7 +54,7 @@ Interface de sélection DHIS2 montrant le tableau des indicateurs avec des cases
 :::
 
 ## Validation et gestion des erreurs
-<!-- hmis-validation -->
+<!-- help#hmis-validation -->
 
 Le processus de préparation détecte plusieurs types de problèmes : champs requis manquants, valeurs numériques invalides, établissements absents de votre registre et indicateurs sans correspondance. Pour chaque catégorie, le résumé indique combien de lignes ont été affectées et fournit des exemples d'entrées. Si trop de lignes sont écartées, envisagez de corriger les données sources ou de mettre à jour la configuration de l'instance avant de relancer l'importation.
 

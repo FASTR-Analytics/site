@@ -32,19 +32,23 @@ Chaque indicateur commun possède un identifiant (comme `anc1_visits`), un libel
 Éditeur d'indicateur commun montrant les champs d'identifiant, de libellé et de correspondance avec les indicateurs bruts.
 :::
 
-### Indicateurs calculés
+### Indicateurs dérivés
 <!-- help#ind-calculated -->
 
-Les mesures dérivées qui combinent plusieurs indicateurs - comme les taux de couverture - utilisent des indicateurs calculés. Chacun spécifie un numérateur (quel indicateur commun), un dénominateur (un autre indicateur, une estimation de population, ou rien pour les comptages bruts) et des règles de formatage.
+Chaque indicateur commun possède un type, choisi dans le même éditeur. Un indicateur **de base** est défini par les indicateurs bruts qui lui sont associés, dont les valeurs sont additionnées. Un indicateur **dérivé** est défini par une formule portant sur d'autres indicateurs — par exemple `anc4 / anc1` pour un taux de couverture. Un **taux de population** est une formule divisée par une estimation de population.
 
-Vous définissez également des seuils pour le codage couleur : le seuil vert pour une bonne performance, le jaune pour une performance acceptable. Par exemple, un indicateur de couverture avec le vert à 80 et le jaune à 70 s'affiche en vert au-dessus de 80 %, en jaune entre 70 et 80 %, et en rouge en dessous de 70 %.
+Une formule peut utiliser `+`, `-`, `*`, `/`, des parenthèses et des nombres sur n'importe quels autres indicateurs, ainsi que les fonctions `abs()`, `coalesce()` et `nullif()`. Elle ne se limite pas à un numérateur et un dénominateur : `(anc1 - anc4) / anc1` est une définition valide, tout comme n'importe quelle combinaison de trois indicateurs ou plus. Une formule peut aussi faire référence à un autre indicateur dérivé, qui y est substitué.
 
-Lors de la création d'un indicateur calculé, vous pouvez également dupliquer un indicateur existant à l'aide de l'action de copie. La copie s'ouvre avec un identifiant et un libellé suggérés pré-remplis, prêts à être ajustés avant l'enregistrement.
+N'importe quel identifiant d'indicateur peut être utilisé dans une formule. Écrivez-le tel quel s'il ne contient que des lettres minuscules, des chiffres et des tirets bas ; sinon, mettez-le entre crochets, comme `[ANC.1]`.
 
-Notez que seuls les indicateurs communs dont l'identifiant commence par une lettre minuscule et ne contient que des lettres minuscules, des chiffres et des tirets bas peuvent être utilisés comme numérateurs ou dénominateurs dans les indicateurs calculés. Si vous sélectionnez un indicateur commun dont l'identifiant ne respecte pas cette règle, l'éditeur affiche un avertissement et ne permet pas d'enregistrer.
+Les indicateurs dérivés sont calculés après l'agrégation des données : un chiffre régional ou annuel est donc la formule appliquée aux sommes, et non une moyenne de ratios. C'est ce qui rend un taux de couverture national correct plutôt qu'une moyenne des taux de districts.
+
+Vous définissez également le format d'affichage et, si vous le souhaitez, des seuils pour le codage couleur : le seuil vert pour une bonne performance, le jaune pour une performance acceptable. Par exemple, un indicateur de couverture avec le vert à 80 et le jaune à 70 s'affiche en vert au-dessus de 80 %, en jaune entre 70 et 80 %, et en rouge en dessous de 70 %.
+
+L'éditeur vérifie la formule au fur et à mesure de la saisie. Il refuse une formule qui nomme un indicateur inexistant, qui se réfère à elle-même, ou qui finit par nécessiter plus de huit indicateurs sources une fois la chaîne suivie jusqu'au bout. Un indicateur dont dépend la formule d'un autre indicateur ne peut pas être supprimé tant que cette formule n'a pas été modifiée.
 
 :::caution[Capture d'écran à ajouter]
-Éditeur d'indicateur calculé montrant la sélection du numérateur et du dénominateur ainsi que la configuration des seuils.
+Éditeur d'indicateur montrant le sélecteur de type, le champ de formule et la configuration des seuils.
 :::
 
 ### Import par lot
