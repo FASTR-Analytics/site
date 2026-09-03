@@ -15,7 +15,7 @@ Les données HMIS proviennent généralement de DHIS2, où les éléments de don
 
 Les indicateurs bruts sont les identifiants techniques issus de DHIS2. Pour les importer, cliquez sur **Importer un indicateur DHIS2**. FASTR utilise la connexion DHIS2 enregistrée de l'instance pour rechercher les éléments de données — si une connexion enregistrée existe, la recherche s'ouvre immédiatement. Sinon, vous pouvez saisir des identifiants de connexion pour cette session uniquement. Sélectionnez les éléments de données à importer et FASTR crée un indicateur brut pour chacun à partir de l'identifiant DHIS2 et du nom d'affichage. Vous pouvez également changer de connexion en cours de session à l'aide du bouton **Modifier la connexion** dans la vue de recherche.
 
-Lors de la création d'un identifiant d'indicateur brut ou commun, l'identifiant ne doit pas contenir de virgules, de points-virgules ou de deux-points, et doit comporter au maximum 128 caractères. Une fois créés, les identifiants d'indicateurs ne peuvent pas être modifiés — les renommer briserait les références aux données existantes.
+Lors de la création d'un identifiant d'indicateur brut ou commun, l'identifiant ne doit pas contenir de virgules, de points-virgules, de deux-points ou de crochets, et doit comporter au maximum 128 caractères. Une fois créés, les identifiants d'indicateurs ne peuvent pas être modifiés — les renommer briserait les références aux données existantes.
 
 :::caution[Capture d'écran à ajouter]
 Boîte de dialogue d'import des indicateurs DHIS2 montrant les éléments de données disponibles avec des cases de sélection.
@@ -26,25 +26,27 @@ Boîte de dialogue d'import des indicateurs DHIS2 montrant les éléments de don
 
 Les indicateurs communs sont les noms standardisés avec lesquels les analystes travaillent. Un indicateur commun comme « visites de CPN1 » peut correspondre à différents identifiants DHIS2 bruts selon les pays. Cette abstraction permet au code d'analyse et aux visualisations de référencer des noms cohérents, même lorsque les sources de données sous-jacentes changent.
 
-Chaque indicateur commun possède un identifiant (comme `anc1_visits`), un libellé d'affichage et des correspondances vers un ou plusieurs indicateurs bruts. Lorsque plusieurs indicateurs bruts correspondent au même indicateur commun, leurs valeurs sont additionnées.
+Chaque indicateur commun possède un identifiant (comme `anc1_visits`), un libellé d'affichage et un type. Cliquez sur **Ajouter un indicateur commun** pour ouvrir l'éditeur, où vous configurez tout en un seul endroit.
 
 :::caution[Capture d'écran à ajouter]
-Éditeur d'indicateur commun montrant les champs d'identifiant, de libellé et de correspondance avec les indicateurs bruts.
+Éditeur d'indicateur commun montrant les champs d'identifiant, de libellé, le sélecteur de type et les champs de définition.
 :::
 
-### Indicateurs calculés
+### Types d'indicateurs : de base et dérivés
 <!-- help#ind-calculated -->
 
-Les mesures dérivées qui combinent plusieurs indicateurs - comme les taux de couverture - utilisent des indicateurs calculés. Chacun spécifie un numérateur (quel indicateur commun), un dénominateur (un autre indicateur, une estimation de population, ou rien pour les comptages bruts) et des règles de formatage.
+Chaque indicateur commun possède un type, choisi dans le même éditeur. Un indicateur **de base** est défini par les indicateurs bruts qui lui sont associés, dont les valeurs sont additionnées lors de l'extraction des données. Un indicateur **dérivé** est défini par une formule sur d'autres indicateurs communs et des termes de population.
 
-Vous définissez également des seuils pour le codage couleur : le seuil vert pour une bonne performance, le jaune pour une performance acceptable. Par exemple, un indicateur de couverture avec le vert à 80 et le jaune à 70 s'affiche en vert au-dessus de 80 %, en jaune entre 70 et 80 %, et en rouge en dessous de 70 %.
+Rédigez la formule d'un indicateur dérivé avec `+`, `-`, `*`, `/` et des parenthèses. Utilisez directement les identifiants d'autres indicateurs communs (par exemple `anc4 / anc1`), ou référencez une population en écrivant `[population:id_type]` (par exemple `anc4 / [population:grossesses]`). Les fonctions `abs()`, `coalesce()` et `nullif()` sont disponibles. Utilisez les contrôles de palette **Insérer un indicateur** et **Insérer une population** dans l'éditeur pour insérer des identifiants correctement écrits à la position du curseur ; une légende sous la formule nomme chaque identifiant que la formule référence et indique la couverture des données de population.
 
-Lors de la création d'un indicateur calculé, vous pouvez également dupliquer un indicateur existant à l'aide de l'action de copie. La copie s'ouvre avec un identifiant et un libellé suggérés pré-remplis, prêts à être ajustés avant l'enregistrement.
+Un indicateur de base produit toujours un compte et son format est fixé en tant que nombre. Un indicateur dérivé peut être formaté en nombre, en pourcentage ou en taux pour 10 000.
 
-Notez que seuls les indicateurs communs dont l'identifiant commence par une lettre minuscule et ne contient que des lettres minuscules, des chiffres et des tirets bas peuvent être utilisés comme numérateurs ou dénominateurs dans les indicateurs calculés. Si vous sélectionnez un indicateur commun dont l'identifiant ne respecte pas cette règle, l'éditeur affiche un avertissement et ne permet pas d'enregistrer.
+Vous pouvez également définir une règle de mise en forme conditionnelle sur n'importe quel indicateur commun. Lorsqu'une visualisation utilise la source de mise en forme conditionnelle **Indicateur**, chaque valeur est colorée selon la règle de son propre indicateur.
+
+Les indicateurs peuvent être triés à l'aide du bouton **Trier** dans l'onglet Indicateurs communs. L'ordre enregistré est celui que chaque axe d'indicateur dans chaque figure utilise pour le tri.
 
 :::caution[Capture d'écran à ajouter]
-Éditeur d'indicateur calculé montrant la sélection du numérateur et du dénominateur ainsi que la configuration des seuils.
+Éditeur d'indicateur commun montrant le sélecteur de type (De base / Dérivé), le champ de formule, la palette d'indicateurs/populations et la section affichage avec le format et la règle de mise en forme conditionnelle.
 :::
 
 ### Import par lot
@@ -157,4 +159,4 @@ FASTR supprime également les balises HTML et normalise les espaces dans les lib
 
 Choisissez des identifiants d'indicateurs courts mais descriptifs. Évitez les espaces et les caractères spéciaux - tenez-vous-en aux lettres minuscules, aux chiffres et aux traits de soulignement.
 
-Maintenez à jour les correspondances des indicateurs communs lorsque les configurations DHIS2 changent. Pour les indicateurs calculés, documentez vos choix de seuils - les futurs analystes voudront comprendre le raisonnement derrière les valeurs limites.
+Maintenez à jour les correspondances des indicateurs communs lorsque les configurations DHIS2 changent. Pour les indicateurs dérivés, documentez vos choix de formules — les futurs analystes voudront comprendre ce que représente chaque terme et pourquoi des types de population spécifiques ont été choisis.

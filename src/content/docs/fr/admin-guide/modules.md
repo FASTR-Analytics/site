@@ -25,6 +25,8 @@ Pour produire des résultats de modules, générez un nouveau lot de résultats 
 
 L'assistant est une fenêtre modale éphémère — rien n'est enregistré sur le serveur avant que vous ne cliquiez sur **Lancer la génération**. L'ensemble de la configuration (sélections de familles de données, choix de modules, valeurs de paramètres, libellé et projets cibles) est soumis en une seule étape. Si vous fermez l'assistant avant de lancer, rien n'est conservé.
 
+Après avoir cliqué sur **Lancer la génération**, FASTR sélectionne automatiquement l'identifiant du nouveau lot afin que le volet de détail s'ouvre dès que la notification SSE arrive. Vous pouvez quitter la page et suivre la progression sur la page Lots de résultats.
+
 ![Installer des modules](/images/installing-modules-en.png)
 
 ### Étape 1 — Choisir les données
@@ -38,10 +40,15 @@ Choisissez les modules à exécuter. La sélection d'un module inclut automatiqu
 Les modules disponibles comprennent :
 
 - **M11. Détection bayésienne des perturbations (modèle LI)** — détecte les perturbations de service à l'aide d'un modèle bayésien binomial négatif. Produit les séries observée, attendue, borne inférieure et borne supérieure qui alimentent le graphique des perturbations bayésien. Nécessite M2 comme prérequis.
+- **M12. Valeurs des indicateurs** — calcule les valeurs des indicateurs communs dérivés en appliquant la formule de chaque indicateur aux ingrédients additionnés issus de l'extraction HMIS. Nécessite M2 comme prérequis.
 
 ### Étape 3 — Confirmer et lancer
 
-Saisissez un libellé pour le lot de résultats et vérifiez les sélections de données et de modules. Sélectionnez éventuellement des projets à associer immédiatement au nouveau lot — ces projets basculeront vers le nouveau lot lorsque la génération réussira. Cliquez sur **Lancer la génération** pour démarrer. La génération s'exécute en arrière-plan ; vous pouvez quitter la page et suivre la progression sur la page Lots de résultats.
+Saisissez un libellé pour le lot de résultats et vérifiez les sélections de données et de modules. Sélectionnez éventuellement des projets à associer immédiatement au nouveau lot — ces projets basculeront vers le nouveau lot lorsque la génération réussira. Cliquez sur **Lancer la génération** pour démarrer.
+
+## Élaguer les lots de résultats
+
+Au fil des générations, les anciens lots s'accumulent. Cliquez sur **Élaguer** sur la page Lots de résultats pour ouvrir la boîte de dialogue d'élagage. FASTR indique quels lots seront supprimés (ceux qui ne sont associés à aucun projet, non épinglés et dont la génération est terminée) et lesquels seront conservés avec la raison. Confirmez pour supprimer tous les lots éligibles les uns après les autres — une liste de progression affiche chaque suppression à mesure qu'elle se termine. Les lots associés à un projet entre le moment où vous confirmez et le tour de ce lot sont ignorés plutôt que d'interrompre l'ensemble de l'opération.
 
 ## Épingler un lot de résultats
 

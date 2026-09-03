@@ -25,6 +25,8 @@ To produce module outputs, generate a new results package from the instance **Re
 
 The wizard is an ephemeral modal — nothing is saved to the server before you click **Launch generation**. The entire configuration (data family selections, module choices, parameter values, label, and attach targets) is submitted in a single step. If you close the wizard before launching, nothing is stored.
 
+After you click **Launch generation**, FASTR pins the new run's ID so that the detail pane opens for it as soon as the SSE notification arrives. You can leave the page and follow progress on the Results packages surface.
+
 ![Installing Modules](/images/installing-modules-en.png)
 
 ### Step 1 — Choose data
@@ -38,10 +40,15 @@ Choose which modules to run. Selecting a module automatically includes all modul
 Available modules include:
 
 - **M11. Bayesian disruption detection (LI model)** — detects service disruptions using a Negative Binomial Bayesian model. Produces observed, expected, lower bound, and upper bound series that power the Bayesian disruptions chart. Requires M2 as a prerequisite.
+- **M12. Indicator values** — computes derived common indicator values by applying each indicator's formula to the summed ingredients from the HMIS extract. Requires M2 as a prerequisite.
 
 ### Step 3 — Confirm and launch
 
-Enter a label for the results package and review the data and module selections. Optionally, select projects to attach the new package to immediately — these projects will switch to the new package when generation succeeds. Click **Launch generation** to start. Generation runs in the background; you can leave the page and follow progress on the Results packages surface.
+Enter a label for the results package and review the data and module selections. Optionally, select projects to attach the new package to immediately — these projects will switch to the new package when generation succeeds. Click **Launch generation** to start.
+
+## Pruning results packages
+
+As you generate packages over time, old ones accumulate. Click **Prune** on the Results packages page to open the prune dialog. FASTR shows which packages will be deleted (those not attached to any project, not pinned, and not currently generating) and which will be kept and why. Confirm to delete all eligible packages in sequence — a progress list shows each deletion as it completes. Packages attached to a project between the time you confirm and the time that package's turn arrives are skipped rather than aborting the whole operation.
 
 ## Pinning a results package
 

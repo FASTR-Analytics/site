@@ -15,7 +15,7 @@ HMIS data typically comes from DHIS2, where data elements have technical identif
 
 Raw indicators are the technical identifiers from DHIS2. To import them, click **Import DHIS2 indicator**. FASTR uses the instance's stored DHIS2 connection to search for data elements — if a stored connection exists, the search opens immediately. If not, you can enter connection details for this session only. Select which data elements to bring in, and FASTR creates a raw indicator for each using the DHIS2 ID and display name. You can also change the connection mid-session using **Change connection** in the search view.
 
-When creating a new raw or common indicator ID, the ID must not contain commas, semicolons, or colons, and must be at most 128 characters. Once created, indicator IDs cannot be changed — renaming would break existing data references.
+When creating a new raw or common indicator ID, the ID must not contain commas, semicolons, colons, or square brackets, and must be at most 128 characters. Once created, indicator IDs cannot be changed — renaming would break existing data references.
 
 :::caution[Screenshot needed]
 DHIS2 indicator import dialog showing available data elements with selection checkboxes.
@@ -26,25 +26,27 @@ DHIS2 indicator import dialog showing available data elements with selection che
 
 Common indicators are the standardized names analysts work with. A common indicator like "ANC1 visits" might map to different raw DHIS2 IDs in different countries. This abstraction means analysis code and visualizations reference consistent names even when underlying data sources change.
 
-Each common indicator has an ID (like `anc1_visits`), a display label, and mappings to one or more raw indicators. When multiple raw indicators map to the same common indicator, their values are summed.
+Each common indicator has an ID (like `anc1_visits`), a display label, and a type. Click **Add Common Indicator** to open the editor, where you configure everything in one place.
 
 :::caution[Screenshot needed]
-Common indicator editor showing ID, label, and raw indicator mapping fields.
+Common indicator editor showing ID, label, type selector, and definition fields.
 :::
 
-### Calculated indicators
+### Indicator types: base and derived
 <!-- help#ind-calculated -->
 
-Derived metrics that combine multiple indicators - like coverage rates - use calculated indicators. Each specifies a numerator (which common indicator), a denominator (another indicator, population estimate, or nothing for raw counts), and formatting rules.
+Every common indicator has a type, chosen in the same editor. A **base** indicator is defined by the raw indicators mapped to it, which are summed at data extraction. A **derived** indicator is defined by a formula over other common indicators and population terms.
 
-You also set thresholds for color coding: the green cutoff for good performance, yellow for acceptable. For example, a coverage indicator with green at 80 and yellow at 70 shows green above 80%, yellow for 70-80%, and red below 70%.
+Write a derived indicator's formula using `+`, `-`, `*`, `/`, and parentheses. Use other common indicator IDs directly (for example `anc4 / anc1`), or reference a population by writing `[population:type_id]` (for example `anc4 / [population:pregnancies]`). The functions `abs()`, `coalesce()`, and `nullif()` are available. Use the **Insert indicator** and **Insert population** palette controls in the editor to insert correctly written identifiers at the cursor position; a legend below the formula names every identifier the formula references and shows population data coverage.
 
-When creating a calculated indicator, you can also duplicate an existing one using the copy action. The copy opens with a new suggested ID and label pre-filled, ready for you to adjust before saving.
+A base indicator always produces a count and its format is fixed as a number. A derived indicator can be formatted as a number, a percent, or a rate per 10,000.
 
-Note that only common indicators whose IDs start with a lowercase letter and contain only lowercase letters, numbers, and underscores can be used as numerators or denominators in calculated indicators. If you select a common indicator with an ID that does not meet this requirement, the editor shows a warning and will not allow saving.
+You can also set a conditional formatting rule on any common indicator. When a visualization uses the **Indicator** CF source, each value is coloured by its own indicator's rule.
+
+Indicators can be sorted using the **Sort** button on the Common Indicators tab. The saved order is what every indicator axis in every figure sorts by.
 
 :::caution[Screenshot needed]
-Calculated indicator editor showing numerator/denominator selection and threshold configuration.
+Common indicator editor showing type selector (Base / Derived), formula field, indicator/population palette, and display section with format and conditional formatting rule.
 :::
 
 ### Batch import
@@ -157,4 +159,4 @@ FASTR also strips HTML markup and normalizes whitespace from XLSForm labels befo
 
 Choose indicator IDs that are short but descriptive. Avoid spaces and special characters - stick to lowercase letters, numbers, and underscores.
 
-Keep common indicator mappings current when DHIS2 configurations change. For calculated indicators, document your threshold choices - future analysts will want to understand the reasoning behind cutoffs.
+Keep common indicator mappings current when DHIS2 configurations change. For derived indicators, document your formula choices — future analysts will want to understand what each term represents and why specific population types were chosen.
