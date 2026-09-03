@@ -41,7 +41,7 @@ Write a derived indicator's formula using `+`, `-`, `*`, `/`, and parentheses. U
 
 A base indicator always produces a count and its format is fixed as a number. A derived indicator can be formatted as a number, a percent, or a rate per 10,000.
 
-You can also set a conditional formatting rule on any common indicator. When a visualization uses the **Indicator** CF source, each value is coloured by its own indicator's rule.
+You can also set a conditional formatting rule on any common indicator. When a visualization uses the **Indicator** CF source, each value is coloured by its own indicator's rule. The figure's legend shows the colour bands drawn from all the displayed indicators' rules together.
 
 Indicators can be sorted using the **Sort** button on the Common Indicators tab. The saved order is what every indicator axis in every figure sorts by.
 

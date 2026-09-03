@@ -41,7 +41,7 @@ Rédigez la formule d'un indicateur dérivé avec `+`, `-`, `*`, `/` et des pare
 
 Un indicateur de base produit toujours un compte et son format est fixé en tant que nombre. Un indicateur dérivé peut être formaté en nombre, en pourcentage ou en taux pour 10 000.
 
-Vous pouvez également définir une règle de mise en forme conditionnelle sur n'importe quel indicateur commun. Lorsqu'une visualisation utilise la source de mise en forme conditionnelle **Indicateur**, chaque valeur est colorée selon la règle de son propre indicateur.
+Vous pouvez également définir une règle de mise en forme conditionnelle sur n'importe quel indicateur commun. Lorsqu'une visualisation utilise la source de mise en forme conditionnelle **Indicateur**, chaque valeur est colorée selon la règle de son propre indicateur. La légende de la figure affiche les tranches de couleur issues de l'ensemble des règles des indicateurs affichés.
 
 Les indicateurs peuvent être triés à l'aide du bouton **Trier** dans l'onglet Indicateurs communs. L'ordre enregistré est celui que chaque axe d'indicateur dans chaque figure utilise pour le tri.
 
