@@ -40,11 +40,19 @@ Choose which modules to run. Selecting a module automatically includes all modul
 Available modules include:
 
 - **M11. Bayesian disruption detection (LI model)** — detects service disruptions using a Negative Binomial Bayesian model. Produces observed, expected, lower bound, and upper bound series that power the Bayesian disruptions chart. Requires M2 as a prerequisite.
-- **M12. Indicator values** — computes derived common indicator values by applying each indicator's formula to the summed ingredients from the HMIS extract. Requires M2 as a prerequisite.
+- **M12. Indicator values** — computes derived common indicator values by applying each indicator's formula to the summed ingredients from the HMIS extract. Requires M2 as a prerequisite. When population terms are used in indicator formulas, M12 uses person-years data from the population store; areas and months not covered by the population store are dropped for those indicators.
 
 ### Step 3 — Confirm and launch
 
 Enter a label for the results package and review the data and module selections. Optionally, select projects to attach the new package to immediately — these projects will switch to the new package when generation succeeds. Click **Launch generation** to start.
+
+## Population data and M12
+
+When one or more indicator formulas reference a population term (written as `[population:type_id]`), M12 requires population data to be imported at the instance level before generation. The generation will fail if population data is referenced but not present for any area of the current HMIS structure at the configured population level.
+
+The population level must be set on the instance Population page and must not be deeper than the HMIS structure's admin area depth. If the population level is deeper than the structure, generation fails with a clear message explaining the mismatch.
+
+For areas and months where population data exists, M12 computes the indicator. For areas or months where the population store has no coverage, M12 drops those cells for population-dependent indicators rather than failing the whole generation. The results package records which population types were active and what coverage was achieved.
 
 ## Pruning results packages
 

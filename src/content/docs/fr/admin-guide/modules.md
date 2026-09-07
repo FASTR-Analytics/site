@@ -40,11 +40,19 @@ Choisissez les modules à exécuter. La sélection d'un module inclut automatiqu
 Les modules disponibles comprennent :
 
 - **M11. Détection bayésienne des perturbations (modèle LI)** — détecte les perturbations de service à l'aide d'un modèle bayésien binomial négatif. Produit les séries observée, attendue, borne inférieure et borne supérieure qui alimentent le graphique des perturbations bayésien. Nécessite M2 comme prérequis.
-- **M12. Valeurs des indicateurs** — calcule les valeurs des indicateurs communs dérivés en appliquant la formule de chaque indicateur aux ingrédients additionnés issus de l'extraction HMIS. Nécessite M2 comme prérequis.
+- **M12. Valeurs des indicateurs** — calcule les valeurs des indicateurs communs dérivés en appliquant la formule de chaque indicateur aux ingrédients additionnés issus de l'extraction HMIS. Nécessite M2 comme prérequis. Lorsque des termes de population sont utilisés dans les formules d'indicateurs, M12 utilise les données de personnes-années issues du magasin de population ; les zones et les mois non couverts par le magasin de population sont exclus pour ces indicateurs.
 
 ### Étape 3 — Confirmer et lancer
 
 Saisissez un libellé pour le lot de résultats et vérifiez les sélections de données et de modules. Sélectionnez éventuellement des projets à associer immédiatement au nouveau lot — ces projets basculeront vers le nouveau lot lorsque la génération réussira. Cliquez sur **Lancer la génération** pour démarrer.
+
+## Données de population et M12
+
+Lorsqu'une ou plusieurs formules d'indicateurs font référence à un terme de population (écrit sous la forme `[population:id_type]`), M12 nécessite que des données de population soient importées au niveau de l'instance avant la génération. La génération échoue si une population est référencée mais qu'aucune donnée n'est présente pour une zone de la structure HMIS actuelle au niveau de population configuré.
+
+Le niveau de population doit être défini sur la page Population de l'instance et ne doit pas être plus profond que le niveau de profondeur administrative de la structure HMIS. Si le niveau de population est plus profond que la structure, la génération échoue avec un message clair expliquant l'incompatibilité.
+
+Pour les zones et les mois pour lesquels des données de population existent, M12 calcule l'indicateur. Pour les zones ou les mois non couverts par le magasin de population, M12 exclut ces cellules pour les indicateurs dépendant de la population au lieu de faire échouer l'ensemble de la génération. Le lot de résultats enregistre les types de population actifs et la couverture obtenue.
 
 ## Élaguer les lots de résultats
 

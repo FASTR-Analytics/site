@@ -41,6 +41,10 @@ Write a derived indicator's formula using `+`, `-`, `*`, `/`, and parentheses. U
 
 A base indicator always produces a count and its format is fixed as a number. A derived indicator can be formatted as a number, a percent, or a rate per 10,000.
 
+The editor validates derived indicator formulas as you type. If a formula cannot be resolved — for example because it references an unknown identifier, creates a cycle, or has a syntax error — an error message appears below the formula field. If the formula is valid but references ingredients that have no mapped raw indicator yet, a warning appears instead, letting you know the indicator cannot be computed until those mappings are added. You can still save the indicator in this state; the warning does not block saving.
+
+The common indicators list includes a **Status** column for derived indicators showing whether each can currently be computed. If one or more derived indicators cannot be computed, a warning banner appears above the list explaining how many are affected and what to do.
+
 You can also set a conditional formatting rule on any common indicator. When a visualization uses the **Indicator** CF source, each value is coloured by its own indicator's rule. The figure's legend shows the colour bands drawn from all the displayed indicators' rules together.
 
 Indicators can be sorted using the **Sort** button on the Common Indicators tab. The saved order is what every indicator axis in every figure sorts by.

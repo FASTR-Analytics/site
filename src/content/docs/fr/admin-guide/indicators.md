@@ -41,6 +41,10 @@ Rédigez la formule d'un indicateur dérivé avec `+`, `-`, `*`, `/` et des pare
 
 Un indicateur de base produit toujours un compte et son format est fixé en tant que nombre. Un indicateur dérivé peut être formaté en nombre, en pourcentage ou en taux pour 10 000.
 
+L'éditeur valide les formules des indicateurs dérivés au fur et à mesure de la saisie. Si une formule ne peut pas être résolue — par exemple parce qu'elle fait référence à un identifiant inconnu, crée un cycle ou contient une erreur de syntaxe — un message d'erreur s'affiche sous le champ de formule. Si la formule est valide mais fait référence à des ingrédients qui n'ont pas encore d'indicateur brut associé, un avertissement s'affiche à la place, indiquant que l'indicateur ne peut pas être calculé tant que ces associations ne sont pas ajoutées. Vous pouvez tout de même enregistrer l'indicateur dans cet état ; l'avertissement ne bloque pas l'enregistrement.
+
+La liste des indicateurs communs inclut une colonne **Statut** pour les indicateurs dérivés, indiquant si chacun peut actuellement être calculé. Si un ou plusieurs indicateurs dérivés ne peuvent pas être calculés, une bannière d'avertissement s'affiche au-dessus de la liste en expliquant combien sont concernés et la marche à suivre.
+
 Vous pouvez également définir une règle de mise en forme conditionnelle sur n'importe quel indicateur commun. Lorsqu'une visualisation utilise la source de mise en forme conditionnelle **Indicateur**, chaque valeur est colorée selon la règle de son propre indicateur. La légende de la figure affiche les tranches de couleur issues de l'ensemble des règles des indicateurs affichés.
 
 Les indicateurs peuvent être triés à l'aide du bouton **Trier** dans l'onglet Indicateurs communs. L'ordre enregistré est celui que chaque axe d'indicateur dans chaque figure utilise pour le tri.
@@ -159,4 +163,4 @@ FASTR supprime également les balises HTML et normalise les espaces dans les lib
 
 Choisissez des identifiants d'indicateurs courts mais descriptifs. Évitez les espaces et les caractères spéciaux - tenez-vous-en aux lettres minuscules, aux chiffres et aux traits de soulignement.
 
-Maintenez à jour les correspondances des indicateurs communs lorsque les configurations DHIS2 changent. Pour les indicateurs dérivés, documentez vos choix de formules — les futurs analystes voudront comprendre ce que représente chaque terme et pourquoi des types de population spécifiques ont été choisis.
+Maintenez à jour les correspondances des indicateurs communs lorsque les configurations DHIS2 changent. Pour les indicateurs dérivés, documentez vos choix de formules — les futurs analystes voudront comprendre ce que représente chaque terme et pourquoi des types de population spécifiques ont été choisi.
