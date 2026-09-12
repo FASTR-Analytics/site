@@ -15,52 +15,72 @@ Les téléversements CSV conviennent bien aux importations périodiques ou aux d
 
 ## Démarrer une importation
 
-Accédez à la section **Données** et sélectionnez **Données SNIS**. Si vous disposez des permissions d'administration, un panneau **Importations** s'affiche sur la droite. Cliquez sur **Démarrer une nouvelle importation** et choisissez le type de source : fichier CSV ou DHIS2.
+Accédez à la section **Données** et sélectionnez **Données HMIS**. Si votre compte a le droit de configurer les données, la barre latérale affiche un bouton **Importations** qui ouvre la vue des importations. Ses onglets sont **En cours** (l'importation en cours d'exécution ou en file d'attente), **À venir** (les importations planifiées), **Historique** (toutes les exécutions passées) et **Par indicateur** (ce qui a été importé pour chaque indicateur). Cliquez sur **Nouvelle importation** et choisissez CSV ou DHIS2.
+
+Les importations s'exécutent en arrière-plan, une à la fois. Si une importation est déjà en cours, la nouvelle est mise en file d'attente et démarre lorsque la précédente se termine.
 
 :::caution[Capture d'écran à ajouter]
-Vue des données SNIS montrant le panneau Importations avec le bouton Démarrer une nouvelle importation.
+La vue des données HMIS avec le bouton Importations dans la barre latérale et la vue des importations ouverte sur l'onglet En cours.
 :::
 
 ## Processus d'importation CSV
 <!-- help#hmis-csv -->
 
-Lors d'une importation à partir d'un fichier CSV, vous suivez quatre étapes.
+Une importation CSV comporte trois étapes : téléverser le fichier, associer ses colonnes aux quatre champs requis, puis lancer. FASTR prépare ensuite le fichier et le fusionne dans le jeu de données, ou se met en pause pour vérification lorsque des lignes ont été écartées.
 
-1. **Téléversez votre fichier.** Sélectionnez un fichier CSV existant parmi les ressources de votre instance, ou téléversez-en un nouveau.
+1. **Téléversement.** Sélectionnez un fichier CSV déjà téléversé dans votre instance (ses ressources), ou téléversez-en un nouveau.
 
-2. **Faites correspondre les colonnes.** Associez les colonnes de votre fichier CSV aux quatre champs requis : facility_id, raw_indicator_id, period_id (format YYYYMM) et count. L'interface affiche toutes les colonnes disponibles afin que vous puissiez établir les correspondances correctement, même si votre source utilise des conventions de nommage différentes.
+2. **Colonnes.** Associez les colonnes de votre fichier CSV aux quatre champs requis : `facility_id`, `indicator_id`, `period_id` (format YYYYMM) et `count`. La colonne indicateur contient des identifiants d'indicateurs de votre liste. L'interface affiche toutes les colonnes du fichier, ce qui permet de les associer même si votre fichier utilise d'autres noms.
 
-3. **Préparez les données.** Cliquez sur **Démarrer la préparation** pour valider et préparer vos données. Le système vérifie chaque ligne par rapport à vos correspondances d'indicateurs et à votre registre d'établissements. La progression se met à jour automatiquement.
+3. **Vérifier et lancer.** Cliquez sur **Démarrer l'importation**, ou sur **Mettre en file d'attente** si une autre importation est en cours.
 
-4. **Vérifiez et intégrez.** Examinez le résumé de la préparation - nombre total d'enregistrements, problèmes de validation, lignes écartées. Si les résultats vous paraissent corrects, cliquez sur **Intégrer et finaliser** pour terminer l'importation.
+FASTR prépare ensuite le fichier : il vérifie chaque ligne par rapport à vos établissements et à vos indicateurs, et compte ce qu'il écarte. Si rien n'est écarté, les lignes préparées sont fusionnées dans le jeu de données sans autre action. Si certaines lignes sont écartées, l'exécution se met en pause avec le statut **À vérifier**. Elle apparaît sous forme de carte dans l'onglet En cours, avec les résultats de la préparation, et vous choisissez l'une des trois actions suivantes :
+
+- **Intégrer malgré tout** fusionne les lignes conservées et ignore les lignes écartées.
+- **Créer des indicateurs pour les identifiants inconnus et préparer à nouveau** ouvre l'étape de nommage sur chaque identifiant d'indicateur du fichier qui n'est pas dans votre liste. Chacun devient un indicateur téléversé sous l'identifiant utilisé dans le fichier, avec le libellé que vous lui donnez, et le même fichier est préparé à nouveau.
+- **Abandonner** annule l'importation ; rien n'est fusionné.
+
+La fusion met à jour les lignes déjà présentes pour un établissement, un indicateur et un mois, et insère les autres. Les cellules absentes du fichier conservent leur valeur précédente.
 
 :::caution[Capture d'écran à ajouter]
-Interface de correspondance des colonnes montrant les quatre champs requis avec des sélecteurs déroulants.
+L'étape Colonnes montrant les quatre champs requis avec des sélecteurs déroulants.
 :::
 
 ## Processus d'importation DHIS2
 <!-- help#hmis-dhis2 -->
 
-1. **Connectez-vous à DHIS2.** Saisissez l'URL de votre serveur et vos identifiants. FASTR valide la connexion avant de poursuivre.
+Une importation DHIS2 récupère les valeurs rapportées par les établissements, un indicateur et un mois à la fois, directement depuis votre serveur DHIS2. Elle comporte cinq étapes.
 
-2. **Sélectionnez les indicateurs et les périodes.** Choisissez les indicateurs à récupérer dans un tableau présentant tous les indicateurs configurés dans votre instance, puis sélectionnez une plage de dates. Vous pouvez décider de la manière de gérer les échecs - tout interrompre si une combinaison échoue, ou poursuivre avec ce qui a réussi.
+1. **Identifiants.** FASTR utilise la connexion DHIS2 enregistrée de l'instance. Vous pouvez saisir une connexion pour cette exécution seulement ; une importation planifiée a besoin de la connexion enregistrée.
 
-3. **Récupérez les données.** Cliquez sur **Démarrer la récupération depuis DHIS2** pour récupérer les données sélectionnées.
+2. **Indicateurs.** Sélectionnez les indicateurs à importer dans votre liste d'indicateurs. Un élément DHIS2 est récupéré par son identifiant DHIS2. Sélectionner une somme récupère ses membres, et sélectionner un indicateur dérivé récupère les indicateurs que sa formule utilise. Les indicateurs téléversés ne sont pas récupérés.
 
-4. **Vérifiez et intégrez.** Le résumé de la préparation indique combien de lignes ont été récupérées. Lorsque vous cliquez sur **Intégrer et finaliser**, FASTR utilise une stratégie de suppression ciblée puis insertion : pour chaque combinaison indicateur/période récupérée avec succès, les lignes existantes dans la base de données sont supprimées pour exactement les établissements qui ont été interrogés, puis les nouvelles valeurs récupérées sont insérées. Cela garantit que les cellules que DHIS2 ne renvoie plus — parce que des données ont été supprimées ou corrigées à zéro à la source — sont correctement retirées plutôt que laissées en place. La boîte de dialogue de confirmation liste le périmètre de la suppression planifiée avant que vous confirmiez.
+3. **Heure.** Exécutez l'importation **Maintenant**, **Une fois, à une heure donnée**, ou de façon **Récurrente** (quotidienne, hebdomadaire ou mensuelle, dans le fuseau horaire de votre choix). Choisissez une plage horaire de faible trafic pour le serveur DHIS2.
+
+4. **Configuration.** Choisissez les mois : **Derniers N mois**, recalculés à chaque exécution d'une importation récurrente, ou une plage de périodes fixe.
+
+5. **Vérifier et lancer.** Le récapitulatif liste la connexion, le nombre d'indicateurs et les éléments DHIS2 auxquels ils correspondent, les mois, et le nombre de paires (indicateur, mois) à récupérer. Cliquez sur **Démarrer l'importation**.
+
+Chaque paire (indicateur, mois) est récupérée et fusionnée séparément. Pour une paire récupérée avec succès, FASTR supprime les lignes existantes pour exactement les établissements interrogés, puis insère les valeurs renvoyées par DHIS2. Les cellules que DHIS2 ne renvoie plus, parce que la valeur y a été supprimée ou corrigée à zéro, sont retirées plutôt que laissées en place. Une paire en échec ne touche pas aux données existantes, et une exécution interrompue conserve chaque paire déjà fusionnée. Une valeur d'établissement qui n'est pas un nombre entier positif ou nul n'est pas importée ; elle est ignorée et comptabilisée dans le détail de l'exécution.
+
+Un indicateur dont l'identifiant DHIS2 est un indicateur DHIS2 (une formule) plutôt qu'un élément de données n'est pas récupéré. Le détail de l'exécution le signale et renvoie vers **Importer depuis DHIS2** dans la liste des indicateurs, qui transforme la formule en éléments de données. Un identifiant que DHIS2 ne connaît pas est listé sous **Identifiants DHIS2 introuvables dans DHIS2**.
 
 :::caution[Capture d'écran à ajouter]
-Interface de sélection DHIS2 montrant le tableau des indicateurs avec des cases à cocher et le sélecteur de plage de périodes.
+L'étape Indicateurs montrant la liste des indicateurs avec les colonnes Type et Défini par et une sélection.
 :::
 
 ## Validation et gestion des erreurs
 <!-- help#hmis-validation -->
 
-Le processus de préparation détecte plusieurs types de problèmes : champs requis manquants, valeurs numériques invalides, établissements absents de votre registre et indicateurs sans correspondance. Pour chaque catégorie, le résumé indique combien de lignes ont été affectées et fournit des exemples d'entrées. Si trop de lignes sont écartées, envisagez de corriger les données sources ou de mettre à jour la configuration de l'instance avant de relancer l'importation.
+Pour une importation CSV, les résultats de la préparation listent chaque problème par catégorie, avec un nombre et des exemples de lignes. Les catégories sont : lignes avec des champs requis manquants, lignes avec des valeurs invalides, établissements absents de votre liste d'établissements, périodes invalides, et identifiants d'indicateurs absents de votre liste d'indicateurs. Pour les identifiants inconnus, les résultats affichent les plus fréquents et l'ensemble complet, et la carte de l'onglet En cours propose de les créer (voir le processus d'importation CSV ci-dessus). Si beaucoup de lignes sont écartées, corrigez le fichier ou la liste des établissements avant de relancer l'importation.
+
+Pour une importation DHIS2, le détail de l'exécution affiche chaque paire (indicateur, mois) en échec avec son erreur. **Réessayer les paires en échec** dans l'onglet Par indicateur lance une nouvelle exécution sur toutes les paires en échec, et le détail d'une exécution propose la même chose pour les paires en échec de cette exécution.
 
 ## Gérer l'historique des importations
 
-Chaque importation réussie crée une nouvelle version du jeu de données. Cliquez sur **Voir les importations précédentes** pour consulter toutes les versions avec leurs dates et le nombre de lignes. Pour les importations DHIS2 qui ont utilisé la stratégie de suppression ciblée puis insertion, le tableau d'historique affiche **Lignes supprimées** au lieu de **Lignes mises à jour**, afin de refléter que les valeurs précédentes dans le périmètre récupéré ont été supprimées avant l'insertion des nouvelles. Vous pouvez également supprimer des données si nécessaire - cette action est irréversible et réservée aux administrateurs globaux.
+Chaque importation qui fusionne des données crée une nouvelle version du jeu de données. L'onglet **Historique** liste chaque exécution avec sa date, son mode d'importation (CSV ou DHIS2), sa sélection, et le nombre de lignes insérées, mises à jour ou supprimées. Cliquez sur une exécution pour voir son détail. L'onglet **Par indicateur** présente le même historique organisé par indicateur. Pour chaque indicateur de votre liste, il montre les mois importés et à quelle date, avec un détail par mois et **Réimporter cet indicateur** pour le récupérer à nouveau depuis DHIS2.
+
+Pour supprimer des données, cliquez sur **Supprimer les données** dans la barre latérale, choisissez tous les indicateurs ou une sélection, les unités administratives et la plage de périodes, puis saisissez `yes please delete` pour confirmer. La suppression est irréversible et est refusée tant qu'une importation est en cours.
 
 ## Supprimer des données ICEH
 

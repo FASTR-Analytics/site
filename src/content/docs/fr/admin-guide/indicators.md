@@ -5,55 +5,83 @@ sidebar:
   order: 3
 ---
 
-Les indicateurs sont les mesures de santé que votre instance FASTR suit - par exemple les taux de couverture vaccinale, les taux de complétude des rapports des établissements ou le nombre de consultations externes. Avant de pouvoir analyser des données, vous devez définir quels indicateurs sont pertinents et comment ils correspondent aux données brutes. Cette page traite de la configuration des indicateurs pour les sources de données HMIS et HFA.
+Les indicateurs sont les mesures de santé que votre instance FASTR suit - par exemple les taux de couverture vaccinale, les taux de complétude des rapports des établissements ou le nombre de consultations externes. Avant de pouvoir analyser des données, vous devez définir quels indicateurs sont pertinents et d'où proviennent leurs données. Cette page traite de la configuration des indicateurs pour les données HMIS et HFA.
 
 ## Indicateurs HMIS
 
-Les données HMIS proviennent généralement de DHIS2, où les éléments de données portent des identifiants techniques comme `qHJdhOrhklI` qui ne signifient rien pour les analystes. FASTR utilise un système à deux niveaux : les indicateurs bruts (identifiants DHIS2) et les indicateurs communs (noms lisibles).
+Chaque indicateur HMIS est une ligne de la liste des indicateurs. Il n'existe pas de liste séparée d'identifiants DHIS2. Un élément de données DHIS2 est un indicateur qui porte un identifiant DHIS2. Une colonne d'un fichier CSV téléversé est un indicateur dont l'identifiant est celui écrit dans le fichier. Un total ou un taux est un indicateur construit à partir d'autres indicateurs. Chaque ligne de données appartient à l'indicateur pour lequel elle a été récupérée ou téléversée.
 
-### Indicateurs DHIS2 bruts
+### La liste des indicateurs
+<!-- help#ind-list -->
 
-Les indicateurs bruts sont les identifiants techniques issus de DHIS2. Pour les importer, cliquez sur **Importer un indicateur DHIS2**, saisissez vos identifiants de connexion et sélectionnez les éléments de données à importer. FASTR crée un indicateur brut pour chacun d'eux à partir de l'identifiant DHIS2 et du nom d'affichage.
+La liste affiche chaque indicateur avec son identifiant, son libellé, son type et sa définition. La colonne **Type** prend quatre valeurs :
 
-Lors de la création d'un identifiant d'indicateur brut ou commun, l'identifiant ne doit pas contenir de virgules, de points-virgules ou de deux-points, et doit comporter au maximum 128 caractères. Une fois créés, les identifiants d'indicateurs ne peuvent pas être modifiés — les renommer briserait les références aux données existantes.
+- **Élément DHIS2** est un comptage récupéré depuis DHIS2. La colonne **Défini par** affiche l'identifiant DHIS2 de l'élément de données (ou de l'opérande, un élément de données restreint à une combinaison d'options de catégorie, écrit `UID.COC`) que l'importation récupère pour alimenter cet indicateur.
+- **Téléversé** est un comptage rempli par téléversement CSV. La colonne indicateur du fichier contient l'identifiant de cet indicateur.
+- **Somme** est le total d'autres indicateurs. La colonne **Défini par** liste ses membres. Les membres sont des éléments DHIS2 ou des indicateurs téléversés ; une somme ne peut pas contenir une somme. Les comptages des membres sont additionnés par établissement et par mois, et le résultat passe par le même ajustement de qualité des données que tout autre comptage.
+- **Dérivé** est une formule portant sur d'autres indicateurs et des populations, évaluée après l'ajustement et l'agrégation des données. La colonne **Défini par** affiche la formule.
+
+Chaque indicateur possède un identifiant (comme `anc1`), un libellé et une case à cocher **Inclure dans l'analyse**. Certains identifiants portent la mention **Spécial** : les modules d'analyse les lisent par leur nom, ils sont donc toujours analysés et ne peuvent pas être des indicateurs dérivés.
+
+Pour créer un indicateur à la main, cliquez sur **Créer un indicateur**, choisissez le type et remplissez la définition. Un élément DHIS2 ou un indicateur téléversé possède un champ **Identifiant DHIS2** : laissez-le vide pour un indicateur téléversé ; une fois un identifiant DHIS2 renseigné, il ne peut plus être modifié. Une somme possède un sélecteur de membres. Un indicateur dérivé possède un champ de formule. Un identifiant d'indicateur ne peut pas contenir de virgules, de points-virgules, de deux-points ni de crochets, doit comporter au maximum 128 caractères, et ne peut plus être modifié une fois l'indicateur créé. Les identifiants de population et les noms de fonctions ne peuvent pas servir d'identifiants d'indicateurs, et un identifiant spécial ne peut être donné qu'à un élément DHIS2, un indicateur téléversé ou une somme.
+
+La suppression d'un indicateur est refusée tant qu'il possède des données, tant qu'une somme le compte parmi ses membres, ou tant que la formule d'un autre indicateur en a besoin.
 
 :::caution[Capture d'écran à ajouter]
-Boîte de dialogue d'import des indicateurs DHIS2 montrant les éléments de données disponibles avec des cases de sélection.
+La liste des indicateurs montrant les colonnes Type, Défini par, Inclure dans l'analyse et Statut.
 :::
 
-### Indicateurs communs
-<!-- help#ind-common -->
+### Importer depuis DHIS2
+<!-- help#ind-dhis2-import -->
 
-Les indicateurs communs sont les noms standardisés avec lesquels les analystes travaillent. Un indicateur commun comme « visites de CPN1 » peut correspondre à différents identifiants DHIS2 bruts selon les pays. Cette abstraction permet au code d'analyse et aux visualisations de référencer des noms cohérents, même lorsque les sources de données sous-jacentes changent.
+Cliquez sur **Importer depuis DHIS2** pour ajouter des éléments de données depuis votre serveur DHIS2. FASTR utilise la connexion enregistrée de l'instance ; **Modifier la connexion** permet d'en utiliser une autre. Recherchez par nom, code ou identifiant. Les résultats listent des éléments de données et des indicateurs DHIS2, et chaque ligne indique si l'élément peut être importé. Un élément de données ne peut être importé que si DHIS2 le décrit comme un comptage mensuel additif : type d'agrégation somme, type de valeur numérique et au moins un ensemble de données mensuel. Tout le reste est refusé, avec la raison affichée.
 
-Chaque indicateur commun possède un identifiant (comme `anc1_visits`), un libellé d'affichage et des correspondances vers un ou plusieurs indicateurs bruts. Lorsque plusieurs indicateurs bruts correspondent au même indicateur commun, leurs valeurs sont additionnées.
+Ajoutez les éléments voulus, puis cliquez sur **Suivant : nommer les indicateurs**. L'étape de nommage affiche chaque élément avec un identifiant proposé d'après son nom DHIS2, que vous pouvez modifier avant d'enregistrer. Saisir l'identifiant d'un indicateur téléversé existant attribue l'identifiant DHIS2 à cet indicateur au lieu d'en créer un nouveau. C'est ainsi qu'un indicateur spécial comme `anc1`, présent dans chaque nouvelle instance, devient un élément DHIS2. Tout autre identifiant existant est refusé. Un élément dont l'identifiant DHIS2 figure déjà dans la liste est affiché comme déjà importé et ne crée rien.
+
+Un indicateur DHIS2 (une formule dans DHIS2, comme un taux de couverture) n'est jamais importé sous forme de valeurs. FASTR lit son numérateur et son dénominateur, importe chaque élément de données qu'ils utilisent comme un indicateur à part entière, et crée un indicateur dérivé avec la formule `(numérateur) / (dénominateur)` sur ces indicateurs. Une formule DHIS2 que FASTR ne peut pas exprimer, par exemple une formule qui utilise des indicateurs de programme, des groupes d'unités d'organisation ou des fonctions, est refusée, et le message nomme la partie de la formule qui l'a bloquée.
+
+Importer un élément ne fait que l'ajouter à la liste. Pour récupérer ses données, lancez une importation HMIS (voir Données HMIS).
 
 :::caution[Capture d'écran à ajouter]
-Éditeur d'indicateur commun montrant les champs d'identifiant, de libellé et de correspondance avec les indicateurs bruts.
+L'étape de nommage montrant les identifiants proposés pour deux éléments de données et l'aperçu de la formule d'un indicateur DHIS2 décomposé.
 :::
+
+### Sommes
+
+Une somme additionne les comptages de ses membres par établissement et par mois. Utilisez-la lorsque le même service est rapporté sous plusieurs éléments de données, par exemple un vaccin enregistré sous un élément pour les séances fixes et un autre pour les séances avancées. Créez-la avec **Créer un indicateur**, choisissez le type **Somme** et sélectionnez les membres parmi les éléments DHIS2 et les indicateurs téléversés de la liste. Une somme a besoin d'au moins un membre.
 
 ### Indicateurs dérivés
-<!-- help#ind-calculated -->
+<!-- help#ind-derived -->
 
-Chaque indicateur commun possède un type, choisi dans le même éditeur. Un indicateur **de base** est défini par les indicateurs bruts qui lui sont associés, dont les valeurs sont additionnées. Un indicateur **dérivé** est défini par une formule portant sur d'autres indicateurs — par exemple `anc4 / anc1` pour un taux de couverture. Un **taux de population** est une formule divisée par une estimation de population.
+Un indicateur dérivé est défini par une formule portant sur d'autres indicateurs, par exemple `anc4 / anc1` pour un taux de couverture. Il est calculé après l'agrégation des données : un chiffre régional ou annuel est donc la formule appliquée aux valeurs additionnées, et non une moyenne de ratios.
 
-Une formule peut utiliser `+`, `-`, `*`, `/`, des parenthèses et des nombres sur n'importe quels autres indicateurs, ainsi que les fonctions `abs()`, `coalesce()` et `nullif()`. Elle ne se limite pas à un numérateur et un dénominateur : `(anc1 - anc4) / anc1` est une définition valide, tout comme n'importe quelle combinaison de trois indicateurs ou plus. Une formule peut aussi faire référence à un autre indicateur dérivé, qui y est substitué.
+Une formule peut utiliser `+`, `-`, `*`, `/`, des parenthèses et des nombres, ainsi que les fonctions `abs()` (valeur absolue), `coalesce()` (la première valeur non vide) et `nullif()` (vide lorsque les deux valeurs sont égales). Elle ne se limite pas à un numérateur et un dénominateur : `(anc1 - anc4) / anc1` est une définition valide, tout comme n'importe quelle combinaison de trois indicateurs ou plus. Une formule peut faire référence à une somme ou à un autre indicateur dérivé, dont la définition est insérée à la place de son identifiant.
 
-N'importe quel identifiant d'indicateur peut être utilisé dans une formule. Écrivez-le tel quel s'il ne contient que des lettres minuscules, des chiffres et des tirets bas ; sinon, mettez-le entre crochets, comme `[ANC.1]`.
+Une formule peut aussi diviser par une population, écrite avec l'identifiant du type de population, par exemple `anc4 / population_pregnancies`. Les populations proviennent de la page Population de l'instance (Données → Population) : des effectifs annuels de population par unité administrative et par type de population, téléversés sous forme de CSV. Une valeur divisée par une population est annualisée, de sorte qu'une valeur mensuelle se lit comme un taux annuel. Les valeurs sont alors calculées uniquement au niveau administratif des données de population, sans valeur pour les unités inférieures, et uniquement pour les unités et les mois couverts par les données de population. Un paquet de résultats ne peut pas être généré tant qu'une formule utilise un type de population qui n'a aucune donnée.
 
-Les indicateurs dérivés sont calculés après l'agrégation des données : un chiffre régional ou annuel est donc la formule appliquée aux sommes, et non une moyenne de ratios. C'est ce qui rend un taux de couverture national correct plutôt qu'une moyenne des taux de districts.
+Vous n'avez pas à saisir les identifiants à la main : les sélecteurs **Insérer un indicateur** et **Insérer une population** au-dessus du champ de formule les insèrent au curseur, correctement écrits. La légende sous le champ liste chaque identifiant utilisé par la formule avec son libellé. Écrivez un identifiant tel quel s'il ne contient que des lettres minuscules, des chiffres et des tirets bas ; sinon, mettez-le entre crochets, comme `[ANC.1]`.
 
-Vous définissez également le format d'affichage et, si vous le souhaitez, des seuils pour le codage couleur : le seuil vert pour une bonne performance, le jaune pour une performance acceptable. Par exemple, un indicateur de couverture avec le vert à 80 et le jaune à 70 s'affiche en vert au-dessus de 80 %, en jaune entre 70 et 80 %, et en rouge en dessous de 70 %.
+Vous définissez également le format d'affichage (nombre, pourcentage ou taux pour 10 000) et, si vous le souhaitez, une règle de mise en forme conditionnelle pour le codage couleur, par exemple vert au-dessus de 80 % et jaune entre 70 % et 80 %. Un élément DHIS2, un indicateur téléversé ou une somme est un comptage et s'affiche toujours comme un nombre.
 
-L'éditeur vérifie la formule au fur et à mesure de la saisie. Il refuse une formule qui nomme un indicateur inexistant, qui se réfère à elle-même, ou qui finit par nécessiter plus de huit indicateurs sources une fois la chaîne suivie jusqu'au bout. Un indicateur dont dépend la formule d'un autre indicateur ne peut pas être supprimé tant que cette formule n'a pas été modifiée.
+L'éditeur vérifie la formule au fur et à mesure de la saisie. Il refuse une formule qui nomme un indicateur inexistant, qui se réfère à elle-même, ou qui nécessite plus de huit indicateurs une fois développés chaque somme et chaque indicateur dérivé auxquels elle fait référence. La colonne **Statut** de la liste indique si chaque indicateur dérivé peut être calculé. Une formule qui utilise un indicateur sans données peut être enregistrée, mais les résultats ne peuvent pas être générés tant que ces données ne sont pas importées.
 
 :::caution[Capture d'écran à ajouter]
-Éditeur d'indicateur montrant le sélecteur de type, le champ de formule et la configuration des seuils.
+L'éditeur d'un indicateur dérivé, montrant le champ de formule, les sélecteurs, la légende et le format.
 :::
 
-### Import par lot
+### Inclure dans l'analyse
+<!-- help#ind-include -->
 
-Pour les instances comportant de nombreux indicateurs, l'import par lot permet de téléverser un fichier CSV contenant les définitions d'indicateurs. C'est utile lors de la configuration d'une nouvelle instance ou de la migration depuis un autre système.
+Chaque indicateur possède une case à cocher **Inclure dans l'analyse**. Lorsqu'elle est cochée, chaque paquet de résultats analyse l'indicateur : les modules de qualité des données l'ajustent et il est disponible dans les visualisations. Lorsqu'elle est décochée, l'indicateur n'existe que dans le dictionnaire. Ses données sont toujours importées et stockées, il peut toujours être membre d'une somme et être utilisé dans une formule, mais aucun paquet ne le porte en tant que tel.
+
+C'est ainsi que vous conservez un élément de données pour l'utiliser dans un total ou un taux sans qu'il apparaisse dans les résultats. Un indicateur spécial est toujours analysé. Lorsqu'un indicateur dérivé inclus utilise un indicateur qui ne l'est pas, l'éditeur le signale, et le paquet inclut cet indicateur malgré tout.
+
+### Importation groupée
+<!-- help#ind-batch -->
+
+Pour les instances comportant de nombreux indicateurs, **Importation groupée depuis CSV** téléverse toute la liste depuis un seul fichier, et **Télécharger le CSV** produit le même fichier à partir de la liste actuelle, ce qui permet de modifier tout le dictionnaire dans un tableur et de le téléverser à nouveau. Les colonnes sont `indicator_id`, `label`, `type`, `dhis2_id`, `members`, `expression`, `include_in_analysis`, `format_as` et `thresholds`. Le `type` est `base`, `sum` ou `derived`. Pour un indicateur `base` (un élément DHIS2 ou un indicateur téléversé), `dhis2_id` est l'identifiant de l'élément de données ou de l'opérande DHIS2, et reste vide pour un indicateur téléversé. Pour une somme, `members` liste les identifiants des membres séparés par des points-virgules. Pour un indicateur dérivé, `expression` est la formule. Les indicateurs nommés dans le fichier sont créés ou mis à jour, et les indicateurs existants conservent leur ordre de tri.
+
+Cochez **Remplacer tout le dictionnaire par ce fichier** pour supprimer aussi chaque indicateur que le fichier ne nomme pas. Le téléversement est refusé, avec la liste des raisons, s'il devait supprimer un indicateur qui possède des données ou qu'une somme ou une formule utilise encore. Il est aussi refusé s'il devait déplacer un identifiant DHIS2 vers un autre indicateur alors que l'ancien possède des données.
 
 ## Indicateurs HFA
 
@@ -121,6 +149,6 @@ FASTR détecte les colonnes de points temporels intégrées dans le fichier et p
 
 ## Bonnes pratiques
 
-Choisissez des identifiants d'indicateurs courts mais descriptifs. Évitez les espaces et les caractères spéciaux - tenez-vous-en aux lettres minuscules, aux chiffres et aux traits de soulignement.
+Choisissez des identifiants d'indicateurs courts mais descriptifs. Évitez les espaces et les caractères spéciaux - tenez-vous-en aux lettres minuscules, aux chiffres et aux tirets bas.
 
-Maintenez à jour les correspondances des indicateurs communs lorsque les configurations DHIS2 changent. Pour les indicateurs calculés, documentez vos choix de seuils - les futurs analystes voudront comprendre le raisonnement derrière les valeurs limites.
+Vérifiez les identifiants DHIS2 de la liste lorsque des éléments de données sont modifiés ou remplacés sur le serveur DHIS2. Pour les indicateurs dérivés, documentez vos choix de seuils - les futurs analystes voudront comprendre le raisonnement derrière les valeurs limites.

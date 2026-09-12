@@ -5,55 +5,83 @@ sidebar:
   order: 3
 ---
 
-Indicators are the health metrics your FASTR instance tracks - things like immunization coverage rates, facility reporting rates, or outpatient visit counts. Before you can analyze data, you need to define which indicators matter and how they map to raw data. This page covers indicator configuration for both HMIS and HFA data sources.
+Indicators are the health metrics your FASTR instance tracks - things like immunization coverage rates, facility reporting rates, or outpatient visit counts. Before you can analyze data, you need to define which indicators matter and where their data comes from. This page covers indicator configuration for both HMIS and HFA data.
 
 ## HMIS indicators
 
-HMIS data typically comes from DHIS2, where data elements have technical identifiers like `qHJdhOrhklI` that mean nothing to analysts. FASTR uses a two-layer system: raw indicators (DHIS2 identifiers) and common indicators (human-readable names).
+Every HMIS indicator is one row in the indicator list. There is no separate list of DHIS2 identifiers. A DHIS2 data element is an indicator that carries a DHIS2 id. A column in an uploaded CSV file is an indicator whose id is the one written in the file. A total or a rate is an indicator built from other indicators. Every data row belongs to the indicator it was fetched or uploaded for.
 
-### Raw DHIS2 indicators
+### The indicator list
+<!-- help#ind-list -->
 
-Raw indicators are the technical identifiers from DHIS2. To import them, click **Import DHIS2 indicator**, enter your credentials, and select which data elements to bring in. FASTR creates a raw indicator for each using the DHIS2 ID and display name.
+The list shows every indicator with its id, label, type and definition. The **Type** column has four values:
 
-When creating a new raw or common indicator ID, the ID must not contain commas, semicolons, or colons, and must be at most 128 characters. Once created, indicator IDs cannot be changed — renaming would break existing data references.
+- **DHIS2 element** is a count fetched from DHIS2. The **Defined by** column shows the DHIS2 id of the data element (or of the operand, a data element narrowed to one category option combination, written `UID.COC`) the import fetches into it.
+- **Uploaded** is a count filled by CSV upload. The indicator column of the file holds this indicator's own id.
+- **Sum** is the total of other indicators. The **Defined by** column lists its members. Members are DHIS2 elements or uploaded indicators; a sum cannot contain a sum. The members' counts are added per facility and month, and the result goes through the same data quality adjustment as any other count.
+- **Derived** is a formula over other indicators and populations, evaluated after the data is adjusted and aggregated. The **Defined by** column shows the formula.
+
+Each indicator has an id (like `anc1`), a label and an **Include in analysis** checkbox. Some ids are marked **Special**: the analysis modules read them by name, so they are always analysed and cannot be derived indicators.
+
+To create an indicator by hand, click **Create indicator**, choose the type and fill in the definition. A DHIS2 element or an uploaded indicator has a **DHIS2 id** field: leave it empty for an uploaded indicator; once a DHIS2 id is set it cannot be changed. A sum has a member picker. A derived indicator has a formula field. An indicator id cannot contain commas, semicolons, colons or square brackets, must be at most 128 characters, and cannot be changed after the indicator is created. Population ids and function names cannot be used as indicator ids, and a special id can only be given to a DHIS2 element, an uploaded indicator or a sum.
+
+Deleting an indicator is refused while it has data, while a sum lists it as a member, or while another indicator's formula needs it.
 
 :::caution[Screenshot needed]
-DHIS2 indicator import dialog showing available data elements with selection checkboxes.
+The indicator list showing the Type, Defined by, Include in analysis and Status columns.
 :::
 
-### Common indicators
-<!-- help#ind-common -->
+### Importing from DHIS2
+<!-- help#ind-dhis2-import -->
 
-Common indicators are the standardized names analysts work with. A common indicator like "ANC1 visits" might map to different raw DHIS2 IDs in different countries. This abstraction means analysis code and visualizations reference consistent names even when underlying data sources change.
+Click **Import from DHIS2** to add data elements from your DHIS2 server. FASTR uses the instance's stored connection; **Change connection** lets you use another one. Search by name, code or id. The results list data elements and DHIS2 indicators, and each row says whether it can be imported. A data element can be imported only when DHIS2 describes it as an additive monthly count: aggregation type sum, a numeric value type, and at least one monthly data set. Anything else is refused, with the reason shown.
 
-Each common indicator has an ID (like `anc1_visits`), a display label, and mappings to one or more raw indicators. When multiple raw indicators map to the same common indicator, their values are summed.
+Add the elements you want, then click **Next: name indicators**. The naming step shows each element with a proposed id based on its DHIS2 name, which you can edit before saving. Typing the id of an existing uploaded indicator assigns the DHIS2 id to that indicator instead of creating a new one. This is how a special indicator such as `anc1`, which every new instance starts with, becomes a DHIS2 element. Any other existing id is refused. An element whose DHIS2 id is already in the list is shown as already imported and creates nothing.
+
+A DHIS2 indicator (a formula in DHIS2, such as a coverage rate) is never imported as values. FASTR reads its numerator and denominator, imports each data element they use as an indicator of its own, and creates a derived indicator with the formula `(numerator) / (denominator)` over them. A DHIS2 formula that FASTR cannot express, for example one that uses program indicators, organisation unit groups or functions, is refused, and the message names the part of the formula that stopped it.
+
+Importing an element only adds it to the list. To fetch its data, run an HMIS import (see Data: HMIS).
 
 :::caution[Screenshot needed]
-Common indicator editor showing ID, label, and raw indicator mapping fields.
+The naming step showing proposed ids for two data elements and the formula preview of a decomposed DHIS2 indicator.
 :::
+
+### Sums
+
+A sum adds the counts of its members per facility and month. Use it where the same service is reported under several data elements, for example a vaccine recorded under one element for fixed sessions and another for outreach. Create it with **Create indicator**, choose the type **Sum**, and pick the members from the DHIS2 elements and uploaded indicators in the list. A sum needs at least one member.
 
 ### Derived indicators
-<!-- help#ind-calculated -->
+<!-- help#ind-derived -->
 
-Every common indicator has a type, chosen in the same editor. A **base** indicator is defined by the raw indicators mapped to it, which are summed. A **derived** indicator is defined by a formula over other indicators - for example `anc4 / anc1` for a coverage rate. A **population rate** is a formula divided by a population estimate.
+A derived indicator is defined by a formula over other indicators, for example `anc4 / anc1` for a coverage rate. It is computed after the data is aggregated, so a regional or annual figure is the formula applied to the summed parts, not an average of ratios.
 
-A formula can use `+`, `-`, `*`, `/`, parentheses and numbers over any other indicators, and the functions `abs()`, `coalesce()` and `nullif()`. It is not limited to a numerator and a denominator: `(anc1 - anc4) / anc1` is a valid definition, and so is any combination of three or more indicators. A formula may also refer to another derived indicator, which is substituted in.
+A formula can use `+`, `-`, `*`, `/`, parentheses and numbers, and the functions `abs()` (absolute value), `coalesce()` (the first value that is not empty) and `nullif()` (empty when the two values are equal). It is not limited to a numerator and a denominator: `(anc1 - anc4) / anc1` is a valid definition, and so is any combination of three or more indicators. A formula may refer to a sum or to another derived indicator; its definition is inserted in place of its id.
 
-Any indicator ID can be used in a formula. Write it plainly when it is all lowercase letters, digits and underscores; otherwise put it in square brackets, like `[ANC.1]`.
+A formula can also divide by a population, written with the population type's id, for example `anc4 / population_pregnancies`. Populations come from the instance's Population page (Data → Population): annual population counts per admin area and population type, uploaded as a CSV. A value divided by a population is annualised, so a monthly value reads as a rate per year. Values are then computed only at the admin level of the population data, with no values for areas below it, and only for the areas and months the population data covers. A results package cannot be generated while a formula uses a population type that has no data at all.
 
-Derived indicators are computed after the data is aggregated, which means a regional or annual figure is the formula applied to the summed parts - not an average of ratios. This is what makes a national coverage rate correct rather than a mean of district rates.
+You do not have to type identifiers by hand: the **Insert indicator** and **Insert population** pickers above the formula field insert them at the cursor, correctly written. The legend under the field lists every identifier the formula uses with its label. Write an id plainly when it is all lowercase letters, digits and underscores; otherwise put it in square brackets, like `[ANC.1]`.
 
-You also set the display format and, optionally, thresholds for color coding: the green cutoff for good performance, yellow for acceptable. For example, a coverage indicator with green at 80 and yellow at 70 shows green above 80%, yellow for 70-80%, and red below 70%.
+You also set the display format (number, percent, or rate per 10,000) and, optionally, a conditional formatting rule for colour coding, for example green above 80% and yellow between 70% and 80%. A DHIS2 element, an uploaded indicator or a sum is a count and is always displayed as a number.
 
-The editor checks a formula as you type. It refuses a formula that names an indicator that does not exist, that refers back to itself, or that ends up needing more than eight source indicators once the chain is followed through. An indicator that another indicator's formula depends on cannot be deleted until that formula is changed.
+The editor checks a formula as you type. It refuses a formula that names an indicator that does not exist, that refers back to itself, or that needs more than eight indicators once every sum and derived indicator it refers to is expanded. The **Status** column in the list says whether each derived indicator can be computed. A formula that uses an indicator with no data yet can be saved, but results cannot be generated until that data is imported.
 
 :::caution[Screenshot needed]
-Indicator editor showing the type selector, formula field and threshold configuration.
+The indicator editor for a derived indicator, showing the formula field, the pickers, the legend and the format.
 :::
 
-### Batch import
+### Include in analysis
+<!-- help#ind-include -->
 
-For instances with many indicators, batch import lets you upload a CSV with indicator definitions. This is useful when setting up a new instance or migrating from another system.
+Every indicator has an **Include in analysis** checkbox. When it is on, every results package analyses the indicator: the data quality modules adjust it and it is available in visualizations. When it is off, the indicator is in the dictionary only. Its data is still imported and stored, it can still be a member of a sum, and it can still be used in a formula, but no package carries it on its own.
+
+This is how you keep a data element for use in a total or a rate without filling the results with it. A special indicator is always analysed. When an included derived indicator uses an indicator that is not included, the editor says so, and the package includes that indicator anyway.
+
+### Batch import
+<!-- help#ind-batch -->
+
+For instances with many indicators, **Batch import from CSV** uploads the whole list from one file, and **Download CSV** produces the same file from the current list, so you can edit the whole dictionary in a spreadsheet and upload it back. The columns are `indicator_id`, `label`, `type`, `dhis2_id`, `members`, `expression`, `include_in_analysis`, `format_as` and `thresholds`. The `type` is `base`, `sum` or `derived`. For a `base` indicator (a DHIS2 element or an uploaded indicator), `dhis2_id` is the DHIS2 data element or operand id, and is empty for an uploaded indicator. For a sum, `members` lists the member ids separated by semicolons. For a derived indicator, `expression` is the formula. Indicators the file names are created or updated, and existing ones keep their sort order.
+
+Tick **Replace the whole dictionary with this file** to also delete every indicator the file does not name. The upload is refused, with the reasons listed, if it would remove an indicator that has data or one that a sum or formula still uses. It is also refused if it would move a DHIS2 id to another indicator while the old one has data.
 
 ## HFA indicators
 
@@ -123,4 +151,4 @@ FASTR detects the time point columns embedded in the file and presents a mapping
 
 Choose indicator IDs that are short but descriptive. Avoid spaces and special characters - stick to lowercase letters, numbers, and underscores.
 
-Keep common indicator mappings current when DHIS2 configurations change. For calculated indicators, document your threshold choices - future analysts will want to understand the reasoning behind cutoffs.
+Check the DHIS2 ids in the list when data elements are changed or replaced on the DHIS2 server. For derived indicators, document your threshold choices - future analysts will want to understand the reasoning behind cutoffs.
