@@ -34,7 +34,7 @@ A CSV import has three steps: upload the file, match its columns to the four req
 
 3. **Review & launch.** Click **Start import**, or **Queue import** if another import is running.
 
-The indicator column can hold three kinds of value. A value that is an indicator's file id or DHIS2 id lands under that indicator. Otherwise, if the value is an indicator's own id and that indicator already has data, the rows land under that indicator's file id or DHIS2 id: a file that uses your own indicator ids works too. Any other value is unknown, and the import pauses so you can decide what to do with it. A value that is one indicator's file id and another indicator's id fails the import, naming both, since it could belong to either.
+The indicator column can hold three kinds of value. A value that is an indicator's file id or DHIS2 id lands under that indicator. Otherwise, if the value is an indicator's own id and that indicator has a file id or DHIS2 id, the rows land under that indicator's file id or DHIS2 id: a file that uses your own indicator ids works too. Any other value is unknown, and the import pauses so you can decide what to do with it. A value that is one indicator's file id or DHIS2 id and another indicator's id fails the import, naming both, since it could belong to either.
 
 FASTR then stages the file: it checks every row against your facilities and your indicators and counts what it drops. If nothing is dropped, the staged rows are merged into the dataset with no further action. If some rows are dropped, the run pauses with the status **Needs review**. It appears as a card on the Current tab, with the staging results, and you choose one of three actions:
 
