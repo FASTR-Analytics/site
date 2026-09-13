@@ -9,9 +9,11 @@ Indicators are the health metrics your FASTR instance tracks - things like immun
 
 ## HMIS indicators
 
-Every HMIS indicator is one row in the indicator list. There is no separate list of DHIS2 identifiers. A DHIS2 data element is an indicator that carries a DHIS2 id. A value in the indicator column of an uploaded CSV file is an indicator that carries that value as its file id. A total or a rate is an indicator built from other indicators.
+Every HMIS indicator is one row in the indicator list. There is no separate list of DHIS2 identifiers. A DHIS2 data element is an indicator that carries a DHIS2 id. A count that arrives in CSV files is an uploaded indicator. Each CSV import maps the values in the file's indicator column onto the indicators they belong to. A total or a rate is an indicator built from other indicators.
 
-The data rows are stored under the DHIS2 id or the file id, never under the indicator's own id. The indicator's id and label are names you give the data, and you can change them at any time without moving a row. The DHIS2 id or file id, on the other hand, is fixed once data has been imported under it.
+You build the indicator list yourself. Importing data never adds an indicator to it: a DHIS2 data import fetches values for DHIS2 elements that are already indicators, and a CSV import can only place rows under indicators that already exist. Create the indicators first, in this list or with **Import from DHIS2**, then import the data.
+
+The indicator's id and label are names you give the data, and you can change them at any time without moving a row. A DHIS2 element's data rows are stored under its DHIS2 id, which is fixed once data has been imported under it. An uploaded indicator's rows are stored under an identifier FASTR manages for it; you never see it and never type it.
 
 ### The indicator list
 <!-- help#ind-list -->
@@ -19,19 +21,19 @@ The data rows are stored under the DHIS2 id or the file id, never under the indi
 The list shows every indicator with its id, label, type and definition. The **Type** column has four values:
 
 - **DHIS2 element** is a count fetched from DHIS2. The **Defined by** column shows the DHIS2 id of the data element (or of the operand, a data element narrowed to one category option combination, written `UID.COC`) the import fetches into it.
-- **Uploaded** is a count filled by CSV upload. The **Defined by** column shows its file id, the value written in the indicator column of the file. It is empty until a file has been assigned to the indicator.
+- **Uploaded** is a count filled by CSV import. The **Defined by** column is empty: at the Mapping step of each CSV import you choose which values in the file belong to it, and that choice is not stored on the indicator.
 - **Sum** is the total of other indicators. The **Defined by** column lists its members. Members are DHIS2 elements or uploaded indicators; a sum cannot contain a sum. The members' counts are added per facility and month, and the result goes through the same data quality adjustment as any other count.
 - **Derived** is a formula over other indicators and populations, evaluated after the data is adjusted and aggregated. The **Defined by** column shows the formula.
 
 Two more columns are determined by the indicator's type. **Goes through analysis modules** is ticked for a DHIS2 element, an uploaded indicator and a sum: these are the counts the data quality modules adjust. **Raw count** is ticked for a DHIS2 element and an uploaded indicator: these are the two types that have data rows of their own.
 
-Each indicator has an id (like `anc1`), a label and an **Include in analysis** checkbox. Some ids are marked **Special**: the analysis modules read them by name, so they are always analysed and cannot be derived indicators.
+Each indicator has an id (like `anc1`), a label and an **Include in analysis** checkbox. Some ids are marked **Special**: the analysis modules read them by name, so an indicator with a special id is always analysed, and it cannot be a derived indicator. A new instance starts with an empty list. The **Special indicators and reserved words** button lists the special ids. Create the ones your data uses in the same way as any other indicator.
 
-To create an indicator by hand, click **Create indicator**, choose the type and fill in the definition. A DHIS2 element has a **DHIS2 id** field, which is required. An uploaded indicator has a **File id** field, which you can leave empty: the CSV import's review step fills it in when you assign an unknown value to the indicator. A sum has a member picker. A derived indicator has a formula field. An indicator id cannot contain commas, semicolons, colons or square brackets, and must be at most 128 characters. Population ids and function names cannot be used as indicator ids, and a special id can only be given to a DHIS2 element, an uploaded indicator or a sum.
+To create an indicator by hand, click **Create indicator**, choose the type and fill in the definition. A DHIS2 element has a **DHIS2 id** field, which is required. An uploaded indicator has no definition field: you give it an id and a label, and each CSV import decides which values in the file belong to it. A sum has a member picker. A derived indicator has a formula field. An indicator id cannot contain commas, semicolons, colons or square brackets, and must be at most 128 characters. Population ids and function names cannot be used as indicator ids, and a special id can only be given to a DHIS2 element, an uploaded indicator or a sum.
 
 To rename an indicator, open it and change its id. Renaming rewrites every formula and every scheduled import that names the indicator. Its data stays where it is, and results packages already generated keep the old id. A special id can be renamed too, but the analysis modules then stop finding it until some count carries that id again. The new id is refused if another indicator already has it, or if it is a reserved word.
 
-The DHIS2 id or file id cannot be changed or cleared while the indicator has data. To give the data a different name, rename the indicator instead. You can switch an indicator between DHIS2 element and uploaded at any time; switching to a DHIS2 element needs a DHIS2 id in DHIS2's format. Switching a DHIS2 element or an uploaded indicator to a sum or a derived indicator is refused while it has data or while a sum lists it as a member.
+A DHIS2 id cannot be changed while the indicator has data. To give the data a different name, rename the indicator instead. A DHIS2 element can become an uploaded indicator at any time and keeps its data. An uploaded indicator can become a DHIS2 element only as long as it has no data; it then takes the DHIS2 id you type, in DHIS2's format. Switching a DHIS2 element or an uploaded indicator to a sum or a derived indicator is refused while it has data or while a sum lists it as a member.
 
 Deleting an indicator is refused while it has data, while a sum lists it as a member, or while another indicator's formula needs it.
 
@@ -44,7 +46,7 @@ The indicator list showing the Type, Defined by, Include in analysis and Status 
 
 Click **Import from DHIS2** to add data elements from your DHIS2 server. FASTR uses the instance's stored connection; **Change connection** lets you use another one. Search by name, code or id. The results list data elements and DHIS2 indicators, and each row says whether it can be imported. A data element can be imported only when DHIS2 describes it as an additive monthly count: aggregation type sum, a numeric value type, and at least one monthly data set. Anything else is refused, with the reason shown.
 
-Add the elements you want, then click **Next: name indicators**. The naming step shows each element with a proposed id based on its DHIS2 name, which you can edit before saving; you can also rename the indicator later. Typing the id of an existing uploaded indicator that has no file id assigns the DHIS2 id to that indicator instead of creating a new one, and the indicator becomes a DHIS2 element. This is how a special indicator such as `anc1`, which every new instance starts with, becomes a DHIS2 element. Any other existing id is refused. An element whose DHIS2 id is already in the list is shown as already imported and creates nothing.
+Add the elements you want, then click **Next: name indicators**. The naming step shows each element with a proposed id based on its DHIS2 name, which you can edit before saving; you can also rename the indicator later. An id that already belongs to an indicator is refused. An element whose DHIS2 id is already in the list is shown as already imported and creates nothing.
 
 A DHIS2 indicator (a formula in DHIS2, such as a coverage rate) is never imported as values. FASTR reads its numerator and denominator, imports each data element they use as an indicator of its own, and creates a derived indicator with the formula `(numerator) / (denominator)` over them. A DHIS2 formula that FASTR cannot express, for example one that uses program indicators, organisation unit groups or functions, is refused, and the message names the part of the formula that stopped it.
 
@@ -84,12 +86,9 @@ Every indicator has an **Include in analysis** checkbox. When it is on, every re
 
 This is how you keep a data element for use in a total or a rate without filling the results with it. A special indicator is always analysed. When an included derived indicator uses an indicator that is not included, the editor says so, and the package includes that indicator anyway.
 
-### Batch import
-<!-- help#ind-batch -->
+### Downloading the list
 
-For instances with many indicators, **Batch import from CSV** uploads the whole list from one file, and **Download CSV** produces the same file from the current list, so you can edit the whole dictionary in a spreadsheet and upload it back. The columns are `indicator_id`, `label`, `type`, `data_id`, `members`, `expression`, `include_in_analysis`, `format_as` and `thresholds`. The `type` is `uploaded`, `dhis2_element`, `sum` or `derived`. The `data_id` column holds the DHIS2 id of a `dhis2_element` (required) or the file id of an `uploaded` indicator (empty until a file has been assigned). For a sum, `members` lists the member ids separated by semicolons. For a derived indicator, `expression` is the formula, `format_as` is `number`, `percent` or `rate_per_10k`, and `thresholds` is its conditional formatting rule; the other types are always `number` and have no rule. Indicators the file names are created or updated, and existing ones keep their sort order. An indicator that has data keeps its `data_id`.
-
-Tick **Replace the whole dictionary with this file** to also delete every indicator the file does not name. The upload is refused, with the reasons listed, if it would remove an indicator that has data or one that a sum or formula still uses, if it would change the type of an indicator that has data or that a sum lists as a member, or if it would move a DHIS2 id or file id to another indicator while the old one has data.
+**Download CSV** writes the whole list to one file, for review or for sharing. The columns are `indicator_id`, `label`, `type`, `dhis2_id`, `members`, `expression`, `include_in_analysis`, `format_as` and `thresholds`. The `type` is `uploaded`, `dhis2_element`, `sum` or `derived`. The `dhis2_id` column holds the DHIS2 id of a `dhis2_element` and is empty for the other types. For a sum, `members` lists the member ids separated by semicolons. For a derived indicator, `expression` is the formula, `format_as` is `number`, `percent` or `rate_per_10k`, and `thresholds` is its conditional formatting rule; the other types are always `number` and have no rule. The file cannot be uploaded back into FASTR; you edit the list in the app.
 
 ## HFA indicators
 
