@@ -39,7 +39,7 @@ A DHIS2 id cannot be changed while the indicator has data. To give the data a di
 
 Deleting an indicator is refused while it has data, while a sum lists it as a member, or while another indicator's formula needs it.
 
-When you select rows in the list, two actions become available. **Import HMIS data from DHIS2** opens the DHIS2 import wizard with the selected indicators already chosen in its Indicators step (see Data: HMIS); after the launch, a notice in the list says where to follow the run. **Delete** removes the selected indicators, subject to the rules above.
+When a global administrator selects rows in the list, two actions become available. **Import HMIS data from DHIS2** opens the DHIS2 import wizard with the selected indicators already chosen in its Indicators step (see Data: HMIS); an uploaded indicator among them is left out, and the step says so. After the launch, a notice in the list says where to follow the run. **Delete** removes the selected indicators, subject to the rules above.
 
 :::caution[Screenshot needed]
 The indicator list showing the Type, Defined by, Include in analysis and Status columns.

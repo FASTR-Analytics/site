@@ -39,7 +39,7 @@ Un identifiant DHIS2 ne peut pas être modifié tant que l'indicateur possède d
 
 La suppression d'un indicateur est refusée tant qu'il possède des données, tant qu'une somme le compte parmi ses membres, ou tant que la formule d'un autre indicateur en a besoin.
 
-Lorsque vous sélectionnez des lignes dans la liste, deux actions deviennent disponibles. **Importer les données HMIS depuis DHIS2** ouvre l'assistant d'importation DHIS2 avec les indicateurs sélectionnés déjà choisis à son étape Indicateurs (voir Données HMIS) ; après le lancement, un message dans la liste indique où suivre l'exécution. **Supprimer** retire les indicateurs sélectionnés, selon les règles ci-dessus.
+Lorsqu'un administrateur global sélectionne des lignes dans la liste, deux actions deviennent disponibles. **Importer les données HMIS depuis DHIS2** ouvre l'assistant d'importation DHIS2 avec les indicateurs sélectionnés déjà choisis à son étape Indicateurs (voir Données HMIS) ; un indicateur téléversé parmi eux est laissé de côté, et l'étape le signale. Après le lancement, un message dans la liste indique où suivre l'exécution. **Supprimer** retire les indicateurs sélectionnés, selon les règles ci-dessus.
 
 :::caution[Capture d'écran à ajouter]
 La liste des indicateurs montrant les colonnes Type, Défini par, Inclure dans l'analyse et Statut.
