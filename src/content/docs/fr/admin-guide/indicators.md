@@ -9,9 +9,9 @@ Les indicateurs sont les mesures de santé que votre instance FASTR suit - par e
 
 ## Indicateurs HMIS
 
-Chaque indicateur HMIS est une ligne de la liste des indicateurs. Il n'existe pas de liste séparée d'identifiants DHIS2. Un élément de données DHIS2 est un indicateur qui porte un identifiant DHIS2. Un comptage qui arrive dans des fichiers CSV est un indicateur téléversé. Chaque importation CSV associe les valeurs de la colonne indicateur du fichier aux indicateurs auxquels elles appartiennent. Un total ou un taux est un indicateur construit à partir d'autres indicateurs.
+Chaque indicateur HMIS est une ligne de la liste des indicateurs. Il n'existe pas de liste séparée d'identifiants DHIS2. Un élément DHIS2 est un indicateur qui porte l'identifiant DHIS2 d'un élément de données de votre serveur DHIS2. Un comptage qui arrive dans des fichiers CSV est un indicateur téléversé. Chaque importation CSV associe les valeurs de la colonne indicateur du fichier aux indicateurs auxquels elles appartiennent. Un total ou un taux est un indicateur construit à partir d'autres indicateurs.
 
-C'est vous qui construisez la liste des indicateurs. Importer des données n'y ajoute jamais d'indicateur : une importation de données DHIS2 récupère les valeurs des éléments DHIS2 qui sont déjà des indicateurs, et une importation CSV ne peut ranger des lignes que sous des indicateurs qui existent déjà. Créez d'abord les indicateurs, dans cette liste ou avec **Importer depuis DHIS2**, puis importez les données.
+C'est vous qui construisez la liste des indicateurs. Importer des données n'y ajoute jamais d'indicateur : une importation de données DHIS2 récupère les valeurs des éléments DHIS2 qui sont déjà des indicateurs, et une importation CSV ne peut ranger des lignes que sous des indicateurs qui existent déjà. Créez d'abord les indicateurs, dans cette liste ou avec **Ajouter des indicateurs depuis DHIS2**, puis importez les données.
 
 L'identifiant et le libellé de l'indicateur sont des noms que vous donnez aux données, et vous pouvez les changer à tout moment sans déplacer une seule ligne. Les lignes de données d'un élément DHIS2 sont conservées sous son identifiant DHIS2, qui est fixe une fois que des données ont été importées sous lui. Les lignes d'un indicateur téléversé sont conservées sous un identifiant que FASTR gère pour lui ; vous ne le voyez jamais et ne le saisissez jamais.
 
@@ -39,20 +39,22 @@ Un identifiant DHIS2 ne peut pas être modifié tant que l'indicateur possède d
 
 La suppression d'un indicateur est refusée tant qu'il possède des données, tant qu'une somme le compte parmi ses membres, ou tant que la formule d'un autre indicateur en a besoin.
 
+Lorsque vous sélectionnez des lignes dans la liste, deux actions deviennent disponibles. **Importer les données HMIS depuis DHIS2** ouvre l'assistant d'importation DHIS2 avec les indicateurs sélectionnés déjà choisis à son étape Indicateurs (voir Données HMIS) ; après le lancement, un message dans la liste indique où suivre l'exécution. **Supprimer** retire les indicateurs sélectionnés, selon les règles ci-dessus.
+
 :::caution[Capture d'écran à ajouter]
 La liste des indicateurs montrant les colonnes Type, Défini par, Inclure dans l'analyse et Statut.
 :::
 
-### Importer depuis DHIS2
+### Ajouter des indicateurs depuis DHIS2
 <!-- help#ind-dhis2-import -->
 
-Cliquez sur **Importer depuis DHIS2** pour ajouter des éléments de données depuis votre serveur DHIS2. FASTR utilise la connexion enregistrée de l'instance ; **Modifier la connexion** permet d'en utiliser une autre. Recherchez par nom, code ou identifiant. Les résultats listent des éléments de données et des indicateurs DHIS2, et chaque ligne indique si l'élément peut être importé. Un élément de données ne peut être importé que si DHIS2 le décrit comme un comptage mensuel additif : type d'agrégation somme, type de valeur numérique et au moins un ensemble de données mensuel. Tout le reste est refusé, avec la raison affichée.
+Cliquez sur **Ajouter des indicateurs depuis DHIS2** pour ajouter des éléments de données de votre serveur DHIS2 à la liste, sous forme d'éléments DHIS2. FASTR utilise la connexion enregistrée de l'instance ; **Modifier la connexion** permet d'en utiliser une autre. Recherchez par nom, code ou identifiant. Les résultats listent des éléments de données et des indicateurs DHIS2, et chaque ligne indique si l'élément peut être ajouté. Un élément de données ne peut être ajouté que si DHIS2 le décrit comme un comptage mensuel additif : type d'agrégation somme, type de valeur numérique et au moins un ensemble de données mensuel. Tout le reste est refusé, avec la raison affichée.
 
-Ajoutez les éléments voulus, puis cliquez sur **Suivant : nommer les indicateurs**. L'étape de nommage affiche chaque élément avec un identifiant proposé d'après son nom DHIS2, que vous pouvez modifier avant d'enregistrer ; vous pourrez aussi renommer l'indicateur plus tard. Un identifiant qui appartient déjà à un indicateur est refusé. Un élément dont l'identifiant DHIS2 figure déjà dans la liste est affiché comme déjà importé et ne crée rien.
+Ajoutez les éléments voulus, puis cliquez sur **Suivant : nommer les indicateurs**. L'étape de nommage affiche chaque élément avec un identifiant proposé d'après son nom DHIS2, que vous pouvez modifier avant d'enregistrer ; vous pourrez aussi renommer l'indicateur plus tard. Un identifiant qui appartient déjà à un indicateur est refusé. Un élément de données dont l'identifiant DHIS2 figure déjà dans la liste est affiché comme déjà ajouté et ne crée rien.
 
-Un indicateur DHIS2 (une formule dans DHIS2, comme un taux de couverture) n'est jamais importé sous forme de valeurs. FASTR lit son numérateur et son dénominateur, importe chaque élément de données qu'ils utilisent comme un indicateur à part entière, et crée un indicateur dérivé avec la formule `(numérateur) / (dénominateur)` sur ces indicateurs. Une formule DHIS2 que FASTR ne peut pas exprimer, par exemple une formule qui utilise des indicateurs de programme, des groupes d'unités d'organisation ou des fonctions, est refusée, et le message nomme la partie de la formule qui l'a bloquée.
+Un indicateur DHIS2 (une formule dans DHIS2, comme un taux de couverture) n'est jamais ajouté sous forme de valeurs. FASTR lit son numérateur et son dénominateur, ajoute chaque élément de données qu'ils utilisent comme un élément DHIS2 à part entière, et crée un indicateur dérivé avec la formule `(numérateur) / (dénominateur)` sur ces indicateurs. Une formule DHIS2 que FASTR ne peut pas exprimer, par exemple une formule qui utilise des indicateurs de programme, des groupes d'unités d'organisation ou des fonctions, est refusée, et le message nomme la partie de la formule qui l'a bloquée.
 
-Importer un élément ne fait que l'ajouter à la liste. Pour récupérer ses données, lancez une importation HMIS (voir Données HMIS).
+Ajouter un élément de données ne fait que l'inscrire dans la liste. Pour récupérer ses données, sélectionnez les nouveaux indicateurs dans la liste et choisissez **Importer les données HMIS depuis DHIS2**, ou lancez une importation depuis Données HMIS.
 
 :::caution[Capture d'écran à ajouter]
 L'étape de nommage montrant les identifiants proposés pour deux éléments de données et l'aperçu de la formule d'un indicateur DHIS2 décomposé.

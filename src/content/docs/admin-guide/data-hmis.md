@@ -56,17 +56,19 @@ A DHIS2 import fetches the values facilities reported, one DHIS2 element and mon
 
 1. **Credentials.** FASTR uses the instance's stored DHIS2 connection. You can enter a connection for this run only; a scheduled import needs the stored one.
 
-2. **Indicators.** Select the indicators to import from your indicator list. A DHIS2 element is fetched by its DHIS2 id. Selecting a sum fetches its members, and selecting a derived indicator fetches the indicators its formula uses. Uploaded indicators are not fetched.
+2. **Indicators.** Select the indicators to import from your indicator list. The list offers DHIS2 elements, sums and derived indicators; uploaded indicators are not offered, because a DHIS2 import cannot fetch them. A DHIS2 element is fetched by its DHIS2 id. Selecting a sum fetches the DHIS2 elements among its members, and selecting a derived indicator fetches the DHIS2 elements its formula includes; an uploaded member or a population term is not fetched. You cannot continue if the selection would fetch nothing, or if a selected derived indicator's formula refers to an indicator FASTR cannot find. The reason is shown under the list.
 
 3. **Time.** Run the import **Now**, **Once, at a set time**, or **Recurring** (daily, weekly or monthly, in the timezone you choose). Pick a low-traffic window for the DHIS2 server.
 
 4. **Config.** Choose the months: **Last N months**, recalculated each time a recurring import runs, or a fixed period range.
 
-5. **Review & launch.** The review lists the connection, the number of indicators and the DHIS2 elements they expand to, the months, and the number of (DHIS2 element, month) pairs to fetch. Click **Start import**.
+5. **Review & launch.** The review lists the connection, the number of indicators and DHIS2 elements, the months, and the number of (DHIS2 element, month) pairs to fetch. Below that it lists the DHIS2 elements the import fetches, each with its indicator id, label and DHIS2 id, followed by the parts of the selection that are not fetched and why: uploaded indicators, which a DHIS2 import cannot fetch, and population figures used in a formula, which come from the Population page rather than from DHIS2. Click **Start import**.
+
+The same wizard opens from the indicator list: select indicators there and choose **Import HMIS data from DHIS2**. The selected indicators are already chosen in the Indicators step, and after the launch a notice in the list says where to follow the run.
 
 Each (DHIS2 element, month) pair is fetched and merged on its own, and the rows are stored under the element's DHIS2 id. For a pair that is fetched successfully, FASTR removes the existing rows for exactly the facilities it queried, then inserts the values DHIS2 returned. Cells DHIS2 no longer returns, because the value was deleted or corrected to zero there, are removed rather than left behind. A pair that fails does not touch existing data, and a run that stops keeps every pair already merged. A facility value that is not a whole, non-negative number is not imported; it is skipped and counted in the run detail.
 
-An indicator whose DHIS2 id is a DHIS2 indicator (a formula) rather than a data element is not fetched. The run detail says so and points to **Import from DHIS2** in the indicator list, which turns the formula into data elements. An id that DHIS2 does not know is listed under **DHIS2 ids not found in DHIS2**.
+An indicator whose DHIS2 id is a DHIS2 indicator (a formula) rather than a data element is not fetched. The run detail says so and points to **Add indicators from DHIS2** in the indicator list, which turns the formula into data elements. An id that DHIS2 does not know is listed under **DHIS2 ids not found in DHIS2**.
 
 :::caution[Screenshot needed]
 The Indicators step showing the indicator list with the Type and Defined by columns and a selection.

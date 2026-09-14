@@ -9,9 +9,9 @@ Indicators are the health metrics your FASTR instance tracks - things like immun
 
 ## HMIS indicators
 
-Every HMIS indicator is one row in the indicator list. There is no separate list of DHIS2 identifiers. A DHIS2 data element is an indicator that carries a DHIS2 id. A count that arrives in CSV files is an uploaded indicator. Each CSV import maps the values in the file's indicator column onto the indicators they belong to. A total or a rate is an indicator built from other indicators.
+Every HMIS indicator is one row in the indicator list. There is no separate list of DHIS2 identifiers. A DHIS2 element is an indicator that carries the DHIS2 id of a data element on your DHIS2 server. A count that arrives in CSV files is an uploaded indicator. Each CSV import maps the values in the file's indicator column onto the indicators they belong to. A total or a rate is an indicator built from other indicators.
 
-You build the indicator list yourself. Importing data never adds an indicator to it: a DHIS2 data import fetches values for DHIS2 elements that are already indicators, and a CSV import can only place rows under indicators that already exist. Create the indicators first, in this list or with **Import from DHIS2**, then import the data.
+You build the indicator list yourself. Importing data never adds an indicator to it: a DHIS2 data import fetches values for DHIS2 elements that are already indicators, and a CSV import can only place rows under indicators that already exist. Create the indicators first, in this list or with **Add indicators from DHIS2**, then import the data.
 
 The indicator's id and label are names you give the data, and you can change them at any time without moving a row. A DHIS2 element's data rows are stored under its DHIS2 id, which is fixed once data has been imported under it. An uploaded indicator's rows are stored under an identifier FASTR manages for it; you never see it and never type it.
 
@@ -39,20 +39,22 @@ A DHIS2 id cannot be changed while the indicator has data. To give the data a di
 
 Deleting an indicator is refused while it has data, while a sum lists it as a member, or while another indicator's formula needs it.
 
+When you select rows in the list, two actions become available. **Import HMIS data from DHIS2** opens the DHIS2 import wizard with the selected indicators already chosen in its Indicators step (see Data: HMIS); after the launch, a notice in the list says where to follow the run. **Delete** removes the selected indicators, subject to the rules above.
+
 :::caution[Screenshot needed]
 The indicator list showing the Type, Defined by, Include in analysis and Status columns.
 :::
 
-### Importing from DHIS2
+### Adding indicators from DHIS2
 <!-- help#ind-dhis2-import -->
 
-Click **Import from DHIS2** to add data elements from your DHIS2 server. FASTR uses the instance's stored connection; **Change connection** lets you use another one. Search by name, code or id. The results list data elements and DHIS2 indicators, and each row says whether it can be imported. A data element can be imported only when DHIS2 describes it as an additive monthly count: aggregation type sum, a numeric value type, and at least one monthly data set. Anything else is refused, with the reason shown.
+Click **Add indicators from DHIS2** to add data elements from your DHIS2 server to the list as DHIS2 elements. FASTR uses the instance's stored connection; **Change connection** lets you use another one. Search by name, code or id. The results list data elements and DHIS2 indicators, and each row says whether it can be added. A data element can be added only when DHIS2 describes it as an additive monthly count: aggregation type sum, a numeric value type, and at least one monthly data set. Anything else is refused, with the reason shown.
 
-Add the elements you want, then click **Next: name indicators**. The naming step shows each element with a proposed id based on its DHIS2 name, which you can edit before saving; you can also rename the indicator later. An id that already belongs to an indicator is refused. An element whose DHIS2 id is already in the list is shown as already imported and creates nothing.
+Add the elements you want, then click **Next: name indicators**. The naming step shows each element with a proposed id based on its DHIS2 name, which you can edit before saving; you can also rename the indicator later. An id that already belongs to an indicator is refused. A data element whose DHIS2 id is already in the list is shown as already added and creates nothing.
 
-A DHIS2 indicator (a formula in DHIS2, such as a coverage rate) is never imported as values. FASTR reads its numerator and denominator, imports each data element they use as an indicator of its own, and creates a derived indicator with the formula `(numerator) / (denominator)` over them. A DHIS2 formula that FASTR cannot express, for example one that uses program indicators, organisation unit groups or functions, is refused, and the message names the part of the formula that stopped it.
+A DHIS2 indicator (a formula in DHIS2, such as a coverage rate) is never added as values. FASTR reads its numerator and denominator, adds each data element they use as a DHIS2 element of its own, and creates a derived indicator with the formula `(numerator) / (denominator)` over them. A DHIS2 formula that FASTR cannot express, for example one that uses program indicators, organisation unit groups or functions, is refused, and the message names the part of the formula that stopped it.
 
-Importing an element only adds it to the list. To fetch its data, run an HMIS import (see Data: HMIS).
+Adding a data element only puts it in the list. To fetch its data, select the new indicators in the list and choose **Import HMIS data from DHIS2**, or start an import from Data: HMIS.
 
 :::caution[Screenshot needed]
 The naming step showing proposed ids for two data elements and the formula preview of a decomposed DHIS2 indicator.
