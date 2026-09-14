@@ -7,6 +7,41 @@ sidebar:
 
 HMIS (Health Management Information System) data forms the foundation of most health system analyses in FASTR. This data contains routine statistics collected from facilities - service delivery counts, disease surveillance figures, and program performance metrics reported on a monthly basis. Before running analytical modules or creating visualizations, you need to import this data into your instance.
 
+## Viewing the data
+
+Go to the **Data** section and select **HMIS Data**. The page has two tabs, **Visualization** and **Ledger**.
+
+### Visualization
+
+The **Visualization** tab shows the data that has been imported, one figure at a time. A record is one value reported by one facility for one month.
+
+Choose **Line graph** to see one line per indicator over the months. Under **Value**, choose **Number of records** or **Number of service counts**, which is the reported values added together.
+
+Choose **Heat map** to see which indicators have data for which periods. Each row is an indicator. Each column is a month or a year, depending on what you choose under **Periods**. A cell is filled when the indicator has at least one record in that period, and empty when it has none. In the year view, a cell is filled when any month of that year has a record. Hold the pointer over a cell to see the indicator and the period.
+
+The list of indicators on the left applies to both figures.
+
+### Ledger
+
+The **Ledger** tab is the record of what has been imported for each indicator. It has one row for every indicator that FASTR has tried to import, from DHIS2 or from a CSV upload. The columns are:
+
+- **Indicator ID** and **Label**.
+- **DHIS2 id**, shown only for a DHIS2 element.
+- **Months with data**, out of all the months from the earliest to the latest month in the dataset.
+- **Last imported**, with the date and whether the import came from DHIS2 or CSV.
+- **Failed months**, the months a DHIS2 import could not fetch.
+- **Skipped values**, the facility values the last DHIS2 import left out because they were not whole, non-negative numbers.
+
+Indicators with failed months are listed first. Click a row to open a table with one row per month, showing each month's status, number of records, service count and import date. For a DHIS2 element, **Re-import this indicator** at the top fetches every month again from DHIS2.
+
+When any month has failed, **Retry failed pairs** above the table starts a new import that tries again every DHIS2 element and month that failed. After either action, a notice on the page says where to follow the import.
+
+Renaming an indicator does not change the identifier its data is stored under, so the indicator keeps its row in the ledger.
+
+:::caution[Screenshot needed]
+The HMIS data page on the Visualization tab with the heat map by year.
+:::
+
 ## Import methods
 
 FASTR supports two ways to bring in HMIS data. You can upload a CSV file if you have data exported from another system or prepared manually. Alternatively, if your organization uses DHIS2, you can connect directly and pull data from the live system.
@@ -15,7 +50,7 @@ CSV uploads work well for periodic imports or historical data. Direct DHIS2 inte
 
 ## Starting an import
 
-Navigate to the **Data** section and select **HMIS Data**. If your account has permission to configure data, the sidebar shows an **Imports** button that opens the imports view. Its tabs are **Current** (the running or queued import), **Future** (scheduled imports), **History** (every past run) and **By indicator** (what has been imported for each indicator). Click **New import** and choose CSV or DHIS2.
+If your account has permission to configure data, the sidebar of the HMIS Data page shows an **Imports** button that opens the imports view. Its tabs are **Current** (the running or queued import), **Future** (scheduled imports) and **History** (every past run). Click **New import** and choose CSV or DHIS2.
 
 Imports run in the background, one at a time. If an import is already running, a new one is queued and starts when the current one finishes.
 
@@ -79,11 +114,11 @@ The Indicators step showing the indicator list with the Type and Defined by colu
 
 For a CSV import, the staging results list every issue by category, with a count and sample rows. The categories are: rows with missing required fields, rows with invalid values, facilities not in your facility list, and invalid periods. Rows under values you skipped in the Mapping step appear with the row counts rather than in the list of issues. If many rows are being dropped, fix the file or the facility list before importing again.
 
-For a DHIS2 import, the run detail shows every failed (DHIS2 element, month) pair with its error, with the DHIS2 id and the indicator that carries it. **Retry failed pairs** on the By indicator tab launches a new run over every failed pair, and a run's detail offers the same for that run's failed pairs.
+For a DHIS2 import, the run detail shows every failed (DHIS2 element, month) pair with its error, with the DHIS2 id and the indicator that carries it. When any month has failed, **Retry failed pairs** on the **Ledger** tab of the HMIS Data page starts a new run over every failed pair, and a run's detail offers the same for that run's failed pairs.
 
 ## Managing import history
 
-Each import that merges data creates a new dataset version. The **History** tab lists every run with when it ran, how it was imported (CSV or DHIS2), what it selected, and how many rows it inserted, updated or removed. Click a run for its detail. The **By indicator** tab shows the same history organised by indicator, with the DHIS2 id beside each DHIS2 element. For each it shows which months have been imported and when, with a per-month detail and **Re-import this indicator** to fetch it again from DHIS2. A renamed indicator keeps its history here, because the history is kept under the identifier the data itself is stored under, which renaming does not change.
+Each import that merges data creates a new dataset version. The **History** tab lists every run with when it ran, how it was imported (CSV or DHIS2), what it selected, and how many rows it inserted, updated or removed. Click a run for its detail. To see the import status of each indicator month by month, and to re-import an indicator, use the **Ledger** tab of the HMIS Data page (see Viewing the data above).
 
 To delete data, click **Delete data** in the sidebar, choose all indicators or a selection of them, the admin areas and the period range, and type `yes please delete` to confirm. Deleting is irreversible and is refused while an import is running.
 

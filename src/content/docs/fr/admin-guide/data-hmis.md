@@ -7,6 +7,41 @@ sidebar:
 
 Les données du SNIS (Système national d'information sanitaire) constituent le fondement de la plupart des analyses de systèmes de santé dans FASTR. Ces données rassemblent les statistiques de routine collectées auprès des établissements - volumes de prestations de services, chiffres de surveillance des maladies et indicateurs de performance des programmes, rapportés sur une base mensuelle. Avant d'exécuter des modules analytiques ou de créer des visualisations, vous devez importer ces données dans votre instance.
 
+## Consulter les données
+
+Accédez à la section **Données** et sélectionnez **Données HMIS**. La page comporte deux onglets, **Visualisation** et **Registre**.
+
+### Visualisation
+
+L'onglet **Visualisation** montre les données importées, une figure à la fois. Un enregistrement est une valeur rapportée par un établissement pour un mois.
+
+Choisissez **Graphique linéaire** pour voir une ligne par indicateur au fil des mois. Sous **Valeur**, choisissez **Nombre d'enregistrements** ou **Nombre de prestations de services**, c'est-à-dire la somme des valeurs rapportées.
+
+Choisissez **Carte de chaleur** pour voir quels indicateurs ont des données pour quelles périodes. Chaque ligne est un indicateur. Chaque colonne est un mois ou une année, selon votre choix sous **Périodes**. Une cellule est remplie lorsque l'indicateur a au moins un enregistrement pour cette période, et vide lorsqu'il n'en a aucun. Dans la vue par année, une cellule est remplie dès qu'un mois de l'année a un enregistrement. Placez le pointeur sur une cellule pour voir l'indicateur et la période.
+
+La liste des indicateurs à gauche s'applique aux deux figures.
+
+### Registre
+
+L'onglet **Registre** indique ce qui a été importé pour chaque indicateur. Il comporte une ligne pour chaque indicateur dont FASTR a tenté l'importation, depuis DHIS2 ou depuis un téléversement CSV. Les colonnes sont :
+
+- **ID de l'indicateur** et **Libellé**.
+- **Identifiant DHIS2**, affiché seulement pour un élément DHIS2.
+- **Mois avec données**, sur l'ensemble des mois entre le premier et le dernier mois du jeu de données.
+- **Dernière importation**, avec la date et l'origine de l'importation, DHIS2 ou CSV.
+- **Mois en échec**, les mois qu'une importation DHIS2 n'a pas pu récupérer.
+- **Valeurs ignorées**, les valeurs d'établissement que la dernière importation DHIS2 a laissées de côté parce qu'elles n'étaient pas des nombres entiers positifs ou nuls.
+
+Les indicateurs avec des mois en échec sont listés en premier. Cliquez sur une ligne pour ouvrir un tableau avec une ligne par mois : état, nombre d'enregistrements, nombre de prestations de services et date d'importation. Pour un élément DHIS2, **Réimporter cet indicateur** en haut récupère à nouveau tous les mois depuis DHIS2.
+
+Lorsqu'un mois est en échec, **Réessayer les paires en échec** au-dessus du tableau lance une nouvelle importation qui réessaie chaque élément DHIS2 et chaque mois en échec. Après l'une ou l'autre action, un message sur la page indique où suivre l'importation.
+
+Renommer un indicateur ne change pas l'identifiant sous lequel ses données sont stockées : l'indicateur garde donc sa ligne dans le registre.
+
+:::caution[Capture d'écran à ajouter]
+La page des données HMIS sur l'onglet Visualisation avec la carte de chaleur par année.
+:::
+
 ## Méthodes d'importation
 
 FASTR prend en charge deux façons d'importer les données du SNIS. Vous pouvez téléverser un fichier CSV si vous disposez de données exportées depuis un autre système ou préparées manuellement. Vous pouvez également, si votre organisation utilise DHIS2, vous connecter directement et extraire les données depuis le système en production.
@@ -15,7 +50,7 @@ Les téléversements CSV conviennent bien aux importations périodiques ou aux d
 
 ## Démarrer une importation
 
-Accédez à la section **Données** et sélectionnez **Données HMIS**. Si votre compte a le droit de configurer les données, la barre latérale affiche un bouton **Importations** qui ouvre la vue des importations. Ses onglets sont **En cours** (l'importation en cours d'exécution ou en file d'attente), **À venir** (les importations planifiées), **Historique** (toutes les exécutions passées) et **Par indicateur** (ce qui a été importé pour chaque indicateur). Cliquez sur **Nouvelle importation** et choisissez CSV ou DHIS2.
+Si votre compte a le droit de configurer les données, la barre latérale de la page Données HMIS affiche un bouton **Importations** qui ouvre la vue des importations. Ses onglets sont **En cours** (l'importation en cours d'exécution ou en file d'attente), **À venir** (les importations planifiées) et **Historique** (toutes les exécutions passées). Cliquez sur **Nouvelle importation** et choisissez CSV ou DHIS2.
 
 Les importations s'exécutent en arrière-plan, une à la fois. Si une importation est déjà en cours, la nouvelle est mise en file d'attente et démarre lorsque la précédente se termine.
 
@@ -79,11 +114,11 @@ L'étape Indicateurs montrant la liste des indicateurs avec les colonnes Type et
 
 Pour une importation CSV, les résultats de la préparation listent chaque problème par catégorie, avec un nombre et des exemples de lignes. Les catégories sont : lignes avec des champs requis manquants, lignes avec des valeurs invalides, établissements absents de votre liste d'établissements, et périodes invalides. Les lignes sous des valeurs que vous avez ignorées à l'étape Correspondance apparaissent avec les décomptes de lignes plutôt que dans la liste des problèmes. Si beaucoup de lignes sont écartées, corrigez le fichier ou la liste des établissements avant de relancer l'importation.
 
-Pour une importation DHIS2, le détail de l'exécution affiche chaque paire (élément DHIS2, mois) en échec avec son erreur, l'identifiant DHIS2 et l'indicateur qui le porte. **Réessayer les paires en échec** dans l'onglet Par indicateur lance une nouvelle exécution sur toutes les paires en échec, et le détail d'une exécution propose la même chose pour les paires en échec de cette exécution.
+Pour une importation DHIS2, le détail de l'exécution affiche chaque paire (élément DHIS2, mois) en échec avec son erreur, l'identifiant DHIS2 et l'indicateur qui le porte. Lorsqu'un mois est en échec, **Réessayer les paires en échec** dans l'onglet **Registre** de la page Données HMIS lance une nouvelle exécution sur toutes les paires en échec, et le détail d'une exécution propose la même chose pour les paires en échec de cette exécution.
 
 ## Gérer l'historique des importations
 
-Chaque importation qui fusionne des données crée une nouvelle version du jeu de données. L'onglet **Historique** liste chaque exécution avec sa date, son mode d'importation (CSV ou DHIS2), sa sélection, et le nombre de lignes insérées, mises à jour ou supprimées. Cliquez sur une exécution pour voir son détail. L'onglet **Par indicateur** présente le même historique organisé par indicateur, avec l'identifiant DHIS2 à côté de chaque élément DHIS2. Pour chacun, il montre les mois importés et à quelle date, avec un détail par mois et **Réimporter cet indicateur** pour le récupérer à nouveau depuis DHIS2. Un indicateur renommé garde son historique ici, car l'historique est conservé sous l'identifiant utilisé pour ranger les données, que le renommage ne change pas.
+Chaque importation qui fusionne des données crée une nouvelle version du jeu de données. L'onglet **Historique** liste chaque exécution avec sa date, son mode d'importation (CSV ou DHIS2), sa sélection, et le nombre de lignes insérées, mises à jour ou supprimées. Cliquez sur une exécution pour voir son détail. Pour voir l'état d'importation de chaque indicateur mois par mois, et pour réimporter un indicateur, utilisez l'onglet **Registre** de la page Données HMIS (voir Consulter les données ci-dessus).
 
 Pour supprimer des données, cliquez sur **Supprimer les données** dans la barre latérale, choisissez tous les indicateurs ou une sélection, les unités administratives et la plage de périodes, puis saisissez `yes please delete` pour confirmer. La suppression est irréversible et est refusée tant qu'une importation est en cours.
 
