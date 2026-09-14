@@ -50,7 +50,7 @@ CSV uploads work well for periodic imports or historical data. Direct DHIS2 inte
 
 ## Starting an import
 
-If your account has permission to configure data, the sidebar of the HMIS Data page shows an **Imports** button that opens the imports view. Its tabs are **Current** (the running or queued import), **Future** (scheduled imports) and **History** (every past run). Click **New import** and choose CSV or DHIS2.
+If you are a global administrator, the sidebar of the HMIS Data page shows an **Imports** button that opens the imports view. Its tabs are **Current** (the running or queued import), **Future** (scheduled imports) and **History** (every past run). Click **New import** and choose CSV or DHIS2.
 
 Imports run in the background, one at a time. If an import is already running, a new one is queued and starts when the current one finishes.
 

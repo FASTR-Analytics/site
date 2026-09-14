@@ -50,7 +50,7 @@ Les téléversements CSV conviennent bien aux importations périodiques ou aux d
 
 ## Démarrer une importation
 
-Si votre compte a le droit de configurer les données, la barre latérale de la page Données HMIS affiche un bouton **Importations** qui ouvre la vue des importations. Ses onglets sont **En cours** (l'importation en cours d'exécution ou en file d'attente), **À venir** (les importations planifiées) et **Historique** (toutes les exécutions passées). Cliquez sur **Nouvelle importation** et choisissez CSV ou DHIS2.
+Si vous êtes administrateur global, la barre latérale de la page Données HMIS affiche un bouton **Importations** qui ouvre la vue des importations. Ses onglets sont **En cours** (l'importation en cours d'exécution ou en file d'attente), **À venir** (les importations planifiées) et **Historique** (toutes les exécutions passées). Cliquez sur **Nouvelle importation** et choisissez CSV ou DHIS2.
 
 Les importations s'exécutent en arrière-plan, une à la fois. Si une importation est déjà en cours, la nouvelle est mise en file d'attente et démarre lorsque la précédente se termine.
 
