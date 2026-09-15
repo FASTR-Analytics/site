@@ -47,3 +47,9 @@ Pour des instructions étape par étape, consultez le [Guide administrateur](/fr
 
 ## Annuler/rétablir
 <iframe width="560" height="315" src="https://www.youtube.com/embed/_yO67j2ZpO4?si=DZyq_Jv9fCFzKSPS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+## Visites guidées de la plateforme et bouton d'aide
+<iframe width="560" height="315" src="https://www.youtube.com/embed/OYl_W1EPuy0?si=bPG9jYm_o9dheSoM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+## Graphiques circulaires
+<iframe width="560" height="315" src="https://www.youtube.com/embed/NBR_D4CPHgI?si=tyIQZDla7nTS57OR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

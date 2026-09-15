@@ -47,3 +47,9 @@ For step-by-step instructions, see the [Admin guide](/admin-guide/) and [User gu
 
 ## Undo/redo 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Zxu0ulhF-v4?si=b561cQLnKf_TdUgD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+## Guided platform tours and help button 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/I4qi2SIZRlA?si=HFrUSoB-4qOU-mvp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+## Pie charts 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/yEWSqK0h6Qw?si=hnq4KwymjdtbM21U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
