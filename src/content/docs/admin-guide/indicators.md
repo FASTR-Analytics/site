@@ -9,53 +9,81 @@ Indicators are the health metrics your FASTR instance tracks - things like immun
 
 ## HMIS indicators
 
-HMIS data typically comes from DHIS2, where data elements have technical identifiers like `qHJdhOrhklI` that mean nothing to analysts. FASTR uses a two-layer system: raw indicators (DHIS2 identifiers) and common indicators (human-readable names).
+The HMIS indicator dictionary is a single flat list. Every indicator has a type that says what fills it: **DHIS2 element** (a monthly count the import fetches by its DHIS2 id), **Uploaded** (a monthly count filled by CSV import), **Sum** (the total of DHIS2 element or Uploaded indicators, added per facility and month), or **Calculated** (a formula over other indicators and population terms). The three count types are adjusted by the data quality modules; a calculated indicator is computed from the formula afterwards.
 
-### Raw DHIS2 indicators
+### The indicator list
+<!-- help#ind-list -->
 
-Raw indicators are the technical identifiers from DHIS2. To import them, click **Import DHIS2 indicator**. FASTR uses the instance's stored DHIS2 connection to search for data elements — if a stored connection exists, the search opens immediately. If not, you can enter connection details for this session only. Select which data elements to bring in, and FASTR creates a raw indicator for each using the DHIS2 ID and display name. You can also change the connection mid-session using **Change connection** in the search view.
+The list shows every indicator with its id, label, type, and definition. The **Type** column has four values: **DHIS2 element** is a count fetched from DHIS2. **Uploaded** is a count filled by CSV import. **Sum** is the total of other counts. **Calculated** is a formula. The **Defined by** column shows the DHIS2 id of a DHIS2 element indicator, the members of a Sum, or the formula of a Calculated indicator.
 
-When creating a new raw or common indicator ID, the ID must not contain commas, semicolons, colons, or square brackets, and must be at most 128 characters. Once created, indicator IDs cannot be changed — renaming would break existing data references.
+### Adding indicators from DHIS2
+<!-- help#ind-dhis2-import -->
 
-:::caution[Screenshot needed]
-DHIS2 indicator import dialog showing available data elements with selection checkboxes.
-:::
+Click **Add indicators from DHIS2** in the indicator manager to add data elements from your DHIS2 server to the list as DHIS2 elements. FASTR uses the instance's stored DHIS2 connection, which is set in the DHIS2 connection card on the Data page. If no stored connection exists, set one up there first.
 
-### Common indicators
-<!-- help#ind-common -->
+The form lets you search for data elements and DHIS2 indicators by name, code, or ID. Data elements are checked for eligibility: they must have SUM aggregation, a count-type value type, and be collected monthly. Ineligible items are shown with the reason they cannot be added. DHIS2 indicators (formulas) are decomposed into their operands, which become DHIS2 element indicators, and a Calculated indicator whose formula is over those operands.
 
-Common indicators are the standardized names analysts work with. A common indicator like "ANC1 visits" might map to different raw DHIS2 IDs in different countries. This abstraction means analysis code and visualizations reference consistent names even when underlying data sources change.
+After selecting items, a naming step lets you confirm or edit the indicator ID and label for each new indicator before saving. Proposed IDs are generated from the DHIS2 name and are editable. Items whose DHIS2 id is already carried by an existing indicator are shown as already imported and create nothing new.
 
-Each common indicator has an ID (like `anc1_visits`), a display label, and a type. Click **Add Common Indicator** to open the editor, where you configure everything in one place.
+### Creating and editing indicators
 
-:::caution[Screenshot needed]
-Common indicator editor showing ID, label, type selector, and definition fields.
-:::
+Click **Create indicator** to open the indicator editor. The editor handles all four types in a single form. Choose the type first — the definition section changes to match. You can also open the editor from an existing row to update it.
 
-### Indicator types: base and derived
+Every indicator has an **Indicator ID** (used in formulas and imports), a **Label** (shown in visualizations), and an **Include in analysis** checkbox. When include in analysis is on, every results package analyses this indicator. When it is off, the indicator is dictionary-only: its data is still imported and stored, and it can still be a member of a sum or used in a formula.
+
+Indicator IDs can be renamed. Renaming rewrites every formula and import schedule that names the indicator; its data stays where it is, and results packages already generated keep the old ID.
+
+### Special indicators
+
+Certain indicator IDs are read by name by the analysis modules and are always analysed. These **special indicators** must stay as a DHIS2 element, Uploaded, or Sum — they cannot be Calculated indicators. A **Special** badge appears beside these IDs in the manager and in the editor as you type. Click **Special indicators and reserved words** in the manager toolbar to see the full list of special IDs, population terms, and reserved words.
+
+### Indicator types in detail
+
+Click **Indicator types** in the manager toolbar to open a reference panel that explains each type: where its data comes from, whether the data quality modules adjust it, whether it holds its own data rows, and what format it may have.
+
+A **DHIS2 element** indicator holds its own rows stored under its DHIS2 id. The DHIS2 id is fixed once the indicator has data; rename the indicator to change its display name. A **Sum** adds its members' counts per facility and month; members must be DHIS2 element or Uploaded indicators. An **Uploaded** indicator's internal key is managed by FASTR and is never shown — you map values to it at the Mapping step of each CSV import.
+
+### Calculated indicators
 <!-- help#ind-calculated -->
 
-Every common indicator has a type, chosen in the same editor. A **base** indicator is defined by the raw indicators mapped to it, which are summed at data extraction. A **derived** indicator is defined by a formula over other common indicators and population terms.
+A **Calculated** indicator is defined by a formula over other indicators and population terms. It is computed after the data is aggregated, so a regional or annual figure is the formula applied to already-aggregated counts — not the average of per-facility results. Write the formula using `+`, `-`, `*`, `/`, and parentheses. Use other indicator IDs directly (for example `anc4 / anc1`), or reference a population term (for example `anc4 / population_pregnancies`). The functions `abs()`, `coalesce()`, and `nullif()` are available. Use the **Insert indicator** and **Insert population** palette controls in the editor to insert correctly written identifiers at the cursor position; a legend below the formula names every identifier the formula references and shows population data coverage.
 
-Write a derived indicator's formula using `+`, `-`, `*`, `/`, and parentheses. Use other common indicator IDs directly (for example `anc4 / anc1`), or reference a population by writing `[population:type_id]` (for example `anc4 / [population:pregnancies]`). The functions `abs()`, `coalesce()`, and `nullif()` are available. Use the **Insert indicator** and **Insert population** palette controls in the editor to insert correctly written identifiers at the cursor position; a legend below the formula names every identifier the formula references and shows population data coverage.
+A calculated indicator can be formatted as a number, a percent, or a rate per 10,000. You can also set a target value and a conditional formatting rule on a calculated indicator.
 
-A base indicator always produces a count and its format is fixed as a number. A derived indicator can be formatted as a number, a percent, or a rate per 10,000.
+The editor validates formulas as you type. If a formula cannot be resolved — for example because it references an unknown identifier, creates a cycle, or has a syntax error — an error message appears below the formula field. If the formula is valid but references ingredients that have no data yet, a warning appears instead, letting you know the indicator cannot be computed until data is available. You can still save in this state; the warning does not block saving.
 
-The editor validates derived indicator formulas as you type. If a formula cannot be resolved — for example because it references an unknown identifier, creates a cycle, or has a syntax error — an error message appears below the formula field. If the formula is valid but references ingredients that have no mapped raw indicator yet, a warning appears instead, letting you know the indicator cannot be computed until those mappings are added. You can still save the indicator in this state; the warning does not block saving.
+The indicator list includes a **Status** column for calculated indicators showing whether each can currently be computed. If one or more calculated indicators cannot be computed, a warning banner appears above the list.
 
-The common indicators list includes a **Status** column for derived indicators showing whether each can currently be computed. If one or more derived indicators cannot be computed, a warning banner appears above the list explaining how many are affected and what to do.
+You can also set a conditional formatting rule on any calculated indicator. When a visualization uses the **Indicator** CF source, each value is coloured by its own indicator's rule.
 
-You can also set a conditional formatting rule on any common indicator. When a visualization uses the **Indicator** CF source, each value is coloured by its own indicator's rule. The figure's legend shows the colour bands drawn from all the displayed indicators' rules together.
+### Include in analysis
+<!-- help#ind-include -->
 
-Indicators can be sorted using the **Sort** button on the Common Indicators tab. The saved order is what every indicator axis in every figure sorts by.
+Every indicator has an **Include in analysis** checkbox. When it is on, every results package analyses the indicator: the data quality modules adjust it and it is available in visualizations. When it is off, the indicator is dictionary-only: its data is still imported and stored, and it is still usable as a member or in an expression.
 
-:::caution[Screenshot needed]
-Common indicator editor showing type selector (Base / Derived), formula field, indicator/population palette, and display section with format and conditional formatting rule.
-:::
+### Direction and target
 
-### Batch import
+Every indicator has a **Direction** setting (higher is better or lower is better) that the conditional-formatting rule follows. A Calculated indicator also has an optional **Target** value shown in its display units.
 
-For instances with many indicators, batch import lets you upload a CSV with indicator definitions. This is useful when setting up a new instance or migrating from another system.
+### Expected low counts
+
+For DHIS2 element, Uploaded, and Sum indicators, you can enable **Expected low counts**. When on, the adjustment modules treat this indicator's monthly facility counts as expected to be small.
+
+### Sorting indicators
+
+Indicators can be sorted using the **Sort** button. The saved order is what every indicator axis in every figure sorts by.
+
+### Downloading the indicator dictionary
+
+Click **Download CSV** to export the full indicator dictionary. The CSV includes all fields: ID, label, type, DHIS2 id (for DHIS2 element indicators), members (for sums), formula (for calculated indicators), include-in-analysis flag, format, thresholds, direction, target, and expected-low-counts flag.
+
+### Importing a DHIS2 data import from the indicator manager
+
+With one or more indicators selected in the table, the **HMIS data import** bulk action opens the DHIS2 import wizard pre-configured with those indicators. A notice in the manager confirms that the import was started or scheduled, with a link to follow it under HMIS data, Imports.
+
+### Reserved words
+
+When creating or renaming an indicator ID, the ID must not contain commas, semicolons, colons, or square brackets, and must be at most 128 characters. It must also not be a reserved word. Reserved words include special indicator IDs (unless the indicator is a DHIS2 element, Uploaded, or Sum), population terms, and formula function names. The **Special indicators and reserved words** panel in the manager lists them all.
 
 ## HFA indicators
 
@@ -163,4 +191,4 @@ FASTR also strips HTML markup and normalizes whitespace from XLSForm labels befo
 
 Choose indicator IDs that are short but descriptive. Avoid spaces and special characters - stick to lowercase letters, numbers, and underscores.
 
-Keep common indicator mappings current when DHIS2 configurations change. For derived indicators, document your formula choices — future analysts will want to understand what each term represents and why specific population types were chosen.
+For calculated indicators, document your formula choices — future analysts will want to understand what each term represents and why specific population types were chosen.

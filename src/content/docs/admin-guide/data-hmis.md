@@ -15,47 +15,49 @@ CSV uploads work well for periodic imports or historical data. The DHIS2 import 
 
 ## Starting an import
 
-Navigate to the **Data** section and select **HMIS Data**. If you have admin permissions, you'll see an **Imports** panel on the right. Click **Imports** to open the unified imports surface, which contains tabs for current activity, scheduled runs, history, and import status by indicator.
+Navigate to the **Data** section and select **HMIS Data**. If you have admin permissions, you'll see **Imports** and other controls in the heading bar. Click **Imports** to open the unified imports surface, which contains tabs for current activity, scheduled runs, and history.
 
 ## CSV import workflow
 <!-- help#hmis-csv -->
 
 From the imports surface, click **Upload CSV** to open the CSV import wizard. The wizard collects everything needed before sending anything to the server — abandoning it at any point has no effect.
 
-The wizard has three steps.
+A CSV import has four steps: upload the file, match its columns to the four required fields, map the values in the indicator column to your indicators, and launch. FASTR then stages the file and either integrates it automatically or holds it for your review.
 
 1. **Upload your file.** Select an existing CSV from your instance's assets, or upload a new one. The wizard reads the CSV headers as soon as a file is selected. If the file cannot be parsed, an error appears.
 
-2. **Map columns.** Match your CSV columns to the four required fields: facility_id, raw_indicator_id, period_id (YYYYMM format), and count.
+2. **Columns.** Match your CSV columns to the four required fields: the facility identifier, the indicator column, the period (YYYYMM format), and the count.
 
-3. **Review and launch.** A summary shows the selected file and all column mappings. Read the notice about how staging validates every row and how a fully clean file integrates automatically while dropped rows hold the import for your review. If another import is currently running, the button changes to **Queue import** and the import starts automatically when the running one finishes.
+3. **Mapping.** The wizard scans the file for every distinct value in the indicator column. Point each value at the indicator its rows belong to, or mark it as skipped. A value is pre-selected when it matches an indicator's ID or a DHIS2 element's DHIS2 id. Values under skipped entries are dropped and counted, but they never block the import — the user chose the skip. At least one value must be mapped (not skipped) before you can proceed.
 
-Once launched, staging validates each row against your indicator mappings and facility registry. A fully clean file integrates automatically. If any rows are dropped, the import holds in a **needs review** state — nothing is merged until you act from the **Current** tab of the Imports view.
+4. **Review and launch.** A summary shows the selected file, column assignments, and how many values are mapped versus skipped. Read the notice about staging. If another import is currently running, the button changes to **Queue import** and the import starts automatically when the running one finishes.
+
+Once launched, staging validates each row (periods, counts, facilities) and writes each row under the indicator its value is mapped to. A fully clean file integrates automatically. If any rows are dropped for reasons other than skipped mapping values, the import holds in a **needs review** state — nothing is merged until you act from the **Current** tab of the Imports view.
 
 ## DHIS2 import workflow
 <!-- help#hmis-dhis2 -->
 
-From the imports surface, click **New DHIS2 import** to open the DHIS2 import wizard. This view has four tabs: **Current**, **Future**, **History**, and **By indicator**.
+A DHIS2 import fetches the values facilities reported, one DHIS2 element and month at a time, directly from your DHIS2 server. It uses the instance's stored DHIS2 connection, which is set in the DHIS2 connection card on the Data page. If no stored connection exists, set one up there before starting a DHIS2 import.
+
+From the imports surface, click **New DHIS2 import** to open the DHIS2 import wizard.
 
 ### Launching an import
 
-The wizard walks you through up to five steps depending on the options you choose.
+The wizard walks you through up to four steps depending on the options you choose.
 
-1. **Credentials.** Choose whether to use a stored DHIS2 connection or enter connection details for this run only. If a stored connection exists, it is shown with the URL and the user who saved it. You can replace it or delete it here. Entering credentials without saving them means they are used only for this run and are not stored.
+1. **Indicators.** Select which indicators to import from the table of all indicators configured in your instance. Only DHIS2 element, Sum, and Calculated indicators are shown — Uploaded indicators are not fetched from DHIS2. The wizard shows how many DHIS2 elements the selection expands to, which parts are dropped (population terms, Uploaded indicators), and warns if a calculated indicator's formula cannot be resolved.
 
-2. **Indicators.** Select which raw indicators to import from the table of all indicators configured in your instance.
+2. **Time.** Choose when the import runs: **Now** starts it immediately (or queues it if another import is active), **Once, at a set time** schedules a one-time run at a specific date and time in a chosen timezone, or **Recurring** sets up a schedule on a chosen cadence. Recurring schedules support daily, weekly (with a configurable interval of every 1, 2, or 4 weeks), and monthly (nth weekday of the month, with a configurable interval of every 1 or 3 months) options. For weekly schedules, pick the date of the first run — the day of the week is derived from it. For monthly schedules with a 3-month interval, also set the starting month to anchor the phase.
 
-3. **Time.** Choose when the import runs: **Now** starts it immediately (or queues it if another import is active), **Once, at a set time** schedules a one-time run at a specific date and time in a chosen timezone, or **Recurring** sets up a schedule on a chosen cadence. Recurring schedules support daily, weekly (with a configurable interval of every 1, 2, or 4 weeks), and monthly (nth weekday of the month, with a configurable interval of every 1 or 3 months) options. For weekly schedules, pick the date of the first run — the day of the week is derived from it. For monthly schedules with a 3-month interval, also set the starting month to anchor the phase.
+3. **Config.** For immediate or one-time runs, select the period range to import. For recurring runs, set how many months back from the current month to include on each fire.
 
-4. **Config.** For immediate or one-time runs, select the period range to import. For recurring runs, set how many months back from the current month to include on each fire.
-
-5. **Review & launch.** A summary shows the connection, number of indicators, timing, and the total number of indicator-month pairs. If another import is currently running, the launch queues the new import to start automatically when the running one finishes.
+4. **Review & launch.** A summary shows the connection URL, number of indicators and the DHIS2 elements they expand to, timing, and the total number of element-month pairs. If another import is currently running, the launch queues the new import to start automatically when the running one finishes.
 
 ### How DHIS2 imports work
 
-Each import run fetches data per (indicator, month) pair. For each pair, the system removes any existing rows for that indicator and month within the facilities it queried, then inserts the newly fetched values. This scoped delete-then-insert approach ensures that values DHIS2 no longer returns are properly removed rather than left behind.
+Each import run fetches data per (DHIS2 element, month) pair. The selection you make in terms of indicators is expanded to DHIS2 elements at launch: a Sum contributes its members' data ids, a Calculated indicator flattens through its formula to the DHIS2 elements it reaches. Population terms and Uploaded indicators are dropped and listed in the run detail. For each pair, the system removes any existing rows for that data id and month within the facilities it queried, then inserts the newly fetched values. This scoped delete-then-insert approach ensures that values DHIS2 no longer returns are properly removed rather than left behind.
 
-Completed pairs are saved as they finish. If a run is cancelled or encounters an error, the pairs that already completed are kept. Per-indicator results are visible in the **By indicator** tab.
+Completed pairs are saved as they finish. If a run is cancelled or encounters an error, the pairs that already completed are kept.
 
 ### Current tab
 
@@ -63,35 +65,20 @@ The Current tab shows any running import with a live progress bar and the curren
 
 ### Future tab
 
-The Future tab lists scheduled imports - both recurring schedules and pending one-time runs. For each schedule you can click **Edit** to open the wizard pre-filled with its settings, or **Delete** to remove it. A recurring schedule that was refused, missed, or whose last run failed is highlighted in red, with the error detail shown beneath the status.
+The Future tab lists scheduled imports - both recurring schedules and pending one-time runs. For each schedule you can click **Edit** to open the wizard pre-filled with its settings, or **Delete** to remove it. A recurring schedule that was refused, missed, or whose last run failed is highlighted in red, with the error detail shown beneath the status. To schedule an import, click **New DHIS2 import** and, when asked when to run it, choose **Once, at a set time** or **Recurring**.
 
 ### History tab
 
-The History tab shows all completed, cancelled, and errored import runs. The table includes a **Source** column showing whether each run came from DHIS2 or CSV. For DHIS2 runs, pair outcome counts are shown; CSV runs show the file name instead. Click any row to open the run detail view. For DHIS2 runs, the detail view shows the full run summary, any indicators not found in DHIS2, per-pair fetch failures, and a **Version** button that opens the import information for the dataset version created by that run. From a DHIS2 run detail you can also click **Retry failed pairs** to open the wizard pre-configured to re-import exactly the failed pairs.
+The History tab shows all completed, cancelled, and errored import runs. The **Imported via** column shows whether each run came from DHIS2 or CSV. For DHIS2 runs, the selection column shows the number of indicators alongside the number of DHIS2 elements they expanded to, plus the period range. Pair outcome counts are shown for DHIS2 runs; CSV runs show the file name instead. Click any row to open the run detail view.
 
-### By indicator tab
-<!-- help#hmis-import-ledger -->
-
-The **By indicator** tab shows the import ledger - a table showing the latest import state for every (indicator, month) pair that has ever been imported. For each indicator it shows how many months have data, when data was last imported, the source (DHIS2 or CSV), and how many months have failed. Click on an indicator row to see the month-by-month detail including record counts, service counts, error messages, and error classification (configuration error or server error).
-
-If any pairs have failed, a **Retry failed pairs** button appears at the top of the tab. Clicking it opens the wizard pre-configured to re-import exactly the failed pairs.
-
-From the per-indicator detail view, a **Re-import this indicator** button opens the wizard to re-import all months in the current window for that indicator.
-
-### Managing the DHIS2 connection
-
-Click **Manage connection** in the Imports view to open a dialog for updating or deleting the stored DHIS2 credentials. Credentials are encrypted on the server. Once saved, the password is not sent back to the browser. The stored connection is shared across all DHIS2 flows in the instance — the same credentials are used by the indicator manager, the GeoJSON wizard, and the structure import.
-
-### Scheduling requirements
-
-Scheduled and queued imports always run with the stored connection. To create a scheduled import or queue an import, stored credentials must exist. Save credentials in step 1 of the wizard before setting up a recurring or future schedule.
+For DHIS2 runs, the detail view shows the full run summary, any DHIS2 ids not found in DHIS2, any ids that are DHIS2 indicators (formulas, which cannot be fetched directly — re-create these through the DHIS2 indicator import in the indicator configuration), pairs where facility values were skipped as non-integer, per-pair fetch failures, and a **Version** button that opens the import information for the dataset version created by that run. From a DHIS2 run detail you can also click **Retry failed pairs** to open the wizard pre-configured to re-import exactly the failed pairs.
 
 ## Validation and error handling
 <!-- help#hmis-validation -->
 
-The CSV staging process catches several types of issues: missing required fields, invalid numeric values, facilities not in your registry, and unmapped indicators. For each category, the summary shows how many rows were affected and provides sample entries. If too many rows are being dropped, consider fixing source data or updating instance configuration before re-importing.
+For a CSV import, the staging results list every issue by category, with a count and sample rows. The categories are: rows with missing required fields, rows with invalid values, facilities not in your registry, and rows under values skipped in the mapping step. The skipped-by-mapping count is informational — the user chose those skips — and never causes the import to hold for review. Rows dropped for any other reason hold the import in a **needs review** state until you act.
 
-For DHIS2 imports, per-pair errors are recorded in the import ledger with an error classification. Configuration errors (such as an indicator ID not found in DHIS2) are marked permanent and will fail again until the configuration is fixed. Server errors (such as timeouts) are marked transient and may succeed on a later retry.
+For DHIS2 imports, per-pair errors are recorded in the run detail with an error classification. Configuration errors (such as a DHIS2 id not found in DHIS2, or an id that belongs to a DHIS2 indicator formula rather than a data element) are marked permanent and will fail again until the configuration is fixed. Server errors (such as timeouts) are marked transient and may succeed on a later retry. Facility values that are not non-negative integers are skipped rather than causing the pair to fail; the count and a sample are shown in the run detail and recorded in the ledger.
 
 ## Managing import history
 

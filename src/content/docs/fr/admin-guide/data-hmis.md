@@ -15,47 +15,49 @@ Les téléversements CSV conviennent bien aux importations périodiques ou aux d
 
 ## Démarrer une importation
 
-Accédez à la section **Données** et sélectionnez **Données SNIS**. Si vous disposez des permissions d'administration, un panneau **Importations** s'affiche sur la droite. Cliquez sur **Importations** pour ouvrir la surface d'importation unifiée, qui contient des onglets pour l'activité en cours, les exécutions planifiées, l'historique et l'état des importations par indicateur.
+Accédez à la section **Données** et sélectionnez **Données SNIS**. Si vous disposez des permissions d'administration, vous verrez **Importations** et d'autres contrôles dans la barre d'en-tête. Cliquez sur **Importations** pour ouvrir la surface d'importation unifiée, qui contient des onglets pour l'activité en cours, les exécutions planifiées et l'historique.
 
 ## Processus d'importation CSV
 <!-- help#hmis-csv -->
 
 Depuis la surface d'importation, cliquez sur **Téléverser un fichier CSV** pour ouvrir l'assistant d'importation CSV. L'assistant collecte toutes les informations nécessaires avant d'envoyer quoi que ce soit au serveur — l'abandonner à n'importe quelle étape n'a aucun effet.
 
-L'assistant comporte trois étapes.
+Une importation CSV comporte quatre étapes : téléverser le fichier, associer ses colonnes aux quatre champs requis, associer les valeurs de la colonne indicateur à vos indicateurs, puis lancer. FASTR prépare ensuite le fichier et l'intègre automatiquement ou le met en attente de votre vérification.
 
 1. **Téléversez votre fichier.** Sélectionnez un fichier CSV existant parmi les ressources de votre instance, ou téléversez-en un nouveau. L'assistant lit les en-têtes du CSV dès qu'un fichier est sélectionné. Si le fichier ne peut pas être analysé, une erreur s'affiche.
 
-2. **Faites correspondre les colonnes.** Associez les colonnes de votre fichier CSV aux quatre champs requis : facility_id, raw_indicator_id, period_id (format AAAAMM) et count.
+2. **Colonnes.** Associez les colonnes de votre fichier CSV aux quatre champs requis : l'identifiant de l'établissement, la colonne indicateur, la période (format AAAAMM) et la valeur.
 
-3. **Vérifiez et lancez.** Un résumé affiche le fichier sélectionné et toutes les correspondances de colonnes. Lisez la notice expliquant comment la préparation valide chaque ligne et comment un fichier entièrement valide s'intègre automatiquement tandis que les lignes rejetées mettent l'importation en attente de votre vérification. Si une autre importation est en cours, le bouton devient **Mettre en file d'attente** et l'importation démarre automatiquement à la fin de l'exécution en cours.
+3. **Correspondance.** L'assistant analyse le fichier pour chaque valeur distincte de la colonne indicateur. Associez chaque valeur à l'indicateur auquel ses lignes appartiennent, ou marquez-la comme ignorée. Une valeur est présélectionnée lorsqu'elle correspond à l'identifiant d'un indicateur ou à l'identifiant DHIS2 d'un élément DHIS2. Les lignes sous les valeurs ignorées sont rejetées et comptées, mais elles ne bloquent jamais l'importation — l'utilisateur a choisi ces valeurs à ignorer. Au moins une valeur doit être associée (non ignorée) avant de pouvoir continuer.
 
-Une fois lancée, la préparation valide chaque ligne par rapport à vos correspondances d'indicateurs et à votre registre d'établissements. Un fichier entièrement valide s'intègre automatiquement. Si des lignes sont rejetées, l'importation se maintient dans un état **à vérifier** — rien n'est fusionné tant que vous n'avez pas agi depuis l'onglet **En cours** de la vue Importations.
+4. **Vérifiez et lancez.** Un résumé affiche le fichier sélectionné, les associations de colonnes et le nombre de valeurs associées par rapport aux valeurs ignorées. Lisez la notice sur la préparation. Si une autre importation est en cours, le bouton devient **Mettre en file d'attente** et l'importation démarre automatiquement à la fin de l'exécution en cours.
+
+Une fois lancée, la préparation valide chaque ligne (périodes, valeurs, établissements) et enregistre chaque ligne sous l'indicateur auquel sa valeur est associée. Un fichier entièrement valide s'intègre automatiquement. Si des lignes sont rejetées pour des raisons autres que les valeurs de correspondance ignorées, l'importation se maintient dans un état **à vérifier** — rien n'est fusionné tant que vous n'avez pas agi depuis l'onglet **En cours** de la vue Importations.
 
 ## Processus d'importation DHIS2
 <!-- help#hmis-dhis2 -->
 
-Depuis la surface d'importation, cliquez sur **Nouvelle importation DHIS2** pour ouvrir l'assistant d'importation. Cette vue comporte quatre onglets : **En cours**, **À venir**, **Historique** et **Par indicateur**.
+Une importation DHIS2 récupère les valeurs rapportées par les établissements, un élément DHIS2 et un mois à la fois, directement depuis votre serveur DHIS2. Elle utilise la connexion DHIS2 enregistrée de l'instance, définie dans la carte de connexion DHIS2 sur la page Données. Si aucune connexion enregistrée n'existe, configurez-en une avant de démarrer une importation DHIS2.
+
+Depuis la surface d'importation, cliquez sur **Nouvelle importation DHIS2** pour ouvrir l'assistant d'importation.
 
 ### Lancer une importation
 
-L'assistant vous guide à travers cinq étapes selon vos choix.
+L'assistant vous guide à travers quatre étapes selon vos choix.
 
-1. **Identifiants.** Choisissez d'utiliser une connexion DHIS2 enregistrée ou de saisir des identifiants de connexion pour cette seule exécution. Si une connexion enregistrée existe, elle est affichée avec l'URL et l'utilisateur qui l'a enregistrée. Vous pouvez la remplacer ou la supprimer ici. Saisir des identifiants sans les enregistrer signifie qu'ils sont utilisés uniquement pour cette exécution et ne sont pas conservés.
+1. **Indicateurs.** Sélectionnez les indicateurs à importer dans le tableau de tous les indicateurs configurés dans votre instance. Seuls les indicateurs de type Élément DHIS2, Somme et Calculé sont affichés — les indicateurs Téléversés ne sont pas récupérés depuis DHIS2. L'assistant indique combien d'éléments DHIS2 la sélection développe, quelles parties sont exclues (termes de population, indicateurs Téléversés) et avertit si la formule d'un indicateur calculé ne peut pas être résolue.
 
-2. **Indicateurs.** Sélectionnez les indicateurs bruts à importer dans le tableau de tous les indicateurs configurés dans votre instance.
+2. **Heure.** Choisissez quand l'importation s'exécute : **Maintenant** la démarre immédiatement (ou la met en file d'attente si une autre importation est active), **Une fois, à une heure donnée** planifie une exécution ponctuelle à une date et une heure précises dans un fuseau horaire choisi, ou **Récurrente** configure un calendrier selon la cadence choisie. Les calendriers récurrents proposent les options suivantes : quotidienne, hebdomadaire (avec un intervalle configurable de toutes les 1, 2 ou 4 semaines) et mensuelle (n-ième jour de la semaine du mois, avec un intervalle configurable de tous les 1 ou 3 mois). Pour les calendriers hebdomadaires, choisissez la date de la première exécution — le jour de la semaine en est déduit automatiquement. Pour les calendriers mensuels avec un intervalle de 3 mois, définissez également le mois de départ pour ancrer la phase.
 
-3. **Heure.** Choisissez quand l'importation s'exécute : **Maintenant** la démarre immédiatement (ou la met en file d'attente si une autre importation est active), **Une fois, à une heure donnée** planifie une exécution ponctuelle à une date et une heure précises dans un fuseau horaire choisi, ou **Récurrente** configure un calendrier selon la cadence choisie. Les calendriers récurrents proposent les options suivantes : quotidienne, hebdomadaire (avec un intervalle configurable de toutes les 1, 2 ou 4 semaines) et mensuelle (n-ième jour de la semaine du mois, avec un intervalle configurable de tous les 1 ou 3 mois). Pour les calendriers hebdomadaires, choisissez la date de la première exécution — le jour de la semaine en est déduit automatiquement. Pour les calendriers mensuels avec un intervalle de 3 mois, définissez également le mois de départ pour ancrer la phase.
+3. **Configuration.** Pour les exécutions immédiates ou ponctuelles, sélectionnez la plage de périodes à importer. Pour les exécutions récurrentes, définissez le nombre de mois en arrière à partir du mois en cours à inclure à chaque déclenchement.
 
-4. **Configuration.** Pour les exécutions immédiates ou ponctuelles, sélectionnez la plage de périodes à importer. Pour les exécutions récurrentes, définissez le nombre de mois en arrière à partir du mois en cours à inclure à chaque déclenchement.
-
-5. **Vérifier et lancer.** Un résumé affiche la connexion, le nombre d'indicateurs, le calendrier et le nombre total de paires indicateur-mois. Si une autre importation est en cours, le lancement met la nouvelle importation en file d'attente pour qu'elle démarre automatiquement à la fin de l'exécution en cours.
+4. **Vérifier et lancer.** Un résumé affiche l'URL de connexion, le nombre d'indicateurs et les éléments DHIS2 vers lesquels ils se développent, le calendrier et le nombre total de paires élément-mois. Si une autre importation est en cours, le lancement met la nouvelle importation en file d'attente pour qu'elle démarre automatiquement à la fin de l'exécution en cours.
 
 ### Fonctionnement des importations DHIS2
 
-Chaque exécution d'importation récupère les données par paire (indicateur, mois). Pour chaque paire, le système supprime les lignes existantes pour cet indicateur et ce mois au sein des établissements interrogés, puis insère les nouvelles valeurs récupérées. Cette approche de suppression ciblée puis insertion garantit que les valeurs que DHIS2 ne renvoie plus sont correctement retirées plutôt que laissées en place.
+Chaque exécution d'importation récupère les données par paire (élément DHIS2, mois). La sélection que vous effectuez en termes d'indicateurs est développée en éléments DHIS2 au lancement : une Somme contribue les identifiants de données de ses membres, un indicateur Calculé se décompose à travers sa formule jusqu'aux éléments DHIS2 qu'il atteint. Les termes de population et les indicateurs Téléversés sont exclus et listés dans le détail de l'exécution. Pour chaque paire, le système supprime les lignes existantes pour cet identifiant de données et ce mois au sein des établissements interrogés, puis insère les nouvelles valeurs récupérées. Cette approche de suppression ciblée puis insertion garantit que les valeurs que DHIS2 ne renvoie plus sont correctement retirées plutôt que laissées en place.
 
-Les paires terminées sont enregistrées au fur et à mesure. Si une exécution est annulée ou rencontre une erreur, les paires déjà terminées sont conservées. Les résultats par indicateur sont visibles dans l'onglet **Par indicateur**.
+Les paires terminées sont enregistrées au fur et à mesure. Si une exécution est annulée ou rencontre une erreur, les paires déjà terminées sont conservées.
 
 ### Onglet En cours
 
@@ -63,35 +65,20 @@ L'onglet En cours affiche l'importation en cours (le cas échéant) avec une bar
 
 ### Onglet À venir
 
-L'onglet À venir liste les importations planifiées - aussi bien les calendriers récurrents que les exécutions ponctuelles en attente. Pour chaque planification, vous pouvez cliquer sur **Modifier** pour ouvrir l'assistant pré-rempli avec ses paramètres, ou sur **Supprimer** pour la retirer. Un calendrier récurrent qui a été refusé, manqué, ou dont la dernière exécution a échoué est mis en évidence en rouge, avec le détail de l'erreur affiché sous le statut.
+L'onglet À venir liste les importations planifiées - aussi bien les calendriers récurrents que les exécutions ponctuelles en attente. Pour chaque planification, vous pouvez cliquer sur **Modifier** pour ouvrir l'assistant pré-rempli avec ses paramètres, ou sur **Supprimer** pour la retirer. Un calendrier récurrent qui a été refusé, manqué, ou dont la dernière exécution a échoué est mis en évidence en rouge, avec le détail de l'erreur affiché sous le statut. Pour planifier une importation, cliquez sur **Nouvelle importation DHIS2** et, lorsqu'on vous demande quand l'exécuter, choisissez **Une fois, à une heure donnée** ou **Récurrente**.
 
 ### Onglet Historique
 
-L'onglet Historique affiche toutes les exécutions terminées, annulées et en erreur. Le tableau inclut une colonne **Source** indiquant si chaque exécution provient de DHIS2 ou d'un CSV. Pour les exécutions DHIS2, les comptages de paires par résultat sont affichés ; les exécutions CSV affichent le nom du fichier à la place. Cliquez sur une ligne pour ouvrir la vue de détail de l'exécution. Pour les exécutions DHIS2, la vue de détail affiche le résumé complet, les indicateurs introuvables dans DHIS2, les échecs de récupération par paire et un bouton **Version** qui ouvre directement les informations d'importation de la version du jeu de données créée par cette exécution. Depuis le détail d'une exécution DHIS2, cliquez sur **Réessayer les paires en échec** pour ouvrir l'assistant pré-configuré pour réimporter exactement les paires en échec.
+L'onglet Historique affiche toutes les exécutions terminées, annulées et en erreur. La colonne **Importé via** indique si chaque exécution provient de DHIS2 ou d'un CSV. Pour les exécutions DHIS2, la colonne de sélection affiche le nombre d'indicateurs ainsi que le nombre d'éléments DHIS2 vers lesquels ils se développent, et la plage de périodes. Les comptages de paires par résultat sont affichés pour les exécutions DHIS2 ; les exécutions CSV affichent le nom du fichier à la place. Cliquez sur une ligne pour ouvrir la vue de détail de l'exécution.
 
-### Onglet Par indicateur
-<!-- help#hmis-import-ledger -->
-
-L'onglet **Par indicateur** affiche le registre des importations - un tableau montrant le dernier état d'importation pour chaque paire (indicateur, mois) ayant été importée. Pour chaque indicateur, il affiche le nombre de mois avec données, la date de la dernière importation, la source (DHIS2 ou CSV) et le nombre de mois en échec. Cliquez sur une ligne d'indicateur pour voir le détail mois par mois, incluant le nombre d'enregistrements, les comptes de prestations de services, les messages d'erreur et la classification des erreurs (erreur de configuration ou erreur serveur).
-
-Si des paires ont échoué, un bouton **Réessayer les paires en échec** apparaît en haut de l'onglet. En cliquant dessus, l'assistant s'ouvre pré-configuré pour réimporter exactement les paires en échec.
-
-Depuis la vue de détail par indicateur, un bouton **Réimporter cet indicateur** ouvre l'assistant pour réimporter tous les mois de la fenêtre courante pour cet indicateur.
-
-### Gérer la connexion DHIS2
-
-Cliquez sur **Gérer la connexion** dans la vue des importations pour ouvrir une boîte de dialogue permettant de mettre à jour ou de supprimer les identifiants DHIS2 enregistrés. Les identifiants sont chiffrés sur le serveur. Une fois enregistré, le mot de passe n'est pas renvoyé au navigateur. La connexion enregistrée est partagée par tous les flux DHIS2 de l'instance — les mêmes identifiants sont utilisés par le gestionnaire d'indicateurs, l'assistant GeoJSON et l'importation de structure.
-
-### Exigences pour la planification
-
-Les importations planifiées et en file d'attente utilisent toujours la connexion enregistrée. Pour créer une importation planifiée ou mettre une importation en file d'attente, des identifiants enregistrés doivent exister. Enregistrez les identifiants à l'étape 1 de l'assistant avant de configurer un calendrier récurrent ou futur.
+Pour les exécutions DHIS2, la vue de détail affiche le résumé complet, les identifiants DHIS2 introuvables dans DHIS2, les identifiants qui sont des indicateurs DHIS2 (formules, qui ne peuvent pas être récupérés directement — recréez-les via l'importation d'indicateurs DHIS2 dans la configuration des indicateurs), les paires où des valeurs d'établissements ont été ignorées car non entières, les échecs de récupération par paire et un bouton **Version** qui ouvre directement les informations d'importation de la version du jeu de données créée par cette exécution. Depuis le détail d'une exécution DHIS2, cliquez sur **Réessayer les paires en échec** pour ouvrir l'assistant pré-configuré pour réimporter exactement les paires en échec.
 
 ## Validation et gestion des erreurs
 <!-- hmis-validation -->
 
-Le processus de préparation CSV détecte plusieurs types de problèmes : champs requis manquants, valeurs numériques invalides, établissements absents de votre registre et indicateurs sans correspondance. Pour chaque catégorie, le résumé indique combien de lignes ont été affectées et fournit des exemples d'entrées. Si trop de lignes sont écartées, envisagez de corriger les données sources ou de mettre à jour la configuration de l'instance avant de relancer l'importation.
+Pour une importation CSV, les résultats de la préparation listent chaque problème par catégorie, avec un nombre et des exemples de lignes. Les catégories sont : lignes avec des champs requis manquants, lignes avec des valeurs invalides, établissements absents de votre registre et lignes sous des valeurs ignorées à l'étape de correspondance. Le comptage des valeurs ignorées par correspondance est informatif — l'utilisateur a choisi ces valeurs à ignorer — et ne cause jamais la mise en attente de l'importation pour vérification. Les lignes rejetées pour toute autre raison mettent l'importation dans un état **à vérifier** jusqu'à ce que vous agissiez.
 
-Pour les importations DHIS2, les erreurs par paire sont enregistrées dans le registre des importations avec une classification. Les erreurs de configuration (par exemple un identifiant d'indicateur introuvable dans DHIS2) sont marquées comme permanentes et échoueront à nouveau jusqu'à ce que la configuration soit corrigée. Les erreurs serveur (comme les délais d'attente) sont marquées comme transitoires et peuvent réussir lors d'une nouvelle tentative ultérieure.
+Pour les importations DHIS2, les erreurs par paire sont enregistrées dans le détail de l'exécution avec une classification. Les erreurs de configuration (par exemple un identifiant DHIS2 introuvable dans DHIS2, ou un identifiant appartenant à une formule d'indicateur DHIS2 plutôt qu'à un élément de données) sont marquées comme permanentes et échoueront à nouveau jusqu'à ce que la configuration soit corrigée. Les erreurs serveur (comme les délais d'attente) sont marquées comme transitoires et peuvent réussir lors d'une nouvelle tentative ultérieure. Les valeurs d'établissements qui ne sont pas des entiers non négatifs sont ignorées plutôt que de faire échouer la paire ; le nombre et un exemple sont affichés dans le détail de l'exécution et enregistrés dans le registre.
 
 ## Gérer l'historique des importations
 
