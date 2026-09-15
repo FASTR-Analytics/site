@@ -15,7 +15,7 @@ Go to the **Data** section and select **HMIS Data**. The page has two tabs, **Vi
 
 The **Visualization** tab shows the data that has been imported, one figure at a time. A record is one value reported by one facility for one month.
 
-Choose **Line graph** to see one line per indicator over the months. Under **Value**, choose **Number of records** or **Number of service counts**, which is the reported values added together.
+Choose **Line graph** to see one line per indicator over the months. Choose **Records** to count the records, or **Service counts** to add the reported values together.
 
 Choose **Heat map** to see which indicators have data for which periods. Each row is an indicator. Each column is a month or a year, depending on what you choose under **Periods**. A cell is filled when the indicator has at least one record in that period, and empty when it has none. In the year view, a cell is filled when any month of that year has a record. Hold the pointer over a cell to see the indicator and the period.
 
@@ -50,12 +50,12 @@ CSV uploads work well for periodic imports or historical data. Direct DHIS2 inte
 
 ## Starting an import
 
-If you are a global administrator, the sidebar of the HMIS Data page shows an **Imports** button that opens the imports view. Its tabs are **Current** (the running or queued import), **Future** (scheduled imports) and **History** (every past run). Click **New import** and choose CSV or DHIS2.
+If you are a global administrator, the heading bar at the top of the HMIS Data page shows an **Imports** button that opens the imports view. While an import is running, an **Import running** label appears beside it. Its tabs are **Current** (the running or queued import), **Future** (scheduled imports) and **History** (every past run). Click **New import** and choose CSV or DHIS2.
 
 Imports run in the background, one at a time. If an import is already running, a new one is queued and starts when the current one finishes.
 
 :::caution[Screenshot needed]
-The HMIS data view with the Imports button in the sidebar and the imports view open on the Current tab.
+The HMIS data view with the Imports button in the heading bar and the imports view open on the Current tab.
 :::
 
 ## CSV import workflow
@@ -118,7 +118,7 @@ For a DHIS2 import, the run detail shows every failed (DHIS2 element, month) pai
 
 Each import that merges data creates a new dataset version. The **History** tab lists every run with when it ran, how it was imported (CSV or DHIS2), what it selected, and how many rows it inserted, updated or removed. Click a run for its detail. To see the import status of each indicator month by month, and to re-import an indicator, use the **Ledger** tab of the HMIS Data page (see Viewing the data above).
 
-To delete data, click **Delete data** in the sidebar, choose all indicators or a selection of them, the admin areas and the period range, and type `yes please delete` to confirm. Deleting is irreversible and is refused while an import is running.
+To delete data, click **Delete data** in the heading bar, choose all indicators or a selection of them, the admin areas and the period range, and type `yes please delete` to confirm. Deleting is irreversible and is refused while an import is running.
 
 ## Deleting ICEH data
 

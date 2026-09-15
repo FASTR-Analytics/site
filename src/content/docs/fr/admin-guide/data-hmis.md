@@ -15,7 +15,7 @@ Accédez à la section **Données** et sélectionnez **Données HMIS**. La page 
 
 L'onglet **Visualisation** montre les données importées, une figure à la fois. Un enregistrement est une valeur rapportée par un établissement pour un mois.
 
-Choisissez **Graphique linéaire** pour voir une ligne par indicateur au fil des mois. Sous **Valeur**, choisissez **Nombre d'enregistrements** ou **Nombre de prestations de services**, c'est-à-dire la somme des valeurs rapportées.
+Choisissez **Graphique linéaire** pour voir une ligne par indicateur au fil des mois. Choisissez **Enregistrements** pour compter les enregistrements, ou **Prestations de services** pour additionner les valeurs rapportées.
 
 Choisissez **Carte de chaleur** pour voir quels indicateurs ont des données pour quelles périodes. Chaque ligne est un indicateur. Chaque colonne est un mois ou une année, selon votre choix sous **Périodes**. Une cellule est remplie lorsque l'indicateur a au moins un enregistrement pour cette période, et vide lorsqu'il n'en a aucun. Dans la vue par année, une cellule est remplie dès qu'un mois de l'année a un enregistrement. Placez le pointeur sur une cellule pour voir l'indicateur et la période.
 
@@ -50,12 +50,12 @@ Les téléversements CSV conviennent bien aux importations périodiques ou aux d
 
 ## Démarrer une importation
 
-Si vous êtes administrateur global, la barre latérale de la page Données HMIS affiche un bouton **Importations** qui ouvre la vue des importations. Ses onglets sont **En cours** (l'importation en cours d'exécution ou en file d'attente), **À venir** (les importations planifiées) et **Historique** (toutes les exécutions passées). Cliquez sur **Nouvelle importation** et choisissez CSV ou DHIS2.
+Si vous êtes administrateur global, la barre d'en-tête en haut de la page Données HMIS affiche un bouton **Importations** qui ouvre la vue des importations. Pendant qu'une importation est en cours, l'étiquette **Importation en cours** apparaît à côté. Ses onglets sont **En cours** (l'importation en cours d'exécution ou en file d'attente), **À venir** (les importations planifiées) et **Historique** (toutes les exécutions passées). Cliquez sur **Nouvelle importation** et choisissez CSV ou DHIS2.
 
 Les importations s'exécutent en arrière-plan, une à la fois. Si une importation est déjà en cours, la nouvelle est mise en file d'attente et démarre lorsque la précédente se termine.
 
 :::caution[Capture d'écran à ajouter]
-La vue des données HMIS avec le bouton Importations dans la barre latérale et la vue des importations ouverte sur l'onglet En cours.
+La vue des données HMIS avec le bouton Importations dans la barre d'en-tête et la vue des importations ouverte sur l'onglet En cours.
 :::
 
 ## Processus d'importation CSV
@@ -118,7 +118,7 @@ Pour une importation DHIS2, le détail de l'exécution affiche chaque paire (él
 
 Chaque importation qui fusionne des données crée une nouvelle version du jeu de données. L'onglet **Historique** liste chaque exécution avec sa date, son mode d'importation (CSV ou DHIS2), sa sélection, et le nombre de lignes insérées, mises à jour ou supprimées. Cliquez sur une exécution pour voir son détail. Pour voir l'état d'importation de chaque indicateur mois par mois, et pour réimporter un indicateur, utilisez l'onglet **Registre** de la page Données HMIS (voir Consulter les données ci-dessus).
 
-Pour supprimer des données, cliquez sur **Supprimer les données** dans la barre latérale, choisissez tous les indicateurs ou une sélection, les unités administratives et la plage de périodes, puis saisissez `yes please delete` pour confirmer. La suppression est irréversible et est refusée tant qu'une importation est en cours.
+Pour supprimer des données, cliquez sur **Supprimer les données** dans la barre d'en-tête, choisissez tous les indicateurs ou une sélection, les unités administratives et la plage de périodes, puis saisissez `yes please delete` pour confirmer. La suppression est irréversible et est refusée tant qu'une importation est en cours.
 
 ## Supprimer des données ICEH
 
