@@ -14,12 +14,12 @@ Le dictionnaire des indicateurs HMIS est une liste plate unique. Chaque indicate
 ### La liste des indicateurs
 <!-- help#ind-list -->
 
-La liste affiche chaque indicateur avec son identifiant, son libellé, son type et sa définition. La colonne **Type** prend quatre valeurs : **Élément DHIS2** est un dénombrement récupéré depuis DHIS2. **Téléversé** est un dénombrement rempli par importation CSV. **Somme** est le total d'autres dénombrements. **Calculé** est une formule. La colonne **Défini par** affiche l'identifiant DHIS2 d'un indicateur Élément DHIS2, les membres d'une Somme, ou la formule d'un indicateur Calculé.
+La liste affiche chaque indicateur avec son identifiant, son libellé, son type et sa définition. La colonne **Type** affiche un badge pour chaque type d'indicateur : **Élément DHIS2** est un dénombrement récupéré depuis DHIS2. **Téléversé** est un dénombrement rempli par importation CSV. **Somme** est le total d'autres dénombrements. **Calculé** est une formule. La colonne **Défini par** affiche l'identifiant DHIS2 d'un indicateur Élément DHIS2, les membres d'une Somme, ou la formule d'un indicateur Calculé. Les identifiants et libellés longs se coupent aux tirets bas pour rester lisibles sans défilement horizontal. Le nombre d'indicateurs est affiché dans l'en-tête de la liste.
 
 ### Ajouter des indicateurs depuis DHIS2
 <!-- help#ind-dhis2-import -->
 
-Cliquez sur **Ajouter des indicateurs depuis DHIS2** dans le gestionnaire d'indicateurs pour ajouter des éléments de données de votre serveur DHIS2 à la liste, sous forme d'éléments DHIS2. FASTR utilise la connexion DHIS2 enregistrée de l'instance, définie dans la carte de connexion DHIS2 sur la page Données. Si aucune connexion enregistrée n'existe, configurez-en une d'abord.
+Cliquez sur **Ajouter depuis DHIS2** dans la barre d'outils du gestionnaire d'indicateurs pour ajouter des éléments de données de votre serveur DHIS2 à la liste, sous forme d'éléments DHIS2. FASTR utilise la connexion DHIS2 enregistrée de l'instance, définie dans la carte de connexion DHIS2 sur la page Données. Si aucune connexion enregistrée n'existe, configurez-en une d'abord.
 
 Le formulaire vous permet de rechercher des éléments de données et des indicateurs DHIS2 par nom, code ou identifiant. Les éléments de données sont vérifiés pour leur éligibilité : ils doivent avoir une agrégation SUM, un type de valeur de dénombrement et être collectés mensuellement. Les éléments non éligibles sont affichés avec la raison pour laquelle ils ne peuvent pas être ajoutés. Les indicateurs DHIS2 (formules) sont décomposés en leurs opérandes, qui deviennent des indicateurs Élément DHIS2, et un indicateur Calculé dont la formule porte sur ces opérandes.
 
@@ -27,7 +27,7 @@ Après avoir sélectionné des éléments, une étape de nommage vous permet de 
 
 ### Créer et modifier des indicateurs
 
-Cliquez sur **Créer un indicateur** pour ouvrir l'éditeur d'indicateurs. L'éditeur gère les quatre types dans un seul formulaire. Choisissez d'abord le type — la section de définition change en conséquence. Vous pouvez également ouvrir l'éditeur depuis une ligne existante pour la mettre à jour.
+Cliquez sur **Créer** pour ouvrir l'éditeur d'indicateurs. L'éditeur gère les quatre types dans un seul formulaire. Choisissez d'abord le type — la section de définition change en conséquence. Vous pouvez également ouvrir l'éditeur depuis une ligne existante pour la mettre à jour.
 
 Chaque indicateur possède un **ID de l'indicateur** (utilisé dans les formules et les importations), un **Libellé** (affiché dans les visualisations) et une case à cocher **Inclure dans l'analyse**. Lorsque inclure dans l'analyse est activé, chaque lot de résultats analyse cet indicateur. Lorsqu'il est désactivé, l'indicateur est uniquement dans le dictionnaire : ses données sont toujours importées et conservées, et il peut toujours être membre d'une somme ou utilisé dans une formule.
 
@@ -75,7 +75,7 @@ Les indicateurs peuvent être triés à l'aide du bouton **Trier**. L'ordre enre
 
 ### Télécharger le dictionnaire des indicateurs
 
-Cliquez sur **Télécharger le CSV** pour exporter le dictionnaire complet des indicateurs. Le CSV inclut tous les champs : identifiant, libellé, type, identifiant DHIS2 (pour les indicateurs Élément DHIS2), membres (pour les sommes), formule (pour les indicateurs calculés), indicateur inclus dans l'analyse, format, seuils, direction, cible et indicateur de faibles dénombrements attendus.
+Cliquez sur **Télécharger** pour exporter le dictionnaire complet des indicateurs. Le CSV inclut tous les champs : identifiant, libellé, type, identifiant DHIS2 (pour les indicateurs Élément DHIS2), membres (pour les sommes), formule (pour les indicateurs calculés), indicateur inclus dans l'analyse, format, seuils, direction, cible et indicateur de faibles dénombrements attendus.
 
 ### Lancer une importation de données DHIS2 depuis le gestionnaire d'indicateurs
 

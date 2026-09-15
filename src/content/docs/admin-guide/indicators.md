@@ -14,12 +14,12 @@ The HMIS indicator dictionary is a single flat list. Every indicator has a type 
 ### The indicator list
 <!-- help#ind-list -->
 
-The list shows every indicator with its id, label, type, and definition. The **Type** column has four values: **DHIS2 element** is a count fetched from DHIS2. **Uploaded** is a count filled by CSV import. **Sum** is the total of other counts. **Calculated** is a formula. The **Defined by** column shows the DHIS2 id of a DHIS2 element indicator, the members of a Sum, or the formula of a Calculated indicator.
+The list shows every indicator with its id, label, type, and definition. The **Type** column displays a badge for each indicator type: **DHIS2 element** is a count fetched from DHIS2. **Uploaded** is a count filled by CSV import. **Sum** is the total of other counts. **Calculated** is a formula. The **Defined by** column shows the DHIS2 id of a DHIS2 element indicator, the members of a Sum, or the formula of a Calculated indicator. Long indicator IDs and labels wrap at underscores so they remain readable without horizontal scrolling. The indicator count is shown in the list heading.
 
 ### Adding indicators from DHIS2
 <!-- help#ind-dhis2-import -->
 
-Click **Add indicators from DHIS2** in the indicator manager to add data elements from your DHIS2 server to the list as DHIS2 elements. FASTR uses the instance's stored DHIS2 connection, which is set in the DHIS2 connection card on the Data page. If no stored connection exists, set one up there first.
+Click **Add from DHIS2** in the indicator manager toolbar to add data elements from your DHIS2 server to the list as DHIS2 elements. FASTR uses the instance's stored DHIS2 connection, which is set in the DHIS2 connection card on the Data page. If no stored connection exists, set one up there first.
 
 The form lets you search for data elements and DHIS2 indicators by name, code, or ID. Data elements are checked for eligibility: they must have SUM aggregation, a count-type value type, and be collected monthly. Ineligible items are shown with the reason they cannot be added. DHIS2 indicators (formulas) are decomposed into their operands, which become DHIS2 element indicators, and a Calculated indicator whose formula is over those operands.
 
@@ -27,7 +27,7 @@ After selecting items, a naming step lets you confirm or edit the indicator ID a
 
 ### Creating and editing indicators
 
-Click **Create indicator** to open the indicator editor. The editor handles all four types in a single form. Choose the type first — the definition section changes to match. You can also open the editor from an existing row to update it.
+Click **Create new** to open the indicator editor. The editor handles all four types in a single form. Choose the type first — the definition section changes to match. You can also open the editor from an existing row to update it.
 
 Every indicator has an **Indicator ID** (used in formulas and imports), a **Label** (shown in visualizations), and an **Include in analysis** checkbox. When include in analysis is on, every results package analyses this indicator. When it is off, the indicator is dictionary-only: its data is still imported and stored, and it can still be a member of a sum or used in a formula.
 
@@ -75,7 +75,7 @@ Indicators can be sorted using the **Sort** button. The saved order is what ever
 
 ### Downloading the indicator dictionary
 
-Click **Download CSV** to export the full indicator dictionary. The CSV includes all fields: ID, label, type, DHIS2 id (for DHIS2 element indicators), members (for sums), formula (for calculated indicators), include-in-analysis flag, format, thresholds, direction, target, and expected-low-counts flag.
+Click **Download** to export the full indicator dictionary. The CSV includes all fields: ID, label, type, DHIS2 id (for DHIS2 element indicators), members (for sums), formula (for calculated indicators), include-in-analysis flag, format, thresholds, direction, target, and expected-low-counts flag.
 
 ### Importing a DHIS2 data import from the indicator manager
 
