@@ -87,17 +87,15 @@ The Columns step showing the four required fields with dropdown selectors.
 ## DHIS2 import workflow
 <!-- help#hmis-dhis2 -->
 
-A DHIS2 import fetches the values facilities reported, one DHIS2 element and month at a time, directly from your DHIS2 server. It has five steps.
+A DHIS2 import fetches the values facilities reported, one DHIS2 element and month at a time, directly from your DHIS2 server. It uses the instance's stored DHIS2 connection, which is set in the **DHIS2 connection** card on the Data page. It has four steps. If no connection is stored, the wizard says so and shows none of them.
 
-1. **Credentials.** FASTR uses the instance's stored DHIS2 connection. You can enter a connection for this run only; a scheduled import needs the stored one.
+1. **Indicators.** Select the indicators to import from your indicator list. The list offers DHIS2 elements, sums and derived indicators; uploaded indicators are not offered, because a DHIS2 import cannot fetch them. A DHIS2 element is fetched by its DHIS2 id. Selecting a sum fetches the DHIS2 elements among its members, and selecting a derived indicator fetches the DHIS2 elements its formula includes; an uploaded member or a population figure is not fetched. You cannot continue if the selection would fetch nothing, or if a selected derived indicator's formula cannot be read, for example because it names an indicator that does not exist. The reason is shown under the list.
 
-2. **Indicators.** Select the indicators to import from your indicator list. The list offers DHIS2 elements, sums and derived indicators; uploaded indicators are not offered, because a DHIS2 import cannot fetch them. A DHIS2 element is fetched by its DHIS2 id. Selecting a sum fetches the DHIS2 elements among its members, and selecting a derived indicator fetches the DHIS2 elements its formula includes; an uploaded member or a population figure is not fetched. You cannot continue if the selection would fetch nothing, or if a selected derived indicator's formula cannot be read, for example because it names an indicator that does not exist. The reason is shown under the list.
+2. **Time.** Run the import **Now**, **Once, at a set time**, or **Recurring** (daily, weekly or monthly, in the timezone you choose). Pick a low-traffic window for the DHIS2 server.
 
-3. **Time.** Run the import **Now**, **Once, at a set time**, or **Recurring** (daily, weekly or monthly, in the timezone you choose). Pick a low-traffic window for the DHIS2 server.
+3. **Config.** Choose the months: **Last N months**, recalculated each time a recurring import runs, or a fixed period range.
 
-4. **Config.** Choose the months: **Last N months**, recalculated each time a recurring import runs, or a fixed period range.
-
-5. **Review & launch.** The review lists the connection, the number of indicators and DHIS2 elements, the months, and the number of (DHIS2 element, month) pairs to fetch. Below that it lists the DHIS2 elements the import fetches, each with its indicator id, label and DHIS2 id, followed by the parts of the selection that are not fetched and why: uploaded indicators, which a DHIS2 import cannot fetch, and population figures used in a formula, which come from the Population page rather than from DHIS2. Click **Start import**.
+4. **Review & launch.** The review lists the connection, the number of indicators and DHIS2 elements, the months, and the number of (DHIS2 element, month) pairs to fetch. Below that it lists the DHIS2 elements the import fetches, each with its indicator id, label and DHIS2 id, followed by the parts of the selection that are not fetched and why: uploaded indicators, which a DHIS2 import cannot fetch, and population figures used in a formula, which come from the Population page rather than from DHIS2. Click **Start import**.
 
 The same wizard opens from the indicator list: select indicators there and choose **Import HMIS data from DHIS2**. The selected indicators are already chosen in the Indicators step; an uploaded indicator among them is left out, and the step says so. After the launch a notice in the list says where to follow the run.
 

@@ -59,9 +59,9 @@ Après une intégration réussie, si des limites de cartes GeoJSON précédemmen
 
 ### Import DHIS2
 
-L'import DHIS2 est disponible pour les établissements SNIS. Connectez-vous avec vos identifiants DHIS2, puis sélectionnez les niveaux d'unités organisationnelles à importer. FASTR fait correspondre les niveaux DHIS2 aux niveaux de zones administratives. Les établissements Enquêtes FOSA ne peuvent être importés qu'à partir d'un fichier CSV.
+L'import DHIS2 est disponible pour les établissements SNIS. FASTR utilise la connexion DHIS2 enregistrée de l'instance, définie dans la carte **Connexion DHIS2** de la page Données. Confirmez la connexion, puis sélectionnez les niveaux d'unités organisationnelles à importer. FASTR fait correspondre les niveaux DHIS2 aux niveaux de zones administratives. Les établissements Enquêtes FOSA ne peuvent être importés qu'à partir d'un fichier CSV.
 
-Notez que les identifiants DHIS2 sont stockés de manière sécurisée sur le serveur — une fois enregistré, le mot de passe n'est pas renvoyé au navigateur. Si vous revenez à une importation en cours, vous verrez que les identifiants ont été fournis précédemment, mais vous devrez saisir à nouveau le mot de passe pour les modifier.
+Le mot de passe DHIS2 est chiffré et stocké sur le serveur, et n'est jamais renvoyé au navigateur.
 
 ## Gérer les établissements existants
 
@@ -102,7 +102,7 @@ Les entités non mappées dans l'assistant de chargement sont conservées dans l
 
 ### Charger une carte GeoJSON depuis DHIS2
 
-Si vos limites géographiques sont stockées dans DHIS2, l'assistant de chargement GeoJSON accepte également une connexion DHIS2. Après avoir sélectionné votre serveur DHIS2 et le niveau souhaité, FASTR récupère des métadonnées légères d'unités organisationnelles (noms et codes) pour vous permettre de construire la correspondance sans télécharger l'ensemble des polygones. La géométrie complète n'est téléchargée que lorsque vous confirmez et enregistrez, ce qui peut prendre plusieurs minutes pour les pays de grande taille.
+Si vos limites géographiques sont stockées dans DHIS2, l'assistant de chargement GeoJSON peut aussi les récupérer au moyen de la connexion DHIS2 enregistrée de l'instance. Après avoir sélectionné le niveau DHIS2 souhaité, FASTR récupère des métadonnées légères d'unités organisationnelles (noms et codes) pour vous permettre de construire la correspondance sans télécharger l'ensemble des polygones. La géométrie complète n'est téléchargée que lorsque vous confirmez et enregistrez, ce qui peut prendre plusieurs minutes pour les pays de grande taille.
 
 Après l'enregistrement, FASTR indique combien de limites ont été stockées, combien ont été associées à une zone administrative et combien sont restées sans correspondance (affichées comme un comptage d'avertissement). Les limites sans correspondance peuvent être mappées ultérieurement via **Modifier les associations**.
 

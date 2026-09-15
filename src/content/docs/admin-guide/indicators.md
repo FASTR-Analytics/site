@@ -48,7 +48,7 @@ The indicator list showing the Type, Defined by, Include in analysis and Status 
 ### Adding indicators from DHIS2
 <!-- help#ind-dhis2-import -->
 
-Click **Add indicators from DHIS2** to add data elements from your DHIS2 server to the list as DHIS2 elements. FASTR uses the instance's stored connection; **Change connection** lets you use another one. Search by name, code or id. The results list data elements and DHIS2 indicators, and each row says whether it can be added. A data element can be added only when DHIS2 describes it as an additive monthly count: aggregation type sum, a numeric value type, and at least one monthly data set. Anything else is refused, with the reason shown.
+Click **Add indicators from DHIS2** to add data elements from your DHIS2 server to the list as DHIS2 elements. FASTR uses the instance's stored DHIS2 connection, which is set in the **DHIS2 connection** card on the Data page. Search by name, code or id. The results list data elements and DHIS2 indicators, and each row says whether it can be added. A data element can be added only when DHIS2 describes it as an additive monthly count: aggregation type sum, a numeric value type, and at least one monthly data set. Anything else is refused, with the reason shown.
 
 Add the elements you want, then click **Next: name indicators**. The naming step shows each element with a proposed id based on its DHIS2 name, which you can edit before saving; you can also rename the indicator later. An id that already belongs to an indicator is refused. A data element whose DHIS2 id is already in the list is shown as already added and creates nothing.
 
