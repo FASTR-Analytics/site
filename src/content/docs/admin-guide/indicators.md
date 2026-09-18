@@ -14,7 +14,7 @@ The HMIS indicator dictionary is a single flat list. Every indicator has a type 
 ### The indicator list
 <!-- help#ind-list -->
 
-The list shows every indicator with its id, label, type, and definition. The **Type** column displays a badge for each indicator type: **DHIS2 element** is a count fetched from DHIS2. **Uploaded** is a count filled by CSV import. **Sum** is the total of other counts. **Calculated** is a formula. The **Defined by** column shows the DHIS2 id of a DHIS2 element indicator, the members of a Sum, or the formula of a Calculated indicator. Long indicator IDs and labels wrap at underscores so they remain readable without horizontal scrolling. The indicator count is shown in the list heading.
+The list shows every indicator with its id, label, type, and definition. The **Type** column displays a badge for each indicator type: **DHIS2 element** is a count fetched from DHIS2. **Uploaded** is a count filled by CSV import. **Sum** is the total of other counts. **Calculated** is a formula. The **Defined by** column shows the DHIS2 id of a DHIS2 element indicator — and, below it in muted text, the DHIS2 name that was read from live metadata when the indicator was created — the members of a Sum, or the formula of a Calculated indicator. Long indicator IDs and labels wrap at underscores so they remain readable without horizontal scrolling. The indicator count is shown in the list heading.
 
 ### Adding indicators from DHIS2
 <!-- help#ind-dhis2-import -->
@@ -25,6 +25,8 @@ The form lets you search for data elements and DHIS2 indicators by name, code, o
 
 After selecting items, a naming step lets you confirm or edit the indicator ID and label for each new indicator before saving. Proposed IDs are generated from the DHIS2 name and are editable. Items whose DHIS2 id is already carried by an existing indicator are shown as already imported and create nothing new.
 
+When an indicator is created through the DHIS2 picker, FASTR reads the element or operand name from live DHIS2 metadata and stores it as the **DHIS2 name**. This stored name is shown in the indicator list and in the editor alongside the DHIS2 id, so you can identify the element without looking it up in DHIS2. It is never edited after creation; if you change the DHIS2 id, the stored name is cleared.
+
 ### Creating and editing indicators
 
 Click **Create new** to open the indicator editor. The editor handles all four types in a single form. Choose the type first — the definition section changes to match. You can also open the editor from an existing row to update it.
@@ -32,6 +34,8 @@ Click **Create new** to open the indicator editor. The editor handles all four t
 Every indicator has an **Indicator ID** (used in formulas and imports), a **Label** (shown in visualizations), and an **Include in analysis** checkbox. When include in analysis is on, every results package analyses this indicator. When it is off, the indicator is dictionary-only: its data is still imported and stored, and it can still be a member of a sum or used in a formula.
 
 Indicator IDs can be renamed. Renaming rewrites every formula and import schedule that names the indicator; its data stays where it is, and results packages already generated keep the old ID.
+
+For a DHIS2 element indicator, the editor shows the stored **DHIS2 name** below the DHIS2 id field when one is available. This name is read-only and reflects what DHIS2 called the element when the picker created the indicator.
 
 ### Special indicators
 
@@ -75,11 +79,15 @@ Indicators can be sorted using the **Sort** button. The saved order is what ever
 
 ### Downloading the indicator dictionary
 
-Click **Download** to export the full indicator dictionary. The CSV includes all fields: ID, label, type, DHIS2 id (for DHIS2 element indicators), members (for sums), formula (for calculated indicators), include-in-analysis flag, format, thresholds, direction, target, and expected-low-counts flag.
+Click **Download** to export the full indicator dictionary. The CSV includes all fields: ID, label, type, DHIS2 id (for DHIS2 element indicators), DHIS2 name (the element or operand name read from DHIS2 when the indicator was created, blank for other types or when not available), members (for sums), formula (for calculated indicators), include-in-analysis flag, format, thresholds, direction, target, and expected-low-counts flag.
 
 ### Importing a DHIS2 data import from the indicator manager
 
 With one or more indicators selected in the table, the **HMIS data import** bulk action opens the DHIS2 import wizard pre-configured with those indicators. A notice in the manager confirms that the import was started or scheduled, with a link to follow it under HMIS data, Imports.
+
+### Searching indicators
+
+The search in the indicator manager matches every typed word against each indicator's id, label, DHIS2 name, type, and definition. Searching by the DHIS2 name of an element is therefore supported without knowing the element's UID.
 
 ### Reserved words
 
