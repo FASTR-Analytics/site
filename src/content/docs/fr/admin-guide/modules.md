@@ -16,14 +16,16 @@ Les modules sont inclus lors de la génération d'un lot de résultats au niveau
 ## Configurer les paramètres par défaut des modules
 <!-- help#amod-configure -->
 
-Les administrateurs de l'instance peuvent définir des sélections de modules par défaut et des valeurs de paramètres qui préremplissent l'assistant de génération de lots de résultats. Accédez à **Lots de résultats** au niveau de l'instance et cliquez sur **Paramètres par défaut des modules**. Sélectionnez les modules qui sont pré-cochés par défaut et définissez les valeurs de paramètres par défaut pour chacun. Ces valeurs par défaut s'appliquent à chaque nouvelle configuration de lot, mais peuvent être remplacées lors de la génération d'un lot individuel.
+Les administrateurs de l'instance peuvent définir des sélections de modules par défaut et des valeurs de paramètres qui préremplissent l'assistant de génération de lots de résultats. Accédez à **Lots de résultats** au niveau de l'instance et cliquez sur **Paramètres par défaut des modules**. Sélectionnez les modules qui sont pré-cochés par défaut et définissez les valeurs de paramètres par défaut pour chacun.
+
+Les valeurs des paramètres des modules se règlent **uniquement** dans l'éditeur de paramètres par défaut des modules — l'assistant de génération les utilise tels qu'enregistrés et ne propose pas d'étape de modification séparée. Chaque lot de résultats qui inclut un module utilise les valeurs de paramètres enregistrées ici ; configurez-les avant de lancer la génération.
 
 ## Générer un lot de résultats
 <!-- help#amod-install -->
 
-Pour produire des résultats de modules, générez un nouveau lot de résultats depuis la page **Lots de résultats** de l'instance. Cliquez sur **Générer un nouveau lot de résultats** pour ouvrir l'assistant. L'assistant vous guide en trois étapes : sélectionner les familles de données à inclure (HMIS, HFA, données d'équité ICEH), choisir les modules à exécuter et configurer leurs valeurs de paramètres, puis confirmer le libellé et éventuellement associer le lot à des projets spécifiques immédiatement.
+Pour produire des résultats de modules, générez un nouveau lot de résultats depuis la page **Lots de résultats** de l'instance. Cliquez sur **Générer un nouveau lot de résultats** pour ouvrir l'assistant. L'assistant vous guide en trois étapes : sélectionner les familles de données à inclure (HMIS, HFA, données d'équité ICEH), choisir les modules à exécuter, puis confirmer le libellé et éventuellement associer le lot à des projets spécifiques immédiatement.
 
-L'assistant est une fenêtre modale éphémère — rien n'est enregistré sur le serveur avant que vous ne cliquiez sur **Lancer la génération**. L'ensemble de la configuration (sélections de familles de données, choix de modules, valeurs de paramètres, libellé et projets cibles) est soumis en une seule étape. Si vous fermez l'assistant avant de lancer, rien n'est conservé.
+L'assistant est une fenêtre modale éphémère — rien n'est enregistré sur le serveur avant que vous ne cliquiez sur **Lancer la génération**. L'ensemble de la configuration (sélections de familles de données, choix de modules, libellé et projets cibles) est soumis en une seule étape. Si vous fermez l'assistant avant de lancer, rien n'est conservé.
 
 Après avoir cliqué sur **Lancer la génération**, FASTR sélectionne automatiquement l'identifiant du nouveau lot afin que le volet de détail s'ouvre dès que la notification SSE arrive. Vous pouvez quitter la page et suivre la progression sur la page Lots de résultats.
 
@@ -31,11 +33,13 @@ Après avoir cliqué sur **Lancer la génération**, FASTR sélectionne automati
 
 ### Étape 1 — Choisir les données
 
-Sélectionnez les familles de données à partir desquelles ce lot de résultats est généré. Chaque famille incluse est capturée dans son intégralité. Seules les familles pour lesquelles des données ont été téléversées sur l'instance sont disponibles à la sélection.
+Sélectionnez les familles de données à partir desquelles ce lot de résultats est généré. Chaque famille incluse est capturée dans son intégralité. Seules les familles pour lesquelles des données ont été téléversées sur l'instance sont disponibles à la sélection. Si une importation DHIS2 est en cours, HMIS apparaît comme indisponible jusqu'à la fin ou l'annulation de l'importation.
 
 ### Étape 2 — Configurer les modules
 
-Choisissez les modules à exécuter. La sélection d'un module inclut automatiquement tous les modules dont il dépend ; un module ne peut pas être désélectionné tant qu'un autre module sélectionné en dépend. Les modules qui nécessitent des familles de données non choisies à l'étape 1 sont affichés comme indisponibles, avec une note indiquant quelle famille est manquante afin que vous puissiez revenir à l'étape 1 pour l'ajouter. Pour chaque module sélectionné, configurez ses valeurs de paramètres — l'assistant prérenseigne les valeurs par défaut issues des paramètres par défaut des modules.
+Choisissez les modules à exécuter. La sélection d'un module inclut automatiquement tous les modules dont il dépend ; un module ne peut pas être désélectionné tant qu'un autre module sélectionné en dépend. Les modules qui nécessitent des familles de données non choisies à l'étape 1 sont affichés comme indisponibles, avec une note indiquant quelle famille est manquante afin que vous puissiez revenir à l'étape 1 pour l'ajouter.
+
+Les valeurs de paramètres ne sont pas modifiables ici. Si un module sélectionné possède des valeurs de paramètres par défaut invalides enregistrées dans l'éditeur de paramètres par défaut, l'assistant nomme ces modules et bloque la progression jusqu'à ce que vous corrigiez les valeurs dans **Paramètres par défaut des modules**.
 
 Les modules disponibles comprennent :
 
@@ -44,7 +48,7 @@ Les modules disponibles comprennent :
 
 ### Étape 3 — Confirmer et lancer
 
-Saisissez un libellé pour le lot de résultats et vérifiez les sélections de données et de modules. Sélectionnez éventuellement des projets à associer immédiatement au nouveau lot — ces projets basculeront vers le nouveau lot lorsque la génération réussira. Cliquez sur **Lancer la génération** pour démarrer.
+Saisissez un libellé pour le lot de résultats et vérifiez les sélections de données et de modules. Le libellé doit être unique — si le libellé par défaut suggéré est déjà pris, l'assistant l'ajuste automatiquement. Sélectionnez éventuellement des projets à associer immédiatement au nouveau lot — ces projets basculeront vers le nouveau lot lorsque la génération réussira. Cliquez sur **Lancer la génération** pour démarrer.
 
 ## Données de population et M12
 

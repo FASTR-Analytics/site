@@ -27,6 +27,10 @@ After selecting items, a naming step lets you confirm or edit the indicator ID a
 
 When an indicator is created through the DHIS2 picker, FASTR reads the element or operand name from live DHIS2 metadata and stores it as the **DHIS2 name**. This stored name is shown in the editor alongside the DHIS2 id, so you can identify the element without looking it up in DHIS2. It is never edited after creation; if you change the DHIS2 id, the stored name is cleared.
 
+### Refreshing DHIS2 names
+
+If element names change in DHIS2 over time, you can update the stored DHIS2 names without changing any labels, ids, or data. Click the overflow menu in the indicator manager toolbar and select **Refresh DHIS2 names**. FASTR reads the current name of every DHIS2 element indicator from DHIS2 by its DHIS2 id and stores it as the indicator's DHIS2 name. Elements DHIS2 no longer has keep their stored name unchanged. A summary shows how many names were updated, how many were already current, and which DHIS2 ids were not found.
+
 ### Creating and editing indicators
 
 Click **Create new** to open the indicator editor. The editor handles all four types in a single form. Choose the type first — the definition section changes to match. You can also open the editor from an existing row to update it.
@@ -79,7 +83,7 @@ Indicators can be sorted using the **Sort** button. The saved order is what ever
 
 ### Downloading the indicator dictionary
 
-Click **Download** to export the full indicator dictionary. The CSV includes all fields: ID, label, type, DHIS2 id (for DHIS2 element indicators), DHIS2 name (the element or operand name read from DHIS2 when the indicator was created, blank for other types or when not available), members (for sums), formula (for calculated indicators), include-in-analysis flag, format, thresholds, direction, target, and expected-low-counts flag.
+Click the overflow menu in the indicator manager toolbar and select **Download** to export the full indicator dictionary. The CSV includes all fields: ID, label, type, DHIS2 id (for DHIS2 element indicators), DHIS2 name (the element or operand name read from DHIS2 when the indicator was created, blank for other types or when not available), members (for sums), formula (for calculated indicators), include-in-analysis flag, format, thresholds, direction, target, and expected-low-counts flag.
 
 ### Importing a DHIS2 data import from the indicator manager
 
@@ -99,13 +103,11 @@ Health Facility Assessment data works differently from HMIS. HFA surveys have cu
 
 ### Defining HFA indicators
 
-Each HFA indicator has a variable name, category, sub-category, service categories, definition, data type (binary or numeric), and aggregation method (sum or average). Keep variable names short and consistent, like `has_essential_medicines` or `staff_trained_count`.
+Each HFA indicator has an indicator ID, category, sub-category, service categories, a short label, a definition, data type (binary or numeric), and aggregation method (sum or average). Keep indicator IDs short and consistent, like `has_essential_medicines` or `staff_trained_count`.
 
-Variable names must start with a letter and contain only letters, digits, and underscores, with a maximum of 64 characters. Once an indicator is created, its variable name cannot be changed — other indicators may reference it in their R code, and renaming would break those references. Choose names carefully before saving.
+Indicator IDs must start with a letter and contain only letters, digits, and underscores, with a maximum of 64 characters. The app assigns each indicator's ID automatically when you create it; the assigned ID is shown in the manager and code editor but cannot be changed after creation — other indicators may reference it in their R code, and renaming would break those references.
 
-Variable names must also not be reserved words. Reserved names include R functions and operators used in indicator code, as well as columns the analysis script generates (such as `weight`, `time_point`, and facility-related columns). The editor shows an error if you attempt to create an indicator with a reserved name.
-
-Variable names must also not duplicate any survey variable name already present in your HFA dataset. Using a survey variable name as an indicator variable name would shadow the dataset column inside other indicators' R code, producing incorrect results.
+Indicator IDs must also not be reserved words. Reserved names include R functions and operators used in indicator code, as well as columns the analysis script generates (such as `weight`, `time_point`, and facility-related columns).
 
 The **service categories** field is optional and provides an additional cross-cutting classification that is independent of the category/sub-category hierarchy. An indicator can belong to multiple service categories at once. Service categories are managed on their own tab in the HFA indicator manager and can be assigned to any indicator regardless of its category. When filtering visualizations or project data by service category, a match is made if the indicator belongs to any of the selected service categories — it does not need to belong to all of them.
 
@@ -113,16 +115,18 @@ The **service categories** field is optional and provides an additional cross-cu
 
 ### Searching indicators
 
-The HFA indicator manager includes a search field in the indicators panel header. Type any text to filter the indicator list by variable name, label, definition, category, sub-category, or service category. The count in the panel header updates to show how many indicators match your search out of the total. When no indicators match, the table shows "No indicators match your search."
+The HFA indicator manager includes a search field in the indicators panel header. Type any text to filter the indicator list by indicator ID, label, definition, category, sub-category, or service category. The count in the panel header updates to show how many indicators match your search out of the total. When no indicators match, the table shows "No indicators match your search."
 
 ### R code for extraction
 <!-- help#ind-r-code -->
 
 Each HFA indicator requires R code specifying how to extract its value from raw survey data. The code runs for each facility and should return TRUE/FALSE for binary indicators or a number for numeric ones.
 
-The code editor shows which variables are available in your dataset at each time point. If survey structure changed between assessments, you can write different code for different time points. FASTR validates syntax and flags unknown variables as errors, and warns about potential issues like lone `=` operators that may be unintended comparisons, or use of `&&` and `||` operators that fail when the code runs across all facilities at once (use `&` and `|` instead). It also checks whether your code's result type matches the indicator's declared type — for example, a binary indicator whose code performs no comparison will show a type warning.
+The code editor shows which survey variables are available in your dataset at each time point, identified by their variable ID. If survey structure changed between assessments, you can write different code for different time points. FASTR validates syntax and flags unknown variables as errors, and warns about potential issues like lone `=` operators that may be unintended comparisons, or use of `&&` and `||` operators that fail when the code runs across all facilities at once (use `&` and `|` instead). It also checks whether your code's result type matches the indicator's declared type — for example, a binary indicator whose code performs no comparison will show a type warning.
 
 Warnings (shown in amber) are advisory and do not block saving. Errors (shown in red) — including syntax errors and references to variables not found in the dataset — do block the indicator from being marked as ready.
+
+The code editor's right-hand panel lists both survey variables and other indicators, so you can click any entry to insert its ID into the code at the cursor position. Use the search box to filter both lists at once.
 
 ![HFA Code](/images/hfa-code-en.png)
 
@@ -146,15 +150,15 @@ The indicator list shows a summary of code status: **ready** (no errors or warni
 
 ### Importing default indicators
 
-The HFA indicator manager includes an **Import default indicators** button alongside the **Import Excel** button. Clicking it fetches the standard FASTR HFA indicator set directly from the FASTR resource hub on GitHub — no file selection required. The form shows how many indicators and categories were retrieved before you confirm the import. You choose the same import modes as with a file upload: **Add to existing** adds only new variable names, while **Replace all existing** deletes all current indicators before importing.
+The HFA indicator manager includes an **Import default indicators** button alongside the **Import Excel** button. Clicking it fetches the standard FASTR HFA indicator set directly from the FASTR resource hub on GitHub — no file selection required. The form shows how many indicators and categories were retrieved before you confirm the import. You choose the same import modes as with a file upload: **Add to existing** adds only new indicator IDs, while **Replace all existing** deletes all current indicators before importing.
 
 ### Deleting indicators
 
-Before deleting an indicator or a set of indicators, FASTR checks whether any other indicators reference the deleted variable names in their R code or variant code. If references are found, the confirmation dialog lists the affected indicators and warns that their code will fail validation after deletion.
+Before deleting an indicator or a set of indicators, FASTR checks whether any other indicators reference the deleted indicator IDs in their R code or variant code. If references are found, the confirmation dialog lists the affected indicators and warns that their code will fail validation after deletion.
 
 ### AI assistant for indicators
 
-Global administrators can open an AI assistant panel directly in the HFA Indicator Manager by clicking the **AI** button. The button appears in the top bar of the manager and also in the header of the code editor and the Excel workbook upload form when the panel is not already open. The assistant can clean up labels, organise indicators into categories, and create new indicators from the underlying survey dataset. It reads and writes indicators through a set of dedicated tools — loading current state before proposing changes, validating R code against the data dictionary, and showing a confirmation dialog with a diff before any edits are applied. When applying bulk updates, all changes are sent to the server in a single transactional operation: either all indicators are updated or none are, so a partial failure cannot leave the dataset in an inconsistent state. The assistant operates on instance-level HFA indicators and is fully isolated from the project AI assistant.
+Global administrators can open an AI assistant panel directly in the HFA Indicator Manager by clicking the **AI** button. The button appears in the top bar of the manager and also in the header of the code editor and the Excel workbook upload form when the panel is not already open. The assistant can clean up labels, organise indicators into categories, and create new indicators from the underlying survey dataset. It reads and writes indicators through a set of dedicated tools — loading current state before proposing changes, validating R code against the data dictionary, and showing a confirmation dialog with a diff before any edits are applied. When the assistant creates new indicators, the app assigns each indicator's ID automatically and returns it in the result. When applying bulk updates, all changes are sent to the server in a single transactional operation: either all indicators are updated or none are, so a partial failure cannot leave the dataset in an inconsistent state. The assistant operates on instance-level HFA indicators and is fully isolated from the project AI assistant.
 
 ### Managing service categories
 
@@ -177,13 +181,13 @@ HFA indicators support batch creation via Excel workbook. Upload an Excel workbo
 - **Service categories**: id, label (optional)
 - **Variant groups**: id, label (optional)
 - **Variant items**: id, groupId, label (optional)
-- **Indicators**: varName, categoryId, subCategoryId, serviceCategoryId (pipe-separated for multiple), shortLabel, definition, type, aggregation, variantGroupId (optional), r_code__&lt;time point&gt;, r_filter_code__&lt;time point&gt;, r_variant_code__&lt;itemId&gt;__&lt;time point&gt;, …
+- **Indicators**: indicatorId (leave blank for a new indicator; the app assigns one), categoryId, subCategoryId, serviceCategoryId (pipe-separated for multiple), shortLabel, definition, type, aggregation, variantGroupId (optional), r_code__&lt;time point&gt;, r_filter_code__&lt;time point&gt;, r_variant_code__&lt;itemId&gt;__&lt;time point&gt;, …
 
 If the Service categories, Variant groups, or Variant items sheets are omitted, indicators are imported with no service categories or variant assignments.
 
 Variant code columns use the format `r_variant_code__<itemId>__<timePointLabel>`. Each variant code column must reference an item ID from the Variant items sheet, and the time point label must match a labeled `r_code__` column in the same file. An indicator with variant code must also have a `variantGroupId` that matches the item's group.
 
-When importing, choose between **Add to existing** and **Replace all existing** import modes. In **Add to existing** mode, indicators whose variable names already exist on the platform are skipped — only new variable names are created. After import, a summary lists any skipped indicators. In **Replace all existing** mode, all existing indicators, categories, sub-categories, and service categories are permanently deleted before importing. To confirm a replace-all import, you must type `yes please delete` in the confirmation field before the **Import** button becomes active.
+When importing, choose between **Add to existing** and **Replace all existing** import modes. In **Add to existing** mode, indicators whose IDs already exist on the platform are skipped — only new IDs are created. After import, a summary lists any skipped indicators. In **Replace all existing** mode, all existing indicators, categories, sub-categories, and service categories are permanently deleted before importing. To confirm a replace-all import, you must type `yes please delete` in the confirmation field before the **Import** button becomes active.
 
 FASTR detects the time point columns embedded in the file and presents a mapping step where you confirm which platform time point each column should import into. If the column labels match your platform time points exactly, the mapping is pre-filled automatically. Each platform time point can only receive one workbook column — mapping two columns to the same time point is rejected.
 

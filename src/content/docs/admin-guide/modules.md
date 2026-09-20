@@ -16,14 +16,16 @@ Modules are included when generating a results package at the instance level. A 
 ## Configuring module defaults
 <!-- help#amod-configure -->
 
-Instance administrators can set default module selections and parameter values that pre-fill the results package generation wizard. Navigate to **Results packages** at the instance level and click **Module defaults**. Select which modules are pre-checked by default and set default parameter values for each. These defaults apply to every new package configuration but can be overridden when generating any individual package.
+Instance administrators can set default module selections and parameter values that pre-fill the results package generation wizard. Navigate to **Results packages** at the instance level and click **Module defaults**. Select which modules are pre-checked by default and set default parameter values for each.
+
+Module parameter values are set **only** in the module defaults editor — the generation wizard uses them as stored and does not provide a separate editing step. Every results package that includes a module uses the parameter values recorded here, so configure them before launching generation.
 
 ## Generating a results package
 <!-- help#amod-install -->
 
-To produce module outputs, generate a new results package from the instance **Results packages** page. Click **Generate new results package** to open the wizard. The wizard walks you through three steps: selecting which data families to include (HMIS, HFA, ICEH equity data), choosing which modules to run and configuring their parameter values, and confirming the label and optionally attaching the package to specific projects immediately.
+To produce module outputs, generate a new results package from the instance **Results packages** page. Click **Generate new results package** to open the wizard. The wizard walks you through three steps: selecting which data families to include (HMIS, HFA, ICEH equity data), choosing which modules to run, and confirming the label and optionally attaching the package to specific projects immediately.
 
-The wizard is an ephemeral modal — nothing is saved to the server before you click **Launch generation**. The entire configuration (data family selections, module choices, parameter values, label, and attach targets) is submitted in a single step. If you close the wizard before launching, nothing is stored.
+The wizard is an ephemeral modal — nothing is saved to the server before you click **Launch generation**. The entire configuration (data family selections, module choices, label, and attach targets) is submitted in a single step. If you close the wizard before launching, nothing is stored.
 
 After you click **Launch generation**, FASTR pins the new run's ID so that the detail pane opens for it as soon as the SSE notification arrives. You can leave the page and follow progress on the Results packages surface.
 
@@ -31,11 +33,13 @@ After you click **Launch generation**, FASTR pins the new run's ID so that the d
 
 ### Step 1 — Choose data
 
-Select which data families this results package is generated from. Each included family is captured in full. Only families that have data uploaded to the instance are available for selection.
+Select which data families this results package is generated from. Each included family is captured in full. Only families that have data uploaded to the instance are available for selection. If a DHIS2 import run is currently active, HMIS is shown as unavailable until the import completes or is cancelled.
 
 ### Step 2 — Configure modules
 
-Choose which modules to run. Selecting a module automatically includes all modules it depends on; a module cannot be unchecked while another selected module depends on it. Modules that require data families not chosen in step 1 are shown as unavailable, with a note naming which family is missing so you can go back to step 1 and add it. For each selected module, configure its parameter values — the wizard pre-fills defaults from the module defaults settings.
+Choose which modules to run. Selecting a module automatically includes all modules it depends on; a module cannot be unchecked while another selected module depends on it. Modules that require data families not chosen in step 1 are shown as unavailable, with a note naming which family is missing so you can go back to step 1 and add it.
+
+Parameter values are not editable here. If any selected module has invalid default parameter values stored in the module defaults editor, the wizard names those modules and blocks progression until you fix the values in **Module defaults**.
 
 Available modules include:
 
@@ -44,7 +48,7 @@ Available modules include:
 
 ### Step 3 — Confirm and launch
 
-Enter a label for the results package and review the data and module selections. Optionally, select projects to attach the new package to immediately — these projects will switch to the new package when generation succeeds. Click **Launch generation** to start.
+Enter a label for the results package and review the data and module selections. The label must be unique — if the suggested default label is already taken, the wizard adjusts it automatically. Optionally, select projects to attach the new package to immediately — these projects will switch to the new package when generation succeeds. Click **Launch generation** to start.
 
 ## Population data and M12
 
