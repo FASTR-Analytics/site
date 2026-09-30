@@ -14,9 +14,7 @@ Click **AI** in any project view to open the assistant panel on the right side o
 
 The assistant works differently depending on where you are. When viewing the metrics list, it can search and explain available indicators. When editing a slide deck, it can help draft content or suggest visualizations. When in the visualization editor, it understands which metric you're working with.
 
-:::caution[Screenshot needed]
-AI assistant panel open while editing a visualization, showing context-aware placeholder text.
-:::
+![Opening the Assistant](/images/opening-the-assistant-en.png)
 
 ## Asking questions
 <!-- help#ai-ask -->
@@ -32,9 +30,17 @@ The prompt library contains pre-written prompts for common analysis tasks. Click
 
 When you select a prompt, you can customize it before running. You can also save your own prompts to the library for reuse. Prompts can be saved as **My prompts** (private, visible only to you) or **Country prompts** (shared with all users in your instance). Only administrators can save country-scoped prompts.
 
-:::caution[Screenshot needed]
-Prompt library modal showing categories of pre-built prompts with the search field.
-:::
+![Prompt Library](/images/prompt-library-en.png)
+
+## Attaching documents
+
+You can attach PDF documents to a conversation to give the assistant additional context - for example, a policy brief, a protocol, or a background report. Click the document icon in the chat input area to open the document selector.
+
+The selector shows PDF files available in your project's assets. Select one or more files to attach them, or upload a new PDF directly from your device. Documents you attach are pending until you send your next message. Pending attachments appear as chips in the input area and can be removed before sending by clicking the **×** on each chip.
+
+Once a message is sent with attachments, those documents are shown in the conversation history without a remove option - they have already been sent to the assistant. Pending attachments that have not yet been sent can still be removed.
+
+Each conversation tracks its own set of attachments. When you switch to a different conversation, the pending attachments update to reflect that conversation's state.
 
 ## Working with slides
 
@@ -50,7 +56,7 @@ In the report editor, the assistant can rewrite passages, insert new figures, an
 
 ## Navigating tabs
 
-The assistant can switch the main project tab on your behalf. It can navigate to **Reports**, **Decks**, **Visualizations**, **Metrics**, **Modules**, **Data**, and **Settings**. Tab switching is not available while you are editing a visualization, slide deck, or slide.
+The assistant can switch the main project tab on your behalf. It can navigate to **Reports**, **Decks**, **Visualizations**, **Metrics**, and **Settings**. The **Results package** tab is only accessible to instance administrators and users with data configuration permissions. Tab switching is not available while you are editing a visualization, slide deck, or slide.
 
 ## Conversations and history
 

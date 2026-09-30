@@ -5,39 +5,33 @@ sidebar:
   order: 1
 ---
 
-A project is your workspace for analysis in FASTR. It contains a defined slice of your organization's health data, analytical modules that process that data, and the visualizations and reports you create from the results. Understanding how projects work helps you find what you need and make sense of what you're seeing.
+A project is your workspace for analysis in FASTR. It contains a results package that provides pre-computed analytical outputs, and the visualizations, reports, and slide decks you create from those results. Understanding how projects work helps you find what you need and make sense of what you're seeing.
 
 ## Opening a project
 <!-- help#uproj-open -->
 
-When you sign in to FASTR, you'll see a list of projects you have access to. The list can be sorted by name or by recently updated using the sort control at the top. Click any project name to open it. The project view has a navigation sidebar on the left with tabs for different sections - typically **Slide decks**, **Visualizations**, **Modules**, **Data**, and **Settings**. What you see depends on your permissions; viewers won't see configuration options, for example.
+When you sign in to FASTR, you'll see a list of projects you have access to. The list can be sorted by name or by recently updated using the sort control at the top. Click any project name to open it. The project view has a navigation sidebar on the left with tabs for different sections - typically **Slide decks**, **Visualizations**, **Metrics**, **Results package**, and **Settings**. What you see depends on your permissions; viewers won't see configuration options, for example.
 
-The project name appears at the top of the screen alongside a status indicator. This indicator shows whether analytical modules are up to date or if something is currently processing. A green checkmark means everything is current. A spinning indicator means modules are running. If you see a warning or error symbol, some module needs attention - usually because upstream data changed or a configuration issue occurred.
+The project name appears at the top of the screen. If the project has an Admin Area 2 scope, a badge showing the area name appears next to the project name.
 
-:::caution[Screenshot needed]
-Project view showing the navigation sidebar and project header with status indicator.
-:::
+![Open a Project](/images/open-a-project-en.png)
 
-## Understanding the data window
+## Understanding the results package
 <!-- help#uproj-data-window -->
 
-Every project works with a specific subset of your organization's data. This subset is called the **data window**, and it defines the boundaries of everything you can analyze or visualize within that project.
+Every project is served from a **results package** - a bundle of pre-computed module outputs generated at the instance level. The results package determines which metrics and data are available for visualizations, reports, and slide decks within the project.
 
-The data window typically includes three constraints. The **time period** specifies which months or years of data are available - for example, January 2022 through December 2024. The **geographic scope** determines which admin areas and facilities are included, allowing projects to focus on specific regions or facility types. The **indicators** filter controls which health indicators (like ANC visits or vaccination counts) the project can access.
+To see which package your project uses, navigate to the **Results package** tab. The tab shows the package currently in use and, for editors, a package settings area with a dropdown to select a different package and an option to follow the instance's pinned package automatically.
 
-To see your project's data window, look at the **Data** tab in the navigation. It shows when data was last exported into the project and summarizes the current settings - time range, included admin areas, facility types, and selected indicators.
+Switching to a different results package changes the data behind every visualization, report, and slide deck in the project. FASTR shows a compatibility report before any switch takes effect, listing any visualizations that would not resolve against the new package. You can review the impact and decide whether to proceed.
 
-:::caution[Screenshot needed]
-Data tab showing HMIS data window summary with time period, admin areas, and indicator list.
-:::
+If the project has an Admin Area 2 scope and the selected package has no data for that area, a warning appears. Area-level metrics will show no data, but national-level metrics remain visible.
 
-Why does this matter? When you create visualizations, you can only work with data inside your window. If you filter a chart to March 2021 but your project's time period starts in January 2022, you'll see no data. If a colleague's visualization shows different results than yours, check whether your projects have different data windows - that's often the explanation.
+![Understanding the Data Window](/images/understanding-the-data-window-en.png)
 
 ## Data freshness and updates
 
-Your project's data is a snapshot. When your administrator uploads new data at the instance level, your project doesn't automatically update. Instead, the Data tab shows a warning indicating what changed - new monthly data, structure updates, or indicator mapping changes.
-
-Updating project data is an administrative task. If you see a staleness warning and need current figures, contact your project administrator. When they refresh the data, all modules re-run automatically to incorporate the changes.
+Your project serves from a fixed results package. When your administrator generates a new results package with updated data and attaches it to your project, the visualizations will reflect the new package's outputs. If your project follows the instance's pinned package, it switches automatically whenever an administrator pins a different package. If you see results that seem outdated, check the **Results package** tab to see which package is in use and contact your project administrator if a newer one should be attached.
 
 ## Locked projects
 <!-- help#uproj-locked -->
@@ -45,3 +39,15 @@ Updating project data is an administrative task. If you see a staleness warning 
 Administrators can lock a project to prevent changes. A locked project works normally for viewing - you can browse visualizations, export images, and generate reports. But you can't create new visualizations, modify existing ones, or change any settings.
 
 Locking is useful when you've finalized an analysis and want to preserve it exactly as-is - for example, before sharing results with external stakeholders or archiving for future reference. If you need to make changes to a locked project, contact your administrator to unlock it.
+
+## Collaborating in real time
+
+When multiple people have a project open at the same time, you can see who else is present. Live cursors show where your colleagues are pointing on the Visualizations, Slide decks, Reports, and other tab pages - each person's cursor appears as a colored arrow with their name. The same presence indicators appear as small avatar icons on visualization cards, slide deck cards, and report cards, so you can see at a glance who is editing what before you open it.
+
+Each person appears only once in the presence display, even if they have the project open in multiple tabs at the same time.
+
+If you lose your connection to the collaboration server, a banner appears at the top of the screen letting you know. Your edits continue to save normally; the banner disappears and shows a brief "Live again" confirmation once the connection is restored. If your permissions change while you have a project open - for example, an administrator grants or revokes edit access - the collaboration session reconnects automatically so your new permissions take effect without requiring a page reload.
+
+## Getting help
+
+Click **Help** in the project header to access guided tours, ask for help, send feedback, or open the documentation. Guided tours walk you through specific parts of the platform and can be started at any time from the **Help** menu.

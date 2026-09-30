@@ -14,9 +14,7 @@ Cliquez sur **IA** dans n'importe quelle vue de projet pour ouvrir le panneau de
 
 L'assistant fonctionne différemment selon l'endroit où vous vous trouvez. Lorsque vous consultez la liste des indicateurs, il peut rechercher et expliquer les indicateurs disponibles. Lorsque vous modifiez une présentation, il peut vous aider à rédiger du contenu ou à suggérer des visualisations. Dans l'éditeur de visualisation, il comprend avec quel indicateur vous travaillez.
 
-:::caution[Capture d'écran à ajouter]
-Panneau de l'assistant IA ouvert pendant la modification d'une visualisation, montrant le texte d'invite contextuel.
-:::
+![Opening the Assistant FR](/images/opening-the-assistant-fr.png)
 
 ## Poser des questions
 <!-- help#ai-ask -->
@@ -32,9 +30,17 @@ La bibliothèque d'invites contient des invites pré-rédigées pour les tâches
 
 Lorsque vous sélectionnez une invite, vous pouvez la personnaliser avant de l'exécuter. Vous pouvez également enregistrer vos propres invites dans la bibliothèque pour les réutiliser. Les invites peuvent être enregistrées comme **Mes invites** (privées, visibles uniquement par vous) ou **Invites du pays** (partagées avec tous les utilisateurs de votre instance). Seuls les administrateurs peuvent enregistrer des invites à l'échelle du pays.
 
-:::caution[Capture d'écran à ajouter]
-Fenêtre modale de la bibliothèque d'invites montrant les catégories d'invites prédéfinies avec le champ de recherche.
-:::
+![Prompt Library FR](/images/prompt-library-fr.png)
+
+## Joindre des documents
+
+Vous pouvez joindre des documents PDF à une conversation pour donner à l'assistant un contexte supplémentaire - par exemple, une note de politique, un protocole ou un rapport de référence. Cliquez sur l'icône de document dans la zone de saisie du chat pour ouvrir le sélecteur de documents.
+
+Le sélecteur affiche les fichiers PDF disponibles dans les ressources de votre projet. Sélectionnez un ou plusieurs fichiers à joindre, ou téléversez un nouveau PDF directement depuis votre appareil. Les documents que vous joignez sont en attente jusqu'à l'envoi de votre prochain message. Les pièces jointes en attente apparaissent sous forme de puces dans la zone de saisie et peuvent être supprimées avant l'envoi en cliquant sur le **×** de chaque puce.
+
+Une fois un message envoyé avec des pièces jointes, ces documents apparaissent dans l'historique de la conversation sans option de suppression - ils ont déjà été transmis à l'assistant. Les pièces jointes en attente qui n'ont pas encore été envoyées peuvent encore être supprimées.
+
+Chaque conversation gère son propre ensemble de pièces jointes. Lorsque vous passez à une autre conversation, les pièces jointes en attente se mettent à jour pour refléter l'état de cette conversation.
 
 ## Travailler avec les diapositives
 
@@ -50,7 +56,7 @@ Dans l'éditeur de rapport, l'assistant peut réécrire des passages, insérer d
 
 ## Naviguer entre les onglets
 
-L'assistant peut changer l'onglet principal du projet en votre nom. Il peut naviguer vers **Rapports**, **Présentations**, **Visualisations**, **Métriques**, **Modules**, **Données** et **Paramètres**. La navigation par onglet n'est pas disponible pendant que vous modifiez une visualisation, une présentation ou une diapositive.
+L'assistant peut changer l'onglet principal du projet en votre nom. Il peut naviguer vers **Rapports**, **Présentations**, **Visualisations**, **Métriques** et **Paramètres**. L'onglet **Lot de résultats** n'est accessible qu'aux administrateurs d'instance et aux utilisateurs disposant de permissions de configuration des données. La navigation par onglet n'est pas disponible pendant que vous modifiez une visualisation, une présentation ou une diapositive.
 
 ## Conversations et historique
 

@@ -24,6 +24,8 @@ L'éditeur utilise le markdown : vous écrivez du texte brut et le mettez en for
 
 Votre travail est enregistré automatiquement au fur et à mesure que vous tapez. Un indicateur d'état dans l'en-tête montre où en sont les choses - **Enregistrement** pendant qu'une modification est en cours, **Enregistré** avec l'heure du dernier enregistrement une fois celui-ci terminé, et un état d'erreur clair si un enregistrement échoue, afin que vous sachiez vérifier votre connexion plutôt que de perdre votre travail.
 
+Lorsque la collaboration en direct est active, l'indicateur d'état change : il affiche **En direct** avec un point vert pendant que les modifications sont transmises en continu au serveur, **Hors ligne — reconnexion…** avec un point jaune si la connexion est interrompue, et **Non enregistré — nouvel essai…** avec un point rouge si le point de contrôle côté serveur échoue. En mode En direct, l'enregistrement automatique REST est remplacé par le point de contrôle continu de la session, de sorte que l'indicateur ne passe plus par les états Enregistrement/Enregistré.
+
 ## Modes Édition, Divisé et Aperçu
 
 L'en-tête comporte un bouton bascule **Édition / Divisé / Aperçu**. **Édition** affiche l'éditeur markdown avec les outils de rédaction. **Divisé** affiche l'éditeur et l'aperçu rendu côte à côte. **Aperçu** restitue le rapport tel qu'il se présentera une fois terminé - titres, listes, tableaux et figures dynamiques mis en forme. Passez en mode Aperçu pour relire ou pour montrer le résultat à quelqu'un sans que les commandes d'édition ne gênent ; les figures y restent également interactives.
@@ -51,9 +53,29 @@ Si une figure ou une image ne peut pas être chargée lors de l'export, FASTR la
 
 ![Adding Figures and Images FR](/images/adding-figures-and-images-fr.png)
 
+## Collaborer sur un rapport
+
+Lorsque plusieurs personnes ont le même rapport ouvert, vous pouvez voir où travaillent vos collègues. Des curseurs en direct apparaissent à la fois dans le volet éditeur de code et dans l'aperçu rendu, afin que vous sachiez d'un coup d'œil si quelqu'un d'autre modifie la section que vous vous apprêtez à changer. Une petite icône de présence apparaît également sur la carte du rapport dans la vue en liste. Les collaborateurs qui consultent actuellement le même rapport apparaissent sous forme d'icônes d'avatar dans l'en-tête.
+
+L'éditeur est collaboratif : les sélections de texte des collaborateurs distants sont mises en évidence dans leur couleur, et survoler une sélection en surbrillance affiche le nom de la personne. Lorsque l'assistant IA propose une modification de texte que vous acceptez, la modification est rebasée sur les modifications concurrentes effectuées par vos collègues pendant que la proposition était ouverte - si un bloc ne peut pas être appliqué proprement, l'assistant vous indique quelles lignes ont été ignorées.
+
+Lorsqu'un collaborateur a une figure sélectionnée, une bordure de présence colorée apparaît autour de cette figure dans les volets éditeur et aperçu, avec son nom affiché au-dessus. Si l'éditeur de visualisation de la figure est ouvert, la bordure porte un indicateur de modification afin que les autres sachent que la configuration de la figure est en cours de modification.
+
+## Historique des versions
+
+Cliquez sur **Historique** dans l'en-tête du rapport pour ouvrir le panneau d'historique des versions. Les versions sont enregistrées automatiquement à la fin de chaque session d'édition et regroupées par jour sur la gauche. Sélectionnez une version pour voir un diff de ce que cette session a modifié - le texte ajouté est mis en évidence avec la couleur de l'éditeur, le texte supprimé est affiché barré, et survoler une modification indique qui l'a effectuée.
+
+Depuis l'aperçu de la version, vous pouvez également basculer vers une vue **Aperçu** qui restitue l'intégralité du rapport tel qu'il se présentait à ce moment-là. Utilisez **Restaurer** pour réinitialiser le rapport à cette version (votre contenu actuel est d'abord enregistré comme nouvelle version, rien n'est perdu), ou **Restaurer comme copie** pour créer un tout nouveau rapport à partir de l'instantané tout en laissant le rapport actuel intact.
+
+Si le rapport contient des modifications en direct qui ne peuvent pas être enregistrées au moment où vous demandez une restauration, FASTR vous en informera et vous invitera à réessayer une fois l'enregistrement rétabli.
+
 ## Assistance par IA
 
 Le bouton **IA** ouvre un assistant qui peut vous aider pendant que vous rédigez. Il peut reformuler un passage sélectionné, insérer ou remplacer des figures, et modifier des figures existantes directement sans les reconstruire - par exemple, changer le réplicant affiché par un graphique, ajuster ses filtres ou mettre à jour des légendes. L'assistant propose les modifications de texte dans une fenêtre modale que vous acceptez ou refusez avant toute application ; les modifications de figures sont appliquées immédiatement à l'aperçu en direct et enregistrées. Consultez [Assistant IA](/user-guide/ai-assistant/) pour une vue d'ensemble complète.
+
+## Annuler et rétablir
+
+L'en-tête du rapport comporte des boutons **Annuler** et **Rétablir** qui inversent vos propres modifications du corps du texte sans affecter les modifications de vos collègues. Ces boutons n'apparaissent qu'en modes Édition et Divisé, et uniquement lorsque vous avez la permission de modifier le rapport. Ils opèrent sur le même historique que les raccourcis clavier Ctrl+Z et Ctrl+Maj+Z dans l'éditeur.
 
 ## Exporter
 <!-- help#report-export -->
@@ -69,3 +91,5 @@ Cliquez sur **Télécharger** et choisissez **PDF** ou **Word (.docx)**. Le PDF 
 **L'état indique « Échec de l'enregistrement »** : Un enregistrement n'a pas atteint le serveur, généralement à cause d'un problème de connexion. Restez sur la page, vérifiez votre connexion et continuez à éditer - FASTR réessaie ; ne fermez pas l'onglet avant de voir **Enregistré**.
 
 **Le fichier exporté ne correspond pas à ce que je vois** : L'export restitue la version enregistrée actuelle. Assurez-vous que l'en-tête affiche **Enregistré**, puis téléchargez à nouveau.
+
+**La restauration indique que l'enregistrement doit d'abord se rétablir** : Si le rapport contient des modifications en direct qui échouent à s'enregistrer, la version de sécurité ne peut pas être créée tant que l'enregistrement ne reprend pas. Attendez que l'indicateur **Non enregistré** disparaisse, puis réessayez la restauration.

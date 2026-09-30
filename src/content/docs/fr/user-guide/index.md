@@ -19,9 +19,7 @@ Avant de commencer, assurez-vous de pouvoir vous connecter à l'instance FASTR d
 
 Vous aurez également besoin d'accéder à au moins un projet. Les projets sont des espaces de travail où se rejoignent les données, les modules et les visualisations. Si vous parvenez à vous connecter mais qu'aucun projet n'apparaît sur votre page d'accueil, demandez à votre administrateur de vous ajouter au projet concerné.
 
-:::caution[Capture d'écran à ajouter]
-Page d'accueil affichant la liste des projets avec des projets d'exemple.
-:::
+![User Guide Projects FR ](/images/user-guide-projects-fr.png)
 
 ## Comment fonctionne FASTR
 
@@ -32,6 +30,14 @@ Les **projets** sont des espaces de travail analytiques autonomes. Chaque projet
 Les **modules** sont les moteurs analytiques qui traitent vos données. Ils exécutent des scripts R qui transforment les données sanitaires brutes en résultats pertinents - taux de couverture, scores de qualité, analyses de tendances, et bien plus. Vous n'avez pas besoin d'écrire de code vous-même ; les modules produisent automatiquement des résultats une fois configurés par un administrateur.
 
 Les **visualisations** transforment les résultats des modules en graphiques, cartes et tableaux que vous pouvez explorer, personnaliser et partager. C'est le principal moyen par lequel vous interagirez au quotidien avec les résultats analytiques.
+
+## Annonces de nouveautés
+
+Lorsque FASTR est mis à jour, une icône de cloche apparaît dans la barre de navigation supérieure. Un point jaune sur la cloche indique la présence d'annonces non lues. Cliquez sur la cloche pour parcourir toutes les annonces, ou cliquez sur une publication pour en lire les détails complets. De nouvelles annonces peuvent également s'afficher automatiquement lors de votre connexion après une mise à jour.
+
+## Obtenir de l'aide
+
+Cliquez sur **Aide** dans la barre de navigation supérieure pour ouvrir un menu proposant plusieurs options. **Visites guidées** vous accompagne pas à pas dans les zones clés de la plateforme et peut être relancé à tout moment. **Demander de l'aide** envoie une demande d'assistance à l'équipe FASTR. **Envoyer un commentaire** vous permet de signaler un bug, une suggestion ou de poser une question générale. **Documentation** ouvre ce site de documentation.
 
 ## Dans cette section
 

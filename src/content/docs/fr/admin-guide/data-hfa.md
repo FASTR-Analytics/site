@@ -22,15 +22,39 @@ Chaque importation HFA nécessite deux fichiers :
 ## Déroulement de l'importation
 <!-- help#hfa-import -->
 
-Accédez à la section **Données** et sélectionnez **Données HFA**. Cliquez sur **Démarrer une nouvelle importation** pour lancer un processus en quatre étapes.
+Accédez à la section **Données** et sélectionnez **Données HFA**. La barre latérale propose un bouton **Importations** qui ouvre l'historique des importations et permet de démarrer une nouvelle importation depuis cette surface.
 
-1. **Charger les fichiers.** Sélectionnez ou chargez à la fois votre fichier de données CSV et votre fichier de questionnaire XLSForm.
+L'assistant d'importation collecte toutes les informations nécessaires avant d'envoyer quoi que ce soit au serveur. Abandonner l'assistant à n'importe quelle étape n'a aucun effet — rien n'est enregistré tant que vous ne cliquez pas sur **Démarrer l'importation** à la dernière étape.
 
-2. **Configurer la correspondance.** Indiquez quelle colonne CSV contient les identifiants d'établissement. Sélectionnez ensuite le point temporel auquel ces données appartiennent dans la liste des points temporels définis dans votre instance.
+### Étape 1 — Charger les fichiers
 
-3. **Préparer les données.** Cliquez sur **Démarrer la préparation** pour valider les identifiants d'établissement, faire correspondre les colonnes aux définitions du XLSForm et décomposer les questions « à choix multiples » en variables individuelles. Le résumé de la préparation affiche le total de lignes, les lignes valides, les lignes ignorées pour estimation manquante, et les lignes ignorées parce que leur valeur de désagrégation n'a pas été reconnue. Si des lignes sont ignorées pour une désagrégation non reconnue, des exemples de valeurs sont affichés pour vous aider à identifier l'incohérence.
+Sélectionnez ou chargez votre fichier de données CSV et votre fichier de questionnaire XLSForm. Les deux fichiers doivent être présents avant que l'assistant puisse continuer ; l'assistant analyse les en-têtes du CSV par rapport au XLSForm dès que les deux sont sélectionnés. Si les fichiers ne peuvent pas être analysés ensemble, une erreur s'affiche et vous devez vérifier que le XLSForm correspond au CSV.
 
-4. **Vérifier et intégrer.** Vérifiez les statistiques du résumé et cliquez sur **Intégrer et finaliser** pour terminer. Si des lignes ont été ignorées en raison d'une désagrégation non reconnue, l'écran de fin indique également ce décompte et les exemples de valeurs.
+### Étape 2 — Correspondances
+
+Indiquez quelle colonne CSV contient les identifiants d'établissement et sélectionnez le point temporel auquel ces données appartiennent. Vous pouvez également ajouter des conditions de filtre de lignes facultatives. Chaque condition spécifie une colonne, un opérateur (égal à ou différent de) et une valeur. Les lignes ne satisfaisant pas toutes les conditions sont supprimées avant le traitement des doublons — par exemple, pour ne conserver que les établissements enquêtés, vous pouvez exiger qu'une colonne de consentement soit égale à 1. Les valeurs sont comparées comme du texte exact.
+
+### Étape 3 — Doublons
+
+Si des établissements apparaissent plusieurs fois après le filtrage, cette étape vous permet de choisir la ligne à conserver pour chacun. Un contrôle de réglage rapide permet d'appliquer « première ligne » ou « dernière ligne » à tous les doublons en une fois ; vous pouvez ensuite remplacer des établissements individuels. Les numéros de ligne comptent les lignes de données à partir de 1 dans l'ordre du fichier (en excluant l'en-tête). Si aucun doublon n'existe après le filtrage, cette étape est ignorée automatiquement.
+
+### Étape 4 — Vérifier et lancer
+
+Un résumé affiche le fichier de données, le fichier XLSForm, le nombre de colonnes, le point temporel, la colonne d'identifiant d'établissement, les filtres de lignes et le nombre de doublons. Lisez la notice : l'importation remplace toutes les données existantes pour le point temporel sélectionné. Cliquez sur **Démarrer l'importation** pour lancer.
+
+Une fois lancée, l'importation s'exécute sur le serveur. Un fichier entièrement valide s'intègre automatiquement sans autre étape. Si la préparation écarte des lignes, l'importation se met en pause dans un état **à vérifier** — rien n'est fusionné tant que vous n'avez pas agi.
+
+## Suivre les importations
+
+Cliquez sur **Importations** pour ouvrir l'historique des importations. La section **En cours** affiche toute importation en cours avec une barre de progression en direct et un pourcentage. Le tableau **Historique** liste toutes les exécutions terminées, annulées et en erreur avec leur point temporel, leur nom de fichier, les valeurs importées et leur statut. Cliquez sur une ligne de l'historique pour voir le détail complet de l'exécution, y compris les diagnostics de préparation.
+
+### À vérifier
+
+Lorsque la préparation écarte des lignes d'établissements, l'importation se maintient dans un état **à vérifier**. Une carte en haut de la vue des importations explique ce qui s'est passé et affiche les résultats de la préparation. Vous pouvez choisir **Intégrer malgré tout** — pour fusionner les lignes retenues — ou **Abandonner** pour annuler l'importation sans rien fusionner.
+
+### Annuler une importation en cours
+
+Pendant qu'une importation est en cours, un bouton **Annuler l'importation** s'affiche. L'annulation arrête l'exécution ; rien de ce qui a déjà été fusionné n'est affecté.
 
 ![Chargement des fichiers HFA](/images/hfa-upload-en.png)
 
@@ -47,7 +71,7 @@ Après l'importation, utilisez la page **Points temporels HFA** pour modifier le
 
 ## Détails de la validation
 
-Des lignes peuvent être écartées au cours de la préparation pour plusieurs raisons : identifiants d'établissement manquants, identifiants d'établissement absents de votre registre, établissements en double au sein d'une même importation, ou valeur de désagrégation non reconnue par la plateforme. Le résumé de la préparation présente chaque catégorie séparément. Si vous constatez de nombreuses entrées « Établissement introuvable », vérifiez si votre registre des établissements doit être mis à jour. Si vous constatez des lignes ignorées pour une désagrégation non reconnue, vérifiez que les valeurs de désagrégation de votre CSV correspondent aux valeurs attendues par la plateforme.
+Des lignes peuvent être écartées au cours de la préparation pour plusieurs raisons : identifiants d'établissement manquants, identifiants d'établissement absents de votre registre, établissements en double au sein d'une même importation (gérés par la stratégie choisie à l'étape des doublons), ou lignes exclues par les conditions de filtre définies à l'étape des correspondances. Le résumé de la préparation présente chaque catégorie séparément. Si vous constatez de nombreuses entrées « Établissement introuvable », vérifiez si votre registre des établissements doit être mis à jour.
 
 ## Traitement du XLSForm
 
@@ -55,7 +79,7 @@ FASTR extrait la structure de l'enquête à partir de votre XLSForm afin de four
 
 Pour les questions « select_multiple », FASTR décompose automatiquement chaque choix en une variable binaire distincte - une question comportant cinq options devient cinq indicateurs oui/non.
 
-Le nom de variable `weight` est réservé aux pondérations d'échantillonnage des établissements et ne peut pas être utilisé comme nom de variable d'enquête. Si votre XLSForm contient une variable nommée `weight`, renommez-la avant d'importer.
+Certains noms de variables sont réservés et ne peuvent pas être utilisés comme noms de variables d'enquête. Les noms réservés comprennent les fonctions et opérateurs R utilisés dans le code des indicateurs, ainsi que les colonnes générées par le script d'analyse (comme `weight`, `time_point` et les colonnes relatives aux établissements). Si votre XLSForm contient un nom de variable réservé, renommez-le avant d'importer.
 
 ## Travailler avec les données HFA
 

@@ -5,35 +5,33 @@ sidebar:
   order: 6
 ---
 
-Projects are the primary workspace for analysis in FASTR. Each project brings together a subset of your instance data with a specific set of analytical modules, producing visualizations, reports, and slide decks for a focused purpose. You might create separate projects for different time periods, geographic regions, or program areas.
+Projects are the primary workspace for analysis in FASTR. Each project brings together a results package containing pre-computed analytical outputs with the visualizations, reports, and slide decks you create from those results. You might create separate projects for different time periods, geographic regions, or program areas.
 
 ## Creating a project
 <!-- help#aproj-create -->
 
-Any user with the "Create projects" permission can start a new project from the home screen. Click **Create project**, enter a name that identifies the project's scope, and the system will set up an isolated workspace with its own database.
+Any user with the "Create projects" permission can start a new project from the home screen. Click **Create project**, enter a name that identifies the project's scope, and choose a project scope — either **National** or a specific Admin Area 2. The scope determines how the attached results package is filtered for this project: a scoped project sees the package as if it contained only that area, while metrics with no area breakdown remain national.
 
-New projects start empty - no modules installed, no data windowed. Your next steps will typically be to enable the modules you need and configure the data window.
+New projects start without a results package attached. Your next step is to attach a results package from the **Results package** tab, which is where module outputs and data are made available to the project.
 
 ![Project Name](/images/project-name-en.png)
 
-## Configuring the data window
+## Attaching a results package
 <!-- help#aproj-data-window -->
 
-The data window determines which subset of your instance's data flows into the project. When you import HMIS data at the instance level, all of that data becomes available for windowing into projects - but each project can select a different slice.
+A results package is generated at the instance level and contains pre-computed module outputs. To make data and analytical results available in a project, open the project and navigate to **Results package** in the left sidebar, then attach one of the available packages.
 
-Open the project and navigate to **Data** in the left sidebar. Here you'll configure what data the project can access across several dimensions.
+Editors can select any ready package from the instance using the dropdown in the package settings area. They can also enable **Always use the instance's pinned package** to subscribe the project to whichever package an administrator designates as the instance pin — whenever the pin changes, the project switches automatically. Choosing a different package manually turns this subscription off.
 
-**Time period** defines the months or years to include. A chart displays record counts by month, helping you visualize data availability. Use the period selectors to set your start and end bounds - records outside this range won't appear in module results or visualizations.
+When a project follows the pinned package but is currently on a different one, a warning appears with a **Switch to pinned package** button to resync it immediately.
 
-**Indicators** can be filtered to include only what's relevant for your analysis. If you're focused on maternal health, for example, you might exclude unrelated indicators to keep metrics lists manageable. Toggle "Include all indicators" for the full set, or select specific indicators when you need a narrower focus.
+Switching a project to a different results package changes the data behind every visualization, report, and slide deck in the project. Before a switch takes effect, FASTR shows you a compatibility report listing any visualizations that would not resolve against the new package — they stay in the project and display why they cannot be drawn. Nothing changes until you confirm.
 
-**Administrative areas** let you restrict the project to specific regions or districts. This is useful when running separate analyses for different subnational units, or when certain areas have data quality issues you want to exclude while investigating.
+If the project has an Admin Area 2 scope set and the selected package has no data for that area, a warning appears both in the compatibility report and on the Results package tab after attaching. Area-level metrics will show no data, but national-level metrics remain visible.
 
-**Facility types and ownership** provide additional filtering when your instance includes these facility attributes. You might window to only public facilities, or focus on hospitals while excluding lower-level health posts.
+## Project scope
 
-**HFA service categories** control which HFA indicators are included when HFA data is enabled for the project. When you enable or re-configure the HFA dataset, a settings dialog lets you choose to include all service categories or restrict to a specific selection. Only indicators tagged with a selected service category are imported into the project. Leave the setting on "Include all" if you want every HFA indicator regardless of service category.
-
-![Data Window](/images/hmis-data-window-en.png)
+Each project has a scope — either **National** or a specific Admin Area 2. The scope is set when creating the project and can be changed later by a global administrator from **Settings**. A scoped project filters the attached results package so that area-level metrics show only data for that area; national-level metrics remain visible regardless of scope. The project's scope appears as a badge next to the project name and is shown in **Settings** under **Project scope**.
 
 ## Managing project users and permissions
 
@@ -69,3 +67,7 @@ Open the source project, go to **Settings**, and click **Copy project**. Enter a
 ## Project AI context
 
 FASTR's AI assistant can interpret charts and suggest insights, but its responses are more useful when it understands the project's context. In **Settings**, you can set a **Project context for AI interpretation** - a description of what this project analyzes or the questions it aims to answer. Changes to the AI context take effect immediately across the project and are visible to all users working in it. A few sentences about the project's purpose can significantly improve the quality of AI-assisted analysis.
+
+## Appearance
+
+Each user can switch between light, dark, and system-default appearance from their profile. Open your profile by clicking your avatar in the top bar, then go to the **Appearance** section and choose **Light**, **Dark**, or **System** to follow your operating system's preference. The setting is saved per browser and takes effect immediately — all charts, maps, and tables adapt to the selected theme.

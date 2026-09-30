@@ -5,62 +5,92 @@ sidebar:
   order: 7
 ---
 
-Les modules sont le moteur analytique de FASTR. Chaque module exécute des scripts R qui traitent les données de votre projet - calcul d'indicateurs, détection de valeurs aberrantes, génération d'estimations de couverture ou réalisation d'autres analyses statistiques. Les résultats deviennent des métriques qui alimentent vos visualisations et vos rapports. C'est vous qui décidez quels modules activer en fonction des questions auxquelles vous avez besoin de répondre.
+Les modules sont le moteur analytique de FASTR. Chaque module exécute des scripts R qui traitent les données de votre projet - calcul d'indicateurs, détection de valeurs aberrantes, génération d'estimations de couverture ou réalisation d'autres analyses statistiques. Les résultats deviennent des métriques qui alimentent vos visualisations et vos rapports. Les modules sont configurés au niveau de l'instance via les lots de résultats, qui sont ensuite associés aux projets.
 
 ## Comprendre l'architecture d'un module
 
 Un module comporte deux parties. La **définition de calcul** contient les scripts R qui traitent les données et produisent des résultats - ceux-ci s'exécutent dans des conteneurs Docker isolés. La **définition de présentation** précise quelles métriques le module produit et comment elles peuvent être visualisées.
 
-Lorsque vous installez un module dans un projet, vous créez une instance de module. Cette instance conserve ses paramètres de configuration, la date de sa dernière exécution et l'information indiquant si les définitions ont été mises à jour. Plusieurs projets peuvent installer le même module mais le configurer différemment.
+Les modules sont inclus lors de la génération d'un lot de résultats au niveau de l'instance. Un lot de résultats regroupe les sorties de tous les modules sélectionnés pour un ensemble de données choisi. Les projets servent leurs visualisations à partir d'un lot de résultats associé.
 
-## Installer des modules
+## Configurer les paramètres par défaut des modules
+<!-- help#amod-configure -->
+
+Les administrateurs de l'instance peuvent définir des sélections de modules par défaut et des valeurs de paramètres qui préremplissent l'assistant de génération de lots de résultats. Accédez à **Lots de résultats** au niveau de l'instance et cliquez sur **Paramètres par défaut des modules**. Sélectionnez les modules qui sont pré-cochés par défaut et définissez les valeurs de paramètres par défaut pour chacun.
+
+Les valeurs des paramètres des modules se règlent **uniquement** dans l'éditeur de paramètres par défaut des modules — l'assistant de génération les utilise tels qu'enregistrés et ne propose pas d'étape de modification séparée. Chaque lot de résultats qui inclut un module utilise les valeurs de paramètres enregistrées ici ; configurez-les avant de lancer la génération.
+
+## Générer un lot de résultats
 <!-- help#amod-install -->
 
-Ouvrez **Modules** dans la barre latérale de gauche. La page liste tous les modules disponibles pour votre instance, en indiquant ceux qui sont actuellement activés et ceux qui peuvent être installés. Les modules installés affichent leur état - prêt, en cours d'exécution ou en attente de données.
+Pour produire des résultats de modules, générez un nouveau lot de résultats depuis la page **Lots de résultats** de l'instance. Cliquez sur **Générer un nouveau lot de résultats** pour ouvrir l'assistant. L'assistant vous guide en trois étapes : sélectionner les familles de données à inclure (HMIS, HFA, données d'équité ICEH), choisir les modules à exécuter, puis confirmer le libellé et éventuellement associer le lot à des projets spécifiques immédiatement.
 
-Pour installer un module, repérez-le dans la liste et cliquez sur **Activer**. Certains modules dépendent d'autres - vous devrez peut-être activer un module de base de qualité des données avant de pouvoir activer un module de détection de valeurs aberrantes qui s'appuie sur ses résultats. FASTR vérifie ces dépendances automatiquement et vous invitera à installer d'abord les prérequis.
+L'assistant est une fenêtre modale éphémère — rien n'est enregistré sur le serveur avant que vous ne cliquiez sur **Lancer la génération**. L'ensemble de la configuration (sélections de familles de données, choix de modules, libellé et projets cibles) est soumis en une seule étape. Si vous fermez l'assistant avant de lancer, rien n'est conservé.
 
-Une fois activé, un module entre généralement dans un état « en attente » jusqu'à ce que ses exigences en matière de données soient satisfaites. Lorsque votre projet dispose de données dans sa fenêtre et que les modules prérequis ont été exécutés, le module commence son traitement.
+Après avoir cliqué sur **Lancer la génération**, FASTR sélectionne automatiquement l'identifiant du nouveau lot afin que le volet de détail s'ouvre dès que la notification SSE arrive. Vous pouvez quitter la page et suivre la progression sur la page Lots de résultats.
 
 ![Installer des modules](/images/installing-modules-en.png)
 
-## Configurer les paramètres d'un module
-<!-- help#amod-configure -->
+### Étape 1 — Choisir les données
 
-De nombreux modules acceptent des paramètres qui contrôlent leur comportement. Un module de qualité des données peut vous permettre de définir des seuils pour les valeurs aberrantes. Un module de couverture peut nécessiter des chiffres de population cible.
+Sélectionnez les familles de données à partir desquelles ce lot de résultats est généré. Chaque famille incluse est capturée dans son intégralité. Seules les familles pour lesquelles des données ont été téléversées sur l'instance sont disponibles à la sélection. Si une importation DHIS2 est en cours, HMIS apparaît comme indisponible jusqu'à la fin ou l'annulation de l'importation.
 
-Cliquez sur **Paramètres** pour n'importe quel module installé afin de consulter et de modifier ses paramètres. L'interface varie selon le module - certains comportent des champs numériques, d'autres des menus déroulants ou des cases à cocher. Lorsque vous enregistrez des modifications de paramètres, FASTR marque le module comme devant être relancé et le traite à nouveau automatiquement.
+### Étape 2 — Configurer les modules
 
-![Paramètres d'un module](/images/module-settings-en.png)
+Choisissez les modules à exécuter. La sélection d'un module inclut automatiquement tous les modules dont il dépend ; un module ne peut pas être désélectionné tant qu'un autre module sélectionné en dépend. Les modules qui nécessitent des familles de données non choisies à l'étape 1 sont affichés comme indisponibles, avec une note indiquant quelle famille est manquante afin que vous puissiez revenir à l'étape 1 pour l'ajouter.
+
+Les valeurs de paramètres ne sont pas modifiables ici. Si un module sélectionné possède des valeurs de paramètres par défaut invalides enregistrées dans l'éditeur de paramètres par défaut, l'assistant nomme ces modules et bloque la progression jusqu'à ce que vous corrigiez les valeurs dans **Paramètres par défaut des modules**.
+
+Les modules disponibles comprennent :
+
+- **M11. Détection bayésienne des perturbations (modèle LI)** — détecte les perturbations de service à l'aide d'un modèle bayésien binomial négatif. Produit les séries observée, attendue, borne inférieure et borne supérieure qui alimentent le graphique des perturbations bayésien. Nécessite M2 comme prérequis.
+- **M12. Valeurs des indicateurs** — calcule les valeurs des indicateurs communs dérivés en appliquant la formule de chaque indicateur aux ingrédients additionnés issus de l'extraction HMIS. Nécessite M2 comme prérequis. Lorsque des termes de population sont utilisés dans les formules d'indicateurs, M12 utilise les données de personnes-années issues du magasin de population ; les zones et les mois non couverts par le magasin de population sont exclus pour ces indicateurs.
+
+### Étape 3 — Confirmer et lancer
+
+Saisissez un libellé pour le lot de résultats et vérifiez les sélections de données et de modules. Le libellé doit être unique — si le libellé par défaut suggéré est déjà pris, l'assistant l'ajuste automatiquement. Sélectionnez éventuellement des projets à associer immédiatement au nouveau lot — ces projets basculeront vers le nouveau lot lorsque la génération réussira. Cliquez sur **Lancer la génération** pour démarrer.
+
+## Données de population et M12
+
+Lorsqu'une ou plusieurs formules d'indicateurs font référence à un terme de population (écrit sous la forme `[population:id_type]`), M12 nécessite que des données de population soient importées au niveau de l'instance avant la génération. La génération échoue si une population est référencée mais qu'aucune donnée n'est présente pour une zone de la structure HMIS actuelle au niveau de population configuré.
+
+Le niveau de population doit être défini sur la page Population de l'instance et ne doit pas être plus profond que le niveau de profondeur administrative de la structure HMIS. Si le niveau de population est plus profond que la structure, la génération échoue avec un message clair expliquant l'incompatibilité.
+
+Pour les zones et les mois pour lesquels des données de population existent, M12 calcule l'indicateur. Pour les zones ou les mois non couverts par le magasin de population, M12 exclut ces cellules pour les indicateurs dépendant de la population au lieu de faire échouer l'ensemble de la génération. Le lot de résultats enregistre les types de population actifs et la couverture obtenue.
+
+## Élaguer les lots de résultats
+
+Au fil des générations, les anciens lots s'accumulent. Cliquez sur **Élaguer** sur la page Lots de résultats pour ouvrir la boîte de dialogue d'élagage. FASTR indique quels lots seront supprimés (ceux qui ne sont associés à aucun projet, non épinglés et dont la génération est terminée) et lesquels seront conservés avec la raison. Confirmez pour supprimer tous les lots éligibles les uns après les autres — une liste de progression affiche chaque suppression à mesure qu'elle se termine. Les lots associés à un projet entre le moment où vous confirmez et le tour de ce lot sont ignorés plutôt que d'interrompre l'ensemble de l'opération.
+
+## Épingler un lot de résultats
+
+Les administrateurs peuvent désigner un lot prêt comme **lot épinglé** de l'instance. Les projets pour lesquels l'option **Toujours utiliser le paquet épinglé de l'instance** est activée sont automatiquement réorientés chaque fois que l'épingle change. Pour épingler un lot, ouvrez sa vue de détail sur la page Lots de résultats et cliquez sur **Épingler**. Pour désépingler, cliquez sur **Désépingler** sur le lot actuellement épinglé.
+
+Avant d'épingler, FASTR indique quels projets abonnés seront réorientés. Les projets verrouillés sont automatiquement ignorés et restent sur leur lot actuel.
+
+Le lot épinglé est également le lot que le connecteur MCP de FASTR utilise. Lorsque vous connectez un client IA compatible au point d'accès MCP de votre instance, il lit les métriques et les données à partir du lot actuellement épinglé.
 
 ## Exécution et état des modules
 <!-- help#amod-status -->
 
-Chaque module affiche son état actuel dans la liste des modules :
+Chaque module dans un lot de résultats affiche son état de génération actuel :
 
-- **Prêt** signifie que les résultats sont disponibles. Vous verrez les horodatages des définitions et de la dernière exécution du module.
-- **En cours d'exécution** indique que le module est en train de traiter les données. Des messages de progression montrent quelle étape est en cours.
-- **En attente** signifie que le module ne peut pas encore s'exécuter - le projet manque de données ou un prérequis n'est pas terminé.
-- **Erreur** signale qu'un problème est survenu. Consultez les journaux pour plus de détails.
+- **Prêt** signifie que les résultats sont disponibles. Vous verrez les horodatages et les versions de données et de paramètres qui ont produit la sortie.
+- **En cours d'exécution** indique que le module génère actuellement des résultats. Des messages de progression montrent quelle étape est en cours.
+- **Erreur** signale qu'un problème est survenu lors de la génération.
 
-Lorsque les données en amont changent, les modules en aval deviennent obsolètes et sont retraités automatiquement. Ce suivi des dépendances maintient les résultats cohérents avec les données sous-jacentes.
+Une fois qu'un lot est entièrement généré, son statut s'affiche sur la page du catalogue des lots de résultats.
 
 ![État d'un module](/images/module-status-en.png)
 
-## Mettre à jour les définitions des modules
-
-Les définitions des modules évoluent à mesure que les méthodologies s'améliorent ou que des bogues sont corrigés. FASTR vérifie la présence de mises à jour lorsque vous visitez la page des modules et affiche un badge lorsque des mises à jour sont disponibles.
-
-Cliquez sur **Mettre à jour** pour n'importe quel module afin de récupérer la dernière définition, ou utilisez **Tout mettre à jour** pour actualiser tous les modules installés d'un coup. Après une mise à jour, les modules sont relancés pour produire des résultats selon la nouvelle méthodologie. La carte du module affiche les références de commit (courtes empreintes SHA) afin que vous puissiez savoir précisément quelle version a produit vos résultats.
-
 ## Consulter les journaux et les diagnostics
 
-Lorsqu'un module produit une erreur ou des résultats inattendus, consultez d'abord les journaux. Cliquez sur le menu à trois points de n'importe quel module et sélectionnez **Journaux** pour voir la sortie de la console R, les avertissements, les erreurs et les informations de minutage.
+Lorsqu'un module produit une erreur ou des résultats inattendus, consultez les journaux depuis la vue de détail du lot de résultats. Accédez aux **Journaux** pour voir la sortie de la console R, les avertissements, les erreurs et les informations de minutage.
 
 Pour les problèmes complexes, affichez le **Script** pour voir le code R exact qui a été exécuté. L'option **Fichiers** montre les fichiers de données produits par le module, utiles pour inspecter manuellement les résultats intermédiaires.
 
-## Désactiver des modules
+L'accès au script et aux fichiers requiert la permission **Consulter les données** ; l'accès aux journaux requiert la permission **Consulter les journaux**. Ces permissions s'appliquent que vous consultiez depuis le catalogue de l'instance ou depuis l'onglet Lot de résultats d'un projet.
 
-Si vous n'avez plus besoin des résultats d'un module, ouvrez le menu du module et sélectionnez **Désactiver**. Les résultats du module ainsi que les visualisations qui utilisaient ses métriques seront supprimés.
+## Supprimer des lots de résultats
 
-La désactivation affecte les dépendances en aval - les modules qui en dépendaient passeront à l'état en attente. Vous devez désactiver les modules dépendants avant de désactiver leurs prérequis. FASTR applique cette règle côté serveur : toute tentative de désactivation d'un module dont d'autres modules installés dépendent sera rejetée avec un message listant les modules à désactiver en premier. La désactivation est réversible ; vous pouvez réactiver un module plus tard et le relancer pour régénérer les résultats.
+Pour supprimer un lot de résultats, sélectionnez-le dans le catalogue des lots de résultats de l'instance et cliquez sur **Supprimer**. FASTR refuse la suppression tant qu'un projet utilise le lot, tant que celui-ci est épinglé, ou tant que la génération est encore en cours. Le volet de détail explique la raison lorsque la suppression est bloquée. La suppression retire définitivement les fichiers et les résultats en cache du lot et ne peut pas être annulée.

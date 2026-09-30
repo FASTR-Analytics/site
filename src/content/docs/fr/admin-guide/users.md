@@ -26,6 +26,14 @@ Les nouveaux utilisateurs sont créés sans permission particulière - ils peuve
 
 Pour intégrer un grand nombre d'utilisateurs, utilisez **Importer par lot depuis un CSV** afin de charger un fichier contenant les adresses e-mail et le statut d'administrateur. Le fichier CSV doit comporter deux colonnes : `email` et `is_global_admin`. C'est plus rapide que d'ajouter les utilisateurs un par un lorsque vous configurez une nouvelle instance ou intégrez une équipe nombreuse.
 
+## Modifier l'adresse e-mail d'un utilisateur
+
+Les utilisateurs peuvent modifier leur propre adresse e-mail depuis leur profil. Ouvrez votre profil en cliquant sur votre nom ou votre avatar dans la barre de navigation supérieure, puis trouvez la carte **Adresse e-mail**. Cliquez sur **Changer d'e-mail** pour ouvrir la boîte de dialogue de changement d'e-mail.
+
+Le changement s'applique à toutes les instances FASTR auxquelles l'utilisateur a accès, en conservant toutes les permissions et l'historique. Le processus comporte trois étapes : saisir la nouvelle adresse et confirmer la liste des instances concernées ; vérifier le code envoyé à la nouvelle adresse ; puis examiner le résultat par instance. Si une instance n'a pas pu être mise à jour, l'ancienne adresse reste sur le compte et une option **Réessayer** est disponible. Une fois que toutes les instances signalent un succès, la page se recharge automatiquement.
+
+Les administrateurs disposant de la permission **Configurer les utilisateurs** peuvent également renommer l'adresse e-mail d'un autre utilisateur directement depuis l'onglet **Utilisateurs** à l'aide de l'action **Renommer l'e-mail**. Cela effectue le même renommage sur l'ensemble du réseau sans que l'utilisateur ait besoin de l'initier lui-même — utile comme solution de secours lorsqu'un utilisateur ne peut pas se connecter avec son ancienne adresse.
+
 ## Permissions d'instance
 <!-- help#users-instance-permissions -->
 
@@ -74,6 +82,12 @@ Ces préréglages couvrent la plupart des scénarios courants. Utilisez des comb
 Lorsque vous créez un nouveau projet, les utilisateurs existants reçoivent des permissions par défaut en fonction des paramètres de leur profil. Cliquez sur le bouton « Nouveaux projets (par défaut) » au bas de la grille de projets d'un utilisateur pour configurer les permissions qu'il recevra automatiquement lors de la création de nouveaux projets.
 
 Cela fait gagner du temps lorsque votre organisation ajoute fréquemment des projets - vous n'avez pas à affecter manuellement chaque utilisateur à chaque nouveau projet. Définissez les valeurs par défaut sur « Lecteur » pour les personnes qui doivent voir toutes les analyses, ou sur « Aucun accès » pour celles qui ne travaillent que sur des projets spécifiques.
+
+## Jetons d'accès personnels
+
+FASTR prend en charge les jetons d'accès personnels (PAT) pour les intégrations et l'accès à l'API. Depuis votre profil, accédez à la section **Jetons d'accès personnels** pour créer, consulter et révoquer des jetons. Chaque jeton porte un libellé que vous choisissez à sa création. La valeur brute du jeton n'est affichée qu'une seule fois à la création — copiez-la immédiatement. La date de dernière utilisation d'un jeton se met à jour à chaque authentification, ce qui permet d'identifier facilement les jetons qui ne sont plus utilisés. Révoquez tout jeton dont vous n'avez plus besoin.
+
+Les jetons d'accès personnels sont en libre-service : vous ne pouvez gérer que vos propres jetons, pas ceux des autres utilisateurs.
 
 ## Opérations par lot
 

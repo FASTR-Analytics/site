@@ -19,9 +19,7 @@ Before diving in, make sure you can sign in to your organization's FASTR instanc
 
 You'll also need access to at least one project. Projects are workspaces where data, modules, and visualizations come together. If you can sign in but don't see any projects on your landing page, ask your administrator to add you to the relevant project.
 
-:::caution[Screenshot needed]
-Landing page showing the project list with example projects.
-:::
+![User Guide Projects ](/images/user-guide-projects-en.png)
 
 ## How FASTR works
 
@@ -32,6 +30,14 @@ Understanding the platform's structure will help you navigate it more effectivel
 **Modules** are the analytical engines that process your data. They run R scripts that transform raw health data into meaningful outputs - coverage rates, quality scores, trend analyses, and more. You don't need to write code yourself; modules produce results automatically once configured by an administrator.
 
 **Visualizations** turn module outputs into charts, maps, and tables you can explore, customize, and share. They're the primary way you'll interact with analytical results day-to-day.
+
+## What's New announcements
+
+When FASTR is updated, a bell icon appears in the top navigation bar. A yellow dot on the bell means there are unread release announcements. Click the bell to browse all announcements, or click through to any individual post to read the full details. New announcements may also appear automatically when you sign in after an update.
+
+## Getting help
+
+Click **Help** in the top navigation bar to open a menu with several options. **Guided tours** walks you through key areas of the platform step by step and can be replayed at any time. **Ask for help** sends a support request to the FASTR team. **Send feedback** lets you report a bug, a suggestion, or ask a general question. **Documentation** opens this documentation site.
 
 ## In this section
 

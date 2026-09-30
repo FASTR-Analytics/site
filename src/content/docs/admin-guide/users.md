@@ -26,6 +26,14 @@ New users are created with no special permissions - they can log in but won't se
 
 For bulk onboarding, use **Batch import from CSV** to upload a file containing email addresses and admin status. The CSV needs two columns: `email` and `is_global_admin`. This is faster than adding users one by one when you're setting up a new instance or onboarding a large team.
 
+## Changing a user's email address
+
+Users can change their own email address from their profile. Open your profile by clicking your name or avatar in the top navigation bar, then find the **Email address** card. Click **Change email** to open the change email dialog.
+
+The change applies to every FASTR instance the user has access to, keeping all permissions and history. The process has three steps: enter the new address and confirm the list of affected instances; verify the code sent to the new address; then review the per-instance outcome. If any instance could not be updated, the old address stays on the account and a **Retry** option is available. Once all instances report success, the page reloads automatically.
+
+Administrators with the **Configure users** permission can also rename another user's email address directly from the **Users** tab using the **Rename email** action. This performs the same fleet-wide rename without requiring the user to initiate it themselves — useful as a support fallback when a user cannot log in under their old address.
+
 ## Instance permissions
 <!-- help#users-instance-permissions -->
 
@@ -56,7 +64,7 @@ Click on any project to open the permission editor for that user-project combina
 
 - **Analytical Products** controls access to visualizations, reports, and slide decks. "View" permissions let users see existing content; "Configure" permissions let them create and modify.
 - **Data & Modules** controls access to underlying data and analytical processing. Users who need to understand methodology might need "View metrics" or "View script code" but not "Configure modules".
-- **Project Administration** covers settings, user management within the project, logs, and backups. Reserve these for project leads or technical staff.
+- **Project Administration** covers settings, user management within the project, logs, and backups.
 
 ![Project Users Permissions](/images/user-permissions-project-en.png)
 
@@ -74,6 +82,12 @@ These presets cover most common scenarios. Use custom combinations when you need
 When you create a new project, existing users get default permissions based on their profile settings. Click the "New projects (default)" button at the bottom of a user's project grid to configure what permissions they'll receive automatically when new projects are created.
 
 This saves time when your organization adds projects frequently - you don't have to manually assign every user to every new project. Set defaults to "Viewer" for people who should see all analyses, or "No access" for people who only work with specific projects.
+
+## Personal access tokens
+
+FASTR supports personal access tokens (PATs) for integrations and API access. From your profile, navigate to the **Personal access tokens** section to create, list, and revoke tokens. Each token has a label you choose when creating it. The raw token value is shown only once at creation — copy it immediately. A token's last-used date updates each time it authenticates, making it easy to identify tokens that are no longer in use. Revoke any token you no longer need.
+
+Personal access tokens are self-service: you can only manage your own tokens, not those of other users.
 
 ## Bulk operations
 

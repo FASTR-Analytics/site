@@ -1,0 +1,55 @@
+---
+title: Vidéos
+description: Courts tutoriels vidéo sur des fonctionnalités spécifiques de la plateforme FASTR.
+sidebar:
+  order: 1
+---
+
+Chaque vidéo ci-dessous présente une fonctionnalité de la plateforme en quelques minutes. Elles se combinent bien avec les pages correspondantes des guides écrits - regardez la vidéo pour vous faire une idée du flux de travail, puis utilisez la page écrite comme référence.
+
+Pour des instructions étape par étape, consultez le [Guide administrateur](/fr/admin-guide/) et le [Guide utilisateur](/fr/user-guide/). Pour l'approche analytique derrière la plateforme, consultez la [Méthodologie](/fr/methodology/00_introduction/).
+
+## Intro aux cartes
+<iframe width="560" height="315" src="https://www.youtube.com/embed/UMAQpIX0vNg?si=HzXD52yyoply8wO6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+## Éditeur de diapositives (glisser-déposer)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7YUYCPazaFc?si=RAQt4LQO0zy1YsZB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+## Intro à FOSA
+<iframe width="560" height="315" src="https://www.youtube.com/embed/H4VW4Ods_eA?si=9gHTfW17cB9Pzm56" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+## Paramètres de l'éditeur de rapports
+<iframe width="560" height="315" src="https://www.youtube.com/embed/_mBlkvkbpVs?si=F3Q6DD3sOxW16B8j" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+## Indicateurs calculés (tableau de bord)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/6rmdb9S3rLI?si=2zQ7_Az988wtYSjP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+## Bibliothèque de requêtes personnalisées
+<iframe width="560" height="315" src="https://www.youtube.com/embed/fGZyrfyFNe8?si=c4VEZA3DpwS_eO7g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+## Intro aux rapports longs
+<iframe width="560" height="315" src="https://www.youtube.com/embed/aGN1Piqx8oU?si=-vDq1SWmA69c623o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+## Tableaux de bord
+<iframe width="560" height="315" src="https://www.youtube.com/embed/d7sUdVKH054?si=79s3mxnGAdkd5-33" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+## Vue partagée des rapports longs et légende Markdown
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Le4aoeOnuoc?si=fT2ldeZ1E83haDzF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+## Aperçu de la mise à jour des paquets de résultats
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Xay5QEDnCGw?si=c1jm4MbMUoxMAFd5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+## Fonctionnalités collaboratives
+<iframe width="560" height="315" src="https://www.youtube.com/embed/18FTvFkRnFk?si=sD9EkeBOw9SmaWth" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+## Historique des versions
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Z0lr78ff8_s?si=dSC-GdKmtalvoUy7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+## Annuler/rétablir
+<iframe width="560" height="315" src="https://www.youtube.com/embed/_yO67j2ZpO4?si=DZyq_Jv9fCFzKSPS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+## Visites guidées de la plateforme et bouton d'aide
+<iframe width="560" height="315" src="https://www.youtube.com/embed/OYl_W1EPuy0?si=bPG9jYm_o9dheSoM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+## Graphiques circulaires
+<iframe width="560" height="315" src="https://www.youtube.com/embed/NBR_D4CPHgI?si=tyIQZDla7nTS57OR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

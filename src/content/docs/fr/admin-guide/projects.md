@@ -5,35 +5,33 @@ sidebar:
   order: 6
 ---
 
-Les projets constituent l'espace de travail principal pour l'analyse dans FASTR. Chaque projet réunit un sous-ensemble des données de votre instance avec un ensemble spécifique de modules analytiques, produisant des visualisations, des rapports et des présentations dans un but précis. Vous pouvez créer des projets distincts pour différentes périodes, régions géographiques ou domaines de programme.
+Les projets constituent l'espace de travail principal pour l'analyse dans FASTR. Chaque projet réunit un lot de résultats contenant des sorties de modules précalculées avec les visualisations, les rapports et les présentations que vous créez à partir de ces résultats. Vous pouvez créer des projets distincts pour différentes périodes, régions géographiques ou domaines de programme.
 
 ## Créer un projet
 <!-- help#aproj-create -->
 
-Tout utilisateur disposant de la permission « Créer des projets » peut démarrer un nouveau projet depuis l'écran d'accueil. Cliquez sur **Créer un projet**, saisissez un nom qui identifie la portée du projet, et le système met en place un espace de travail isolé avec sa propre base de données.
+Tout utilisateur disposant de la permission « Créer des projets » peut démarrer un nouveau projet depuis l'écran d'accueil. Cliquez sur **Créer un projet**, saisissez un nom qui identifie la portée du projet, puis choisissez une portée — **National** ou une Zone administrative 2 spécifique. La portée détermine la façon dont le lot de résultats associé est filtré pour ce projet : un projet à portée limitée voit le lot comme s'il ne contenait que cette zone, tandis que les indicateurs sans ventilation par zone restent nationaux.
 
-Les nouveaux projets démarrent vides - aucun module installé, aucune fenêtre de données définie. Vos prochaines étapes consisteront généralement à activer les modules dont vous avez besoin et à configurer la fenêtre de données.
+Les nouveaux projets démarrent sans lot de résultats associé. L'étape suivante consiste à associer un lot de résultats depuis l'onglet **Lot de résultats**, qui est le point d'entrée pour accéder aux résultats des modules et aux données du projet.
 
 ![Nom du projet](/images/project-name-en.png)
 
-## Configurer la fenêtre de données
+## Associer un lot de résultats
 <!-- help#aproj-data-window -->
 
-La fenêtre de données détermine quel sous-ensemble des données de votre instance alimente le projet. Lorsque vous importez des données HMIS au niveau de l'instance, toutes ces données deviennent disponibles pour être intégrées dans les fenêtres des projets - mais chaque projet peut sélectionner une portion différente.
+Un lot de résultats est généré au niveau de l'instance et contient des résultats de modules précalculés. Pour rendre les données et les résultats analytiques disponibles dans un projet, ouvrez le projet et accédez à **Lot de résultats** dans la barre latérale gauche, puis associez l'un des lots disponibles.
 
-Ouvrez le projet et accédez à **Données** dans la barre latérale gauche. Vous y configurez les données auxquelles le projet peut accéder selon plusieurs dimensions.
+Les éditeurs peuvent sélectionner n'importe quel lot prêt de l'instance via le menu déroulant dans les paramètres du paquet. Ils peuvent également activer **Toujours utiliser le paquet épinglé de l'instance** pour abonner le projet au paquet que l'administrateur désigne comme épingle de l'instance — chaque fois que l'épingle change, le projet bascule automatiquement. Choisir manuellement un autre paquet désactive cet abonnement.
 
-La **période temporelle** définit les mois ou les années à inclure. Un graphique affiche le nombre d'enregistrements par mois, ce qui vous aide à visualiser la disponibilité des données. Utilisez les sélecteurs de période pour définir vos bornes de début et de fin - les enregistrements situés hors de cette plage n'apparaîtront pas dans les résultats des modules ni dans les visualisations.
+Lorsqu'un projet suit le paquet épinglé mais se trouve actuellement sur un autre, un avertissement s'affiche avec un bouton **Basculer vers le paquet épinglé** pour resynchroniser immédiatement.
 
-Les **indicateurs** peuvent être filtrés pour n'inclure que ce qui est pertinent pour votre analyse. Si vous vous concentrez sur la santé maternelle, par exemple, vous pouvez exclure les indicateurs sans rapport afin de garder des listes de métriques faciles à gérer. Activez « Inclure tous les indicateurs » pour disposer de l'ensemble complet, ou sélectionnez des indicateurs spécifiques lorsque vous avez besoin d'une portée plus restreinte.
+Changer de lot de résultats modifie les données derrière chaque visualisation, rapport et présentation du projet. Avant qu'un changement prenne effet, FASTR affiche un rapport de compatibilité listant les visualisations qui ne se résoudraient pas avec le nouveau lot — elles restent dans le projet et indiquent pourquoi elles ne peuvent pas être tracées. Rien ne change tant que vous ne confirmez pas.
 
-Les **zones administratives** vous permettent de restreindre le projet à des régions ou des districts spécifiques. C'est utile lorsque vous menez des analyses distinctes pour différentes unités infranationales, ou lorsque certaines zones présentent des problèmes de qualité des données que vous souhaitez exclure pendant votre investigation.
+Si le projet a une portée Zone administrative 2 définie et que le lot sélectionné ne contient pas de données pour cette zone, un avertissement s'affiche dans le rapport de compatibilité et dans l'onglet Lot de résultats après association. Les indicateurs au niveau des zones n'afficheront aucune donnée, mais les indicateurs nationaux restent visibles.
 
-Les **types et la propriété des établissements** offrent un filtrage supplémentaire lorsque votre instance comporte ces attributs d'établissement. Vous pouvez restreindre la fenêtre aux seuls établissements publics, ou vous concentrer sur les hôpitaux en excluant les postes de santé de niveau inférieur.
+## Portée du projet
 
-Les **catégories de service HFA** contrôlent quels indicateurs HFA sont inclus lorsque les données HFA sont activées pour le projet. Lors de l'activation ou de la reconfiguration du jeu de données HFA, une boîte de dialogue de paramètres vous permet de choisir d'inclure toutes les catégories de service ou de restreindre la sélection à certaines d'entre elles. Seuls les indicateurs associés à une catégorie de service sélectionnée sont importés dans le projet. Laissez le paramètre sur « Tout inclure » si vous souhaitez tous les indicateurs HFA quelle que soit leur catégorie de service.
-
-![Fenêtre de données](/images/hmis-data-window-en.png)
+Chaque projet a une portée — **National** ou une Zone administrative 2 spécifique. La portée est définie lors de la création du projet et peut être modifiée ultérieurement par un administrateur global depuis **Paramètres**. Un projet à portée limitée filtre le lot de résultats associé de sorte que les indicateurs au niveau des zones n'affichent que les données de cette zone ; les indicateurs nationaux restent visibles quelle que soit la portée. La portée du projet apparaît sous forme de badge à côté du nom du projet et est indiquée dans **Paramètres** sous **Portée du projet**.
 
 ## Gérer les utilisateurs et les permissions du projet
 
@@ -69,3 +67,7 @@ Ouvrez le projet source, allez dans les **Paramètres** et cliquez sur **Copier 
 ## Contexte IA du projet
 
 L'assistant IA de FASTR peut interpréter les graphiques et suggérer des analyses, mais ses réponses sont plus utiles lorsqu'il comprend le contexte du projet. Dans les **Paramètres**, vous pouvez définir un **Contexte du projet pour l'interprétation par l'IA** - une description de ce que ce projet analyse ou des questions auxquelles il cherche à répondre. Les modifications apportées au contexte IA prennent effet immédiatement sur l'ensemble du projet et sont visibles par tous les utilisateurs qui y travaillent. Quelques phrases sur l'objectif du projet peuvent améliorer considérablement la qualité de l'analyse assistée par l'IA.
+
+## Apparence
+
+Chaque utilisateur peut choisir entre un thème clair, sombre ou basé sur les préférences du système depuis son profil. Ouvrez votre profil en cliquant sur votre avatar dans la barre supérieure, puis accédez à la section **Apparence** et sélectionnez **Clair**, **Sombre** ou **Système** pour suivre les préférences de votre système d'exploitation. Le paramètre est enregistré par navigateur et prend effet immédiatement — tous les graphiques, cartes et tableaux s'adaptent au thème sélectionné.

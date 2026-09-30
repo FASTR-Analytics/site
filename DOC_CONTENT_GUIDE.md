@@ -18,7 +18,7 @@ The site also hosts the FASTR Methodology (reference material), which is synced 
 ├── Admin guide            # How-to for administrators
 ├── User guide             # How-to for analysts/editors/viewers
 ├── Methodology            # Reference (synced, not hand-written)
-├── Resources              # Downloads, links
+├── Resources              # Videos (tutorials), External links
 ```
 
 ## Audience
