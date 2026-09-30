@@ -194,6 +194,11 @@ Cette étape comprend une liste de contrôle préalable à l'extraction, l'exame
 
 
 
+
+
+
+
+
 ---
 
 **Dernière mise à jour** : 06-05-2026
