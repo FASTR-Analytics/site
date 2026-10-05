@@ -47,9 +47,11 @@ Lorsqu'un administrateur global sélectionne des lignes dans la liste, quatre ac
 
 Un administrateur global peut aussi cliquer sur **Trier** pour fixer l'ordre de la liste. L'ordre enregistré est celui de chaque axe d'indicateurs dans chaque figure.
 
+<!--
 :::caution[Capture d'écran à ajouter]
 La liste des indicateurs montrant les colonnes Type, Défini par, Inclure et Statut.
 :::
+-->
 
 ### Ajouter des indicateurs depuis DHIS2
 <!-- help#ind-dhis2-import -->
@@ -62,9 +64,11 @@ Un indicateur DHIS2 (une formule dans DHIS2, comme un taux de couverture) n'est 
 
 Ajouter un élément de données ne fait que l'inscrire dans la liste. Pour récupérer ses données, sélectionnez les nouveaux indicateurs dans la liste et choisissez **Importer les données HMIS depuis DHIS2**, ou lancez une importation depuis Données HMIS.
 
+<!--
 :::caution[Capture d'écran à ajouter]
 L'étape de nommage montrant les identifiants proposés pour deux éléments de données et l'aperçu de la formule d'un indicateur DHIS2 décomposé.
 :::
+-->
 
 ### Sommes
 
@@ -85,9 +89,11 @@ Vous définissez également le format d'affichage (nombre, pourcentage ou taux p
 
 L'éditeur vérifie la formule au fur et à mesure de la saisie et affiche le problème sous le champ. Il refuse une formule qui ne peut pas être lue, qui nomme un indicateur inexistant, qui se réfère à elle-même, ou qui nécessite plus de huit ingrédients (indicateurs et populations) une fois développé chaque indicateur calculé auquel elle fait référence. La colonne **Statut** de la liste indique si chaque indicateur calculé peut être calculé, et un avertissement au-dessus de la liste le signale dès que l'un d'eux ne le peut pas. Une formule qui utilise un indicateur sans données peut être enregistrée, mais les résultats ne peuvent pas être générés tant que ces données ne sont pas importées.
 
+<!--
 :::caution[Capture d'écran à ajouter]
 L'éditeur d'un indicateur calculé, montrant le champ de formule, les sélecteurs, la légende et le format.
 :::
+-->
 
 ### Inclure dans l'analyse
 <!-- help#ind-include -->

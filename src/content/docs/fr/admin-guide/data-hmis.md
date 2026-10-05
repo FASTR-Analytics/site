@@ -38,9 +38,11 @@ Lorsqu'un mois est en échec, **Réessayer les paires en échec** au-dessus du t
 
 Renommer un indicateur ne change pas l'identifiant sous lequel ses données sont stockées : l'indicateur garde donc sa ligne dans le registre.
 
+<!--
 :::caution[Capture d'écran à ajouter]
 La page des données HMIS sur l'onglet Visualisation avec la carte de chaleur par année.
 :::
+-->
 
 ## Méthodes d'importation
 
@@ -58,9 +60,11 @@ Si vous êtes administrateur global, la barre d'en-tête en haut de la page Donn
 
 Les importations s'exécutent en arrière-plan, une à la fois. Si une importation est déjà en cours, la nouvelle est mise en file d'attente et démarre lorsque la précédente se termine.
 
+<!--
 :::caution[Capture d'écran à ajouter]
 La vue des données HMIS avec le bouton Importations dans la barre d'en-tête et la vue des importations ouverte sur l'onglet En cours.
 :::
+-->
 
 ## Processus d'importation CSV
 <!-- help#hmis-csv -->
@@ -86,9 +90,11 @@ La fusion met à jour les lignes déjà présentes pour un établissement, un in
 
 Si la colonne indicateur compte plus de 2 000 valeurs distinctes, l'étape Correspondance s'arrête et indique le nombre de valeurs trouvées. Cela signifie presque toujours que la mauvaise colonne a été choisie.
 
+<!--
 :::caution[Capture d'écran à ajouter]
 L'étape Colonnes montrant les quatre champs requis avec des sélecteurs déroulants.
 :::
+-->
 
 ## Processus d'importation DHIS2
 <!-- help#hmis-dhis2 -->
@@ -109,9 +115,11 @@ Chaque paire (élément DHIS2, mois) est récupérée et fusionnée séparément
 
 Un indicateur dont l'identifiant DHIS2 est un indicateur DHIS2 (une formule) plutôt qu'un élément de données n'est pas récupéré. Le détail de l'exécution le signale et renvoie vers **Ajouter depuis DHIS2** dans la liste des indicateurs, qui transforme la formule en éléments de données. Un identifiant que DHIS2 ne connaît pas est listé sous **Identifiants DHIS2 introuvables dans DHIS2**.
 
+<!--
 :::caution[Capture d'écran à ajouter]
 L'étape Indicateurs montrant la liste des indicateurs avec les colonnes Type et Défini par et une sélection.
 :::
+-->
 
 ## Validation et gestion des erreurs
 <!-- help#hmis-validation -->

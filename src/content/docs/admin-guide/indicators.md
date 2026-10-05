@@ -47,9 +47,11 @@ When a global administrator selects rows in the list, four actions become availa
 
 A global administrator can also click **Sort** to set the order of the list. The saved order is the order of every indicator axis in every figure.
 
+<!--
 :::caution[Screenshot needed]
 The indicator list showing the Type, Defined by, Include and Status columns.
 :::
+-->
 
 ### Adding indicators from DHIS2
 <!-- help#ind-dhis2-import -->
@@ -62,9 +64,11 @@ A DHIS2 indicator (a formula in DHIS2, such as a coverage rate) is never added a
 
 Adding a data element only puts it in the list. To fetch its data, select the new indicators in the list and choose **Import HMIS data from DHIS2**, or start an import from Data: HMIS.
 
+<!--
 :::caution[Screenshot needed]
 The naming step showing proposed ids for two data elements and the formula preview of a decomposed DHIS2 indicator.
 :::
+-->
 
 ### Sums
 
@@ -85,9 +89,11 @@ You also set the display format (number, percent, or rate per 10,000), optionall
 
 The editor checks a formula as you type and shows the problem under the field. It refuses a formula that cannot be parsed, that names an indicator that does not exist, that refers back to itself, or that needs more than eight ingredients (indicators and populations) once every calculated indicator it refers to is expanded. The **Status** column in the list says whether each calculated indicator can be computed, and a warning above the list says when any cannot. A formula that uses an indicator with no data yet can be saved, but results cannot be generated until that data is imported.
 
+<!--
 :::caution[Screenshot needed]
 The indicator editor for a calculated indicator, showing the formula field, the pickers, the legend and the format.
 :::
+-->
 
 ### Include in analysis
 <!-- help#ind-include -->

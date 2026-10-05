@@ -38,9 +38,11 @@ When any month has failed, **Retry failed pairs** above the table opens the DHIS
 
 Renaming an indicator does not change the identifier its data is stored under, so the indicator keeps its row in the ledger.
 
+<!--
 :::caution[Screenshot needed]
 The HMIS data page on the Visualization tab with the heat map by year.
 :::
+-->
 
 ## Import methods
 
@@ -58,9 +60,11 @@ If you are a global administrator, the heading bar at the top of the HMIS Data p
 
 Imports run in the background, one at a time. If an import is already running, a new one is queued and starts when the current one finishes.
 
+<!--
 :::caution[Screenshot needed]
 The HMIS data view with the Imports button in the heading bar and the imports view open on the Current tab.
 :::
+-->
 
 ## CSV import workflow
 <!-- help#hmis-csv -->
@@ -86,9 +90,11 @@ Merging updates the rows already present for a facility, indicator and month, an
 
 If the indicator column has more than 2000 distinct values, the Mapping step stops and shows how many values it found. That almost always means the wrong column was chosen.
 
+<!--
 :::caution[Screenshot needed]
 The Columns step showing the four required fields with dropdown selectors.
 :::
+-->
 
 ## DHIS2 import workflow
 <!-- help#hmis-dhis2 -->
@@ -109,9 +115,11 @@ Each (DHIS2 element, month) pair is fetched and merged on its own, and the rows 
 
 An indicator whose DHIS2 id is a DHIS2 indicator (a formula) rather than a data element is not fetched. The run detail says so and points to **Add from DHIS2** in the indicator list, which turns the formula into data elements. An id that DHIS2 does not know is listed under **DHIS2 ids not found in DHIS2**.
 
+<!--
 :::caution[Screenshot needed]
 The Indicators step showing the indicator list with the Type and Defined by columns and a selection.
 :::
+-->
 
 ## Validation and error handling
 <!-- help#hmis-validation -->
