@@ -9,6 +9,9 @@ Chaque vidéo ci-dessous présente une fonctionnalité de la plateforme en quelq
 
 Pour des instructions étape par étape, consultez le [Guide administrateur](/fr/admin-guide/) et le [Guide utilisateur](/fr/user-guide/). Pour l'approche analytique derrière la plateforme, consultez la [Méthodologie](/fr/methodology/00_introduction/).
 
+## Lancement de la plateforme d'analyse FASTR V2
+<iframe width="560" height="315" src="https://www.youtube.com/embed/p951vWVMC4U?si=xxRKQy87inlMnW5d" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ## Intro aux cartes
 <iframe width="560" height="315" src="https://www.youtube.com/embed/UMAQpIX0vNg?si=HzXD52yyoply8wO6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 

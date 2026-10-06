@@ -9,6 +9,9 @@ Each video below walks through one feature of the platform in a few minutes. The
 
 For step-by-step instructions, see the [Admin guide](/admin-guide/) and [User guide](/user-guide/). For the analytical approach behind the platform, see the [Methodology](/methodology/00_introduction/).
 
+## FASTR Analytics Platform V2 Launch
+<iframe width="560" height="315" src="https://www.youtube.com/embed/pZy0GoniG6w?si=Msm_5T2p6utGNdl4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ## Intro to maps
 <iframe width="560" height="315" src="https://www.youtube.com/embed/-U1XM5hZ0fs?si=X9Ii7wRoz14L2ipp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
