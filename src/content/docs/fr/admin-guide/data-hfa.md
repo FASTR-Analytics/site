@@ -36,7 +36,7 @@ Indiquez quelle colonne CSV contient les identifiants d'établissement et sélec
 
 ### Étape 3 — Doublons
 
-Si des établissements apparaissent plusieurs fois après le filtrage, cette étape vous permet de choisir la ligne à conserver pour chacun. Un contrôle de réglage rapide permet d'appliquer « première ligne » ou « dernière ligne » à tous les doublons en une fois ; vous pouvez ensuite remplacer des établissements individuels. Les numéros de ligne comptent les lignes de données à partir de 1 dans l'ordre du fichier (en excluant l'en-tête). Si aucun doublon n'existe après le filtrage, cette étape est ignorée automatiquement.
+Cette étape affiche les établissements qui apparaissent plusieurs fois après le filtrage et vous permet de choisir la ligne à conserver pour chacun. Un contrôle de réglage rapide permet d'appliquer « première ligne » ou « dernière ligne » à tous les doublons en une fois ; vous pouvez ensuite remplacer des établissements individuels. Les numéros de ligne comptent les lignes de données à partir de 1 dans l'ordre du fichier (en excluant l'en-tête). Lorsqu'aucun établissement n'a plus d'une ligne après le filtrage, cette étape affiche un message confirmant qu'il n'y a rien à résoudre.
 
 ### Étape 4 — Vérifier et lancer
 
@@ -71,11 +71,15 @@ Après l'importation, utilisez la page **Points temporels HFA** pour modifier le
 
 ## Détails de la validation
 
-Des lignes peuvent être écartées au cours de la préparation pour plusieurs raisons : identifiants d'établissement manquants, identifiants d'établissement absents de votre registre, établissements en double au sein d'une même importation (gérés par la stratégie choisie à l'étape des doublons), ou lignes exclues par les conditions de filtre définies à l'étape des correspondances. Le résumé de la préparation présente chaque catégorie séparément. Si vous constatez de nombreuses entrées « Établissement introuvable », vérifiez si votre registre des établissements doit être mis à jour.
+Des lignes peuvent être écartées au cours de la préparation pour plusieurs raisons : identifiants d'établissement manquants, identifiants d'établissement absents de votre registre, établissements en double au sein d'une même importation (gérés par la stratégie choisie à l'étape des doublons), ou lignes exclues par les conditions de filtre définies à l'étape des correspondances. Le résumé de la préparation présente chaque catégorie séparément. Il indique également quelles questions XLSForm n'avaient pas de colonne CSV correspondante, et quelles colonnes CSV n'avaient pas de question XLSForm correspondante, avec des exemples allant jusqu'à dix noms dans chaque catégorie. Si vous constatez de nombreuses entrées « Établissement introuvable », vérifiez si votre registre des établissements doit être mis à jour.
+
+Si aucune colonne CSV ne correspond à une question de type préparable dans le XLSForm, l'importation s'arrête immédiatement avec une erreur expliquant l'incompatibilité, afin que vous puissiez vérifier que les bons fichiers sont associés avant qu'aucune donnée ne soit écrite.
 
 ## Traitement du XLSForm
 
 FASTR extrait la structure de l'enquête à partir de votre XLSForm afin de fournir des libellés pertinents dans toute la plateforme. Les noms de variables deviennent des identifiants techniques. Les libellés apparaissent dans les visualisations et les rapports. Les libellés des valeurs font correspondre les codes de réponse numériques à un texte descriptif.
+
+FASTR fait correspondre les en-têtes de colonnes CSV aux noms de questions XLSForm sans tenir compte de la casse. Un chemin de groupe ODK comme `section_a/SERV_08B` est mis en correspondance sur son dernier segment, de sorte que le chemin correspond à la question `serv_08b`. Si deux colonnes CSV correspondent à la même question — par exemple `serv_08b` et `SERV_08B` toutes deux présentes — l'importation s'arrête avec une erreur nommant les deux colonnes, afin que vous puissiez supprimer le doublon avant de téléverser à nouveau.
 
 Pour les questions « select_multiple », FASTR décompose automatiquement chaque choix en une variable binaire distincte - une question comportant cinq options devient cinq indicateurs oui/non.
 

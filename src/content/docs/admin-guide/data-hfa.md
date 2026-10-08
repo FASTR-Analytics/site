@@ -36,7 +36,7 @@ Specify which CSV column contains facility identifiers and select the time point
 
 ### Step 3 — Duplicates
 
-If any facilities appear more than once after filtering, this step lets you choose which row to keep for each. A quick-set control lets you apply "first row" or "last row" across all duplicates at once; you can then override individual facilities. Row numbers count data rows from 1 in file order (excluding the header). If no duplicates exist after filtering, this step is skipped automatically.
+This step shows any facilities that appear more than once after filtering and lets you choose which row to keep for each. A quick-set control lets you apply "first row" or "last row" across all duplicates at once; you can then override individual facilities. Row numbers count data rows from 1 in file order (excluding the header). When no facilities have more than one row after filtering, this step shows a message confirming there is nothing to resolve.
 
 ### Step 4 — Review and launch
 
@@ -71,11 +71,15 @@ After importing, use the **HFA Time Points** page to edit labels, adjust dates, 
 
 ## Validation details
 
-Rows can be dropped during staging for several reasons: missing facility IDs, facility IDs not in your registry, duplicate facilities within a single import (handled by the strategy you chose in the duplicates step), or rows excluded by the filter conditions you set in the mappings step. The staging summary shows each category separately. If you see many "Facility Not Found" entries, check whether your facility registry needs updating.
+Rows can be dropped during staging for several reasons: missing facility IDs, facility IDs not in your registry, duplicate facilities within a single import (handled by the strategy you chose in the duplicates step), or rows excluded by the filter conditions you set in the mappings step. The staging summary shows each category separately. The summary also shows which XLSForm questions had no matching CSV column, and which CSV columns had no matching XLSForm question, along with samples of up to ten names in each category. If you see many "Facility Not Found" entries, check whether your facility registry needs updating.
+
+If no CSV column matches any staged-type question in the XLSForm, the import stops immediately with an error explaining the mismatch, so you can verify that the correct files are paired before any data is written.
 
 ## XLSForm handling
 
 FASTR extracts survey structure from your XLSForm to provide meaningful labels throughout the platform. Variable names become technical identifiers. Labels appear in visualizations and reports. Value labels map numeric response codes to descriptive text.
+
+FASTR matches CSV column headers to XLSForm question names case-insensitively. An ODK group path like `section_a/SERV_08B` is matched on its last segment, so the path matches the question `serv_08b`. If two CSV columns match the same question — for example `serv_08b` and `SERV_08B` both present — the import stops with an error naming both columns, so you can remove the duplicate before re-uploading.
 
 For "select_multiple" questions, FASTR automatically expands each choice into a separate binary variable - a question with five options becomes five yes/no indicators.
 
