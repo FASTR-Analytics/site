@@ -69,6 +69,10 @@ Administrators can designate one ready package as the instance's **pinned packag
 
 The pinned package is also the package the FASTR MCP connector reads. When you connect a compatible AI client to your instance's MCP endpoint, it reads metrics and data from whichever package is currently pinned.
 
+## Scopes
+
+A scope sets which part of a results package a slide deck or report may show — for example one region, certain years, or certain modules and indicators. Scopes are created and managed from the **Scopes** button on the Results packages page. The scope called **All data** is always present and limits nothing. On the Users page, a user can also be limited to certain scopes so they see only products that use those scopes.
+
 ## Module execution and status
 <!-- help#amod-status -->
 

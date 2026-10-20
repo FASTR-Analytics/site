@@ -60,6 +60,10 @@ Si une visualisation ou une image ne peut pas être chargée lors de l'export, F
 
 ![Adding Figures and Images FR](/images/adding-figures-and-images-fr.png)
 
+## D'où viennent les chiffres
+
+Chaque visualisation d'un rapport tire ses chiffres du lot de résultats et de la portée que le rapport est configuré pour utiliser. Le lot et la portée sont affichés en haut du rapport. Si vous pouvez modifier le rapport, cliquez là pour changer l'un ou l'autre. Les visualisations créées avant la modification ne sont alors plus à jour, et un bouton **Mettre à jour toutes les visualisations** apparaît pour les actualiser ensemble.
+
 ## Ajouter des logos
 
 Les rapports FASTR Markdown prennent en charge un bloc **Logos** qui affiche une rangée de logos — ceux de votre organisation, de vos partenaires ou de FASTR. Insérez-en un depuis le menu **Widgets**. Cliquer sur une rangée de logos vide, ou double-cliquer sur une rangée qui contient déjà des logos, ouvre le sélecteur de logos dans lequel vous choisissez quels logos apparaissent et dans quel ordre. Le sélecteur affiche les logos intégrés de FASTR et tous les fichiers image que vous avez téléversés sur l'instance. Téléversez un nouveau logo directement depuis le sélecteur à l'aide de **Téléverser un logo**. Faites glisser les éléments dans la liste choisie pour les réordonner.
@@ -80,11 +84,11 @@ Ouvrez le menu **Fichier** et choisissez **Gérer les accès…** pour contrôle
 
 ## Choisir un thème
 
-Les rapports FASTR Markdown ont un thème de conception qui contrôle les polices, les couleurs et l'apparence de chaque bloc. Ouvrez le menu **Page** et choisissez **Thème** pour passer d'un thème intégré à un autre avec un aperçu rapide, ou choisissez **Tous les thèmes et styles enregistrés…** pour ouvrir le sélecteur de thème complet où les aperçus de feuilles de style réelles sont affichés côte à côte. Vous pouvez changer le thème d'un rapport à tout moment sans toucher au corps du texte.
+Les rapports FASTR Markdown ont un thème de conception qui contrôle les polices, les couleurs et l'apparence de chaque bloc. Ouvrez le menu **Page** et choisissez **Thème** pour passer d'un thème intégré à un autre ou appliquer un style personnalisé enregistré. Un style personnalisé apporte sa palette de couleurs à un rapport FASTR Markdown. Vous pouvez changer le thème d'un rapport à tout moment sans toucher au corps du texte.
 
 Sur un nouveau rapport qui ne contient encore que son titre, le sélecteur de thème propose une deuxième étape : une galerie de modèles. Les modèles donnent au rapport ses sections et ses blocs, avec des indications grises dans chaque emplacement à remplacer par votre texte. L'assistant IA sait quel modèle vous avez choisi et écrit selon sa forme. Choisissez un modèle et cliquez sur **Utiliser le modèle** pour l'appliquer, ou cliquez sur **Passer** pour commencer avec une page blanche. Vous pouvez rouvrir le sélecteur de thème à tout moment depuis le menu **Page** — l'étape modèle n'apparaît que lorsque le corps du rapport est encore vide.
 
-Le sélecteur de thème affiche également les styles personnalisés enregistrés par les administrateurs de votre instance. Un style personnalisé fournit à l'IA une description de conception spécifique lors de la rédaction ou de la restructuration de rapports HTML, ou une palette de couleurs pour les rapports FASTR Markdown. Les styles enregistrés apparaissent aux côtés des thèmes intégrés dans le sélecteur.
+Le sélecteur de thème affiche également les styles personnalisés enregistrés par les administrateurs de votre instance. Les styles enregistrés apparaissent aux côtés des thèmes intégrés dans le sélecteur.
 
 ## Accès en lecture seule
 
@@ -92,11 +96,11 @@ Lorsque vous ouvrez un rapport en tant que lecteur (sans permission de modificat
 
 ## Collaborer sur un rapport
 
-Lorsque plusieurs personnes ont le même rapport ouvert, vous pouvez voir où travaillent vos collègues. Des curseurs en direct apparaissent à la fois dans le volet éditeur de code et dans l'aperçu rendu, afin que vous sachiez d'un coup d'œil si quelqu'un d'autre modifie la section que vous vous apprêtez à changer. Une petite icône de présence apparaît également sur la carte du rapport dans la vue en liste. Les collaborateurs qui consultent actuellement le même rapport apparaissent sous forme d'icônes d'avatar dans l'en-tête.
+Lorsque plusieurs personnes ont le même rapport ouvert, vous pouvez voir où travaillent vos collègues. Des curseurs en direct apparaissent dans le volet éditeur, afin que vous sachiez d'un coup d'œil si quelqu'un d'autre modifie la section que vous vous apprêtez à changer. Une petite icône de présence apparaît également sur la carte du rapport dans la vue en liste. Les collaborateurs qui consultent actuellement le même rapport apparaissent sous forme d'icônes d'avatar dans l'en-tête.
 
 L'éditeur est collaboratif : les sélections de texte des collaborateurs distants sont mises en évidence dans leur couleur, et survoler une sélection en surbrillance affiche le nom de la personne. Lorsque l'assistant IA propose une modification de texte que vous acceptez, la modification est rebasée sur les modifications concurrentes effectuées par vos collègues pendant que la proposition était ouverte - si un bloc ne peut pas être appliqué proprement, l'assistant vous indique quelles lignes ont été ignorées.
 
-Lorsqu'un collaborateur a une visualisation sélectionnée, une bordure de présence colorée apparaît autour de cette visualisation dans les volets éditeur et aperçu, avec son nom affiché au-dessus. Si l'éditeur de la visualisation est ouvert, la bordure porte un indicateur de modification afin que les autres sachent que la configuration de la visualisation est en cours de modification.
+Lorsqu'un collaborateur a une visualisation sélectionnée, une bordure de présence colorée apparaît autour de cette visualisation dans l'éditeur, avec son nom affiché au-dessus. Si l'éditeur de la visualisation est ouvert, la bordure porte un indicateur de modification afin que les autres sachent que la configuration de la visualisation est en cours de modification.
 
 ## Historique des versions
 
@@ -120,16 +124,12 @@ Appuyez sur **Ctrl+F** (ou **Cmd+F** sur Mac) lorsque l'éditeur est actif pour 
 
 ## Partager par e-mail
 
-Cliquez sur **E-mail** dans le menu **Fichier** pour envoyer le rapport en pièce jointe. Saisissez une ou plusieurs adresses de destinataires et un message facultatif. FASTR joint le rapport dans son format d'export natif — un fichier HTML pour les rapports HTML et FASTR Markdown, et un PDF pour les rapports Markdown ordinaires — et l'envoie en votre nom.
+Cliquez sur **E-mail** dans le menu **Fichier** pour envoyer le rapport en pièce jointe. Saisissez une ou plusieurs adresses de destinataires et un message facultatif. FASTR joint le rapport au format PDF et l'envoie en votre nom.
 
 ## Exporter
 <!-- help#report-export -->
 
-Cliquez sur **Télécharger** pour ouvrir les options d'export. Les formats disponibles dépendent du type de rapport :
-
-- **Rapports Markdown** proposent **PDF** et **Word (.docx)**. Le PDF est idéal pour un document final et figé que vous diffusez ou archivez ; le Word convient mieux lorsqu'un collègue doit le modifier ou le commenter.
-- **Rapports FASTR Markdown** proposent **PDF** (paginé exactement comme l'éditeur le montre), **Word (.docx)** et **fichier HTML**. Le PDF contient exactement les pages affichées dans l'éditeur. Le fichier Word garde les titres, le texte, les tableaux et les visualisations modifiables ; les couvertures, bandeaux et tuiles sont des images avec leur texte dans des zones modifiables par-dessus. Le fichier HTML est autonome avec les visualisations intégrées comme images et se lit comme une seule page continue.
-- **Rapports HTML** proposent **fichier HTML** et **Imprimer / enregistrer en PDF**. Le fichier HTML est autonome. Imprimer ouvre la boîte de dialogue d'impression du navigateur où vous pouvez enregistrer en PDF.
+Cliquez sur **Télécharger** pour ouvrir les options d'export. Les rapports FASTR Markdown proposent **PDF** (paginé exactement comme l'éditeur le montre), **Word (.docx)** et **fichier HTML**. Le PDF contient exactement les pages affichées dans l'éditeur. Le fichier Word garde les titres, le texte, les tableaux et les visualisations modifiables ; les couvertures, bandeaux et tuiles sont des images avec leur texte dans des zones modifiables par-dessus. Le fichier HTML est autonome avec les visualisations intégrées comme images et se lit comme une seule page continue.
 
 Les visualisations dynamiques sont rendues dans le document au moment de l'export.
 

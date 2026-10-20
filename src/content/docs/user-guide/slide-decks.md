@@ -55,6 +55,10 @@ Below the menu row, a formatting row shows controls that follow your selection. 
 
 The slide toolbar and its **Add slide** button are visible only when you have edit permission on the deck. When you open a deck as a viewer, these controls are hidden.
 
+## Where the numbers come from
+
+Every visualization in a slide deck takes its numbers from the results package and scope the deck is set to use. The package and scope are shown in the deck header. If you can edit the deck, click there to change either one. Visualizations made before the change are then out of date, and an **Update all visualizations** button appears so you can refresh them together.
+
 ## Deck settings
 
 The deck header contains a **Deck** menu that gives quick access to theme, logos, and footer settings for the whole deck without opening the full settings panel. Each change you make in this menu applies straight away. The **Deck** menu is visible only when you have edit permission on the deck. For complete configuration, click **All deck settings…** in the **Deck** menu to open the full settings panel.

@@ -60,6 +60,10 @@ If a visualization or image cannot be loaded when you export the report, FASTR r
 
 ![Adding Figures and Images](/images/adding-figures-and-images-en.png)
 
+## Where the numbers come from
+
+Every visualization in a report takes its numbers from the results package and scope the report is set to use. The package and scope are shown at the top of the report. If you can edit the report, click there to change either one. Visualizations made before the change are then out of date, and an **Update all visualizations** button appears so you can refresh them together.
+
 ## Adding logos
 
 FASTR Markdown reports support a **Logos** block that renders a row of logos — your organization's, partners', or FASTR's. Insert one from the **Widgets** menu. Clicking an empty logos row, or double-clicking one that already has logos, opens the logo picker where you choose which logos appear and in what order. The picker shows FASTR's built-in logos and all image files you have uploaded to the instance. Upload a new logo directly from the picker using **Upload logo**. Drag items in the chosen list to reorder them.
@@ -80,11 +84,11 @@ Open the **File** menu and choose **Manage access…** to control who can view a
 
 ## Choosing a theme
 
-FASTR Markdown reports have a design theme that controls fonts, colours, and the look of every block. Open the **Page** menu and choose **Theme** to switch between built-in themes with a quick preview, or choose **All themes and saved styles…** to open the full theme picker where real stylesheet previews are shown side by side. You can re-theme a report at any time without touching the body text.
+FASTR Markdown reports have a design theme that controls fonts, colours, and the look of every block. Open the **Page** menu and choose **Theme** to switch between built-in themes or apply a saved custom style. A custom style contributes its colour palette to a FASTR Markdown report. You can re-theme a report at any time without touching the body text.
 
 On a new report that still holds only its title, the theme picker offers a second step: a template gallery. Templates give the report its sections and blocks, with grey guidance text in each slot to type over. The AI assistant is told which template you chose and writes to its shape. Pick a template and click **Use template** to apply it, or click **Skip** to start with a blank page. You can open the theme picker again at any time from the **Page** menu — the template step only appears while the report body is still empty.
 
-The theme picker also shows any custom styles saved by your instance's administrators. A custom style gives the AI a specific design brief when writing or restructuring HTML reports, or a colour palette for FASTR Markdown reports. Saved styles appear alongside the built-in themes in the picker.
+The theme picker also shows any custom styles saved by your instance's administrators. Saved styles appear alongside the built-in themes in the picker.
 
 ## Viewer access
 
@@ -92,11 +96,11 @@ When you open a report as a viewer (without edit permission), the editor loads i
 
 ## Collaborating on a report
 
-When multiple people have the same report open, you can see where colleagues are working. Live cursors appear on both the code editor pane and the rendered preview, so you know at a glance whether someone else is editing the section you are about to change. A small presence avatar also appears on the report card in the list view. Collaborators who are currently viewing the same report appear as avatar icons in the header.
+When multiple people have the same report open, you can see where colleagues are working. Live cursors appear in the editor pane, so you know at a glance whether someone else is editing the section you are about to change. A small presence avatar also appears on the report card in the list view. Collaborators who are currently viewing the same report appear as avatar icons in the header.
 
 The editor is collaborative: remote collaborators' text selections are highlighted in their color, and hovering over a highlighted selection shows the person's name. When the AI assistant proposes a text edit that you accept, the change is rebased over any concurrent edits your colleagues made while the proposal was open - if a hunk could not be applied cleanly, the assistant lets you know which lines were skipped.
 
-When a collaborator has a visualization selected, a colored presence border appears around that visualization in both the editor and preview panes, with their name shown above it. If they have the visualization editor open, the border is labeled with an edit indicator so others know the visualization configuration is being actively changed.
+When a collaborator has a visualization selected, a colored presence border appears around that visualization in the editor, with their name shown above it. If they have the visualization editor open, the border is labeled with an edit indicator so others know the visualization configuration is being actively changed.
 
 ## Version history
 
@@ -120,16 +124,12 @@ Press **Ctrl+F** (or **Cmd+F** on Mac) while the editor is focused to open the f
 
 ## Sharing by email
 
-Click **Email** from the **File** menu to send the report as an email attachment. Enter one or more recipient addresses and an optional message. FASTR attaches the report in its native export format — an HTML file for HTML and FASTR Markdown reports, and a PDF for plain Markdown reports — and sends it on your behalf.
+Click **Email** from the **File** menu to send the report as an email attachment. Enter one or more recipient addresses and an optional message. FASTR attaches the report as a PDF and sends it on your behalf.
 
 ## Exporting
 <!-- help#report-export -->
 
-Click **Download** to open the export options. The formats available depend on the report type:
-
-- **Markdown reports** offer **PDF** and **Word (.docx)**. PDF is best for a final, fixed document you're distributing or archiving; Word is best when a colleague needs to edit or comment.
-- **FASTR Markdown reports** offer **PDF** (paginated exactly as the editor shows), **Word (.docx)**, and **HTML file**. The PDF has exactly the pages the editor shows. The Word file keeps headings, text, tables and visualizations editable; covers, bands and tiles are pictures with their text in editable boxes on top. The HTML file is self-contained with visualizations embedded as images and reads as one continuous page.
-- **HTML reports** offer **HTML file** and **Print / save as PDF**. The HTML file is self-contained. Print opens your browser's print dialog where you can save as PDF.
+Click **Download** to open the export options. FASTR Markdown reports offer **PDF** (paginated exactly as the editor shows), **Word (.docx)**, and **HTML file**. The PDF has exactly the pages the editor shows. The Word file keeps headings, text, tables and visualizations editable; covers, bands and tiles are pictures with their text in editable boxes on top. The HTML file is self-contained with visualizations embedded as images and reads as one continuous page.
 
 Live visualizations are rendered into the document at export time.
 

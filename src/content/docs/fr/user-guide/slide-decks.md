@@ -55,6 +55,10 @@ Sous la rangée de menus, une rangée de mise en forme affiche des commandes qui
 
 La barre d'outils de la diapositive et son bouton **Ajouter une diapositive** ne sont visibles que lorsque vous disposez de la permission de modification sur la présentation. Lorsque vous ouvrez une présentation en tant que lecteur, ces commandes sont masquées.
 
+## D'où viennent les chiffres
+
+Chaque visualisation d'une présentation tire ses chiffres du lot de résultats et de la portée que la présentation est configurée pour utiliser. Le lot et la portée sont affichés dans l'en-tête de la présentation. Si vous pouvez modifier la présentation, cliquez là pour changer l'un ou l'autre. Les visualisations créées avant la modification ne sont alors plus à jour, et un bouton **Mettre à jour toutes les visualisations** apparaît pour les actualiser ensemble.
+
 ## Paramètres de la présentation
 
 L'en-tête de la présentation contient un menu **Présentation** qui donne un accès rapide aux paramètres de thème, de logos et de pied de page de l'ensemble de la présentation. Chaque modification effectuée dans ce menu s'applique immédiatement. Le menu **Présentation** n'est visible que lorsque vous disposez de la permission de modification sur la présentation. Pour une configuration complète, cliquez sur **Tous les paramètres…** dans le menu **Présentation** pour ouvrir le panneau complet.

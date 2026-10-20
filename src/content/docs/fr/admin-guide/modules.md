@@ -69,6 +69,10 @@ Les administrateurs peuvent désigner un lot prêt comme **lot épinglé** de l'
 
 Le lot épinglé est également le lot que le connecteur MCP de FASTR utilise. Lorsque vous connectez un client IA compatible au point d'accès MCP de votre instance, il lit les métriques et les données à partir du lot actuellement épinglé.
 
+## Portées
+
+Une portée définit quelle partie d'un lot de résultats une présentation ou un rapport peut afficher — par exemple une région, certaines années, ou certains modules et indicateurs. Les portées sont créées et gérées depuis le bouton **Portées** sur la page Lots de résultats. La portée appelée **Toutes les données** est toujours présente et ne limite rien. Sur la page Utilisateurs, un utilisateur peut également être limité à certaines portées afin de ne voir que les produits qui utilisent ces portées.
+
 ## Exécution et état des modules
 <!-- help#amod-status -->
 
