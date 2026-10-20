@@ -17,7 +17,7 @@ Les enquêtes HFA recueillent des informations sur les établissements qui ne so
 Chaque importation HFA nécessite deux fichiers :
 
 - **Fichier de données CSV** - une ligne par établissement avec une colonne pour chaque question de l'enquête. La première colonne doit contenir les identifiants d'établissement correspondant à votre registre.
-- **Fichier de questionnaire XLSForm** - définit la structure de l'enquête selon le standard XLSForm. FASTR le lit pour en extraire les noms de variables, les libellés des questions et les libellés des valeurs.
+- **Fichier de questionnaire XLSForm** - définit la structure de l'enquête selon le standard XLSForm. FASTR le lit pour en extraire les identifiants de questions, les libellés des questions et les libellés des valeurs.
 
 ## Déroulement de l'importation
 <!-- help#hfa-import -->
@@ -71,19 +71,19 @@ Après l'importation, utilisez la page **Points temporels HFA** pour modifier le
 
 ## Détails de la validation
 
-Des lignes peuvent être écartées au cours de la préparation pour plusieurs raisons : identifiants d'établissement manquants, identifiants d'établissement absents de votre registre, établissements en double au sein d'une même importation (gérés par la stratégie choisie à l'étape des doublons), ou lignes exclues par les conditions de filtre définies à l'étape des correspondances. Le résumé de la préparation présente chaque catégorie séparément. Il indique également quelles questions XLSForm n'avaient pas de colonne CSV correspondante, et quelles colonnes CSV n'avaient pas de question XLSForm correspondante, avec des exemples allant jusqu'à dix noms dans chaque catégorie. Si vous constatez de nombreuses entrées « Établissement introuvable », vérifiez si votre registre des établissements doit être mis à jour.
+Des lignes peuvent être écartées au cours de la préparation pour plusieurs raisons : identifiants d'établissement manquants, identifiants d'établissement absents de votre registre, établissements en double au sein d'une même importation (gérés par la stratégie choisie à l'étape des doublons), ou lignes exclues par les conditions de filtre définies à l'étape des correspondances. Le résumé de la préparation présente chaque catégorie séparément. Il indique également combien de questions XLSForm n'avaient pas de colonne CSV correspondante, et quelles colonnes CSV n'avaient pas de question XLSForm correspondante, avec des exemples allant jusqu'à dix noms dans chaque catégorie. Si vous constatez de nombreuses entrées « Établissement introuvable », vérifiez si votre registre des établissements doit être mis à jour.
 
 Si aucune colonne CSV ne correspond à une question de type préparable dans le XLSForm, l'importation s'arrête immédiatement avec une erreur expliquant l'incompatibilité, afin que vous puissiez vérifier que les bons fichiers sont associés avant qu'aucune donnée ne soit écrite.
 
 ## Traitement du XLSForm
 
-FASTR extrait la structure de l'enquête à partir de votre XLSForm afin de fournir des libellés pertinents dans toute la plateforme. Les noms de variables deviennent des identifiants techniques. Les libellés apparaissent dans les visualisations et les rapports. Les libellés des valeurs font correspondre les codes de réponse numériques à un texte descriptif.
+FASTR extrait la structure de l'enquête à partir de votre XLSForm afin de fournir des libellés pertinents dans toute la plateforme. Les identifiants de questions deviennent des identifiants techniques utilisés dans le code R et le dictionnaire de données. Les libellés apparaissent dans les visualisations et les rapports. Les libellés des valeurs font correspondre les codes de réponse numériques à un texte descriptif.
 
-FASTR fait correspondre les en-têtes de colonnes CSV aux noms de questions XLSForm sans tenir compte de la casse. Un chemin de groupe ODK comme `section_a/SERV_08B` est mis en correspondance sur son dernier segment, de sorte que le chemin correspond à la question `serv_08b`. Si deux colonnes CSV correspondent à la même question — par exemple `serv_08b` et `SERV_08B` toutes deux présentes — l'importation s'arrête avec une erreur nommant les deux colonnes, afin que vous puissiez supprimer le doublon avant de téléverser à nouveau.
+FASTR fait correspondre les en-têtes de colonnes CSV aux identifiants de questions XLSForm sans tenir compte de la casse. Un chemin de groupe ODK comme `section_a/SERV_08B` est mis en correspondance sur son dernier segment, de sorte que le chemin correspond à la question `serv_08b`. Si deux colonnes CSV correspondent à la même question — par exemple `serv_08b` et `SERV_08B` toutes deux présentes — l'importation s'arrête avec une erreur nommant les deux colonnes, afin que vous puissiez supprimer le doublon avant de téléverser à nouveau.
 
 Pour les questions « select_multiple », FASTR décompose automatiquement chaque choix en une variable binaire distincte - une question comportant cinq options devient cinq indicateurs oui/non.
 
-Certains noms de variables sont réservés et ne peuvent pas être utilisés comme noms de variables d'enquête. Les noms réservés comprennent les fonctions et opérateurs R utilisés dans le code des indicateurs, ainsi que les colonnes générées par le script d'analyse (comme `weight`, `time_point` et les colonnes relatives aux établissements). Si votre XLSForm contient un nom de variable réservé, renommez-le avant d'importer.
+Certains identifiants de questions sont réservés et ne peuvent pas être utilisés comme identifiants de questions d'enquête. Les noms réservés comprennent les fonctions et opérateurs R utilisés dans le code des indicateurs, ainsi que les colonnes générées par le script d'analyse (comme `weight`, `time_point` et les colonnes relatives aux établissements). Si votre XLSForm contient un identifiant de question réservé, renommez la question dans le XLSForm et sa colonne dans le CSV avant d'importer.
 
 ## Travailler avec les données HFA
 

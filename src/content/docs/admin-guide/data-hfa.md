@@ -17,7 +17,7 @@ HFA surveys collect information about facilities not captured in routine reporti
 Each HFA import requires two files:
 
 - **CSV data file** - one row per facility with columns for each survey question. The first column should contain facility identifiers matching your registry.
-- **XLSForm questionnaire file** - defines the survey structure following the XLSForm standard. FASTR reads this to extract variable names, question labels, and value labels.
+- **XLSForm questionnaire file** - defines the survey structure following the XLSForm standard. FASTR reads this to extract question IDs, question labels, and value labels.
 
 ## Import workflow
 <!-- help#hfa-import -->
@@ -71,19 +71,19 @@ After importing, use the **HFA Time Points** page to edit labels, adjust dates, 
 
 ## Validation details
 
-Rows can be dropped during staging for several reasons: missing facility IDs, facility IDs not in your registry, duplicate facilities within a single import (handled by the strategy you chose in the duplicates step), or rows excluded by the filter conditions you set in the mappings step. The staging summary shows each category separately. The summary also shows which XLSForm questions had no matching CSV column, and which CSV columns had no matching XLSForm question, along with samples of up to ten names in each category. If you see many "Facility Not Found" entries, check whether your facility registry needs updating.
+Rows can be dropped during staging for several reasons: missing facility IDs, facility IDs not in your registry, duplicate facilities within a single import (handled by the strategy you chose in the duplicates step), or rows excluded by the filter conditions you set in the mappings step. The staging summary shows each category separately. The summary also shows how many XLSForm questions had no matching CSV column, and which CSV columns had no matching XLSForm question, along with samples of up to ten names in each category. If you see many "Facility Not Found" entries, check whether your facility registry needs updating.
 
 If no CSV column matches any staged-type question in the XLSForm, the import stops immediately with an error explaining the mismatch, so you can verify that the correct files are paired before any data is written.
 
 ## XLSForm handling
 
-FASTR extracts survey structure from your XLSForm to provide meaningful labels throughout the platform. Variable names become technical identifiers. Labels appear in visualizations and reports. Value labels map numeric response codes to descriptive text.
+FASTR extracts survey structure from your XLSForm to provide meaningful labels throughout the platform. Question IDs become technical identifiers used in R code and the data dictionary. Labels appear in visualizations and reports. Value labels map numeric response codes to descriptive text.
 
-FASTR matches CSV column headers to XLSForm question names case-insensitively. An ODK group path like `section_a/SERV_08B` is matched on its last segment, so the path matches the question `serv_08b`. If two CSV columns match the same question — for example `serv_08b` and `SERV_08B` both present — the import stops with an error naming both columns, so you can remove the duplicate before re-uploading.
+FASTR matches CSV column headers to XLSForm question IDs case-insensitively. An ODK group path like `section_a/SERV_08B` is matched on its last segment, so the path matches the question `serv_08b`. If two CSV columns match the same question — for example `serv_08b` and `SERV_08B` both present — the import stops with an error naming both columns, so you can remove the duplicate before re-uploading.
 
 For "select_multiple" questions, FASTR automatically expands each choice into a separate binary variable - a question with five options becomes five yes/no indicators.
 
-Certain variable names are reserved and cannot be used as survey variable names. Reserved names include R functions and operators used in indicator code, as well as columns the analysis script generates (such as `weight`, `time_point`, and facility-related columns). If your XLSForm contains a reserved variable name, rename it before importing.
+Certain question IDs are reserved and cannot be used as survey question IDs. Reserved names include R functions and operators used in indicator code, as well as columns the analysis script generates (such as `weight`, `time_point`, and facility-related columns). If your XLSForm contains a reserved question ID, rename the question in the XLSForm and its column in the CSV before importing.
 
 ## Working with HFA data
 

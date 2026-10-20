@@ -18,14 +18,14 @@ Les modules sont inclus lors de la génération d'un lot de résultats au niveau
 
 Les administrateurs de l'instance peuvent définir des sélections de modules par défaut et des valeurs de paramètres qui préremplissent l'assistant de génération de lots de résultats. Accédez à **Lots de résultats** au niveau de l'instance et cliquez sur **Paramètres par défaut des modules**. Sélectionnez les modules qui sont pré-cochés par défaut et définissez les valeurs de paramètres par défaut pour chacun.
 
-Ces valeurs par défaut préremplissent l'assistant de génération lors de la configuration d'un nouveau lot de résultats. Elles peuvent être modifiées dans l'assistant pour chaque lot individuellement, ce qui vous fait gagner du temps sans vous bloquer.
+Ces valeurs par défaut configurent l'assistant de génération lors de la création d'un nouveau lot de résultats. Les valeurs des paramètres des modules se règlent uniquement ici et s'appliquent à chaque lot qui inclut le module — elles ne sont pas modifiables dans l'assistant lui-même.
 
 ## Générer un lot de résultats
 <!-- help#amod-install -->
 
-Pour produire des résultats de modules, générez un nouveau lot de résultats depuis la page **Lots de résultats** de l'instance. Cliquez sur **Générer un nouveau lot de résultats** pour ouvrir l'assistant. L'assistant vous guide en trois étapes : sélectionner les familles de données à inclure (HMIS, HFA, données d'équité ICEH), choisir les modules à exécuter et définir leurs paramètres, puis confirmer le libellé.
+Pour produire des résultats de modules, générez un nouveau lot de résultats depuis la page **Lots de résultats** de l'instance. Cliquez sur **Générer un nouveau lot de résultats** pour ouvrir l'assistant. L'assistant vous guide en trois étapes : sélectionner les familles de données à inclure (HMIS, HFA, données d'équité ICEH), choisir les modules à exécuter, puis confirmer le libellé.
 
-L'assistant est une fenêtre modale éphémère — rien n'est enregistré sur le serveur avant que vous ne cliquiez sur **Lancer la génération**. L'ensemble de la configuration (sélections de familles de données, choix de modules, valeurs de paramètres et libellé) est soumis en une seule étape. Si vous fermez l'assistant avant de lancer, rien n'est conservé.
+L'assistant est une fenêtre modale éphémère — rien n'est enregistré sur le serveur avant que vous ne cliquiez sur **Lancer la génération**. L'ensemble de la configuration (sélections de familles de données, choix de modules et libellé) est soumis en une seule étape. Si vous fermez l'assistant avant de lancer, rien n'est conservé.
 
 Après avoir cliqué sur **Lancer la génération**, FASTR sélectionne automatiquement l'identifiant du nouveau lot afin que le volet de détail s'ouvre dès que la notification SSE arrive. Vous pouvez quitter la page et suivre la progression sur la page Lots de résultats.
 
@@ -33,13 +33,13 @@ Après avoir cliqué sur **Lancer la génération**, FASTR sélectionne automati
 
 ### Étape 1 — Choisir les données
 
-Sélectionnez les familles de données à partir desquelles ce lot de résultats est généré. Chaque famille incluse est capturée dans son intégralité. Seules les familles pour lesquelles des données ont été téléversées sur l'instance sont disponibles à la sélection.
+Sélectionnez les familles de données à partir desquelles ce lot de résultats est généré. Chaque famille incluse est capturée dans son intégralité. Seules les familles pour lesquelles des données ont été téléversées sur l'instance sont disponibles à la sélection. Si une importation DHIS2 est en cours, les données HMIS sont temporairement indisponibles et une note l'explique — vous devez attendre la fin de l'importation avant de générer un lot incluant les données HMIS.
 
 ### Étape 2 — Configurer les modules
 
 Choisissez les modules à exécuter. La liste de sélection affiche chaque module disponible sous forme de case à cocher. La sélection d'un module inclut automatiquement tous les modules dont il dépend ; un module ne peut pas être désélectionné tant qu'un autre module sélectionné en dépend. Les modules qui nécessitent des familles de données non choisies à l'étape 1 sont affichés comme indisponibles, avec une note indiquant quelle famille est manquante afin que vous puissiez revenir à l'étape 1 pour l'ajouter.
 
-Les modules cochés qui exposent des paramètres disposent d'une section **Paramètres des modules** distincte en dessous de la liste de sélection, réduite par défaut car les valeurs par défaut des modules de l'instance la préremplissent. Développez la section de paramètres d'un module pour examiner ou modifier ses valeurs de paramètres. Si un module sélectionné a des valeurs de paramètres invalides, l'assistant marque l'étape des modules comme incomplète jusqu'à ce que vous les corrigiez.
+Si un module sélectionné a des valeurs de paramètres enregistrées dans les paramètres par défaut des modules qui échouent à la validation, les noms de ces modules sont listés sous la sélection avec une invite à les corriger dans **Paramètres par défaut des modules** avant de lancer. Les valeurs des paramètres ne sont pas modifiables dans l'assistant.
 
 Les modules disponibles comprennent :
 
@@ -48,7 +48,7 @@ Les modules disponibles comprennent :
 
 ### Étape 3 — Confirmer et lancer
 
-Saisissez un libellé pour le lot de résultats et vérifiez les sélections de données et de modules. Cliquez sur **Lancer la génération** pour démarrer.
+Saisissez un libellé pour le lot de résultats et vérifiez les sélections de données et de modules. L'assistant propose un libellé qui n'entre pas en conflit avec les lots existants. Cliquez sur **Lancer la génération** pour démarrer.
 
 ## Données de population et M12
 

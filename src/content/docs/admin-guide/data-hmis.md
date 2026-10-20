@@ -39,7 +39,7 @@ Click **Imports** in the heading bar to open the imports view. The view has thre
 - **Future** lists the scheduled imports: recurring schedules and one-time runs that have not started yet. **Edit** opens the wizard pre-filled with the schedule's settings, and the trash icon deletes it. A schedule that was refused, missed, or whose last run failed is highlighted in red with the error under its status, and a red notice above the tabs says that a scheduled import needs attention.
 - **History** lists every run that has started, including the running one, with when it started, who started it, whether it came from DHIS2 or CSV, what it selected, the number of pairs fetched and failed for a DHIS2 run, its status, and a **Version** button that opens the import information for the dataset version the run created. Click a row for its detail.
 
-Imports run in the background, one at a time. If an import is already running, a new one is queued and starts when the current one finishes.
+Imports run in the background, one at a time. If an import is already running, a new one is queued and starts when the current one finishes. If a DHIS2 import is currently running, generating a new results package that includes HMIS data is temporarily blocked — a message explains why when you attempt to launch generation.
 
 ## CSV import workflow
 <!-- help#hmis-csv -->

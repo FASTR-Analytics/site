@@ -18,14 +18,14 @@ Modules are included when generating a results package at the instance level. A 
 
 Instance administrators can set default module selections and parameter values that pre-fill the results package generation wizard. Navigate to **Results packages** at the instance level and click **Module defaults**. Select which modules are pre-checked by default and set default parameter values for each.
 
-These defaults pre-fill the generation wizard when a new results package is configured. They can be changed in the wizard for any individual package, so setting them here saves time without locking you in.
+These defaults configure the generation wizard when a new results package is generated. Module parameter values are set only here and apply to every package that includes the module — they are not editable in the wizard itself.
 
 ## Generating a results package
 <!-- help#amod-install -->
 
-To produce module outputs, generate a new results package from the instance **Results packages** page. Click **Generate new results package** to open the wizard. The wizard walks you through three steps: selecting which data families to include (HMIS, HFA, ICEH equity data), choosing which modules to run and setting their parameters, and confirming the label.
+To produce module outputs, generate a new results package from the instance **Results packages** page. Click **Generate new results package** to open the wizard. The wizard walks you through three steps: selecting which data families to include (HMIS, HFA, ICEH equity data), choosing which modules to run, and confirming the label.
 
-The wizard is an ephemeral modal — nothing is saved to the server before you click **Launch generation**. The entire configuration (data family selections, module choices, parameter values, and label) is submitted in a single step. If you close the wizard before launching, nothing is stored.
+The wizard is an ephemeral modal — nothing is saved to the server before you click **Launch generation**. The entire configuration (data family selections, module choices, and label) is submitted in a single step. If you close the wizard before launching, nothing is stored.
 
 After you click **Launch generation**, FASTR pins the new run's ID so that the detail pane opens for it as soon as the SSE notification arrives. You can leave the page and follow progress on the Results packages surface.
 
@@ -33,13 +33,13 @@ After you click **Launch generation**, FASTR pins the new run's ID so that the d
 
 ### Step 1 — Choose data
 
-Select which data families this results package is generated from. Each included family is captured in full. Only families that have data uploaded to the instance are available for selection.
+Select which data families this results package is generated from. Each included family is captured in full. Only families that have data uploaded to the instance are available for selection. If a DHIS2 import is currently running, HMIS data is temporarily unavailable and a note explains why — you must wait for the import to finish before generating a package that includes HMIS data.
 
 ### Step 2 — Configure modules
 
 Choose which modules to run. The selection list shows every available module as a checkbox. Selecting a module automatically includes all modules it depends on; a module cannot be unchecked while another selected module depends on it. Modules that require data families not chosen in step 1 are shown as unavailable, with a note naming which family is missing so you can go back to step 1 and add it.
 
-Checked modules that expose parameters have a separate **Module settings** section below the selection list, collapsed by default because the instance's module defaults pre-fill it. Expand a module's settings section to review or change its parameter values. If a selected module has parameter values that fail validation, the wizard marks the modules step as incomplete until you correct them.
+If any selected module has parameter values stored in the module defaults that fail validation, those module names are listed below the selection with a prompt to fix them in **Module defaults** before launching. Parameter values are not editable in the wizard.
 
 Available modules include:
 
@@ -48,7 +48,7 @@ Available modules include:
 
 ### Step 3 — Confirm and launch
 
-Enter a label for the results package and review the data and module selections. Click **Launch generation** to start.
+Enter a label for the results package and review the data and module selections. The wizard suggests a label that does not conflict with existing packages. Click **Launch generation** to start.
 
 ## Population data and M12
 
