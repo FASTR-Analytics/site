@@ -37,9 +37,9 @@ Sélectionnez les familles de données à partir desquelles ce lot de résultats
 
 ### Étape 2 — Configurer les modules
 
-Choisissez les modules à exécuter. La sélection d'un module inclut automatiquement tous les modules dont il dépend ; un module ne peut pas être désélectionné tant qu'un autre module sélectionné en dépend. Les modules qui nécessitent des familles de données non choisies à l'étape 1 sont affichés comme indisponibles, avec une note indiquant quelle famille est manquante afin que vous puissiez revenir à l'étape 1 pour l'ajouter.
+Choisissez les modules à exécuter. La liste de sélection affiche chaque module disponible sous forme de case à cocher. La sélection d'un module inclut automatiquement tous les modules dont il dépend ; un module ne peut pas être désélectionné tant qu'un autre module sélectionné en dépend. Les modules qui nécessitent des familles de données non choisies à l'étape 1 sont affichés comme indisponibles, avec une note indiquant quelle famille est manquante afin que vous puissiez revenir à l'étape 1 pour l'ajouter.
 
-Les valeurs de paramètres sont modifiables directement dans l'assistant pour chaque module sélectionné qui expose des paramètres. Les valeurs sont préremplies depuis les paramètres par défaut des modules que vous avez configurés, et toute modification s'applique uniquement à cette génération de lot. Si un module sélectionné a des valeurs de paramètres invalides, l'assistant marque l'étape des modules comme incomplète jusqu'à ce que vous les corrigiez.
+Les modules cochés qui exposent des paramètres disposent d'une section **Paramètres des modules** distincte en dessous de la liste de sélection, réduite par défaut car les valeurs par défaut des modules de l'instance la préremplissent. Développez la section de paramètres d'un module pour examiner ou modifier ses valeurs de paramètres. Si un module sélectionné a des valeurs de paramètres invalides, l'assistant marque l'étape des modules comme incomplète jusqu'à ce que vous les corrigiez.
 
 Les modules disponibles comprennent :
 
@@ -52,7 +52,7 @@ Saisissez un libellé pour le lot de résultats et vérifiez les sélections de 
 
 ## Données de population et M12
 
-Lorsqu'une ou plusieurs formules d'indicateurs font référence à un terme de population (écrit sous la forme `[population:id_type]`), M12 nécessite que des données de population soient importées au niveau de l'instance avant la génération. La génération échoue si une population est référencée mais qu'aucune donnée n'est présente pour une zone de la structure HMIS actuelle au niveau de population configuré.
+Lorsqu'une ou plusieurs formules d'indicateurs font référence à un terme de population, M12 nécessite que des données de population soient importées au niveau de l'instance avant la génération. La génération échoue si une population est référencée mais qu'aucune donnée n'est présente pour une zone de la structure HMIS actuelle au niveau de population configuré.
 
 Le niveau de population doit être défini sur la page Population de l'instance et ne doit pas être plus profond que le niveau de profondeur administrative de la structure HMIS. Si le niveau de population est plus profond que la structure, la génération échoue avec un message clair expliquant l'incompatibilité.
 
@@ -64,9 +64,7 @@ Au fil des générations, les anciens lots s'accumulent. Cliquez sur **Élaguer*
 
 ## Épingler un lot de résultats
 
-Les administrateurs peuvent désigner un lot prêt comme **lot épinglé** de l'instance. Les projets pour lesquels l'option **Toujours utiliser le paquet épinglé de l'instance** est activée sont automatiquement réorientés chaque fois que l'épingle change. Pour épingler un lot, ouvrez sa vue de détail sur la page Lots de résultats et cliquez sur **Épingler**. Pour désépingler, cliquez sur **Désépingler** sur le lot actuellement épinglé.
-
-Avant d'épingler, FASTR indique quels projets abonnés seront réorientés. Les projets verrouillés sont automatiquement ignorés et restent sur leur lot actuel.
+Les administrateurs peuvent désigner un lot prêt comme **lot épinglé** de l'instance. Les nouvelles présentations et les nouveaux rapports démarrent sur le lot épinglé. Les produits existants conservent leur propre lot, sauf si un éditeur les bascule manuellement. Pour épingler un lot, ouvrez sa vue de détail sur la page Lots de résultats et cliquez sur **Épingler**. Pour désépingler, cliquez sur **Désépingler** sur le lot actuellement épinglé.
 
 Le lot épinglé est également le lot que le connecteur MCP de FASTR utilise. Lorsque vous connectez un client IA compatible au point d'accès MCP de votre instance, il lit les métriques et les données à partir du lot actuellement épinglé.
 
@@ -89,7 +87,7 @@ Lorsqu'un module produit une erreur ou des résultats inattendus, consultez les 
 
 Pour les problèmes complexes, affichez le **Script** pour voir le code R exact qui a été exécuté. L'option **Fichiers** montre les fichiers de données produits par le module, utiles pour inspecter manuellement les résultats intermédiaires.
 
-L'accès au script et aux fichiers requiert la permission **Consulter les données** ; l'accès aux journaux requiert la permission **Consulter les journaux**. Ces permissions s'appliquent que vous consultiez depuis le catalogue de l'instance ou depuis l'onglet Lot de résultats d'un projet.
+L'accès au script et aux fichiers requiert la permission **Consulter les données** ; l'accès aux journaux requiert la permission **Consulter les journaux**. Ces permissions s'appliquent que vous consultiez depuis le catalogue de l'instance ou depuis l'onglet Lot de résultats d'un produit.
 
 ## Supprimer des lots de résultats
 

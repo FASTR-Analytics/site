@@ -51,7 +51,7 @@ The CSV import follows a multi-step wizard.
 
 **Step 0 - Choose source.** Select CSV as your import method.
 
-**Step 1 - Upload file.** Upload a CSV file with one row per facility. You can also upload an ODK questionnaire file (XLSForm) at this step. If your facility columns contain ODK select_one codes, providing the questionnaire causes those codes to be replaced with their labels during import.
+**Step 1 - Upload file.** Upload a CSV file with one row per facility. For HFA imports, you can also upload an ODK questionnaire file (XLSForm) at this step. If your facility columns contain ODK select_one codes, providing the questionnaire causes those codes to be replaced with their labels during import.
 
 **Step 2 - Map columns.** Turn on the columns you want to import and map each one to a column in your file. Only the Facility ID column is required. Administrative areas are all-or-nothing: either map all levels or none. Optional metadata columns (name, type, ownership, custom fields) can each be toggled on or off independently. If you are only updating metadata and not moving facilities geographically, you can leave administrative areas turned off.
 
@@ -61,7 +61,7 @@ The CSV import follows a multi-step wizard.
 
 **Step 5 - Review and integrate.** The staging summary shows how many facilities are in your file and how many of those already exist in the registry. If you provided an ODK questionnaire at step 1 (HFA imports only), the summary also shows which columns had ODK codes replaced with labels, how many values were resolved, and any codes that could not be matched to the questionnaire. If you saved value reassignments in the previous step, the summary shows how many facilities will be recoded per column. Choose an integration mode:
 
-- **Replace all existing facilities** - deletes every facility currently in this registry, then adds all facilities from your file. This requires administrative areas to be mapped. FASTR blocks this mode if any dataset or sampling weights still reference the existing facilities.
+- **Replace all existing facilities** — your file becomes the registry. Facilities in your file are added or updated, and every facility not in your file is deleted. Columns you did not map are cleared on updated facilities. This requires administrative areas to be mapped. FASTR blocks this mode if any dataset or sampling weights still reference facilities that would be deleted.
 - **Add new facilities and update existing ones** - adds facilities with new IDs and updates existing ones with the columns you mapped. This also requires administrative areas.
 - **Update existing facilities only** - updates only facilities already in the registry; the import is rejected if your file contains any ID not already present.
 
@@ -114,7 +114,7 @@ Unmapped features in the upload wizard are kept in the file and can be mapped la
 
 ### Uploading a DHIS2 GeoJSON map
 
-If your boundaries are stored in DHIS2, the GeoJSON upload wizard can also fetch them directly from your DHIS2 server. You can use the instance's stored DHIS2 connection or enter inline credentials for this fetch only. After you select a DHIS2 level, FASTR fetches lightweight org-unit metadata (names and codes) to let you build the mapping without downloading the full polygon dataset. The full geometry is only downloaded when you confirm and save, which can take up to several minutes for large countries.
+If your boundaries are stored in DHIS2, the GeoJSON upload wizard can also fetch them directly from your DHIS2 server. FASTR uses the instance's stored DHIS2 connection. After you select a DHIS2 level, FASTR fetches lightweight org-unit metadata (names and codes) to let you build the mapping without downloading the full polygon dataset. The full geometry is only downloaded when you confirm and save, which can take up to several minutes for large countries.
 
 After saving, FASTR reports how many boundaries were stored, how many matched an admin area, and how many were left unmatched (shown as a warning count). Unmatched boundaries can be mapped later using **Edit mappings**.
 

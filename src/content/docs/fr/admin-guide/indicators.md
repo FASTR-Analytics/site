@@ -9,71 +9,64 @@ Les indicateurs sont les mesures de santé que votre instance FASTR suit - par e
 
 ## Indicateurs HMIS
 
-Les indicateurs HMIS sont organisés en deux couches : les **indicateurs communs** et les **indicateurs bruts**. Les indicateurs communs sont les mesures de santé nommées utilisées dans vos analyses - par exemple `anc1` ou `opd_util`. Les indicateurs bruts sont les identifiants réels de votre serveur DHIS2 (éléments de données, opérandes ou identifiants d'indicateurs DHIS2) qui fournissent des valeurs aux indicateurs communs. Un indicateur commun est soit un indicateur **de base** (associé à un ou plusieurs indicateurs bruts, dont les valeurs sont additionnées), soit un indicateur **dérivé** (une formule portant sur d'autres indicateurs communs).
+Les indicateurs HMIS forment un dictionnaire unique. Chaque indicateur possède un type qui indique ce qui l'alimente : un **élément DHIS2** est un dénombrement mensuel que l'importation DHIS2 récupère par son identifiant DHIS2, un indicateur **Téléversé** est un dénombrement mensuel rempli par importation CSV, une **Somme** est le total des indicateurs de type Élément DHIS2 ou Téléversé, additionnés par établissement et par mois, et un indicateur **Calculé** est une formule portant sur d'autres indicateurs et des termes de population. Les trois types de dénombrement sont ajustés par les modules de qualité des données ; un indicateur calculé est calculé à partir de la formule après l'ajustement et l'agrégation des données.
 
-La liste des indicateurs comporte deux onglets : **Indicateurs communs** et **Indicateurs DHIS2**.
+La liste des indicateurs affiche chaque indicateur avec son identifiant, son libellé, son type et ce qui le définit. Un badge **Spécial** marque les indicateurs que les modules d'analyse lisent par leur nom comme des dénombrements - ceux-ci sont toujours analysés et ne peuvent être qu'un Élément DHIS2, Téléversé ou une Somme.
 
-### Indicateurs communs
-<!-- help#ind-common -->
+### Gérer les indicateurs
+<!-- help#ind-list -->
 
-Les indicateurs communs sont les noms standardisés avec lesquels les analystes travaillent. Un indicateur commun comme « visites de CPN1 » peut correspondre à différents identifiants bruts selon les pays. Cette abstraction permet au code d'analyse, aux visualisations et aux résultats des modules de référencer un nom stable, indépendamment de la façon dont les données sous-jacentes sont collectées.
-
-L'onglet **Indicateurs communs** liste chaque indicateur nommé avec son identifiant, son libellé, son type (De base ou Dérivé) et ce qui le définit. Pour un indicateur de base, la colonne **Défini par** liste les identifiants des indicateurs bruts qui lui sont associés. Pour un indicateur dérivé, elle affiche la formule.
-
-Pour créer un indicateur commun, cliquez sur **Créer un indicateur commun**. Donnez-lui un identifiant et un libellé, puis choisissez s'il s'agit d'un indicateur de base ou d'un indicateur dérivé. Un indicateur dérivé requiert une formule portant sur d'autres indicateurs communs.
+Pour créer un indicateur, cliquez sur **Créer**. Donnez-lui un identifiant et un libellé, puis choisissez son type. Le type détermine les champs de définition qui s'affichent.
 
 Pour définir l'ordre de la liste utilisé par chaque axe d'indicateurs dans chaque figure, cliquez sur **Trier**.
 
-Pour télécharger la liste au format CSV, cliquez sur **Télécharger le CSV**. Le fichier contient les colonnes `indicator_common_id`, `indicator_common_label` et `mapped_raw_indicator_ids`.
+Pour télécharger le dictionnaire au format CSV, cliquez sur **Télécharger**. Le fichier contient des colonnes pour l'identifiant, le libellé, le type, l'identifiant DHIS2, les membres, la formule, l'indicateur d'inclusion dans l'analyse, le format, les seuils, la direction, la cible et l'indicateur de faibles dénombrements attendus.
 
-Un administrateur global peut sélectionner des lignes dans la liste et utiliser l'action groupée **Supprimer** pour retirer les indicateurs communs sélectionnés, sous réserve des vérifications de dépendances habituelles.
+Pour voir ce qu'implique chaque type, cliquez sur **Types d'indicateurs** dans la barre d'en-tête. Pour voir les identifiants d'indicateurs spéciaux, les termes de population et les mots réservés, cliquez sur **Indicateurs spéciaux et mots réservés**.
 
-#### Indicateurs dérivés
+Les administrateurs globaux peuvent sélectionner des lignes dans la liste et utiliser l'action groupée **Supprimer** pour retirer les indicateurs sélectionnés, sous réserve des vérifications de dépendances habituelles. Les actions groupées **Inclure dans l'analyse** et **Exclure de l'analyse** basculent l'indicateur sur les lignes sélectionnées. L'action groupée **Importation de données DHIS2** ouvre l'assistant d'importation DHIS2 présélectionné avec les indicateurs choisis.
+
+#### Types d'indicateurs
+
+- **Élément DHIS2** — un dénombrement mensuel récupéré de DHIS2 par un UID d'élément de données ou un opérande UID.COC. Ses lignes sont stockées sous cet identifiant DHIS2.
+- **Téléversé** — un dénombrement mensuel rempli par importation CSV. FASTR lui attribue un identifiant interne ; l'étape Correspondance de chaque importation CSV pointe les valeurs du fichier vers lui. Les indicateurs de type Téléversé ne sont pas récupérés par les importations DHIS2.
+- **Somme** — le total de ses indicateurs membres (Éléments DHIS2 ou Téléversés), additionnés par établissement et par mois. Une somme ne peut pas contenir une autre somme.
+- **Calculé** — une formule portant sur d'autres indicateurs et des termes de population, calculée après l'ajustement et l'agrégation des données. Il n'a pas de lignes propres.
+
+Les trois types de dénombrement sont ajustés par les modules de qualité des données. Un indicateur calculé ne l'est pas.
+
+#### Indicateurs calculés
 <!-- help#ind-calculated -->
 
-Chaque indicateur commun possède un type, choisi dans le même éditeur. Un indicateur de base est défini par les indicateurs bruts qui lui sont associés, dont les valeurs sont additionnées. Un indicateur dérivé est défini par une formule portant sur d'autres indicateurs communs, par exemple `anc4 / anc1` pour un taux de couverture. Il est calculé après l'agrégation des données : un chiffre régional ou annuel est donc la formule appliquée aux valeurs additionnées, et non une moyenne de ratios.
+Un indicateur calculé est défini par une formule portant sur d'autres indicateurs, par exemple `anc4 / anc1` pour un taux de couverture. Il est calculé après l'agrégation des données : un chiffre régional ou annuel est donc la formule appliquée aux valeurs additionnées, et non une moyenne de ratios.
 
-Une formule peut utiliser `+`, `-`, `*`, `/`, des parenthèses et des nombres, ainsi que les fonctions `abs()` (valeur absolue), `coalesce()` (la première valeur non vide) et `nullif()` (vide lorsque les deux valeurs sont égales). Une formule peut faire référence à un autre indicateur dérivé, dont la définition est insérée à la place de son identifiant.
+Une formule peut utiliser `+`, `-`, `*`, `/`, des parenthèses et des nombres, ainsi que les fonctions `abs()` (valeur absolue), `coalesce()` (la première valeur non vide) et `nullif()` (vide lorsque les deux valeurs sont égales). Une formule peut faire référence à un autre indicateur calculé, dont la définition est insérée à la place de son identifiant.
 
-Une formule peut aussi diviser par une population, écrite avec un identifiant d'ingrédient de population, par exemple `[population:pregnancies]`. Les populations proviennent de la page Population de l'instance (Données → Population) : des effectifs annuels de population par unité administrative et par type de population, téléversés sous forme de CSV.
+Une formule peut aussi utiliser un terme de population, par exemple `population_pregnancies`. Les populations proviennent de la page Population de l'instance (Données → Population) : des effectifs annuels de population par unité administrative et par type de population, téléversés sous forme de CSV.
 
-Vous définissez également le format d'affichage (nombre, pourcentage ou taux pour 10 000), et si vous le souhaitez une règle de mise en forme conditionnelle pour le codage couleur.
+Pour un indicateur calculé, vous définissez également le format d'affichage (nombre, pourcentage ou taux pour 10 000), une valeur cible facultative, et si vous le souhaitez une règle de mise en forme conditionnelle pour le codage couleur. Le champ **direction** (plus élevé = meilleur ou plus bas = meilleur) s'applique à chaque type d'indicateur et est utilisé par la règle de mise en forme conditionnelle.
 
-La colonne **Statut** de la liste indique si chaque indicateur dérivé peut être calculé. Un indicateur dérivé ne peut pas être calculé si les indicateurs qu'il utilise n'ont pas d'indicateurs bruts associés. Un avertissement au-dessus de la liste le signale dès que l'un d'eux ne peut pas être calculé.
+La colonne **Statut** de la liste indique si chaque indicateur calculé peut être évalué. Un indicateur calculé ne peut pas être évalué si les indicateurs qu'il utilise n'ont pas de données. Un avertissement au-dessus de la liste le signale dès que l'un d'eux ne peut pas être évalué.
 
-### Indicateurs DHIS2 bruts
-<!-- help#ind-dhis2-import -->
-
-L'onglet **Indicateurs DHIS2** liste chaque indicateur brut enregistré dans votre instance, avec son identifiant, son libellé et les indicateurs communs auxquels il est associé.
-
-Chaque indicateur brut possède un identifiant DHIS2 - un UID d'élément de données, un opérande (`UID.COC`) ou un identifiant d'indicateur DHIS2 - et un libellé que vous lui donnez. Les indicateurs bruts constituent le pont entre votre serveur DHIS2 et votre dictionnaire d'indicateurs communs. Une importation DHIS2 récupère les valeurs des indicateurs bruts que vous sélectionnez et les stocke sous leurs identifiants d'indicateurs bruts ; les indicateurs communs qui leur sont associés disposent alors de données.
-
-Pour ajouter des indicateurs bruts depuis votre serveur DHIS2, cliquez sur **Importer un indicateur DHIS2**. FASTR se connecte à votre serveur DHIS2 (en utilisant la connexion enregistrée ou les identifiants en ligne que vous fournissez) et ouvre un panneau de recherche dans lequel vous pouvez chercher par nom, code ou identifiant. Les résultats incluent aussi bien les éléments de données que les indicateurs DHIS2. Sélectionnez les éléments souhaités et cliquez sur **Enregistrer la sélection**. Les éléments sélectionnés sont ajoutés comme indicateurs bruts. Vous pouvez également changer la connexion DHIS2 depuis le panneau de recherche en utilisant le bouton **Modifier la connexion**.
-
-Pour créer un indicateur brut manuellement (par exemple pour une série téléversée en CSV), cliquez sur **Créer un indicateur DHIS2** et saisissez un identifiant et un libellé.
-
-Chaque ligne d'indicateur brut affiche des boutons de modification et de suppression. Vous pouvez modifier un indicateur brut pour mettre à jour son libellé ou son association aux indicateurs communs. La suppression d'un indicateur brut est soumise aux vérifications de dépendances habituelles.
-
-Pour télécharger la liste des indicateurs bruts au format CSV, cliquez sur **Télécharger le CSV**.
-
-Les administrateurs globaux peuvent également utiliser le bouton **Importation groupée depuis CSV** dans la barre d'en-tête de l'instance pour créer en lot des indicateurs communs et bruts à partir d'un fichier CSV préparé.
-
-### Ajouter des indicateurs depuis DHIS2
-
-Cliquez sur **Importer un indicateur DHIS2** dans l'onglet Indicateurs DHIS2 pour ajouter des éléments de données ou des indicateurs DHIS2 depuis votre serveur. FASTR utilise une connexion DHIS2 enregistrée ou vous invite à saisir des identifiants en ligne si aucune n'est stockée. Recherchez par nom, code ou identifiant. Sélectionnez les éléments souhaités et cliquez sur **Enregistrer la sélection** pour les enregistrer comme indicateurs bruts.
-
-Après avoir ajouté des indicateurs bruts, associez-les aux indicateurs communs en modifiant la définition de l'indicateur commun (pour un indicateur de base) ou en modifiant la ligne de l'indicateur brut.
-
-Ajouter un indicateur brut ne fait que l'enregistrer dans la liste. Pour récupérer ses données, lancez une importation DHIS2 depuis la vue Importations (voir Données : HMIS).
-
-### Inclure dans l'analyse
+#### Inclure dans l'analyse
 <!-- help#ind-include -->
 
-Chaque indicateur commun est disponible pour une utilisation dans les lots de résultats. Son apparition dans les résultats analytiques dépend des modules qui s'exécutent sur lui. Un indicateur dérivé qui ne peut pas être calculé (parce que les indicateurs qu'il utilise n'ont pas de données brutes associées) est signalé dans la colonne **Statut**.
+Chaque indicateur possède une case à cocher **Inclure dans l'analyse**. Lorsqu'elle est cochée, chaque paquet de résultats analyse l'indicateur : les modules de qualité des données l'ajustent et il est disponible dans les visualisations. Lorsqu'elle est décochée, l'indicateur est uniquement dans le dictionnaire — ses données sont toujours importées et stockées, et il peut toujours être utilisé comme membre ou dans une expression, mais il n'est ni ajusté ni inclus dans l'ensemble analysé. Activez ou désactivez cette option dans l'éditeur d'indicateurs ou via les actions groupées. Les indicateurs spéciaux sont toujours analysés, quelle que soit cette option. Un indicateur calculé qui ne peut pas être évalué est signalé dans la colonne **Statut**.
+
+### Ajouter des indicateurs depuis DHIS2
+<!-- help#ind-dhis2-import -->
+
+Cliquez sur **Ajouter depuis DHIS2** pour ajouter des éléments de données ou des indicateurs DHIS2 depuis votre serveur. FASTR utilise la connexion DHIS2 enregistrée de l'instance, définie dans la carte de connexion DHIS2 de la page Données ; si aucune n'est enregistrée, une alerte explique comment en définir une.
+
+Le formulaire comporte deux phases. Dans la phase **Sélectionner**, recherchez par nom, code ou identifiant. Les résultats affichent à la fois les éléments de données et les indicateurs DHIS2. Un élément de données peut être ajouté tel quel ou développé pour sélectionner des combinaisons d'options de catégorie individuelles (opérandes). Un indicateur DHIS2 est décomposé en ses opérandes et un indicateur calculé dont la formule porte sur les indicateurs que ces opérandes deviennent ; le formulaire affiche la formule et signale tout opérande qui ne peut pas être ajouté. Sélectionnez les éléments souhaités et cliquez sur **Suivant : nommer les indicateurs**.
+
+Dans la phase **Nommer**, chaque élément de données ou opérande devient un nouvel indicateur élément DHIS2. Le formulaire propose un identifiant généré à partir du nom de l'élément ; modifiez-le en ligne. Chaque indicateur DHIS2 devient un indicateur calculé dont vous définissez également l'identifiant ici. Un élément dont l'identifiant DHIS2 est déjà porté par un indicateur existant apparaît comme déjà ajouté et ne crée rien de nouveau. Cliquez sur **Enregistrer** pour créer les indicateurs en une seule transaction.
+
+Ajouter des indicateurs depuis DHIS2 ne fait que les enregistrer dans le dictionnaire. Pour récupérer leurs données, lancez une importation DHIS2 depuis la vue Importations (voir Données : HMIS).
 
 ## Indicateurs HFA
 
-Les données issues de l'évaluation des établissements de santé (Health Facility Assessment) fonctionnent différemment des données HMIS. Les enquêtes HFA ont des structures de questions personnalisées qui varient d'une évaluation à l'autre, c'est pourquoi les indicateurs HFA nécessitent du code R pour extraire les valeurs à partir des données d'enquête brutes.
+Les données issues de l'évaluation des établissements de santé fonctionnent différemment des données HMIS. Les enquêtes HFA ont des structures de questions personnalisées qui varient d'une évaluation à l'autre, c'est pourquoi les indicateurs HFA nécessitent du code R pour extraire les valeurs à partir des données d'enquête brutes.
 
 ### Définir les indicateurs HFA
 
@@ -85,7 +78,7 @@ Les noms de variables ne doivent pas non plus être des mots réservés. Les nom
 
 Le champ **catégories de service** est facultatif et fournit une classification transversale supplémentaire, indépendante de la hiérarchie catégorie/sous-catégorie. Un indicateur peut appartenir à plusieurs catégories de service simultanément. Les catégories de service sont gérées dans leur propre onglet du gestionnaire d'indicateurs HFA et peuvent être attribuées à n'importe quel indicateur, quelle que soit sa catégorie. Lors du filtrage des visualisations ou des données du projet par catégorie de service, une correspondance est établie si l'indicateur appartient à au moins l'une des catégories sélectionnées - il n'est pas nécessaire qu'il appartienne à toutes.
 
-![Indicateurs HFA](/images/hfa-indicators-en.png)
+![HFA Indicators](/images/hfa-indicators-en.png)
 
 ### Rechercher des indicateurs
 
@@ -132,7 +125,7 @@ Avant de supprimer un indicateur ou un ensemble d'indicateurs, FASTR vérifie si
 
 ### Assistant IA pour les indicateurs
 
-Les administrateurs globaux peuvent ouvrir un panneau d'assistant IA directement dans le gestionnaire d'indicateurs HFA en cliquant sur le bouton **IA**. Ce bouton apparaît dans la barre supérieure du gestionnaire, ainsi que dans l'en-tête de l'éditeur de code et du formulaire de téléversement du classeur Excel lorsque le panneau n'est pas encore ouvert. L'assistant peut améliorer les libellés, organiser les indicateurs en catégories et créer de nouveaux indicateurs à partir du jeu de données d'enquête sous-jacent. Il lit et écrit les indicateurs via un ensemble d'outils dédiés - en chargeant l'état actuel avant de proposer des modifications, en validant le code R par rapport au dictionnaire de données et en affichant une boîte de dialogue de confirmation avec un diff avant d'appliquer toute modification. Lorsque l'assistant crée de nouveaux indicateurs, vous fournissez le nom de variable de chaque indicateur ; l'application vérifie qu'il n'existe pas déjà et qu'il respecte les règles de nommage. Lors de l'application de mises à jour groupées, toutes les modifications sont envoyées au serveur en une seule opération transactionnelle : soit tous les indicateurs sont mis à jour, soit aucun ne l'est, ce qui évite qu'un échec partiel ne laisse le jeu de données dans un état incohérent. L'assistant opère sur les indicateurs HFA au niveau de l'instance et est totalement isolé de l'assistant IA des projets.
+Les administrateurs globaux peuvent ouvrir un panneau d'assistant IA directement dans le gestionnaire d'indicateurs HFA en cliquant sur le bouton **IA**. Ce bouton apparaît dans la barre supérieure du gestionnaire, ainsi que dans l'en-tête de l'éditeur de code et du formulaire de téléversement du classeur Excel lorsque le panneau n'est pas encore ouvert. L'assistant peut améliorer les libellés, organiser les indicateurs en catégories et créer de nouveaux indicateurs à partir du jeu de données d'enquête sous-jacent. Il lit et écrit les indicateurs via un ensemble d'outils dédiés - en chargeant l'état actuel avant de proposer des modifications, en validant le code R par rapport au dictionnaire de données et en affichant une boîte de dialogue de confirmation avec un diff avant d'appliquer toute modification. Lorsque l'assistant crée de nouveaux indicateurs, vous fournissez le nom de variable de chaque indicateur ; l'application vérifie qu'il n'existe pas déjà et qu'il respecte les règles de nommage. Lors de l'application de mises à jour groupées, toutes les modifications sont envoyées au serveur en une seule opération transactionnelle : soit tous les indicateurs sont mis à jour, soit aucun ne l'est, ce qui évite qu'un échec partiel ne laisse le jeu de données dans un état incohérent. L'assistant opère sur les indicateurs HFA au niveau de l'instance et est totalement isolé de l'assistant IA des produits.
 
 ### Gérer les catégories de service
 
@@ -175,8 +168,8 @@ FASTR supprime également les balises HTML et normalise les espaces dans les lib
 
 ## Bonnes pratiques
 
-Choisissez des identifiants d'indicateurs communs courts mais descriptifs. Évitez les espaces et les caractères spéciaux - tenez-vous-en aux lettres minuscules, aux chiffres et aux tirets bas. Un identifiant peut être changé plus tard : un meilleur nom trouvé après la première importation n'est pas perdu.
+Choisissez des identifiants d'indicateurs courts mais descriptifs. Évitez les espaces et les caractères spéciaux - tenez-vous-en aux lettres minuscules, aux chiffres et aux tirets bas. Un identifiant peut être renommé plus tard ; le renommage réécrit chaque formule et importation planifiée qui y fait référence, tandis que les données restent en place.
 
 Pour les indicateurs HFA, choisissez soigneusement les noms de variables avant de les créer, car ils ne peuvent pas être modifiés après création. Des noms courts et descriptifs comme `has_essential_medicines` ou `staff_trained_count` fonctionnent bien.
 
-Vérifiez les identifiants des indicateurs bruts dans la liste lorsque des éléments de données sont modifiés ou remplacés sur le serveur DHIS2. Un élément de données remplacé a un nouvel identifiant DHIS2 : créez un nouvel indicateur brut pour lui et réassociez votre indicateur commun. Pour les indicateurs dérivés, documentez vos choix de seuils - les futurs analystes voudront comprendre le raisonnement derrière les valeurs limites.
+Vérifiez les identifiants DHIS2 dans la liste lorsque des éléments de données sont modifiés ou remplacés sur le serveur DHIS2. Un élément de données remplacé a un nouvel UID DHIS2 : créez un nouvel indicateur élément DHIS2 pour lui. Pour les indicateurs calculés, documentez vos choix de seuils - les futurs analystes voudront comprendre le raisonnement derrière les valeurs limites.

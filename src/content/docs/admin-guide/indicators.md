@@ -9,67 +9,60 @@ Indicators are the health metrics your FASTR instance tracks - things like immun
 
 ## HMIS indicators
 
-HMIS indicators are organized into two layers: **common indicators** and **raw indicators**. Common indicators are the named health metrics your analysis uses - things like `anc1` or `opd_util`. Raw indicators are the actual data identifiers from your DHIS2 server (data elements, operands, or DHIS2 indicator IDs) that supply values to common indicators. A common indicator is either a **base** indicator (mapped to one or more raw indicators, whose values are summed) or a **derived** indicator (a formula over other common indicators).
+HMIS indicators form a single dictionary. Each indicator has a type that says what fills it: a **DHIS2 element** is a monthly count the DHIS2 import fetches by its DHIS2 id, an **Uploaded** indicator is a monthly count filled by CSV import, a **Sum** is the total of DHIS2 element or Uploaded indicators added per facility and month, and a **Calculated** indicator is a formula over other indicators and population terms. The three count types are adjusted by the data quality modules; a calculated indicator is computed from the formula after the data is adjusted and aggregated.
 
-The indicator list has two tabs: **Common Indicators** and **Raw DHIS2 Indicators**.
+The indicator list shows every indicator with its ID, label, type, and what defines it. A **Special** badge marks indicators the analysis modules read by name as counts - these are always analysed and can only be a DHIS2 element, Uploaded, or a Sum.
 
-### Common indicators
-<!-- help#ind-common -->
+### Managing indicators
+<!-- help#ind-list -->
 
-Common indicators are the standardized names analysts work with. A common indicator like "ANC1 visits" might map to different raw indicator IDs in different countries. This abstraction means analysis code, visualizations, and module outputs can reference a stable name regardless of how the underlying data is collected.
-
-The **Common Indicators** tab lists every named indicator with its ID, label, type (Base or Derived), and what defines it. For a base indicator, the **Defined by** column lists the raw indicator IDs mapped to it. For a derived indicator, it shows the formula.
-
-To create a common indicator, click **Create Common Indicator**. Give it an ID and a label, then choose whether it is a base indicator or a derived indicator. A derived indicator requires a formula over other common indicators.
+To create an indicator, click **Create new**. Give it an ID and a label, then choose its type. The type determines what definition fields appear.
 
 To sort the list order used by every indicator axis in every figure, click **Sort**.
 
-To download the list as a CSV file, click **Download CSV**. The file contains columns for `indicator_common_id`, `indicator_common_label`, and `mapped_raw_indicator_ids`.
+To download the dictionary as a CSV file, click **Download**. The file contains columns for the indicator ID, label, type, DHIS2 id, members, formula, include-in-analysis flag, format, thresholds, direction, target, and expected-low-counts flag.
 
-A global administrator can select rows in the list and use the **Delete** bulk action to remove the selected common indicators, subject to the usual dependency checks.
+To see what each type entails, click **Indicator types** in the heading bar. To see the special indicator IDs, population terms, and reserved words, click **Special indicators and reserved words**.
 
-#### Derived indicators
+Global administrators can select rows in the list and use the **Delete** bulk action to remove the selected indicators, subject to the usual dependency checks. The **Include in analysis** and **Exclude from analysis** bulk actions toggle the flag on the selected rows. The **DHIS2 data import** bulk action opens the DHIS2 import wizard pre-selected with the chosen indicators.
+
+#### Indicator types
+
+- **DHIS2 element** — a monthly count fetched from DHIS2 by a data element UID or UID.COC operand. Its rows are stored under that DHIS2 id.
+- **Uploaded** — a monthly count filled by CSV import. FASTR gives it an internal identifier; the Mapping step of each CSV import points file values at it. Uploaded indicators are not fetched by DHIS2 imports.
+- **Sum** — the total of its member indicators (DHIS2 elements or Uploaded indicators), added per facility and month. A sum cannot contain another sum.
+- **Calculated** — a formula over other indicators and population terms, computed after the data is adjusted and aggregated. It has no rows of its own.
+
+All three count types are adjusted by the data quality modules. A calculated indicator is not.
+
+#### Calculated indicators
 <!-- help#ind-calculated -->
 
-Every common indicator has a type, chosen in the same editor. A base indicator is defined by the raw indicators mapped to it, which are summed. A derived indicator is defined by a formula over other common indicators, for example `anc4 / anc1` for a coverage rate. It is computed after the data is aggregated, so a regional or annual figure is the formula applied to the summed parts, not an average of ratios.
+A calculated indicator is defined by a formula over other indicators, for example `anc4 / anc1` for a coverage rate. It is computed after the data is aggregated, so a regional or annual figure is the formula applied to the summed parts, not an average of ratios.
 
-A formula can use `+`, `-`, `*`, `/`, parentheses and numbers, and the functions `abs()` (absolute value), `coalesce()` (the first value that is not empty) and `nullif()` (empty when the two values are equal). A formula may refer to another derived indicator, whose definition is inserted in place of its ID.
+A formula can use `+`, `-`, `*`, `/`, parentheses and numbers, and the functions `abs()` (absolute value), `coalesce()` (the first value that is not empty) and `nullif()` (empty when the two values are equal). A formula may refer to another calculated indicator, whose definition is inserted in place of its ID.
 
-A formula can also divide by a population, written with a population ingredient identifier, for example `[population:pregnancies]`. Populations come from the instance's Population page (Data → Population): annual population counts per admin area and population type, uploaded as a CSV.
+A formula can also divide by a population term, for example `population_pregnancies`. Populations come from the instance's Population page (Data → Population): annual population counts per admin area and population type, uploaded as a CSV.
 
-You also set the display format (number, percent, or rate per 10,000), and optionally a conditional formatting rule for colour coding.
+For a calculated indicator you also set the display format (number, percent, or rate per 10,000), an optional target value, and optionally a conditional formatting rule for colour coding. The **direction** field (higher is better or lower is better) applies to every indicator type and is used by the conditional formatting rule.
 
-The **Status** column in the list says whether each derived indicator can be computed. A derived indicator cannot be computed if an indicator it uses has no mapped raw indicators. A warning above the list says when any derived indicator cannot be computed.
+The **Status** column in the list says whether each calculated indicator can be computed. A calculated indicator cannot be computed if an indicator it uses has no data. A warning above the list says when any calculated indicator cannot be computed.
 
-### Raw DHIS2 indicators
-<!-- help#ind-dhis2-import -->
-
-The **Raw DHIS2 Indicators** tab lists every raw indicator registered in your instance, with its ID, label, and which common indicators it is mapped to.
-
-Each raw indicator has a DHIS2 identifier - a data element UID, an operand (`UID.COC`), or a DHIS2 indicator ID - and a label you give it. Raw indicators are the bridge between your DHIS2 server and your common indicator dictionary. A DHIS2 import fetches values for the raw indicators you select and stores them under their raw indicator IDs; common indicators that map to those raw indicators then have data.
-
-To add raw indicators from your DHIS2 server, click **Import DHIS2 indicator**. FASTR connects to your DHIS2 server (using the stored connection or inline credentials you provide) and opens a search panel where you can search by name, code, or ID. Results include both data elements and DHIS2 indicators. Select the items you want and click **Save Selected**. The selected items are added as raw indicators. You can also change the DHIS2 connection from within the search panel using the **Change connection** button.
-
-To create a raw indicator by hand (for example, for a CSV-uploaded series), click **Create DHIS2 Indicator** and enter an ID and a label.
-
-Each raw indicator row shows edit and delete buttons. You can edit a raw indicator to update its label or its mapping to common indicators. Deleting a raw indicator is subject to the usual dependency checks.
-
-To download the raw indicator list as a CSV file, click **Download CSV**.
-
-Global administrators can also use the **Batch import from CSV** button in the instance heading bar to bulk-create common and raw indicators from a prepared CSV file.
-
-### Adding indicators from DHIS2
-
-Click **Import DHIS2 indicator** on the Raw DHIS2 Indicators tab to add data elements or DHIS2 indicators from your DHIS2 server. FASTR uses a stored DHIS2 connection or prompts you to enter inline credentials if none is stored. Search by name, code, or ID. Select the items you want and click **Save Selected** to register them as raw indicators.
-
-After adding raw indicators, map them to common indicators by editing the common indicator's definition (for a base indicator) or by editing the raw indicator row.
-
-Adding a raw indicator only registers it in the list. To fetch its data, run a DHIS2 import from the Imports view (see Data: HMIS).
-
-### Include in analysis
+#### Include in analysis
 <!-- help#ind-include -->
 
-Every common indicator is available for use in results packages. Whether it appears in analytical outputs depends on the modules that run against it. A derived indicator that cannot be computed (because the indicators it uses have no mapped data) is flagged in the **Status** column.
+Every indicator has an **Include in analysis** toggle. When it is on, every results package analyses the indicator: the data quality modules adjust it and it is available in visualizations. When it is off, the indicator is dictionary-only — its data is still imported and stored, and it is still usable as a member or in an expression, but it is not adjusted or included in the analysed set. Toggle this in the indicator editor or using the bulk actions. Special indicators are always analysed regardless of this flag. A calculated indicator that cannot be computed is flagged in the **Status** column.
+
+### Adding indicators from DHIS2
+<!-- help#ind-dhis2-import -->
+
+Click **Add from DHIS2** to add data elements or DHIS2 indicators from your DHIS2 server. FASTR uses the instance's stored DHIS2 connection, which is set in the DHIS2 connection card on the Data page; if none is stored, an alert explains how to set one.
+
+The form has two phases. In the **Select** phase, search by name, code, or ID. Results show both data elements and DHIS2 indicators. A data element can be added as-is or expanded to select individual category option combos (operands). A DHIS2 indicator is decomposed into its operands and a calculated indicator whose formula is over the indicators those operands become; the form shows the formula and flags any operand that cannot be added. Select the items you want and click **Next: name indicators**.
+
+In the **Name** phase, each data element or operand becomes a new DHIS2 element indicator. The form proposes an indicator ID generated from the element's name; edit it inline. Each DHIS2 indicator becomes a calculated indicator whose ID you also set here. An element whose DHIS2 id is already carried by an existing indicator is shown as already added and creates nothing new. Click **Save** to create the indicators in a single transaction.
+
+Adding indicators from DHIS2 only registers them in the dictionary. To fetch their data, run a DHIS2 import from the Imports view (see Data: HMIS).
 
 ## HFA indicators
 
@@ -132,7 +125,7 @@ Before deleting an indicator or a set of indicators, FASTR checks whether any ot
 
 ### AI assistant for indicators
 
-Global administrators can open an AI assistant panel directly in the HFA Indicator Manager by clicking the **AI** button. The button appears in the top bar of the manager and also in the header of the code editor and the Excel workbook upload form when the panel is not already open. The assistant can clean up labels, organise indicators into categories, and create new indicators from the underlying survey dataset. It reads and writes indicators through a set of dedicated tools — loading current state before proposing changes, validating R code against the data dictionary, and showing a confirmation dialog with a diff before any edits are applied. When the assistant creates new indicators, you supply each indicator's variable name; the app validates that it does not already exist and that it meets naming rules. When applying bulk updates, all changes are sent to the server in a single transactional operation: either all indicators are updated or none are, so a partial failure cannot leave the dataset in an inconsistent state. The assistant operates on instance-level HFA indicators and is fully isolated from the project AI assistant.
+Global administrators can open an AI assistant panel directly in the HFA Indicator Manager by clicking the **AI** button. The button appears in the top bar of the manager and also in the header of the code editor and the Excel workbook upload form when the panel is not already open. The assistant can clean up labels, organise indicators into categories, and create new indicators from the underlying survey dataset. It reads and writes indicators through a set of dedicated tools — loading current state before proposing changes, validating R code against the data dictionary, and showing a confirmation dialog with a diff before any edits are applied. When the assistant creates new indicators, you supply each indicator's variable name; the app validates that it does not already exist and that it meets naming rules. When applying bulk updates, all changes are sent to the server in a single transactional operation: either all indicators are updated or none are, so a partial failure cannot leave the dataset in an inconsistent state. The assistant operates on instance-level HFA indicators and is fully isolated from the product AI assistant.
 
 ### Managing service categories
 
@@ -175,8 +168,8 @@ FASTR also strips HTML markup and normalizes whitespace from XLSForm labels befo
 
 ## Best practices
 
-Choose common indicator IDs that are short but descriptive. Avoid spaces and special characters - stick to lowercase letters, numbers, and underscores. An ID can be changed later, so a better name found after the first import is not lost.
+Choose indicator IDs that are short but descriptive. Avoid spaces and special characters - stick to lowercase letters, numbers, and underscores. An ID can be renamed later; renaming rewrites every formula and import schedule that references it, while data stays in place.
 
 For HFA indicators, choose variable names carefully before creating them, since they cannot be changed after creation. Short, descriptive names like `has_essential_medicines` or `staff_trained_count` work well.
 
-Check the raw indicator IDs in the list when data elements are changed or replaced on the DHIS2 server. A replaced data element has a new DHIS2 ID, so create a new raw indicator for it and remap your common indicator. For derived indicators, document your threshold choices - future analysts will want to understand the reasoning behind cutoffs.
+Check the DHIS2 ids in the list when data elements are changed or replaced on the DHIS2 server. A replaced data element has a new DHIS2 UID, so create a new DHIS2 element indicator for it. For calculated indicators, document your threshold choices - future analysts will want to understand the reasoning behind cutoffs.

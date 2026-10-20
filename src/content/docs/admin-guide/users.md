@@ -49,9 +49,8 @@ For non-administrators, you can enable specific permissions:
 - **Configure settings** - Modify instance-wide configuration
 - **Configure data** - Import and modify structure and datasets
 - **View data** - Access data configuration pages without modifying
-- **Create projects** - Start new analysis projects
 
-Most analysts need only "View data" and perhaps "Create projects" at the instance level. Their main work happens within projects where you'll configure more detailed permissions.
+Most analysts need only "View data" at the instance level. Their main work happens within products and projects where you'll configure more detailed permissions.
 
 ![Instance Users Permissions](/images/user-permissions-instance-en.png)
 

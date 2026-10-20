@@ -37,9 +37,9 @@ Select which data families this results package is generated from. Each included
 
 ### Step 2 — Configure modules
 
-Choose which modules to run. Selecting a module automatically includes all modules it depends on; a module cannot be unchecked while another selected module depends on it. Modules that require data families not chosen in step 1 are shown as unavailable, with a note naming which family is missing so you can go back to step 1 and add it.
+Choose which modules to run. The selection list shows every available module as a checkbox. Selecting a module automatically includes all modules it depends on; a module cannot be unchecked while another selected module depends on it. Modules that require data families not chosen in step 1 are shown as unavailable, with a note naming which family is missing so you can go back to step 1 and add it.
 
-Parameter values are editable directly in the wizard for each selected module that exposes parameters. The values are pre-filled from the module defaults you configured, and any changes you make apply only to this package generation. If a selected module has parameter values that fail validation, the wizard marks the modules step as incomplete until you correct them.
+Checked modules that expose parameters have a separate **Module settings** section below the selection list, collapsed by default because the instance's module defaults pre-fill it. Expand a module's settings section to review or change its parameter values. If a selected module has parameter values that fail validation, the wizard marks the modules step as incomplete until you correct them.
 
 Available modules include:
 
@@ -52,7 +52,7 @@ Enter a label for the results package and review the data and module selections.
 
 ## Population data and M12
 
-When one or more indicator formulas reference a population term (written as `[population:type_id]`), M12 requires population data to be imported at the instance level before generation. The generation will fail if population data is referenced but not present for any area of the current HMIS structure at the configured population level.
+When one or more indicator formulas reference a population term, M12 requires population data to be imported at the instance level before generation. The generation will fail if population data is referenced but not present for any area of the current HMIS structure at the configured population level.
 
 The population level must be set on the instance Population page and must not be deeper than the HMIS structure's admin area depth. If the population level is deeper than the structure, generation fails with a clear message explaining the mismatch.
 
@@ -64,9 +64,7 @@ As you generate packages over time, old ones accumulate. Click **Prune** on the 
 
 ## Pinning a results package
 
-Administrators can designate one ready package as the instance's **pinned package**. Projects that have **Always use the instance's pinned package** enabled are automatically repointed whenever the pin changes. To pin a package, open its detail view on the Results packages page and click **Pin**. To unpin, click **Unpin** on the currently pinned package.
-
-Before pinning, FASTR shows which follow-pinned projects will be repointed. Locked projects are skipped automatically and remain on their current package.
+Administrators can designate one ready package as the instance's **pinned package**. New slide decks and reports start on the pinned package. Existing products keep their own package unless an editor manually switches them. To pin a package, open its detail view on the Results packages page and click **Pin**. To unpin, click **Unpin** on the currently pinned package.
 
 The pinned package is also the package the FASTR MCP connector reads. When you connect a compatible AI client to your instance's MCP endpoint, it reads metrics and data from whichever package is currently pinned.
 
@@ -89,7 +87,7 @@ When a module errors or produces unexpected results, check the logs from the res
 
 For complex issues, view **Script** to see the exact R code that ran. The **Files** option shows data files the module produced, useful for manual inspection of intermediate results.
 
-Script and file access require the **View data** permission; log access requires the **View logs** permission. These permissions apply whether you are browsing from the instance catalogue or from a project's Results package tab.
+Script and file access require the **View data** permission; log access requires the **View logs** permission. Both permissions apply whether you are browsing from the instance catalogue or from a product's Results package tab.
 
 ## Deleting results packages
 

@@ -49,9 +49,8 @@ Pour les non-administrateurs, vous pouvez activer des permissions spécifiques :
 - **Configurer les paramètres** - Modifier la configuration à l'échelle de l'instance
 - **Configurer les données** - Importer et modifier la structure et les jeux de données
 - **Consulter les données** - Accéder aux pages de configuration des données sans les modifier
-- **Créer des projets** - Lancer de nouveaux projets d'analyse
 
-La plupart des analystes n'ont besoin que de « Consulter les données » et éventuellement de « Créer des projets » au niveau de l'instance. Leur travail principal se déroule au sein des projets, où vous configurerez des permissions plus détaillées.
+La plupart des analystes n'ont besoin que de « Consulter les données » au niveau de l'instance. Leur travail principal se déroule au sein des produits et des projets, où vous configurerez des permissions plus détaillées.
 
 ![Permissions d'instance des utilisateurs](/images/user-permissions-instance-en.png)
 
