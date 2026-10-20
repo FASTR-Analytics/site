@@ -5,7 +5,7 @@ sidebar:
   order: 6
 ---
 
-Les rapports sont des documents détaillés que vous rédigez directement dans FASTR - une revue trimestrielle, une note de synthèse nationale, un récit analytique. Vous écrivez le texte en markdown et y insérez des figures dynamiques issues de vos visualisations, de sorte que les graphiques du document restent liés à vos données au lieu d'être des images collées qui deviennent obsolètes. Lorsque le rapport est prêt, exportez-le au format PDF ou Word.
+Les rapports sont des documents détaillés que vous rédigez directement dans FASTR - une revue trimestrielle, une note de synthèse nationale, un récit analytique. Vous écrivez le texte en markdown et y insérez des figures dynamiques, de sorte que les graphiques du document restent liés à vos données au lieu d'être des images collées qui deviennent obsolètes. Lorsque le rapport est prêt, exportez-le au format PDF ou Word.
 
 Un rapport est l'outil approprié lorsque vous avez besoin de texte rédigé autour de vos chiffres. Si vous souhaitez surtout afficher des graphiques sur une page, un [tableau de bord](/user-guide/dashboards/) convient mieux ; si vous présentez devant un public, une [présentation](/user-guide/slide-decks/) sera plus adaptée. Les rapports sont faits pour l'écrit.
 
@@ -31,18 +31,18 @@ L'en-tête comporte un bouton bascule **Édition / Divisé / Aperçu**. **Éditi
 ## Ajouter des figures et des images
 <!-- help#report-figures -->
 
-Les rapports peuvent contenir deux types de contenu visuel, et la distinction est importante. Une **figure** est une visualisation dynamique issue du paquet de résultats du produit - elle se génère à partir des données actuelles et se met à jour lorsque ces données changent. Une **image** est un fichier statique que vous téléversez, comme un schéma ou une photo.
+Les rapports peuvent contenir deux types de contenu visuel, et la distinction est importante. Une **figure** est un graphique ou une carte dynamique issue du paquet de résultats du produit - elle se génère à partir des données actuelles et se met à jour lorsque ces données changent. Une **image** est un fichier statique que vous téléversez, comme un schéma ou une photo.
 
 Pour ajouter une figure, cliquez sur **Insérer une figure** et choisissez une visualisation dans le paquet de résultats du produit. Pour ajouter une image, cliquez sur **Insérer une image** et téléversez un fichier ou choisissez-en un parmi les ressources de votre projet. Dans les deux cas, l'élément apparaît dans le document sous forme de carte que vous pouvez sélectionner.
 
 La sélection d'une figure ou d'une image ouvre un panneau sur la gauche pour la manipuler :
 
 - **Légende** définit le texte affiché avec la figure ou l'image
-- **Modifier la visualisation** ouvre les paramètres de la figure - ajustez la période, la désagrégation ou le style
-- **Changer de visualisation** remplace la figure par une autre
+- **Modifier la figure** ouvre les paramètres de la figure - ajustez la période, la désagrégation ou le style
+- **Changer de figure** remplace la figure par une autre
 - **Supprimer** retire la figure ou l'image du rapport
 
-Comme les figures restent liées à leurs visualisations, un rapport rédigé le trimestre dernier affichera les chiffres de ce trimestre la prochaine fois que vous l'ouvrirez - sans mise à jour manuelle ni nouveau collage de graphiques.
+Comme les figures restent liées au paquet de résultats, un rapport rédigé le trimestre dernier affichera les chiffres de ce trimestre la prochaine fois que vous l'ouvrirez - sans mise à jour manuelle ni nouveau collage de graphiques.
 
 Si une figure ou une image ne peut pas être chargée lors de l'export, FASTR la remplace par une courte notice à la place de l'élément manquant plutôt que d'interrompre l'export. Le reste du rapport est exporté normalement.
 
@@ -85,7 +85,7 @@ Cliquez sur **Télécharger** et choisissez **PDF** ou **Word (.docx)**. Le PDF 
 
 ## Problèmes courants
 
-**Une figure n'affiche rien ou semble incorrecte** : La visualisation sous-jacente n'a pas de données pour la fenêtre actuelle, ou sa configuration nécessite une modification. Sélectionnez la figure et utilisez **Modifier la visualisation** - voir [Visualisations](/user-guide/visualizations/).
+**Une figure n'affiche rien ou semble incorrecte** : La visualisation sous-jacente n'a pas de données pour la fenêtre actuelle, ou sa configuration nécessite une modification. Sélectionnez la figure et utilisez **Modifier la figure** - voir [Visualisations](/user-guide/visualizations/).
 
 **L'état indique « Échec de l'enregistrement »** : Un enregistrement n'a pas atteint le serveur, généralement à cause d'un problème de connexion. Restez sur la page, vérifiez votre connexion et continuez à éditer - FASTR réessaie ; ne fermez pas l'onglet avant de voir **Enregistré**.
 

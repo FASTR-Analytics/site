@@ -5,13 +5,13 @@ sidebar:
   order: 7
 ---
 
-Les modules sont le moteur analytique de FASTR. Chaque module exécute des scripts R qui traitent les données de votre projet - calcul d'indicateurs, détection de valeurs aberrantes, génération d'estimations de couverture ou réalisation d'autres analyses statistiques. Les résultats deviennent des métriques qui alimentent vos visualisations et vos rapports. Les modules sont configurés au niveau de l'instance via les lots de résultats, qui sont ensuite associés aux projets.
+Les modules sont le moteur analytique de FASTR. Chaque module exécute des scripts R qui traitent les données de votre projet - calcul d'indicateurs, détection de valeurs aberrantes, génération d'estimations de couverture ou réalisation d'autres analyses statistiques. Les résultats deviennent des métriques qui alimentent vos visualisations et vos rapports. Les modules sont configurés au niveau de l'instance via les lots de résultats, qui sont ensuite lus par les présentations et les rapports.
 
 ## Comprendre l'architecture d'un module
 
 Un module comporte deux parties. La **définition de calcul** contient les scripts R qui traitent les données et produisent des résultats - ceux-ci s'exécutent dans des conteneurs Docker isolés. La **définition de présentation** précise quelles métriques le module produit et comment elles peuvent être visualisées.
 
-Les modules sont inclus lors de la génération d'un lot de résultats au niveau de l'instance. Un lot de résultats regroupe les sorties de tous les modules sélectionnés pour un ensemble de données choisi. Les projets servent leurs visualisations à partir d'un lot de résultats associé.
+Les modules sont inclus lors de la génération d'un lot de résultats au niveau de l'instance. Un lot de résultats regroupe les sorties de tous les modules sélectionnés pour un ensemble de données choisi. Chaque présentation et chaque rapport lit ses figures à partir d'un lot de résultats associé.
 
 ## Configurer les paramètres par défaut des modules
 <!-- help#amod-configure -->
@@ -23,9 +23,9 @@ Ces valeurs par défaut préremplissent l'assistant de génération lors de la c
 ## Générer un lot de résultats
 <!-- help#amod-install -->
 
-Pour produire des résultats de modules, générez un nouveau lot de résultats depuis la page **Lots de résultats** de l'instance. Cliquez sur **Générer un nouveau lot de résultats** pour ouvrir l'assistant. L'assistant vous guide en trois étapes : sélectionner les familles de données à inclure (HMIS, HFA, données d'équité ICEH), choisir les modules à exécuter et définir leurs paramètres, puis confirmer le libellé et éventuellement associer le lot à des projets spécifiques immédiatement.
+Pour produire des résultats de modules, générez un nouveau lot de résultats depuis la page **Lots de résultats** de l'instance. Cliquez sur **Générer un nouveau lot de résultats** pour ouvrir l'assistant. L'assistant vous guide en trois étapes : sélectionner les familles de données à inclure (HMIS, HFA, données d'équité ICEH), choisir les modules à exécuter et définir leurs paramètres, puis confirmer le libellé.
 
-L'assistant est une fenêtre modale éphémère — rien n'est enregistré sur le serveur avant que vous ne cliquiez sur **Lancer la génération**. L'ensemble de la configuration (sélections de familles de données, choix de modules, valeurs de paramètres, libellé et projets cibles) est soumis en une seule étape. Si vous fermez l'assistant avant de lancer, rien n'est conservé.
+L'assistant est une fenêtre modale éphémère — rien n'est enregistré sur le serveur avant que vous ne cliquiez sur **Lancer la génération**. L'ensemble de la configuration (sélections de familles de données, choix de modules, valeurs de paramètres et libellé) est soumis en une seule étape. Si vous fermez l'assistant avant de lancer, rien n'est conservé.
 
 Après avoir cliqué sur **Lancer la génération**, FASTR sélectionne automatiquement l'identifiant du nouveau lot afin que le volet de détail s'ouvre dès que la notification SSE arrive. Vous pouvez quitter la page et suivre la progression sur la page Lots de résultats.
 
@@ -48,7 +48,7 @@ Les modules disponibles comprennent :
 
 ### Étape 3 — Confirmer et lancer
 
-Saisissez un libellé pour le lot de résultats et vérifiez les sélections de données et de modules. Sélectionnez éventuellement des projets à associer immédiatement au nouveau lot — ces projets basculeront vers le nouveau lot lorsque la génération réussira. Cliquez sur **Lancer la génération** pour démarrer.
+Saisissez un libellé pour le lot de résultats et vérifiez les sélections de données et de modules. Cliquez sur **Lancer la génération** pour démarrer.
 
 ## Données de population et M12
 
@@ -60,7 +60,7 @@ Pour les zones et les mois pour lesquels des données de population existent, M1
 
 ## Élaguer les lots de résultats
 
-Au fil des générations, les anciens lots s'accumulent. Cliquez sur **Élaguer** sur la page Lots de résultats pour ouvrir la boîte de dialogue d'élagage. FASTR indique quels lots seront supprimés (ceux qui ne sont associés à aucun projet, non épinglés et dont la génération est terminée) et lesquels seront conservés avec la raison. Confirmez pour supprimer tous les lots éligibles les uns après les autres — une liste de progression affiche chaque suppression à mesure qu'elle se termine. Les lots associés à un projet entre le moment où vous confirmez et le tour de ce lot sont ignorés plutôt que d'interrompre l'ensemble de l'opération.
+Au fil des générations, les anciens lots s'accumulent. Cliquez sur **Élaguer** sur la page Lots de résultats pour ouvrir la boîte de dialogue d'élagage. FASTR indique quels lots seront supprimés (ceux qui ne sont associés à aucun produit, non épinglés et dont la génération est terminée) et lesquels seront conservés avec la raison. Confirmez pour supprimer tous les lots éligibles les uns après les autres — une liste de progression affiche chaque suppression à mesure qu'elle se termine. Les lots associés à un produit entre le moment où vous confirmez et le tour de ce lot sont ignorés plutôt que d'interrompre l'ensemble de l'opération.
 
 ## Épingler un lot de résultats
 
@@ -93,4 +93,4 @@ L'accès au script et aux fichiers requiert la permission **Consulter les donné
 
 ## Supprimer des lots de résultats
 
-Pour supprimer un lot de résultats, sélectionnez-le dans le catalogue des lots de résultats de l'instance et cliquez sur **Supprimer**. FASTR refuse la suppression tant qu'un projet utilise le lot, tant que celui-ci est épinglé, ou tant que la génération est encore en cours. Le volet de détail explique la raison lorsque la suppression est bloquée. La suppression retire définitivement les fichiers et les résultats en cache du lot et ne peut pas être annulée.
+Pour supprimer un lot de résultats, sélectionnez-le dans le catalogue des lots de résultats de l'instance et cliquez sur **Supprimer**. FASTR refuse la suppression tant qu'un produit utilise le lot, tant que celui-ci est épinglé, ou tant que la génération est encore en cours. Le volet de détail explique la raison lorsque la suppression est bloquée. La suppression retire définitivement les fichiers et les résultats en cache du lot et ne peut pas être annulée.

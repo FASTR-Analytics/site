@@ -64,7 +64,7 @@ Cliquez sur un projet pour ouvrir l'éditeur de permissions pour cette combinais
 
 - **Produits analytiques** contrôle l'accès aux visualisations, aux rapports et aux présentations. Les permissions « Consulter » permettent aux utilisateurs de voir le contenu existant ; les permissions « Configurer » leur permettent de créer et de modifier.
 - **Données et modules** contrôle l'accès aux données sous-jacentes et au traitement analytique. Les utilisateurs qui ont besoin de comprendre la méthodologie peuvent avoir besoin de « Consulter les métriques » ou « Consulter le code du script », mais pas de « Configurer les modules ».
-- **Administration du projet** couvre les paramètres, la gestion des utilisateurs au sein du projet, les journaux et les sauvegardes. Réservez ces permissions aux responsables de projet ou au personnel technique.
+- **Administration du projet** couvre les paramètres, la gestion des utilisateurs au sein du projet, les journaux et les sauvegardes.
 
 ![Permissions de projet des utilisateurs](/images/user-permissions-project-en.png)
 
@@ -95,11 +95,10 @@ La liste des utilisateurs prend en charge la sélection par lot pour les opérat
 
 - **Définir comme administrateur** / **Retirer le statut d'administrateur** - Activer ou désactiver le statut d'administrateur
 - **Modifier les permissions** - Mettre à jour les permissions d'instance de tous les utilisateurs sélectionnés en une seule fois
-- **Modifier les permissions de projet par défaut** - Définir l'accès que les utilisateurs sélectionnés obtiennent pour les nouveaux projets
 - **Télécharger les utilisateurs** - Exporter un fichier CSV des utilisateurs sélectionnés
 - **Supprimer** - Supprimer les comptes utilisateurs sélectionnés
 
-Les opérations par lot sont utiles lors de l'intégration d'équipes ou lorsque les politiques d'accès changent. Par exemple, si un nouveau projet démarre et que plusieurs personnes ont besoin d'un accès éditeur, sélectionnez-les toutes et mettez à jour leurs permissions par défaut en une seule étape.
+Les opérations par lot sont utiles lors de l'intégration d'équipes ou lorsque les politiques d'accès changent. Par exemple, si un nouveau projet démarre et que plusieurs personnes ont besoin d'un accès éditeur, sélectionnez-les toutes et mettez à jour leurs permissions en une seule étape.
 
 ![Permissions de projet des utilisateurs par lot](/images/user-permissions-project-multiple-en.png)
 

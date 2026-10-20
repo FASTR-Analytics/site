@@ -5,7 +5,7 @@ sidebar:
   order: 6
 ---
 
-Reports are long-form documents you write inside FASTR - a quarterly review, a country brief, an analytical narrative. You write the text in markdown and drop in live figures from your visualizations, so the charts in the document stay tied to your data instead of being pasted-in pictures that go stale. When the report is ready, export it as a PDF or a Word document.
+Reports are long-form documents you write inside FASTR - a quarterly review, a country brief, an analytical narrative. You write the text in markdown and drop in live figures, so the charts in the document stay tied to your data instead of being pasted-in pictures that go stale. When the report is ready, export it as a PDF or a Word document.
 
 A report is the right tool when you need prose around your numbers. If you mainly want charts on a page, a [dashboard](/user-guide/dashboards/) fits better; if you're presenting to a room, a [slide deck](/user-guide/slide-decks/) does. Reports are for the written word.
 
@@ -31,18 +31,18 @@ The header has an **Edit / Split / View** toggle. **Edit** shows the markdown ed
 ## Adding figures and images
 <!-- help#report-figures -->
 
-Reports hold two kinds of visual content, and the difference matters. A **figure** is a live visualization from the product's results package - it renders from current data and updates when that data changes. An **image** is a static file you upload, such as a diagram or a photo.
+Reports hold two kinds of visual content, and the difference matters. A **figure** is a live chart or map from the product's results package - it renders from current data and updates when that data changes. An **image** is a static file you upload, such as a diagram or a photo.
 
 To add a figure, click **Insert figure** and pick a visualization from the product's results package. To add a picture, click **Insert image** and upload a file or choose one from your project's assets. Either way, the item appears in the document as a card you can select.
 
 Selecting a figure or image opens a panel on the left for working with it:
 
 - **Caption** sets the text shown with the figure or image
-- **Edit visualization** opens the figure's settings - adjust the period, disaggregation, or styling
-- **Switch visualization** replaces the figure with a different one
+- **Edit figure** opens the figure's settings - adjust the period, disaggregation, or styling
+- **Switch figure** replaces the figure with a different one
 - **Delete** removes the figure or image from the report
 
-Because figures stay linked to their visualizations, a report you wrote last quarter shows this quarter's numbers the next time you open it - no manual updating, no re-pasting charts.
+Because figures stay linked to the results package, a report you wrote last quarter shows this quarter's numbers the next time you open it - no manual updating, no re-pasting charts.
 
 If a figure or image cannot be loaded when you export the report, FASTR replaces it with a short notice in place of the missing item rather than aborting the export. The rest of the report exports normally.
 
@@ -85,7 +85,7 @@ Click **Download** and choose **PDF** or **Word (.docx)**. PDF is best for a fin
 
 ## Common issues
 
-**A figure shows nothing or looks wrong**: The visualization behind it has no data for the current window, or its configuration needs a change. Select the figure and use **Edit visualization** - see [Visualizations](/user-guide/visualizations/).
+**A figure shows nothing or looks wrong**: The visualization behind it has no data for the current window, or its configuration needs a change. Select the figure and use **Edit figure** - see [Visualizations](/user-guide/visualizations/).
 
 **The status says "Save failed"**: A save didn't reach the server, usually a connection issue. Stay on the page, check your connection, and keep editing - FASTR retries; don't close the tab until you see **Saved**.
 

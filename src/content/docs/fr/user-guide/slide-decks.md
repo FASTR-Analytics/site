@@ -20,20 +20,20 @@ Pour créer des présentations, un paquet de résultats doit d'abord être épin
 
 ## Types de diapositives
 
-Les présentations contiennent trois types de diapositives. Les **diapositives de couverture** introduisent la présentation avec un titre, un sous-titre, le nom du présentateur (facultatif) et une date. Les **diapositives de section** divisent le contenu en groupes logiques avec un titre de section. Les deux utilisent un design affirmé, en pleine page. Les **diapositives de contenu** sont l'endroit où vivent vos données - elles contiennent des visualisations, du texte et des images.
+Les présentations contiennent trois types de diapositives. Les **diapositives de couverture** introduisent la présentation avec un titre, un sous-titre, le nom du présentateur (facultatif) et une date. Les **diapositives de section** divisent le contenu en groupes logiques avec un titre de section. Les deux utilisent un design affirmé, en pleine page. Les **diapositives de contenu** sont l'endroit où vivent vos données - elles contiennent des figures, du texte et des images.
 
 Lorsque vous ajoutez une diapositive, vous en choisissez le type. Vous pouvez convertir un type en un autre par la suite à l'aide du menu déroulant de la barre d'outils de l'éditeur de diapositive.
 
 ## Construire des diapositives de contenu
 <!-- help#deck-content-slides -->
 
-Les diapositives de contenu utilisent un système de mise en page flexible composé d'un ou plusieurs blocs de contenu. Un bloc peut contenir du texte (mis en forme avec Markdown), une visualisation de votre projet ou une image téléversée.
+Les diapositives de contenu utilisent un système de mise en page flexible composé d'un ou plusieurs blocs de contenu. Un bloc peut contenir du texte (mis en forme avec Markdown), une figure issue du paquet de résultats de la présentation ou une image téléversée.
 
-Pour ajouter une visualisation à un bloc de figure vide, cliquez sur **Insérer une figure** et choisissez un indicateur et une configuration depuis le paquet de résultats du produit. Si vous devez ajuster l'affichage — période différente ou désagrégation différente — vous pouvez modifier la figure intégrée directement depuis la diapositive à l'aide de **Modifier la visualisation**. Pour remplacer une figure existante par une autre, utilisez **Remplacer la figure** depuis le même panneau.
+Pour ajouter une figure à un bloc de figure vide, cliquez sur **Insérer une figure** et choisissez un indicateur et une configuration depuis le paquet de résultats du produit. Si vous devez ajuster l'affichage — période différente ou désagrégation différente — vous pouvez modifier la figure intégrée directement depuis la diapositive à l'aide de **Modifier la figure**. Pour remplacer une figure existante par une autre, utilisez **Remplacer la figure** depuis le même panneau.
 
 Faites un clic droit sur un bloc pour accéder aux options de mise en page comme « Diviser gauche/droite » ou « Supprimer le bloc ». Vous pouvez faire glisser les séparateurs entre les blocs pour ajuster leurs tailles relatives.
 
-Si une visualisation ou une image ne peut pas être rendue - par exemple en raison d'une erreur de données ou d'un fichier manquant - FASTR affiche une courte notice dans le bloc plutôt que de le laisser vide ou d'interrompre l'export.
+Si une figure ou une image ne peut pas être rendue - par exemple en raison d'une erreur de données ou d'un fichier manquant - FASTR affiche une courte notice dans le bloc plutôt que de le laisser vide ou d'interrompre l'export.
 
 ![Building Content Slides FR](/images/building-content-slides-fr.png)
 
@@ -86,7 +86,7 @@ Si la présentation contient des modifications en direct qui ne peuvent pas êtr
 ## Exporter et partager
 <!-- help#deck-export -->
 
-Cliquez sur **Télécharger** pour exporter votre présentation. **PDF natif** produit un fichier vectoriel de haute qualité où le texte reste net à n'importe quel niveau de zoom. **PPTX avec figures matricielles** crée un fichier PowerPoint où les visualisations sont intégrées sous forme d'images - utile si les destinataires doivent apporter des modifications.
+Cliquez sur **Télécharger** pour exporter votre présentation. **PDF natif** produit un fichier vectoriel de haute qualité où le texte reste net à n'importe quel niveau de zoom. **PPTX avec figures matricielles** crée un fichier PowerPoint où les figures sont intégrées sous forme d'images - utile si les destinataires doivent apporter des modifications.
 
 Vous pouvez aussi partager des présentations directement par e-mail. Cliquez sur **Partager**, sélectionnez les destinataires dans la liste des utilisateurs de votre instance ou ajoutez des adresses e-mail, et incluez éventuellement un message. FASTR valide les adresses e-mail avant de générer le PDF, de sorte que les adresses invalides sont signalées immédiatement plutôt qu'après un export long. FASTR génère un PDF et l'envoie en pièce jointe.
 

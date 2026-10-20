@@ -5,13 +5,13 @@ sidebar:
   order: 7
 ---
 
-Modules are the analytical engine of FASTR. Each module runs R scripts that process your project's data - calculating indicators, detecting outliers, generating coverage estimates, or performing other statistical analyses. The results become metrics that power your visualizations and reports. Modules are configured at the instance level through results packages, which are then attached to projects.
+Modules are the analytical engine of FASTR. Each module runs R scripts that process your project's data - calculating indicators, detecting outliers, generating coverage estimates, or performing other statistical analyses. The results become metrics that power your visualizations and reports. Modules are configured at the instance level through results packages, which are then read by slide decks and reports.
 
 ## Understanding module architecture
 
 A module has two parts. The **compute definition** contains the R scripts that process data and produce results - these run in isolated Docker containers. The **presentation definition** specifies which metrics the module produces and how they can be visualized.
 
-Modules are included when generating a results package at the instance level. A results package bundles together the outputs of all selected modules for a chosen set of data. Projects serve their visualizations from an attached results package.
+Modules are included when generating a results package at the instance level. A results package bundles together the outputs of all selected modules for a chosen set of data. Every slide deck and report reads its figures from an attached results package.
 
 ## Configuring module defaults
 <!-- help#amod-configure -->
@@ -23,9 +23,9 @@ These defaults pre-fill the generation wizard when a new results package is conf
 ## Generating a results package
 <!-- help#amod-install -->
 
-To produce module outputs, generate a new results package from the instance **Results packages** page. Click **Generate new results package** to open the wizard. The wizard walks you through three steps: selecting which data families to include (HMIS, HFA, ICEH equity data), choosing which modules to run and setting their parameters, and confirming the label and optionally attaching the package to specific projects immediately.
+To produce module outputs, generate a new results package from the instance **Results packages** page. Click **Generate new results package** to open the wizard. The wizard walks you through three steps: selecting which data families to include (HMIS, HFA, ICEH equity data), choosing which modules to run and setting their parameters, and confirming the label.
 
-The wizard is an ephemeral modal — nothing is saved to the server before you click **Launch generation**. The entire configuration (data family selections, module choices, parameter values, label, and attach targets) is submitted in a single step. If you close the wizard before launching, nothing is stored.
+The wizard is an ephemeral modal — nothing is saved to the server before you click **Launch generation**. The entire configuration (data family selections, module choices, parameter values, and label) is submitted in a single step. If you close the wizard before launching, nothing is stored.
 
 After you click **Launch generation**, FASTR pins the new run's ID so that the detail pane opens for it as soon as the SSE notification arrives. You can leave the page and follow progress on the Results packages surface.
 
@@ -48,7 +48,7 @@ Available modules include:
 
 ### Step 3 — Confirm and launch
 
-Enter a label for the results package and review the data and module selections. Optionally, select projects to attach the new package to immediately — these projects will switch to the new package when generation succeeds. Click **Launch generation** to start.
+Enter a label for the results package and review the data and module selections. Click **Launch generation** to start.
 
 ## Population data and M12
 
@@ -60,7 +60,7 @@ For areas and months where population data exists, M12 computes the indicator. F
 
 ## Pruning results packages
 
-As you generate packages over time, old ones accumulate. Click **Prune** on the Results packages page to open the prune dialog. FASTR shows which packages will be deleted (those not attached to any project, not pinned, and not currently generating) and which will be kept and why. Confirm to delete all eligible packages in sequence — a progress list shows each deletion as it completes. Packages attached to a project between the time you confirm and the time that package's turn arrives are skipped rather than aborting the whole operation.
+As you generate packages over time, old ones accumulate. Click **Prune** on the Results packages page to open the prune dialog. FASTR shows which packages will be deleted (those not attached to any product, not pinned, and not currently generating) and which will be kept and why. Confirm to delete all eligible packages in sequence — a progress list shows each deletion as it completes. Packages attached to a product between the time you confirm and the time that package's turn arrives are skipped rather than aborting the whole operation.
 
 ## Pinning a results package
 
@@ -93,4 +93,4 @@ Script and file access require the **View data** permission; log access requires
 
 ## Deleting results packages
 
-To remove a results package, select it in the instance results packages catalogue and click **Delete**. FASTR refuses to delete a package while any project is using it, while it is pinned, or while it is still generating. The detail pane explains the reason when deletion is blocked. Deletion permanently removes the package's files and cached results and cannot be undone.
+To remove a results package, select it in the instance results packages catalogue and click **Delete**. FASTR refuses to delete a package while any product is using it, while it is pinned, or while it is still generating. The detail pane explains the reason when deletion is blocked. Deletion permanently removes the package's files and cached results and cannot be undone.

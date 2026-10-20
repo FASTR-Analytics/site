@@ -5,7 +5,7 @@ sidebar:
   order: 7
 ---
 
-L'assistant IA vous aide à explorer et à interpréter les données de votre projet par le biais d'une conversation. Il comprend vos modules, vos indicateurs et vos visualisations - vous pouvez donc poser des questions comme « que montre la tendance de la couverture en CPN1 ? » ou « quels districts ont la plus faible complétude des données ? » et obtenir des réponses fondées sur vos résultats réels.
+L'assistant IA vous aide à explorer et à interpréter les données de votre projet par le biais d'une conversation. Il comprend vos modules, vos indicateurs et vos figures - vous pouvez donc poser des questions comme « que montre la tendance de la couverture en CPN1 ? » ou « quels districts ont la plus faible complétude des données ? » et obtenir des réponses fondées sur vos résultats réels.
 
 ## Ouvrir l'assistant
 <!-- help#ai-open -->

@@ -20,20 +20,20 @@ To create slide decks, a results package must be pinned at the instance level fi
 
 ## Slide types
 
-Decks contain three types of slides. **Cover slides** introduce the presentation with a title, subtitle, optional presenter name, and date. **Section slides** divide content into logical groups with a section title. Both use a bold, full-bleed design. **Content slides** are where your data lives - these contain visualizations, text, and images.
+Decks contain three types of slides. **Cover slides** introduce the presentation with a title, subtitle, optional presenter name, and date. **Section slides** divide content into logical groups with a section title. Both use a bold, full-bleed design. **Content slides** are where your data lives - these contain figures, text, and images.
 
 When you add a slide, you choose its type. You can convert between types later using the dropdown in the slide editor toolbar.
 
 ## Building content slides
 <!-- help#deck-content-slides -->
 
-Content slides use a flexible layout system with one or more content blocks. A block can hold text (formatted with markdown), a visualization from your project, or an uploaded image.
+Content slides use a flexible layout system with one or more content blocks. A block can hold text (formatted with markdown), a figure from the deck's results package, or an uploaded image.
 
-To add a visualization to an empty figure block, click **Insert figure** and choose a metric and configuration from the product's results package. If you need to adjust the display — different time period or disaggregation — you can edit the embedded figure directly from the slide using **Edit visualization**. To swap an existing figure for a different one, use **Replace figure** from the same panel.
+To add a figure to an empty figure block, click **Insert figure** and choose a metric and configuration from the product's results package. If you need to adjust the display — different time period or disaggregation — you can edit the embedded figure directly from the slide using **Edit figure**. To swap an existing figure for a different one, use **Replace figure** from the same panel.
 
 Right-click on a block to access layout options like "Split left/right" or "Delete block." You can drag dividers between blocks to adjust their relative sizes.
 
-If a visualization or image cannot be rendered - for example because of a data error or a missing file - FASTR shows a short notice in the block rather than leaving it blank or stopping the export.
+If a figure or image cannot be rendered - for example because of a data error or a missing file - FASTR shows a short notice in the block rather than leaving it blank or stopping the export.
 
 ![Building Content Slides](/images/building-content-slides-en.png)
 
@@ -86,7 +86,7 @@ If the deck has unsaved live edits that cannot be saved at the moment you reques
 ## Exporting and sharing
 <!-- help#deck-export -->
 
-Click **Download** to export your deck. **Native PDF** produces a high-quality vector file where text stays sharp at any zoom level. **PPTX with raster figures** creates a PowerPoint file with visualizations embedded as images - useful if recipients need to make edits.
+Click **Download** to export your deck. **Native PDF** produces a high-quality vector file where text stays sharp at any zoom level. **PPTX with raster figures** creates a PowerPoint file with figures embedded as images - useful if recipients need to make edits.
 
 You can also share decks directly by email. Click **Share**, select recipients from your instance's user list or add email addresses, and optionally include a message. FASTR validates email addresses before generating the PDF, so any invalid addresses are flagged immediately rather than after a lengthy export. FASTR generates a PDF and sends it as an attachment.
 

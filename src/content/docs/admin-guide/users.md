@@ -95,11 +95,10 @@ The user list supports bulk selection for common operations. Check the boxes nex
 
 - **Make admin** / **Make non-admin** - Toggle administrator status
 - **Edit permissions** - Update instance permissions for all selected users at once
-- **Edit default project permissions** - Set what access selected users get for new projects
 - **Download users** - Export a CSV of selected users
 - **Remove** - Delete selected user accounts
 
-Bulk operations are useful when onboarding teams or when access policies change. For example, if a new project starts and several people need editor access, select them all and update their default permissions in one step.
+Bulk operations are useful when onboarding teams or when access policies change. For example, if a new project starts and several people need editor access, select them all and update their permissions in one step.
 
 ![Project Users Permissions Bulk](/images/user-permissions-project-multiple-en.png)
 
