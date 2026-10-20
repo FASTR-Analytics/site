@@ -12,11 +12,7 @@ A report is the right tool when you need prose around your numbers. If you mainl
 ## Creating a report
 <!-- help#report-create -->
 
-Open your project and go to the **Reports** section. Each report appears as a card showing a preview of its opening lines and a count of the figures and images inside, which makes it easy to find the one you want. Right-click a card to move it to a folder, duplicate it, or delete it.
-
-Click **Create report**, give it a name, and optionally choose a folder. The report opens straight into the editor, ready to write.
-
-![Creating a Report](/images/creating-a-report-en.png)
+Open the **Products** tab on your instance home screen. Reports appear as cards in the product explorer alongside slide decks. Click **New report** to create one — the editor opens straight away with the new report ready to write. You can organise reports into folders using **New folder**, and move them between folders from their card menu.
 
 ## Writing in the editor
 
@@ -35,16 +31,15 @@ The header has an **Edit / Split / View** toggle. **Edit** shows the markdown ed
 ## Adding figures and images
 <!-- help#report-figures -->
 
-Reports hold two kinds of visual content, and the difference matters. A **figure** is a live visualization from your project - it renders from current data and updates when that data changes. An **image** is a static file you upload, such as a diagram or a photo.
+Reports hold two kinds of visual content, and the difference matters. A **figure** is a live visualization from the product's results package - it renders from current data and updates when that data changes. An **image** is a static file you upload, such as a diagram or a photo.
 
-To add a figure, click **Insert figure** and pick a visualization. To add a picture, click **Insert image** and upload a file or choose one from your project's assets. Either way, the item appears in the document as a card you can select.
+To add a figure, click **Insert figure** and pick a visualization from the product's results package. To add a picture, click **Insert image** and upload a file or choose one from your project's assets. Either way, the item appears in the document as a card you can select.
 
 Selecting a figure or image opens a panel on the left for working with it:
 
 - **Caption** sets the text shown with the figure or image
 - **Edit visualization** opens the figure's settings - adjust the period, disaggregation, or styling
 - **Switch visualization** replaces the figure with a different one
-- **Create new visualization** builds a fresh visualization and embeds it in place
 - **Delete** removes the figure or image from the report
 
 Because figures stay linked to their visualizations, a report you wrote last quarter shows this quarter's numbers the next time you open it - no manual updating, no re-pasting charts.
@@ -52,6 +47,10 @@ Because figures stay linked to their visualizations, a report you wrote last qua
 If a figure or image cannot be loaded when you export the report, FASTR replaces it with a short notice in place of the missing item rather than aborting the export. The rest of the report exports normally.
 
 ![Adding Figures and Images](/images/adding-figures-and-images-en.png)
+
+## Report settings
+
+Click **Settings** in the report header to open the report settings panel. Here you can change the report's name, move it to a different folder, switch the results package it draws figures from, and change the geographic scope. Changing the package or scope affects every figure in the report — figures that came from a different package or scope show an update badge.
 
 ## Collaborating on a report
 

@@ -10,9 +10,7 @@ L'assistant IA vous aide à explorer et à interpréter les données de votre pr
 ## Ouvrir l'assistant
 <!-- help#ai-open -->
 
-Cliquez sur **IA** dans n'importe quelle vue de projet pour ouvrir le panneau de l'assistant sur le côté droit de l'écran. Le panneau reste ouvert lorsque vous naviguez entre les visualisations, les présentations et les autres sections - l'IA suit votre contexte et adapte ses réponses en conséquence.
-
-L'assistant fonctionne différemment selon l'endroit où vous vous trouvez. Lorsque vous consultez la liste des indicateurs, il peut rechercher et expliquer les indicateurs disponibles. Lorsque vous modifiez une présentation, il peut vous aider à rédiger du contenu ou à suggérer des visualisations. Dans l'éditeur de visualisation, il comprend avec quel indicateur vous travaillez.
+Ouvrez une présentation ou un rapport pour travailler avec l'assistant IA. Cliquez sur **IA** dans l'en-tête de l'éditeur pour ouvrir le panneau de l'assistant sur le côté droit de l'écran. L'assistant est limité au produit que vous avez ouvert — chaque présentation ou rapport possède son propre historique de conversation, et l'assistant utilise automatiquement le paquet de résultats et la portée de ce produit.
 
 ![Opening the Assistant FR](/images/opening-the-assistant-fr.png)
 
@@ -36,7 +34,7 @@ Lorsque vous sélectionnez une invite, vous pouvez la personnaliser avant de l'e
 
 Vous pouvez joindre des documents PDF à une conversation pour donner à l'assistant un contexte supplémentaire - par exemple, une note de politique, un protocole ou un rapport de référence. Cliquez sur l'icône de document dans la zone de saisie du chat pour ouvrir le sélecteur de documents.
 
-Le sélecteur affiche les fichiers PDF disponibles dans les ressources de votre projet. Sélectionnez un ou plusieurs fichiers à joindre, ou téléversez un nouveau PDF directement depuis votre appareil. Les documents que vous joignez sont en attente jusqu'à l'envoi de votre prochain message. Les pièces jointes en attente apparaissent sous forme de puces dans la zone de saisie et peuvent être supprimées avant l'envoi en cliquant sur le **×** de chaque puce.
+Le sélecteur affiche les fichiers PDF disponibles dans les ressources de votre instance. Sélectionnez un ou plusieurs fichiers à joindre, ou téléversez un nouveau PDF directement depuis votre appareil. Les documents que vous joignez sont en attente jusqu'à l'envoi de votre prochain message. Les pièces jointes en attente apparaissent sous forme de puces dans la zone de saisie et peuvent être supprimées avant l'envoi en cliquant sur le **×** de chaque puce.
 
 Une fois un message envoyé avec des pièces jointes, ces documents apparaissent dans l'historique de la conversation sans option de suppression - ils ont déjà été transmis à l'assistant. Les pièces jointes en attente qui n'ont pas encore été envoyées peuvent encore être supprimées.
 
@@ -44,25 +42,25 @@ Chaque conversation gère son propre ensemble de pièces jointes. Lorsque vous p
 
 ## Travailler avec les diapositives
 
-L'assistant est particulièrement utile lors de la création de présentations. Vous pouvez lui demander de rédiger le contenu de diapositives, de suggérer des visualisations qui appuient un récit, ou de vous aider à structurer votre présentation. Il sait quelles diapositives vous avez déjà ajoutées et peut faire référence aux indicateurs disponibles.
+L'assistant est particulièrement utile lors de la création de présentations. Vous pouvez lui demander de rédiger le contenu de diapositives, de suggérer des figures qui appuient un récit, ou de vous aider à structurer votre présentation. Il sait quelles diapositives vous avez déjà ajoutées et peut faire référence aux indicateurs disponibles.
 
-Lorsque vous demandez à l'assistant de créer une diapositive, il en rédige le contenu et affiche un aperçu. Examinez le brouillon, demandez des modifications, puis ajoutez-le à votre présentation en un seul clic.
+Lorsque vous demandez à l'assistant de créer une diapositive, il en rédige le contenu et affiche un aperçu. Si la présentation est ouverte, vous pouvez ajouter le brouillon directement depuis la carte d'aperçu.
 
 Lors de la modification d'une diapositive existante, l'assistant peut également modifier les figures déjà présentes sur la diapositive - par exemple, changer le réplicant affiché par un graphique, ajuster des filtres ou mettre à jour des légendes - sans reconstruire la figure de zéro. L'assistant peut aussi mettre à jour les figures directement depuis la vue de la présentation, sans ouvrir l'éditeur de diapositive, et enregistre ces modifications immédiatement.
+
+Chaque figure d'une présentation est résolue sous le paquet de résultats et la portée propres à cette présentation. Lorsque l'assistant crée ou modifie une figure, il utilise automatiquement le paquet associé à la présentation — vous n'avez pas besoin de préciser quel paquet utiliser.
 
 ## Travailler avec les rapports
 
 Dans l'éditeur de rapport, l'assistant peut réécrire des passages, insérer de nouvelles figures et modifier des figures existantes directement. Lorsque vous lui demandez de modifier du texte, il propose un diff dans une fenêtre modale que vous acceptez ou refusez avant toute application. Lorsque vous lui demandez de modifier une figure - par exemple, changer son réplicant ou son filtre de période - il applique la modification directement à l'aperçu en direct et enregistre immédiatement, sans étape de diff. Pour remplacer une figure par un graphique ou un indicateur entièrement différent, demandez à l'assistant de remplacer la figure plutôt que de la modifier.
 
-## Naviguer entre les onglets
-
-L'assistant peut changer l'onglet principal du projet en votre nom. Il peut naviguer vers **Rapports**, **Présentations**, **Visualisations**, **Métriques** et **Paramètres**. L'onglet **Lot de résultats** n'est accessible qu'aux administrateurs d'instance et aux utilisateurs disposant de permissions de configuration des données. La navigation par onglet n'est pas disponible pendant que vous modifiez une visualisation, une présentation ou une diapositive.
+Chaque figure d'un rapport est résolue sous le paquet de résultats et la portée propres à ce rapport. Lorsque l'assistant insère ou remplace une figure, il utilise automatiquement le paquet associé au rapport.
 
 ## Conversations et historique
 
-Chaque conversation est enregistrée automatiquement. Vous pouvez démarrer de nouvelles conversations et passer de l'une à l'autre à l'aide du menu. C'est utile lorsque vous avez demandé à l'assistant d'expliquer quelque chose de complexe - vous pouvez revenir à cette explication plus tard sans avoir à la redemander.
+Chaque conversation est enregistrée automatiquement et est limitée au produit (présentation ou rapport) que vous avez ouvert. Vous pouvez démarrer de nouvelles conversations et passer de l'une à l'autre à l'aide du menu. C'est utile lorsque vous avez demandé à l'assistant d'expliquer quelque chose de complexe - vous pouvez revenir à cette explication plus tard sans avoir à la redemander.
 
-Les conversations sont limitées à votre projet et incluent le contexte de vos données. L'assistant se souvient de ce dont vous avez discuté au sein d'une conversation, ce qui vous permet de vous appuyer sur les questions précédentes.
+L'assistant se souvient de ce dont vous avez discuté au sein d'une conversation, ce qui vous permet de vous appuyer sur les questions précédentes.
 
 ## Limites d'utilisation
 

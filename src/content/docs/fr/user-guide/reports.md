@@ -12,11 +12,7 @@ Un rapport est l'outil approprié lorsque vous avez besoin de texte rédigé aut
 ## Créer un rapport
 <!-- help#report-create -->
 
-Ouvrez votre projet et accédez à la section **Rapports**. Chaque rapport apparaît sous forme de carte affichant un aperçu de ses premières lignes ainsi que le nombre de figures et d'images qu'il contient, ce qui facilite la recherche de celui que vous souhaitez. Faites un clic droit sur une carte pour la déplacer vers un dossier, la dupliquer ou la supprimer.
-
-Cliquez sur **Créer un rapport**, donnez-lui un nom et, si vous le souhaitez, choisissez un dossier. Le rapport s'ouvre directement dans l'éditeur, prêt à être rédigé.
-
-![Creating a Report FR](/images/creating-a-report-fr.png)
+Ouvrez l'onglet **Produits** sur l'écran d'accueil de votre instance. Les rapports apparaissent sous forme de cartes dans l'explorateur de produits, aux côtés des présentations. Cliquez sur **Nouveau rapport** pour en créer un — l'éditeur s'ouvre immédiatement avec le nouveau rapport prêt à être rédigé. Vous pouvez organiser les rapports dans des dossiers à l'aide de **Nouveau dossier** et les déplacer entre dossiers depuis le menu de leur carte.
 
 ## Rédiger dans l'éditeur
 
@@ -35,16 +31,15 @@ L'en-tête comporte un bouton bascule **Édition / Divisé / Aperçu**. **Éditi
 ## Ajouter des figures et des images
 <!-- help#report-figures -->
 
-Les rapports peuvent contenir deux types de contenu visuel, et la distinction est importante. Une **figure** est une visualisation dynamique issue de votre projet - elle se génère à partir des données actuelles et se met à jour lorsque ces données changent. Une **image** est un fichier statique que vous téléversez, comme un schéma ou une photo.
+Les rapports peuvent contenir deux types de contenu visuel, et la distinction est importante. Une **figure** est une visualisation dynamique issue du paquet de résultats du produit - elle se génère à partir des données actuelles et se met à jour lorsque ces données changent. Une **image** est un fichier statique que vous téléversez, comme un schéma ou une photo.
 
-Pour ajouter une figure, cliquez sur **Insérer une figure** et choisissez une visualisation. Pour ajouter une image, cliquez sur **Insérer une image** et téléversez un fichier ou choisissez-en un parmi les ressources de votre projet. Dans les deux cas, l'élément apparaît dans le document sous forme de carte que vous pouvez sélectionner.
+Pour ajouter une figure, cliquez sur **Insérer une figure** et choisissez une visualisation dans le paquet de résultats du produit. Pour ajouter une image, cliquez sur **Insérer une image** et téléversez un fichier ou choisissez-en un parmi les ressources de votre projet. Dans les deux cas, l'élément apparaît dans le document sous forme de carte que vous pouvez sélectionner.
 
 La sélection d'une figure ou d'une image ouvre un panneau sur la gauche pour la manipuler :
 
 - **Légende** définit le texte affiché avec la figure ou l'image
 - **Modifier la visualisation** ouvre les paramètres de la figure - ajustez la période, la désagrégation ou le style
 - **Changer de visualisation** remplace la figure par une autre
-- **Créer une nouvelle visualisation** construit une visualisation inédite et l'intègre sur place
 - **Supprimer** retire la figure ou l'image du rapport
 
 Comme les figures restent liées à leurs visualisations, un rapport rédigé le trimestre dernier affichera les chiffres de ce trimestre la prochaine fois que vous l'ouvrirez - sans mise à jour manuelle ni nouveau collage de graphiques.
@@ -52,6 +47,10 @@ Comme les figures restent liées à leurs visualisations, un rapport rédigé le
 Si une figure ou une image ne peut pas être chargée lors de l'export, FASTR la remplace par une courte notice à la place de l'élément manquant plutôt que d'interrompre l'export. Le reste du rapport est exporté normalement.
 
 ![Adding Figures and Images FR](/images/adding-figures-and-images-fr.png)
+
+## Paramètres du rapport
+
+Cliquez sur **Paramètres** dans l'en-tête du rapport pour ouvrir le panneau des paramètres. Vous pouvez y modifier le nom du rapport, le déplacer vers un autre dossier, changer le paquet de résultats à partir duquel les figures sont issues, et modifier la portée géographique. Changer le paquet ou la portée affecte chaque figure du rapport — les figures issues d'un autre paquet ou d'une autre portée affichent un badge de mise à jour.
 
 ## Collaborer sur un rapport
 

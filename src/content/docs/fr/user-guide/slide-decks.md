@@ -10,11 +10,11 @@ Les présentations vous permettent d'assembler des visualisations en présentati
 ## Créer une présentation
 <!-- help#deck-create -->
 
-Ouvrez votre projet et cliquez sur **Présentations** dans la barre latérale gauche. Cliquez sur **Créer une présentation** pour commencer. Vous lui donnerez un nom et pourrez éventuellement l'affecter à un dossier pour l'organiser.
+Ouvrez l'onglet **Produits** sur l'écran d'accueil de votre instance. Les présentations apparaissent sous forme de cartes dans l'explorateur de produits, aux côtés des rapports. Cliquez sur **Nouvelle présentation** pour en créer une — l'éditeur s'ouvre immédiatement. Vous pouvez organiser les présentations dans des dossiers à l'aide de **Nouveau dossier** et les déplacer entre dossiers depuis le menu de leur carte.
 
 Une nouvelle présentation démarre vide. Le panneau de gauche affiche vos diapositives, et la zone principale montre un aperçu de la diapositive sélectionnée. Vous construirez la présentation en ajoutant différents types de diapositives.
 
-Pour créer des présentations, le projet doit d'abord avoir un paquet de résultats rattaché.
+Pour créer des présentations, un paquet de résultats doit d'abord être épinglé au niveau de l'instance.
 
 ![Creating Slide Deck FR](/images/creating-slide-deck-fr.png)
 
@@ -29,13 +29,19 @@ Lorsque vous ajoutez une diapositive, vous en choisissez le type. Vous pouvez co
 
 Les diapositives de contenu utilisent un système de mise en page flexible composé d'un ou plusieurs blocs de contenu. Un bloc peut contenir du texte (mis en forme avec Markdown), une visualisation de votre projet ou une image téléversée.
 
-Pour ajouter une visualisation, cliquez sur un bloc de figure vide et choisissez **Sélectionner une visualisation**. Sélectionnez-en une dans la liste : elle apparaît dans le bloc, rendue avec ses paramètres actuels. Vous pouvez trier les visualisations dans le panneau de sélection par nom ou par récemment mis à jour en utilisant le contrôle de tri en haut du panneau. Si vous devez ajuster l'affichage - période différente ou désagrégation différente - vous pouvez modifier la visualisation intégrée directement depuis la diapositive.
+Pour ajouter une visualisation à un bloc de figure vide, cliquez sur **Insérer une figure** et choisissez un indicateur et une configuration depuis le paquet de résultats du produit. Si vous devez ajuster l'affichage — période différente ou désagrégation différente — vous pouvez modifier la figure intégrée directement depuis la diapositive à l'aide de **Modifier la visualisation**. Pour remplacer une figure existante par une autre, utilisez **Remplacer la figure** depuis le même panneau.
 
 Faites un clic droit sur un bloc pour accéder aux options de mise en page comme « Diviser gauche/droite » ou « Supprimer le bloc ». Vous pouvez faire glisser les séparateurs entre les blocs pour ajuster leurs tailles relatives.
 
 Si une visualisation ou une image ne peut pas être rendue - par exemple en raison d'une erreur de données ou d'un fichier manquant - FASTR affiche une courte notice dans le bloc plutôt que de le laisser vide ou d'interrompre l'export.
 
 ![Building Content Slides FR](/images/building-content-slides-fr.png)
+
+## Paramètres de la présentation
+
+Cliquez sur **Paramètres** dans la barre d'outils de la présentation pour ouvrir le panneau des paramètres. Vous pouvez y modifier le nom de la présentation, la déplacer vers un autre dossier, changer le paquet de résultats à partir duquel les figures sont issues, et modifier la portée géographique. Changer le paquet ou la portée affecte chaque figure de la présentation — les figures issues d'un autre paquet ou d'une autre portée affichent un badge de mise à jour.
+
+Pour modifier le paquet ou la portée, cliquez sur **Paquet, portée et dossier** depuis le menu de débordement de la présentation. Cela ouvre le panneau des paramètres du produit où vous pouvez mettre à jour ces propriétés.
 
 ## Présenter des diapositives
 
@@ -61,7 +67,11 @@ L'assistant IA ne modifie pas une diapositive qu'un autre collaborateur a actuel
 
 ## Annuler et rétablir dans l'éditeur de diapositive
 
-Lorsque vous modifiez une diapositive, l'en-tête comporte des boutons **Annuler** et **Rétablir**. Ceux-ci inversent vos propres modifications de diapositive - ajout de blocs, changement de mise en page, déplacement de figures et texte saisi dans n'importe quel champ de texte de la diapositive - sans affecter les modifications effectuées par les collaborateurs. Les boutons n'apparaissent que lorsque vous avez la permission de configurer les présentations et que le projet n'est pas verrouillé. Vous pouvez également utiliser Ctrl+Z et Ctrl+Maj+Z (ou Cmd+Z et Cmd+Maj+Z sur Mac) comme raccourcis clavier ; ceux-ci fonctionnent aussi bien lorsque le focus est sur le canevas de la diapositive que lorsque vous tapez dans un champ de texte de la diapositive.
+Lorsque vous modifiez une diapositive, l'en-tête comporte des boutons **Annuler** et **Rétablir**. Ceux-ci inversent vos propres modifications de diapositive - ajout de blocs, changement de mise en page, déplacement de figures et texte saisi dans n'importe quel champ de texte de la diapositive - sans affecter les modifications effectuées par les collaborateurs. Les boutons n'apparaissent que lorsque vous avez la permission de modifier la présentation. Vous pouvez également utiliser Ctrl+Z et Ctrl+Maj+Z (ou Cmd+Z et Cmd+Maj+Z sur Mac) comme raccourcis clavier ; ceux-ci fonctionnent aussi bien lorsque le focus est sur le canevas de la diapositive que lorsque vous tapez dans un champ de texte de la diapositive.
+
+## Copier des diapositives entre présentations
+
+Pour copier des diapositives d'une présentation vers une autre, sélectionnez les diapositives souhaitées dans la liste, puis ouvrez le menu de débordement de la présentation et choisissez **Copier vers une présentation…**. Une boîte de dialogue vous permet de choisir la présentation de destination. Les diapositives sont copiées avec leurs figures ; celles-ci se résoudront sous le paquet de résultats et la portée propres à la présentation de destination.
 
 ## Historique des versions
 
@@ -84,4 +94,4 @@ Vous pouvez aussi partager des présentations directement par e-mail. Cliquez su
 
 ## Organisation
 
-Utilisez des dossiers pour garder vos présentations organisées à mesure que votre projet s'agrandit. Dans la vue en liste, cliquez sur **Nouveau dossier** pour en créer un, puis faites un clic droit sur les présentations pour les déplacer. Vous pouvez dupliquer des présentations lorsque vous créez des variantes pour différents publics. Le champ de recherche filtre les présentations par nom. Utilisez le contrôle de tri en haut de la liste pour classer les présentations par nom ou par récemment mis à jour.
+Utilisez des dossiers pour garder vos présentations organisées. Dans l'explorateur de produits, cliquez sur **Nouveau dossier** pour en créer un, puis utilisez le menu de la carte d'une présentation pour la déplacer. Vous pouvez dupliquer des présentations lorsque vous créez des variantes pour différents publics. Le champ de recherche filtre les présentations par nom. Utilisez le contrôle de tri pour classer les présentations par nom ou par récemment mis à jour. Basculez entre la vue en grille et la vue en liste à l'aide du sélecteur de vue dans la barre d'outils.

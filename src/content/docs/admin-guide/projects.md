@@ -5,7 +5,7 @@ sidebar:
   order: 6
 ---
 
-Projects are the primary workspace for analysis in FASTR. Each project brings together a results package containing pre-computed analytical outputs with the visualizations, reports, and slide decks you create from those results. You might create separate projects for different time periods, geographic regions, or program areas.
+Projects are the primary workspace for analysis in FASTR. Each project brings together a results package containing pre-computed analytical outputs with the visualizations, dashboards, and slide decks you create from those results. You might create separate projects for different time periods, geographic regions, or program areas.
 
 ## Creating a project
 <!-- help#aproj-create -->
@@ -25,7 +25,7 @@ Editors can select any ready package from the instance using the dropdown in the
 
 When a project follows the pinned package but is currently on a different one, a warning appears with a **Switch to pinned package** button to resync it immediately.
 
-Switching a project to a different results package changes the data behind every visualization, report, and slide deck in the project. Before a switch takes effect, FASTR shows you a compatibility report listing any visualizations that would not resolve against the new package — they stay in the project and display why they cannot be drawn. Nothing changes until you confirm.
+Switching a project to a different results package changes the data behind every visualization, dashboard, and slide deck in the project. Before a switch takes effect, FASTR shows you a compatibility report listing any visualizations that would not resolve against the new package — they stay in the project and display why they cannot be drawn. Nothing changes until you confirm.
 
 If the project has an Admin Area 2 scope set and the selected package has no data for that area, a warning appears both in the compatibility report and on the Results package tab after attaching. Area-level metrics will show no data, but national-level metrics remain visible.
 
@@ -39,7 +39,7 @@ Project access is controlled through a granular permission system. Click **Setti
 
 FASTR organizes permissions into three categories:
 
-- **Analytical Products** covers viewing and configuring visualizations, reports, and slide decks
+- **Analytical Products** covers viewing and configuring visualizations, dashboards, and slide decks
 - **Data & Modules** includes viewing data, metrics, and logs, plus configuring and running modules
 - **Project Administration** handles settings, user management, and backup operations
 
@@ -52,7 +52,7 @@ For bulk changes, select multiple users using the checkboxes, then click **Edit 
 ## Locking projects
 <!-- help#aproj-lock -->
 
-When an analysis is complete, you can lock the project to preserve its state. A locked project prevents changes to modules, data configuration, and visualizations while still allowing users to view reports and export outputs.
+When an analysis is complete, you can lock the project to preserve its state. A locked project prevents changes to modules, data configuration, and visualizations while still allowing users to view outputs and export results.
 
 In project **Settings**, find the **Project lock status** section and click **Lock project**. The project card on the home screen will display a lock icon. To resume editing, return to settings and click **Unlock project**.
 
@@ -60,13 +60,13 @@ In project **Settings**, find the **Project lock status** section and click **Lo
 
 Sometimes you need a project similar to an existing one - perhaps the same modules but for a different time period. Rather than starting from scratch, copy the original.
 
-Open the source project, go to **Settings**, and click **Copy project**. Enter a name for the new project. The copy runs in the background and may take several minutes for large projects. The new project appears on the home screen once complete, with all module installations, parameter settings, visualizations, and reports included.
+Open the source project, go to **Settings**, and click **Copy project**. Enter a name for the new project. The copy runs in the background and may take several minutes for large projects. The new project appears on the home screen once complete, with all module installations, parameter settings, visualizations, and dashboards included.
 
 ![Copy Project](/images/copy-project-en.png)
 
-## Project AI context
+## AI context
 
-FASTR's AI assistant can interpret charts and suggest insights, but its responses are more useful when it understands the project's context. In **Settings**, you can set a **Project context for AI interpretation** - a description of what this project analyzes or the questions it aims to answer. Changes to the AI context take effect immediately across the project and are visible to all users working in it. A few sentences about the project's purpose can significantly improve the quality of AI-assisted analysis.
+FASTR's AI assistant can interpret charts and suggest insights, but its responses are more useful when it understands your country and health system context. Instance administrators can set an **AI context** from the instance **Settings** page — a description of the country, its health system, and any background the assistant should keep in mind. This context applies across all projects and products on the instance. Changes take effect immediately and are visible to all users.
 
 ## Appearance
 

@@ -10,7 +10,7 @@ A project is your workspace for analysis in FASTR. It contains a results package
 ## Opening a project
 <!-- help#uproj-open -->
 
-When you sign in to FASTR, you'll see a list of projects you have access to. The list can be sorted by name or by recently updated using the sort control at the top. Click any project name to open it. The project view has a navigation sidebar on the left with tabs for different sections - typically **Slide decks**, **Visualizations**, **Metrics**, **Results package**, and **Settings**. What you see depends on your permissions; viewers won't see configuration options, for example.
+When you sign in to FASTR, you'll see a list of projects you have access to. The list can be sorted by name or by recently updated using the sort control at the top. Click any project name to open it. The project view has a navigation sidebar on the left with tabs for different sections - typically **Dashboards**, **Visualizations**, **Metrics**, **Results package**, and **Settings**. What you see depends on your permissions; viewers won't see configuration options, for example.
 
 The project name appears at the top of the screen. If the project has an Admin Area 2 scope, a badge showing the area name appears next to the project name.
 

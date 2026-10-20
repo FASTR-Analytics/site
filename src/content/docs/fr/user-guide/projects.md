@@ -10,7 +10,7 @@ Un projet est votre espace de travail pour l'analyse dans FASTR. Il est associé
 ## Ouvrir un projet
 <!-- help#uproj-open -->
 
-Lorsque vous vous connectez à FASTR, vous voyez la liste des projets auxquels vous avez accès. La liste peut être triée par nom ou par récemment mis à jour à l'aide du contrôle de tri en haut. Cliquez sur le nom d'un projet pour l'ouvrir. La vue du projet comporte une barre de navigation à gauche avec des onglets pour les différentes sections - généralement **Présentations**, **Visualisations**, **Métriques**, **Lot de résultats** et **Paramètres**. Ce que vous voyez dépend de vos permissions ; un lecteur, par exemple, ne verra pas les options de configuration.
+Lorsque vous vous connectez à FASTR, vous voyez la liste des projets auxquels vous avez accès. La liste peut être triée par nom ou par récemment mis à jour à l'aide du contrôle de tri en haut. Cliquez sur le nom d'un projet pour l'ouvrir. La vue du projet comporte une barre de navigation à gauche avec des onglets pour les différentes sections - généralement **Tableaux de bord**, **Visualisations**, **Métriques**, **Lot de résultats** et **Paramètres**. Ce que vous voyez dépend de vos permissions ; un lecteur, par exemple, ne verra pas les options de configuration.
 
 Le nom du projet apparaît en haut de l'écran. Si le projet a une portée Zone administrative 2, un badge indiquant le nom de la zone apparaît à côté du nom du projet.
 

@@ -10,11 +10,11 @@ Slide decks let you assemble visualizations into polished presentations for stak
 ## Creating a slide deck
 <!-- help#deck-create -->
 
-Open your project and click **Slide decks** in the left sidebar. Click **Create slide deck** to start. You'll name it and optionally assign it to a folder for organization.
+Open the **Products** tab on your instance home screen. Slide decks appear as cards in the product explorer alongside reports. Click **New deck** to create one — the editor opens straight away. You can organise decks into folders using **New folder**, and move them between folders from their card menu.
 
 A new deck starts empty. The left panel shows your slides, and the main area shows a preview of the selected slide. You'll build out the deck by adding different slide types.
 
-To create slide decks, the project needs a results package attached first.
+To create slide decks, a results package must be pinned at the instance level first.
 
 ![Creating Slide Deck](/images/creating-slide-deck-en.png)
 
@@ -29,13 +29,19 @@ When you add a slide, you choose its type. You can convert between types later u
 
 Content slides use a flexible layout system with one or more content blocks. A block can hold text (formatted with markdown), a visualization from your project, or an uploaded image.
 
-To add a visualization, click on an empty figure block and choose **Select visualization**. Select one from the list and it appears in the block, rendered with its current settings. You can sort visualizations in the selection panel by name or by recently updated using the sort control at the top of the panel. If you need to adjust the display - different time period or disaggregation - you can edit the embedded visualization directly from the slide.
+To add a visualization to an empty figure block, click **Insert figure** and choose a metric and configuration from the product's results package. If you need to adjust the display — different time period or disaggregation — you can edit the embedded figure directly from the slide using **Edit visualization**. To swap an existing figure for a different one, use **Replace figure** from the same panel.
 
 Right-click on a block to access layout options like "Split left/right" or "Delete block." You can drag dividers between blocks to adjust their relative sizes.
 
 If a visualization or image cannot be rendered - for example because of a data error or a missing file - FASTR shows a short notice in the block rather than leaving it blank or stopping the export.
 
 ![Building Content Slides](/images/building-content-slides-en.png)
+
+## Deck settings
+
+Click **Settings** in the deck toolbar to open the deck settings panel. Here you can change the deck's name, move it to a different folder, switch the results package it serves figures from, and change the geographic scope. Changing the package or scope affects every figure in the deck — figures that came from a different package or scope show an update badge.
+
+To change the package or scope, click **Package, scope and folder** from the deck's overflow menu. This opens the product settings panel where you can update those properties.
 
 ## Presenting slides
 
@@ -61,7 +67,11 @@ The AI assistant will not edit a slide that another collaborator currently has o
 
 ## Undo and redo in the slide editor
 
-When editing a slide, the header includes **Undo** and **Redo** buttons. These reverse your own slide changes - adding blocks, changing layouts, moving figures, and text typed in any text field on the slide - without affecting edits made by collaborators. The buttons appear only when you have permission to configure slide decks and the project is not locked. You can also use Ctrl+Z and Ctrl+Shift+Z (or Cmd+Z and Cmd+Shift+Z on Mac) as keyboard shortcuts; these work both while focus is on the slide canvas and while you are typing inside a text field on the slide.
+When editing a slide, the header includes **Undo** and **Redo** buttons. These reverse your own slide changes - adding blocks, changing layouts, moving figures, and text typed in any text field on the slide - without affecting edits made by collaborators. The buttons appear only when you have permission to edit the deck. You can also use Ctrl+Z and Ctrl+Shift+Z (or Cmd+Z and Cmd+Shift+Z on Mac) as keyboard shortcuts; these work both while focus is on the slide canvas and while you are typing inside a text field on the slide.
+
+## Copying slides between decks
+
+To copy slides from one deck to another, select the slides you want in the slide list, then open the deck's overflow menu and choose **Copy to deck…**. A dialog lets you pick the destination deck. The slides are copied with their figures intact; the figures will resolve under the destination deck's own results package and scope.
 
 ## Version history
 
@@ -82,6 +92,6 @@ You can also share decks directly by email. Click **Share**, select recipients f
 
 ![Exporting and Sharing](/images/exporting-and-sharing-en.png)
 
-## Organization
+## Organisation
 
-Use folders to keep decks organized as your project grows. In the list view, click **New folder** to create one, then right-click on decks to move them. You can duplicate decks when creating variations for different audiences. The search box filters decks by name. Use the sort control at the top of the list to order decks by name or by recently updated.
+Use folders to keep decks organized as your project grows. In the Products explorer, click **New folder** to create one, then use a deck's card menu to move it. You can duplicate decks when creating variations for different audiences. The search box filters decks by name. Use the sort control to order decks by name or by recently updated. Switch between grid view and list view using the view toggle in the toolbar.

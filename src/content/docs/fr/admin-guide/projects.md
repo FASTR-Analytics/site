@@ -5,7 +5,7 @@ sidebar:
   order: 6
 ---
 
-Les projets constituent l'espace de travail principal pour l'analyse dans FASTR. Chaque projet réunit un lot de résultats contenant des sorties de modules précalculées avec les visualisations, les rapports et les présentations que vous créez à partir de ces résultats. Vous pouvez créer des projets distincts pour différentes périodes, régions géographiques ou domaines de programme.
+Les projets constituent l'espace de travail principal pour l'analyse dans FASTR. Chaque projet réunit un lot de résultats contenant des sorties de modules précalculées avec les visualisations et les tableaux de bord que vous créez à partir de ces résultats. Vous pouvez créer des projets distincts pour différentes périodes, régions géographiques ou domaines de programme.
 
 ## Créer un projet
 <!-- help#aproj-create -->
@@ -25,7 +25,7 @@ Les éditeurs peuvent sélectionner n'importe quel lot prêt de l'instance via l
 
 Lorsqu'un projet suit le paquet épinglé mais se trouve actuellement sur un autre, un avertissement s'affiche avec un bouton **Basculer vers le paquet épinglé** pour resynchroniser immédiatement.
 
-Changer de lot de résultats modifie les données derrière chaque visualisation, rapport et présentation du projet. Avant qu'un changement prenne effet, FASTR affiche un rapport de compatibilité listant les visualisations qui ne se résoudraient pas avec le nouveau lot — elles restent dans le projet et indiquent pourquoi elles ne peuvent pas être tracées. Rien ne change tant que vous ne confirmez pas.
+Changer de lot de résultats modifie les données derrière chaque visualisation et tableau de bord du projet. Avant qu'un changement prenne effet, FASTR affiche un rapport de compatibilité listant les visualisations qui ne se résoudraient pas avec le nouveau lot — elles restent dans le projet et indiquent pourquoi elles ne peuvent pas être tracées. Rien ne change tant que vous ne confirmez pas.
 
 Si le projet a une portée Zone administrative 2 définie et que le lot sélectionné ne contient pas de données pour cette zone, un avertissement s'affiche dans le rapport de compatibilité et dans l'onglet Lot de résultats après association. Les indicateurs au niveau des zones n'afficheront aucune donnée, mais les indicateurs nationaux restent visibles.
 
@@ -39,7 +39,7 @@ L'accès au projet est contrôlé par un système de permissions granulaire. Cli
 
 FASTR organise les permissions en trois catégories :
 
-- **Produits analytiques** couvre la consultation et la configuration des visualisations, des rapports et des présentations
+- **Produits analytiques** couvre la consultation et la configuration des visualisations et des tableaux de bord
 - **Données et modules** inclut la consultation des données, des métriques et des journaux, ainsi que la configuration et l'exécution des modules
 - **Administration du projet** gère les paramètres, la gestion des utilisateurs et les opérations de sauvegarde
 
@@ -52,7 +52,7 @@ Pour les modifications groupées, sélectionnez plusieurs utilisateurs à l'aide
 ## Verrouiller des projets
 <!-- help#aproj-lock -->
 
-Lorsqu'une analyse est terminée, vous pouvez verrouiller le projet pour préserver son état. Un projet verrouillé empêche toute modification des modules, de la configuration des données et des visualisations, tout en permettant aux utilisateurs de consulter les rapports et d'exporter les résultats.
+Lorsqu'une analyse est terminée, vous pouvez verrouiller le projet pour préserver son état. Un projet verrouillé empêche toute modification des modules, de la configuration des données et des visualisations, tout en permettant aux utilisateurs de consulter les résultats et d'exporter.
 
 Dans les **Paramètres** du projet, trouvez la section **État de verrouillage du projet** et cliquez sur **Verrouiller le projet**. La carte du projet sur l'écran d'accueil affichera une icône de cadenas. Pour reprendre l'édition, retournez dans les paramètres et cliquez sur **Déverrouiller le projet**.
 
@@ -60,13 +60,13 @@ Dans les **Paramètres** du projet, trouvez la section **État de verrouillage d
 
 Il arrive que vous ayez besoin d'un projet similaire à un projet existant - par exemple les mêmes modules mais pour une période différente. Plutôt que de repartir de zéro, copiez l'original.
 
-Ouvrez le projet source, allez dans les **Paramètres** et cliquez sur **Copier le projet**. Saisissez un nom pour le nouveau projet. La copie s'exécute en arrière-plan et peut prendre plusieurs minutes pour les projets volumineux. Le nouveau projet apparaît sur l'écran d'accueil une fois terminé, avec l'ensemble des installations de modules, des paramètres, des visualisations et des rapports.
+Ouvrez le projet source, allez dans les **Paramètres** et cliquez sur **Copier le projet**. Saisissez un nom pour le nouveau projet. La copie s'exécute en arrière-plan et peut prendre plusieurs minutes pour les projets volumineux. Le nouveau projet apparaît sur l'écran d'accueil une fois terminé, avec l'ensemble des installations de modules, des paramètres, des visualisations et des tableaux de bord.
 
 ![Copier le projet](/images/copy-project-en.png)
 
-## Contexte IA du projet
+## Contexte IA
 
-L'assistant IA de FASTR peut interpréter les graphiques et suggérer des analyses, mais ses réponses sont plus utiles lorsqu'il comprend le contexte du projet. Dans les **Paramètres**, vous pouvez définir un **Contexte du projet pour l'interprétation par l'IA** - une description de ce que ce projet analyse ou des questions auxquelles il cherche à répondre. Les modifications apportées au contexte IA prennent effet immédiatement sur l'ensemble du projet et sont visibles par tous les utilisateurs qui y travaillent. Quelques phrases sur l'objectif du projet peuvent améliorer considérablement la qualité de l'analyse assistée par l'IA.
+L'assistant IA de FASTR peut interpréter les graphiques et suggérer des analyses, mais ses réponses sont plus utiles lorsqu'il comprend le contexte de votre pays et de son système de santé. Les administrateurs d'instance peuvent définir un **Contexte IA** depuis la page **Paramètres** de l'instance — une description du pays, de son système de santé et de tout contexte de fond utile à l'assistant. Ce contexte s'applique à l'ensemble des projets et des produits de l'instance. Les modifications prennent effet immédiatement et sont visibles par tous les utilisateurs.
 
 ## Apparence
 
