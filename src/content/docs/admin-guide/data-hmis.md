@@ -93,7 +93,7 @@ For a DHIS2 import, the run detail shows the summary, any DHIS2 ids not found in
 
 Each import that merges data creates a new dataset version. The **History** tab of the imports view lists every run, and a run's **Version** button opens the import information for its version, with the number of rows inserted, updated or removed. To see the import status of each indicator month by month, and to re-import an indicator, use the **Ledger** tab on the HMIS Data page.
 
-To delete data, click **Delete data** in the heading bar, choose all indicators or a selection of them and the period range, and type `yes please delete` to confirm. Only a global administrator can delete data. Deleting is irreversible and is refused while an import is running.
+To delete data, click **Delete data** in the heading bar, choose the indicators and period range to remove, and type `yes please delete` to confirm. Only a global administrator can delete data. Deleting is irreversible and is refused while an import is running.
 
 ## After importing
 

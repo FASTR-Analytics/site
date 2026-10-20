@@ -59,9 +59,9 @@ The population level must be set on the instance Population page and must not be
 
 For areas and months where population data exists, the module computes the indicator. For areas or months where the population store has no coverage, the module drops those cells for population-dependent indicators rather than failing the whole generation. The results package records which population types were active and what coverage was achieved.
 
-## Pruning results packages
+## Deleting results packages in bulk
 
-As you generate packages over time, old ones accumulate. Click **Prune** on the Results packages page to open the prune dialog. FASTR shows which packages will be deleted (those not attached to any product, not pinned, and not currently generating) and which will be kept and why. Confirm to delete all eligible packages in sequence — a progress list shows each deletion as it completes. Packages attached to a product between the time you confirm and the time that package's turn arrives are skipped rather than aborting the whole operation.
+As you generate packages over time, old ones accumulate. Select the packages you no longer need in the Results packages table and use the **Delete** bulk action. The guard checks each package in turn — packages that are pinned, still generating, or attached to a product are refused with the reason shown, while the rest are deleted. Nothing is refetched after each deletion; the list shrinks live as each package is removed.
 
 ## Pinning a results package
 

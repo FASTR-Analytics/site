@@ -22,7 +22,7 @@ To sort the list order used by every indicator axis in every visualization, clic
 
 To see what each type entails, click **Indicator types** in the heading bar. To see the special indicator IDs, population terms, and reserved words, click **Special indicators and reserved words**.
 
-Global administrators can select rows in the list and use the **Delete** bulk action to remove the selected indicators, subject to the usual dependency checks. The **Include in analysis** and **Exclude from analysis** bulk actions toggle the flag on the selected rows. The **DHIS2 data import** bulk action opens the DHIS2 import wizard pre-selected with the chosen indicators.
+Global administrators can select rows in the list and use the **Delete** bulk action to remove the selected indicators, subject to the usual dependency checks. Individual indicators can also be deleted from within the indicator editor using the **Delete** button in the footer. The **Include in analysis** and **Exclude from analysis** bulk actions toggle the flag on the selected rows. The **DHIS2 data import** bulk action opens the DHIS2 import wizard pre-selected with the chosen indicators.
 
 From the overflow menu in the toolbar, global administrators also have access to two occasional maintenance actions: **Download** exports the indicator dictionary as a CSV file containing columns for the indicator ID, label, type, DHIS2 id (including the DHIS2 name last read from DHIS2), members, formula, include-in-analysis flag, format, thresholds, direction, target, and expected-low-counts flag. **Refresh DHIS2 names** reads the current name of every DHIS2 element indicator from DHIS2 by its DHIS2 id and stores it alongside the indicator, without changing any labels, ids, or data. Use this after DHIS2 data elements are renamed on the DHIS2 server.
 
@@ -119,7 +119,7 @@ The HFA indicator manager includes an **Import default indicators** button along
 
 ### Deleting indicators
 
-Before deleting an indicator or a set of indicators, FASTR checks whether any other indicators reference the deleted indicator IDs in their R code or variant code. If references are found, the confirmation dialog lists the affected indicators and warns that their code will fail validation after deletion.
+Before deleting an indicator or a set of indicators, FASTR checks whether any other indicators reference the deleted indicator IDs in their R code or variant code. If references are found, the confirmation dialog lists the affected indicators and warns that their code will fail validation after deletion. You can delete an individual indicator from its editor using the **Delete** button in the footer, or delete multiple indicators at once using the bulk action in the indicator list.
 
 ### AI assistant for indicators
 

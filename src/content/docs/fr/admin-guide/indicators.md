@@ -22,7 +22,7 @@ Pour définir l'ordre de la liste utilisé par chaque axe d'indicateurs dans cha
 
 Pour voir ce qu'implique chaque type, cliquez sur **Types d'indicateurs** dans la barre d'en-tête. Pour voir les identifiants d'indicateurs spéciaux, les termes de population et les mots réservés, cliquez sur **Indicateurs spéciaux et mots réservés**.
 
-Les administrateurs globaux peuvent sélectionner des lignes dans la liste et utiliser l'action groupée **Supprimer** pour retirer les indicateurs sélectionnés, sous réserve des vérifications de dépendances habituelles. Les actions groupées **Inclure dans l'analyse** et **Exclure de l'analyse** basculent l'indicateur sur les lignes sélectionnées. L'action groupée **Importation de données DHIS2** ouvre l'assistant d'importation DHIS2 présélectionné avec les indicateurs choisis.
+Les administrateurs globaux peuvent sélectionner des lignes dans la liste et utiliser l'action groupée **Supprimer** pour retirer les indicateurs sélectionnés, sous réserve des vérifications de dépendances habituelles. Les indicateurs individuels peuvent également être supprimés depuis l'éditeur d'indicateurs à l'aide du bouton **Supprimer** dans le pied de page. Les actions groupées **Inclure dans l'analyse** et **Exclure de l'analyse** basculent l'indicateur sur les lignes sélectionnées. L'action groupée **Importation de données DHIS2** ouvre l'assistant d'importation DHIS2 présélectionné avec les indicateurs choisis.
 
 Depuis le menu de débordement de la barre d'outils, les administrateurs globaux ont également accès à deux actions de maintenance occasionnelles : **Télécharger** exporte le dictionnaire d'indicateurs au format CSV, avec des colonnes pour l'identifiant, le libellé, le type, l'identifiant DHIS2 (incluant le nom DHIS2 lu depuis DHIS2), les membres, la formule, l'indicateur d'inclusion dans l'analyse, le format, les seuils, la direction, la cible et l'indicateur de faibles dénombrements attendus. **Actualiser les noms DHIS2** lit le nom actuel de chaque indicateur élément DHIS2 depuis DHIS2 via son identifiant DHIS2 et le stocke avec l'indicateur, sans modifier aucun libellé, identifiant ou données. Utilisez cette action après que des éléments de données DHIS2 ont été renommés sur le serveur DHIS2.
 
@@ -119,7 +119,7 @@ Le gestionnaire d'indicateurs HFA comprend un bouton **Importer les indicateurs 
 
 ### Supprimer des indicateurs
 
-Avant de supprimer un indicateur ou un ensemble d'indicateurs, FASTR vérifie si d'autres indicateurs font référence aux identifiants supprimés dans leur code R ou leur code de variante. Si des références sont trouvées, la boîte de dialogue de confirmation liste les indicateurs concernés et avertit que leur code échouera à la validation après la suppression.
+Avant de supprimer un indicateur ou un ensemble d'indicateurs, FASTR vérifie si d'autres indicateurs font référence aux identifiants supprimés dans leur code R ou leur code de variante. Si des références sont trouvées, la boîte de dialogue de confirmation liste les indicateurs concernés et avertit que leur code échouera à la validation après la suppression. Vous pouvez supprimer un indicateur individuel depuis son éditeur à l'aide du bouton **Supprimer** dans le pied de page, ou supprimer plusieurs indicateurs à la fois via l'action groupée dans la liste des indicateurs.
 
 ### Assistant IA pour les indicateurs
 

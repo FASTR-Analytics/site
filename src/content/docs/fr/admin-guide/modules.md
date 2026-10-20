@@ -59,9 +59,9 @@ Le niveau de population doit être défini sur la page Population de l'instance 
 
 Pour les zones et les mois pour lesquels des données de population existent, le module calcule l'indicateur. Pour les zones ou les mois non couverts par le magasin de population, le module exclut ces cellules pour les indicateurs dépendant de la population au lieu de faire échouer l'ensemble de la génération. Le lot de résultats enregistre les types de population actifs et la couverture obtenue.
 
-## Élaguer les lots de résultats
+## Supprimer des lots de résultats en masse
 
-Au fil des générations, les anciens lots s'accumulent. Cliquez sur **Élaguer** sur la page Lots de résultats pour ouvrir la boîte de dialogue d'élagage. FASTR indique quels lots seront supprimés (ceux qui ne sont associés à aucun produit, non épinglés et dont la génération est terminée) et lesquels seront conservés avec la raison. Confirmez pour supprimer tous les lots éligibles les uns après les autres — une liste de progression affiche chaque suppression à mesure qu'elle se termine. Les lots associés à un produit entre le moment où vous confirmez et le tour de ce lot sont ignorés plutôt que d'interrompre l'ensemble de l'opération.
+Au fil des générations, les anciens lots s'accumulent. Sélectionnez les lots dont vous n'avez plus besoin dans le tableau des lots de résultats et utilisez l'action groupée **Supprimer**. La vérification s'effectue lot par lot — les lots épinglés, encore en cours de génération ou associés à un produit sont refusés avec la raison indiquée, tandis que les autres sont supprimés. La liste se réduit en direct à chaque suppression sans rechargement.
 
 ## Épingler un lot de résultats
 

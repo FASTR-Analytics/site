@@ -16,7 +16,7 @@ Ouvrez l'onglet **Produits** sur l'écran d'accueil de votre instance. Les rappo
 
 ## Rédiger dans l'éditeur
 
-L'éditeur utilise FASTR Markdown : vous écrivez du texte brut et le mettez en forme à l'aide de marques simples - `#` pour les titres, `-` pour les listes à puces, `1.` pour les listes numérotées et des barres verticales pour les tableaux. Le gras, l'italique et le code en ligne fonctionnent comme partout ailleurs. FASTR Markdown prend également en charge les blocs `:::` pour les encadrés, les tuiles de chiffres, les bandeaux, les pages de couverture et d'autres contenus structurés — le menu **Insérer** les liste tous.
+L'éditeur utilise FASTR Markdown : vous écrivez du texte brut et le mettez en forme à l'aide de marques simples - `#` pour les titres, `-` pour les listes à puces, `1.` pour les listes numérotées et des barres verticales pour les tableaux. Le gras, l'italique et le code en ligne fonctionnent comme partout ailleurs. FASTR Markdown prend également en charge les blocs `:::` pour les encadrés, les tuiles de chiffres, les bandeaux, les pages de couverture et d'autres contenus structurés — le menu **Widgets** les liste tous.
 
 Votre travail est enregistré automatiquement au fur et à mesure que vous tapez. Un indicateur d'état dans l'en-tête montre où en sont les choses - **Enregistrement** pendant qu'une modification est en cours, **Enregistré** avec l'heure du dernier enregistrement une fois celui-ci terminé, et un état d'erreur clair si un enregistrement échoue, afin que vous sachiez vérifier votre connexion plutôt que de perdre votre travail.
 
@@ -32,18 +32,18 @@ Les anciens rapports Markdown ordinaires et HTML conservent le bouton bascule **
 
 ## La barre d'outils
 
-Les rapports FASTR Markdown comportent une barre d'outils au-dessus de l'éditeur, composée de deux rangées. La **rangée de menus** contient les menus **Fichier**, **Insérer** et **Page**. La **rangée de la barre d'outils** est une bande persistante de commandes de mise en forme qui s'adapte au contexte du curseur.
+Les rapports FASTR Markdown comportent une barre d'outils au-dessus de l'éditeur, composée de deux rangées. La **rangée de menus** contient les menus **Fichier**, **Widgets**, **Figures** et **Page**. La **rangée de la barre d'outils** est une rangée persistante de commandes de mise en forme qui s'adapte au contexte du curseur.
 
-Le menu **Fichier** regroupe les opérations portant sur l'ensemble du document : téléchargement, envoi par e-mail, renommage et duplication. Le menu **Insérer** liste tous les types de blocs disponibles — visualisations, images, titres, encadrés, tuiles de chiffres, tableaux, liens, et plus encore. Le menu **Page** contrôle le thème, l'arrière-plan, la taille et l'orientation de la page, ainsi que la numérotation des sections.
+Le menu **Fichier** regroupe les opérations portant sur l'ensemble du document : téléchargement, envoi par e-mail, renommage et duplication. Le menu **Widgets** liste tous les types de blocs disponibles — titres, encadrés, tuiles de chiffres, tableaux, liens, logos, pages de couverture, et plus encore. Le menu **Figures** permet d'insérer une visualisation ou une image. Le menu **Page** contrôle le thème, l'arrière-plan, l'orientation de la page et la numérotation des sections.
 
-La barre d'outils affiche les commandes de texte (style de titre, gras, italique, souligné, taille du texte, surlignage, lien, couleur du texte et types de liste) lorsqu'aucun élément intégré n'est sélectionné. Lorsque le curseur se trouve dans un bloc `:::`, le nom du bloc et ses propres commandes (ton, colonnes, type, et attributs similaires) s'affichent à droite des commandes de texte. Lorsqu'une visualisation ou une image est sélectionnée, les commandes de l'élément remplacent les commandes de texte.
+La rangée de la barre d'outils affiche les commandes de texte (style de titre, gras, italique, souligné, taille du texte, surlignage, lien, couleur du texte et types de liste) lorsqu'aucun élément intégré n'est sélectionné. Lorsque le curseur se trouve dans un bloc `:::`, le nom du bloc et ses propres commandes (ton, colonnes, type, et attributs similaires) s'affichent à droite des commandes de texte. Lorsqu'une visualisation ou une image est sélectionnée, les commandes de l'élément remplacent les commandes de texte.
 
 ## Ajouter des visualisations et des images
 <!-- help#report-figures -->
 
 Les rapports peuvent contenir deux types de contenu visuel, et la distinction est importante. Une **visualisation** est un graphique ou une carte dynamique issue du paquet de résultats du produit - elle se génère à partir des données actuelles et se met à jour lorsque ces données changent. Une **image** est un fichier statique que vous téléversez, comme un schéma ou une photo.
 
-Pour ajouter une visualisation, ouvrez le menu **Insérer** et choisissez **Visualisation…**, puis sélectionnez une visualisation dans le paquet de résultats du produit. Pour ajouter une image, choisissez **Image…** et téléversez un fichier ou choisissez-en un parmi les ressources de votre projet. Dans les deux cas, l'élément apparaît dans le document sous forme de carte que vous pouvez sélectionner.
+Pour ajouter une visualisation, ouvrez le menu **Figures** et choisissez **Visualisation…**, puis sélectionnez une visualisation dans le paquet de résultats du produit. Pour ajouter une image, choisissez **Image…** et téléversez un fichier ou choisissez-en un parmi les ressources de votre projet. Dans les deux cas, l'élément apparaît dans le document sous forme de carte que vous pouvez sélectionner.
 
 La sélection d'une visualisation ou d'une image fait apparaître des commandes dans la barre d'outils pour la manipuler :
 
@@ -56,6 +56,12 @@ Comme les visualisations restent liées au paquet de résultats, un rapport réd
 Si une visualisation ou une image ne peut pas être chargée lors de l'export, FASTR la remplace par une courte notice à la place de l'élément manquant plutôt que d'interrompre l'export. Le reste du rapport est exporté normalement.
 
 ![Adding Figures and Images FR](/images/adding-figures-and-images-fr.png)
+
+## Ajouter des logos
+
+Les rapports FASTR Markdown prennent en charge un bloc **Logos** qui affiche une rangée de logos — ceux de votre organisation, de vos partenaires ou de FASTR. Insérez-en un depuis le menu **Widgets**. Cliquer sur une rangée de logos vide, ou double-cliquer sur une rangée qui contient déjà des logos, ouvre le sélecteur de logos dans lequel vous choisissez quels logos apparaissent et dans quel ordre. Le sélecteur affiche les logos intégrés de FASTR et tous les fichiers image que vous avez téléversés sur l'instance. Téléversez un nouveau logo directement depuis le sélecteur à l'aide de **Téléverser un logo**. Faites glisser les éléments dans la liste choisie pour les réordonner.
+
+Lorsqu'un bloc de logos est sélectionné, la barre d'outils affiche des commandes d'alignement et de taille pour la rangée.
 
 ## Paramètres du rapport
 

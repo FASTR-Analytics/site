@@ -16,7 +16,7 @@ Open the **Products** tab on your instance home screen. Reports appear as cards 
 
 ## Writing in the editor
 
-The editor uses FASTR Markdown, so you write plain text and format it with simple marks - `#` for headings, `-` for bullet lists, `1.` for numbered lists, and pipes for tables. Bold, italic, and inline code work the way they do anywhere else. FASTR Markdown also supports `:::` blocks for callouts, stat tiles, bands, cover pages, and other structured content — the **Insert** menu lists them all.
+The editor uses FASTR Markdown, so you write plain text and format it with simple marks - `#` for headings, `-` for bullet lists, `1.` for numbered lists, and pipes for tables. Bold, italic, and inline code work the way they do anywhere else. FASTR Markdown also supports `:::` blocks for callouts, stat tiles, bands, cover pages, and other structured content — the **Widgets** menu lists them all.
 
 Your work saves on its own as you type. A status indicator in the header shows where things stand - **Saving** while a change is in flight, **Saved** with the time of the last save once it lands, and a clear error state if a save ever fails so you know to check your connection rather than lose work.
 
@@ -32,18 +32,18 @@ Older plain Markdown and HTML reports retain the **Edit / Split / View** toggle.
 
 ## The toolbar
 
-FASTR Markdown reports include a toolbar above the editor with two rows. The **menu row** contains **File**, **Insert**, and **Page** menus. The **toolbar row** is a persistent pill of formatting controls that adapts to the cursor's context.
+FASTR Markdown reports include a toolbar above the editor with two rows. The **menu row** contains **File**, **Widgets**, **Figures**, and **Page** menus. The **toolbar row** is a persistent row of formatting controls that adapts to the cursor's context.
 
-The **File** menu holds whole-document operations: download, email, rename, and duplicate. The **Insert** menu lists every block type you can add — visualizations, images, headings, callouts, stat tiles, tables, links, and more. The **Page** menu controls the document's theme, background, page size, orientation, and numbered sections.
+The **File** menu holds whole-document operations: download, email, rename, and duplicate. The **Widgets** menu lists every block type you can add — headings, callouts, stat tiles, tables, links, logos, cover pages, and more. The **Figures** menu lets you insert a visualization or an image. The **Page** menu controls the document's theme, background, orientation, and numbered sections.
 
-The toolbar pill shows text controls (heading style, bold, italic, underline, text size, highlight, link, text colour, and list types) whenever no embed is selected. When the cursor sits inside a `:::` block, the block's name and its own controls (tone, columns, kind, and similar attributes) appear appended to the right of the text controls. When a visualization or image is selected, the embed's controls replace the text controls.
+The toolbar row shows text controls (heading style, bold, italic, underline, text size, highlight, link, text colour, and list types) whenever no embed is selected. When the cursor sits inside a `:::` block, the block's name and its own controls (tone, columns, kind, and similar attributes) appear appended to the right of the text controls. When a visualization or image is selected, the embed's controls replace the text controls.
 
 ## Adding visualizations and images
 <!-- help#report-figures -->
 
 Reports hold two kinds of visual content, and the difference matters. A **visualization** is a live chart or map from the product's results package - it renders from current data and updates when that data changes. An **image** is a static file you upload, such as a diagram or a photo.
 
-To add a visualization, open the **Insert** menu and choose **Visualization…**, then pick a visualization from the product's results package. To add a picture, choose **Image…** and upload a file or choose one from your project's assets. Either way, the item appears in the document as a card you can select.
+To add a visualization, open the **Figures** menu and choose **Visualization…**, then pick a visualization from the product's results package. To add a picture, choose **Image…** and upload a file or choose one from your project's assets. Either way, the item appears in the document as a card you can select.
 
 Selecting a visualization or image reveals controls in the toolbar for working with it:
 
@@ -56,6 +56,12 @@ Because visualizations stay linked to the results package, a report you wrote la
 If a visualization or image cannot be loaded when you export the report, FASTR replaces it with a short notice in place of the missing item rather than aborting the export. The rest of the report exports normally.
 
 ![Adding Figures and Images](/images/adding-figures-and-images-en.png)
+
+## Adding logos
+
+FASTR Markdown reports support a **Logos** block that renders a row of logos — your organization's, partners', or FASTR's. Insert one from the **Widgets** menu. Clicking an empty logos row, or double-clicking one that already has logos, opens the logo picker where you choose which logos appear and in what order. The picker shows FASTR's built-in logos and all image files you have uploaded to the instance. Upload a new logo directly from the picker using **Upload logo**. Drag items in the chosen list to reorder them.
+
+When a logos block is selected, the toolbar shows alignment and size controls for the row.
 
 ## Report settings
 

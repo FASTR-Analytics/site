@@ -12,7 +12,7 @@ Slide decks let you assemble visualizations into polished presentations for stak
 
 Open the **Products** tab on your instance home screen. Slide decks appear as cards in the product explorer alongside reports. Click **New** and choose **New deck** to create one — the editor opens straight away. You can organise decks into folders using **New folder**, and move them between folders from their card menu.
 
-A new deck starts empty. A rail on the left shows your slides, and the main area beside it shows the slide currently open for editing. You'll build out the deck by adding different slide types.
+A new deck starts empty. When you open a new deck for the first time, FASTR asks you to choose a theme before you begin — this ensures the deck starts with a look you intend rather than a default. A rail on the left shows your slides, and the main area beside it shows the slide currently open for editing. You'll build out the deck by adding different slide types.
 
 To create slide decks, a results package must be pinned at the instance level first.
 
@@ -39,7 +39,7 @@ If a visualization or image cannot be rendered - for example because of a data e
 
 ## Editing slides
 
-The deck editor shows all your slides in a rail on the left. Click any slide thumbnail to open it for editing in the main area beside the rail. The current slide is highlighted with a ring in the rail and its number is shown in bold. A toolbar spanning the full width of the editor shows formatting controls for the open slide. The toolbar has two rows: a **menu row** (with **Slide**, **Insert**, and **Split panel** menus) above a **formatting pill** that adapts to what is selected on the canvas.
+The deck editor shows all your slides in a rail on the left. Click any slide thumbnail to open it for editing in the main area beside the rail. The current slide is highlighted with a ring in the rail and its number is shown in bold. A toolbar spanning the full width of the editor shows formatting controls for the open slide. The toolbar has two rows: a **menu row** (with **Slide**, **Insert**, and **Split panel** menus) above a **formatting row** that adapts to what is selected on the canvas.
 
 To type directly on the slide, double-click a text block or title field on the canvas. A dashed outline marks the area being edited, and the caret appears inside it. Press **Escape** or click outside to finish. For markdown text blocks, a **Markdown** option in the toolbar opens the full markdown source in a modal — useful for links, code blocks, or anything else the canvas editor cannot reach.
 
@@ -51,27 +51,23 @@ The toolbar's menu row contains three menus.
 - **Insert** lists every text field available on the current slide type — click an entry to jump to it or add it if it is absent.
 - **Split panel** (content slides only) adds a decorative strip on the left or right of the slide, with controls for its size and fill (plain colour, pattern, or image).
 
-Below the menu row, a pill shows controls that follow your selection. While typing in a text block it shows bold, italic, bullet list, numbered list, and background colour controls. While a title field is selected it shows font size and weight controls. While a content block is selected it shows the block type (text, visualization, or image), a **Layout** button to split, add, move, or delete blocks, and controls for the selected block type.
+Below the menu row, a formatting row shows controls that follow your selection. While typing in a text block it shows bold, italic, text style, text size, bullet list, numbered list, and quote controls. While a title field is selected it shows font size and weight controls. While a content block is selected it shows the block type (text, visualization, or image), a **Layout** button to split, add, move, or delete blocks, and controls for the selected block type.
 
 ## Deck settings
 
-Click **Settings** in the deck toolbar to open the deck settings panel. Here you can change the deck's name, move it to a different folder, switch the results package it serves visualizations from, and change the geographic scope. Changing the package or scope affects every visualization in the deck — visualizations that came from a different package or scope show an update badge.
+The deck header contains a **Deck** menu that gives quick access to theme, logos, and footer settings for the whole deck without opening the full settings panel. Each change you make in this menu applies straight away. For complete configuration, click **All deck settings…** in the **Deck** menu to open the full settings panel.
 
-To change the package or scope, click **Package, scope and folder** from the deck's overflow menu. This opens the product settings panel where you can update those properties.
+To change the results package or scope, click **Package, scope and folder** from the deck's overflow menu. This opens the product settings panel where you can update those properties. Changing the package or scope affects every visualization in the deck — visualizations that came from a different package or scope show an update badge.
+
+## Choosing a theme
+
+The **Deck** menu contains a **Theme** option that lets you pick from ten built-in themes. Each theme sets the deck's colours, typeface, layout and page furniture all at once. A preview of each theme is shown as you browse so you can see the result before applying it. You can change the theme at any time and the update applies to every slide immediately.
 
 ## Presenting slides
 
 Click **Present** in the slide list toolbar to open the fullscreen presenter. The presenter shows one slide at a time and preloads neighbouring slides so navigation is instant. Use the arrow keys or the on-screen controls to move between slides. Press **Escape** or click the close button to exit. Click the maximize icon to enter true fullscreen mode; pressing **Escape** while in fullscreen exits the presentation entirely.
 
 When collaborators add, remove, or reorder slides while the presenter is open, the presenter picks up those changes automatically. The slide list and page counter update to reflect the current deck, and cached renders are refreshed whenever a peer edits a slide you have already loaded.
-
-## Deck styling
-
-Click **Settings** in the deck toolbar to configure styling that applies across all slides. Options include color theme, font family, layout template, and cover treatment. You can also configure which logos appear on cover slides, headers, and footers.
-
-When choosing a color theme, click **More themes…** next to the color theme label to open the theme picker modal. The modal displays all available standard and special color themes as side-by-side previews rendered on a sample content slide, so you can compare them before committing. Select a theme card to apply it and close the modal. A **Custom** card lets you enter a hex color code to derive a full theme from your organization's brand color.
-
-![Deck Styling](/images/deck-styling-en.png)
 
 ## Collaborating on a slide deck
 
@@ -87,11 +83,11 @@ The slide toolbar includes **Undo** and **Redo** buttons. These reverse your own
 
 ## Copying slides between decks
 
-To copy slides from one deck to another, select the slides you want in the slide rail, then open the deck's overflow menu and choose **Copy to deck…**. A dialog lets you pick the destination deck. The slides are copied with their visualizations intact; the visualizations will resolve under the destination deck's own results package and scope.
+To copy slides from one deck to another, select the slides you want in the slide rail, then open the **File** menu and choose **Copy to deck…**. A dialog lets you pick the destination deck. The slides are copied with their visualizations intact; the visualizations will resolve under the destination deck's own results package and scope.
 
 ## Version history
 
-Click **Version history** in the deck's overflow menu to open the version history panel. Versions are saved automatically at the end of each editing session and grouped by day on the left. Select a version to see a grid of all slide thumbnails as they looked at that point. New, edited, and removed slides are badged with the name of the collaborator who made the change. Click any thumbnail to open a full-size view; edited slides also show a breakdown of which text fields and blocks changed within that session.
+Click **History** in the deck toolbar to open the version history panel. Versions are saved automatically at the end of each editing session and grouped by day on the left. Select a version to see a grid of all slide thumbnails as they looked at that point. New, edited, and removed slides are badged with the name of the collaborator who made the change. Click any thumbnail to open a full-size view; edited slides also show a breakdown of which text fields and blocks changed within that session.
 
 The change breakdown now detects layout changes more precisely. Wrapping blocks into columns, unwrapping a container, or resizing a layout container are all reported as arrangement changes in the session diff, even when the order of the individual content blocks did not change.
 
@@ -104,7 +100,7 @@ If the deck has unsaved live edits that cannot be saved at the moment you reques
 
 Click **Download** to export your deck. **Native PDF** produces a high-quality vector file where text stays sharp at any zoom level. **PPTX with raster visualizations** creates a PowerPoint file with visualizations embedded as images - useful if recipients need to make edits.
 
-You can also share decks directly by email. Click **Share**, select recipients from your instance's user list or add email addresses, and optionally include a message. FASTR validates email addresses before generating the PDF, so any invalid addresses are flagged immediately rather than after a lengthy export. FASTR generates a PDF and sends it as an attachment.
+You can also share decks directly by email. Open the **File** menu, choose **Share…**, select recipients from your instance's user list or add email addresses, and optionally include a message. FASTR validates email addresses before generating the PDF, so any invalid addresses are flagged immediately rather than after a lengthy export. FASTR generates a PDF and sends it as an attachment.
 
 ![Exporting and Sharing](/images/exporting-and-sharing-en.png)
 
