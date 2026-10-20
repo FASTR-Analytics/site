@@ -49,7 +49,7 @@ Les modules disponibles comprennent :
 
 ### Étape 3 — Confirmer et lancer
 
-Saisissez un libellé pour le lot de résultats et vérifiez les sélections de données et de modules. L'assistant propose un libellé qui n'entre pas en conflit avec les lots existants. Cliquez sur **Lancer la génération** pour démarrer.
+Saisissez un libellé pour le lot de résultats et vérifiez les sélections de données et de modules. L'assistant propose un libellé basé sur la date du jour. Cliquez sur **Lancer la génération** pour démarrer.
 
 ## Données de population et valeurs des indicateurs
 

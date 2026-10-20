@@ -10,11 +10,11 @@ Les présentations vous permettent d'assembler des visualisations en présentati
 ## Créer une présentation
 <!-- help#deck-create -->
 
-Ouvrez l'onglet **Produits** sur l'écran d'accueil de votre instance. Les présentations apparaissent sous forme de cartes dans l'explorateur de produits, aux côtés des rapports. Cliquez sur **Nouveau** et choisissez **Nouvelle présentation** pour en créer une — l'éditeur s'ouvre immédiatement. Vous pouvez organiser les présentations dans des dossiers à l'aide de **Nouveau dossier** et les déplacer entre dossiers depuis le menu de leur carte.
+Ouvrez l'onglet **Produits** sur l'écran d'accueil de votre instance. Les présentations apparaissent sous forme de cartes dans l'explorateur de produits, aux côtés des rapports. Cliquez sur **Nouveau** et choisissez **Nouvelle présentation** pour en créer une — une boîte de dialogue s'ouvre dans laquelle vous nommez la présentation, choisissez son lot de résultats et définissez sa portée avant que l'éditeur s'ouvre. Vous pouvez organiser les présentations dans des dossiers à l'aide de **Nouveau dossier** et les déplacer entre dossiers depuis le menu de leur carte.
 
 Une nouvelle présentation démarre vide. Lorsque vous ouvrez une nouvelle présentation pour la première fois, FASTR vous demande de choisir un thème avant de commencer — cela garantit que la présentation démarre avec l'apparence souhaitée plutôt qu'avec une apparence par défaut. Un rail sur la gauche affiche vos diapositives, et la zone principale à côté affiche la diapositive actuellement ouverte pour l'édition. Vous construirez la présentation en ajoutant différents types de diapositives.
 
-Pour créer des présentations, un paquet de résultats doit d'abord être épinglé au niveau de l'instance.
+Pour créer des présentations, au moins un lot de résultats et une portée doivent exister au niveau de l'instance.
 
 ![Creating Slide Deck FR](/images/creating-slide-deck-fr.png)
 
@@ -27,9 +27,9 @@ Lorsque vous ajoutez une diapositive, vous en choisissez le type. Vous pouvez co
 ## Construire des diapositives de contenu
 <!-- help#deck-content-slides -->
 
-Les diapositives de contenu utilisent un système de mise en page flexible composé d'un ou plusieurs blocs de contenu. Un bloc peut contenir du texte (mis en forme avec Markdown), une visualisation issue du paquet de résultats de la présentation ou une image téléversée.
+Les diapositives de contenu utilisent un système de mise en page flexible composé d'un ou plusieurs blocs de contenu. Un bloc peut contenir du texte (mis en forme avec Markdown), une visualisation issue du lot de résultats de la présentation ou une image téléversée.
 
-Pour ajouter une visualisation à un bloc vide, cliquez sur **Insérer une visualisation** et choisissez un indicateur et une configuration depuis le paquet de résultats du produit. Si vous devez ajuster l'affichage — période différente ou désagrégation différente — vous pouvez modifier la visualisation intégrée directement depuis la diapositive à l'aide de **Modifier la visualisation**. Pour remplacer une visualisation existante par une autre, utilisez **Remplacer la visualisation** depuis le même panneau.
+Pour ajouter une visualisation à un bloc vide, cliquez sur **Insérer une visualisation** et choisissez un indicateur et une configuration depuis le lot de résultats du produit. Si vous devez ajuster l'affichage — période différente ou désagrégation différente — vous pouvez modifier la visualisation intégrée directement depuis la diapositive à l'aide de **Modifier la visualisation**. Pour remplacer une visualisation existante par une autre, utilisez **Remplacer la visualisation** depuis le même panneau.
 
 Faites un clic droit sur un bloc pour accéder aux options de mise en page comme « Diviser gauche/droite » ou « Supprimer le bloc ». Vous pouvez faire glisser les séparateurs entre les blocs pour ajuster leurs tailles relatives.
 
@@ -41,7 +41,7 @@ Si une visualisation ou une image ne peut pas être rendue - par exemple en rais
 
 L'éditeur de présentation affiche toutes vos diapositives dans un rail sur la gauche. Cliquez sur une vignette de diapositive pour l'ouvrir dans la zone principale à côté du rail. La diapositive en cours est mise en évidence par un anneau dans le rail et son numéro apparaît en gras. Une barre d'outils couvrant toute la largeur de l'éditeur affiche les commandes de mise en forme pour la diapositive ouverte. La barre d'outils comporte deux rangées : une **rangée de menus** (avec les menus **Diapositive**, **Insérer** et **Panneau divisé**) au-dessus d'une **rangée de mise en forme** qui s'adapte à ce qui est sélectionné sur le canevas.
 
-Pour saisir du texte directement sur la diapositive, double-cliquez sur un bloc de texte ou un champ de titre sur le canevas. Un contour en pointillés marque la zone en cours d'édition, et le curseur apparaît à l'intérieur. Appuyez sur **Échap** ou cliquez à l'extérieur pour terminer. Pour les blocs de texte en markdown, une option **Markdown** dans la barre d'outils ouvre le source markdown complet dans une fenêtre modale — utile pour les liens, les blocs de code ou tout ce que l'éditeur de canevas ne peut pas atteindre.
+Pour saisir du texte directement sur la diapositive, double-cliquez sur un bloc de texte ou un champ de titre sur le canevas. Un contour en pointillés marque la zone en cours d'édition, et le curseur apparaît à l'intérieur. Appuyez sur **Échap** ou cliquez à l'extérieur pour terminer.
 
 ## La barre d'outils de la diapositive
 
@@ -53,11 +53,13 @@ La rangée de menus de la barre d'outils contient trois menus.
 
 Sous la rangée de menus, une rangée de mise en forme affiche des commandes qui suivent votre sélection. Pendant la saisie dans un bloc de texte, elle affiche les commandes gras, italique, style de texte, taille du texte, liste à puces, liste numérotée et citation. Lorsqu'un champ de titre est sélectionné, elle affiche les commandes de taille et de graisse de la police. Lorsqu'un bloc de contenu est sélectionné, elle affiche le type de bloc (texte, visualisation ou image), un bouton **Mise en page** pour diviser, ajouter, déplacer ou supprimer des blocs, et les commandes propres au type de bloc sélectionné.
 
+La barre d'outils de la diapositive et son bouton **Ajouter une diapositive** ne sont visibles que lorsque vous disposez de la permission de modification sur la présentation. Lorsque vous ouvrez une présentation en tant que lecteur, ces commandes sont masquées.
+
 ## Paramètres de la présentation
 
-L'en-tête de la présentation contient un menu **Présentation** qui donne un accès rapide aux paramètres de thème, de logos et de pied de page de l'ensemble de la présentation. Chaque modification effectuée dans ce menu s'applique immédiatement. Pour une configuration complète, cliquez sur **Tous les paramètres…** dans le menu **Présentation** pour ouvrir le panneau complet.
+L'en-tête de la présentation contient un menu **Présentation** qui donne un accès rapide aux paramètres de thème, de logos et de pied de page de l'ensemble de la présentation. Chaque modification effectuée dans ce menu s'applique immédiatement. Le menu **Présentation** n'est visible que lorsque vous disposez de la permission de modification sur la présentation. Pour une configuration complète, cliquez sur **Tous les paramètres…** dans le menu **Présentation** pour ouvrir le panneau complet.
 
-Pour modifier le paquet de résultats ou la portée, cliquez sur **Paquet, portée et dossier** depuis le menu de débordement de la présentation. Cela ouvre le panneau des paramètres du produit où vous pouvez mettre à jour ces propriétés. Changer le paquet ou la portée affecte chaque visualisation de la présentation — les visualisations issues d'un autre paquet ou d'une autre portée affichent un badge de mise à jour.
+Pour modifier le lot de résultats ou la portée, cliquez sur **Paquet, portée et dossier** depuis le menu de débordement de la présentation. Cela ouvre le panneau des paramètres du produit où vous pouvez mettre à jour ces propriétés. Changer le lot ou la portée affecte chaque visualisation de la présentation — les visualisations issues d'un autre lot ou d'une autre portée affichent un badge de mise à jour.
 
 ## Choisir un thème
 
@@ -83,7 +85,15 @@ La barre d'outils de la diapositive comporte des boutons **Annuler** et **Rétab
 
 ## Copier des diapositives entre présentations
 
-Pour copier des diapositives d'une présentation vers une autre, sélectionnez les diapositives souhaitées dans le rail, puis ouvrez le menu **Fichier** et choisissez **Copier vers une présentation…**. Une boîte de dialogue vous permet de choisir la présentation de destination. Les diapositives sont copiées avec leurs visualisations ; celles-ci se résoudront sous le paquet de résultats et la portée propres à la présentation de destination.
+Pour copier des diapositives d'une présentation vers une autre, sélectionnez les diapositives souhaitées dans le rail, puis ouvrez le menu **Fichier** et choisissez **Copier vers une présentation…**. Une boîte de dialogue vous permet de choisir la présentation de destination. Seules les présentations que vous pouvez modifier sont proposées comme destination. Les diapositives sont copiées avec leurs visualisations ; celles-ci se résoudront sous le lot de résultats et la portée propres à la présentation de destination.
+
+## Accès en lecture seule
+
+Lorsque vous ouvrez une présentation en tant que lecteur (sans permission de modification), le rail et l'éditeur se chargent en mode lecture seule. Vous pouvez parcourir les diapositives et utiliser le présentateur, mais la barre d'outils n'affiche que le menu **Fichier** — avec le téléchargement, le partage et d'autres options non liées à l'édition. Le bouton **Ajouter une diapositive** et le menu **Présentation** sont masqués. Une présentation vide affiche un message indiquant qu'aucune diapositive n'a encore été ajoutée.
+
+## Gérer les accès
+
+Ouvrez le menu **Fichier** et choisissez **Gérer les accès…** pour contrôler qui peut consulter et modifier la présentation. Cela ouvre le panneau d'accès au produit où vous pouvez définir les niveaux de permission par utilisateur.
 
 ## Historique des versions
 

@@ -12,7 +12,9 @@ A report is the right tool when you need prose around your numbers. If you mainl
 ## Creating a report
 <!-- help#report-create -->
 
-Open the **Products** tab on your instance home screen. Reports appear as cards in the product explorer alongside slide decks. Click **New** and choose **New report** to create one — the editor opens straight away with the new report ready to write. You can organise reports into folders using **New folder**, and move them between folders from their card menu.
+Open the **Products** tab on your instance home screen. Reports appear as cards in the product explorer alongside slide decks. Click **New** and choose **New report** to create one — a dialog opens where you name the report, choose its results package, and set its scope before the editor opens. You can organise reports into folders using **New folder**, and move them between folders from their card menu.
+
+To create reports, at least one results package and one scope must exist at the instance level.
 
 ## Writing in the editor
 
@@ -34,9 +36,9 @@ Older plain Markdown and HTML reports retain the **Edit / Split / View** toggle.
 
 FASTR Markdown reports include a toolbar above the editor with two rows. The **menu row** contains **File**, **Widgets**, **Figures**, and **Page** menus. The **toolbar row** is a persistent row of formatting controls that adapts to the cursor's context.
 
-The **File** menu holds whole-document operations: download, email, rename, and duplicate. The **Widgets** menu lists every block type you can add — headings, callouts, stat tiles, tables, links, logos, cover pages, and more. The **Figures** menu lets you insert a visualization or an image. The **Page** menu controls the document's theme, background, orientation, and numbered sections.
+The **File** menu holds whole-document operations: download, email, rename, manage access, and duplicate. The **Widgets** menu lists every block type you can add — headings, callouts, stat tiles, tables, links, logos, cover pages, and more. The **Figures** menu lets you insert a visualization or an image. The **Page** menu controls the document's theme, background, orientation, and numbered sections.
 
-The toolbar row shows text controls (heading style, bold, italic, underline, text size, highlight, link, text colour, and list types) whenever no embed is selected. When the cursor sits inside a `:::` block, the block's name and its own controls (tone, columns, kind, and similar attributes) appear appended to the right of the text controls. When a visualization or image is selected, the embed's controls replace the text controls.
+The toolbar row shows text controls (heading style, bold, italic, underline, text size, highlight, link, text colour, and list types) whenever the cursor is on a regular text line and no embed is selected. When the cursor sits on a block's own fence line or on a figure or image line, the text controls are hidden and only the block's own controls appear. When the cursor is inside a `:::` block on a text line, the block's name and its own controls appear appended to the right of the text controls. When a visualization or image is selected, the embed's controls replace the text controls entirely.
 
 ## Adding visualizations and images
 <!-- help#report-figures -->
@@ -49,6 +51,7 @@ Selecting a visualization or image reveals controls in the toolbar for working w
 
 - **Edit visualization** opens the visualization's settings - adjust the period, disaggregation, or styling
 - **Switch** replaces the visualization with a different one
+- **Size** (FASTR Markdown only, when the embed is on its own line) sets how wide the figure is on the page: **Small**, **Medium**, **Full width** (the column, which is the default), or **Edge to edge** (the full sheet width)
 - **Delete** removes the visualization or image from the report
 
 Because visualizations stay linked to the results package, a report you wrote last quarter shows this quarter's numbers the next time you open it - no manual updating, no re-pasting charts.
@@ -63,9 +66,17 @@ FASTR Markdown reports support a **Logos** block that renders a row of logos —
 
 When a logos block is selected, the toolbar shows alignment and size controls for the row.
 
+## The document outline
+
+When editing a FASTR Markdown report, a document outline sidebar appears on the left side of the editor. The outline lists every heading in the report, indented by level, and highlights the section you are currently reading. Click any heading in the outline to jump the editor to that line. To collapse the outline, click the chevron button in its header; a small **Report tabs** button on the left edge of the editor re-opens it.
+
 ## Report settings
 
 Click **Settings** in the report header to open the report settings panel. Here you can change the report's name and move it to a different folder. To change the results package or geographic scope, click **Results package and scope…** from the report's card menu. Changing the package or scope affects every visualization in the report — visualizations that came from a different package or scope show an update badge.
+
+## Managing access
+
+Open the **File** menu and choose **Manage access…** to control who can view and edit the report. This opens the product access panel where you can set per-user permission levels.
 
 ## Choosing a theme
 
@@ -74,6 +85,10 @@ FASTR Markdown reports have a design theme that controls fonts, colours, and the
 On a new report that still holds only its title, the theme picker offers a second step: a template gallery. Templates give the report its sections and blocks, with grey guidance text in each slot to type over. The AI assistant is told which template you chose and writes to its shape. Pick a template and click **Use template** to apply it, or click **Skip** to start with a blank page. You can open the theme picker again at any time from the **Page** menu — the template step only appears while the report body is still empty.
 
 The theme picker also shows any custom styles saved by your instance's administrators. A custom style gives the AI a specific design brief when writing or restructuring HTML reports, or a colour palette for FASTR Markdown reports. Saved styles appear alongside the built-in themes in the picker.
+
+## Viewer access
+
+When you open a report as a viewer (without edit permission), the editor loads in read-only mode. For FASTR Markdown reports, the toolbar shows only the **File** menu with download, email, and other non-editing options. The text formatting controls and widget menus are hidden.
 
 ## Collaborating on a report
 

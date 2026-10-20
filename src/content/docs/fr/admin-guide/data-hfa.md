@@ -28,7 +28,7 @@ L'assistant d'importation collecte toutes les informations nécessaires avant d'
 
 ### Étape 1 — Charger les fichiers
 
-Sélectionnez ou chargez votre fichier de données CSV et votre fichier de questionnaire XLSForm. Les deux fichiers doivent être présents avant que l'assistant puisse continuer ; l'assistant analyse les en-têtes du CSV par rapport au XLSForm dès que les deux sont sélectionnés. Si les fichiers ne peuvent pas être analysés ensemble, une erreur s'affiche et vous devez vérifier que le XLSForm correspond au CSV.
+Sélectionnez ou chargez votre fichier de données CSV et votre fichier de questionnaire XLSForm. Les deux fichiers doivent être présents avant que l'assistant puisse continuer ; l'assistant analyse les en-têtes du CSV par rapport au XLSForm dès que les deux sont sélectionnés. Si les fichiers ne peuvent pas être analysés ensemble, une erreur s'affiche et vous devez vérifier que le XLSForm correspond au CSV. FASTR pré-remplit le champ de la colonne d'identifiant d'établissement lorsqu'il reconnaît un nom de colonne standard dans les en-têtes du CSV.
 
 ### Étape 2 — Correspondances
 
@@ -36,7 +36,7 @@ Indiquez quelle colonne CSV contient les identifiants d'établissement et sélec
 
 ### Étape 3 — Doublons
 
-Cette étape affiche les établissements qui apparaissent plusieurs fois après le filtrage et vous permet de choisir la ligne à conserver pour chacun. Un contrôle de réglage rapide permet d'appliquer « première ligne » ou « dernière ligne » à tous les doublons en une fois ; vous pouvez ensuite remplacer des établissements individuels. Les numéros de ligne comptent les lignes de données à partir de 1 dans l'ordre du fichier (en excluant l'en-tête). Lorsqu'aucun établissement n'a plus d'une ligne après le filtrage, cette étape affiche un message confirmant qu'il n'y a rien à résoudre.
+Cette étape affiche les établissements qui apparaissent plusieurs fois après le filtrage et vous permet de choisir la ligne à conserver pour chacun. Lorsqu'aucun établissement n'a plus d'une ligne après le filtrage, cette étape affiche un message confirmant qu'il n'y a rien à résoudre. Lorsque des doublons existent, un contrôle de réglage rapide permet d'appliquer « première ligne » ou « dernière ligne » à tous les doublons en une fois ; vous pouvez ensuite remplacer des établissements individuels. Les numéros de ligne comptent les lignes de données à partir de 1 dans l'ordre du fichier (en excluant l'en-tête).
 
 ### Étape 4 — Vérifier et lancer
 

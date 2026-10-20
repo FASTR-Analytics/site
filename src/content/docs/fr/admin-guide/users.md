@@ -32,14 +32,14 @@ Les utilisateurs peuvent modifier leur propre adresse e-mail depuis leur profil.
 
 Le changement s'applique à toutes les instances FASTR auxquelles l'utilisateur a accès, en conservant toutes les permissions et l'historique. Le processus comporte trois étapes : saisir la nouvelle adresse et confirmer la liste des instances concernées ; vérifier le code envoyé à la nouvelle adresse ; puis examiner le résultat par instance. Si une instance n'a pas pu être mise à jour, l'ancienne adresse reste sur le compte et une option **Réessayer** est disponible. Une fois que toutes les instances signalent un succès, la page se recharge automatiquement.
 
-Les administrateurs disposant de la permission **Configurer les utilisateurs** peuvent également renommer l'adresse e-mail d'un autre utilisateur directement depuis l'onglet **Utilisateurs** à l'aide de l'action **Renommer l'e-mail**. Cela effectue le même renommage sur l'ensemble du réseau sans que l'utilisateur ait besoin de l'initier lui-même — utile comme solution de secours lorsqu'un utilisateur ne peut pas se connecter avec son ancienne adresse.
+Les administrateurs disposant de la permission **Configurer les utilisateurs** peuvent également renommer l'adresse e-mail d'un autre utilisateur directement depuis l'onglet **Utilisateurs** à l'aide de l'action **Renommer l'e-mail**. Cela effectue le même renommage sur l'ensemble du réseau sans que l'utilisateur ait besoin de l'initier lui-même — utile comme solution de secours lorsqu'un utilisateur ne peut pas se connecter avec son ancienne adresse. Seul un administrateur global peut renommer l'adresse e-mail d'un autre administrateur global.
 
 ## Permissions d'instance
 <!-- help#users-instance-permissions -->
 
 Les permissions d'instance déterminent ce à quoi une personne peut accéder sur l'ensemble de votre instance FASTR. Cliquez sur un utilisateur dans la liste pour ouvrir son profil, puis faites défiler jusqu'à la section des permissions.
 
-Si vous activez **Administrateur de l'instance**, cet utilisateur obtient un accès complet à tout - il peut gérer les utilisateurs, charger des données, configurer les paramètres et accéder à tous les projets. Réservez cette option aux personnes qui doivent maintenir la plateforme elle-même, et non aux analystes ordinaires.
+Si vous activez **Administrateur de l'instance**, cet utilisateur obtient un accès complet à tout - il peut gérer les utilisateurs, charger des données, configurer les paramètres et accéder à tous les produits. Réservez cette option aux personnes qui doivent maintenir la plateforme elle-même, et non aux analystes ordinaires. Seul un administrateur global peut accorder ou révoquer le statut d'administrateur.
 
 Pour les non-administrateurs, vous pouvez activer des permissions spécifiques :
 
@@ -53,6 +53,12 @@ Pour les non-administrateurs, vous pouvez activer des permissions spécifiques :
 La plupart des analystes n'ont besoin que de « Consulter les données » au niveau de l'instance. Leur travail principal se déroule au sein des produits et des projets, où vous configurerez des permissions plus détaillées.
 
 ![Permissions d'instance des utilisateurs](/images/user-permissions-instance-en.png)
+
+## Accès aux portées
+
+Les administrateurs globaux peuvent restreindre les portées auxquelles un utilisateur peut accéder. Par défaut, chaque utilisateur a accès à toutes les portées. Pour restreindre un utilisateur, ouvrez son profil et faites défiler jusqu'à la carte **Portées**. Décochez **Toutes les données** et sélectionnez les portées spécifiques auxquelles l'utilisateur peut accéder. Un utilisateur restreint ne voit que les produits portant l'une de ses portées accordées, et les lectures de données ne passent que par ces portées. Les bits de permission **Consulter les données**, **Configurer les données** et **Consulter les journaux** sont supprimés pour un utilisateur restreint, quel que soit ce qui est enregistré, car ces permissions exposent des données de paquet brutes qui contournent le filtrage des portées.
+
+L'accès aux portées ne peut être défini que par un administrateur global, même si un autre utilisateur dispose de la permission **Configurer les utilisateurs**. Un utilisateur restreint disposant de la permission **Configurer les utilisateurs** ne peut pas accorder le statut d'administrateur global à d'autres utilisateurs, car cela lui permettrait de lever sa propre restriction de portée.
 
 ## Permissions de projet
 <!-- help#users-project-permissions -->

@@ -49,7 +49,7 @@ Available modules include:
 
 ### Step 3 — Confirm and launch
 
-Enter a label for the results package and review the data and module selections. The wizard suggests a label that does not conflict with existing packages. Click **Launch generation** to start.
+Enter a label for the results package and review the data and module selections. The wizard suggests a label based on the current date. Click **Launch generation** to start.
 
 ## Population data and indicator values
 

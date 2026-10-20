@@ -91,7 +91,7 @@ For HFA analyses that require weighted estimates, you can upload per-facility sa
 
 Prepare a CSV file with a facility ID column and a weight column. Each import covers one time point. To upload weights, select or upload your CSV, then map the facility ID column, the weight column, and the target time point. A blank weight cell means the facility is not in that round's sample and will be skipped. A successful import reports how many weights were imported, how many blank cells were skipped, and which time point was covered. Re-importing updates existing weights for the same facility and time point.
 
-The weights manager displays a coverage summary showing, for each time point, how many facilities with data have a corresponding weight. A warning highlight indicates time points where some facilities have data but no weight - those facilities will count with weight 1 when weighted analysis is enabled.
+The weights manager displays a coverage summary showing, for each time point, how many facilities with data have a corresponding weight. A time point that has weights uploaded but no data yet shows the count of weights alongside a note that no data has been imported yet. A warning highlight indicates time points where some facilities have data but no weight - those facilities will count with weight 1 when weighted analysis is enabled.
 
 If no sampling weights have been imported yet, the weights manager shows a message indicating that no weights are available, rather than an error.
 

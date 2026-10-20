@@ -12,7 +12,7 @@ Un projet est votre espace de travail pour l'analyse dans FASTR. Il est associé
 
 Lorsque vous vous connectez à FASTR, vous voyez la liste des projets auxquels vous avez accès. La liste peut être triée par nom ou par récemment mis à jour à l'aide du contrôle de tri en haut. Cliquez sur le nom d'un projet pour l'ouvrir. La vue du projet comporte une barre de navigation à gauche avec des onglets pour les différentes sections - généralement **Tableaux de bord**, **Visualisations**, **Métriques**, **Lot de résultats** et **Paramètres**. Ce que vous voyez dépend de vos permissions ; un lecteur, par exemple, ne verra pas les options de configuration.
 
-Le nom du projet apparaît en haut de l'écran. Si le projet a une portée Zone administrative 2, un badge indiquant le nom de la zone apparaît à côté du nom du projet.
+Le nom du projet apparaît en haut de l'écran. Si le projet a une portée, un badge indiquant le nom de la portée apparaît à côté du nom du projet.
 
 ![Open a Project FR](/images/open-a-project-fr.png)
 
@@ -24,8 +24,6 @@ Chaque projet est servi depuis un **lot de résultats** - un ensemble de résult
 Pour voir quel lot utilise votre projet, accédez à l'onglet **Lot de résultats**. L'onglet affiche le lot actuellement utilisé et, pour les éditeurs, une zone de paramètres de paquet avec un menu déroulant pour sélectionner un autre lot et une option pour suivre automatiquement le lot épinglé de l'instance.
 
 Changer de lot de résultats modifie les données derrière chaque visualisation, rapport et présentation du projet. FASTR affiche un rapport de compatibilité avant qu'un changement prenne effet, listant les visualisations qui ne se résoudraient pas avec le nouveau lot. Vous pouvez examiner l'impact et décider si vous souhaitez continuer.
-
-Si le projet a une portée Zone administrative 2 et que le lot sélectionné ne contient pas de données pour cette zone, un avertissement s'affiche. Les indicateurs au niveau des zones n'afficheront aucune donnée, mais les indicateurs nationaux restent visibles.
 
 ![Understanding the Data Window FR](/images/understanding-the-data-window-fr.png)
 

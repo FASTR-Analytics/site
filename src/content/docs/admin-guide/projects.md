@@ -10,7 +10,7 @@ Projects are the primary workspace for analysis in FASTR. Each project brings to
 ## Creating a project
 <!-- help#aproj-create -->
 
-Any user with the "Create projects" permission can start a new project from the home screen. Click **Create project**, enter a name that identifies the project's scope, and choose a project scope — either **National** or a specific Admin Area 2. The scope determines how the attached results package is filtered for this project: a scoped project sees the package as if it contained only that area, while metrics with no area breakdown remain national.
+Any user with the "Create projects" permission can start a new project from the home screen. Click **Create project**, enter a name that identifies the project's scope, and choose a scope. The scope determines how the attached results package is filtered for this project: a scoped project sees the package through that scope's definition, while metrics with no area breakdown remain visible regardless of scope.
 
 New projects start without a results package attached. Your next step is to attach a results package from the **Results package** tab, which is where module outputs and data are made available to the project.
 
@@ -27,11 +27,13 @@ When a project follows the pinned package but is currently on a different one, a
 
 Switching a project to a different results package changes the data behind every visualization, dashboard, and slide deck in the project. Before a switch takes effect, FASTR shows you a compatibility report listing any visualizations that would not resolve against the new package — they stay in the project and display why they cannot be drawn. Nothing changes until you confirm.
 
-If the project has an Admin Area 2 scope set and the selected package has no data for that area, a warning appears both in the compatibility report and on the Results package tab after attaching. Area-level metrics will show no data, but national-level metrics remain visible.
-
 ## Project scope
 
-Each project has a scope — either **National** or a specific Admin Area 2. The scope is set when creating the project and can be changed later by a global administrator from **Settings**. A scoped project filters the attached results package so that area-level metrics show only data for that area; national-level metrics remain visible regardless of scope. The project's scope appears as a badge next to the project name and is shown in **Settings** under **Project scope**.
+Each project has a scope that determines how its results package is filtered. The scope is set when creating the project and can be changed later by a global administrator from **Settings**. The project's scope appears as a badge next to the project name and is shown in **Settings** under **Project scope**.
+
+Scopes are created and managed by global administrators from the **Results packages** page. Click **Scopes** in the toolbar to open the scopes manager, where you can create, edit, and delete scopes. Each scope defines limits per data family (HMIS, HFA, ICEH) — restricting by area, years, modules, indicators, time points, categories, service categories, and other dimensions. The built-in **All data** scope includes everything and cannot be edited or deleted.
+
+Editing a scope's definition marks every figure resolved under it as stale, because the definition's hash changes. Figures in slide decks and reports that were resolved under the old definition show a staleness badge and should be reattached.
 
 ## Managing project users and permissions
 

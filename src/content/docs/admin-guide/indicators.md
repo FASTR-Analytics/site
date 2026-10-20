@@ -24,7 +24,7 @@ To see what each type entails, click **Indicator types** in the heading bar. To 
 
 Global administrators can select rows in the list and use the **Delete** bulk action to remove the selected indicators, subject to the usual dependency checks. Individual indicators can also be deleted from within the indicator editor using the **Delete** button in the footer. The **Include in analysis** and **Exclude from analysis** bulk actions toggle the flag on the selected rows. The **DHIS2 data import** bulk action opens the DHIS2 import wizard pre-selected with the chosen indicators.
 
-From the overflow menu in the toolbar, global administrators also have access to two occasional maintenance actions: **Download** exports the indicator dictionary as a CSV file containing columns for the indicator ID, label, type, DHIS2 id (including the DHIS2 name last read from DHIS2), members, formula, include-in-analysis flag, format, thresholds, direction, target, and expected-low-counts flag. **Refresh DHIS2 names** reads the current name of every DHIS2 element indicator from DHIS2 by its DHIS2 id and stores it alongside the indicator, without changing any labels, ids, or data. Use this after DHIS2 data elements are renamed on the DHIS2 server.
+From the overflow menu in the toolbar, global administrators also have access to two occasional maintenance actions: **Download** exports the indicator dictionary as a CSV file containing columns for the indicator ID, label, type, DHIS2 id (including the DHIS2 name last read from DHIS2), members, formula, include-in-analysis flag, format, thresholds, direction, target, and expected-low-counts flag. **Refresh DHIS2 names** reads the current name of every DHIS2 element indicator from DHIS2 by its DHIS2 id and stores it alongside the indicator, without changing any labels, ids, or data. Use this after DHIS2 data elements are renamed on the DHIS2 server. After the refresh completes, the result modal shows how many names were refreshed, how many were already current, which indicators point to DHIS2 formulas (what DHIS2 calls indicators) rather than data elements, and which ids were not found in DHIS2.
 
 #### Indicator types
 
@@ -80,7 +80,7 @@ The **service categories** field is optional and provides an additional cross-cu
 
 ### Searching indicators
 
-The HFA indicator manager includes a search field in the indicators panel header. Type any text to filter the indicator list by label, definition, category, sub-category, or service category. The count in the panel header updates to show how many indicators match your search out of the total. When no indicators match, the table shows "No indicators match your search."
+The HFA indicator manager includes a search box in the toolbar. Type any text to filter the indicator list by label, definition, category, sub-category, or service category. The table also supports column filters for category, sub-category, service categories, type, status, and consistency — click a column header's filter icon to narrow results by specific values.
 
 ### R code for extraction
 <!-- help#ind-r-code -->
@@ -91,7 +91,7 @@ The code editor shows which survey variables are available in your dataset at ea
 
 Warnings (shown in amber) are advisory and do not block saving. Errors (shown in red) — including syntax errors and references to variables not found in the dataset — do block the indicator from being marked as ready.
 
-The code editor's right-hand panel lists survey variables so you can click any entry to insert its variable ID into the code at the cursor position. The panel also lists other indicators, so you can click any to insert its indicator ID — useful when one indicator's code references another. Use the search box to filter both lists.
+The code editor's right-hand panel lists survey variables so you can click any entry to insert its variable ID into the code at the cursor position. The search box filters both lists by matching every word of your query against the variable ID and label together, in any order. The panel also lists other indicators, so you can click any to insert its indicator ID — useful when one indicator's code references another.
 
 ![HFA Code](/images/hfa-code-en.png)
 
@@ -119,11 +119,15 @@ The HFA indicator manager includes an **Import default indicators** button along
 
 ### Deleting indicators
 
-Before deleting an indicator or a set of indicators, FASTR checks whether any other indicators reference the deleted indicator IDs in their R code or variant code. If references are found, the confirmation dialog lists the affected indicators and warns that their code will fail validation after deletion. You can delete an individual indicator from its editor using the **Delete** button in the footer, or delete multiple indicators at once using the bulk action in the indicator list.
+Before deleting an indicator or a set of indicators, FASTR checks whether any other indicators reference the deleted indicator IDs in their R code or variant code. If references are found, the confirmation dialog lists the affected indicators and warns that their code will fail validation after deletion. You can delete an individual indicator from its code editor using the **Delete** button in the header, or from the edit indicator dialog using the **Delete** button in the footer. Multiple indicators can be deleted at once using the bulk action in the indicator list.
 
 ### AI assistant for indicators
 
 Global administrators can open an AI assistant panel directly in the HFA Indicator Manager by clicking the **AI** button. The button appears in the top bar of the manager and also in the header of the code editor and the Excel workbook upload form when the panel is not already open. The assistant can clean up labels, organise indicators into categories, and create new indicators from the underlying survey dataset. It reads and writes indicators through a set of dedicated tools — loading current state before proposing changes, validating R code against the data dictionary, and showing a confirmation dialog with a diff before any edits are applied. When the assistant creates new indicators, it assigns each indicator's ID automatically and returns the assigned IDs after creation. When applying bulk updates, all changes are sent to the server in a single transactional operation: either all indicators are updated or none are, so a partial failure cannot leave the dataset in an inconsistent state. The assistant operates on instance-level HFA indicators and is fully isolated from the product AI assistant.
+
+### Unused variables
+
+Click **Check unused variables** from the overflow menu to open a modal listing survey variables that no indicator currently references, grouped by time point. From this modal you can click **Add** next to any variable to open the create indicator dialog pre-filled with that variable's label, making it easy to turn unused variables into new indicators.
 
 ### Managing service categories
 

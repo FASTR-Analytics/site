@@ -12,7 +12,7 @@ A project is your workspace for analysis in FASTR. It contains a results package
 
 When you sign in to FASTR, you'll see a list of projects you have access to. The list can be sorted by name or by recently updated using the sort control at the top. Click any project name to open it. The project view has a navigation sidebar on the left with tabs for different sections - typically **Dashboards**, **Visualizations**, **Metrics**, **Results package**, and **Settings**. What you see depends on your permissions; viewers won't see configuration options, for example.
 
-The project name appears at the top of the screen. If the project has an Admin Area 2 scope, a badge showing the area name appears next to the project name.
+The project name appears at the top of the screen. If the project has a scope, a badge showing the scope name appears next to the project name.
 
 ![Open a Project](/images/open-a-project-en.png)
 
@@ -24,8 +24,6 @@ Every project is served from a **results package** - a bundle of pre-computed mo
 To see which package your project uses, navigate to the **Results package** tab. The tab shows the package currently in use and, for editors, a package settings area with a dropdown to select a different package and an option to follow the instance's pinned package automatically.
 
 Switching to a different results package changes the data behind every visualization, report, and slide deck in the project. FASTR shows a compatibility report before any switch takes effect, listing any visualizations that would not resolve against the new package. You can review the impact and decide whether to proceed.
-
-If the project has an Admin Area 2 scope and the selected package has no data for that area, a warning appears. Area-level metrics will show no data, but national-level metrics remain visible.
 
 ![Understanding the Data Window](/images/understanding-the-data-window-en.png)
 

@@ -24,7 +24,7 @@ Pour voir ce qu'implique chaque type, cliquez sur **Types d'indicateurs** dans l
 
 Les administrateurs globaux peuvent sélectionner des lignes dans la liste et utiliser l'action groupée **Supprimer** pour retirer les indicateurs sélectionnés, sous réserve des vérifications de dépendances habituelles. Les indicateurs individuels peuvent également être supprimés depuis l'éditeur d'indicateurs à l'aide du bouton **Supprimer** dans le pied de page. Les actions groupées **Inclure dans l'analyse** et **Exclure de l'analyse** basculent l'indicateur sur les lignes sélectionnées. L'action groupée **Importation de données DHIS2** ouvre l'assistant d'importation DHIS2 présélectionné avec les indicateurs choisis.
 
-Depuis le menu de débordement de la barre d'outils, les administrateurs globaux ont également accès à deux actions de maintenance occasionnelles : **Télécharger** exporte le dictionnaire d'indicateurs au format CSV, avec des colonnes pour l'identifiant, le libellé, le type, l'identifiant DHIS2 (incluant le nom DHIS2 lu depuis DHIS2), les membres, la formule, l'indicateur d'inclusion dans l'analyse, le format, les seuils, la direction, la cible et l'indicateur de faibles dénombrements attendus. **Actualiser les noms DHIS2** lit le nom actuel de chaque indicateur élément DHIS2 depuis DHIS2 via son identifiant DHIS2 et le stocke avec l'indicateur, sans modifier aucun libellé, identifiant ou données. Utilisez cette action après que des éléments de données DHIS2 ont été renommés sur le serveur DHIS2.
+Depuis le menu de débordement de la barre d'outils, les administrateurs globaux ont également accès à deux actions de maintenance occasionnelles : **Télécharger** exporte le dictionnaire d'indicateurs au format CSV, avec des colonnes pour l'identifiant, le libellé, le type, l'identifiant DHIS2 (incluant le nom DHIS2 lu depuis DHIS2), les membres, la formule, l'indicateur d'inclusion dans l'analyse, le format, les seuils, la direction, la cible et l'indicateur de faibles dénombrements attendus. **Actualiser les noms DHIS2** lit le nom actuel de chaque indicateur élément DHIS2 depuis DHIS2 via son identifiant DHIS2 et le stocke avec l'indicateur, sans modifier aucun libellé, identifiant ou données. Utilisez cette action après que des éléments de données DHIS2 ont été renommés sur le serveur DHIS2. Une fois l'actualisation terminée, la fenêtre de résultat indique combien de noms ont été actualisés, combien étaient déjà à jour, quels indicateurs pointent vers des formules DHIS2 (ce que DHIS2 appelle des indicateurs) plutôt que vers des éléments de données, et quels identifiants n'ont pas été trouvés dans DHIS2.
 
 #### Types d'indicateurs
 
@@ -80,7 +80,7 @@ Le champ **catégories de service** est facultatif et fournit une classification
 
 ### Rechercher des indicateurs
 
-Le gestionnaire d'indicateurs HFA comporte un champ de recherche dans l'en-tête du panneau des indicateurs. Saisissez du texte pour filtrer la liste des indicateurs par libellé, définition, catégorie, sous-catégorie ou catégorie de service. Le compteur dans l'en-tête du panneau se met à jour pour indiquer combien d'indicateurs correspondent à votre recherche sur le total. Lorsqu'aucun indicateur ne correspond, le tableau affiche « Aucun indicateur ne correspond à votre recherche ».
+Le gestionnaire d'indicateurs HFA comporte une zone de recherche dans la barre d'outils. Saisissez du texte pour filtrer la liste par libellé, définition, catégorie, sous-catégorie ou catégorie de service. Le tableau prend également en charge des filtres de colonnes pour la catégorie, la sous-catégorie, les catégories de service, le type, le statut et la cohérence — cliquez sur l'icône de filtre d'un en-tête de colonne pour affiner les résultats par valeurs spécifiques.
 
 ### Code R pour l'extraction
 <!-- help#ind-r-code -->
@@ -91,7 +91,7 @@ L'éditeur de code indique quelles variables d'enquête sont disponibles dans vo
 
 Les avertissements (affichés en orange) sont consultatifs et ne bloquent pas l'enregistrement. Les erreurs (affichées en rouge) — notamment les erreurs de syntaxe et les références à des variables absentes du jeu de données — empêchent l'indicateur d'être marqué comme prêt.
 
-Le panneau droit de l'éditeur de code liste les variables d'enquête ; cliquez sur n'importe quelle entrée pour insérer son identifiant de variable dans le code à la position du curseur. Le panneau liste également les autres indicateurs, afin que vous puissiez cliquer sur l'un d'eux pour insérer son identifiant — utile lorsque le code d'un indicateur fait référence à un autre. Utilisez la zone de recherche pour filtrer les deux listes.
+Le panneau droit de l'éditeur de code liste les variables d'enquête ; cliquez sur n'importe quelle entrée pour insérer son identifiant de variable dans le code à la position du curseur. La zone de recherche filtre les deux listes en faisant correspondre chaque mot de votre requête à l'identifiant et au libellé de la variable ensemble, dans n'importe quel ordre. Le panneau liste également les autres indicateurs, afin que vous puissiez cliquer sur l'un d'eux pour insérer son identifiant — utile lorsque le code d'un indicateur fait référence à un autre.
 
 ![Code R d'un indicateur HFA](/images/hfa-code-en.png)
 
@@ -119,11 +119,15 @@ Le gestionnaire d'indicateurs HFA comprend un bouton **Importer les indicateurs 
 
 ### Supprimer des indicateurs
 
-Avant de supprimer un indicateur ou un ensemble d'indicateurs, FASTR vérifie si d'autres indicateurs font référence aux identifiants supprimés dans leur code R ou leur code de variante. Si des références sont trouvées, la boîte de dialogue de confirmation liste les indicateurs concernés et avertit que leur code échouera à la validation après la suppression. Vous pouvez supprimer un indicateur individuel depuis son éditeur à l'aide du bouton **Supprimer** dans le pied de page, ou supprimer plusieurs indicateurs à la fois via l'action groupée dans la liste des indicateurs.
+Avant de supprimer un indicateur ou un ensemble d'indicateurs, FASTR vérifie si d'autres indicateurs font référence aux identifiants supprimés dans leur code R ou leur code de variante. Si des références sont trouvées, la boîte de dialogue de confirmation liste les indicateurs concernés et avertit que leur code échouera à la validation après la suppression. Vous pouvez supprimer un indicateur individuel depuis l'en-tête de son éditeur de code à l'aide du bouton **Supprimer**, ou depuis la boîte de dialogue de modification via le bouton **Supprimer** dans le pied de page. Plusieurs indicateurs peuvent être supprimés à la fois via l'action groupée dans la liste.
 
 ### Assistant IA pour les indicateurs
 
 Les administrateurs globaux peuvent ouvrir un panneau d'assistant IA directement dans le gestionnaire d'indicateurs HFA en cliquant sur le bouton **IA**. Ce bouton apparaît dans la barre supérieure du gestionnaire, ainsi que dans l'en-tête de l'éditeur de code et du formulaire de téléversement du classeur Excel lorsque le panneau n'est pas encore ouvert. L'assistant peut améliorer les libellés, organiser les indicateurs en catégories et créer de nouveaux indicateurs à partir du jeu de données d'enquête sous-jacent. Il lit et écrit les indicateurs via un ensemble d'outils dédiés - en chargeant l'état actuel avant de proposer des modifications, en validant le code R par rapport au dictionnaire de données et en affichant une boîte de dialogue de confirmation avec un diff avant d'appliquer toute modification. Lorsque l'assistant crée de nouveaux indicateurs, il attribue automatiquement l'identifiant de chaque indicateur et retourne les identifiants attribués après création. Lors de l'application de mises à jour groupées, toutes les modifications sont envoyées au serveur en une seule opération transactionnelle : soit tous les indicateurs sont mis à jour, soit aucun ne l'est. L'assistant opère sur les indicateurs HFA au niveau de l'instance et est totalement isolé de l'assistant IA des produits.
+
+### Variables inutilisées
+
+Cliquez sur **Vérifier les variables inutilisées** depuis le menu de débordement pour ouvrir une fenêtre listant les variables d'enquête qu'aucun indicateur ne référence actuellement, regroupées par point temporel. Depuis cette fenêtre, vous pouvez cliquer sur **Ajouter** à côté de n'importe quelle variable pour ouvrir la boîte de dialogue de création d'indicateur pré-remplie avec le libellé de cette variable, ce qui facilite la transformation des variables inutilisées en nouveaux indicateurs.
 
 ### Gérer les catégories de service
 

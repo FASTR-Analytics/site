@@ -10,7 +10,7 @@ Les projets constituent l'espace de travail principal pour l'analyse dans FASTR.
 ## Créer un projet
 <!-- help#aproj-create -->
 
-Tout utilisateur disposant de la permission « Créer des projets » peut démarrer un nouveau projet depuis l'écran d'accueil. Cliquez sur **Créer un projet**, saisissez un nom qui identifie la portée du projet, puis choisissez une portée — **National** ou une Zone administrative 2 spécifique. La portée détermine la façon dont le lot de résultats associé est filtré pour ce projet : un projet à portée limitée voit le lot comme s'il ne contenait que cette zone, tandis que les indicateurs sans ventilation par zone restent nationaux.
+Tout utilisateur disposant de la permission « Créer des projets » peut démarrer un nouveau projet depuis l'écran d'accueil. Cliquez sur **Créer un projet**, saisissez un nom qui identifie la portée du projet, puis choisissez une portée. La portée détermine la façon dont le lot de résultats associé est filtré pour ce projet : un projet à portée limitée voit le lot à travers la définition de cette portée, tandis que les indicateurs sans ventilation par zone restent visibles quelle que soit la portée.
 
 Les nouveaux projets démarrent sans lot de résultats associé. L'étape suivante consiste à associer un lot de résultats depuis l'onglet **Lot de résultats**, qui est le point d'entrée pour accéder aux résultats des modules et aux données du projet.
 
@@ -27,11 +27,13 @@ Lorsqu'un projet suit le paquet épinglé mais se trouve actuellement sur un aut
 
 Changer de lot de résultats modifie les données derrière chaque visualisation et tableau de bord du projet. Avant qu'un changement prenne effet, FASTR affiche un rapport de compatibilité listant les visualisations qui ne se résoudraient pas avec le nouveau lot — elles restent dans le projet et indiquent pourquoi elles ne peuvent pas être tracées. Rien ne change tant que vous ne confirmez pas.
 
-Si le projet a une portée Zone administrative 2 définie et que le lot sélectionné ne contient pas de données pour cette zone, un avertissement s'affiche dans le rapport de compatibilité et dans l'onglet Lot de résultats après association. Les indicateurs au niveau des zones n'afficheront aucune donnée, mais les indicateurs nationaux restent visibles.
-
 ## Portée du projet
 
-Chaque projet a une portée — **National** ou une Zone administrative 2 spécifique. La portée est définie lors de la création du projet et peut être modifiée ultérieurement par un administrateur global depuis **Paramètres**. Un projet à portée limitée filtre le lot de résultats associé de sorte que les indicateurs au niveau des zones n'affichent que les données de cette zone ; les indicateurs nationaux restent visibles quelle que soit la portée. La portée du projet apparaît sous forme de badge à côté du nom du projet et est indiquée dans **Paramètres** sous **Portée du projet**.
+Chaque projet a une portée qui détermine la façon dont son lot de résultats est filtré. La portée est définie lors de la création du projet et peut être modifiée ultérieurement par un administrateur global depuis **Paramètres**. La portée du projet apparaît sous forme de badge à côté du nom du projet et est indiquée dans **Paramètres** sous **Portée du projet**.
+
+Les portées sont créées et gérées par les administrateurs globaux depuis la page **Lots de résultats**. Cliquez sur **Portées** dans la barre d'outils pour ouvrir le gestionnaire de portées, où vous pouvez créer, modifier et supprimer des portées. Chaque portée définit des limites par famille de données (HMIS, HFA, ICEH) — en restreignant par zone, années, modules, indicateurs, points temporels, catégories, catégories de service et autres dimensions. La portée intégrée **Toutes les données** inclut tout et ne peut être ni modifiée ni supprimée.
+
+Modifier la définition d'une portée marque chaque figure résolue sous cette portée comme obsolète, car le hachage de la définition change. Les figures dans les présentations et les rapports qui ont été résolues sous l'ancienne définition affichent un badge d'obsolescence et doivent être réassociées.
 
 ## Gérer les utilisateurs et les permissions du projet
 

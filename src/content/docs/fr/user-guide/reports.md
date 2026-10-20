@@ -12,7 +12,9 @@ Un rapport est l'outil approprié lorsque vous avez besoin de texte rédigé aut
 ## Créer un rapport
 <!-- help#report-create -->
 
-Ouvrez l'onglet **Produits** sur l'écran d'accueil de votre instance. Les rapports apparaissent sous forme de cartes dans l'explorateur de produits, aux côtés des présentations. Cliquez sur **Nouveau** et choisissez **Nouveau rapport** pour en créer un — l'éditeur s'ouvre immédiatement avec le nouveau rapport prêt à être rédigé. Vous pouvez organiser les rapports dans des dossiers à l'aide de **Nouveau dossier** et les déplacer entre dossiers depuis le menu de leur carte.
+Ouvrez l'onglet **Produits** sur l'écran d'accueil de votre instance. Les rapports apparaissent sous forme de cartes dans l'explorateur de produits, aux côtés des présentations. Cliquez sur **Nouveau** et choisissez **Nouveau rapport** pour en créer un — une boîte de dialogue s'ouvre dans laquelle vous nommez le rapport, choisissez son lot de résultats et définissez sa portée avant que l'éditeur s'ouvre. Vous pouvez organiser les rapports dans des dossiers à l'aide de **Nouveau dossier** et les déplacer entre dossiers depuis le menu de leur carte.
+
+Pour créer des rapports, au moins un lot de résultats et une portée doivent exister au niveau de l'instance.
 
 ## Rédiger dans l'éditeur
 
@@ -34,24 +36,25 @@ Les anciens rapports Markdown ordinaires et HTML conservent le bouton bascule **
 
 Les rapports FASTR Markdown comportent une barre d'outils au-dessus de l'éditeur, composée de deux rangées. La **rangée de menus** contient les menus **Fichier**, **Widgets**, **Figures** et **Page**. La **rangée de la barre d'outils** est une rangée persistante de commandes de mise en forme qui s'adapte au contexte du curseur.
 
-Le menu **Fichier** regroupe les opérations portant sur l'ensemble du document : téléchargement, envoi par e-mail, renommage et duplication. Le menu **Widgets** liste tous les types de blocs disponibles — titres, encadrés, tuiles de chiffres, tableaux, liens, logos, pages de couverture, et plus encore. Le menu **Figures** permet d'insérer une visualisation ou une image. Le menu **Page** contrôle le thème, l'arrière-plan, l'orientation de la page et la numérotation des sections.
+Le menu **Fichier** regroupe les opérations portant sur l'ensemble du document : téléchargement, envoi par e-mail, renommage, gestion des accès et duplication. Le menu **Widgets** liste tous les types de blocs disponibles — titres, encadrés, tuiles de chiffres, tableaux, liens, logos, pages de couverture, et plus encore. Le menu **Figures** permet d'insérer une visualisation ou une image. Le menu **Page** contrôle le thème, l'arrière-plan, l'orientation de la page et la numérotation des sections.
 
-La rangée de la barre d'outils affiche les commandes de texte (style de titre, gras, italique, souligné, taille du texte, surlignage, lien, couleur du texte et types de liste) lorsqu'aucun élément intégré n'est sélectionné. Lorsque le curseur se trouve dans un bloc `:::`, le nom du bloc et ses propres commandes (ton, colonnes, type, et attributs similaires) s'affichent à droite des commandes de texte. Lorsqu'une visualisation ou une image est sélectionnée, les commandes de l'élément remplacent les commandes de texte.
+La rangée de la barre d'outils affiche les commandes de texte (style de titre, gras, italique, souligné, taille du texte, surlignage, lien, couleur du texte et types de liste) lorsque le curseur se trouve sur une ligne de texte ordinaire et qu'aucun élément intégré n'est sélectionné. Lorsque le curseur se trouve sur la ligne propre d'un bloc ou sur une ligne de figure ou d'image, les commandes de texte sont masquées et seules les commandes propres au bloc s'affichent. Lorsque le curseur se trouve dans un bloc `:::` sur une ligne de texte, le nom du bloc et ses propres commandes s'affichent à droite des commandes de texte. Lorsqu'une visualisation ou une image est sélectionnée, les commandes de l'élément remplacent entièrement les commandes de texte.
 
 ## Ajouter des visualisations et des images
 <!-- help#report-figures -->
 
-Les rapports peuvent contenir deux types de contenu visuel, et la distinction est importante. Une **visualisation** est un graphique ou une carte dynamique issue du paquet de résultats du produit - elle se génère à partir des données actuelles et se met à jour lorsque ces données changent. Une **image** est un fichier statique que vous téléversez, comme un schéma ou une photo.
+Les rapports peuvent contenir deux types de contenu visuel, et la distinction est importante. Une **visualisation** est un graphique ou une carte dynamique issue du lot de résultats du produit - elle se génère à partir des données actuelles et se met à jour lorsque ces données changent. Une **image** est un fichier statique que vous téléversez, comme un schéma ou une photo.
 
-Pour ajouter une visualisation, ouvrez le menu **Figures** et choisissez **Visualisation…**, puis sélectionnez une visualisation dans le paquet de résultats du produit. Pour ajouter une image, choisissez **Image…** et téléversez un fichier ou choisissez-en un parmi les ressources de votre projet. Dans les deux cas, l'élément apparaît dans le document sous forme de carte que vous pouvez sélectionner.
+Pour ajouter une visualisation, ouvrez le menu **Figures** et choisissez **Visualisation…**, puis sélectionnez une visualisation dans le lot de résultats du produit. Pour ajouter une image, choisissez **Image…** et téléversez un fichier ou choisissez-en un parmi les ressources de votre projet. Dans les deux cas, l'élément apparaît dans le document sous forme de carte que vous pouvez sélectionner.
 
 La sélection d'une visualisation ou d'une image fait apparaître des commandes dans la barre d'outils pour la manipuler :
 
 - **Modifier la visualisation** ouvre les paramètres de la visualisation - ajustez la période, la désagrégation ou le style
 - **Changer** remplace la visualisation par une autre
+- **Taille** (FASTR Markdown uniquement, lorsque l'élément est sur sa propre ligne) définit la largeur de la figure sur la page : **Petite**, **Moyenne**, **Pleine largeur** (la colonne, valeur par défaut) ou **Bord à bord** (toute la largeur de la feuille)
 - **Supprimer** retire la visualisation ou l'image du rapport
 
-Comme les visualisations restent liées au paquet de résultats, un rapport rédigé le trimestre dernier affichera les chiffres de ce trimestre la prochaine fois que vous l'ouvrirez - sans mise à jour manuelle ni nouveau collage de graphiques.
+Comme les visualisations restent liées au lot de résultats, un rapport rédigé le trimestre dernier affichera les chiffres de ce trimestre la prochaine fois que vous l'ouvrirez - sans mise à jour manuelle ni nouveau collage de graphiques.
 
 Si une visualisation ou une image ne peut pas être chargée lors de l'export, FASTR la remplace par une courte notice à la place de l'élément manquant plutôt que d'interrompre l'export. Le reste du rapport est exporté normalement.
 
@@ -63,9 +66,17 @@ Les rapports FASTR Markdown prennent en charge un bloc **Logos** qui affiche une
 
 Lorsqu'un bloc de logos est sélectionné, la barre d'outils affiche des commandes d'alignement et de taille pour la rangée.
 
+## Le plan du document
+
+Lors de l'édition d'un rapport FASTR Markdown, une barre latérale de plan du document apparaît sur le côté gauche de l'éditeur. Le plan liste chaque titre du rapport, indenté selon son niveau, et met en évidence la section en cours de lecture. Cliquez sur un titre dans le plan pour y accéder directement dans l'éditeur. Pour réduire le plan, cliquez sur le bouton chevron dans son en-tête ; un petit bouton **Onglets du rapport** sur le bord gauche de l'éditeur permet de le rouvrir.
+
 ## Paramètres du rapport
 
-Cliquez sur **Paramètres** dans l'en-tête du rapport pour ouvrir le panneau des paramètres. Vous pouvez y modifier le nom du rapport et le déplacer vers un autre dossier. Pour modifier le paquet de résultats ou la portée géographique, cliquez sur **Paquet de résultats et portée…** depuis le menu de la carte du rapport. Changer le paquet ou la portée affecte chaque visualisation du rapport — les visualisations issues d'un autre paquet ou d'une autre portée affichent un badge de mise à jour.
+Cliquez sur **Paramètres** dans l'en-tête du rapport pour ouvrir le panneau des paramètres. Vous pouvez y modifier le nom du rapport et le déplacer vers un autre dossier. Pour modifier le lot de résultats ou la portée géographique, cliquez sur **Lot de résultats et portée…** depuis le menu de la carte du rapport. Changer le lot ou la portée affecte chaque visualisation du rapport — les visualisations issues d'un autre lot ou d'une autre portée affichent un badge de mise à jour.
+
+## Gérer les accès
+
+Ouvrez le menu **Fichier** et choisissez **Gérer les accès…** pour contrôler qui peut consulter et modifier le rapport. Cela ouvre le panneau d'accès au produit où vous pouvez définir les niveaux de permission par utilisateur.
 
 ## Choisir un thème
 
@@ -74,6 +85,10 @@ Les rapports FASTR Markdown ont un thème de conception qui contrôle les police
 Sur un nouveau rapport qui ne contient encore que son titre, le sélecteur de thème propose une deuxième étape : une galerie de modèles. Les modèles donnent au rapport ses sections et ses blocs, avec des indications grises dans chaque emplacement à remplacer par votre texte. L'assistant IA sait quel modèle vous avez choisi et écrit selon sa forme. Choisissez un modèle et cliquez sur **Utiliser le modèle** pour l'appliquer, ou cliquez sur **Passer** pour commencer avec une page blanche. Vous pouvez rouvrir le sélecteur de thème à tout moment depuis le menu **Page** — l'étape modèle n'apparaît que lorsque le corps du rapport est encore vide.
 
 Le sélecteur de thème affiche également les styles personnalisés enregistrés par les administrateurs de votre instance. Un style personnalisé fournit à l'IA une description de conception spécifique lors de la rédaction ou de la restructuration de rapports HTML, ou une palette de couleurs pour les rapports FASTR Markdown. Les styles enregistrés apparaissent aux côtés des thèmes intégrés dans le sélecteur.
+
+## Accès en lecture seule
+
+Lorsque vous ouvrez un rapport en tant que lecteur (sans permission de modification), l'éditeur se charge en mode lecture seule. Pour les rapports FASTR Markdown, la barre d'outils n'affiche que le menu **Fichier** avec le téléchargement, l'envoi par e-mail et d'autres options non liées à l'édition. Les commandes de mise en forme et les menus de widgets sont masqués.
 
 ## Collaborer sur un rapport
 

@@ -5,12 +5,14 @@ sidebar:
   order: 7
 ---
 
-The AI assistant helps you explore and interpret your project's data through conversation. It understands your modules, metrics, and visualizations - so you can ask questions like "what does the ANC1 coverage trend show?" or "which districts have the lowest data completeness?" and get answers grounded in your actual results.
+The AI assistant helps you explore and interpret your data through conversation. It is available across the entire platform — in slide decks, reports, the Explore page, the Results packages page, and individual package views — so you can ask questions wherever you are working.
 
 ## Opening the assistant
 <!-- help#ai-open -->
 
-Open a slide deck or report to work with the AI assistant. Click **AI** in the editor header to open the assistant panel on the right side of the screen. The assistant is scoped to the product you have open — each deck or report has its own conversation history and the assistant uses that product's results package and scope automatically.
+Click the **AI** button on the right edge of the screen to open the assistant panel. The panel slides in alongside your current view. To close it, click the chevron button in the panel header or click the **AI** button again.
+
+The assistant is context-aware: each message tells it the current view and, where a results package is in view, the package and scope every data read resolves under. You do not need to specify which package to use.
 
 ![Opening the Assistant](/images/opening-the-assistant-en.png)
 
@@ -44,7 +46,7 @@ Each conversation tracks its own set of attachments. When you switch to a differ
 
 The assistant is particularly helpful when building slide decks. You can ask it to draft content for slides, suggest visualizations that support a narrative, or help structure your presentation. It knows which slides you've already added and can reference available metrics.
 
-When you ask the assistant to create a slide, it drafts the content and shows a preview. If the deck is currently open, you can add the draft to it directly from the preview card.
+When you ask the assistant to create a slide, it drafts the content and shows a preview. If the deck is currently open and you can edit it, you can add the draft to it directly from the preview card.
 
 When editing an existing slide, the assistant can also modify visualizations already on the slide - for example, changing which replicant a chart displays, adjusting filters, or updating captions - without rebuilding the visualization from scratch. The assistant can also update visualizations on slides directly from the deck view, without opening the slide editor, and saves those changes immediately.
 
@@ -58,13 +60,13 @@ Every visualization in a report is resolved under that report's own results pack
 
 ## Conversations and history
 
-Each conversation is saved automatically and is scoped to the product (deck or report) you have open. You can start new conversations and switch between past ones using the menu. This is useful when you've asked the assistant to explain something complex - return to that explanation later without re-asking.
+Each conversation is saved automatically. You can start new conversations and switch between past ones using the menu in the panel header. The assistant remembers what you've discussed within a conversation, so you can build on previous questions.
 
-The assistant remembers what you've discussed within a conversation, so you can build on previous questions.
+Only one browser tab can run the AI chat at a time. If you open FASTR in multiple tabs, the tab where the assistant is active shows the full chat; other tabs show a notice with a **Use it here** button to move the chat to that tab.
 
 ## Usage limits
 
-AI usage is subject to daily and weekly limits that apply across your instance. A usage indicator at the bottom of the panel shows how much of your daily limit you've consumed. If you reach the limit, wait until it resets - typically at midnight UTC. You can adjust the model and maximum token budget in the AI settings panel, accessible from the panel header.
+AI usage is subject to daily limits that apply across your instance. A usage indicator at the bottom of the panel shows how much of your daily limit you've consumed. If you reach the limit, wait until it resets - typically at midnight UTC. You can adjust the model and maximum token budget in the AI settings panel, accessible from the panel header menu.
 
 ## Tips for better results
 

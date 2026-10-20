@@ -10,11 +10,11 @@ Slide decks let you assemble visualizations into polished presentations for stak
 ## Creating a slide deck
 <!-- help#deck-create -->
 
-Open the **Products** tab on your instance home screen. Slide decks appear as cards in the product explorer alongside reports. Click **New** and choose **New deck** to create one — the editor opens straight away. You can organise decks into folders using **New folder**, and move them between folders from their card menu.
+Open the **Products** tab on your instance home screen. Slide decks appear as cards in the product explorer alongside reports. Click **New** and choose **New deck** to create one — a dialog opens where you name the deck, choose its results package, and set its scope before the editor opens. You can organise decks into folders using **New folder**, and move them between folders from their card menu.
 
 A new deck starts empty. When you open a new deck for the first time, FASTR asks you to choose a theme before you begin — this ensures the deck starts with a look you intend rather than a default. A rail on the left shows your slides, and the main area beside it shows the slide currently open for editing. You'll build out the deck by adding different slide types.
 
-To create slide decks, a results package must be pinned at the instance level first.
+To create slide decks, at least one results package and one scope must exist at the instance level.
 
 ![Creating Slide Deck](/images/creating-slide-deck-en.png)
 
@@ -41,7 +41,7 @@ If a visualization or image cannot be rendered - for example because of a data e
 
 The deck editor shows all your slides in a rail on the left. Click any slide thumbnail to open it for editing in the main area beside the rail. The current slide is highlighted with a ring in the rail and its number is shown in bold. A toolbar spanning the full width of the editor shows formatting controls for the open slide. The toolbar has two rows: a **menu row** (with **Slide**, **Insert**, and **Split panel** menus) above a **formatting row** that adapts to what is selected on the canvas.
 
-To type directly on the slide, double-click a text block or title field on the canvas. A dashed outline marks the area being edited, and the caret appears inside it. Press **Escape** or click outside to finish. For markdown text blocks, a **Markdown** option in the toolbar opens the full markdown source in a modal — useful for links, code blocks, or anything else the canvas editor cannot reach.
+To type directly on the slide, double-click a text block or title field on the canvas. A dashed outline marks the area being edited, and the caret appears inside it. Press **Escape** or click outside to finish.
 
 ## The slide toolbar
 
@@ -53,9 +53,11 @@ The toolbar's menu row contains three menus.
 
 Below the menu row, a formatting row shows controls that follow your selection. While typing in a text block it shows bold, italic, text style, text size, bullet list, numbered list, and quote controls. While a title field is selected it shows font size and weight controls. While a content block is selected it shows the block type (text, visualization, or image), a **Layout** button to split, add, move, or delete blocks, and controls for the selected block type.
 
+The slide toolbar and its **Add slide** button are visible only when you have edit permission on the deck. When you open a deck as a viewer, these controls are hidden.
+
 ## Deck settings
 
-The deck header contains a **Deck** menu that gives quick access to theme, logos, and footer settings for the whole deck without opening the full settings panel. Each change you make in this menu applies straight away. For complete configuration, click **All deck settings…** in the **Deck** menu to open the full settings panel.
+The deck header contains a **Deck** menu that gives quick access to theme, logos, and footer settings for the whole deck without opening the full settings panel. Each change you make in this menu applies straight away. The **Deck** menu is visible only when you have edit permission on the deck. For complete configuration, click **All deck settings…** in the **Deck** menu to open the full settings panel.
 
 To change the results package or scope, click **Package, scope and folder** from the deck's overflow menu. This opens the product settings panel where you can update those properties. Changing the package or scope affects every visualization in the deck — visualizations that came from a different package or scope show an update badge.
 
@@ -83,7 +85,15 @@ The slide toolbar includes **Undo** and **Redo** buttons. These reverse your own
 
 ## Copying slides between decks
 
-To copy slides from one deck to another, select the slides you want in the slide rail, then open the **File** menu and choose **Copy to deck…**. A dialog lets you pick the destination deck. The slides are copied with their visualizations intact; the visualizations will resolve under the destination deck's own results package and scope.
+To copy slides from one deck to another, select the slides you want in the slide rail, then open the **File** menu and choose **Copy to deck…**. A dialog lets you pick the destination deck. Only decks you can edit are listed as destinations. The slides are copied with their visualizations intact; the visualizations will resolve under the destination deck's own results package and scope.
+
+## Viewer access
+
+When you open a deck as a viewer (without edit permission), the slide rail and editor load in read-only mode. You can browse slides and use the presenter, but the toolbar shows only the **File** menu — with download, share, and other non-editing options. The **Add slide** button and the **Deck** menu are hidden. An empty deck shows a message indicating that no slides have been added yet.
+
+## Managing access
+
+Open the **File** menu and choose **Manage access…** to control who can view and edit the deck. This opens the product access panel where you can set per-user permission levels.
 
 ## Version history
 

@@ -32,14 +32,14 @@ Users can change their own email address from their profile. Open your profile b
 
 The change applies to every FASTR instance the user has access to, keeping all permissions and history. The process has three steps: enter the new address and confirm the list of affected instances; verify the code sent to the new address; then review the per-instance outcome. If any instance could not be updated, the old address stays on the account and a **Retry** option is available. Once all instances report success, the page reloads automatically.
 
-Administrators with the **Configure users** permission can also rename another user's email address directly from the **Users** tab using the **Rename email** action. This performs the same fleet-wide rename without requiring the user to initiate it themselves — useful as a support fallback when a user cannot log in under their old address.
+Administrators with the **Configure users** permission can also rename another user's email address directly from the **Users** tab using the **Rename email** action. This performs the same fleet-wide rename without requiring the user to initiate it themselves — useful as a support fallback when a user cannot log in under their old address. Only a global administrator can rename another global administrator's email address.
 
 ## Instance permissions
 <!-- help#users-instance-permissions -->
 
 Instance permissions determine what someone can access across your entire FASTR instance. Click on a user in the list to open their profile, then scroll to the permissions section.
 
-If you toggle **Instance administrator**, that user gets full access to everything - they can manage users, upload data, configure settings, and access all projects. Use this for people who need to maintain the platform itself, not for regular analysts.
+If you toggle **Instance administrator**, that user gets full access to everything - they can manage users, upload data, configure settings, and access all products. Use this for people who need to maintain the platform itself, not for regular analysts. Only a global administrator can grant or revoke the administrator flag.
 
 For non-administrators, you can enable specific permissions:
 
@@ -53,6 +53,12 @@ For non-administrators, you can enable specific permissions:
 Most analysts need only "View data" at the instance level. Their main work happens within products and projects where you'll configure more detailed permissions.
 
 ![Instance Users Permissions](/images/user-permissions-instance-en.png)
+
+## Scope access
+
+Global administrators can restrict which scopes a user may access. By default every user has access to all scopes. To restrict a user, open their profile and scroll to the **Scopes** card. Uncheck **All data** and select the specific scopes the user may use. A restricted user sees only products that carry one of their granted scopes, and data reads pass only through those scopes. The **View data**, **Configure data**, and **View logs** permission bits are suppressed for a restricted user regardless of what is stored, because those permissions expose raw package data that bypasses scope filtering.
+
+Scope access can only be set by a global administrator, even if another user holds the **Configure users** permission. A restricted user who holds the **Configure users** permission cannot grant the global administrator flag to others, because doing so would effectively lift their own scope restriction.
 
 ## Project permissions
 <!-- help#users-project-permissions -->

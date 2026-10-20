@@ -5,12 +5,14 @@ sidebar:
   order: 7
 ---
 
-L'assistant IA vous aide à explorer et à interpréter les données de votre projet par le biais d'une conversation. Il comprend vos modules, vos indicateurs et vos visualisations - vous pouvez donc poser des questions comme « que montre la tendance de la couverture en CPN1 ? » ou « quels districts ont la plus faible complétude des données ? » et obtenir des réponses fondées sur vos résultats réels.
+L'assistant IA vous aide à explorer et à interpréter vos données par le biais d'une conversation. Il est disponible sur l'ensemble de la plateforme — dans les présentations, les rapports, la page Explorer, la page Paquets de résultats et les vues de paquets individuels — afin que vous puissiez poser des questions où que vous travailliez.
 
 ## Ouvrir l'assistant
 <!-- help#ai-open -->
 
-Ouvrez une présentation ou un rapport pour travailler avec l'assistant IA. Cliquez sur **IA** dans l'en-tête de l'éditeur pour ouvrir le panneau de l'assistant sur le côté droit de l'écran. L'assistant est limité au produit que vous avez ouvert — chaque présentation ou rapport possède son propre historique de conversation, et l'assistant utilise automatiquement le paquet de résultats et la portée de ce produit.
+Cliquez sur le bouton **IA** sur le bord droit de l'écran pour ouvrir le panneau de l'assistant. Le panneau s'affiche en regard de votre vue actuelle. Pour le fermer, cliquez sur le bouton chevron dans l'en-tête du panneau ou cliquez à nouveau sur le bouton **IA**.
+
+L'assistant est sensible au contexte : chaque message lui indique la vue actuelle et, lorsqu'un paquet de résultats est en vue, le paquet et la portée sous lesquels chaque lecture de données se résout. Vous n'avez pas besoin de préciser quel paquet utiliser.
 
 ![Opening the Assistant FR](/images/opening-the-assistant-fr.png)
 
@@ -44,7 +46,7 @@ Chaque conversation gère son propre ensemble de pièces jointes. Lorsque vous p
 
 L'assistant est particulièrement utile lors de la création de présentations. Vous pouvez lui demander de rédiger le contenu de diapositives, de suggérer des visualisations qui appuient un récit, ou de vous aider à structurer votre présentation. Il sait quelles diapositives vous avez déjà ajoutées et peut faire référence aux indicateurs disponibles.
 
-Lorsque vous demandez à l'assistant de créer une diapositive, il en rédige le contenu et affiche un aperçu. Si la présentation est ouverte, vous pouvez ajouter le brouillon directement depuis la carte d'aperçu.
+Lorsque vous demandez à l'assistant de créer une diapositive, il en rédige le contenu et affiche un aperçu. Si la présentation est ouverte et que vous pouvez la modifier, vous pouvez ajouter le brouillon directement depuis la carte d'aperçu.
 
 Lors de la modification d'une diapositive existante, l'assistant peut également modifier les visualisations déjà présentes sur la diapositive - par exemple, changer le réplicant affiché par un graphique, ajuster des filtres ou mettre à jour des légendes - sans reconstruire la visualisation de zéro. L'assistant peut aussi mettre à jour les visualisations directement depuis la vue de la présentation, sans ouvrir l'éditeur de diapositive, et enregistre ces modifications immédiatement.
 
@@ -58,13 +60,13 @@ Chaque visualisation d'un rapport est résolue sous le paquet de résultats et l
 
 ## Conversations et historique
 
-Chaque conversation est enregistrée automatiquement et est limitée au produit (présentation ou rapport) que vous avez ouvert. Vous pouvez démarrer de nouvelles conversations et passer de l'une à l'autre à l'aide du menu. C'est utile lorsque vous avez demandé à l'assistant d'expliquer quelque chose de complexe - vous pouvez revenir à cette explication plus tard sans avoir à la redemander.
+Chaque conversation est enregistrée automatiquement. Vous pouvez démarrer de nouvelles conversations et passer de l'une à l'autre à l'aide du menu dans l'en-tête du panneau. L'assistant se souvient de ce dont vous avez discuté au sein d'une conversation, ce qui vous permet de vous appuyer sur les questions précédentes.
 
-L'assistant se souvient de ce dont vous avez discuté au sein d'une conversation, ce qui vous permet de vous appuyer sur les questions précédentes.
+Un seul onglet de navigateur peut exécuter le chat IA à la fois. Si vous ouvrez FASTR dans plusieurs onglets, l'onglet où l'assistant est actif affiche le chat complet ; les autres onglets affichent une notice avec un bouton **L'utiliser ici** pour déplacer le chat vers cet onglet.
 
 ## Limites d'utilisation
 
-L'utilisation de l'IA est soumise à des limites quotidiennes et hebdomadaires qui s'appliquent à l'ensemble de votre instance. Un indicateur d'utilisation au bas du panneau montre quelle part de votre limite quotidienne vous avez consommée. Si vous atteignez la limite, attendez sa réinitialisation - généralement à minuit UTC. Vous pouvez ajuster le modèle et le budget de jetons maximum dans le panneau de paramètres IA, accessible depuis l'en-tête du panneau.
+L'utilisation de l'IA est soumise à des limites quotidiennes qui s'appliquent à l'ensemble de votre instance. Un indicateur d'utilisation au bas du panneau montre quelle part de votre limite quotidienne vous avez consommée. Si vous atteignez la limite, attendez sa réinitialisation - généralement à minuit UTC. Vous pouvez ajuster le modèle et le budget de jetons maximum dans le panneau de paramètres IA, accessible depuis le menu de l'en-tête du panneau.
 
 ## Conseils pour de meilleurs résultats
 

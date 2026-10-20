@@ -28,7 +28,7 @@ The import wizard collects everything needed before any data is sent to the serv
 
 ### Step 1 — Upload files
 
-Select or upload your CSV data file and your XLSForm questionnaire file. Both files must be present before the wizard can proceed; the wizard parses the CSV headers against the XLSForm as soon as both are selected. If the files cannot be parsed together, an error appears and you should verify the XLSForm matches the CSV.
+Select or upload your CSV data file and your XLSForm questionnaire file. Both files must be present before the wizard can proceed; the wizard parses the CSV headers against the XLSForm as soon as both are selected. If the files cannot be parsed together, an error appears and you should verify the XLSForm matches the CSV. FASTR pre-fills the facility ID column mapping when it recognises a standard facility ID column name in the CSV headers.
 
 ### Step 2 — Mappings
 
@@ -36,7 +36,7 @@ Specify which CSV column contains facility identifiers and select the time point
 
 ### Step 3 — Duplicates
 
-This step shows any facilities that appear more than once after filtering and lets you choose which row to keep for each. A quick-set control lets you apply "first row" or "last row" across all duplicates at once; you can then override individual facilities. Row numbers count data rows from 1 in file order (excluding the header). When no facilities have more than one row after filtering, this step shows a message confirming there is nothing to resolve.
+This step shows any facilities that appear more than once after filtering and lets you choose which row to keep for each. When no facility has more than one row after filtering, this step shows a message confirming there is nothing to resolve. When duplicates exist, a quick-set control lets you apply "first row" or "last row" across all duplicates at once; you can then override individual facilities. Row numbers count data rows from 1 in file order (excluding the header).
 
 ### Step 4 — Review and launch
 
