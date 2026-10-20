@@ -48,7 +48,7 @@ Les pages suivantes présentent chaque partie de la plateforme plus en détail.
 - [Visualisations](/fr/user-guide/visualizations/) - Créer et personnaliser des graphiques, cartes et tableaux
 - [Tableaux de bord](/fr/user-guide/dashboards/) - Assembler des visualisations en tableaux de bord interactifs et partageables
 - [Présentations](/fr/user-guide/slide-decks/) - Élaborer des présentations et exporter des documents
-- [Rapports](/fr/user-guide/reports/) - Rédiger des documents détaillés intégrant des figures dynamiques
+- [Rapports](/fr/user-guide/reports/) - Rédiger des documents détaillés intégrant des visualisations dynamiques
 - [Assistant IA](/fr/user-guide/ai-assistant/) - Obtenir de l'aide pour interpréter vos données
 
 Commencez par Projets si vous débutez avec FASTR. Si vous maîtrisez déjà la plateforme et souhaitez créer un résultat précis, rendez-vous directement à Visualisations, Tableaux de bord, Présentations ou Rapports.

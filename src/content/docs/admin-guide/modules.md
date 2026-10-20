@@ -27,7 +27,7 @@ To produce module outputs, generate a new results package from the instance **Re
 
 The wizard is an ephemeral modal — nothing is saved to the server before you click **Launch generation**. The entire configuration (data family selections, module choices, and label) is submitted in a single step. If you close the wizard before launching, nothing is stored.
 
-After you click **Launch generation**, FASTR pins the new run's ID so that the detail pane opens for it as soon as the SSE notification arrives. You can leave the page and follow progress on the Results packages surface.
+After you click **Launch generation**, the new package's page opens automatically once the SSE notification arrives. You can leave the page and follow progress on the Results packages surface.
 
 ![Installing Modules](/images/installing-modules-en.png)
 
@@ -37,26 +37,27 @@ Select which data families this results package is generated from. Each included
 
 ### Step 2 — Configure modules
 
-Choose which modules to run. The selection list shows every available module as a checkbox. Selecting a module automatically includes all modules it depends on; a module cannot be unchecked while another selected module depends on it. Modules that require data families not chosen in step 1 are shown as unavailable, with a note naming which family is missing so you can go back to step 1 and add it.
+Choose which modules to run. The selection list shows every available module organised by data family, with primary modules first and supporting analyses beneath them. Select a module by checking its box. Selecting a module automatically includes all modules it depends on; a module cannot be unchecked while another selected module depends on it. Modules that require data families not chosen in step 1 are shown as unavailable, with a note naming which family is missing so you can go back to step 1 and add it.
 
 If any selected module has parameter values stored in the module defaults that fail validation, those module names are listed below the selection with a prompt to fix them in **Module defaults** before launching. Parameter values are not editable in the wizard.
 
 Available modules include:
 
-- **M11. Bayesian disruption detection (LI model)** — detects service disruptions using a Negative Binomial Bayesian model. Produces observed, expected, lower bound, and upper bound series that power the Bayesian disruptions chart. Requires M2 as a prerequisite.
-- **M12. Indicator values** — computes derived common indicator values by applying each indicator's formula to the summed ingredients from the HMIS extract. Requires M2 as a prerequisite. When population terms are used in indicator formulas, M12 uses person-years data from the population store; areas and months not covered by the population store are dropped for those indicators.
+- **Disruption detection** — detects service disruptions using a Negative Binomial Bayesian model. Produces observed, expected, lower bound, and upper bound series that power the Bayesian disruptions chart. Requires the data quality adjustments module as a prerequisite.
+- **Coverage estimates** — computes coverage estimates. Requires the coverage denominators module as a prerequisite.
+- **Indicator values** — computes derived common indicator values by applying each indicator's formula to the summed ingredients from the HMIS extract. Requires the data quality adjustments module as a prerequisite. When population terms are used in indicator formulas, this module uses person-years data from the population store; areas and months not covered by the population store are dropped for those indicators.
 
 ### Step 3 — Confirm and launch
 
 Enter a label for the results package and review the data and module selections. The wizard suggests a label that does not conflict with existing packages. Click **Launch generation** to start.
 
-## Population data and M12
+## Population data and indicator values
 
-When one or more indicator formulas reference a population term, M12 requires population data to be imported at the instance level before generation. The generation will fail if population data is referenced but not present for any area of the current HMIS structure at the configured population level.
+When one or more indicator formulas reference a population term, the indicator values module requires population data to be imported at the instance level before generation. The generation will fail if population data is referenced but not present for any area of the current HMIS structure at the configured population level.
 
 The population level must be set on the instance Population page and must not be deeper than the HMIS structure's admin area depth. If the population level is deeper than the structure, generation fails with a clear message explaining the mismatch.
 
-For areas and months where population data exists, M12 computes the indicator. For areas or months where the population store has no coverage, M12 drops those cells for population-dependent indicators rather than failing the whole generation. The results package records which population types were active and what coverage was achieved.
+For areas and months where population data exists, the module computes the indicator. For areas or months where the population store has no coverage, the module drops those cells for population-dependent indicators rather than failing the whole generation. The results package records which population types were active and what coverage was achieved.
 
 ## Pruning results packages
 
@@ -77,7 +78,7 @@ Each module in a results package displays its current generation status:
 - **Running** indicates the module is currently generating. Progress messages show which step is executing.
 - **Error** signals something went wrong during generation.
 
-Once a package is fully generated its status is shown on the results packages catalogue page.
+Once a package is fully generated its status is shown on the results packages catalogue page. Opening a package from the catalogue shows a status bar with the generation progress, module chips grouped by data family for a ready package, the live R output line while a script is running, which products use the package, and the population stamp if applicable.
 
 ![Module Status](/images/module-status-en.png)
 
@@ -91,4 +92,4 @@ Script and file access require the **View data** permission; log access requires
 
 ## Deleting results packages
 
-To remove a results package, select it in the instance results packages catalogue and click **Delete**. FASTR refuses to delete a package while any product is using it, while it is pinned, or while it is still generating. The detail pane explains the reason when deletion is blocked. Deletion permanently removes the package's files and cached results and cannot be undone.
+To remove a results package, open it from the instance results packages catalogue and click **Delete**. FASTR refuses to delete a package while any product is using it, while it is pinned, or while it is still generating. The detail view explains the reason when deletion is blocked. Deletion permanently removes the package's files and cached results and cannot be undone.

@@ -15,7 +15,7 @@ Accédez à la section **Données** et sélectionnez **Données HMIS**. La page 
 
 La zone principale affiche les données importées. Un enregistrement est une valeur rapportée par un établissement pour un mois.
 
-Choisissez **Enregistrements** pour compter les enregistrements, ou **Prestations de services** pour additionner les valeurs rapportées. Choisissez **Graphique linéaire** ou **Carte de chaleur** pour basculer entre un graphique linéaire chronologique et une carte de présence. La carte de chaleur indique pour quels indicateurs des données existent pour chaque période — une cellule remplie signifie qu'au moins un enregistrement existe ; par mois ou par année selon le bouton **Périodes**.
+Choisissez **Enregistrements** pour compter les enregistrements, ou **Prestations de services** pour additionner les valeurs rapportées. Choisissez **Carte de chaleur** ou **Graphique linéaire** pour basculer entre une carte de présence et un graphique linéaire chronologique. La carte de chaleur indique pour quels indicateurs des données existent pour chaque période — une cellule remplie signifie qu'au moins un enregistrement existe ; par mois ou par année selon le bouton **Périodes**.
 
 Le sélecteur d'indicateurs en haut filtre à la fois le graphique linéaire et la carte de chaleur.
 
@@ -64,7 +64,7 @@ La fusion met à jour les lignes déjà présentes pour un établissement, un in
 ## Processus d'importation DHIS2
 <!-- help#hmis-dhis2 -->
 
-Une importation DHIS2 récupère les valeurs rapportées par les établissements, un élément DHIS2 et un mois à la fois, directement depuis votre serveur DHIS2. Elle utilise la connexion DHIS2 enregistrée de l'instance, définie dans la carte de connexion DHIS2 de la page Données. Cliquez sur **Nouvelle importation DHIS2** pour ouvrir l'assistant. Si aucune connexion n'est enregistrée, une alerte explique comment en définir une. L'assistant comporte quatre étapes.
+Une importation DHIS2 récupère les valeurs rapportées par les établissements, un élément DHIS2 et un mois à la fois, directement depuis votre serveur DHIS2. Elle utilise la connexion DHIS2 enregistrée de l'instance, définie dans la ligne de connexion DHIS2 de la page Données. Cliquez sur **Nouvelle importation DHIS2** pour ouvrir l'assistant. Si aucune connexion n'est enregistrée, une alerte explique comment en définir une. L'assistant comporte quatre étapes.
 
 1. **Indicateurs.** Sélectionnez les indicateurs à importer. La liste affiche chaque indicateur enregistré dans votre instance qui possède des éléments DHIS2 à récupérer — les indicateurs de type Téléversé ne sont pas affichés car une importation DHIS2 ne peut pas les récupérer. Sélectionnez ceux dont vous souhaitez récupérer les données. L'assistant affiche les éléments DHIS2 vers lesquels la sélection se développe et signale tout indicateur calculé sélectionné dont la formule ne se résout pas.
 

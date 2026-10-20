@@ -27,7 +27,7 @@ Pour produire des résultats de modules, générez un nouveau lot de résultats 
 
 L'assistant est une fenêtre modale éphémère — rien n'est enregistré sur le serveur avant que vous ne cliquiez sur **Lancer la génération**. L'ensemble de la configuration (sélections de familles de données, choix de modules et libellé) est soumis en une seule étape. Si vous fermez l'assistant avant de lancer, rien n'est conservé.
 
-Après avoir cliqué sur **Lancer la génération**, FASTR sélectionne automatiquement l'identifiant du nouveau lot afin que le volet de détail s'ouvre dès que la notification SSE arrive. Vous pouvez quitter la page et suivre la progression sur la page Lots de résultats.
+Après avoir cliqué sur **Lancer la génération**, la page du nouveau lot s'ouvre automatiquement dès que la notification SSE arrive. Vous pouvez quitter la page et suivre la progression sur la page Lots de résultats.
 
 ![Installer des modules](/images/installing-modules-en.png)
 
@@ -37,26 +37,27 @@ Sélectionnez les familles de données à partir desquelles ce lot de résultats
 
 ### Étape 2 — Configurer les modules
 
-Choisissez les modules à exécuter. La liste de sélection affiche chaque module disponible sous forme de case à cocher. La sélection d'un module inclut automatiquement tous les modules dont il dépend ; un module ne peut pas être désélectionné tant qu'un autre module sélectionné en dépend. Les modules qui nécessitent des familles de données non choisies à l'étape 1 sont affichés comme indisponibles, avec une note indiquant quelle famille est manquante afin que vous puissiez revenir à l'étape 1 pour l'ajouter.
+Choisissez les modules à exécuter. La liste de sélection affiche chaque module disponible organisé par famille de données, avec les modules principaux en premier et les analyses complémentaires en dessous. Sélectionnez un module en cochant sa case. La sélection d'un module inclut automatiquement tous les modules dont il dépend ; un module ne peut pas être désélectionné tant qu'un autre module sélectionné en dépend. Les modules qui nécessitent des familles de données non choisies à l'étape 1 sont affichés comme indisponibles, avec une note indiquant quelle famille est manquante afin que vous puissiez revenir à l'étape 1 pour l'ajouter.
 
 Si un module sélectionné a des valeurs de paramètres enregistrées dans les paramètres par défaut des modules qui échouent à la validation, les noms de ces modules sont listés sous la sélection avec une invite à les corriger dans **Paramètres par défaut des modules** avant de lancer. Les valeurs des paramètres ne sont pas modifiables dans l'assistant.
 
 Les modules disponibles comprennent :
 
-- **M11. Détection bayésienne des perturbations (modèle LI)** — détecte les perturbations de service à l'aide d'un modèle bayésien binomial négatif. Produit les séries observée, attendue, borne inférieure et borne supérieure qui alimentent le graphique des perturbations bayésien. Nécessite M2 comme prérequis.
-- **M12. Valeurs des indicateurs** — calcule les valeurs des indicateurs communs dérivés en appliquant la formule de chaque indicateur aux ingrédients additionnés issus de l'extraction HMIS. Nécessite M2 comme prérequis. Lorsque des termes de population sont utilisés dans les formules d'indicateurs, M12 utilise les données de personnes-années issues du magasin de population ; les zones et les mois non couverts par le magasin de population sont exclus pour ces indicateurs.
+- **Détection des perturbations** — détecte les perturbations de service à l'aide d'un modèle bayésien binomial négatif. Produit les séries observée, attendue, borne inférieure et borne supérieure qui alimentent le graphique des perturbations bayésien. Nécessite le module d'ajustements de la qualité des données comme prérequis.
+- **Estimations de couverture** — calcule les estimations de couverture. Nécessite le module de dénominateurs de couverture comme prérequis.
+- **Valeurs des indicateurs** — calcule les valeurs des indicateurs communs dérivés en appliquant la formule de chaque indicateur aux ingrédients additionnés issus de l'extraction HMIS. Nécessite le module d'ajustements de la qualité des données comme prérequis. Lorsque des termes de population sont utilisés dans les formules d'indicateurs, ce module utilise les données de personnes-années issues du magasin de population ; les zones et les mois non couverts par le magasin de population sont exclus pour ces indicateurs.
 
 ### Étape 3 — Confirmer et lancer
 
 Saisissez un libellé pour le lot de résultats et vérifiez les sélections de données et de modules. L'assistant propose un libellé qui n'entre pas en conflit avec les lots existants. Cliquez sur **Lancer la génération** pour démarrer.
 
-## Données de population et M12
+## Données de population et valeurs des indicateurs
 
-Lorsqu'une ou plusieurs formules d'indicateurs font référence à un terme de population, M12 nécessite que des données de population soient importées au niveau de l'instance avant la génération. La génération échoue si une population est référencée mais qu'aucune donnée n'est présente pour une zone de la structure HMIS actuelle au niveau de population configuré.
+Lorsqu'une ou plusieurs formules d'indicateurs font référence à un terme de population, le module de valeurs des indicateurs nécessite que des données de population soient importées au niveau de l'instance avant la génération. La génération échoue si une population est référencée mais qu'aucune donnée n'est présente pour une zone de la structure HMIS actuelle au niveau de population configuré.
 
 Le niveau de population doit être défini sur la page Population de l'instance et ne doit pas être plus profond que le niveau de profondeur administrative de la structure HMIS. Si le niveau de population est plus profond que la structure, la génération échoue avec un message clair expliquant l'incompatibilité.
 
-Pour les zones et les mois pour lesquels des données de population existent, M12 calcule l'indicateur. Pour les zones ou les mois non couverts par le magasin de population, M12 exclut ces cellules pour les indicateurs dépendant de la population au lieu de faire échouer l'ensemble de la génération. Le lot de résultats enregistre les types de population actifs et la couverture obtenue.
+Pour les zones et les mois pour lesquels des données de population existent, le module calcule l'indicateur. Pour les zones ou les mois non couverts par le magasin de population, le module exclut ces cellules pour les indicateurs dépendant de la population au lieu de faire échouer l'ensemble de la génération. Le lot de résultats enregistre les types de population actifs et la couverture obtenue.
 
 ## Élaguer les lots de résultats
 
@@ -77,7 +78,7 @@ Chaque module dans un lot de résultats affiche son état de génération actuel
 - **En cours d'exécution** indique que le module génère actuellement des résultats. Des messages de progression montrent quelle étape est en cours.
 - **Erreur** signale qu'un problème est survenu lors de la génération.
 
-Une fois qu'un lot est entièrement généré, son statut s'affiche sur la page du catalogue des lots de résultats.
+Une fois qu'un lot est entièrement généré, son statut s'affiche sur la page du catalogue des lots de résultats. L'ouverture d'un lot depuis le catalogue affiche une barre d'état avec la progression de la génération, les puces de modules regroupées par famille de données pour un lot prêt, la ligne de sortie R en direct pendant l'exécution d'un script, les produits qui utilisent le lot et le tampon de population le cas échéant.
 
 ![État d'un module](/images/module-status-en.png)
 
@@ -91,4 +92,4 @@ L'accès au script et aux fichiers requiert la permission **Consulter les donné
 
 ## Supprimer des lots de résultats
 
-Pour supprimer un lot de résultats, sélectionnez-le dans le catalogue des lots de résultats de l'instance et cliquez sur **Supprimer**. FASTR refuse la suppression tant qu'un produit utilise le lot, tant que celui-ci est épinglé, ou tant que la génération est encore en cours. Le volet de détail explique la raison lorsque la suppression est bloquée. La suppression retire définitivement les fichiers et les résultats en cache du lot et ne peut pas être annulée.
+Pour supprimer un lot de résultats, ouvrez-le depuis le catalogue des lots de résultats de l'instance et cliquez sur **Supprimer**. FASTR refuse la suppression tant qu'un produit utilise le lot, tant que celui-ci est épinglé, ou tant que la génération est encore en cours. La vue de détail explique la raison lorsque la suppression est bloquée. La suppression retire définitivement les fichiers et les résultats en cache du lot et ne peut pas être annulée.

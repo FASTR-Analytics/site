@@ -18,7 +18,7 @@ The indicator list shows every indicator with its ID, label, type, and what defi
 
 To create an indicator, click **Create new**. Give it an ID and a label, then choose its type. The type determines what definition fields appear.
 
-To sort the list order used by every indicator axis in every figure, click **Sort**.
+To sort the list order used by every indicator axis in every visualization, click **Sort**.
 
 To see what each type entails, click **Indicator types** in the heading bar. To see the special indicator IDs, population terms, and reserved words, click **Special indicators and reserved words**.
 
@@ -56,7 +56,7 @@ Every indicator has an **Include in analysis** toggle. When it is on, every resu
 ### Adding indicators from DHIS2
 <!-- help#ind-dhis2-import -->
 
-Click **Add from DHIS2** to add data elements or DHIS2 indicators from your DHIS2 server. FASTR uses the instance's stored DHIS2 connection, which is set in the DHIS2 connection card on the Data page; if none is stored, an alert explains how to set one.
+Click **Add from DHIS2** to add data elements or DHIS2 indicators from your DHIS2 server. FASTR uses the instance's stored DHIS2 connection, which is set in the DHIS2 connection row on the Data page; if none is stored, an alert explains how to set one.
 
 The form has two phases. In the **Select** phase, search by name, code, or ID. Results show both data elements and DHIS2 indicators. A data element can be added as-is or expanded to select individual category option combos (operands). A DHIS2 indicator is decomposed into its operands and a calculated indicator whose formula is over the indicators those operands become; the form shows the formula and flags any operand that cannot be added. Select the items you want and click **Next: name indicators**.
 

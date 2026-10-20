@@ -5,7 +5,7 @@ sidebar:
   order: 7
 ---
 
-L'assistant IA vous aide à explorer et à interpréter les données de votre projet par le biais d'une conversation. Il comprend vos modules, vos indicateurs et vos figures - vous pouvez donc poser des questions comme « que montre la tendance de la couverture en CPN1 ? » ou « quels districts ont la plus faible complétude des données ? » et obtenir des réponses fondées sur vos résultats réels.
+L'assistant IA vous aide à explorer et à interpréter les données de votre projet par le biais d'une conversation. Il comprend vos modules, vos indicateurs et vos visualisations - vous pouvez donc poser des questions comme « que montre la tendance de la couverture en CPN1 ? » ou « quels districts ont la plus faible complétude des données ? » et obtenir des réponses fondées sur vos résultats réels.
 
 ## Ouvrir l'assistant
 <!-- help#ai-open -->
@@ -42,19 +42,19 @@ Chaque conversation gère son propre ensemble de pièces jointes. Lorsque vous p
 
 ## Travailler avec les diapositives
 
-L'assistant est particulièrement utile lors de la création de présentations. Vous pouvez lui demander de rédiger le contenu de diapositives, de suggérer des figures qui appuient un récit, ou de vous aider à structurer votre présentation. Il sait quelles diapositives vous avez déjà ajoutées et peut faire référence aux indicateurs disponibles.
+L'assistant est particulièrement utile lors de la création de présentations. Vous pouvez lui demander de rédiger le contenu de diapositives, de suggérer des visualisations qui appuient un récit, ou de vous aider à structurer votre présentation. Il sait quelles diapositives vous avez déjà ajoutées et peut faire référence aux indicateurs disponibles.
 
 Lorsque vous demandez à l'assistant de créer une diapositive, il en rédige le contenu et affiche un aperçu. Si la présentation est ouverte, vous pouvez ajouter le brouillon directement depuis la carte d'aperçu.
 
-Lors de la modification d'une diapositive existante, l'assistant peut également modifier les figures déjà présentes sur la diapositive - par exemple, changer le réplicant affiché par un graphique, ajuster des filtres ou mettre à jour des légendes - sans reconstruire la figure de zéro. L'assistant peut aussi mettre à jour les figures directement depuis la vue de la présentation, sans ouvrir l'éditeur de diapositive, et enregistre ces modifications immédiatement.
+Lors de la modification d'une diapositive existante, l'assistant peut également modifier les visualisations déjà présentes sur la diapositive - par exemple, changer le réplicant affiché par un graphique, ajuster des filtres ou mettre à jour des légendes - sans reconstruire la visualisation de zéro. L'assistant peut aussi mettre à jour les visualisations directement depuis la vue de la présentation, sans ouvrir l'éditeur de diapositive, et enregistre ces modifications immédiatement.
 
-Chaque figure d'une présentation est résolue sous le paquet de résultats et la portée propres à cette présentation. Lorsque l'assistant crée ou modifie une figure, il utilise automatiquement le paquet associé à la présentation — vous n'avez pas besoin de préciser quel paquet utiliser.
+Chaque visualisation d'une présentation est résolue sous le paquet de résultats et la portée propres à cette présentation. Lorsque l'assistant crée ou modifie une visualisation, il utilise automatiquement le paquet associé à la présentation — vous n'avez pas besoin de préciser quel paquet utiliser.
 
 ## Travailler avec les rapports
 
-Dans l'éditeur de rapport, l'assistant peut réécrire des passages, insérer de nouvelles figures et modifier des figures existantes directement. Lorsque vous lui demandez de modifier du texte, il propose un diff dans une fenêtre modale que vous acceptez ou refusez avant toute application. Lorsque vous lui demandez de modifier une figure - par exemple, changer son réplicant ou son filtre de période - il applique la modification directement à l'aperçu en direct et enregistre immédiatement, sans étape de diff. Pour remplacer une figure par un graphique ou un indicateur entièrement différent, demandez à l'assistant de remplacer la figure plutôt que de la modifier.
+Dans l'éditeur de rapport, l'assistant peut réécrire des passages, insérer de nouvelles visualisations et modifier des visualisations existantes directement. Lorsque vous lui demandez de modifier du texte, il propose un diff dans une fenêtre modale que vous acceptez ou refusez avant toute application. Lorsque vous lui demandez de modifier une visualisation - par exemple, changer son réplicant ou son filtre de période - il applique la modification directement à l'aperçu en direct et enregistre immédiatement, sans étape de diff. Pour remplacer une visualisation par un graphique ou un indicateur entièrement différent, demandez à l'assistant de remplacer la visualisation plutôt que de la modifier.
 
-Chaque figure d'un rapport est résolue sous le paquet de résultats et la portée propres à ce rapport. Lorsque l'assistant insère ou remplace une figure, il utilise automatiquement le paquet associé au rapport.
+Chaque visualisation d'un rapport est résolue sous le paquet de résultats et la portée propres à ce rapport. Lorsque l'assistant insère ou remplace une visualisation, il utilise automatiquement le paquet associé au rapport.
 
 ## Conversations et historique
 

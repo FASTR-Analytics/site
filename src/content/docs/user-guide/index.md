@@ -48,7 +48,7 @@ The following pages walk through each part of the platform in more detail.
 - [Visualizations](/user-guide/visualizations/) - Creating and customizing charts, maps, and tables
 - [Dashboards](/user-guide/dashboards/) - Assembling visualizations into live, shareable dashboards
 - [Slide decks](/user-guide/slide-decks/) - Building presentations and exporting documents
-- [Reports](/user-guide/reports/) - Writing long-form documents with embedded live figures
+- [Reports](/user-guide/reports/) - Writing long-form documents with embedded live visualizations
 - [AI assistant](/user-guide/ai-assistant/) - Getting help interpreting your data
 
 Start with Projects if you're new to FASTR. If you already know your way around and want to create a specific output, jump directly to Visualizations, Dashboards, Slide decks, or Reports.

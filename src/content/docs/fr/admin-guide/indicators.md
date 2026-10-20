@@ -18,7 +18,7 @@ La liste des indicateurs affiche chaque indicateur avec son identifiant, son lib
 
 Pour créer un indicateur, cliquez sur **Créer**. Donnez-lui un identifiant et un libellé, puis choisissez son type. Le type détermine les champs de définition qui s'affichent.
 
-Pour définir l'ordre de la liste utilisé par chaque axe d'indicateurs dans chaque figure, cliquez sur **Trier**.
+Pour définir l'ordre de la liste utilisé par chaque axe d'indicateurs dans chaque visualisation, cliquez sur **Trier**.
 
 Pour voir ce qu'implique chaque type, cliquez sur **Types d'indicateurs** dans la barre d'en-tête. Pour voir les identifiants d'indicateurs spéciaux, les termes de population et les mots réservés, cliquez sur **Indicateurs spéciaux et mots réservés**.
 
@@ -56,7 +56,7 @@ Chaque indicateur possède une case à cocher **Inclure dans l'analyse**. Lorsqu
 ### Ajouter des indicateurs depuis DHIS2
 <!-- help#ind-dhis2-import -->
 
-Cliquez sur **Ajouter depuis DHIS2** pour ajouter des éléments de données ou des indicateurs DHIS2 depuis votre serveur. FASTR utilise la connexion DHIS2 enregistrée de l'instance, définie dans la carte de connexion DHIS2 de la page Données ; si aucune n'est enregistrée, une alerte explique comment en définir une.
+Cliquez sur **Ajouter depuis DHIS2** pour ajouter des éléments de données ou des indicateurs DHIS2 depuis votre serveur. FASTR utilise la connexion DHIS2 enregistrée de l'instance, définie dans la ligne de connexion DHIS2 de la page Données ; si aucune n'est enregistrée, une alerte explique comment en définir une.
 
 Le formulaire comporte deux phases. Dans la phase **Sélectionner**, recherchez par nom, code ou identifiant. Les résultats affichent à la fois les éléments de données et les indicateurs DHIS2. Un élément de données peut être ajouté tel quel ou développé pour sélectionner des combinaisons d'options de catégorie individuelles (opérandes). Un indicateur DHIS2 est décomposé en ses opérandes et un indicateur calculé dont la formule porte sur les indicateurs que ces opérandes deviennent ; le formulaire affiche la formule et signale tout opérande qui ne peut pas être ajouté. Sélectionnez les éléments souhaités et cliquez sur **Suivant : nommer les indicateurs**.
 

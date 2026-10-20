@@ -15,7 +15,7 @@ Go to the **Data** section and select **HMIS Data**. The page shows your data ac
 
 The main area shows the data that has been imported. A record is one value reported by one facility for one month.
 
-Choose **Records** to count the records, or **Service counts** to add the reported values together. Choose **Line graph** or **Heat map** to switch between a timeseries line graph and a presence heat map. The heat map shows which indicators have data for each period — a filled cell means at least one record exists; by month or by year depending on the **Periods** toggle.
+Choose **Records** to count the records, or **Service counts** to add the reported values together. Choose **Heat map** or **Line graph** to switch between a presence heat map and a timeseries line graph. The heat map shows which indicators have data for each period — a filled cell means at least one record exists; by month or by year depending on the **Periods** toggle.
 
 The indicator selector at the top filters both the line graph and the heat map.
 
@@ -64,7 +64,7 @@ Merging updates the rows already present for a facility, indicator and month, an
 ## DHIS2 import workflow
 <!-- help#hmis-dhis2 -->
 
-A DHIS2 import fetches the values facilities reported, one DHIS2 element and month at a time, directly from your DHIS2 server. It uses the instance's stored DHIS2 connection, which is set in the DHIS2 connection card on the Data page. Click **New DHIS2 import** to open the wizard. If no connection is stored, an alert explains how to set one. The wizard has four steps.
+A DHIS2 import fetches the values facilities reported, one DHIS2 element and month at a time, directly from your DHIS2 server. It uses the instance's stored DHIS2 connection, which is set in the DHIS2 connection row on the Data page. Click **New DHIS2 import** to open the wizard. If no connection is stored, an alert explains how to set one. The wizard has four steps.
 
 1. **Indicators.** Select the indicators to import. The list shows every indicator registered in your instance that has DHIS2 elements to fetch — Uploaded indicators are not shown because a DHIS2 import cannot fetch them. Select the ones whose data you want to fetch. The wizard shows which DHIS2 elements the selection expands to, and flags any selected calculated indicator whose formula does not resolve.
 
