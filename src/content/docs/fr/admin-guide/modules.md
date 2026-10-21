@@ -45,7 +45,7 @@ Les modules disponibles comprennent :
 
 - **Détection des perturbations** — détecte les perturbations de service à l'aide d'un modèle bayésien binomial négatif. Produit les séries observée, attendue, borne inférieure et borne supérieure qui alimentent le graphique des perturbations bayésien. Nécessite le module d'ajustements de la qualité des données comme prérequis.
 - **Estimations de couverture** — calcule les estimations de couverture. Nécessite le module de dénominateurs de couverture comme prérequis.
-- **Valeurs des indicateurs** — calcule les valeurs des indicateurs communs dérivés en appliquant la formule de chaque indicateur aux ingrédients additionnés issus de l'extraction HMIS. Nécessite le module d'ajustements de la qualité des données comme prérequis. Lorsque des termes de population sont utilisés dans les formules d'indicateurs, ce module utilise les données de personnes-années issues du magasin de population ; les zones et les mois non couverts par le magasin de population sont exclus pour ces indicateurs.
+- **Utilisation des services** — calcule les valeurs des indicateurs communs dérivés en appliquant la formule de chaque indicateur aux ingrédients additionnés issus de l'extraction HMIS. Nécessite le module d'ajustements de la qualité des données comme prérequis. Lorsque des termes de population sont utilisés dans les formules d'indicateurs, ce module utilise les données de personnes-années issues du magasin de population ; les zones et les mois non couverts par le magasin de population sont exclus pour ces indicateurs.
 
 ### Étape 3 — Confirmer et lancer
 
@@ -53,7 +53,7 @@ Saisissez un libellé pour le lot de résultats et vérifiez les sélections de 
 
 ## Données de population et valeurs des indicateurs
 
-Lorsqu'une ou plusieurs formules d'indicateurs font référence à un terme de population, le module de valeurs des indicateurs nécessite que des données de population soient importées au niveau de l'instance avant la génération. La génération échoue si une population est référencée mais qu'aucune donnée n'est présente pour une zone de la structure HMIS actuelle au niveau de population configuré.
+Lorsqu'une ou plusieurs formules d'indicateurs font référence à un terme de population, le module d'utilisation des services nécessite que des données de population soient importées au niveau de l'instance avant la génération. La génération échoue si une population est référencée mais qu'aucune donnée n'est présente pour une zone de la structure HMIS actuelle au niveau de population configuré.
 
 Le niveau de population doit être défini sur la page Population de l'instance et ne doit pas être plus profond que le niveau de profondeur administrative de la structure HMIS. Si le niveau de population est plus profond que la structure, la génération échoue avec un message clair expliquant l'incompatibilité.
 

@@ -45,7 +45,7 @@ Available modules include:
 
 - **Disruption detection** — detects service disruptions using a Negative Binomial Bayesian model. Produces observed, expected, lower bound, and upper bound series that power the Bayesian disruptions chart. Requires the data quality adjustments module as a prerequisite.
 - **Coverage estimates** — computes coverage estimates. Requires the coverage denominators module as a prerequisite.
-- **Indicator values** — computes derived common indicator values by applying each indicator's formula to the summed ingredients from the HMIS extract. Requires the data quality adjustments module as a prerequisite. When population terms are used in indicator formulas, this module uses person-years data from the population store; areas and months not covered by the population store are dropped for those indicators.
+- **Service utilization** — computes derived common indicator values by applying each indicator's formula to the summed ingredients from the HMIS extract. Requires the data quality adjustments module as a prerequisite. When population terms are used in indicator formulas, this module uses person-years data from the population store; areas and months not covered by the population store are dropped for those indicators.
 
 ### Step 3 — Confirm and launch
 
@@ -53,7 +53,7 @@ Enter a label for the results package and review the data and module selections.
 
 ## Population data and indicator values
 
-When one or more indicator formulas reference a population term, the indicator values module requires population data to be imported at the instance level before generation. The generation will fail if population data is referenced but not present for any area of the current HMIS structure at the configured population level.
+When one or more indicator formulas reference a population term, the service utilization module requires population data to be imported at the instance level before generation. The generation will fail if population data is referenced but not present for any area of the current HMIS structure at the configured population level.
 
 The population level must be set on the instance Population page and must not be deeper than the HMIS structure's admin area depth. If the population level is deeper than the structure, generation fails with a clear message explaining the mismatch.
 
