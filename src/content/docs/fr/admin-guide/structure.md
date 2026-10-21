@@ -41,45 +41,43 @@ Chaque registre (SNIS et Enquêtes FOSA) possède sa propre ligne de configurati
 
 Les noms des niveaux de zones administratives comme « Région » ou « District » sont partagés par les deux registres. Définissez-les depuis la ligne **Libellés des zones administratives** dans la section Données. Saisissez la forme singulière du nom pour chaque niveau utilisé. Laissez un niveau vide pour utiliser la valeur par défaut. Ces libellés apparaissent partout où les données sont désagrégées par zone.
 
-## Importer des établissements
+## Importer des établissements SNIS
 
-Pour importer des établissements, accédez à la section **Données** et ouvrez la ligne **Établissements SNIS** ou la ligne **Établissements Enquêtes FOSA** selon le registre que vous souhaitez mettre à jour. Chaque registre dispose de son propre assistant d'importation. Les importations de chaque registre sont indépendantes : vous pouvez lancer simultanément une importation SNIS et une importation FOSA.
+Pour importer des établissements SNIS, accédez à la section **Données** et ouvrez la ligne **Établissements SNIS**. L'importation suit un assistant en plusieurs étapes.
 
-### Import CSV
+**Étape 0 - Choisir la source.** Sélectionnez CSV ou DHIS2 comme méthode d'importation.
 
-L'import CSV suit un assistant en plusieurs étapes.
+**Étape 1 - Charger le fichier (CSV) ou confirmer la connexion (DHIS2).** Pour CSV, chargez un fichier comportant une ligne par établissement. Pour DHIS2, confirmez la connexion enregistrée de l'instance.
 
-**Étape 0 - Choisir la source.** Sélectionnez CSV comme méthode d'importation.
+**Étape 2 - Associer les colonnes (CSV) ou sélectionner les niveaux d'unités organisationnelles (DHIS2).** Pour CSV, activez les colonnes que vous souhaitez importer et associez chacune à une colonne de votre fichier. Seule la colonne Identifiant d'établissement est obligatoire. Les unités administratives sont tout ou rien. Les colonnes de métadonnées facultatives peuvent être activées ou désactivées indépendamment. Pour DHIS2, sélectionnez les niveaux d'unités organisationnelles à importer.
 
-**Étape 1 - Charger le fichier.** Chargez un fichier CSV comportant une ligne par établissement. Pour les importations Enquêtes FOSA uniquement, vous pouvez également charger un fichier de questionnaire ODK (XLSForm) à cette étape. Si vos colonnes d'établissement contiennent des codes select_one ODK, fournir le questionnaire permet de remplacer ces codes par leurs libellés lors de l'importation.
+**Étape 3 - Préparer les données.** FASTR valide le fichier et charge les lignes dans une table de préparation. La progression se met à jour automatiquement.
 
-**Étape 2 - Associer les colonnes.** Activez les colonnes que vous souhaitez importer et associez chacune à une colonne de votre fichier. Seule la colonne Identifiant d'établissement est obligatoire. Les unités administratives sont tout ou rien : soit vous associez tous les niveaux, soit aucun. Les colonnes de métadonnées facultatives (nom, type, propriété, champs personnalisés) peuvent chacune être activées ou désactivées indépendamment. Si vous ne faites que mettre à jour des métadonnées sans modifier la localisation géographique des établissements, vous pouvez laisser les unités administratives désactivées.
+**Étape 4 - Vérifier les valeurs (sources CSV uniquement).** Si les données préparées contiennent des colonnes dont les valeurs peuvent être réassignées avant l'importation — comme le type d'établissement ou la propriété — une étape de vérification s'affiche. Cochez les valeurs nécessitant une réassignation, sélectionnez les établissements concernés dans le tableau et utilisez le menu déroulant **Réassigner à** pour les affecter à une valeur cible. Vous pouvez également ajouter de nouvelles valeurs de catégorie en les saisissant dans le champ **Nouvelle catégorie**. Pour les imports CSV, vous pouvez afficher jusqu'à cinq colonnes supplémentaires de votre fichier à côté du tableau de réassignation. Cette étape est facultative — si rien ne nécessite de réassignation, cliquez sur **Continuer vers l'importation**. Une fois terminé, cliquez sur **Sauvegarder et continuer**.
 
-**Étape 3 - Préparer les données.** FASTR valide le fichier et charge les lignes dans une table de préparation. La progression se met à jour automatiquement. Si l'importation s'exécute en arrière-plan, l'assistant affiche un écran de progression en direct qui se met à jour automatiquement jusqu'à la fin de l'importation. Vous pouvez quitter cette page et y revenir en toute sécurité.
+**Étape 5 - Vérifier et intégrer.** Le résumé de la préparation indique combien d'établissements figurent dans votre fichier et combien existent déjà dans le registre. Si vous avez enregistré des réassignations de valeurs, le résumé indique combien d'établissements seront recodés par colonne. Choisissez un mode d'intégration :
 
-**Étape 4 - Vérifier les valeurs (sources CSV uniquement).** Si les données préparées contiennent des colonnes dont les valeurs peuvent être réassignées avant l'importation — comme le type d'établissement ou la propriété — une étape de vérification s'affiche. Cochez les valeurs nécessitant une réassignation, sélectionnez les établissements concernés dans le tableau et utilisez le menu déroulant **Réassigner à** pour les affecter à une valeur cible. Vous pouvez également ajouter de nouvelles valeurs de catégorie en les saisissant dans le champ **Nouvelle catégorie**. Pour les imports CSV, vous pouvez afficher jusqu'à cinq colonnes supplémentaires de votre fichier à côté du tableau de réassignation pour aider à identifier les établissements. Cette étape est facultative — si rien ne nécessite de réassignation, cliquez sur **Continuer vers l'importation**. Une fois terminé, cliquez sur **Sauvegarder et continuer** pour enregistrer vos réassignations.
+- **Remplacer tous les établissements existants** — votre fichier devient le registre. Les établissements de votre fichier sont ajoutés ou mis à jour, et tout établissement absent de votre fichier est supprimé. Ce mode nécessite que les unités administratives soient associées. FASTR bloque ce mode si un jeu de données ou des pondérations référencent encore des établissements qui seraient supprimés.
+- **Ajouter les nouveaux établissements et mettre à jour les existants** - ajoute les établissements dont les identifiants sont nouveaux et met à jour les existants. Ce mode nécessite également les unités administratives.
+- **Mettre à jour uniquement les établissements existants** - ne met à jour que les établissements déjà présents ; l'importation est rejetée si votre fichier contient un identifiant absent du registre.
 
-**Étape 5 - Vérifier et intégrer.** Le résumé de la préparation indique combien d'établissements figurent dans votre fichier et combien existent déjà dans le registre. Si vous avez fourni un questionnaire ODK à l'étape 1 (importations Enquêtes FOSA uniquement), le résumé indique également quelles colonnes ont eu leurs codes ODK remplacés par des libellés, combien de valeurs ont été résolues, et les codes qui n'ont pas pu être associés au questionnaire. Si vous avez enregistré des réassignations de valeurs à l'étape précédente, le résumé indique combien d'établissements seront recodés par colonne. Choisissez un mode d'intégration :
+Avant de confirmer, le résumé indique combien d'établissements existants correspondent aux identifiants de votre fichier et combien sont nouveaux. Si aucun ne correspond alors que vous attendiez des mises à jour, la colonne Identifiant d'établissement est probablement mal associée.
 
-- **Remplacer tous les établissements existants** — votre fichier devient le registre. Les établissements de votre fichier sont ajoutés ou mis à jour, et tout établissement absent de votre fichier est supprimé. Les colonnes que vous n'avez pas associées sont effacées sur les établissements mis à jour. Ce mode nécessite que les unités administratives soient associées. FASTR bloque ce mode si un jeu de données ou des pondérations d'échantillonnage référencent encore des établissements qui seraient supprimés.
-- **Ajouter les nouveaux établissements et mettre à jour les existants** - ajoute les établissements dont les identifiants sont nouveaux et met à jour les existants avec les colonnes que vous avez associées. Ce mode nécessite également les unités administratives.
-- **Mettre à jour uniquement les établissements existants** - ne met à jour que les établissements déjà présents dans le registre ; l'importation est rejetée si votre fichier contient un identifiant absent du registre.
-
-Avant de confirmer, le résumé indique combien d'établissements existants correspondent aux identifiants de votre fichier et combien sont nouveaux. Si aucun ne correspond alors que vous attendiez des mises à jour, la colonne Identifiant d'établissement est probablement mal associée, ou vous importez dans le mauvais registre (SNIS ou FOSA).
-
-Après une intégration réussie, si des limites de cartes GeoJSON précédemment téléversées ne correspondent plus à aucune zone administrative - par exemple parce qu'une importation a renommé des zones - le résumé affiche un avertissement indiquant quel registre est concerné. Corrigez ces incohérences dans l'éditeur GeoJSON.
+Après une intégration réussie, si des limites de cartes GeoJSON ne correspondent plus à aucune zone administrative, le résumé affiche un avertissement. Corrigez ces incohérences dans l'éditeur GeoJSON.
 
 ![Structure Import FR](/images/structure-import-fr.png)
 
-### Import DHIS2
+## Établissements Enquêtes FOSA
 
-L'import DHIS2 est disponible pour les établissements SNIS. FASTR utilise la connexion DHIS2 enregistrée de l'instance, définie dans la ligne **Connexion DHIS2** de la page Données. Confirmez la connexion, puis sélectionnez les niveaux d'unités organisationnelles à importer. FASTR fait correspondre les niveaux DHIS2 aux niveaux de zones administratives. Les établissements Enquêtes FOSA ne peuvent être importés qu'à partir d'un fichier CSV.
+Les établissements Enquêtes FOSA sont créés et mis à jour par l'importation des données de chaque point temporel, et non via un assistant d'importation distinct. Ouvrez la ligne **Établissements Enquêtes FOSA** dans la section Données pour consulter et modifier la liste des établissements HFA. Un administrateur global peut cliquer sur une ligne pour modifier les unités administratives et les colonnes facultatives de l'établissement.
+
+Le panneau de gauche explique le fonctionnement de la gestion des établissements HFA. Si des établissements existent, une section **Établissements inutilisés** apparaît avec un bouton **Supprimer** qui compte puis confirme la suppression des établissements sans données ni pondérations.
 
 Le mot de passe DHIS2 est chiffré et stocké sur le serveur, et n'est jamais renvoyé au navigateur.
 
 ## Gérer les établissements existants
 
-Une fois importés, les établissements apparaissent sous forme de tableau consultable affichant tous les enregistrements avec leurs rattachements aux zones administratives et leurs attributs. Pour les mettre à jour - ajouter des établissements, corriger des rattachements ou actualiser des attributs - lancez un nouvel import avec le mode d'intégration approprié.
+Une fois importés, les établissements apparaissent sous forme de tableau consultable affichant tous les enregistrements avec leurs rattachements aux zones administratives et leurs attributs. Pour mettre à jour les établissements SNIS - ajouter des établissements, corriger des rattachements ou actualiser des attributs - lancez un nouvel import avec le mode d'intégration approprié.
 
 Pour supprimer tous les établissements d'un registre, ouvrez la ligne de ce registre et cliquez sur **Supprimer les établissements**. Cela supprime uniquement les établissements de ce registre ; les zones administratives encore référencées par l'autre registre sont conservées. Seuls les administrateurs globaux peuvent supprimer des établissements.
 
@@ -87,13 +85,13 @@ Pour supprimer tous les établissements d'un registre, ouvrez la ligne de ce reg
 
 ## Pondérations d'échantillonnage des établissements HFA
 
-Pour les analyses HFA nécessitant des estimations pondérées, vous pouvez téléverser des pondérations d'échantillonnage par établissement. Accédez à la section **Données** et cliquez sur la ligne **Pondérations d'échantillonnage** pour ouvrir le gestionnaire de pondérations. Seuls les administrateurs globaux peuvent importer ou supprimer des pondérations ; tous les utilisateurs disposant d'un accès aux données peuvent consulter le tableau des pondérations et télécharger les pondérations actuelles au format CSV.
+Pour les analyses HFA nécessitant des estimations pondérées, vous pouvez téléverser des pondérations d'échantillonnage par établissement. Accédez à la section **Données** et cliquez sur la ligne **Pondérations d'échantillonnage** pour ouvrir le gestionnaire de pondérations. Seuls les administrateurs globaux peuvent importer ou supprimer des pondérations ; tous les utilisateurs disposant d'un accès aux données peuvent consulter le tableau et télécharger les pondérations actuelles au format CSV.
 
-Préparez un fichier CSV avec une colonne d'identifiant d'établissement et une colonne de pondération. Chaque importation couvre un point temporel. Pour téléverser les pondérations, sélectionnez ou chargez votre CSV, puis associez la colonne d'identifiant d'établissement, la colonne de pondération et le point temporel cible. Une cellule de pondération vide signifie que l'établissement n'est pas dans l'échantillon de ce tour et sera ignorée. Une importation réussie indique combien de pondérations ont été importées, combien de cellules vides ont été ignorées et quel point temporel a été couvert. Un nouveau téléversement met à jour les pondérations existantes pour le même établissement et le même point temporel.
+Préparez un fichier CSV avec une colonne d'identifiant d'établissement, une colonne de pondération et, facultativement, une colonne de strate d'échantillonnage. Chaque importation couvre un point temporel. Importez d'abord les données du point temporel : l'importation des données crée les établissements HFA, et une pondération pour un établissement absent de la liste est ignorée. Une cellule de pondération vide signifie que l'établissement n'est pas dans l'échantillon de ce round et sera ignorée.
 
-Le gestionnaire de pondérations affiche un résumé de couverture indiquant, pour chaque point temporel, combien d'établissements disposant de données ont une pondération correspondante. Un point temporel pour lequel des pondérations ont été téléversées mais aucune donnée n'a encore été importée affiche le nombre de pondérations avec une note indiquant qu'aucune donnée n'a encore été importée. Un avertissement met en évidence les points temporels où certains établissements ont des données mais aucune pondération - ces établissements compteront avec une pondération de 1 lorsque l'analyse pondérée sera activée.
+Une importation réussie indique combien de pondérations ont été importées, le nombre de strates si une colonne de strate a été associée, combien de pondérations n'avaient pas de strate et les identifiants d'établissements dont les pondérations ont été ignorées.
 
-Si aucune pondération d'échantillonnage n'a encore été importée, le gestionnaire affiche un message indiquant qu'aucune pondération n'est disponible, plutôt qu'une erreur.
+Le gestionnaire de pondérations affiche un résumé de couverture indiquant, pour chaque point temporel, combien d'établissements disposant de données ont une pondération correspondante. Un avertissement met en évidence les points temporels où certains établissements ont des données mais aucune pondération.
 
 Pour supprimer toutes les pondérations d'échantillonnage, cliquez sur **Supprimer toutes les pondérations**. Cela n'affecte ni les enregistrements d'établissements ni les données HFA.
 

@@ -11,11 +11,11 @@ Ce guide couvre les tâches d'administration destinées aux gestionnaires d'inst
 
 En tant qu'administrateur d'instance, vous êtes responsable des fondations sur lesquelles s'appuient les analystes et les gestionnaires de programmes. Votre travail se répartit en plusieurs catégories - gestion des utilisateurs, configuration des données et supervision des projets - chacune comportant son propre ensemble de tâches et de considérations.
 
-La gestion des utilisateurs consiste à ajouter des personnes à la plateforme et à décider de ce à quoi elles peuvent accéder. Vous créez des comptes, attribuez des permissions au niveau de l'instance comme du projet, et supprimez occasionnellement les utilisateurs qui n'ont plus besoin d'accès. Bien régler les permissions est important, car cela affecte à la fois la sécurité et la facilité d'utilisation - trop restrictives, et les personnes ne peuvent pas faire leur travail ; trop permissives, et des données sensibles ou des paramètres pourraient être modifiés accidentellement.
+La gestion des utilisateurs consiste à ajouter des personnes à la plateforme et à décider de ce à quoi elles peuvent accéder. Vous créez des comptes, attribuez des permissions au niveau de l'instance comme du projet, et supprimez occasionnellement les utilisateurs qui n'ont plus besoin d'accès. Bien régler les permissions est important, car cela affecte à la fois la sécurité et la facilité d'utilisation.
 
-La configuration des données consiste à mettre en place les éléments structurels qui définissent votre instance - zones administratives, établissements et indicateurs - puis à importer les données concrètes sur lesquelles les analystes travailleront. Cela inclut à la fois les données HMIS (rapports mensuels de routine) et les données HFA (évaluations des établissements). La structure que vous définissez ici détermine la manière dont les données peuvent être filtrées et désagrégées à travers toute la plateforme.
+La configuration des données consiste à mettre en place les éléments structurels qui définissent votre instance - zones administratives, établissements et indicateurs - puis à importer les données concrètes sur lesquelles les analystes travailleront. Cela inclut à la fois les données HMIS (rapports mensuels de routine) et les données HFA (évaluations des établissements).
 
-La supervision des projets consiste à créer des espaces de travail d'analyse, à configurer leurs fenêtres de données, à installer des modules analytiques et à gérer qui peut accéder à chaque projet. C'est dans les projets que se déroule le travail d'analyse ; vous voudrez donc les organiser avec soin et veiller à ce que chacun dispose de la bonne combinaison d'accès aux données et de permissions utilisateur.
+La supervision des projets consiste à créer des espaces de travail d'analyse, à configurer leurs fenêtres de données, à installer des modules analytiques et à gérer qui peut accéder à chaque projet.
 
 ## Avant de commencer
 
@@ -25,28 +25,28 @@ Si vous n'avez pas encore d'accès, contactez l'administrateur FASTR de votre or
 
 ## Naviguer dans l'interface d'administration
 
-La barre de navigation principale, en haut de l'écran, affiche des onglets correspondant aux différentes zones que vous pouvez gérer. Ce que vous voyez dépend de vos permissions - les administrateurs d'instance voient tous les onglets, tandis que les utilisateurs disposant de permissions partielles ne voient que les zones auxquelles ils peuvent accéder.
+La barre de navigation principale, en haut de l'écran, affiche des onglets correspondant aux différentes zones que vous pouvez gérer. Ce que vous voyez dépend de vos permissions.
 
 ![Top Nav Demo](/images/topnav-demo-en.png)
 
-L'onglet **Projets** répertorie tous les projets de votre instance et vous permet d'en créer de nouveaux. **Données** est l'endroit où vous configurez la structure (zones administratives, établissements) et importez les jeux de données — il affiche un tableau de lignes couvrant chaque domaine de données, notamment les libellés des zones administratives, les colonnes d'établissements, les cartes GeoJSON, les indicateurs, les importations de données, et plus encore. **Ressources** contient les fichiers téléversés, comme les modèles CSV et les cartes GeoJSON - tous les utilisateurs peuvent consulter et téléverser des ressources. La colonne **Propriétaire** dans la liste des ressources est filtrable, ce qui vous permet de retrouver rapidement les fichiers téléversés par une personne spécifique ou par le système. **Utilisateurs** affiche toutes les personnes ayant accès à l'instance ainsi que leurs permissions. Une icône de cloche dans la barre de navigation affiche les annonces de nouvelles versions - un point jaune sur l'icône indique la présence de publications non lues. Cliquez sur la cloche pour parcourir toutes les annonces.
+L'onglet **Projets** répertorie tous les projets de votre instance et vous permet d'en créer de nouveaux. **Données** est l'endroit où vous configurez la structure (zones administratives, établissements) et importez les jeux de données. **Ressources** contient les fichiers téléversés — lors du téléversement, vous pouvez choisir si chaque fichier est visible par tous ou uniquement par vous et les personnes que vous désignez. La colonne **Propriétaire** dans la liste des ressources est filtrable. **Utilisateurs** affiche toutes les personnes ayant accès à l'instance ainsi que leurs permissions. Une icône de cloche dans la barre de navigation affiche les annonces de nouvelles versions.
 
 ## Obtenir de l'aide
 
-Cliquez sur le bouton **Aide** dans la barre de navigation supérieure pour ouvrir un menu proposant plusieurs options : **Visites guidées** vous accompagne pas à pas dans les zones clés de la plateforme ; **Demander de l'aide** envoie une demande d'assistance directement à l'équipe FASTR ; **Envoyer un commentaire** vous permet de signaler un bug, une suggestion ou de poser une question générale ; et **Documentation** ouvre ce site de documentation. Les visites guidées sont disponibles pour chaque section principale de l'instance et peuvent être relancées à tout moment.
+Cliquez sur le bouton **Aide** dans la barre de navigation supérieure pour ouvrir un menu proposant plusieurs options : **Visites guidées**, **Demander de l'aide**, **Envoyer un commentaire** et **Documentation**.
 
 ## Premières étapes courantes
 
 Lors de la mise en place d'une nouvelle instance, vous travaillerez généralement ces tâches dans l'ordre suivant :
 
-1. Définir votre structure administrative - la hiérarchie géographique des régions, des districts et des unités plus petites
-2. Importer votre liste d'établissements avec leurs types et leurs affectations géographiques
+1. Définir votre structure administrative
+2. Importer votre liste d'établissements
 3. Définir les indicateurs des données que vous allez importer
 4. Téléverser votre premier jeu de données HMIS pour tester la configuration
 5. Créer un projet et configurer sa fenêtre de données
 6. Ajouter des utilisateurs et les affecter à des projets
 
-Chacune de ces étapes dispose de sa propre page dans ce guide, avec des instructions détaillées.
+Chacune de ces étapes dispose de sa propre page dans ce guide.
 
 ## Dans cette section
 

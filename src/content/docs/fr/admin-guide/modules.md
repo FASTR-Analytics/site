@@ -71,7 +71,7 @@ Le lot épinglé est également le lot que le connecteur MCP de FASTR utilise. L
 
 ## Portées
 
-Une portée définit quelle partie d'un lot de résultats une présentation ou un rapport peut afficher — par exemple une région, certaines années, ou certains modules et indicateurs. Les portées sont créées et gérées depuis le bouton **Portées** sur la page Lots de résultats. La portée appelée **Toutes les données** est toujours présente et ne limite rien. Sur la page Utilisateurs, un utilisateur peut également être limité à certaines portées afin de ne voir que les produits qui utilisent ces portées.
+Une portée définit quelle partie d'un lot de résultats une présentation ou un rapport peut afficher — par exemple une région, certaines années, ou certains modules et indicateurs. Les portées sont créées et gérées par les administrateurs globaux depuis l'onglet **Portées** de la navigation principale. La portée appelée **Toutes les données** est toujours présente et ne limite rien. Sur la page Utilisateurs, un utilisateur peut également être limité à certaines portées afin de ne voir que les produits qui utilisent ces portées.
 
 ## Exécution et état des modules
 <!-- help#amod-status -->

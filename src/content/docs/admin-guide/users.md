@@ -100,6 +100,7 @@ The user list supports bulk selection for common operations. Check the boxes nex
 
 - **Make admin** / **Make non-admin** - Toggle administrator status
 - **Edit permissions** - Update instance permissions for all selected users at once
+- **Edit scopes** - Replace the scope access of all selected users at once. Global administrators always have every scope and are skipped. This action is available to global administrators and to holders of the **Configure users** permission who are not themselves scope-restricted.
 - **Download users** - Export a CSV of selected users
 - **Remove** - Delete selected user accounts
 

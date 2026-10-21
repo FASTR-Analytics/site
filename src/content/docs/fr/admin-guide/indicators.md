@@ -24,13 +24,13 @@ Pour voir ce qu'implique chaque type, cliquez sur **Types d'indicateurs** dans l
 
 Les administrateurs globaux peuvent sélectionner des lignes dans la liste et utiliser l'action groupée **Supprimer** pour retirer les indicateurs sélectionnés, sous réserve des vérifications de dépendances habituelles. Les indicateurs individuels peuvent également être supprimés depuis l'éditeur d'indicateurs à l'aide du bouton **Supprimer** dans le pied de page. Les actions groupées **Inclure dans l'analyse** et **Exclure de l'analyse** basculent l'indicateur sur les lignes sélectionnées. L'action groupée **Importation de données DHIS2** ouvre l'assistant d'importation DHIS2 présélectionné avec les indicateurs choisis.
 
-Depuis le menu de débordement de la barre d'outils, les administrateurs globaux ont également accès à deux actions de maintenance occasionnelles : **Télécharger** exporte le dictionnaire d'indicateurs au format CSV, avec des colonnes pour l'identifiant, le libellé, le type, l'identifiant DHIS2 (incluant le nom DHIS2 lu depuis DHIS2), les membres, la formule, l'indicateur d'inclusion dans l'analyse, le format, les seuils, la direction, la cible et l'indicateur de faibles dénombrements attendus. **Actualiser les noms DHIS2** lit le nom actuel de chaque indicateur élément DHIS2 depuis DHIS2 via son identifiant DHIS2 et le stocke avec l'indicateur, sans modifier aucun libellé, identifiant ou données. Utilisez cette action après que des éléments de données DHIS2 ont été renommés sur le serveur DHIS2. Une fois l'actualisation terminée, la fenêtre de résultat indique combien de noms ont été actualisés, combien étaient déjà à jour, quels indicateurs pointent vers des formules DHIS2 (ce que DHIS2 appelle des indicateurs) plutôt que vers des éléments de données, et quels identifiants n'ont pas été trouvés dans DHIS2.
+Depuis le menu de débordement de la barre d'outils, les administrateurs globaux ont également accès à deux actions de maintenance occasionnelles : **Télécharger** exporte le dictionnaire d'indicateurs au format CSV et **Actualiser les noms DHIS2** lit le nom actuel de chaque indicateur élément DHIS2 depuis DHIS2 et le stocke avec l'indicateur.
 
 #### Types d'indicateurs
 
-- **Élément DHIS2** — un dénombrement mensuel récupéré de DHIS2 par un UID d'élément de données ou un opérande UID.COC. Ses lignes sont stockées sous cet identifiant DHIS2. Lors de l'ajout d'un indicateur élément DHIS2, FASTR lit et stocke le nom actuel de l'élément depuis DHIS2 comme **nom DHIS2** ; ce nom stocké est affiché à côté de l'identifiant DHIS2 dans l'éditeur d'indicateurs et dans la liste, à titre de référence. Le nom DHIS2 est mis à jour via **Actualiser les noms DHIS2** et est effacé automatiquement si vous changez le type de l'indicateur en autre chose qu'un élément DHIS2. Le nom DHIS2 n'est pas le libellé de l'indicateur et n'est pas utilisé dans l'analyse.
-- **Téléversé** — un dénombrement mensuel rempli par importation CSV. FASTR lui attribue un identifiant interne ; l'étape Correspondance de chaque importation CSV pointe les valeurs du fichier vers lui. Les indicateurs de type Téléversé ne sont pas récupérés par les importations DHIS2.
-- **Somme** — le total de ses indicateurs membres (Éléments DHIS2 ou Téléversés), additionnés par établissement et par mois. Une somme ne peut pas contenir une autre somme.
+- **Élément DHIS2** — un dénombrement mensuel récupéré de DHIS2 par un UID d'élément de données ou un opérande UID.COC. Lors de l'ajout d'un indicateur élément DHIS2, FASTR lit et stocke le nom actuel de l'élément depuis DHIS2 comme **nom DHIS2**. Le nom DHIS2 n'est pas le libellé de l'indicateur et n'est pas utilisé dans l'analyse.
+- **Téléversé** — un dénombrement mensuel rempli par importation CSV. FASTR lui attribue un identifiant interne. Les indicateurs de type Téléversé ne sont pas récupérés par les importations DHIS2.
+- **Somme** — le total de ses indicateurs membres, additionnés par établissement et par mois. Une somme ne peut pas contenir une autre somme.
 - **Calculé** — une formule portant sur d'autres indicateurs et des termes de population, calculée après l'ajustement et l'agrégation des données. Il n'a pas de lignes propres.
 
 Les trois types de dénombrement sont ajustés par les modules de qualité des données. Un indicateur calculé ne l'est pas.
@@ -42,29 +42,25 @@ Un indicateur calculé est défini par une formule portant sur d'autres indicate
 
 Une formule peut utiliser `+`, `-`, `*`, `/`, des parenthèses et des nombres, ainsi que les fonctions `abs()` (valeur absolue), `coalesce()` (la première valeur non vide) et `nullif()` (vide lorsque les deux valeurs sont égales). Une formule peut faire référence à un autre indicateur calculé, dont la définition est insérée à la place de son identifiant.
 
-Une formule peut aussi utiliser un terme de population, par exemple `population_pregnancies`. Les populations proviennent de la page Population de l'instance (Données → Population) : des effectifs annuels de population par unité administrative et par type de population, téléversés sous forme de CSV.
+Une formule peut aussi utiliser un terme de population, par exemple `population_pregnancies`. Les populations proviennent de la page Population de l'instance.
 
-Pour un indicateur calculé, vous définissez également le format d'affichage (nombre, pourcentage ou taux pour 10 000), une valeur cible facultative, et si vous le souhaitez une règle de mise en forme conditionnelle pour le codage couleur. Le champ **direction** (plus élevé = meilleur ou plus bas = meilleur) s'applique à chaque type d'indicateur et est utilisé par la règle de mise en forme conditionnelle.
+Pour un indicateur calculé, vous définissez également le format d'affichage (nombre, pourcentage ou taux pour 10 000), une valeur cible facultative, et si vous le souhaitez une règle de mise en forme conditionnelle. Le champ **direction** s'applique à chaque type d'indicateur.
 
-La colonne **Statut** de la liste indique si chaque indicateur calculé peut être évalué. Un indicateur calculé ne peut pas être évalué si les indicateurs qu'il utilise n'ont pas de données. Un avertissement au-dessus de la liste le signale dès que l'un d'eux ne peut pas être évalué.
+La colonne **Statut** de la liste indique si chaque indicateur calculé peut être évalué.
 
 #### Inclure dans l'analyse
 <!-- help#ind-include -->
 
-Chaque indicateur possède une case à cocher **Inclure dans l'analyse**. Lorsqu'elle est cochée, chaque paquet de résultats analyse l'indicateur : les modules de qualité des données l'ajustent et il est disponible dans les visualisations. Lorsqu'elle est décochée, l'indicateur est uniquement dans le dictionnaire — ses données sont toujours importées et stockées, et il peut toujours être utilisé comme membre ou dans une expression, mais il n'est ni ajusté ni inclus dans l'ensemble analysé. Activez ou désactivez cette option dans l'éditeur d'indicateurs ou via les actions groupées. Les indicateurs spéciaux sont toujours analysés, quelle que soit cette option. Un indicateur calculé qui ne peut pas être évalué est signalé dans la colonne **Statut**.
+Chaque indicateur possède une case à cocher **Inclure dans l'analyse**. Lorsqu'elle est cochée, chaque paquet de résultats analyse l'indicateur. Lorsqu'elle est décochée, l'indicateur est uniquement dans le dictionnaire. Les indicateurs spéciaux sont toujours analysés, quelle que soit cette option.
 
 ### Ajouter des indicateurs depuis DHIS2
 <!-- help#ind-dhis2-import -->
 
-Cliquez sur **Ajouter depuis DHIS2** pour ajouter des éléments de données ou des indicateurs DHIS2 depuis votre serveur. FASTR utilise la connexion DHIS2 enregistrée de l'instance, définie dans la ligne de connexion DHIS2 de la page Données ; si aucune n'est enregistrée, une alerte explique comment en définir une.
+Cliquez sur **Ajouter depuis DHIS2** pour ajouter des éléments de données ou des indicateurs DHIS2 depuis votre serveur. FASTR utilise la connexion DHIS2 enregistrée de l'instance ; si aucune n'est enregistrée, une alerte explique comment en définir une.
 
-Le formulaire comporte deux phases. Dans la phase **Sélectionner**, recherchez par nom, code ou identifiant. Les résultats affichent à la fois les éléments de données et les indicateurs DHIS2. Un élément de données peut être ajouté tel quel ou développé pour sélectionner des combinaisons d'options de catégorie individuelles (opérandes). Un indicateur DHIS2 est décomposé en ses opérandes et un indicateur calculé dont la formule porte sur les indicateurs que ces opérandes deviennent ; le formulaire affiche la formule et signale tout opérande qui ne peut pas être ajouté. Sélectionnez les éléments souhaités et cliquez sur **Suivant : nommer les indicateurs**.
+Le formulaire comporte deux phases. Dans la phase **Sélectionner**, recherchez par nom, code ou identifiant. Dans la phase **Nommer**, chaque élément de données ou opérande devient un nouvel indicateur élément DHIS2. Cliquez sur **Enregistrer** pour créer les indicateurs en une seule transaction.
 
-Dans la phase **Nommer**, chaque élément de données ou opérande devient un nouvel indicateur élément DHIS2. Le formulaire propose un identifiant généré à partir du nom de l'élément ; modifiez-le en ligne. Chaque indicateur DHIS2 devient un indicateur calculé dont vous définissez également l'identifiant ici. Un élément dont l'identifiant DHIS2 est déjà porté par un indicateur existant apparaît comme déjà ajouté et ne crée rien de nouveau. Cliquez sur **Enregistrer** pour créer les indicateurs en une seule transaction.
-
-Ajouter des indicateurs depuis DHIS2 ne fait que les enregistrer dans le dictionnaire. Pour récupérer leurs données, lancez une importation DHIS2 depuis la vue Importations (voir Données : HMIS).
-
-Lorsque vous ajoutez un indicateur élément DHIS2, FASTR lit et stocke le nom actuel de l'élément depuis DHIS2 comme **nom DHIS2**. Ce nom stocké est affiché à côté de l'identifiant DHIS2 dans l'éditeur d'indicateurs et dans la liste, ce qui facilite l'identification des éléments sans avoir à mémoriser leurs UID. Le nom DHIS2 n'est pas le libellé de l'indicateur et n'est pas utilisé dans l'analyse ; il sert uniquement de référence. Utilisez **Actualiser les noms DHIS2** depuis le menu de débordement de la barre d'outils pour mettre à jour ces noms stockés après qu'des éléments ont été renommés sur le serveur DHIS2. Si vous changez le type d'un indicateur élément DHIS2 en Téléversé ou en un autre type, le nom DHIS2 stocké est effacé automatiquement.
+Ajouter des indicateurs depuis DHIS2 ne fait que les enregistrer dans le dictionnaire. Pour récupérer leurs données, lancez une importation DHIS2 depuis la vue Importations.
 
 ## Indicateurs HFA
 
@@ -72,104 +68,81 @@ Les données issues de l'évaluation des établissements de santé fonctionnent 
 
 ### Définir les indicateurs HFA
 
-Chaque indicateur HFA possède un identifiant d'indicateur attribué par la plateforme, une catégorie, une sous-catégorie, des catégories de service, un libellé court, une définition, un type de données (binaire ou numérique) et une méthode d'agrégation (somme ou moyenne). L'identifiant est attribué automatiquement lors de la création de l'indicateur et sert d'identifiant technique dans toute la plateforme — dans le code R, dans le dictionnaire de données et lorsque d'autres indicateurs y font référence.
+Chaque indicateur HFA possède un identifiant d'indicateur attribué par la plateforme, une catégorie, une sous-catégorie, des catégories de service, un libellé court, une définition, un type de données (binaire ou numérique) et une méthode d'agrégation (somme ou moyenne).
 
-Le champ **catégories de service** est facultatif et fournit une classification transversale supplémentaire, indépendante de la hiérarchie catégorie/sous-catégorie. Un indicateur peut appartenir à plusieurs catégories de service simultanément. Les catégories de service sont gérées dans leur propre onglet du gestionnaire d'indicateurs HFA et peuvent être attribuées à n'importe quel indicateur, quelle que soit sa catégorie. Lors du filtrage des visualisations ou des données du projet par catégorie de service, une correspondance est établie si l'indicateur appartient à au moins l'une des catégories sélectionnées - il n'est pas nécessaire qu'il appartienne à toutes.
+Le champ **catégories de service** est facultatif et fournit une classification transversale supplémentaire, indépendante de la hiérarchie catégorie/sous-catégorie. Un indicateur peut appartenir à plusieurs catégories de service simultanément.
 
 ![HFA Indicators](/images/hfa-indicators-en.png)
 
 ### Rechercher des indicateurs
 
-Le gestionnaire d'indicateurs HFA comporte une zone de recherche dans la barre d'outils. Saisissez du texte pour filtrer la liste par libellé, définition, catégorie, sous-catégorie ou catégorie de service. Le tableau prend également en charge des filtres de colonnes pour la catégorie, la sous-catégorie, les catégories de service, le type, le statut et la cohérence — cliquez sur l'icône de filtre d'un en-tête de colonne pour affiner les résultats par valeurs spécifiques.
+Le gestionnaire d'indicateurs HFA comporte une zone de recherche dans la barre d'outils. Saisissez du texte pour filtrer la liste par libellé, définition, catégorie, sous-catégorie ou catégorie de service. Le tableau prend également en charge des filtres de colonnes.
 
 ### Code R pour l'extraction
 <!-- help#ind-r-code -->
 
 Chaque indicateur HFA nécessite du code R spécifiant comment extraire sa valeur à partir des données d'enquête brutes. Le code s'exécute pour chaque établissement et doit renvoyer TRUE/FALSE pour les indicateurs binaires, ou un nombre pour les indicateurs numériques.
 
-L'éditeur de code indique quelles variables d'enquête sont disponibles dans votre jeu de données à chaque point temporel, identifiées par leur identifiant de variable. Si la structure de l'enquête a changé entre les évaluations, vous pouvez écrire un code différent pour différents points temporels. FASTR valide la syntaxe et signale les variables inconnues comme des erreurs, et avertit des problèmes potentiels comme les opérateurs `=` isolés qui pourraient être des comparaisons non intentionnelles, ou l'utilisation des opérateurs `&&` et `||` qui échouent lorsque le code s'exécute sur l'ensemble des établissements à la fois (utilisez `&` et `|` à la place). Il vérifie également si le type de résultat de votre code correspond au type déclaré de l'indicateur — par exemple, un indicateur binaire dont le code n'effectue aucune comparaison affichera un avertissement de type.
+L'éditeur de code indique quelles variables d'enquête sont disponibles dans votre jeu de données à chaque point temporel. FASTR valide la syntaxe et signale les variables inconnues comme des erreurs, et avertit des problèmes potentiels. Il vérifie également si le type de résultat de votre code correspond au type déclaré de l'indicateur.
 
-Les avertissements (affichés en orange) sont consultatifs et ne bloquent pas l'enregistrement. Les erreurs (affichées en rouge) — notamment les erreurs de syntaxe et les références à des variables absentes du jeu de données — empêchent l'indicateur d'être marqué comme prêt.
+Les avertissements (affichés en orange) sont consultatifs et ne bloquent pas l'enregistrement. Les erreurs (affichées en rouge) bloquent l'indicateur.
 
-Le panneau droit de l'éditeur de code liste les variables d'enquête ; cliquez sur n'importe quelle entrée pour insérer son identifiant de variable dans le code à la position du curseur. La zone de recherche filtre les deux listes en faisant correspondre chaque mot de votre requête à l'identifiant et au libellé de la variable ensemble, dans n'importe quel ordre. Le panneau liste également les autres indicateurs, afin que vous puissiez cliquer sur l'un d'eux pour insérer son identifiant — utile lorsque le code d'un indicateur fait référence à un autre.
+Le panneau droit de l'éditeur de code liste les variables d'enquête et les autres indicateurs ; cliquez sur n'importe quelle entrée pour insérer son identifiant dans le code à la position du curseur.
 
 ![Code R d'un indicateur HFA](/images/hfa-code-en.png)
 
 ### Code filtre
 
-Chaque entrée de code par point temporel prend également en charge un champ de code filtre facultatif. Le code filtre restreint les établissements qui contribuent à la valeur de l'indicateur — seuls les établissements pour lesquels l'expression de filtre s'évalue à TRUE sont inclus. Si vous saisissez un code filtre pour un point temporel, vous devez également fournir un code R pour ce même point temporel ; un filtre sans code R n'est pas valide et bloque l'enregistrement.
+Chaque entrée de code par point temporel prend également en charge un champ de code filtre facultatif. Le code filtre restreint les établissements qui contribuent à la valeur de l'indicateur. Si vous saisissez un code filtre pour un point temporel, vous devez également fournir un code R pour ce même point temporel.
 
 ### Groupes de variantes et code par élément
 
-Un indicateur peut être associé à un **groupe de variantes**, qui définit un ensemble d'options de réponse (éléments) selon lesquelles l'indicateur peut être désagrégé. Lorsqu'un groupe de variantes est assigné, l'éditeur de code affiche une section de numérateur par élément sous le code principal pour chaque point temporel. Chaque élément possède son propre extrait de code R qui partage le code filtre du point temporel. Utilisez cette fonctionnalité lorsque le même indicateur nécessite une logique de numérateur distincte pour chaque option de réponse — par exemple, des calculs séparés pour chaque catégorie de propriété.
-
-Les groupes de variantes et leurs éléments sont gérés depuis l'onglet **Groupes de variantes** du gestionnaire d'indicateurs HFA. Chaque élément possède un identifiant court (lettres minuscules, chiffres et tirets bas, commençant par une lettre, maximum 64 caractères) et un libellé d'affichage. Les éléments sont ordonnés au sein de leur groupe et peuvent être réorganisés par glisser-déposer.
-
-Pour assigner un groupe de variantes à un indicateur, ouvrez l'éditeur de code de l'indicateur et sélectionnez le groupe dans le menu déroulant **Groupe de variantes**. Si l'indicateur possède déjà un code par élément pour un groupe différent et que vous changez de groupe, FASTR demande une confirmation avant d'effacer le code de l'ancien groupe.
+Un indicateur peut être associé à un **groupe de variantes**, qui définit un ensemble d'options de réponse selon lesquelles l'indicateur peut être désagrégé. Les groupes de variantes et leurs éléments sont gérés depuis l'onglet **Groupes de variantes** du gestionnaire d'indicateurs HFA.
 
 ### Cohérence du code
 
-Lorsqu'un indicateur s'applique à plusieurs points temporels, FASTR vérifie si le code d'extraction est cohérent. Un code incohérent peut être intentionnel (les questions de l'enquête changent d'un cycle à l'autre), mais il mérite d'être examiné. Utilisez **Tout revalider** après avoir effectué des modifications afin d'actualiser la validation de tous les indicateurs.
-
-La liste des indicateurs affiche un résumé de l'état du code : **prêt** (aucune erreur ni avertissement), **avertissement** (problèmes consultatifs uniquement) et **erreur** (erreurs de syntaxe ou de variables inconnues). Les boutons **Tout revalider**, **Vérifier les variables inutilisées**, **Télécharger Excel** et **Importer Excel** sont désactivés lorsqu'aucun point temporel HFA n'a encore été défini, car ces actions dépendent du dictionnaire de données de l'enquête. Ajoutez un point temporel depuis **Enquêtes FOSA → Points temporels** pour les activer.
+Lorsqu'un indicateur s'applique à plusieurs points temporels, FASTR vérifie si le code d'extraction est cohérent. Utilisez **Tout revalider** après avoir effectué des modifications.
 
 ### Importer les indicateurs par défaut
 
-Le gestionnaire d'indicateurs HFA comprend un bouton **Importer les indicateurs par défaut** à côté du bouton **Importer Excel**. En cliquant dessus, l'ensemble d'indicateurs HFA FASTR standard est récupéré directement depuis le hub de ressources FASTR sur GitHub — aucune sélection de fichier n'est nécessaire. Le formulaire indique combien d'indicateurs et de catégories ont été récupérés avant que vous confirmiez l'importation. Vous choisissez les mêmes modes d'importation qu'avec un téléversement de fichier : **Ajouter aux existants** ajoute uniquement les nouveaux identifiants, tandis que **Remplacer tous les existants** supprime tous les indicateurs actuels avant l'importation.
+Le gestionnaire d'indicateurs HFA comprend un bouton **Importer les indicateurs par défaut** qui récupère l'ensemble d'indicateurs HFA FASTR standard directement depuis GitHub. Vous choisissez entre **Ajouter aux existants** et **Remplacer tous les existants**.
 
 ### Supprimer des indicateurs
 
-Avant de supprimer un indicateur ou un ensemble d'indicateurs, FASTR vérifie si d'autres indicateurs font référence aux identifiants supprimés dans leur code R ou leur code de variante. Si des références sont trouvées, la boîte de dialogue de confirmation liste les indicateurs concernés et avertit que leur code échouera à la validation après la suppression. Vous pouvez supprimer un indicateur individuel depuis l'en-tête de son éditeur de code à l'aide du bouton **Supprimer**, ou depuis la boîte de dialogue de modification via le bouton **Supprimer** dans le pied de page. Plusieurs indicateurs peuvent être supprimés à la fois via l'action groupée dans la liste.
+Avant de supprimer un indicateur ou un ensemble d'indicateurs, FASTR vérifie si d'autres indicateurs font référence aux identifiants supprimés dans leur code R ou leur code de variante. Si des références sont trouvées, la boîte de dialogue de confirmation liste les indicateurs concernés et avertit que leur code échouera à la validation après la suppression. Vous pouvez supprimer un indicateur individuel depuis son éditeur de code à l'aide du bouton **Supprimer** dans l'en-tête, ou depuis la boîte de dialogue de modification via le bouton **Supprimer** dans le pied de page. Plusieurs indicateurs peuvent être supprimés simultanément à l'aide de l'action groupée dans la liste des indicateurs.
 
 ### Assistant IA pour les indicateurs
 
-Les administrateurs globaux peuvent ouvrir un panneau d'assistant IA directement dans le gestionnaire d'indicateurs HFA en cliquant sur le bouton **IA**. Ce bouton apparaît dans la barre supérieure du gestionnaire, ainsi que dans l'en-tête de l'éditeur de code et du formulaire de téléversement du classeur Excel lorsque le panneau n'est pas encore ouvert. L'assistant peut améliorer les libellés, organiser les indicateurs en catégories et créer de nouveaux indicateurs à partir du jeu de données d'enquête sous-jacent. Il lit et écrit les indicateurs via un ensemble d'outils dédiés - en chargeant l'état actuel avant de proposer des modifications, en validant le code R par rapport au dictionnaire de données et en affichant une boîte de dialogue de confirmation avec un diff avant d'appliquer toute modification. Lorsque l'assistant crée de nouveaux indicateurs, il attribue automatiquement l'identifiant de chaque indicateur et retourne les identifiants attribués après création. Lors de l'application de mises à jour groupées, toutes les modifications sont envoyées au serveur en une seule opération transactionnelle : soit tous les indicateurs sont mis à jour, soit aucun ne l'est. L'assistant opère sur les indicateurs HFA au niveau de l'instance et est totalement isolé de l'assistant IA des produits.
+L'assistant IA dans le gestionnaire d'indicateurs HFA peut améliorer les libellés, organiser les indicateurs en catégories et créer de nouveaux indicateurs à partir du jeu de données d'enquête. Il lit et écrit les indicateurs via un ensemble d'outils dédiés, en affichant une boîte de dialogue de confirmation avant d'appliquer toute modification. Lors de l'application de mises à jour groupées, toutes les modifications sont envoyées au serveur en une seule opération transactionnelle.
+
+L'éditeur de code possède également ses propres outils IA. Lorsque vous ouvrez l'éditeur de code d'un indicateur, l'assistant peut lire le brouillon actuel de l'éditeur et y appliquer des modifications — libellés, type et agrégation, assignations de catégories, et modifications de code par round — comme si vous les aviez effectuées vous-même. Les modifications s'appliquent dans le brouillon de l'éditeur sans être enregistrées : vous les conservez avec **Enregistrer** ou les annulez avec **Annuler**.
 
 ### Variables inutilisées
 
-Cliquez sur **Vérifier les variables inutilisées** depuis le menu de débordement pour ouvrir une fenêtre listant les variables d'enquête qu'aucun indicateur ne référence actuellement, regroupées par point temporel. Depuis cette fenêtre, vous pouvez cliquer sur **Ajouter** à côté de n'importe quelle variable pour ouvrir la boîte de dialogue de création d'indicateur pré-remplie avec le libellé de cette variable, ce qui facilite la transformation des variables inutilisées en nouveaux indicateurs.
+Cliquez sur **Vérifier les variables inutilisées** depuis le menu de débordement pour ouvrir une fenêtre listant les variables d'enquête qu'aucun indicateur ne référence actuellement, regroupées par point temporel.
 
 ### Gérer les catégories de service
 
-Les catégories de service sont créées et gérées depuis l'onglet **Catégories de service** du gestionnaire d'indicateurs HFA. Cliquez sur **Ajouter** pour créer une nouvelle catégorie de service - vous fournissez un libellé et FASTR génère automatiquement un identifiant, que vous pouvez modifier. Vous pouvez réorganiser les catégories de service par glisser-déposer, et les modifier ou les supprimer individuellement. La suppression d'une catégorie de service la retire de tous les indicateurs qui lui sont actuellement associés. Les identifiants de catégorie de service ne peuvent pas contenir le caractère pipe (`|`).
+Les catégories de service sont créées et gérées depuis l'onglet **Catégories de service** du gestionnaire d'indicateurs HFA. Les identifiants de catégorie de service ne peuvent pas contenir le caractère pipe (`|`).
 
 ### Gérer les groupes de variantes
 
 Les groupes de variantes sont créés et gérés depuis l'onglet **Groupes de variantes** du gestionnaire d'indicateurs HFA. L'onglet affiche une disposition en deux panneaux : les groupes à gauche et les éléments du groupe sélectionné à droite.
 
-Cliquez sur **Ajouter** dans le panneau des groupes pour créer un nouveau groupe — fournissez un libellé et FASTR en dérive automatiquement un identifiant. Vous pouvez réorganiser les groupes par glisser-déposer. Cliquez sur l'icône crayon pour modifier le libellé d'un groupe, ou sur l'icône poubelle pour le supprimer. La suppression est refusée tant qu'un indicateur est encore assigné au groupe.
-
-Sélectionnez un groupe pour gérer ses éléments dans le panneau de droite. Cliquez sur **Ajouter** pour créer un nouvel élément — fournissez un libellé et FASTR en dérive un identifiant, que vous pouvez modifier avant d'enregistrer. Les identifiants d'éléments doivent commencer par une lettre minuscule et ne contenir que des lettres minuscules, des chiffres et des tirets bas (maximum 64 caractères). Vous pouvez réorganiser les éléments au sein d'un groupe par glisser-déposer. Modifiez ou supprimez les éléments individuels à l'aide des icônes sur chaque ligne ; la suppression d'un élément retire tout code par élément qui lui est associé.
-
 ### Téléversement de classeur Excel
 
-Les indicateurs HFA prennent en charge la création par lot via un classeur Excel. Téléversez un classeur Excel (.xlsx) comportant ces feuilles :
+Les indicateurs HFA prennent en charge la création par lot via un classeur Excel. Téléversez un classeur Excel (.xlsx) avec les feuilles requises : **Categories**, **Sub-categories**, **Service categories** (facultatif), **Variant groups** (facultatif), **Variant items** (facultatif) et **Indicators**.
 
-- **Categories** : id, label
-- **Sub-categories** : id, categoryId, label
-- **Service categories** : id, label (facultatif)
-- **Variant groups** : id, label (facultatif)
-- **Variant items** : id, groupId, label (facultatif)
-- **Indicators** : indicatorId (laisser vide pour un nouvel indicateur ; la plateforme en attribue un), categoryId, subCategoryId, serviceCategoryId (séparés par `|` pour plusieurs), shortLabel, definition, type, aggregation, variantGroupId (facultatif), r_code__&lt;point temporel&gt;, r_filter_code__&lt;point temporel&gt;, r_variant_code__&lt;itemId&gt;__&lt;point temporel&gt;, …
-
-Si les feuilles Service categories, Variant groups ou Variant items sont absentes, les indicateurs sont importés sans catégories de service ni assignation de variantes.
-
-Les colonnes de code de variante utilisent le format `r_variant_code__<itemId>__<libellé du point temporel>`. Chaque colonne de code de variante doit référencer un identifiant d'élément de la feuille Variant items, et le libellé du point temporel doit correspondre à une colonne `r_code__` étiquetée dans le même fichier. Un indicateur avec du code de variante doit également avoir un `variantGroupId` qui correspond au groupe de l'élément.
-
-Lors de l'importation, choisissez entre les modes **Ajouter aux existants** et **Remplacer tous les existants**. En mode **Ajouter aux existants**, les indicateurs dont les identifiants existent déjà sur la plateforme sont ignorés — seuls les nouveaux sont créés. Après l'importation, un résumé liste les indicateurs ignorés. En mode **Remplacer tous les existants**, tous les indicateurs, catégories, sous-catégories et catégories de service existants sont définitivement supprimés avant l'importation. Pour confirmer une importation en mode remplacement, vous devez saisir `yes please delete` dans le champ de confirmation avant que le bouton **Importer** devienne actif.
-
-FASTR détecte les colonnes de points temporels intégrées dans le fichier et présente une étape de mappage où vous confirmez à quel point temporel de la plateforme chaque colonne doit être importée. Si les libellés des colonnes correspondent exactement aux points temporels de votre plateforme, le mappage est pré-rempli automatiquement. Chaque point temporel de la plateforme ne peut recevoir qu'une seule colonne du classeur — mapper deux colonnes vers le même point temporel est refusé.
+Lors de l'importation, choisissez entre les modes **Ajouter aux existants** et **Remplacer tous les existants**.
 
 ## Libellés des variables XLSForm
 
-Lorsque FASTR lit votre questionnaire XLSForm lors d'une importation HFA, il construit les libellés des variables à partir de la structure de l'enquête. Pour la plupart des variables, le libellé est simplement le texte de la question. Pour les variables contenues dans des groupes de questions matricielles (blocs ODK `begin_group` ou `begin_repeat`), FASTR qualifie le libellé avec celui du groupe immédiatement englobant, séparé par « — ». Par exemple, une question enfant libellée « Infrastructure » à l'intérieur d'un groupe libellé « Bloc B : Défis » devient « Bloc B : Défis — Infrastructure ». Cela garantit que les enfants de matrices, qui partagent souvent un texte de question identique entre plusieurs groupes, sont identifiables dans le dictionnaire de données et dans les visualisations.
+Lorsque FASTR lit votre questionnaire XLSForm lors d'une importation HFA, il construit les libellés des variables à partir de la structure de l'enquête. Pour les variables contenues dans des groupes de questions matricielles, FASTR qualifie le libellé avec celui du groupe immédiatement englobant, séparé par « — ».
 
-Pour les questions « select_multiple », les variables binaires développées suivent le même schéma : le libellé de variable composé est joint au libellé de choix avec le même séparateur « — ».
-
-FASTR supprime également les balises HTML et normalise les espaces dans les libellés XLSForm avant de les stocker, afin que les libellés créés avec une mise en forme à l'écran apparaissent proprement dans le dictionnaire.
+FASTR supprime également les balises HTML et normalise les espaces dans les libellés XLSForm avant de les stocker.
 
 ## Bonnes pratiques
 
-Choisissez des identifiants d'indicateurs courts mais descriptifs. Évitez les espaces et les caractères spéciaux - tenez-vous-en aux lettres minuscules, aux chiffres et aux tirets bas. Un identifiant peut être renommé plus tard ; le renommage réécrit chaque formule et importation planifiée qui y fait référence, tandis que les données restent en place.
+Choisissez des identifiants d'indicateurs courts mais descriptifs. Évitez les espaces et les caractères spéciaux - tenez-vous-en aux lettres minuscules, aux chiffres et aux tirets bas.
 
-Vérifiez les identifiants DHIS2 dans la liste lorsque des éléments de données sont modifiés ou remplacés sur le serveur DHIS2. Un élément de données remplacé a un nouvel UID DHIS2 : créez un nouvel indicateur élément DHIS2 pour lui. Utilisez **Actualiser les noms DHIS2** régulièrement pour maintenir les noms DHIS2 stockés à jour. Pour les indicateurs calculés, documentez vos choix de seuils - les futurs analystes voudront comprendre le raisonnement derrière les valeurs limites.
+Vérifiez les identifiants DHIS2 dans la liste lorsque des éléments de données sont modifiés ou remplacés sur le serveur DHIS2. Utilisez **Actualiser les noms DHIS2** régulièrement pour maintenir les noms DHIS2 stockés à jour.

@@ -5,12 +5,12 @@ sidebar:
   order: 7
 ---
 
-The AI assistant helps you explore and interpret your data through conversation. It is available across the entire platform — in slide decks, reports, the Explore page, the Results packages page, and individual package views — so you can ask questions wherever you are working.
+The AI assistant helps you explore and interpret your data through conversation. It is available across the entire platform — in slide decks, reports, the Explore page, the Results packages page, the Products page, and individual package views — so you can ask questions wherever you are working.
 
 ## Opening the assistant
 <!-- help#ai-open -->
 
-Click the **AI** button on the right edge of the screen to open the assistant panel. The panel slides in alongside your current view. To close it, click the chevron button in the panel header or click the **AI** button again.
+Click the **AI** button at the bottom-right edge of the screen to open the assistant panel. The panel slides in alongside your current view. To close it, click the chevron button in the panel header or click the **AI** button again.
 
 The assistant is context-aware: each message tells it the current view and, where a results package is in view, the package and scope every data read resolves under. You do not need to specify which package to use.
 
@@ -48,7 +48,7 @@ The assistant is particularly helpful when building slide decks. You can ask it 
 
 When you ask the assistant to create a slide, it drafts the content and shows a preview. If the deck is currently open and you can edit it, you can add the draft to it directly from the preview card.
 
-When editing an existing slide, the assistant can also modify visualizations already on the slide - for example, changing which replicant a chart displays, adjusting filters, or updating captions - without rebuilding the visualization from scratch. The assistant can also update visualizations on slides directly from the deck view, without opening the slide editor, and saves those changes immediately.
+When working in the deck editor, the assistant can read the open slide's current content — including any unsaved edits shown on the canvas — and modify slides throughout the deck. It can change text, update layouts, tweak existing visualizations (replicant, filters, disaggregation, period, captions), and edit any slide in the deck whether or not it is currently open, saving those changes immediately. For the open slide, changes appear on the canvas at once and save automatically.
 
 Every visualization in a slide deck is resolved under that deck's own results package and scope. When the assistant creates or edits a visualization, it uses the deck's attached package automatically — you do not need to specify which package to use.
 
@@ -57,6 +57,10 @@ Every visualization in a slide deck is resolved under that deck's own results pa
 In the report editor, the assistant can rewrite passages, insert new visualizations, and edit existing visualizations in place. When you ask it to change text, it proposes a diff in a modal that you accept or reject before anything changes. When you ask it to edit a visualization - for example, to change its replicant or period filter - it applies the change directly to the live preview and saves immediately, without a diff step. To replace a visualization with a completely different chart or metric, ask the assistant to replace the visualization rather than edit it.
 
 Every visualization in a report is resolved under that report's own results package and scope. When the assistant inserts or replaces a visualization, it uses the report's attached package automatically.
+
+## Listing products
+
+On the Products page, you can ask the assistant to list every product you can see, along with its folder, results package, scope, and your access level. The assistant cannot open products for you — you do that by clicking them — but it can describe what is available and help you decide where to find what you need.
 
 ## Conversations and history
 

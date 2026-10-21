@@ -41,45 +41,43 @@ Each registry (HMIS and HFA) has its own configuration row accessible from the D
 
 Admin area level names such as "Region" or "District" are shared by both registries. Set them from the **Admin area labels** row in the Data section. Enter the singular form of the name for each level in use. Leave a level blank to use the default. These labels appear everywhere data is disaggregated by area.
 
-## Importing facilities
+## Importing HMIS facilities
 
-To import facilities, navigate to the **Data** section and open either the **HMIS Facilities** row or the **HFA Facilities** row depending on which registry you want to update. Each registry has its own import wizard. Each registry's import is independent - you can run an HMIS import and an HFA import at the same time.
+To import HMIS facilities, navigate to the **Data** section and open the **HMIS Facilities** row. The import uses a multi-step wizard.
 
-### CSV import
+**Step 0 - Choose source.** Select CSV or DHIS2 as your import method.
 
-The CSV import follows a multi-step wizard.
+**Step 1 - Upload file (CSV) or confirm connection (DHIS2).** For CSV, upload a file with one row per facility. For DHIS2, confirm the instance-wide stored connection.
 
-**Step 0 - Choose source.** Select CSV as your import method.
+**Step 2 - Map columns (CSV) or select org unit levels (DHIS2).** For CSV, turn on the columns you want to import and map each to a column in your file. Only the Facility ID column is required. Administrative areas are all-or-nothing: either map all levels or none. Optional metadata columns can each be toggled on or off independently. For DHIS2, select which org unit levels to import.
 
-**Step 1 - Upload file.** Upload a CSV file with one row per facility. For HFA imports, you can also upload an ODK questionnaire file (XLSForm) at this step. If your facility columns contain ODK select_one codes, providing the questionnaire causes those codes to be replaced with their labels during import.
+**Step 3 - Stage data.** FASTR validates the file and streams rows into a staging table. Progress updates automatically.
 
-**Step 2 - Map columns.** Turn on the columns you want to import and map each one to a column in your file. Only the Facility ID column is required. Administrative areas are all-or-nothing: either map all levels or none. Optional metadata columns (name, type, ownership, custom fields) can each be toggled on or off independently. If you are only updating metadata and not moving facilities geographically, you can leave administrative areas turned off.
+**Step 4 - Review values (CSV sources only).** If the staged data contains columns whose values can be reassigned before import — such as facility type or ownership — a review step appears. Check which values need reassigning, select affected facilities in the table, and use the **Assign to** dropdown to map them to a target value. You can also add new category values by typing them in the **New category** field. For CSV imports, you can show additional columns from your file alongside the assignment table to help identify facilities. This step is optional — if nothing needs reassigning, click **Continue to import**. When you are done, click **Save and continue** to record your reassignments.
 
-**Step 3 - Stage data.** FASTR validates the file and streams rows into a staging table. Progress updates automatically. If the import is running as a background job, the wizard shows a live progress screen that updates automatically until the import finishes. It is safe to leave and return to this screen.
-
-**Step 4 - Review values (CSV sources only).** If the staged data contains columns whose values can be reassigned before import — such as facility type or ownership — a review step appears. Check which values need reassigning, select affected facilities in the table, and use the **Assign to** dropdown to map them to a target value. You can also add new category values by typing them in the **New category** field. For CSV imports, you can show additional columns from your file alongside the assignment table to help identify facilities — up to five context columns can be selected. This step is optional — if nothing needs reassigning, click **Continue to import**. When you are done, click **Save and continue** to record your reassignments.
-
-**Step 5 - Review and integrate.** The staging summary shows how many facilities are in your file and how many of those already exist in the registry. If you provided an ODK questionnaire at step 1 (HFA imports only), the summary also shows which columns had ODK codes replaced with labels, how many values were resolved, and any codes that could not be matched to the questionnaire. If you saved value reassignments in the previous step, the summary shows how many facilities will be recoded per column. Choose an integration mode:
+**Step 5 - Review and integrate.** The staging summary shows how many facilities are in your file and how many already exist in the registry. If you saved value reassignments in the previous step, the summary shows how many facilities will be recoded per column. Choose an integration mode:
 
 - **Replace all existing facilities** — your file becomes the registry. Facilities in your file are added or updated, and every facility not in your file is deleted. Columns you did not map are cleared on updated facilities. This requires administrative areas to be mapped. FASTR blocks this mode if any dataset or sampling weights still reference facilities that would be deleted.
 - **Add new facilities and update existing ones** - adds facilities with new IDs and updates existing ones with the columns you mapped. This also requires administrative areas.
 - **Update existing facilities only** - updates only facilities already in the registry; the import is rejected if your file contains any ID not already present.
 
-Before confirming, the summary shows how many existing facilities match IDs in your file and how many are new. If none match and you expected updates, the facility ID column is probably mapped to the wrong column, or you are importing into the wrong registry (HMIS vs HFA).
+Before confirming, the summary shows how many existing facilities match IDs in your file and how many are new. If none match and you expected updates, the facility ID column is probably mapped to the wrong column.
 
-After a successful integration, if any previously uploaded GeoJSON map boundaries no longer match an admin area - for example because an import renamed areas - the summary displays a warning naming which registry's maps are affected. Repair those mismatches in the GeoJSON editor.
+After a successful integration, if any previously uploaded GeoJSON map boundaries no longer match an admin area, the summary displays a warning. Repair those mismatches in the GeoJSON editor.
 
 ![Structure Import](/images/structure-import-en.png)
 
-### DHIS2 import
+## HFA facilities
 
-DHIS2 import is available for HMIS facilities. FASTR uses the instance's stored DHIS2 connection, which is set in the **DHIS2 connection** row on the Data page. Confirm the connection, then select which org unit levels to import. FASTR maps DHIS2 levels to admin area levels. HFA facilities can only be imported from CSV.
+HFA facilities are created and updated by each time point's data import rather than through a separate facility import wizard. Open the **HFA Facilities** row in the Data section to view and edit the HFA facility list. A global administrator can click any row to edit that facility's admin areas and optional columns.
 
-The DHIS2 password is stored encrypted on the server and is never sent back to the browser.
+The panel on the left shows an explanation of how HFA facilities are managed. If facilities exist, an **Unused facilities** section appears with a **Remove** button that counts and then confirms the deletion of facilities that have no data and no weights.
+
+For DHIS2 import, FASTR uses the instance's stored DHIS2 connection. The DHIS2 password is stored encrypted on the server and is never sent back to the browser.
 
 ## Managing existing facilities
 
-Once imported, facilities appear as a searchable table showing all records with their admin area assignments and attributes. To update - adding facilities, correcting assignments, or updating attributes - run another import with the appropriate integration mode.
+Once imported, facilities appear as a searchable table showing all records with their admin area assignments and attributes. To update HMIS facilities — adding facilities, correcting assignments, or updating attributes — run another import with the appropriate integration mode.
 
 To delete all facilities in a registry, open that registry's row and click **Delete facilities**. This removes only the facilities in that registry; admin areas that are still referenced by the other registry are preserved. Only global administrators can delete facilities.
 
@@ -89,11 +87,11 @@ To delete all facilities in a registry, open that registry's row and click **Del
 
 For HFA analyses that require weighted estimates, you can upload per-facility sampling weights. Open the **Data** section and click the **Sampling weights** row to open the weights manager. Only global administrators can import or delete weights; all users with data access can view the weights table and download the current weights as a CSV.
 
-Prepare a CSV file with a facility ID column and a weight column. Each import covers one time point. To upload weights, select or upload your CSV, then map the facility ID column, the weight column, and the target time point. A blank weight cell means the facility is not in that round's sample and will be skipped. A successful import reports how many weights were imported, how many blank cells were skipped, and which time point was covered. Re-importing updates existing weights for the same facility and time point.
+Prepare a CSV file with a facility ID column, a weight column, and optionally a sampling stratum column. Each import covers one time point. Import the time point's data first: the data import creates the HFA facilities, and a weight for a facility not in the HFA facility list is skipped. To upload weights, select or upload your CSV, then map the facility ID column, the weight column, the stratum column (optional), and the target time point. A blank weight cell means the facility is not in that round's sample and will be skipped.
 
-The weights manager displays a coverage summary showing, for each time point, how many facilities with data have a corresponding weight. A time point that has weights uploaded but no data yet shows the count of weights alongside a note that no data has been imported yet. A warning highlight indicates time points where some facilities have data but no weight - those facilities will count with weight 1 when weighted analysis is enabled.
+A successful import reports how many weights were imported, the number of strata if a stratum column was mapped, how many weights had no stratum value, and which facility IDs were skipped because they are not in the HFA facility list.
 
-If no sampling weights have been imported yet, the weights manager shows a message indicating that no weights are available, rather than an error.
+The weights manager displays a coverage summary showing, for each time point, how many facilities with data have a corresponding weight. A warning highlight indicates time points where some facilities have data but no weight.
 
 To remove all sampling weights, click **Delete all weights**. This does not affect any facility records or HFA data.
 

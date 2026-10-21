@@ -100,6 +100,7 @@ La liste des utilisateurs prend en charge la sélection par lot pour les opérat
 
 - **Définir comme administrateur** / **Retirer le statut d'administrateur** - Activer ou désactiver le statut d'administrateur
 - **Modifier les permissions** - Mettre à jour les permissions d'instance de tous les utilisateurs sélectionnés en une seule fois
+- **Modifier les portées** - Remplacer l'accès aux portées de tous les utilisateurs sélectionnés en une seule fois. Les administrateurs globaux ont toujours accès à toutes les portées et sont ignorés. Cette action est disponible pour les administrateurs globaux et pour les titulaires de la permission **Configurer les utilisateurs** qui ne sont pas eux-mêmes restreints par portée.
 - **Télécharger les utilisateurs** - Exporter un fichier CSV des utilisateurs sélectionnés
 - **Supprimer** - Supprimer les comptes utilisateurs sélectionnés
 

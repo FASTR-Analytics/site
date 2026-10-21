@@ -5,12 +5,12 @@ sidebar:
   order: 7
 ---
 
-L'assistant IA vous aide à explorer et à interpréter vos données par le biais d'une conversation. Il est disponible sur l'ensemble de la plateforme — dans les présentations, les rapports, la page Explorer, la page Paquets de résultats et les vues de paquets individuels — afin que vous puissiez poser des questions où que vous travailliez.
+L'assistant IA vous aide à explorer et à interpréter vos données par le biais d'une conversation. Il est disponible sur l'ensemble de la plateforme — dans les présentations, les rapports, la page Explorer, la page Paquets de résultats, la page Produits et les vues de paquets individuels — afin que vous puissiez poser des questions où que vous travailliez.
 
 ## Ouvrir l'assistant
 <!-- help#ai-open -->
 
-Cliquez sur le bouton **IA** sur le bord droit de l'écran pour ouvrir le panneau de l'assistant. Le panneau s'affiche en regard de votre vue actuelle. Pour le fermer, cliquez sur le bouton chevron dans l'en-tête du panneau ou cliquez à nouveau sur le bouton **IA**.
+Cliquez sur le bouton **IA** en bas à droite de l'écran pour ouvrir le panneau de l'assistant. Le panneau s'affiche en regard de votre vue actuelle. Pour le fermer, cliquez sur le bouton chevron dans l'en-tête du panneau ou cliquez à nouveau sur le bouton **IA**.
 
 L'assistant est sensible au contexte : chaque message lui indique la vue actuelle et, lorsqu'un paquet de résultats est en vue, le paquet et la portée sous lesquels chaque lecture de données se résout. Vous n'avez pas besoin de préciser quel paquet utiliser.
 
@@ -48,7 +48,7 @@ L'assistant est particulièrement utile lors de la création de présentations. 
 
 Lorsque vous demandez à l'assistant de créer une diapositive, il en rédige le contenu et affiche un aperçu. Si la présentation est ouverte et que vous pouvez la modifier, vous pouvez ajouter le brouillon directement depuis la carte d'aperçu.
 
-Lors de la modification d'une diapositive existante, l'assistant peut également modifier les visualisations déjà présentes sur la diapositive - par exemple, changer le réplicant affiché par un graphique, ajuster des filtres ou mettre à jour des légendes - sans reconstruire la visualisation de zéro. L'assistant peut aussi mettre à jour les visualisations directement depuis la vue de la présentation, sans ouvrir l'éditeur de diapositive, et enregistre ces modifications immédiatement.
+Dans l'éditeur de présentation, l'assistant peut lire le contenu actuel de la diapositive ouverte — y compris les modifications non enregistrées affichées sur le canevas — et modifier les diapositives dans toute la présentation. Il peut changer le texte, mettre à jour les mises en page, ajuster des visualisations existantes (réplicant, filtres, désagrégation, période, légendes) et modifier n'importe quelle diapositive de la présentation qu'elle soit ouverte ou non, en enregistrant ces modifications immédiatement. Pour la diapositive ouverte, les modifications apparaissent sur le canevas immédiatement et sont enregistrées automatiquement.
 
 Chaque visualisation d'une présentation est résolue sous le paquet de résultats et la portée propres à cette présentation. Lorsque l'assistant crée ou modifie une visualisation, il utilise automatiquement le paquet associé à la présentation — vous n'avez pas besoin de préciser quel paquet utiliser.
 
@@ -57,6 +57,10 @@ Chaque visualisation d'une présentation est résolue sous le paquet de résulta
 Dans l'éditeur de rapport, l'assistant peut réécrire des passages, insérer de nouvelles visualisations et modifier des visualisations existantes directement. Lorsque vous lui demandez de modifier du texte, il propose un diff dans une fenêtre modale que vous acceptez ou refusez avant toute application. Lorsque vous lui demandez de modifier une visualisation - par exemple, changer son réplicant ou son filtre de période - il applique la modification directement à l'aperçu en direct et enregistre immédiatement, sans étape de diff. Pour remplacer une visualisation par un graphique ou un indicateur entièrement différent, demandez à l'assistant de remplacer la visualisation plutôt que de la modifier.
 
 Chaque visualisation d'un rapport est résolue sous le paquet de résultats et la portée propres à ce rapport. Lorsque l'assistant insère ou remplace une visualisation, il utilise automatiquement le paquet associé au rapport.
+
+## Consulter les produits
+
+Sur la page Produits, vous pouvez demander à l'assistant de lister tous les produits que vous pouvez voir, avec leur dossier, leur paquet de résultats, leur portée et votre niveau d'accès. L'assistant ne peut pas ouvrir les produits à votre place — vous le faites en cliquant dessus — mais il peut décrire ce qui est disponible et vous aider à décider où trouver ce dont vous avez besoin.
 
 ## Conversations et historique
 

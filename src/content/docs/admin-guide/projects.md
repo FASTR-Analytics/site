@@ -31,7 +31,7 @@ Switching a project to a different results package changes the data behind every
 
 Each project has a scope that determines how its results package is filtered. The scope is set when creating the project and can be changed later by a global administrator from **Settings**. The project's scope appears as a badge next to the project name and is shown in **Settings** under **Project scope**.
 
-Scopes are created and managed by global administrators from the **Results packages** page. Click **Scopes** in the toolbar to open the scopes manager, where you can create, edit, and delete scopes. Each scope defines limits per data family (HMIS, HFA, ICEH) — restricting by area, years, modules, indicators, time points, categories, service categories, and other dimensions. The built-in **All data** scope includes everything and cannot be edited or deleted.
+Scopes are created and managed by global administrators from the **Scopes** tab in the main navigation. Click **Scopes** to open the scopes manager, where you can create, edit, and delete scopes. Each scope defines limits per data family (HMIS, HFA, ICEH) — restricting by area, years, modules, indicators, time points, categories, service categories, and other dimensions. The built-in **All data** scope includes everything and cannot be edited or deleted.
 
 Editing a scope's definition marks every figure resolved under it as stale, because the definition's hash changes. Figures in slide decks and reports that were resolved under the old definition show a staleness badge and should be reattached.
 
