@@ -76,9 +76,11 @@ A DHIS2 import fetches the values facilities reported, one DHIS2 element and mon
 
 Each (DHIS2 element, month) pair is fetched and merged on its own. For a pair that is fetched successfully, FASTR removes the existing rows for exactly the facilities it queried, then inserts the values DHIS2 returned. A pair that fails does not touch existing data, and a run that stops keeps every pair already merged.
 
-FASTR fetches each DHIS2 element indicator and operand from the dataValueSets API, which returns the values facilities reported directly. This is the only fetch route the importer uses.
+FASTR fetches each DHIS2 element indicator and operand from the dataValueSets API, which returns the values facilities reported directly. This is the only fetch route the importer uses. On DHIS2 version 2.39 and later, values are pulled by data element. On earlier releases, the DHIS2 export ignores the data element parameter, so FASTR instead pulls by the monthly data set the element is collected in. The DHIS2 version is read at the start of each run and determines which method is used for that run.
 
 A DHIS2 id that matches nothing in DHIS2 causes every selected month of the indicators carrying it to fail without a fetch, and will fail every run until corrected. A DHIS2 id that matches a DHIS2 formula (what DHIS2 calls an indicator) rather than a data element also causes failures — the run detail explains this and notes that the FASTR team can run the DHIS2 id repair to fix it while keeping any data already imported.
+
+On releases before 2.39 where pulls are by data set, a data element that is not collected in any monthly data set cannot be fetched at all. Every selected month of an indicator whose element has no monthly data set fails permanently. The run detail explains this and names the affected indicators. Ask your DHIS2 administrator which monthly data set collects those elements.
 
 Facility values that are not non-negative integers are skipped rather than causing the whole pair to fail. The run detail shows a count of skipped values per pair, and the Ledger tab accumulates them per indicator.
 
@@ -87,7 +89,7 @@ Facility values that are not non-negative integers are skipped rather than causi
 
 For a CSV import, the staging results list every issue by category, with a count and sample rows. The categories are: rows with missing required fields, rows with invalid values, facilities not in your facility list, and invalid periods. Rows under skipped indicator values are also counted separately and are not treated as errors. Fix the file or update your indicator mapping before importing again.
 
-For a DHIS2 import, the run detail shows the summary, any indicators pointing to nothing in DHIS2, any indicators pointing to DHIS2 formulas rather than data elements, a count of skipped facility values, and every failed (DHIS2 element, month) pair with its error. Each error is classed as **Configuration** (an unknown ID or another refusal by DHIS2), which fails again until the indicator list is fixed, or **Server** (a timeout or a server error), which may succeed on a retry. When any month has failed, **Retry failed pairs** on the per-month detail view opens the wizard with every failed pair selected.
+For a DHIS2 import, the run detail shows the summary, any indicators pointing to nothing in DHIS2, any indicators pointing to DHIS2 formulas rather than data elements, a count of skipped facility values, and every failed (DHIS2 element, month) pair with its error and a **View error** button that shows the full error text. Each error is classed as **Configuration** (an unknown ID or another refusal by DHIS2), which fails again until the indicator list is fixed, or **Server** (a timeout or a server error), which may succeed on a retry. The run detail also shows the DHIS2 version detected at run start and whether values were pulled by data element or by data set. When any month has failed, **Retry failed pairs** on the per-month detail view opens the wizard with every failed pair selected.
 
 ## Managing import history
 
