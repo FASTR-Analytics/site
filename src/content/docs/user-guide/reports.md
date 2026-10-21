@@ -16,6 +16,8 @@ Open the **Products** tab on your instance home screen. Reports appear as cards 
 
 To create reports, at least one results package and one scope must exist at the instance level.
 
+When you leave a report you created in the same session while it is still completely empty, FASTR asks whether you want to keep it or delete it.
+
 ## Writing in the editor
 
 The editor uses FASTR Markdown, so you write plain text and format it with simple marks - `#` for headings, `-` for bullet lists, `1.` for numbered lists, and pipes for tables. Bold, italic, and inline code work the way they do anywhere else. FASTR Markdown also supports `:::` blocks for callouts, stat tiles, bands, cover pages, and other structured content — the **Widgets** menu lists them all.
@@ -86,8 +88,6 @@ Open the **File** menu and choose **Manage access…** to control who can view a
 
 FASTR Markdown reports have a design theme that controls fonts, colours, and the look of every block. Open the **Page** menu and choose **Theme** to switch between built-in themes or apply a saved custom style. A custom style contributes its colour palette to a FASTR Markdown report. You can re-theme a report at any time without touching the body text.
 
-On a new report that still holds only its title, the theme picker offers a second step: a template gallery. Templates give the report its sections and blocks, with grey guidance text in each slot to type over. The AI assistant is told which template you chose and writes to its shape. Pick a template and click **Use template** to apply it, or click **Skip** to start with a blank page. You can open the theme picker again at any time from the **Page** menu — the template step only appears while the report body is still empty.
-
 The theme picker also shows any custom styles saved by your instance's administrators. Saved styles appear alongside the built-in themes in the picker.
 
 ## Viewer access
@@ -112,7 +112,11 @@ If the report has unsaved live edits that cannot be saved at the moment you requ
 
 ## AI assistance
 
-The **AI** button opens an assistant that can help as you write. It can rewrite a passage you've selected, insert or replace visualizations, and edit existing visualizations in place - for example, changing the replicant a chart displays, adjusting its filters, or updating captions. The assistant proposes text changes for you to accept or reject in a modal before anything is applied; visualization edits are applied immediately to the live preview and saved. See [AI assistant](/user-guide/ai-assistant/) for the full picture.
+The **Ask AI** button opens an assistant that can help as you write. It can rewrite a passage you've selected, insert or replace visualizations, and edit existing visualizations in place - for example, changing the replicant a chart displays, adjusting its filters, or updating captions. The assistant proposes text changes for you to accept or reject in a modal before anything is applied; visualization edits are applied immediately to the live preview and saved.
+
+When you open a new report that has not yet had any content added, the assistant works through a brief, outline, and draft sequence before writing the full document. It asks a few short questions first, then reviews the data, then proposes an outline for your approval. If you prefer to skip straight to a draft, just say so.
+
+See [AI assistant](/user-guide/ai-assistant/) for the full picture.
 
 ## Undo and redo
 

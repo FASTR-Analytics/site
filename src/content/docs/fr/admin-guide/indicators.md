@@ -24,7 +24,7 @@ Pour voir ce qu'implique chaque type, cliquez sur **Types d'indicateurs** dans l
 
 Les administrateurs globaux peuvent sélectionner des lignes dans la liste et utiliser l'action groupée **Supprimer** pour retirer les indicateurs sélectionnés, sous réserve des vérifications de dépendances habituelles. Les indicateurs individuels peuvent également être supprimés depuis l'éditeur d'indicateurs à l'aide du bouton **Supprimer** dans le pied de page. Les actions groupées **Inclure dans l'analyse** et **Exclure de l'analyse** basculent l'indicateur sur les lignes sélectionnées. L'action groupée **Importation de données DHIS2** ouvre l'assistant d'importation DHIS2 présélectionné avec les indicateurs choisis.
 
-Depuis le menu de débordement de la barre d'outils, les administrateurs globaux ont également accès à deux actions de maintenance occasionnelles : **Télécharger** exporte le dictionnaire d'indicateurs au format CSV et **Actualiser les noms DHIS2** lit le nom actuel de chaque indicateur élément DHIS2 depuis DHIS2 et le stocke avec l'indicateur.
+Depuis le menu de débordement de la barre d'outils, les administrateurs globaux ont également accès à deux actions de maintenance occasionnelles : **Télécharger** exporte le dictionnaire d'indicateurs au format CSV et **Actualiser les noms DHIS2** lit le nom actuel de chaque indicateur élément DHIS2 depuis DHIS2 et le stocke avec l'indicateur. Après l'actualisation, le résultat indique combien de noms ont été actualisés, combien étaient déjà à jour, quels indicateurs pointent vers des formules DHIS2 plutôt que vers des éléments de données, et quels identifiants n'ont pas été trouvés dans DHIS2. Si des indicateurs pointent vers des formules DHIS2 ou des identifiants introuvables, contactez l'équipe FASTR pour exécuter la réparation des identifiants DHIS2, qui corrige les identifiants tout en conservant les données déjà importées.
 
 #### Types d'indicateurs
 
@@ -145,4 +145,4 @@ FASTR supprime également les balises HTML et normalise les espaces dans les lib
 
 Choisissez des identifiants d'indicateurs courts mais descriptifs. Évitez les espaces et les caractères spéciaux - tenez-vous-en aux lettres minuscules, aux chiffres et aux tirets bas.
 
-Vérifiez les identifiants DHIS2 dans la liste lorsque des éléments de données sont modifiés ou remplacés sur le serveur DHIS2. Utilisez **Actualiser les noms DHIS2** régulièrement pour maintenir les noms DHIS2 stockés à jour.
+Vérifiez les identifiants DHIS2 dans la liste lorsque des éléments de données sont modifiés ou remplacés sur le serveur DHIS2. Utilisez **Actualiser les noms DHIS2** régulièrement pour maintenir les noms DHIS2 stockés à jour. Si l'actualisation révèle des indicateurs pointant vers des formules DHIS2 ou des identifiants introuvables, contactez l'équipe FASTR pour exécuter la réparation des identifiants DHIS2.

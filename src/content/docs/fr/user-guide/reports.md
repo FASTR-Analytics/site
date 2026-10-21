@@ -16,6 +16,8 @@ Ouvrez l'onglet **Produits** sur l'écran d'accueil de votre instance. Les rappo
 
 Pour créer des rapports, au moins un lot de résultats et une portée doivent exister au niveau de l'instance.
 
+Lorsque vous quittez un rapport que vous avez créé dans la même session alors qu'il est encore totalement vide, FASTR vous demande si vous souhaitez le conserver ou le supprimer.
+
 ## Rédiger dans l'éditeur
 
 L'éditeur utilise FASTR Markdown : vous écrivez du texte brut et le mettez en forme à l'aide de marques simples - `#` pour les titres, `-` pour les listes à puces, `1.` pour les listes numérotées et des barres verticales pour les tableaux. Le gras, l'italique et le code en ligne fonctionnent comme partout ailleurs. FASTR Markdown prend également en charge les blocs `:::` pour les encadrés, les tuiles de chiffres, les bandeaux, les pages de couverture et d'autres contenus structurés — le menu **Widgets** les liste tous.
@@ -86,8 +88,6 @@ Ouvrez le menu **Fichier** et choisissez **Gérer les accès…** pour contrôle
 
 Les rapports FASTR Markdown ont un thème de conception qui contrôle les polices, les couleurs et l'apparence de chaque bloc. Ouvrez le menu **Page** et choisissez **Thème** pour passer d'un thème intégré à un autre ou appliquer un style personnalisé enregistré. Un style personnalisé apporte sa palette de couleurs à un rapport FASTR Markdown. Vous pouvez changer le thème d'un rapport à tout moment sans toucher au corps du texte.
 
-Sur un nouveau rapport qui ne contient encore que son titre, le sélecteur de thème propose une deuxième étape : une galerie de modèles. Les modèles donnent au rapport ses sections et ses blocs, avec des indications grises dans chaque emplacement à remplacer par votre texte. L'assistant IA sait quel modèle vous avez choisi et écrit selon sa forme. Choisissez un modèle et cliquez sur **Utiliser le modèle** pour l'appliquer, ou cliquez sur **Passer** pour commencer avec une page blanche. Vous pouvez rouvrir le sélecteur de thème à tout moment depuis le menu **Page** — l'étape modèle n'apparaît que lorsque le corps du rapport est encore vide.
-
 Le sélecteur de thème affiche également les styles personnalisés enregistrés par les administrateurs de votre instance. Les styles enregistrés apparaissent aux côtés des thèmes intégrés dans le sélecteur.
 
 ## Accès en lecture seule
@@ -112,7 +112,11 @@ Si le rapport contient des modifications en direct qui ne peuvent pas être enre
 
 ## Assistance par IA
 
-Le bouton **IA** ouvre un assistant qui peut vous aider pendant que vous rédigez. Il peut reformuler un passage sélectionné, insérer ou remplacer des visualisations, et modifier des visualisations existantes directement sans les reconstruire - par exemple, changer le réplicant affiché par un graphique, ajuster ses filtres ou mettre à jour des légendes. L'assistant propose les modifications de texte dans une fenêtre modale que vous acceptez ou refusez avant toute application ; les modifications de visualisations sont appliquées immédiatement à l'aperçu en direct et enregistrées. Consultez [Assistant IA](/user-guide/ai-assistant/) pour une vue d'ensemble complète.
+Le bouton **Demander à l'IA** ouvre un assistant qui peut vous aider pendant que vous rédigez. Il peut reformuler un passage sélectionné, insérer ou remplacer des visualisations, et modifier des visualisations existantes directement sans les reconstruire - par exemple, changer le réplicant affiché par un graphique, ajuster ses filtres ou mettre à jour des légendes. L'assistant propose les modifications de texte dans une fenêtre modale que vous acceptez ou refusez avant toute application ; les modifications de visualisations sont appliquées immédiatement à l'aperçu en direct et enregistrées.
+
+Lorsque vous ouvrez un nouveau rapport qui ne contient encore aucun contenu, l'assistant suit une séquence de questions, plan et brouillon avant de rédiger le document complet. Il pose d'abord quelques questions courtes sur le public visé, la longueur et le contenu ; consulte ensuite les données pertinentes ; puis propose un plan pour votre approbation. Si vous préférez passer directement au brouillon, il vous suffit de le préciser.
+
+Consultez [Assistant IA](/user-guide/ai-assistant/) pour une vue d'ensemble complète.
 
 ## Annuler et rétablir
 

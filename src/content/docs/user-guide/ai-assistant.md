@@ -10,7 +10,7 @@ The AI assistant helps you explore and interpret your data through conversation.
 ## Opening the assistant
 <!-- help#ai-open -->
 
-Click the **AI** button at the bottom-right edge of the screen to open the assistant panel. The panel slides in alongside your current view. To close it, click the chevron button in the panel header or click the **AI** button again.
+Click the **Ask AI** button at the bottom-right edge of the screen to open the assistant panel. The panel slides in alongside your current view. To close it, click the chevron button in the panel header or click the **Ask AI** button again.
 
 The assistant is context-aware: each message tells it the current view and, where a results package is in view, the package and scope every data read resolves under. You do not need to specify which package to use.
 
@@ -57,6 +57,8 @@ Every visualization in a slide deck is resolved under that deck's own results pa
 In the report editor, the assistant can rewrite passages, insert new visualizations, and edit existing visualizations in place. When you ask it to change text, it proposes a diff in a modal that you accept or reject before anything changes. When you ask it to edit a visualization - for example, to change its replicant or period filter - it applies the change directly to the live preview and saves immediately, without a diff step. To replace a visualization with a completely different chart or metric, ask the assistant to replace the visualization rather than edit it.
 
 Every visualization in a report is resolved under that report's own results package and scope. When the assistant inserts or replaces a visualization, it uses the report's attached package automatically.
+
+When you open a new report that has not yet had any content added, the assistant works through a brief, outline, and draft sequence before writing. It first asks a few short questions about the intended audience, length, and focus; then looks at the relevant data; then proposes an outline for your approval before writing the full document. If you prefer to skip straight to a draft, just say so.
 
 ## Listing products
 
