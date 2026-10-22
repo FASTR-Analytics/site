@@ -152,7 +152,9 @@ HFA indicators support batch creation via Excel workbook. Upload an Excel workbo
 - **Service categories**: id, label (optional)
 - **Variant groups**: id, label (optional)
 - **Variant items**: id, groupId, label (optional)
-- **Indicators**: indicatorId (leave blank for a new indicator; the platform assigns one), categoryId, subCategoryId, serviceCategoryId (pipe-separated for multiple), shortLabel, definition, type, aggregation, variantGroupId (optional), r_code__&lt;time point&gt;, r_filter_code__&lt;time point&gt;, r_variant_code__&lt;itemId&gt;__&lt;time point&gt;, …
+- **Indicators**: indicatorId (leave blank for a new indicator; the platform assigns one), categoryId, subCategoryId, serviceCategoryId (pipe-separated for multiple), shortLabel, label, type, aggregation, variantGroupId (optional), r_code__&lt;time point&gt;, r_filter_code__&lt;time point&gt;, r_variant_code__&lt;itemId&gt;__&lt;time point&gt;, …
+
+Text columns such as `label` and `shortLabel` can alternatively be provided per language using suffixed column names: `label_en`, `label_fr`, and `label_pt`. When per-language columns are present, the import reads the instance language's column and falls back to English if that column is blank or absent. This lets a single workbook serve every instance regardless of its configured language.
 
 If the Service categories, Variant groups, or Variant items sheets are omitted, indicators are imported with no service categories or variant assignments.
 
@@ -175,4 +177,3 @@ FASTR also strips HTML markup and normalizes whitespace from XLSForm labels befo
 Choose indicator IDs that are short but descriptive. Avoid spaces and special characters - stick to lowercase letters, numbers, and underscores. An ID can be renamed later; renaming rewrites every formula and import schedule that references it, while data stays in place.
 
 Check the DHIS2 ids in the list when data elements are changed or replaced on the DHIS2 server. A replaced data element has a new DHIS2 UID, so create a new DHIS2 element indicator for it. Use **Refresh DHIS2 names** periodically to keep the stored DHIS2 names current. If the refresh reveals indicators pointing to DHIS2 formulas or ids not found in DHIS2, contact the FASTR team to run the DHIS2 id repair. The repair fixes the underlying DHIS2 ids — including ids that point to DHIS2 formulas rather than data elements, ids that match nothing in DHIS2, and cases where a UID.COC operand with a default category option combo is duplicating the bare element — while keeping any data already imported. After the repair, a follow-up DHIS2 import refetches data for the affected indicators.
-
