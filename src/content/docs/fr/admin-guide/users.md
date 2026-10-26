@@ -56,7 +56,7 @@ La plupart des analystes n'ont besoin que de « Consulter les données » au niv
 
 ## Accès aux portées
 
-Les administrateurs globaux peuvent restreindre les portées auxquelles un utilisateur peut accéder. Par défaut, chaque utilisateur a accès à toutes les portées. Pour restreindre un utilisateur, ouvrez son profil et faites défiler jusqu'à la carte **Portées**. Décochez **Toutes les données** et sélectionnez les portées spécifiques auxquelles l'utilisateur peut accéder. Un utilisateur restreint ne voit que les produits portant l'une de ses portées accordées, et les lectures de données ne passent que par ces portées. Les bits de permission **Consulter les données**, **Configurer les données** et **Consulter les journaux** sont supprimés pour un utilisateur restreint, quel que soit ce qui est enregistré, car ces permissions exposent des données de paquet brutes qui contournent le filtrage des portées.
+Les administrateurs globaux peuvent restreindre les portées auxquelles un utilisateur peut accéder. Par défaut, chaque utilisateur a accès à toutes les portées. Pour restreindre un utilisateur, ouvrez son profil et faites défiler jusqu'à la carte **Portées**. Décochez **Toutes les données** et sélectionnez les portées spécifiques auxquelles l'utilisateur peut accéder. Un utilisateur restreint ne voit que les produits portant l'une de ses portées accordées, et les lectures de données ne passent que par ces portées — y compris dans Explorer. Les bits de permission **Consulter les données**, **Configurer les données** et **Consulter les journaux** sont supprimés pour un utilisateur restreint, quel que soit ce qui est enregistré, car ces permissions exposent des données de paquet brutes qui contournent le filtrage des portées.
 
 L'accès aux portées ne peut être défini que par un administrateur global, même si un autre utilisateur dispose de la permission **Configurer les utilisateurs**. Un utilisateur restreint disposant de la permission **Configurer les utilisateurs** ne peut pas accorder le statut d'administrateur global à d'autres utilisateurs, car cela lui permettrait de lever sa propre restriction de portée.
 
@@ -87,6 +87,12 @@ Ces préréglages couvrent la plupart des scénarios courants. Utilisez des comb
 Lorsque vous créez un nouveau projet, les utilisateurs existants reçoivent des permissions par défaut en fonction des paramètres de leur profil. Cliquez sur le bouton « Nouveaux projets (par défaut) » au bas de la grille de projets d'un utilisateur pour configurer les permissions qu'il recevra automatiquement lors de la création de nouveaux projets.
 
 Cela fait gagner du temps lorsque votre organisation ajoute fréquemment des projets - vous n'avez pas à affecter manuellement chaque utilisateur à chaque nouveau projet. Définissez les valeurs par défaut sur « Lecteur » pour les personnes qui doivent voir toutes les analyses, ou sur « Aucun accès » pour celles qui ne travaillent que sur des projets spécifiques.
+
+## Organisation et rôle
+
+Chaque utilisateur peut renseigner son organisation et son rôle depuis son profil. Ouvrez votre profil en cliquant sur votre nom ou votre avatar dans la barre de navigation supérieure, puis faites défiler jusqu'à la section **Compte**. Cliquez sur **Modifier** à côté de **Organisation** ou **Rôle** pour mettre à jour la valeur directement. Ces champs contiennent les propres mots de l'utilisateur et sont visibles par les administrateurs sur la page **Utilisateurs**, où ils apparaissent comme colonnes triables.
+
+Lorsqu'un nouvel utilisateur se connecte pour la première fois après avoir été approuvé, FASTR l'invite à renseigner son organisation et son rôle. L'invite peut être ignorée et les informations ajoutées ultérieurement depuis le profil.
 
 ## Jetons d'accès personnels
 

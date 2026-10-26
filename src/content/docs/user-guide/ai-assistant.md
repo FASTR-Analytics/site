@@ -12,6 +12,8 @@ The AI assistant helps you explore and interpret your data through conversation.
 
 Click the **Ask AI** button at the bottom-right edge of the screen to open the assistant panel. The panel slides in alongside your current view. To close it, click the chevron button in the panel header or click the **Ask AI** button again.
 
+The panel remembers whether you left it open or closed. If you closed it in a previous session, it stays closed until you open it again; if you left it open, it reopens automatically on your next visit.
+
 The assistant is context-aware: each message tells it the current view and, where a results package is in view, the package and scope every data read resolves under. You do not need to specify which package to use.
 
 ![Opening the Assistant](/images/opening-the-assistant-en.png)
@@ -68,11 +70,11 @@ On the Products page, you can ask the assistant to list every product you can se
 
 Each conversation is saved automatically. You can start new conversations and switch between past ones using the menu in the panel header. The assistant remembers what you've discussed within a conversation, so you can build on previous questions.
 
-Only one browser tab can run the AI chat at a time. If you open FASTR in multiple tabs, the tab where the assistant is active shows the full chat; other tabs show a notice with a **Use it here** button to move the chat to that tab.
+Only one browser tab can run the AI chat at a time. If you open FASTR in multiple tabs, the tab where the assistant is active shows the full chat; other tabs show a notice. If the active tab is still generating a response, the notice explains that the AI is answering there and asks you to wait before moving the chat. Once it is idle, click **Use it here** to move the chat to the current tab.
 
 ## Usage limits
 
-AI usage is subject to daily limits that apply across your instance. A usage indicator at the bottom of the panel shows how much of your daily limit you've consumed. If you reach the limit, wait until it resets - typically at midnight UTC. You can adjust the model and maximum token budget in the AI settings panel, accessible from the panel header menu.
+AI usage is subject to daily limits that apply across your instance. A usage indicator at the bottom of the panel shows how much of your daily limit you've consumed. If you reach the limit, wait until it resets - typically at midnight UTC. You can adjust the model, maximum token budget, and reasoning effort in the AI settings panel, accessible from the panel header menu.
 
 ## Tips for better results
 

@@ -56,7 +56,7 @@ Most analysts need only "View data" at the instance level. Their main work happe
 
 ## Scope access
 
-Global administrators can restrict which scopes a user may access. By default every user has access to all scopes. To restrict a user, open their profile and scroll to the **Scopes** card. Uncheck **All data** and select the specific scopes the user may use. A restricted user sees only products that carry one of their granted scopes, and data reads pass only through those scopes. The **View data**, **Configure data**, and **View logs** permission bits are suppressed for a restricted user regardless of what is stored, because those permissions expose raw package data that bypasses scope filtering.
+Global administrators can restrict which scopes a user may access. By default every user has access to all scopes. To restrict a user, open their profile and scroll to the **Scopes** card. Uncheck **All data** and select the specific scopes the user may use. A restricted user sees only products that carry one of their granted scopes, and data reads pass only through those scopes — including in Explore. The **View data**, **Configure data**, and **View logs** permission bits are suppressed for a restricted user regardless of what is stored, because those permissions expose raw package data that bypasses scope filtering.
 
 Scope access can only be set by a global administrator, even if another user holds the **Configure users** permission. A restricted user who holds the **Configure users** permission cannot grant the global administrator flag to others, because doing so would effectively lift their own scope restriction.
 
@@ -87,6 +87,12 @@ These presets cover most common scenarios. Use custom combinations when you need
 When you create a new project, existing users get default permissions based on their profile settings. Click the "New projects (default)" button at the bottom of a user's project grid to configure what permissions they'll receive automatically when new projects are created.
 
 This saves time when your organization adds projects frequently - you don't have to manually assign every user to every new project. Set defaults to "Viewer" for people who should see all analyses, or "No access" for people who only work with specific projects.
+
+## Organisation and role
+
+Each user can record their organisation and role from their profile. Open your profile by clicking your name or avatar in the top navigation bar and scroll to the **Account** section. Click **Edit** next to **Organisation** or **Role** to update the value in place. These fields are the user's own words and are visible to administrators on the **Users** page, where they appear as sortable columns.
+
+When a new user logs in for the first time after being approved, FASTR prompts them to fill in their organisation and role. The prompt can be skipped and the information added later from the profile.
 
 ## Personal access tokens
 

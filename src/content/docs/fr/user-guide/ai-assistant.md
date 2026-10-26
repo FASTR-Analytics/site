@@ -12,6 +12,8 @@ L'assistant IA vous aide à explorer et à interpréter vos données par le biai
 
 Cliquez sur le bouton **Demander à l'IA** en bas à droite de l'écran pour ouvrir le panneau de l'assistant. Le panneau s'affiche en regard de votre vue actuelle. Pour le fermer, cliquez sur le bouton chevron dans l'en-tête du panneau ou cliquez à nouveau sur le bouton **Demander à l'IA**.
 
+Le panneau mémorise son état ouvert ou fermé. Si vous l'avez fermé lors d'une session précédente, il reste fermé jusqu'à ce que vous l'ouvriez à nouveau ; si vous l'avez laissé ouvert, il se rouvre automatiquement à votre prochaine visite.
+
 L'assistant est sensible au contexte : chaque message lui indique la vue actuelle et, lorsqu'un paquet de résultats est en vue, le paquet et la portée sous lesquels chaque lecture de données se résout. Vous n'avez pas besoin de préciser quel paquet utiliser.
 
 ![Opening the Assistant FR](/images/opening-the-assistant-fr.png)
@@ -68,11 +70,11 @@ Sur la page Produits, vous pouvez demander à l'assistant de lister tous les pro
 
 Chaque conversation est enregistrée automatiquement. Vous pouvez démarrer de nouvelles conversations et passer de l'une à l'autre à l'aide du menu dans l'en-tête du panneau. L'assistant se souvient de ce dont vous avez discuté au sein d'une conversation, ce qui vous permet de vous appuyer sur les questions précédentes.
 
-Un seul onglet de navigateur peut exécuter le chat IA à la fois. Si vous ouvrez FASTR dans plusieurs onglets, l'onglet où l'assistant est actif affiche le chat complet ; les autres onglets affichent une notice avec un bouton **L'utiliser ici** pour déplacer le chat vers cet onglet.
+Un seul onglet de navigateur peut exécuter le chat IA à la fois. Si vous ouvrez FASTR dans plusieurs onglets, l'onglet où l'assistant est actif affiche le chat complet ; les autres onglets affichent une notice. Si l'onglet actif est en train de générer une réponse, la notice vous indique que l'IA répond là-bas et vous invite à patienter. Une fois qu'il est inactif, cliquez sur **L'utiliser ici** pour déplacer le chat vers l'onglet actuel.
 
 ## Limites d'utilisation
 
-L'utilisation de l'IA est soumise à des limites quotidiennes qui s'appliquent à l'ensemble de votre instance. Un indicateur d'utilisation au bas du panneau montre quelle part de votre limite quotidienne vous avez consommée. Si vous atteignez la limite, attendez sa réinitialisation - généralement à minuit UTC. Vous pouvez ajuster le modèle et le budget de jetons maximum dans le panneau de paramètres IA, accessible depuis le menu de l'en-tête du panneau.
+L'utilisation de l'IA est soumise à des limites quotidiennes qui s'appliquent à l'ensemble de votre instance. Un indicateur d'utilisation au bas du panneau montre quelle part de votre limite quotidienne vous avez consommée. Si vous atteignez la limite, attendez sa réinitialisation - généralement à minuit UTC. Vous pouvez ajuster le modèle, le budget de jetons maximum et l'effort de raisonnement dans le panneau de paramètres IA, accessible depuis le menu de l'en-tête du panneau.
 
 ## Conseils pour de meilleurs résultats
 

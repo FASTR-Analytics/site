@@ -48,7 +48,7 @@ Pour saisir du texte directement sur la diapositive, double-cliquez sur un bloc 
 La rangée de menus de la barre d'outils contient trois menus.
 
 - **Diapositive** vous permet de changer le type de diapositive (couverture, section ou contenu) et de contrôler la visibilité des logos pour les en-têtes et les pieds de page.
-- **Insérer** liste tous les champs de texte disponibles pour le type de diapositive actuel — cliquez sur une entrée pour y accéder ou l'ajouter si elle est absente.
+- **Insérer** liste tous les champs de texte disponibles pour le type de diapositive actuel — cliquez sur une entrée pour y accéder ou l'ajouter si elle est absente. Lorsqu'une diapositive de contenu est ouverte, **Insérer** contient également une section **Nouvelle diapositive** listant les trois types de diapositives, afin d'insérer une nouvelle diapositive immédiatement après la diapositive en cours sans revenir à l'en-tête.
 - **Panneau divisé** (diapositives de contenu uniquement) ajoute une bande décorative à gauche ou à droite de la diapositive, avec des commandes pour sa taille et son remplissage (couleur unie, motif ou image).
 
 Sous la rangée de menus, une rangée de mise en forme affiche des commandes qui suivent votre sélection. Pendant la saisie dans un bloc de texte, elle affiche les commandes gras, italique, style de texte, taille du texte, liste à puces, liste numérotée et citation. Lorsqu'un champ de titre est sélectionné, elle affiche les commandes de taille et de graisse de la police. Lorsqu'un bloc de contenu est sélectionné, elle affiche le type de bloc (texte, visualisation ou image), un bouton **Mise en page** pour diviser, ajouter, déplacer ou supprimer des blocs, et les commandes propres au type de bloc sélectionné.

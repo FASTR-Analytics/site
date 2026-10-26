@@ -48,7 +48,7 @@ To type directly on the slide, double-click a text block or title field on the c
 The toolbar's menu row contains three menus.
 
 - **Slide** lets you change the slide type (cover, section, or content) and control logo visibility for headers and footers.
-- **Insert** lists every text field available on the current slide type — click an entry to jump to it or add it if it is absent.
+- **Insert** lists every text field available on the current slide type — click an entry to jump to it or add it if it is absent. When a content slide is open, **Insert** also contains a **New slide** section listing the three slide types so you can insert a new slide immediately after the current one without returning to the header.
 - **Split panel** (content slides only) adds a decorative strip on the left or right of the slide, with controls for its size and fill (plain colour, pattern, or image).
 
 Below the menu row, a formatting row shows controls that follow your selection. While typing in a text block it shows bold, italic, text style, text size, bullet list, numbered list, and quote controls. While a title field is selected it shows font size and weight controls. While a content block is selected it shows the block type (text, visualization, or image), a **Layout** button to split, add, move, or delete blocks, and controls for the selected block type.
