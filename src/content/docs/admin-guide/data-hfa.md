@@ -115,7 +115,7 @@ FASTR matches CSV column headers to XLSForm question IDs case-insensitively. An 
 
 For "select_multiple" questions, FASTR automatically expands each choice into a separate binary variable.
 
-Certain question IDs are reserved and cannot be used as survey question IDs. Reserved names include words and operators used in indicator code, as well as columns the analysis script generates. If your XLSForm contains a reserved question ID, rename the question in the XLSForm and its column in the CSV before importing.
+Certain question IDs are reserved and cannot be used as survey question IDs. Reserved names are the keywords used in indicator code (`AND`, `OR`, `NOT`, `IN`), the function names `abs`, `coalesce` and `nullif`, names that already have a fixed meaning in the analysis (such as `TRUE`, `NA` and `if`), and columns the analysis script generates. If your XLSForm contains a reserved question ID, rename the question in the XLSForm and its column in the CSV before importing.
 
 ## HFA facility sampling weights
 

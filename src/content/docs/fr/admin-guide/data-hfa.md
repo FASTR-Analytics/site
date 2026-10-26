@@ -115,7 +115,7 @@ FASTR fait correspondre les en-têtes de colonnes CSV aux identifiants de questi
 
 Pour les questions « select_multiple », FASTR décompose automatiquement chaque choix en une variable binaire distincte.
 
-Certains identifiants de questions sont réservés et ne peuvent pas être utilisés. Les noms réservés incluent les mots et opérateurs utilisés dans le code des indicateurs, ainsi que les colonnes générées par le script d'analyse. Si votre XLSForm contient un identifiant réservé, renommez la question et sa colonne avant d'importer.
+Certains identifiants de questions sont réservés et ne peuvent pas être utilisés. Les noms réservés sont les mots-clés du code des indicateurs (`AND`, `OR`, `NOT`, `IN`), les noms de fonctions `abs`, `coalesce` et `nullif`, les noms qui ont déjà une signification fixe dans l'analyse (comme `TRUE`, `NA` et `if`), et les colonnes générées par le script d'analyse. Si votre XLSForm contient un identifiant réservé, renommez la question dans le XLSForm et sa colonne dans le CSV avant d'importer.
 
 ## Pondérations d'échantillonnage des établissements HFA
 

@@ -164,7 +164,7 @@ Variant code columns use the format `r_variant_code__<itemId>__<timePointLabel>`
 
 When importing, choose between **Add to existing** and **Replace all existing** import modes. In **Add to existing** mode, indicators whose IDs already exist on the platform are skipped — only new ones are created. After import, a summary lists any skipped indicators. In **Replace all existing** mode, all existing indicators, categories, sub-categories, and service categories are permanently deleted before importing. To confirm a replace-all import, you must type the confirmation phrase shown in the field before the **Import** button becomes active.
 
-FASTR detects the time point columns embedded in the file and presents a mapping step where you confirm which platform time point each column should import into. If the column labels match your platform time points exactly, the mapping is pre-filled automatically. Each platform time point can receive one or more workbook columns — the same code can be applied to multiple time points at once by mapping several columns to the same time point.
+FASTR detects the time point columns embedded in the file and presents a mapping step where you confirm which platform time point each column should import into. If the column labels match your platform time points exactly, the mapping is pre-filled automatically. Each platform time point can receive at most one workbook column. When the workbook has a single code column, you can apply it to every time point by choosing **Apply to all N time points**, where N is the number of time points.
 
 ## XLSForm variable labels
 
