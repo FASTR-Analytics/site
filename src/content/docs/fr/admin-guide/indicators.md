@@ -40,7 +40,7 @@ Les trois types de dénombrement sont ajustés par les modules de qualité des d
 
 Un indicateur calculé est défini par une formule portant sur d'autres indicateurs, par exemple `anc4 / anc1` pour un taux de couverture. Il est calculé après l'agrégation des données : un chiffre régional ou annuel est donc la formule appliquée aux valeurs additionnées, et non une moyenne de ratios.
 
-Une formule peut utiliser `+`, `-`, `*`, `/`, des parenthèses et des nombres, ainsi que les fonctions `abs()` (valeur absolue), `coalesce()` (la première valeur non vide) et `nullif()` (vide lorsque les deux valeurs sont égales). Une formule peut faire référence à un autre indicateur calculé, dont la définition est insérée à la place de son identifiant.
+Une formule peut utiliser `+`, `-`, `*`, `/`, des parenthèses et des nombres, des opérateurs de comparaison (`==`, `!=`, `<`, `>`, `<=`, `>=`), des opérateurs logiques (`AND`, `OR`, `NOT`, ou de façon équivalente `&`, `|`, `!`), ainsi que les fonctions `abs()` (valeur absolue), `coalesce()` (la première valeur non vide) et `nullif()` (vide lorsque les deux valeurs sont égales). Une formule peut faire référence à un autre indicateur calculé, dont la définition est insérée à la place de son identifiant.
 
 Une formule peut aussi utiliser un terme de population, par exemple `population_pregnancies`. Les populations proviennent de la page Population de l'instance.
 
@@ -64,7 +64,7 @@ Ajouter des indicateurs depuis DHIS2 ne fait que les enregistrer dans le diction
 
 ## Indicateurs HFA
 
-Les données issues de l'évaluation des établissements de santé fonctionnent différemment des données HMIS. Les enquêtes HFA ont des structures de questions personnalisées qui varient d'une évaluation à l'autre, c'est pourquoi les indicateurs HFA nécessitent du code R pour extraire les valeurs à partir des données d'enquête brutes.
+Les données issues de l'évaluation des établissements de santé fonctionnent différemment des données HMIS. Les enquêtes HFA ont des structures de questions personnalisées qui varient d'une évaluation à l'autre, c'est pourquoi les indicateurs HFA nécessitent du code pour extraire les valeurs à partir des données d'enquête brutes.
 
 ### Définir les indicateurs HFA
 
@@ -78,22 +78,24 @@ Le champ **catégories de service** est facultatif et fournit une classification
 
 Le gestionnaire d'indicateurs HFA comporte une zone de recherche dans la barre d'outils. Saisissez du texte pour filtrer la liste par libellé, définition, catégorie, sous-catégorie ou catégorie de service. Le tableau prend également en charge des filtres de colonnes.
 
-### Code R pour l'extraction
+### Code des indicateurs
 <!-- help#ind-r-code -->
 
-Chaque indicateur HFA nécessite du code R spécifiant comment extraire sa valeur à partir des données d'enquête brutes. Le code s'exécute pour chaque établissement et doit renvoyer TRUE/FALSE pour les indicateurs binaires, ou un nombre pour les indicateurs numériques.
+Chaque indicateur HFA nécessite un code d'indicateur spécifiant comment extraire sa valeur à partir des données d'enquête brutes. Le code s'exécute pour chaque établissement et doit évaluer à oui/non pour les indicateurs binaires, ou à un nombre pour les indicateurs numériques.
 
-L'éditeur de code indique quelles variables d'enquête sont disponibles dans votre jeu de données à chaque point temporel. FASTR valide la syntaxe et signale les variables inconnues comme des erreurs, et avertit des problèmes potentiels. Il vérifie également si le type de résultat de votre code correspond au type déclaré de l'indicateur.
+Le langage de code des indicateurs prend en charge les opérateurs de comparaison (`==`, `!=`, `<`, `>`, `<=`, `>=`), les opérateurs logiques (`AND`, `OR`, `NOT`, et leurs équivalents symboliques `&`, `|`, `!`), le test de liste `x IN (1, 2, 3)` (nié sous la forme `x NOT IN (1, 2, 3)`), l'arithmétique (`+`, `-`, `*`, `/`), les nombres et le texte entre guillemets. Il n'y a pas de fonctions. Écrivez un indice ou une moyenne sous forme arithmétique, par exemple `(a + b + c) / 3`.
 
-Les avertissements (affichés en orange) sont consultatifs et ne bloquent pas l'enregistrement. Les erreurs (affichées en rouge) bloquent l'indicateur.
+L'éditeur de code indique quelles variables d'enquête sont disponibles dans votre jeu de données à chaque point temporel. FASTR valide la syntaxe et signale les variables inconnues comme des erreurs. Il vérifie également si le type de résultat de votre code correspond au type déclaré de l'indicateur — par exemple, un indicateur binaire dont le code est purement arithmétique affichera un avertissement de type incohérent.
+
+Les avertissements de type incohérent (affichés en orange) sont consultatifs et ne bloquent pas l'enregistrement. Les erreurs (affichées en rouge) — erreurs de syntaxe et références à des variables introuvables — bloquent l'indicateur.
 
 Le panneau droit de l'éditeur de code liste les variables d'enquête et les autres indicateurs ; cliquez sur n'importe quelle entrée pour insérer son identifiant dans le code à la position du curseur.
 
-![Code R d'un indicateur HFA](/images/hfa-code-en.png)
+![Code d'un indicateur HFA](/images/hfa-code-en.png)
 
 ### Code filtre
 
-Chaque entrée de code par point temporel prend également en charge un champ de code filtre facultatif. Le code filtre restreint les établissements qui contribuent à la valeur de l'indicateur. Si vous saisissez un code filtre pour un point temporel, vous devez également fournir un code R pour ce même point temporel.
+Chaque entrée de code par point temporel prend également en charge un champ de code filtre facultatif. Le code filtre restreint les établissements qui contribuent à la valeur de l'indicateur. Si vous saisissez un code filtre pour un point temporel, vous devez également fournir un code d'indicateur pour ce même point temporel.
 
 ### Groupes de variantes et code par élément
 
@@ -103,23 +105,25 @@ Un indicateur peut être associé à un **groupe de variantes**, qui définit un
 
 Lorsqu'un indicateur s'applique à plusieurs points temporels, FASTR vérifie si le code d'extraction est cohérent. Utilisez **Tout revalider** après avoir effectué des modifications.
 
+La liste des indicateurs affiche un résumé de l'état du code : **prêt** (aucune erreur), **type incohérent** (le type de résultat du code ne correspond pas au type déclaré de l'indicateur) et **erreur** (erreurs de syntaxe ou de variables inconnues). Les boutons **Tout revalider**, **Vérifier les variables inutilisées**, **Télécharger Excel** et **Importer Excel** sont désactivés lorsqu'aucun point temporel HFA n'est encore défini. Ajoutez un point temporel depuis **HFA → Points temporels** pour les activer.
+
 ### Importer les indicateurs par défaut
 
 Le gestionnaire d'indicateurs HFA comprend un bouton **Importer les indicateurs par défaut** qui récupère l'ensemble d'indicateurs HFA FASTR standard directement depuis GitHub. Vous choisissez entre **Ajouter aux existants** et **Remplacer tous les existants**.
 
 ### Supprimer des indicateurs
 
-Avant de supprimer un indicateur ou un ensemble d'indicateurs, FASTR vérifie si d'autres indicateurs font référence aux identifiants supprimés dans leur code R ou leur code de variante. Si des références sont trouvées, la boîte de dialogue de confirmation liste les indicateurs concernés et avertit que leur code échouera à la validation après la suppression. Vous pouvez supprimer un indicateur individuel depuis son éditeur de code à l'aide du bouton **Supprimer** dans l'en-tête, ou depuis la boîte de dialogue de modification via le bouton **Supprimer** dans le pied de page. Plusieurs indicateurs peuvent être supprimés simultanément à l'aide de l'action groupée dans la liste des indicateurs.
+Avant de supprimer un indicateur ou un ensemble d'indicateurs, FASTR vérifie si d'autres indicateurs font référence aux identifiants supprimés dans leur code d'indicateur ou leur code de variante. Si des références sont trouvées, la boîte de dialogue de confirmation liste les indicateurs concernés et avertit que leur code échouera à la validation après la suppression. Vous pouvez supprimer un indicateur individuel depuis son éditeur de code à l'aide du bouton **Supprimer** dans l'en-tête, ou depuis la boîte de dialogue de modification via le bouton **Supprimer** dans le pied de page. Plusieurs indicateurs peuvent être supprimés simultanément à l'aide de l'action groupée dans la liste des indicateurs.
 
 ### Assistant IA pour les indicateurs
 
-L'assistant IA dans le gestionnaire d'indicateurs HFA peut améliorer les libellés, organiser les indicateurs en catégories et créer de nouveaux indicateurs à partir du jeu de données d'enquête. Il lit et écrit les indicateurs via un ensemble d'outils dédiés, en affichant une boîte de dialogue de confirmation avant d'appliquer toute modification. Lors de l'application de mises à jour groupées, toutes les modifications sont envoyées au serveur en une seule opération transactionnelle.
+L'assistant IA dans le gestionnaire d'indicateurs HFA peut améliorer les libellés, organiser les indicateurs en catégories et créer de nouveaux indicateurs à partir du jeu de données d'enquête. Il lit et écrit les indicateurs via un ensemble d'outils dédiés, en validant le code des indicateurs par rapport au dictionnaire de données et en affichant une boîte de dialogue de confirmation avant d'appliquer toute modification. Lors de l'application de mises à jour groupées, toutes les modifications sont envoyées au serveur en une seule opération transactionnelle.
 
 L'éditeur de code possède également ses propres outils IA. Lorsque vous ouvrez l'éditeur de code d'un indicateur, l'assistant peut lire le brouillon actuel de l'éditeur et y appliquer des modifications — libellés, type et agrégation, assignations de catégories, et modifications de code par round — comme si vous les aviez effectuées vous-même. Les modifications s'appliquent dans le brouillon de l'éditeur sans être enregistrées : vous les conservez avec **Enregistrer** ou les annulez avec **Annuler**.
 
 ### Variables inutilisées
 
-Cliquez sur **Vérifier les variables inutilisées** depuis le menu de débordement pour ouvrir une fenêtre listant les variables d'enquête qu'aucun indicateur ne référence actuellement, regroupées par point temporel.
+Cliquez sur **Vérifier les variables inutilisées** depuis le menu de débordement pour ouvrir une fenêtre listant les variables d'enquête qu'aucun indicateur ne référence actuellement, regroupées par point temporel. Les variables structurelles utilisées en interne par l'analyse sont exclues de cette liste.
 
 ### Gérer les catégories de service
 
@@ -146,9 +150,9 @@ Si les feuilles Service categories, Variant groups ou Variant items sont omises,
 
 Les colonnes de code de variante utilisent le format `r_variant_code__<itemId>__<libelléPointTemporel>`. Chaque colonne de code de variante doit référencer un identifiant d'élément de la feuille Variant items, et le libellé du point temporel doit correspondre à une colonne `r_code__` libellée dans le même fichier. Un indicateur avec un code de variante doit également avoir un `variantGroupId` correspondant au groupe de l'élément.
 
-Lors de l'importation, choisissez entre les modes **Ajouter aux existants** et **Remplacer tous les existants**. En mode **Ajouter aux existants**, les indicateurs dont les identifiants existent déjà sur la plateforme sont ignorés — seuls les nouveaux sont créés. Après l'importation, un résumé liste les indicateurs ignorés. En mode **Remplacer tous les existants**, tous les indicateurs, catégories, sous-catégories et catégories de service existants sont définitivement supprimés avant l'importation. Pour confirmer une importation de remplacement complet, vous devez saisir `yes please delete` dans le champ de confirmation avant que le bouton **Importer** devienne actif.
+Lors de l'importation, choisissez entre les modes **Ajouter aux existants** et **Remplacer tous les existants**. En mode **Ajouter aux existants**, les indicateurs dont les identifiants existent déjà sur la plateforme sont ignorés — seuls les nouveaux sont créés. Après l'importation, un résumé liste les indicateurs ignorés. En mode **Remplacer tous les existants**, tous les indicateurs, catégories, sous-catégories et catégories de service existants sont définitivement supprimés avant l'importation. Pour confirmer une importation de remplacement complet, vous devez saisir la phrase de confirmation affichée dans le champ avant que le bouton **Importer** devienne actif.
 
-FASTR détecte les colonnes de points temporels intégrées dans le fichier et présente une étape de correspondance dans laquelle vous confirmez à quel point temporel de la plateforme chaque colonne doit être importée. Si les libellés des colonnes correspondent exactement à vos points temporels de plateforme, la correspondance est pré-remplie automatiquement. Chaque point temporel de la plateforme ne peut recevoir qu'une seule colonne du classeur — associer deux colonnes au même point temporel est refusé.
+FASTR détecte les colonnes de points temporels intégrées dans le fichier et présente une étape de correspondance dans laquelle vous confirmez à quel point temporel de la plateforme chaque colonne doit être importée. Si les libellés des colonnes correspondent exactement à vos points temporels de plateforme, la correspondance est pré-remplie automatiquement. Chaque point temporel de la plateforme peut recevoir une ou plusieurs colonnes du classeur — le même code peut être appliqué à plusieurs points temporels à la fois en associant plusieurs colonnes au même point temporel.
 
 ## Libellés des variables XLSForm
 

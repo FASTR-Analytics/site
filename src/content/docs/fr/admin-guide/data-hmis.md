@@ -95,7 +95,7 @@ Pour une importation DHIS2, le détail de l'exécution affiche le résumé, les 
 
 Chaque importation qui fusionne des données crée une nouvelle version du jeu de données. L'onglet **Historique** de la vue des importations liste chaque exécution, et le bouton **Version** d'une exécution ouvre les informations d'importation de sa version, avec le nombre de lignes insérées, mises à jour ou supprimées. Pour voir l'état d'importation de chaque indicateur mois par mois, et pour réimporter un indicateur, utilisez l'onglet **Registre** de la page Données HMIS.
 
-Pour supprimer des données, cliquez sur **Supprimer les données** dans la barre d'en-tête, choisissez les indicateurs et la plage de périodes à supprimer, puis saisissez `yes please delete` pour confirmer. Seul un administrateur global peut supprimer des données. La suppression est irréversible et est refusée tant qu'une importation est en cours.
+Pour supprimer des données, cliquez sur **Supprimer les données** dans la barre d'en-tête, choisissez les indicateurs et la plage de périodes à supprimer, puis saisissez la phrase de confirmation affichée dans le champ pour confirmer. Seul un administrateur global peut supprimer des données. La suppression est irréversible et est refusée tant qu'une importation est en cours.
 
 ## Après l'importation
 

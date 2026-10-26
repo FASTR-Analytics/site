@@ -40,7 +40,7 @@ All three count types are adjusted by the data quality modules. A calculated ind
 
 A calculated indicator is defined by a formula over other indicators, for example `anc4 / anc1` for a coverage rate. It is computed after the data is aggregated, so a regional or annual figure is the formula applied to the summed parts, not an average of ratios.
 
-A formula can use `+`, `-`, `*`, `/`, parentheses and numbers, and the functions `abs()` (absolute value), `coalesce()` (the first value that is not empty) and `nullif()` (empty when the two values are equal). A formula may refer to another calculated indicator, whose definition is inserted in place of its ID.
+A formula can use `+`, `-`, `*`, `/`, parentheses and numbers, comparison operators (`==`, `!=`, `<`, `>`, `<=`, `>=`), logical operators (`AND`, `OR`, `NOT`, or equivalently `&`, `|`, `!`), and the functions `abs()` (absolute value), `coalesce()` (the first value that is not empty) and `nullif()` (empty when the two values are equal). A formula may refer to another calculated indicator, whose definition is inserted in place of its ID.
 
 A formula can also divide by a population term, for example `population_pregnancies`. Populations come from the instance's Population page (Data → Population): annual population counts per admin area and population type, uploaded as a CSV.
 
@@ -68,11 +68,11 @@ When you add a DHIS2 element indicator, FASTR reads and stores the element's cur
 
 ## HFA indicators
 
-Health Facility Assessment data works differently from HMIS. HFA surveys have custom question structures that vary by assessment, so HFA indicators require R code to extract values from raw survey data.
+Health Facility Assessment data works differently from HMIS. HFA surveys have custom question structures that vary by assessment, so HFA indicators require code to extract values from raw survey data.
 
 ### Defining HFA indicators
 
-Each HFA indicator has an indicator ID, category, sub-category, service categories, a short label, a definition, data type (binary or numeric), and aggregation method (sum or average). The indicator ID is assigned automatically by the platform when you create the indicator and serves as the technical identifier throughout — in R code, in the data dictionary, and when other indicators reference it.
+Each HFA indicator has an indicator ID, category, sub-category, service categories, a short label, a definition, data type (binary or numeric), and aggregation method (sum or average). The indicator ID is assigned automatically by the platform when you create the indicator and serves as the technical identifier throughout — in indicator code, in the data dictionary, and when other indicators reference it.
 
 The **service categories** field is optional and provides an additional cross-cutting classification that is independent of the category/sub-category hierarchy. An indicator can belong to multiple service categories at once. Service categories are managed on their own tab in the HFA indicator manager and can be assigned to any indicator regardless of its category. When filtering visualizations or project data by service category, a match is made if the indicator belongs to any of the selected service categories — it does not need to belong to all of them.
 
@@ -82,14 +82,16 @@ The **service categories** field is optional and provides an additional cross-cu
 
 The HFA indicator manager includes a search box in the toolbar. Type any text to filter the indicator list by label, definition, category, sub-category, or service category. The table also supports column filters for category, sub-category, service categories, type, status, and consistency — click a column header's filter icon to narrow results by specific values.
 
-### R code for extraction
+### Indicator code
 <!-- help#ind-r-code -->
 
-Each HFA indicator requires R code specifying how to extract its value from raw survey data. The code runs for each facility and should return TRUE/FALSE for binary indicators or a number for numeric ones.
+Each HFA indicator requires indicator code specifying how to extract its value from raw survey data. The code runs for each facility and should evaluate to yes/no for binary indicators or a number for numeric ones.
 
-The code editor shows which survey variables are available in your dataset at each time point, identified by their variable ID. If survey structure changed between assessments, you can write different code for different time points. FASTR validates syntax and flags unknown variables as errors, and warns about potential issues like lone `=` operators that may be unintended comparisons, or use of `&&` and `||` operators that fail when the code runs across all facilities at once (use `&` and `|` instead). It also checks whether your code's result type matches the indicator's declared type — for example, a binary indicator whose code performs no comparison will show a type warning.
+The indicator code language supports comparison operators (`==`, `!=`, `<`, `>`, `<=`, `>=`), logical operators (`AND`, `OR`, `NOT`, and their symbol equivalents `&`, `|`, `!`), the list test `x IN (1, 2, 3)` (negated as `x NOT IN (1, 2, 3)`), arithmetic (`+`, `-`, `*`, `/`), numbers, and text in quotes. There are no functions. Write an index or average as arithmetic, for example `(a + b + c) / 3`.
 
-Warnings (shown in amber) are advisory and do not block saving. Errors (shown in red) — including syntax errors and references to variables not found in the dataset — do block the indicator from being marked as ready.
+The code editor shows which survey variables are available in your dataset at each time point, identified by their variable ID. If survey structure changed between assessments, you can write different code for different time points. FASTR validates syntax and flags unknown variables as errors. It also checks whether your code's result type matches the indicator's declared type — for example, a binary indicator whose code is purely arithmetic will show a type mismatch warning.
+
+Type mismatch warnings (shown in amber) are advisory and do not block saving. Errors (shown in red) — including syntax errors and references to variables not found in the dataset — do block the indicator from being marked as ready.
 
 The code editor's right-hand panel lists survey variables so you can click any entry to insert its variable ID into the code at the cursor position. The search box filters both lists by matching every word of your query against the variable ID and label together, in any order. The panel also lists other indicators, so you can click any to insert its indicator ID — useful when one indicator's code references another.
 
@@ -97,11 +99,11 @@ The code editor's right-hand panel lists survey variables so you can click any e
 
 ### Filter code
 
-Each time-point code entry also supports an optional filter code field. Filter code restricts which facilities contribute to the indicator's value — only facilities where the filter expression evaluates to TRUE are included. If you enter filter code for a time point, you must also provide R code for that same time point; a filter without R code is not valid and blocks saving.
+Each time-point code entry also supports an optional filter code field. Filter code restricts which facilities contribute to the indicator's value — only facilities where the filter expression evaluates to true are included. If you enter filter code for a time point, you must also provide indicator code for that same time point; a filter without indicator code is not valid and blocks saving.
 
 ### Variant groups and per-item code
 
-An indicator can be assigned to a **variant group**, which defines a set of response options (items) that the indicator can be broken down by. When a variant group is assigned, the code editor shows a per-item numerator section below the main code for each time point. Each item gets its own R code snippet that shares the time point's filter code. Use this when the same indicator needs separate numerator logic for each response option — for example, separate calculations for each ownership category.
+An indicator can be assigned to a **variant group**, which defines a set of response options (items) that the indicator can be broken down by. When a variant group is assigned, the code editor shows a per-item numerator section below the main code for each time point. Each item gets its own code snippet that shares the time point's filter code. Use this when the same indicator needs separate numerator logic for each response option — for example, separate calculations for each ownership category.
 
 Variant groups and their items are managed on the **Variant groups** tab in the HFA indicator manager. Each item has a short ID (lowercase letters, digits, and underscores, starting with a letter, maximum 64 characters) and a display label. Items are ordered within their group and can be reordered by dragging.
 
@@ -111,7 +113,7 @@ To assign a variant group to an indicator, open the indicator's code editor and 
 
 When an indicator applies to multiple time points, FASTR tracks whether extraction code is consistent. Inconsistent code may be intentional (survey questions change between rounds), but it's worth reviewing. Use **Revalidate all** after making changes to refresh validation across all indicators.
 
-The indicator list shows a summary of code status: **ready** (no errors or warnings), **warning** (advisory issues only), and **error** (syntax or unknown-variable errors). The **Revalidate all**, **Check unused variables**, **Download Excel**, and **Import Excel** buttons are disabled when no HFA time points have been defined yet, because those actions depend on the survey data dictionary. Add a time point from **HFA → Time points** to enable them.
+The indicator list shows a summary of code status: **ready** (no errors), **type mismatch** (the code's result type does not match the indicator's declared type), and **error** (syntax or unknown-variable errors). The **Revalidate all**, **Check unused variables**, **Download Excel**, and **Import Excel** buttons are disabled when no HFA time points have been defined yet, because those actions depend on the survey data dictionary. Add a time point from **HFA → Time points** to enable them.
 
 ### Importing default indicators
 
@@ -119,17 +121,17 @@ The HFA indicator manager includes an **Import default indicators** button along
 
 ### Deleting indicators
 
-Before deleting an indicator or a set of indicators, FASTR checks whether any other indicators reference the deleted indicator IDs in their R code or variant code. If references are found, the confirmation dialog lists the affected indicators and warns that their code will fail validation after deletion. You can delete an individual indicator from its code editor using the **Delete** button in the header, or from the edit indicator dialog using the **Delete** button in the footer. Multiple indicators can be deleted at once using the bulk action in the indicator list.
+Before deleting an indicator or a set of indicators, FASTR checks whether any other indicators reference the deleted indicator IDs in their indicator code or variant code. If references are found, the confirmation dialog lists the affected indicators and warns that their code will fail validation after deletion. You can delete an individual indicator from its code editor using the **Delete** button in the header, or from the edit indicator dialog using the **Delete** button in the footer. Multiple indicators can be deleted at once using the bulk action in the indicator list.
 
 ### AI assistant for indicators
 
-The AI assistant in the HFA Indicator Manager can clean up labels, organise indicators into categories, and create new indicators from the underlying survey dataset. It reads and writes indicators through a set of dedicated tools — loading current state before proposing changes, validating R code against the data dictionary, and showing a confirmation dialog with a diff before any edits are applied. When the assistant creates new indicators, it assigns each indicator's ID automatically and returns the assigned IDs after creation. When applying bulk updates, all changes are sent to the server in a single transactional operation.
+The AI assistant in the HFA Indicator Manager can clean up labels, organise indicators into categories, and create new indicators from the underlying survey dataset. It reads and writes indicators through a set of dedicated tools — loading current state before proposing changes, validating indicator code against the data dictionary, and showing a confirmation dialog with a diff before any edits are applied. When the assistant creates new indicators, it assigns each indicator's ID automatically and returns the assigned IDs after creation. When applying bulk updates, all changes are sent to the server in a single transactional operation.
 
 The code editor also has its own AI tools. When you open an indicator's code editor, the assistant can read the editor's current draft and apply changes to it — label edits, type and aggregation changes, category assignments, and per-round code changes — as if you had made them yourself. Changes land in the editor's draft unsaved, so you keep them with **Save** or discard them with **Cancel**.
 
 ### Unused variables
 
-Click **Check unused variables** from the overflow menu to open a modal listing survey variables that no indicator currently references, grouped by time point. From this modal you can click **Add** next to any variable to open the create indicator dialog pre-filled with that variable's label, making it easy to turn unused variables into new indicators.
+Click **Check unused variables** from the overflow menu to open a modal listing survey variables that no indicator currently references, grouped by time point. Structural variables used internally by the analysis are excluded from this list. From this modal you can click **Add** next to any variable to open the create indicator dialog pre-filled with that variable's label, making it easy to turn unused variables into new indicators.
 
 ### Managing service categories
 
@@ -160,9 +162,9 @@ If the Service categories, Variant groups, or Variant items sheets are omitted, 
 
 Variant code columns use the format `r_variant_code__<itemId>__<timePointLabel>`. Each variant code column must reference an item ID from the Variant items sheet, and the time point label must match a labeled `r_code__` column in the same file. An indicator with variant code must also have a `variantGroupId` that matches the item's group.
 
-When importing, choose between **Add to existing** and **Replace all existing** import modes. In **Add to existing** mode, indicators whose IDs already exist on the platform are skipped — only new ones are created. After import, a summary lists any skipped indicators. In **Replace all existing** mode, all existing indicators, categories, sub-categories, and service categories are permanently deleted before importing. To confirm a replace-all import, you must type `yes please delete` in the confirmation field before the **Import** button becomes active.
+When importing, choose between **Add to existing** and **Replace all existing** import modes. In **Add to existing** mode, indicators whose IDs already exist on the platform are skipped — only new ones are created. After import, a summary lists any skipped indicators. In **Replace all existing** mode, all existing indicators, categories, sub-categories, and service categories are permanently deleted before importing. To confirm a replace-all import, you must type the confirmation phrase shown in the field before the **Import** button becomes active.
 
-FASTR detects the time point columns embedded in the file and presents a mapping step where you confirm which platform time point each column should import into. If the column labels match your platform time points exactly, the mapping is pre-filled automatically. Each platform time point can only receive one workbook column — mapping two columns to the same time point is rejected.
+FASTR detects the time point columns embedded in the file and presents a mapping step where you confirm which platform time point each column should import into. If the column labels match your platform time points exactly, the mapping is pre-filled automatically. Each platform time point can receive one or more workbook columns — the same code can be applied to multiple time points at once by mapping several columns to the same time point.
 
 ## XLSForm variable labels
 

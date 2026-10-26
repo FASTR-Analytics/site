@@ -40,6 +40,8 @@ Select or upload your CSV data file and your XLSForm questionnaire file. Both fi
 
 Specify which CSV column contains facility identifiers, select the time point this data belongs to, and add optional row filter conditions. Each condition specifies a column, an operator (equals or does not equal), and a value. Rows that fail any condition are dropped before duplicate handling.
 
+If no time points exist yet, you can create one directly in this step by clicking **Add time point** next to the time point selector. This opens a small form where you provide a label, year, and month. The new time point is selected automatically once saved.
+
 ### Step 3 — Facilities
 
 Choose which CSV columns carry the facility's admin areas and optional attributes such as facility type and ownership. FASTR pre-fills these pickers from the latest import's choices and, where a column matches a standard questionnaire name, by column name. A correction column for any picker, where filled, replaces the main column's value for that row.
@@ -47,6 +49,8 @@ Choose which CSV columns carry the facility's admin areas and optional attribute
 For each mapped column, FASTR shows a preview: the number of distinct values, how many are blank, and the most frequent values. It also shows any values not yet in the HFA facility list (for facilities already in the registry) and any XLSForm codes that could not be resolved to a label.
 
 The first admin area level is entered as a text value (the country name) rather than mapped to a column. Levels 2 and up are mapped to CSV columns. You must map all levels or none; if the HFA facility list is empty every facility in the file is new, so all levels are required.
+
+Custom facility columns that are not yet switched on in the HFA configuration require a label when you map them. Enter a label in the field that appears below the column picker — this label is used to identify the column throughout the platform once the import switches it on.
 
 ### Step 4 — Duplicates
 
@@ -89,9 +93,11 @@ While an import is running, a **Cancel import** button appears. Cancelling stops
 ## Time points
 <!-- help#hfa-time-points -->
 
-HFA data is organized by time points rather than continuous periods. Before importing data, create your time points on the **HFA Time Points** page. Each time point has a label and a calendar period (year and month). Time points define the named rounds - such as "Round 1" or "Baseline Dec 2024" - that appear throughout the platform.
+HFA data is organized by time points rather than continuous periods. Each time point has a label and a calendar period (year and month). Time points define the named rounds - such as "Round 1" or "Baseline Dec 2024" - that appear throughout the platform.
 
-After importing, use the **HFA Time Points** page to edit labels, adjust dates, reorder, add new time points, or delete individual survey rounds. Deleting a time point removes all its data and sampling weights.
+You can create a time point directly in the import wizard's Mappings step without leaving the import. For fuller management — editing labels, adjusting dates, reordering, or deleting individual survey rounds — use the **HFA Time Points** page. Deleting a time point removes all its data and sampling weights.
+
+If no time points exist yet, the time points page shows a message inviting you to add one. You can also add time points from within the import wizard.
 
 ![HFA Timepoints](/images/hfa-timepoints-en.png)
 
@@ -103,13 +109,13 @@ If no CSV column matches any staged-type question in the XLSForm, the import sto
 
 ## XLSForm handling
 
-FASTR extracts survey structure from your XLSForm to provide meaningful labels throughout the platform. Question IDs become technical identifiers used in R code and the data dictionary. Labels appear in visualizations and reports. Value labels map numeric response codes to descriptive text.
+FASTR extracts survey structure from your XLSForm to provide meaningful labels throughout the platform. Question IDs become technical identifiers used in indicator code and the data dictionary. Labels appear in visualizations and reports. Value labels map numeric response codes to descriptive text.
 
 FASTR matches CSV column headers to XLSForm question IDs case-insensitively. An ODK group path like `section_a/SERV_08B` is matched on its last segment, so the path matches the question `serv_08b`. If two CSV columns match the same question — for example `serv_08b` and `SERV_08B` both present — the import stops with an error naming both columns.
 
 For "select_multiple" questions, FASTR automatically expands each choice into a separate binary variable.
 
-Certain question IDs are reserved and cannot be used as survey question IDs. Reserved names include R functions and operators used in indicator code, as well as columns the analysis script generates. If your XLSForm contains a reserved question ID, rename the question in the XLSForm and its column in the CSV before importing.
+Certain question IDs are reserved and cannot be used as survey question IDs. Reserved names include words and operators used in indicator code, as well as columns the analysis script generates. If your XLSForm contains a reserved question ID, rename the question in the XLSForm and its column in the CSV before importing.
 
 ## HFA facility sampling weights
 

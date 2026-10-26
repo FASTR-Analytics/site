@@ -40,6 +40,8 @@ Sélectionnez ou chargez votre fichier de données CSV et votre fichier de quest
 
 Indiquez quelle colonne CSV contient les identifiants d'établissement, sélectionnez le point temporel auquel ces données appartiennent et ajoutez des conditions de filtre de lignes facultatives. Chaque condition spécifie une colonne, un opérateur (égal à ou différent de) et une valeur. Les lignes ne satisfaisant pas toutes les conditions sont supprimées avant le traitement des doublons.
 
+Si aucun point temporel n'existe encore, vous pouvez en créer un directement dans cette étape en cliquant sur **Ajouter un point temporel** à côté du sélecteur. Un petit formulaire s'ouvre dans lequel vous saisissez un libellé, une année et un mois. Le nouveau point temporel est sélectionné automatiquement une fois enregistré.
+
 ### Étape 3 — Établissements
 
 Choisissez les colonnes CSV qui portent les unités administratives et les attributs facultatifs de l'établissement, comme le type ou la propriété. FASTR pré-remplit ces menus déroulants à partir des choix de la dernière importation et, si une colonne correspond à un nom de questionnaire standard, par le nom de la colonne. Une colonne de correction, lorsqu'une cellule est remplie, remplace la valeur de la colonne principale pour cette ligne.
@@ -47,6 +49,8 @@ Choisissez les colonnes CSV qui portent les unités administratives et les attri
 Pour chaque colonne associée, FASTR affiche un aperçu : le nombre de valeurs distinctes, le nombre de valeurs vides et les valeurs les plus fréquentes. Il affiche également les valeurs absentes de la liste des établissements HFA (pour les établissements déjà dans le registre) et les codes XLSForm qui n'ont pas pu être résolus en libellé.
 
 Le premier niveau d'unité administrative est saisi comme valeur texte (le nom du pays) plutôt qu'associé à une colonne. Les niveaux 2 et supérieurs sont associés à des colonnes CSV. Vous devez associer tous les niveaux ou aucun ; si la liste des établissements HFA est vide, chaque établissement du fichier est nouveau et tous les niveaux sont requis.
+
+Les colonnes personnalisées d'établissement qui ne sont pas encore activées dans la configuration HFA nécessitent un libellé lorsque vous les associez. Saisissez un libellé dans le champ qui apparaît sous le menu déroulant de la colonne — ce libellé est utilisé pour identifier la colonne dans toute la plateforme une fois que l'importation l'active.
 
 ### Étape 4 — Doublons
 
@@ -89,9 +93,11 @@ Pendant qu'une importation est en cours, un bouton **Annuler l'importation** s'a
 ## Points temporels
 <!-- help#hfa-time-points -->
 
-Les données HFA sont organisées par points temporels plutôt que par périodes continues. Avant d'importer des données, créez vos points temporels sur la page **Points temporels HFA**. Chaque point temporel possède un libellé et une période calendaire (année et mois). Les points temporels définissent les rounds nommés - comme « Round 1 » ou « Référence déc. 2024 » - qui apparaissent dans toute la plateforme.
+Les données HFA sont organisées par points temporels plutôt que par périodes continues. Chaque point temporel possède un libellé et une période calendaire (année et mois). Les points temporels définissent les rounds nommés - comme « Round 1 » ou « Référence déc. 2024 » - qui apparaissent dans toute la plateforme.
 
-Après l'importation, utilisez la page **Points temporels HFA** pour modifier les libellés, ajuster les dates, réorganiser, ajouter de nouveaux points temporels ou supprimer des rounds d'enquête individuels. La suppression d'un point temporel supprime toutes ses données et ses pondérations d'échantillonnage.
+Vous pouvez créer un point temporel directement dans l'assistant d'importation, à l'étape Correspondances, sans quitter l'importation. Pour une gestion plus complète — modification des libellés, ajustement des dates, réorganisation ou suppression de rounds d'enquête individuels — utilisez la page **Points temporels HFA**. La suppression d'un point temporel supprime toutes ses données et ses pondérations d'échantillonnage.
+
+Si aucun point temporel n'existe encore, la page des points temporels affiche un message vous invitant à en ajouter un. Vous pouvez également en ajouter depuis l'assistant d'importation.
 
 ![Points temporels HFA](/images/hfa-timepoints-en.png)
 
@@ -103,13 +109,13 @@ Si aucune colonne CSV ne correspond à une question de type préparable dans le 
 
 ## Traitement du XLSForm
 
-FASTR extrait la structure de l'enquête à partir de votre XLSForm afin de fournir des libellés pertinents dans toute la plateforme. Les identifiants de questions deviennent des identifiants techniques utilisés dans le code R et le dictionnaire de données. Les libellés apparaissent dans les visualisations et les rapports. Les libellés des valeurs font correspondre les codes de réponse numériques à un texte descriptif.
+FASTR extrait la structure de l'enquête à partir de votre XLSForm afin de fournir des libellés pertinents dans toute la plateforme. Les identifiants de questions deviennent des identifiants techniques utilisés dans le code des indicateurs et le dictionnaire de données. Les libellés apparaissent dans les visualisations et les rapports. Les libellés des valeurs font correspondre les codes de réponse numériques à un texte descriptif.
 
 FASTR fait correspondre les en-têtes de colonnes CSV aux identifiants de questions XLSForm sans tenir compte de la casse. Un chemin de groupe ODK comme `section_a/SERV_08B` est mis en correspondance sur son dernier segment. Si deux colonnes CSV correspondent à la même question, l'importation s'arrête avec une erreur.
 
 Pour les questions « select_multiple », FASTR décompose automatiquement chaque choix en une variable binaire distincte.
 
-Certains identifiants de questions sont réservés et ne peuvent pas être utilisés. Si votre XLSForm contient un identifiant réservé, renommez la question et sa colonne avant d'importer.
+Certains identifiants de questions sont réservés et ne peuvent pas être utilisés. Les noms réservés incluent les mots et opérateurs utilisés dans le code des indicateurs, ainsi que les colonnes générées par le script d'analyse. Si votre XLSForm contient un identifiant réservé, renommez la question et sa colonne avant d'importer.
 
 ## Pondérations d'échantillonnage des établissements HFA
 
