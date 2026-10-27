@@ -52,6 +52,8 @@ Lorsque vous demandez à l'assistant de créer une diapositive, il en rédige le
 
 Dans l'éditeur de présentation, l'assistant peut lire le contenu actuel de la diapositive ouverte — y compris les modifications non enregistrées affichées sur le canevas — et modifier les diapositives dans toute la présentation. Il peut changer le texte, mettre à jour les mises en page, ajuster des visualisations existantes (réplicant, filtres, désagrégation, période, légendes) et modifier n'importe quelle diapositive de la présentation qu'elle soit ouverte ou non, en enregistrant ces modifications immédiatement. Pour la diapositive ouverte, les modifications apparaissent sur le canevas immédiatement et sont enregistrées automatiquement.
 
+Lorsque l'assistant crée une diapositive de contenu comprenant une figure issue d'un indicateur à plusieurs sous-indicateurs, il filtre la figure sur les sous-indicateurs nommés dans le texte de la diapositive. Un indicateur multi-panneaux non filtré génère un panneau par sous-indicateur, ce qui peut faire déborder la mise en page de la diapositive.
+
 Chaque visualisation d'une présentation est résolue sous le paquet de résultats et la portée propres à cette présentation. Lorsque l'assistant crée ou modifie une visualisation, il utilise automatiquement le paquet associé à la présentation — vous n'avez pas besoin de préciser quel paquet utiliser.
 
 ## Travailler avec les rapports
