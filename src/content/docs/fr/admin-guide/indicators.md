@@ -58,9 +58,22 @@ Chaque indicateur possède une case à cocher **Inclure dans l'analyse**. Lorsqu
 
 Cliquez sur **Ajouter depuis DHIS2** pour ajouter des éléments de données ou des indicateurs DHIS2 depuis votre serveur. FASTR utilise la connexion DHIS2 enregistrée de l'instance ; si aucune n'est enregistrée, une alerte explique comment en définir une.
 
-Le formulaire comporte deux phases. Dans la phase **Sélectionner**, recherchez par nom, code ou identifiant. Dans la phase **Nommer**, chaque élément de données ou opérande devient un nouvel indicateur élément DHIS2. Cliquez sur **Enregistrer** pour créer les indicateurs en une seule transaction.
+Le formulaire comporte deux phases. Dans la phase **Sélectionner**, recherchez par nom, code ou identifiant. Un indicateur DHIS2 est décomposé en ses opérandes et un indicateur calculé dont la formule porte sur les indicateurs que ces opérandes deviennent. Pour les lignes qui ne peuvent pas être importées, aucun bouton d'ajout n'est affiché ; la raison est affichée sous la ligne en texte discret. Sélectionnez les éléments souhaités et cliquez sur **Suivant : nommer les indicateurs**.
+
+Dans la phase **Nommer**, chaque élément de données ou opérande devient un nouvel indicateur élément DHIS2. Le formulaire propose un identifiant d'indicateur généré à partir du nom de l'élément ; modifiez-le en ligne. Chaque indicateur DHIS2 devient un indicateur calculé dont vous définissez également l'identifiant ici. Un élément dont l'identifiant DHIS2 est déjà porté par un indicateur existant est affiché comme déjà ajouté et ne crée rien de nouveau. Cliquez sur **Enregistrer** pour créer les indicateurs en une seule transaction.
 
 Ajouter des indicateurs depuis DHIS2 ne fait que les enregistrer dans le dictionnaire. Pour récupérer leurs données, lancez une importation DHIS2 depuis la vue Importations.
+
+### Pourquoi certaines lignes DHIS2 ne peuvent pas être importées
+
+La plateforme n'importe que des dénombrements mensuels depuis DHIS2. Un élément de données ou un indicateur DHIS2 qui ne satisfait pas cette exigence est affiché avec une raison sous sa ligne à la place d'un bouton d'ajout. Les raisons les plus courantes sont :
+
+- L'élément n'est pas un dénombrement mensuel — son type d'agrégation, son type de valeur ou le type de période de son ensemble de données est incompatible.
+- La formule d'un indicateur DHIS2 utilise des fonctions ou des constantes que la plateforme ne lit pas, ou son facteur est différent de 1, 100, 1 000 ou 10 000.
+- Un indicateur DHIS2 est annualisé : DHIS2 convertit chaque mois en taux annuel, ce que la plateforme ne fait pas.
+- Un opérande référencé par la formule n'existe plus dans DHIS2.
+
+Lorsqu'un indicateur DHIS2 est refusé uniquement parce que son dénominateur n'est pas un dénombrement mensuel, le message propose d'ajouter son numérateur comme élément de données à la place, si le numérateur est un élément unique.
 
 ## Indicateurs HFA
 

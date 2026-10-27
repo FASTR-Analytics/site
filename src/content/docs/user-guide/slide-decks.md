@@ -63,6 +63,8 @@ Every visualization in a slide deck takes its numbers from the results package a
 
 The deck header contains a **Deck** menu that gives quick access to theme, logos, and footer settings for the whole deck without opening the full settings panel. Each change you make in this menu applies straight away. The **Deck** menu is visible only when you have edit permission on the deck. For complete configuration, click **All deck settings…** in the **Deck** menu to open the full settings panel.
 
+To rename a deck, use **File** > **Name and folder**, or click the deck's own title in its header. The deck settings panel covers the deck while it is open, so those rename options are behind it.
+
 To change the results package or scope, click **Package, scope and folder** from the deck's overflow menu. This opens the product settings panel where you can update those properties. Changing the package or scope affects every visualization in the deck — visualizations that came from a different package or scope show an update badge.
 
 ## Choosing a theme

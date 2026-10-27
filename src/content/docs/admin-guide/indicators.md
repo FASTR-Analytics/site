@@ -58,13 +58,24 @@ Every indicator has an **Include in analysis** toggle. When it is on, every resu
 
 Click **Add from DHIS2** to add data elements or DHIS2 indicators from your DHIS2 server. FASTR uses the instance's stored DHIS2 connection, which is set in the DHIS2 connection row on the Data page; if none is stored, an alert explains how to set one.
 
-The form has two phases. In the **Select** phase, search by name, code, or ID. Results show both data elements and DHIS2 indicators. A data element can be added as-is or expanded to select individual category option combos (operands). A DHIS2 indicator is decomposed into its operands and a calculated indicator whose formula is over the indicators those operands become; the form shows the formula and flags any operand that cannot be added. Select the items you want and click **Next: name indicators**.
+The form has two phases. In the **Select** phase, search by name, code, or ID. Results show both data elements and DHIS2 indicators. A data element can be added as-is or expanded to select individual category option combos (operands). A DHIS2 indicator is decomposed into its operands and a calculated indicator whose formula is over the indicators those operands become. For rows that cannot be imported, no add button is shown; instead the reason is displayed beneath the row in subdued text. Select the items you want and click **Next: name indicators**.
 
 In the **Name** phase, each data element or operand becomes a new DHIS2 element indicator. The form proposes an indicator ID generated from the element's name; edit it inline. Each DHIS2 indicator becomes a calculated indicator whose ID you also set here. An element whose DHIS2 id is already carried by an existing indicator is shown as already added and creates nothing new. Click **Save** to create the indicators in a single transaction.
 
 Adding indicators from DHIS2 only registers them in the dictionary. To fetch their data, run a DHIS2 import from the Imports view (see Data: HMIS).
 
 When you add a DHIS2 element indicator, FASTR reads and stores the element's current name from DHIS2 as the **DHIS2 name**. This stored name is shown next to the DHIS2 id in the indicator editor and in the indicator list, making it easier to identify elements without memorising their UIDs. The DHIS2 name is not the indicator label and is not used in analysis; it is purely for reference. Use **Refresh DHIS2 names** from the toolbar overflow menu to update these stored names after elements are renamed on the DHIS2 server. If you change a DHIS2 element indicator's type to Uploaded or another type, the stored DHIS2 name is cleared automatically.
+
+### Why some DHIS2 rows cannot be imported
+
+The platform only imports monthly counts from DHIS2. A data element or DHIS2 indicator that does not meet this requirement is shown with a reason beneath its row instead of an add button. The most common reasons are:
+
+- The element is not a monthly count — its aggregation type, value type, or data set period type is incompatible.
+- A DHIS2 indicator's formula uses functions or constants the platform does not read, or has a factor other than 1, 100, 1000, or 10000.
+- A DHIS2 indicator is annualized: DHIS2 scales each month up to a yearly rate, which the platform does not do.
+- An operand referenced by the formula no longer exists in DHIS2.
+
+When a DHIS2 indicator is refused only because its denominator is not a monthly count, the message suggests adding its numerator as a data element instead, if the numerator is a single element.
 
 ## HFA indicators
 
