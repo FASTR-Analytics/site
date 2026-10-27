@@ -28,7 +28,7 @@ Depuis le menu de débordement de la barre d'outils, les administrateurs globaux
 
 #### Types d'indicateurs
 
-- **Élément DHIS2** — un dénombrement mensuel récupéré de DHIS2 par un UID d'élément de données ou un opérande UID.COC. Lors de l'ajout d'un indicateur élément DHIS2, FASTR lit et stocke le nom actuel de l'élément depuis DHIS2 comme **nom DHIS2**. Le nom DHIS2 n'est pas le libellé de l'indicateur et n'est pas utilisé dans l'analyse.
+- **Élément DHIS2** — un dénombrement mensuel récupéré de DHIS2 par un UID d'élément de données ou un opérande UID.COC. Lors de l'enregistrement d'un indicateur élément DHIS2, FASTR interroge DHIS2 pour confirmer que l'identifiant est un élément de données ou un opérande qu'Ajouter depuis DHIS2 accepterait — si DHIS2 ne peut pas confirmer l'identifiant, l'enregistrement est refusé avec une explication du motif. Lors de l'ajout d'un indicateur élément DHIS2, FASTR lit et stocke le nom actuel de l'élément depuis DHIS2 comme **nom DHIS2**. Le nom DHIS2 n'est pas le libellé de l'indicateur et n'est pas utilisé dans l'analyse.
 - **Téléversé** — un dénombrement mensuel rempli par importation CSV. FASTR lui attribue un identifiant interne. Les indicateurs de type Téléversé ne sont pas récupérés par les importations DHIS2.
 - **Somme** — le total de ses indicateurs membres, additionnés par établissement et par mois. Une somme ne peut pas contenir une autre somme.
 - **Calculé** — une formule portant sur d'autres indicateurs et des termes de population, calculée après l'ajustement et l'agrégation des données. Il n'a pas de lignes propres.
@@ -85,7 +85,7 @@ Chaque indicateur HFA nécessite un code d'indicateur spécifiant comment extrai
 
 Le langage de code des indicateurs prend en charge les opérateurs de comparaison (`==`, `!=`, `<`, `>`, `<=`, `>=`), les opérateurs logiques (`AND`, `OR`, `NOT`, et leurs équivalents symboliques `&`, `|`, `!`), le test de liste `x IN (1, 2, 3)` (nié sous la forme `x NOT IN (1, 2, 3)`), l'arithmétique (`+`, `-`, `*`, `/`), les nombres et le texte entre guillemets. Il n'y a pas de fonctions. Écrivez un indice ou une moyenne sous forme arithmétique, par exemple `(a + b + c) / 3`.
 
-L'éditeur de code indique quelles variables d'enquête sont disponibles dans votre jeu de données à chaque point temporel. FASTR valide la syntaxe et signale les variables inconnues comme des erreurs. Il vérifie également si le type de résultat de votre code correspond au type déclaré de l'indicateur — par exemple, un indicateur binaire dont le code est purement arithmétique affichera un avertissement de type incohérent.
+L'éditeur de code indique quelles variables d'enquête sont disponibles dans votre jeu de données à chaque point temporel. FASTR valide la syntaxe et signale les variables inconnues comme des erreurs. Il vérifie également si le type de résultat de votre code correspond au type déclaré de l'indicateur.
 
 Les avertissements de type incohérent (affichés en orange) sont consultatifs et ne bloquent pas l'enregistrement. Les erreurs (affichées en rouge) — erreurs de syntaxe et références à des variables introuvables — bloquent l'indicateur.
 

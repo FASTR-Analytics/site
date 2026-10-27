@@ -88,11 +88,9 @@ When you create a new project, existing users get default permissions based on t
 
 This saves time when your organization adds projects frequently - you don't have to manually assign every user to every new project. Set defaults to "Viewer" for people who should see all analyses, or "No access" for people who only work with specific projects.
 
-## Organisation and role
+## Organisation
 
-Each user can record their organisation and role from their profile. Open your profile by clicking your name or avatar in the top navigation bar and scroll to the **Account** section. Click **Edit** next to **Organisation** or **Role** to update the value in place. These fields are the user's own words and are visible to administrators on the **Users** page, where they appear as sortable columns.
-
-When a new user logs in for the first time after being approved, FASTR prompts them to fill in their organisation and role. The prompt can be skipped and the information added later from the profile.
+Each user can record their organisation from their profile. Open your profile by clicking your name or avatar in the top navigation bar and scroll to the **Account** section. Click **Edit** next to **Organisation** to update the value in place. This field contains the user's own words and is visible to administrators on the **Users** page, where it appears as a sortable column.
 
 ## Personal access tokens
 

@@ -88,11 +88,9 @@ Lorsque vous créez un nouveau projet, les utilisateurs existants reçoivent des
 
 Cela fait gagner du temps lorsque votre organisation ajoute fréquemment des projets - vous n'avez pas à affecter manuellement chaque utilisateur à chaque nouveau projet. Définissez les valeurs par défaut sur « Lecteur » pour les personnes qui doivent voir toutes les analyses, ou sur « Aucun accès » pour celles qui ne travaillent que sur des projets spécifiques.
 
-## Organisation et rôle
+## Organisation
 
-Chaque utilisateur peut renseigner son organisation et son rôle depuis son profil. Ouvrez votre profil en cliquant sur votre nom ou votre avatar dans la barre de navigation supérieure, puis faites défiler jusqu'à la section **Compte**. Cliquez sur **Modifier** à côté de **Organisation** ou **Rôle** pour mettre à jour la valeur directement. Ces champs contiennent les propres mots de l'utilisateur et sont visibles par les administrateurs sur la page **Utilisateurs**, où ils apparaissent comme colonnes triables.
-
-Lorsqu'un nouvel utilisateur se connecte pour la première fois après avoir été approuvé, FASTR l'invite à renseigner son organisation et son rôle. L'invite peut être ignorée et les informations ajoutées ultérieurement depuis le profil.
+Chaque utilisateur peut renseigner son organisation depuis son profil. Ouvrez votre profil en cliquant sur votre nom ou votre avatar dans la barre de navigation supérieure, puis faites défiler jusqu'à la section **Compte**. Cliquez sur **Modifier** à côté de **Organisation** pour mettre à jour la valeur directement. Ce champ contient les propres mots de l'utilisateur et est visible par les administrateurs sur la page **Utilisateurs**, où il apparaît comme colonne triable.
 
 ## Jetons d'accès personnels
 
