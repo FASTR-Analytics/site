@@ -96,7 +96,9 @@ Le gestionnaire d'indicateurs HFA comporte une zone de recherche dans la barre d
 
 Chaque indicateur HFA nécessite un code d'indicateur spécifiant comment extraire sa valeur à partir des données d'enquête brutes. Le code s'exécute pour chaque établissement et doit évaluer à oui/non pour les indicateurs binaires, ou à un nombre pour les indicateurs numériques.
 
-Le langage de code des indicateurs prend en charge les opérateurs de comparaison (`==`, `!=`, `<`, `>`, `<=`, `>=`), les opérateurs logiques (`AND`, `OR`, `NOT`, et leurs équivalents symboliques `&`, `|`, `!`), le test de liste `x IN (1, 2, 3)` (nié sous la forme `x NOT IN (1, 2, 3)`), l'arithmétique (`+`, `-`, `*`, `/`), les nombres et le texte entre guillemets. Il n'y a pas de fonctions. Écrivez un indice ou une moyenne sous forme arithmétique, par exemple `(a + b + c) / 3`.
+Le langage de code des indicateurs prend en charge les opérateurs de comparaison (`==`, `!=`, `<`, `>`, `<=`, `>=`), les opérateurs logiques (`AND`, `OR`, `NOT`, et leurs équivalents symboliques `&`, `|`, `!`), le test de liste `x IN (1, 2, 3)` (nié sous la forme `x NOT IN (1, 2, 3)`), l'arithmétique (`+`, `-`, `*`, `/`) et les nombres. Il n'y a pas de fonctions. Écrivez un indice ou une moyenne sous forme arithmétique, par exemple `(a + b + c) / 3`.
+
+Comparez toujours une variable codée à son code numérique, jamais à un libellé entre guillemets. Mettre une valeur entre guillemets modifie le fonctionnement de la comparaison : `q5 == "yes"` ne correspond jamais à rien, `q5 != "yes"` correspond à chaque établissement ayant répondu, `q5 == "1"` correspond au nombre 1, et `x < "5"` est vrai pour 10. Écrivez `q5 == 1`, et non `q5 == "yes"`.
 
 L'éditeur de code indique quelles variables d'enquête sont disponibles dans votre jeu de données à chaque point temporel. FASTR valide la syntaxe et signale les variables inconnues comme des erreurs. Il vérifie également si le type de résultat de votre code correspond au type déclaré de l'indicateur.
 
@@ -109,6 +111,8 @@ Le panneau droit de l'éditeur de code liste les variables d'enquête et les aut
 ### Code filtre
 
 Chaque entrée de code par point temporel prend également en charge un champ de code filtre facultatif. Le code filtre restreint les établissements qui contribuent à la valeur de l'indicateur. Si vous saisissez un code filtre pour un point temporel, vous devez également fournir un code d'indicateur pour ce même point temporel.
+
+La même règle concernant les guillemets s'applique au code filtre : testez toujours positivement pour oui (`x == 1`, `x >= 3`) plutôt qu'avec une négation, car un code « ne sait pas » conservé traité comme une valeur satisferait `x != 2`.
 
 ### Groupes de variantes et code par élément
 
@@ -130,7 +134,7 @@ Avant de supprimer un indicateur ou un ensemble d'indicateurs, FASTR vérifie si
 
 ### Assistant IA pour les indicateurs
 
-L'assistant IA dans le gestionnaire d'indicateurs HFA peut améliorer les libellés, organiser les indicateurs en catégories et créer de nouveaux indicateurs à partir du jeu de données d'enquête. Il lit et écrit les indicateurs via un ensemble d'outils dédiés, en validant le code des indicateurs par rapport au dictionnaire de données et en affichant une boîte de dialogue de confirmation avant d'appliquer toute modification. Lors de l'application de mises à jour groupées, toutes les modifications sont envoyées au serveur en une seule opération transactionnelle.
+L'assistant IA dans le gestionnaire d'indicateurs HFA peut améliorer les libellés, organiser les indicateurs en catégories et créer de nouveaux indicateurs à partir du jeu de données d'enquête. Il lit et écrit les indicateurs via un ensemble d'outils dédiés, en validant le code des indicateurs par rapport au dictionnaire de données et en affichant une boîte de dialogue de confirmation avec une vue diff côte à côte avant d'appliquer toute modification. La vue diff met en évidence exactement ce qui a changé et réduit les sections inchangées, ce qui facilite la révision d'un lot de nombreux indicateurs à la fois. Lors de l'application de mises à jour groupées, toutes les modifications sont envoyées au serveur en une seule opération transactionnelle.
 
 L'éditeur de code possède également ses propres outils IA. Lorsque vous ouvrez l'éditeur de code d'un indicateur, l'assistant peut lire le brouillon actuel de l'éditeur et y appliquer des modifications — libellés, type et agrégation, assignations de catégories, et modifications de code par round — comme si vous les aviez effectuées vous-même. Les modifications s'appliquent dans le brouillon de l'éditeur sans être enregistrées : vous les conservez avec **Enregistrer** ou les annulez avec **Annuler**.
 

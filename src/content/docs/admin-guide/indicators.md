@@ -98,7 +98,9 @@ The HFA indicator manager includes a search box in the toolbar. Type any text to
 
 Each HFA indicator requires indicator code specifying how to extract its value from raw survey data. The code runs for each facility and should evaluate to yes/no for binary indicators or a number for numeric ones.
 
-The indicator code language supports comparison operators (`==`, `!=`, `<`, `>`, `<=`, `>=`), logical operators (`AND`, `OR`, `NOT`, and their symbol equivalents `&`, `|`, `!`), the list test `x IN (1, 2, 3)` (negated as `x NOT IN (1, 2, 3)`), arithmetic (`+`, `-`, `*`, `/`), numbers, and text in quotes. There are no functions. Write an index or average as arithmetic, for example `(a + b + c) / 3`.
+The indicator code language supports comparison operators (`==`, `!=`, `<`, `>`, `<=`, `>=`), logical operators (`AND`, `OR`, `NOT`, and their symbol equivalents `&`, `|`, `!`), the list test `x IN (1, 2, 3)` (negated as `x NOT IN (1, 2, 3)`), arithmetic (`+`, `-`, `*`, `/`), and numbers. There are no functions. Write an index or average as arithmetic, for example `(a + b + c) / 3`.
+
+Always compare a coded variable to its numeric code, never to a quoted label. Quoting a value changes how the comparison works: `q5 == "yes"` never matches anything, `q5 != "yes"` matches every answered facility, `q5 == "1"` matches the number 1, and `x < "5"` is true for 10. Write `q5 == 1`, not `q5 == "yes"`.
 
 The code editor shows which survey variables are available in your dataset at each time point, identified by their variable ID. If survey structure changed between assessments, you can write different code for different time points. FASTR validates syntax and flags unknown variables as errors. It also checks whether your code's result type matches the indicator's declared type — for example, a binary indicator whose code is purely arithmetic will show a type mismatch warning.
 
@@ -111,6 +113,8 @@ The code editor's right-hand panel lists survey variables so you can click any e
 ### Filter code
 
 Each time-point code entry also supports an optional filter code field. Filter code restricts which facilities contribute to the indicator's value — only facilities where the filter expression evaluates to true are included. If you enter filter code for a time point, you must also provide indicator code for that same time point; a filter without indicator code is not valid and blocks saving.
+
+The same quoting rule applies to filter code: always test positively for yes (`x == 1`, `x >= 3`) rather than with a negation, because a kept don't-know code treated as a value would satisfy `x != 2`.
 
 ### Variant groups and per-item code
 
@@ -136,7 +140,7 @@ Before deleting an indicator or a set of indicators, FASTR checks whether any ot
 
 ### AI assistant for indicators
 
-The AI assistant in the HFA Indicator Manager can clean up labels, organise indicators into categories, and create new indicators from the underlying survey dataset. It reads and writes indicators through a set of dedicated tools — loading current state before proposing changes, validating indicator code against the data dictionary, and showing a confirmation dialog with a diff before any edits are applied. When the assistant creates new indicators, it assigns each indicator's ID automatically and returns the assigned IDs after creation. When applying bulk updates, all changes are sent to the server in a single transactional operation.
+The AI assistant in the HFA Indicator Manager can clean up labels, organise indicators into categories, and create new indicators from the underlying survey dataset. It reads and writes indicators through a set of dedicated tools — loading current state before proposing changes, validating indicator code against the data dictionary, and showing a confirmation dialog with a side-by-side diff view before any edits are applied. The diff view highlights exactly what changed and collapses unchanged sections, making it easy to review a batch of many indicators at once. When the assistant creates new indicators, it assigns each indicator's ID automatically and returns the assigned IDs after creation. When applying bulk updates, all changes are sent to the server in a single transactional operation.
 
 The code editor also has its own AI tools. When you open an indicator's code editor, the assistant can read the editor's current draft and apply changes to it — label edits, type and aggregation changes, category assignments, and per-round code changes — as if you had made them yourself. Changes land in the editor's draft unsaved, so you keep them with **Save** or discard them with **Cancel**.
 
