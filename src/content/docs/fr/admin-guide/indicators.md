@@ -98,7 +98,7 @@ Chaque indicateur HFA nécessite un code d'indicateur spécifiant comment extrai
 
 Le langage de code des indicateurs prend en charge les opérateurs de comparaison (`==`, `!=`, `<`, `>`, `<=`, `>=`), les opérateurs logiques (`AND`, `OR`, `NOT`, et leurs équivalents symboliques `&`, `|`, `!`), le test de liste `x IN (1, 2, 3)` (nié sous la forme `x NOT IN (1, 2, 3)`), l'arithmétique (`+`, `-`, `*`, `/`) et les nombres. Il n'y a pas de fonctions. Écrivez un indice ou une moyenne sous forme arithmétique, par exemple `(a + b + c) / 3`.
 
-Comparez toujours une variable codée à son code numérique, jamais à un libellé entre guillemets. Mettre une valeur entre guillemets modifie le fonctionnement de la comparaison : `q5 == "yes"` ne correspond jamais à rien, `q5 != "yes"` correspond à chaque établissement ayant répondu, `q5 == "1"` correspond au nombre 1, et `x < "5"` est vrai pour 10. Écrivez `q5 == 1`, et non `q5 == "yes"`.
+Les valeurs texte doivent être entre guillemets (p. ex. `SH_03 == "c"`) ; les valeurs numériques s'écrivent sans guillemets (p. ex. `SH_03A == 1`). Comparez toujours une variable codée à son code numérique plutôt qu'à un libellé entre guillemets — `q5 == 1`, et non `q5 == "yes"`. Utilisez uniquement les opérateurs pris en charge indiqués dans l'éditeur de code.
 
 L'éditeur de code indique quelles variables d'enquête sont disponibles dans votre jeu de données à chaque point temporel. FASTR valide la syntaxe et signale les variables inconnues comme des erreurs. Il vérifie également si le type de résultat de votre code correspond au type déclaré de l'indicateur.
 

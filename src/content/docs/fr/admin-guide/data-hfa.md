@@ -101,6 +101,10 @@ Si aucun point temporel n'existe encore, la page des points temporels affiche un
 
 ![Points temporels HFA](/images/hfa-timepoints-en.png)
 
+## Supprimer des données HFA
+
+Ouvrez **Données HFA** et cliquez sur **Supprimer les données** dans la barre d'en-tête pour retirer des données du jeu de données. Sélectionnez si vous souhaitez supprimer les données de tous les points temporels ou d'un point temporel spécifique à l'aide du groupe de boutons radio. Une fois votre sélection effectuée, un champ de confirmation s'affiche — saisissez la phrase de confirmation indiquée et cliquez sur **Supprimer** pour procéder. La suppression est irréversible.
+
 ## Détails de la validation
 
 Des lignes peuvent être écartées lors de la préparation pour plusieurs raisons : identifiants d'établissement manquants ou lignes exclues par les conditions de filtre. Le résumé de la préparation présente chaque catégorie séparément et inclut une section établissements indiquant combien sont déjà dans le registre, combien sont nouveaux, combien sont dans le registre mais absents de ce fichier, et les éventuels nouveaux établissements sans unités administratives complètes. Il indique également combien de questions XLSForm n'avaient pas de colonne CSV correspondante et vice versa.

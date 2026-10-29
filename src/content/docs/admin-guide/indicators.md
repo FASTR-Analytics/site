@@ -100,7 +100,7 @@ Each HFA indicator requires indicator code specifying how to extract its value f
 
 The indicator code language supports comparison operators (`==`, `!=`, `<`, `>`, `<=`, `>=`), logical operators (`AND`, `OR`, `NOT`, and their symbol equivalents `&`, `|`, `!`), the list test `x IN (1, 2, 3)` (negated as `x NOT IN (1, 2, 3)`), arithmetic (`+`, `-`, `*`, `/`), and numbers. There are no functions. Write an index or average as arithmetic, for example `(a + b + c) / 3`.
 
-Always compare a coded variable to its numeric code, never to a quoted label. Quoting a value changes how the comparison works: `q5 == "yes"` never matches anything, `q5 != "yes"` matches every answered facility, `q5 == "1"` matches the number 1, and `x < "5"` is true for 10. Write `q5 == 1`, not `q5 == "yes"`.
+Text values must be in quotation marks (e.g. `SH_03 == "c"`); numeric values are written without quotation marks (e.g. `SH_03A == 1`). Always compare a coded variable to its numeric code rather than a quoted label — `q5 == 1`, not `q5 == "yes"`. Use only the supported operators listed in the code editor.
 
 The code editor shows which survey variables are available in your dataset at each time point, identified by their variable ID. If survey structure changed between assessments, you can write different code for different time points. FASTR validates syntax and flags unknown variables as errors. It also checks whether your code's result type matches the indicator's declared type — for example, a binary indicator whose code is purely arithmetic will show a type mismatch warning.
 
