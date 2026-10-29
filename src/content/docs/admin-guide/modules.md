@@ -20,6 +20,8 @@ Instance administrators can set default module selections and parameter values t
 
 These defaults configure the generation wizard when a new results package is generated. Module parameter values are set only here and apply to every package that includes the module — they are not editable in the wizard itself.
 
+If the country has a frozen baseline — a snapshot of module defaults recorded when baselines were taken — the editor shows a baseline panel at the top. When any value differs from the baseline, the panel describes this and offers a **Reset all to baseline** button to restore every setting at once. Individual values that differ from the baseline are marked inline with a badge, the baseline's value, and a reset button. You can also reset an entire module's settings to the baseline using the **Reset to baseline** button next to that module. Resetting to the baseline restores both which modules are selected and what each parameter is set to, exactly as they were when the baseline was recorded.
+
 ## Generating a results package
 <!-- help#amod-install -->
 

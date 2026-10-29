@@ -20,6 +20,8 @@ Les administrateurs de l'instance peuvent définir des sélections de modules pa
 
 Ces valeurs par défaut configurent l'assistant de génération lors de la création d'un nouveau lot de résultats. Les valeurs des paramètres des modules se règlent uniquement ici et s'appliquent à chaque lot qui inclut le module — elles ne sont pas modifiables dans l'assistant lui-même.
 
+Si le pays dispose d'une référence figée — un instantané des paramètres par défaut des modules enregistré lors de la prise des références — l'éditeur affiche un panneau de référence en haut. Lorsqu'une valeur diffère de la référence, le panneau le décrit et propose un bouton **Tout réinitialiser à la référence** pour restaurer tous les paramètres en une seule fois. Les valeurs individuelles qui diffèrent de la référence sont signalées en ligne par un badge, la valeur de référence et un bouton de réinitialisation. Vous pouvez également réinitialiser l'ensemble des paramètres d'un module à la référence à l'aide du bouton **Réinitialiser à la référence** situé à côté de ce module. La réinitialisation à la référence restaure à la fois les modules sélectionnés et la valeur de chaque paramètre, exactement tels qu'ils étaient au moment de l'enregistrement de la référence.
+
 ## Générer un lot de résultats
 <!-- help#amod-install -->
 
