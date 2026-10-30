@@ -154,7 +154,7 @@ HFA indicators support batch creation via Excel workbook. Upload an Excel workbo
 - **Service categories**: id, label (optional)
 - **Variant groups**: id, label (optional)
 - **Variant items**: id, groupId, label (optional)
-- **Indicators**: indicatorId (leave blank for a new indicator; the platform assigns one), categoryId, subCategoryId, serviceCategoryId (separate several IDs with the | character), shortLabel, label, type, aggregation, variantGroupId (optional), code__&lt;time point&gt; and filter_code__&lt;time point&gt; for each time point, variant_code__&lt;itemId&gt;__&lt;time point&gt; for each variant item and time point
+- **Indicators**: indicatorId (leave blank for a new indicator; the platform assigns one), categoryId, subCategoryId, serviceCategoryId (separate several IDs with the | character), shortLabel, label, type, aggregation, variantGroupId (optional), code__&lt;time point&gt; and filter_code__&lt;time point&gt; (optional) for each time point, variant_code__&lt;itemId&gt;__&lt;time point&gt; (optional) for each variant item and time point
 
 Text columns such as `label` and `shortLabel` can alternatively be provided per language using suffixed column names: `label_en`, `label_fr`, and `label_pt`. When per-language columns are present, the import reads the instance language's column and falls back to English if that column is blank or absent. This lets a single workbook serve every instance regardless of its configured language.
 

@@ -142,7 +142,7 @@ Les indicateurs HFA prennent en charge la création par lot via un classeur Exce
 - **Service categories** : id, label (facultatif)
 - **Variant groups** : id, label (facultatif)
 - **Variant items** : id, groupId, label (facultatif)
-- **Indicators** : indicatorId (laisser vide pour un nouvel indicateur ; la plateforme en attribue un), categoryId, subCategoryId, serviceCategoryId (séparés par | pour plusieurs), shortLabel, label, type, aggregation, variantGroupId (facultatif), code__&lt;point temporel&gt; et filter_code__&lt;point temporel&gt; pour chaque point temporel, variant_code__&lt;itemId&gt;__&lt;point temporel&gt; pour chaque élément de variante et chaque point temporel
+- **Indicators** : indicatorId (laisser vide pour un nouvel indicateur ; la plateforme en attribue un), categoryId, subCategoryId, serviceCategoryId (séparés par | pour plusieurs), shortLabel, label, type, aggregation, variantGroupId (facultatif), code__&lt;point temporel&gt; et filter_code__&lt;point temporel&gt; (facultatif) pour chaque point temporel, variant_code__&lt;itemId&gt;__&lt;point temporel&gt; (facultatif) pour chaque élément de variante et chaque point temporel
 
 Les colonnes de texte telles que `label` et `shortLabel` peuvent également être fournies par langue à l'aide de noms de colonnes suffixés : `label_en`, `label_fr` et `label_pt`. Lorsque des colonnes par langue sont présentes, l'importation lit la colonne correspondant à la langue de l'instance et se rabat sur l'anglais si cette colonne est vide ou absente. Cela permet à un seul classeur de servir toutes les instances, quelle que soit leur langue configurée.
 
