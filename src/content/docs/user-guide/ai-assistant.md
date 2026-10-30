@@ -52,6 +52,8 @@ When you ask the assistant to create a slide, it drafts the content and shows a 
 
 When working in the deck editor, the assistant can read the open slide's current content — including any unsaved edits shown on the canvas — and modify slides throughout the deck. It can change text, update layouts, tweak existing visualizations (replicant, filters, disaggregation, period, captions), and edit any slide in the deck whether or not it is currently open, saving those changes immediately. For the open slide, changes appear on the canvas at once and save automatically.
 
+When the assistant creates a content slide that includes a figure built from a metric with multiple indicators, it filters the figure to the indicators named in the slide's text. An unfiltered multi-indicator metric draws one panel per indicator, which can overflow the slide's layout.
+
 Every visualization in a slide deck is resolved under that deck's own results package and scope. When the assistant creates or edits a visualization, it uses the deck's attached package automatically — you do not need to specify which package to use.
 
 ## Working with reports

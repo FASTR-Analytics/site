@@ -28,7 +28,7 @@ From the overflow menu in the toolbar, global administrators also have access to
 
 #### Indicator types
 
-- **DHIS2 element** — a monthly count fetched from DHIS2 by a data element UID or UID.COC operand. Its rows are stored under that DHIS2 id. When you add a DHIS2 element indicator, FASTR reads and stores the element's current name from DHIS2 as the **DHIS2 name**; this stored name is shown next to the DHIS2 id in the indicator editor and in the indicator list for reference. The DHIS2 name is kept up to date when you use **Refresh DHIS2 names**, and is cleared automatically if you change the indicator's type to something other than a DHIS2 element. The DHIS2 name is not the indicator label and is not used in analysis.
+- **DHIS2 element** — a monthly count fetched from DHIS2 by a data element UID or UID.COC operand. Its rows are stored under that DHIS2 id. When you save a DHIS2 element indicator, FASTR asks DHIS2 to confirm that the id is a data element or operand that Add from DHIS2 would accept — if DHIS2 cannot confirm the id, the save is refused with an explanation of why. When you add a DHIS2 element indicator, FASTR reads and stores the element's current name from DHIS2 as the **DHIS2 name**; this stored name is shown next to the DHIS2 id in the indicator editor and in the indicator list for reference. The DHIS2 name is kept up to date when you use **Refresh DHIS2 names**, and is cleared automatically if you change the indicator's type to something other than a DHIS2 element. The DHIS2 name is not the indicator label and is not used in analysis.
 - **Uploaded** — a monthly count filled by CSV import. FASTR gives it an internal identifier; the Mapping step of each CSV import points file values at it. Uploaded indicators are not fetched by DHIS2 imports.
 - **Sum** — the total of its member indicators (DHIS2 elements or Uploaded indicators), added per facility and month. A sum cannot contain another sum.
 - **Calculated** — a formula over other indicators and population terms, computed after the data is adjusted and aggregated. It has no rows of its own.
@@ -58,13 +58,24 @@ Every indicator has an **Include in analysis** toggle. When it is on, every resu
 
 Click **Add from DHIS2** to add data elements or DHIS2 indicators from your DHIS2 server. FASTR uses the instance's stored DHIS2 connection, which is set in the DHIS2 connection row on the Data page; if none is stored, an alert explains how to set one.
 
-The form has two phases. In the **Select** phase, search by name, code, or ID. Results show both data elements and DHIS2 indicators. A data element can be added as-is or expanded to select individual category option combos (operands). A DHIS2 indicator is decomposed into its operands and a calculated indicator whose formula is over the indicators those operands become; the form shows the formula and flags any operand that cannot be added. Select the items you want and click **Next: name indicators**.
+The form has two phases. In the **Select** phase, search by name, code, or ID. Results show both data elements and DHIS2 indicators. A data element can be added as-is or expanded to select individual category option combos (operands). A DHIS2 indicator is decomposed into its operands and a calculated indicator whose formula is over the indicators those operands become. For rows that cannot be imported, no add button is shown; instead the reason is displayed beneath the row in subdued text. Select the items you want and click **Next: name indicators**.
 
 In the **Name** phase, each data element or operand becomes a new DHIS2 element indicator. The form proposes an indicator ID generated from the element's name; edit it inline. Each DHIS2 indicator becomes a calculated indicator whose ID you also set here. An element whose DHIS2 id is already carried by an existing indicator is shown as already added and creates nothing new. Click **Save** to create the indicators in a single transaction.
 
 Adding indicators from DHIS2 only registers them in the dictionary. To fetch their data, run a DHIS2 import from the Imports view (see Data: HMIS).
 
 When you add a DHIS2 element indicator, FASTR reads and stores the element's current name from DHIS2 as the **DHIS2 name**. This stored name is shown next to the DHIS2 id in the indicator editor and in the indicator list, making it easier to identify elements without memorising their UIDs. The DHIS2 name is not the indicator label and is not used in analysis; it is purely for reference. Use **Refresh DHIS2 names** from the toolbar overflow menu to update these stored names after elements are renamed on the DHIS2 server. If you change a DHIS2 element indicator's type to Uploaded or another type, the stored DHIS2 name is cleared automatically.
+
+### Why some DHIS2 rows cannot be imported
+
+The platform only imports monthly counts from DHIS2. A data element or DHIS2 indicator that does not meet this requirement is shown with a reason beneath its row instead of an add button. The most common reasons are:
+
+- The element is not a monthly count — its aggregation type, value type, or data set period type is incompatible.
+- A DHIS2 indicator's formula uses functions or constants the platform does not read, or has a factor other than 1, 100, 1000, or 10000.
+- A DHIS2 indicator is annualized: DHIS2 scales each month up to a yearly rate, which the platform does not do.
+- An operand referenced by the formula no longer exists in DHIS2.
+
+When a DHIS2 indicator is refused only because its denominator is not a monthly count, the message suggests adding its numerator as a data element instead, if the numerator is a single element.
 
 ## HFA indicators
 
@@ -87,7 +98,9 @@ The HFA indicator manager includes a search box in the toolbar. Type any text to
 
 Each HFA indicator requires indicator code specifying how to extract its value from raw survey data. The code runs for each facility and should evaluate to yes/no for binary indicators or a number for numeric ones.
 
-The indicator code language supports comparison operators (`==`, `!=`, `<`, `>`, `<=`, `>=`), logical operators (`AND`, `OR`, `NOT`, and their symbol equivalents `&`, `|`, `!`), the list test `x IN (1, 2, 3)` (negated as `x NOT IN (1, 2, 3)`), arithmetic (`+`, `-`, `*`, `/`), numbers, and text in quotes. There are no functions. Write an index or average as arithmetic, for example `(a + b + c) / 3`.
+The indicator code language supports comparison operators (`==`, `!=`, `<`, `>`, `<=`, `>=`), logical operators (`AND`, `OR`, `NOT`, and their symbol equivalents `&`, `|`, `!`), the list test `x IN (1, 2, 3)` (negated as `x NOT IN (1, 2, 3)`), arithmetic (`+`, `-`, `*`, `/`), and numbers. There are no functions. Write an index or average as arithmetic, for example `(a + b + c) / 3`.
+
+Text values must be in quotation marks (e.g. `SH_03 == "c"`); numeric values are written without quotation marks (e.g. `SH_03A == 1`). Always compare a coded variable to its numeric code rather than a quoted label — `q5 == 1`, not `q5 == "yes"`. Use only the supported operators listed in the code editor.
 
 The code editor shows which survey variables are available in your dataset at each time point, identified by their variable ID. If survey structure changed between assessments, you can write different code for different time points. FASTR validates syntax and flags unknown variables as errors. It also checks whether your code's result type matches the indicator's declared type — for example, a binary indicator whose code is purely arithmetic will show a type mismatch warning.
 
@@ -100,6 +113,8 @@ The code editor's right-hand panel lists survey variables so you can click any e
 ### Filter code
 
 Each time-point code entry also supports an optional filter code field. Filter code restricts which facilities contribute to the indicator's value — only facilities where the filter expression evaluates to true are included. If you enter filter code for a time point, you must also provide indicator code for that same time point; a filter without indicator code is not valid and blocks saving.
+
+The same quoting rule applies to filter code: always test positively for yes (`x == 1`, `x >= 3`) rather than with a negation, because a kept don't-know code treated as a value would satisfy `x != 2`.
 
 ### Variant groups and per-item code
 
@@ -125,7 +140,7 @@ Before deleting an indicator or a set of indicators, FASTR checks whether any ot
 
 ### AI assistant for indicators
 
-The AI assistant in the HFA Indicator Manager can clean up labels, organise indicators into categories, and create new indicators from the underlying survey dataset. It reads and writes indicators through a set of dedicated tools — loading current state before proposing changes, validating indicator code against the data dictionary, and showing a confirmation dialog with a diff before any edits are applied. When the assistant creates new indicators, it assigns each indicator's ID automatically and returns the assigned IDs after creation. When applying bulk updates, all changes are sent to the server in a single transactional operation.
+The AI assistant in the HFA Indicator Manager can clean up labels, organise indicators into categories, and create new indicators from the underlying survey dataset. It reads and writes indicators through a set of dedicated tools — loading current state before proposing changes, validating indicator code against the data dictionary, and showing a confirmation dialog with a side-by-side diff view before any edits are applied. The diff view highlights exactly what changed and collapses unchanged sections, making it easy to review a batch of many indicators at once. When the assistant creates new indicators, it assigns each indicator's ID automatically and returns the assigned IDs after creation. When applying bulk updates, all changes are sent to the server in a single transactional operation.
 
 The code editor also has its own AI tools. When you open an indicator's code editor, the assistant can read the editor's current draft and apply changes to it — label edits, type and aggregation changes, category assignments, and per-round code changes — as if you had made them yourself. Changes land in the editor's draft unsaved, so you keep them with **Save** or discard them with **Cancel**.
 
@@ -165,6 +180,8 @@ Variant code columns use the format `variant_code__<itemId>__<time point>`. Each
 When importing, choose between **Add to existing** and **Replace all existing** import modes. In **Add to existing** mode, indicators whose IDs already exist on the platform are skipped — only new ones are created. After import, a summary lists any skipped indicators. In **Replace all existing** mode, all existing indicators, categories, sub-categories, and service categories are permanently deleted before importing. To confirm a replace-all import, you must type the confirmation phrase shown in the field before the **Import** button becomes active.
 
 FASTR detects the time point columns embedded in the file and presents a mapping step where you confirm which platform time point each column should import into. If the column labels match your platform time points exactly, the mapping is pre-filled automatically. Each platform time point can receive at most one workbook column. When the workbook has a single code column, you can apply it to every time point by choosing **Apply to all N time points**, where N is the number of time points.
+
+If the workbook contains a column the import does not recognise — for example an old-format `r_code__` column — the import is refused and the unknown column is named in the error message. This prevents a misnamed code column from silently importing indicators with no code.
 
 ## XLSForm variable labels
 

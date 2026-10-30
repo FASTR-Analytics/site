@@ -63,6 +63,8 @@ Chaque visualisation d'une présentation tire ses chiffres du lot de résultats 
 
 L'en-tête de la présentation contient un menu **Présentation** qui donne un accès rapide aux paramètres de thème, de logos et de pied de page de l'ensemble de la présentation. Chaque modification effectuée dans ce menu s'applique immédiatement. Le menu **Présentation** n'est visible que lorsque vous disposez de la permission de modification sur la présentation. Pour une configuration complète, cliquez sur **Tous les paramètres…** dans le menu **Présentation** pour ouvrir le panneau complet.
 
+Pour renommer une présentation, utilisez **Fichier** > **Nom et dossier** ou cliquez sur le titre de la présentation dans son en-tête. Le panneau des paramètres de présentation couvre la présentation lorsqu'il est ouvert, ces options de renommage se trouvent donc derrière lui.
+
 Pour modifier le lot de résultats ou la portée, cliquez sur **Paquet, portée et dossier** depuis le menu de débordement de la présentation. Cela ouvre le panneau des paramètres du produit où vous pouvez mettre à jour ces propriétés. Changer le lot ou la portée affecte chaque visualisation de la présentation — les visualisations issues d'un autre lot ou d'une autre portée affichent un badge de mise à jour.
 
 ## Choisir un thème

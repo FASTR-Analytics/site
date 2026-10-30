@@ -101,6 +101,10 @@ If no time points exist yet, the time points page shows a message inviting you t
 
 ![HFA Timepoints](/images/hfa-timepoints-en.png)
 
+## Deleting HFA data
+
+Open **HFA Data** and click **Delete data** in the heading bar to remove data from the dataset. Select whether to delete data for all time points or for a specific time point using the radio group. Once you have made a selection, a confirmation field appears — type the confirmation phrase shown and click **Delete** to proceed. Deleting is irreversible.
+
 ## Validation details
 
 Rows can be dropped during staging for several reasons: missing facility IDs or rows excluded by the filter conditions you set in the mappings step. The staging summary shows each category separately and includes a facilities section showing how many facilities are already in the registry, how many are new, how many are in the registry but not in this file, and any new facilities that lack complete admin areas. It also shows how many XLSForm questions had no matching CSV column and which CSV columns had no matching XLSForm question, with samples in each category.

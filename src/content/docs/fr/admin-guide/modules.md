@@ -20,6 +20,8 @@ Les administrateurs de l'instance peuvent définir des sélections de modules pa
 
 Ces valeurs par défaut configurent l'assistant de génération lors de la création d'un nouveau lot de résultats. Les valeurs des paramètres des modules se règlent uniquement ici et s'appliquent à chaque lot qui inclut le module — elles ne sont pas modifiables dans l'assistant lui-même.
 
+Si les valeurs par défaut globales du réseau sont publiées — un fichier enregistrant la valeur de paramètre utilisée par la plupart des pays pour chaque paramètre de module — l'éditeur affiche un panneau en haut. Lorsqu'une valeur de paramètre diffère de la valeur par défaut globale, le panneau affiche un comptage des paramètres différents et propose un bouton **Tout réinitialiser aux valeurs par défaut globales** pour restaurer tous les paramètres en une seule fois. Les paramètres individuels qui diffèrent de la valeur par défaut globale sont signalés en ligne par un badge, la valeur par défaut globale et un bouton de réinitialisation. Vous pouvez également réinitialiser l'ensemble des paramètres d'un module aux valeurs par défaut globales à l'aide du bouton **Réinitialiser aux valeurs par défaut globales** situé à côté de ce module. La réinitialisation à la valeur par défaut globale définit chaque paramètre à la valeur utilisée par la plupart des pays : non épinglé lorsque cette valeur est égale à la valeur par défaut de la définition actuelle (de sorte qu'il suit automatiquement la définition), épinglé sinon.
+
 ## Générer un lot de résultats
 <!-- help#amod-install -->
 

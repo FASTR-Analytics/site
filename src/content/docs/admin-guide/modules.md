@@ -20,6 +20,8 @@ Instance administrators can set default module selections and parameter values t
 
 These defaults configure the generation wizard when a new results package is generated. Module parameter values are set only here and apply to every package that includes the module — they are not editable in the wizard itself.
 
+If the fleet's global defaults are published — a file recording the parameter value most countries use for each module parameter — the editor shows a panel at the top. When any parameter value differs from the global default, the panel shows a count of differing parameters and offers a **Reset all to global defaults** button to restore every parameter at once. Individual parameters that differ from the global default are marked inline with a badge, the global default value, and a reset button. You can also reset an entire module's parameters to the global defaults using the **Reset to global defaults** button next to that module. Resetting to the global default sets each parameter to the value most countries use: unpinned when that equals the current definition default (so it follows the definition automatically), pinned otherwise.
+
 ## Generating a results package
 <!-- help#amod-install -->
 
