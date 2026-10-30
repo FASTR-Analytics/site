@@ -45,10 +45,8 @@ Pour les non-administrateurs, vous pouvez activer des permissions spécifiques :
 
 - **Configurer les utilisateurs** - Ajouter, supprimer et modifier d'autres comptes utilisateurs
 - **Consulter les utilisateurs** - Voir la liste des utilisateurs sans apporter de modifications
-- **Consulter les journaux** - Accéder aux journaux d'activité pour le dépannage
-- **Configurer les paramètres** - Modifier la configuration à l'échelle de l'instance
 - **Configurer les données** - Importer et modifier la structure et les jeux de données
-- **Consulter les données** - Accéder aux pages de configuration des données sans les modifier
+- **Consulter les données** - Accéder aux pages de données et aux lots de résultats sans les modifier
 
 La plupart des analystes n'ont besoin que de « Consulter les données » au niveau de l'instance. Leur travail principal se déroule au sein des produits et des projets, où vous configurerez des permissions plus détaillées.
 
@@ -56,9 +54,9 @@ La plupart des analystes n'ont besoin que de « Consulter les données » au niv
 
 ## Accès aux portées
 
-Les administrateurs globaux peuvent restreindre les portées auxquelles un utilisateur peut accéder. Par défaut, chaque utilisateur a accès à toutes les portées. Pour restreindre un utilisateur, ouvrez son profil et faites défiler jusqu'à la carte **Portées**. Décochez **Toutes les données** et sélectionnez les portées spécifiques auxquelles l'utilisateur peut accéder. Un utilisateur restreint ne voit que les produits portant l'une de ses portées accordées, et les lectures de données ne passent que par ces portées — y compris dans Explorer. Les bits de permission **Consulter les données**, **Configurer les données** et **Consulter les journaux** sont supprimés pour un utilisateur restreint, quel que soit ce qui est enregistré, car ces permissions exposent des données de paquet brutes qui contournent le filtrage des portées.
+Les administrateurs globaux peuvent restreindre les portées auxquelles un utilisateur peut accéder. Par défaut, chaque utilisateur a accès à toutes les portées. Pour restreindre un utilisateur, ouvrez son profil et faites défiler jusqu'à la carte **Portées**. Décochez **Toutes les données** et sélectionnez les portées spécifiques auxquelles l'utilisateur peut accéder. Un utilisateur restreint ne voit que les produits portant l'une de ses portées accordées, et les lectures de données ne passent que par ces portées — y compris dans Explorer. Les bits de permission **Consulter les données** et **Configurer les données** sont supprimés pour un utilisateur restreint, quel que soit ce qui est enregistré, car ces permissions exposent des données de paquet brutes qui contournent le filtrage des portées.
 
-L'accès aux portées ne peut être défini que par un administrateur global, même si un autre utilisateur dispose de la permission **Configurer les utilisateurs**. Un utilisateur restreint disposant de la permission **Configurer les utilisateurs** ne peut pas accorder le statut d'administrateur global à d'autres utilisateurs, car cela lui permettrait de lever sa propre restriction de portée.
+L'accès aux portées ne peut être défini que par un administrateur global, même si un autre utilisateur dispose de la permission **Configurer les utilisateurs**. Un utilisateur restreint disposant de la permission **Configurer les utilisateurs** ne peut pas accorder le statut d'administrateur global à d'autres utilisateurs, car cela lui permettrait de lever sa propre restriction de portée. Un gestionnaire restreint ne peut pas non plus créer de nouveaux utilisateurs ni modifier l'accès aux portées d'un autre utilisateur, car les nouveaux utilisateurs seraient autrement sans restriction.
 
 ## Permissions de projet
 <!-- help#users-project-permissions -->
@@ -90,7 +88,7 @@ Cela fait gagner du temps lorsque votre organisation ajoute fréquemment des pro
 
 ## Organisation
 
-Chaque utilisateur peut renseigner son organisation depuis son profil. Ouvrez votre profil en cliquant sur votre nom ou votre avatar dans la barre de navigation supérieure, puis faites défiler jusqu'à la section **Compte**. Cliquez sur **Modifier** à côté de **Organisation** pour mettre à jour la valeur directement. Ce champ contient les propres mots de l'utilisateur et est visible par les administrateurs sur la page **Utilisateurs**, où il apparaît comme colonne triable.
+Chaque utilisateur peut renseigner son organisation depuis son profil. Ouvrez votre profil en cliquant sur votre nom ou votre avatar dans la barre de navigation supérieure, puis faites défiler jusqu'à la section **Compte**. Cliquez sur **Modifier** à côté de **Organisation** pour mettre à jour la valeur directement. Ce champ contient les propres mots de l'utilisateur et est visible par les administrateurs sur la page **Utilisateurs**.
 
 ## Jetons d'accès personnels
 
@@ -102,7 +100,7 @@ Les jetons d'accès personnels sont en libre-service : vous ne pouvez gérer que
 
 La liste des utilisateurs prend en charge la sélection par lot pour les opérations courantes. Cochez les cases à côté de plusieurs utilisateurs, puis utilisez les boutons d'action qui apparaissent :
 
-- **Définir comme administrateur** / **Retirer le statut d'administrateur** - Activer ou désactiver le statut d'administrateur
+- **Définir comme administrateur** / **Retirer le statut d'administrateur** - Activer ou désactiver le statut d'administrateur (administrateurs globaux uniquement)
 - **Modifier les permissions** - Mettre à jour les permissions d'instance de tous les utilisateurs sélectionnés en une seule fois
 - **Modifier les portées** - Remplacer l'accès aux portées de tous les utilisateurs sélectionnés en une seule fois. Les administrateurs globaux ont toujours accès à toutes les portées et sont ignorés. Cette action est disponible pour les administrateurs globaux et pour les titulaires de la permission **Configurer les utilisateurs** qui ne sont pas eux-mêmes restreints par portée.
 - **Télécharger les utilisateurs** - Exporter un fichier CSV des utilisateurs sélectionnés

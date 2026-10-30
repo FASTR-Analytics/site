@@ -31,7 +31,7 @@ Module results are fixed within a results package. Results update when your admi
 ## Viewing module outputs
 <!-- help#umod-outputs -->
 
-While you typically interact with module results through visualizations, you can inspect raw outputs from the **Results package** tab if you have the appropriate permissions. Access **Logs** (R console output, requires the View logs permission), **Files** (downloadable CSV results, requires View data), or **Script** (the R code itself, requires View data) from the package detail view.
+While you typically interact with module results through visualizations, you can inspect raw outputs from the **Results package** tab if you have the appropriate permissions. Access **Logs** (R console output), **Files** (downloadable CSV results), or **Script** (the R code itself) from the package detail view. All three require the **View data** permission.
 
 ![Module Logs](/images/modules-logs-en.png)
 

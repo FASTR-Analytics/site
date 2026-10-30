@@ -45,10 +45,8 @@ For non-administrators, you can enable specific permissions:
 
 - **Configure users** - Add, remove, and modify other user accounts
 - **View users** - See the user list without making changes
-- **View logs** - Access activity logs for troubleshooting
-- **Configure settings** - Modify instance-wide configuration
 - **Configure data** - Import and modify structure and datasets
-- **View data** - Access data configuration pages without modifying
+- **View data** - Access data pages and results packages without modifying
 
 Most analysts need only "View data" at the instance level. Their main work happens within products and projects where you'll configure more detailed permissions.
 
@@ -56,9 +54,9 @@ Most analysts need only "View data" at the instance level. Their main work happe
 
 ## Scope access
 
-Global administrators can restrict which scopes a user may access. By default every user has access to all scopes. To restrict a user, open their profile and scroll to the **Scopes** card. Uncheck **All data** and select the specific scopes the user may use. A restricted user sees only products that carry one of their granted scopes, and data reads pass only through those scopes — including in Explore. The **View data**, **Configure data**, and **View logs** permission bits are suppressed for a restricted user regardless of what is stored, because those permissions expose raw package data that bypasses scope filtering.
+Global administrators can restrict which scopes a user may access. By default every user has access to all scopes. To restrict a user, open their profile and scroll to the **Scopes** card. Uncheck **All data** and select the specific scopes the user may use. A restricted user sees only products that carry one of their granted scopes, and data reads pass only through those scopes — including in Explore. The **View data** and **Configure data** permission bits are suppressed for a restricted user regardless of what is stored, because those permissions expose raw package data that bypasses scope filtering.
 
-Scope access can only be set by a global administrator, even if another user holds the **Configure users** permission. A restricted user who holds the **Configure users** permission cannot grant the global administrator flag to others, because doing so would effectively lift their own scope restriction.
+Scope access can only be set by a global administrator, even if another user holds the **Configure users** permission. A restricted user who holds the **Configure users** permission cannot grant the global administrator flag to others, because doing so would effectively lift their own scope restriction. A restricted manager also cannot create new users or change any user's scope access, since new users would otherwise be unrestricted.
 
 ## Project permissions
 <!-- help#users-project-permissions -->
@@ -90,7 +88,7 @@ This saves time when your organization adds projects frequently - you don't have
 
 ## Organisation
 
-Each user can record their organisation from their profile. Open your profile by clicking your name or avatar in the top navigation bar and scroll to the **Account** section. Click **Edit** next to **Organisation** to update the value in place. This field contains the user's own words and is visible to administrators on the **Users** page, where it appears as a sortable column.
+Each user can record their organisation from their profile. Open your profile by clicking your name or avatar in the top navigation bar and scroll to the **Account** section. Click **Edit** next to **Organisation** to update the value in place. This field contains the user's own words and is visible to administrators on the **Users** page.
 
 ## Personal access tokens
 
@@ -102,7 +100,7 @@ Personal access tokens are self-service: you can only manage your own tokens, no
 
 The user list supports bulk selection for common operations. Check the boxes next to multiple users, then use the action buttons that appear:
 
-- **Make admin** / **Make non-admin** - Toggle administrator status
+- **Make admin** / **Make non-admin** - Toggle administrator status (global administrators only)
 - **Edit permissions** - Update instance permissions for all selected users at once
 - **Edit scopes** - Replace the scope access of all selected users at once. Global administrators always have every scope and are skipped. This action is available to global administrators and to holders of the **Configure users** permission who are not themselves scope-restricted.
 - **Download users** - Export a CSV of selected users

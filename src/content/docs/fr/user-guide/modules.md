@@ -31,7 +31,7 @@ Les résultats des modules sont fixes au sein d'un lot de résultats. Les résul
 ## Consulter les sorties des modules
 <!-- help#umod-outputs -->
 
-Bien que vous interagissiez généralement avec les résultats des modules par l'intermédiaire des visualisations, vous pouvez inspecter les sorties brutes depuis l'onglet **Lot de résultats** si vous disposez des permissions appropriées. Accédez aux **Journaux** (sortie de la console R, requiert la permission Consulter les journaux), aux **Fichiers** (résultats CSV téléchargeables, requiert Consulter les données) ou au **Script** (le code R lui-même, requiert Consulter les données) depuis la vue de détail du lot.
+Bien que vous interagissiez généralement avec les résultats des modules par l'intermédiaire des visualisations, vous pouvez inspecter les sorties brutes depuis l'onglet **Lot de résultats** si vous disposez des permissions appropriées. Accédez aux **Journaux** (sortie de la console R), aux **Fichiers** (résultats CSV téléchargeables) ou au **Script** (le code R lui-même) depuis la vue de détail du lot. Ces trois accès nécessitent la permission **Consulter les données**.
 
 ![Module Logs FR](/images/modules-logs-fr.png)
 

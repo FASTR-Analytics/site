@@ -73,7 +73,7 @@ The pinned package is also the package the FASTR MCP connector reads. When you c
 
 ## Scopes
 
-A scope sets which part of a results package a slide deck or report may show — for example one region, certain years, or certain modules and indicators. Scopes are created and managed by global administrators from the **Scopes** tab in the main navigation. The scope called **All data** is always present and limits nothing; it is displayed as a fixed panel above the scopes table rather than as a row within it. On the Users page, a user can also be limited to certain scopes so they see only products that use those scopes.
+A scope sets which part of a results package a slide deck or report may show — for example one region, certain years, or certain modules and indicators. Scopes are created and managed by holders of the **Configure data** permission from the **Scopes** tab in the main navigation. The scope called **All data** is always present and limits nothing; it is displayed as a fixed panel above the scopes table rather than as a row within it. On the Users page, a user can also be limited to certain scopes so they see only products that use those scopes.
 
 ## Module execution and status
 <!-- help#amod-status -->
@@ -94,7 +94,7 @@ When a module errors or produces unexpected results, check the logs from the res
 
 For complex issues, view **Script** to see the exact R code that ran. The **Files** option shows data files the module produced, useful for manual inspection of intermediate results.
 
-Script and file access require the **View data** permission; log access requires the **View logs** permission. Both permissions apply whether you are browsing from the instance catalogue or from a product's Results package tab.
+Script, file, and log access all require the **View data** permission. These permissions apply whether you are browsing from the instance catalogue or from a product's Results package tab.
 
 ## Deleting results packages
 
