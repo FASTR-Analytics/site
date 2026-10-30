@@ -83,7 +83,7 @@ The **service categories** field is optional and provides an additional cross-cu
 The HFA indicator manager includes a search box in the toolbar. Type any text to filter the indicator list by label, definition, category, sub-category, or service category. The table also supports column filters for category, sub-category, service categories, type, status, and consistency — click a column header's filter icon to narrow results by specific values.
 
 ### Indicator code
-<!-- help#ind-r-code -->
+<!-- help#ind-code -->
 
 Each HFA indicator requires indicator code specifying how to extract its value from raw survey data. The code runs for each facility and should evaluate to yes/no for binary indicators or a number for numeric ones.
 
@@ -154,13 +154,13 @@ HFA indicators support batch creation via Excel workbook. Upload an Excel workbo
 - **Service categories**: id, label (optional)
 - **Variant groups**: id, label (optional)
 - **Variant items**: id, groupId, label (optional)
-- **Indicators**: indicatorId (leave blank for a new indicator; the platform assigns one), categoryId, subCategoryId, serviceCategoryId (pipe-separated for multiple), shortLabel, label, type, aggregation, variantGroupId (optional), r_code__&lt;time point&gt;, r_filter_code__&lt;time point&gt;, r_variant_code__&lt;itemId&gt;__&lt;time point&gt;, …
+- **Indicators**: indicatorId (leave blank for a new indicator; the platform assigns one), categoryId, subCategoryId, serviceCategoryId (pipe-separated for multiple), shortLabel, label, type, aggregation, variantGroupId (optional), code__&lt;time point&gt;, filter_code__&lt;time point&gt;, variant_code__&lt;itemId&gt;__&lt;time point&gt;, …
 
 Text columns such as `label` and `shortLabel` can alternatively be provided per language using suffixed column names: `label_en`, `label_fr`, and `label_pt`. When per-language columns are present, the import reads the instance language's column and falls back to English if that column is blank or absent. This lets a single workbook serve every instance regardless of its configured language.
 
 If the Service categories, Variant groups, or Variant items sheets are omitted, indicators are imported with no service categories or variant assignments.
 
-Variant code columns use the format `r_variant_code__<itemId>__<timePointLabel>`. Each variant code column must reference an item ID from the Variant items sheet, and the time point label must match a labeled `r_code__` column in the same file. An indicator with variant code must also have a `variantGroupId` that matches the item's group.
+Variant code columns use the format `variant_code__<itemId>__<timePointLabel>`. Each variant code column must reference an item ID from the Variant items sheet, and the time point label must match a labeled `code__` column in the same file. An indicator with variant code must also have a `variantGroupId` that matches the item's group.
 
 When importing, choose between **Add to existing** and **Replace all existing** import modes. In **Add to existing** mode, indicators whose IDs already exist on the platform are skipped — only new ones are created. After import, a summary lists any skipped indicators. In **Replace all existing** mode, all existing indicators, categories, sub-categories, and service categories are permanently deleted before importing. To confirm a replace-all import, you must type the confirmation phrase shown in the field before the **Import** button becomes active.
 

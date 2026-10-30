@@ -79,7 +79,7 @@ Le champ **catégories de service** est facultatif et fournit une classification
 Le gestionnaire d'indicateurs HFA comporte une zone de recherche dans la barre d'outils. Saisissez du texte pour filtrer la liste par libellé, définition, catégorie, sous-catégorie ou catégorie de service. Le tableau prend également en charge des filtres de colonnes.
 
 ### Code des indicateurs
-<!-- help#ind-r-code -->
+<!-- help#ind-code -->
 
 Chaque indicateur HFA nécessite un code d'indicateur spécifiant comment extraire sa valeur à partir des données d'enquête brutes. Le code s'exécute pour chaque établissement et doit évaluer à oui/non pour les indicateurs binaires, ou à un nombre pour les indicateurs numériques.
 
@@ -142,13 +142,13 @@ Les indicateurs HFA prennent en charge la création par lot via un classeur Exce
 - **Service categories** : id, label (facultatif)
 - **Variant groups** : id, label (facultatif)
 - **Variant items** : id, groupId, label (facultatif)
-- **Indicators** : indicatorId (laisser vide pour un nouvel indicateur ; la plateforme en attribue un), categoryId, subCategoryId, serviceCategoryId (séparés par | pour plusieurs), shortLabel, label, type, aggregation, variantGroupId (facultatif), r_code__&lt;point temporel&gt;, r_filter_code__&lt;point temporel&gt;, r_variant_code__&lt;itemId&gt;__&lt;point temporel&gt;, …
+- **Indicators** : indicatorId (laisser vide pour un nouvel indicateur ; la plateforme en attribue un), categoryId, subCategoryId, serviceCategoryId (séparés par | pour plusieurs), shortLabel, label, type, aggregation, variantGroupId (facultatif), code__&lt;point temporel&gt;, filter_code__&lt;point temporel&gt;, variant_code__&lt;itemId&gt;__&lt;point temporel&gt;, …
 
 Les colonnes de texte telles que `label` et `shortLabel` peuvent également être fournies par langue à l'aide de noms de colonnes suffixés : `label_en`, `label_fr` et `label_pt`. Lorsque des colonnes par langue sont présentes, l'importation lit la colonne correspondant à la langue de l'instance et se rabat sur l'anglais si cette colonne est vide ou absente. Cela permet à un seul classeur de servir toutes les instances, quelle que soit leur langue configurée.
 
 Si les feuilles Service categories, Variant groups ou Variant items sont omises, les indicateurs sont importés sans catégories de service ni assignations de variantes.
 
-Les colonnes de code de variante utilisent le format `r_variant_code__<itemId>__<libelléPointTemporel>`. Chaque colonne de code de variante doit référencer un identifiant d'élément de la feuille Variant items, et le libellé du point temporel doit correspondre à une colonne `r_code__` libellée dans le même fichier. Un indicateur avec un code de variante doit également avoir un `variantGroupId` correspondant au groupe de l'élément.
+Les colonnes de code de variante utilisent le format `variant_code__<itemId>__<libelléPointTemporel>`. Chaque colonne de code de variante doit référencer un identifiant d'élément de la feuille Variant items, et le libellé du point temporel doit correspondre à une colonne `code__` libellée dans le même fichier. Un indicateur avec un code de variante doit également avoir un `variantGroupId` correspondant au groupe de l'élément.
 
 Lors de l'importation, choisissez entre les modes **Ajouter aux existants** et **Remplacer tous les existants**. En mode **Ajouter aux existants**, les indicateurs dont les identifiants existent déjà sur la plateforme sont ignorés — seuls les nouveaux sont créés. Après l'importation, un résumé liste les indicateurs ignorés. En mode **Remplacer tous les existants**, tous les indicateurs, catégories, sous-catégories et catégories de service existants sont définitivement supprimés avant l'importation. Pour confirmer une importation de remplacement complet, vous devez saisir la phrase de confirmation affichée dans le champ avant que le bouton **Importer** devienne actif.
 
