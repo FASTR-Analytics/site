@@ -154,13 +154,13 @@ HFA indicators support batch creation via Excel workbook. Upload an Excel workbo
 - **Service categories**: id, label (optional)
 - **Variant groups**: id, label (optional)
 - **Variant items**: id, groupId, label (optional)
-- **Indicators**: indicatorId (leave blank for a new indicator; the platform assigns one), categoryId, subCategoryId, serviceCategoryId (pipe-separated for multiple), shortLabel, label, type, aggregation, variantGroupId (optional), code__&lt;time point&gt;, filter_code__&lt;time point&gt;, variant_code__&lt;itemId&gt;__&lt;time point&gt;, …
+- **Indicators**: indicatorId (leave blank for a new indicator; the platform assigns one), categoryId, subCategoryId, serviceCategoryId (separate several IDs with the | character), shortLabel, label, type, aggregation, variantGroupId (optional), code__&lt;time point&gt; and filter_code__&lt;time point&gt; for each time point, variant_code__&lt;itemId&gt;__&lt;time point&gt; for each variant item and time point
 
 Text columns such as `label` and `shortLabel` can alternatively be provided per language using suffixed column names: `label_en`, `label_fr`, and `label_pt`. When per-language columns are present, the import reads the instance language's column and falls back to English if that column is blank or absent. This lets a single workbook serve every instance regardless of its configured language.
 
 If the Service categories, Variant groups, or Variant items sheets are omitted, indicators are imported with no service categories or variant assignments.
 
-Variant code columns use the format `variant_code__<itemId>__<timePointLabel>`. Each variant code column must reference an item ID from the Variant items sheet, and the time point label must match a labeled `code__` column in the same file. An indicator with variant code must also have a `variantGroupId` that matches the item's group.
+Variant code columns use the format `variant_code__<itemId>__<time point>`. Each variant code column must reference an item ID from the Variant items sheet, and the Indicators sheet must also have a `code__` column for the same time point. An indicator with variant code must also have a `variantGroupId` that matches the item's group. If the Indicators sheet has a column not described above, the import stops and the error message gives that column's name. The import also stops if a `filter_code__` column has no `code__` column for the same time point.
 
 When importing, choose between **Add to existing** and **Replace all existing** import modes. In **Add to existing** mode, indicators whose IDs already exist on the platform are skipped — only new ones are created. After import, a summary lists any skipped indicators. In **Replace all existing** mode, all existing indicators, categories, sub-categories, and service categories are permanently deleted before importing. To confirm a replace-all import, you must type the confirmation phrase shown in the field before the **Import** button becomes active.
 
