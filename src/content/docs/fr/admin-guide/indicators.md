@@ -118,6 +118,18 @@ La même règle concernant les guillemets s'applique au code filtre : testez tou
 
 Un indicateur peut être associé à un **groupe de variantes**, qui définit un ensemble d'options de réponse selon lesquelles l'indicateur peut être désagrégé. Les groupes de variantes et leurs éléments sont gérés depuis l'onglet **Groupes de variantes** du gestionnaire d'indicateurs HFA.
 
+### Vérifier le code des indicateurs
+
+Le gestionnaire d'indicateurs HFA propose un bouton **Vérifier** dans la barre d'outils de l'éditeur de code et une option **Tout vérifier** dans le menu d'actions du gestionnaire. La vérification soumet le code de chaque indicateur au modèle et rapporte les constats — problèmes et avertissements — à côté du champ concerné dans l'éditeur.
+
+Une colonne **Constats** dans la liste des indicateurs affiche le statut de vérification de chaque indicateur : les problèmes s'affichent en rouge, les avertissements en orange, et les indicateurs vérifiés sans constat affichent une note discrète. La colonne est triable et filtrable afin de concentrer l'attention sur les indicateurs nécessitant une intervention.
+
+Depuis l'éditeur de code, cliquez sur **Vérifier** pour contrôler l'indicateur ouvert, ou sur **Proposer une correction** pour demander au modèle de suggérer une correction des constats ouverts. La correction proposée s'applique dans l'éditeur comme un brouillon non enregistré — vérifiez les modifications listées dans la bannière, puis cliquez sur **Enregistrer** pour les conserver ou sur **Rejeter** pour les annuler. Le bouton de correction est désactivé en présence de modifications non enregistrées, car le modèle prépare la correction à partir de la version enregistrée.
+
+L'option **Règles de vérification** du menu d'actions du gestionnaire ouvre une fenêtre listant chaque règle. Les règles vérifiées par l'application (syntaxe, variables inconnues, code filtre sans code d'indicateur et problèmes structurels similaires) sont toujours appliquées. Les règles vérifiées par le modèle peuvent être désactivées individuellement — une règle désactivée masque ses constats partout où ils apparaissent ; la réactiver les restaure sans nouvelle vérification.
+
+Les constats peuvent être écartés individuellement depuis l'éditeur de code : cliquez sur **Écarter** à côté d'un constat pour le masquer. Les constats écartés apparaissent sous forme d'un comptage réduit sous les constats ouverts et peuvent être rétablis via **Rétablir**.
+
 ### Cohérence du code
 
 Lorsqu'un indicateur s'applique à plusieurs points temporels, FASTR vérifie si le code d'extraction est cohérent. Utilisez **Tout revalider** après avoir effectué des modifications.

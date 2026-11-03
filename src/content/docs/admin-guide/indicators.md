@@ -124,6 +124,18 @@ Variant groups and their items are managed on the **Variant groups** tab in the 
 
 To assign a variant group to an indicator, open the indicator's code editor and select the group from the **Variant group** dropdown. If the indicator already has per-item code for a different group and you switch groups, FASTR asks for confirmation before clearing the old group's code.
 
+### Verifying indicator code
+
+The HFA indicator manager includes a **Verify** button in the code editor toolbar and a **Verify all** option in the manager's action menu. Verification runs the model against each indicator's code and reports findings — problems and warnings — alongside the relevant field in the editor.
+
+A **Findings** column in the indicator list shows each indicator's verification status: problems are shown in red, warnings in amber, and verified indicators with no findings show a muted note. The column is sortable and filterable so you can focus on indicators that need attention.
+
+From the code editor, click **Verify** to check the currently open indicator, or click **Draft a fix** to ask the model to propose a correction for the open findings. The proposed fix lands in the editor as an unsaved draft — review the changes listed in the banner, then **Save** to keep them or **Discard** to revert. The fix button is disabled while there are unsaved edits, because the model drafts the fix against the saved version.
+
+The **Verification rules** option in the manager's action menu opens a modal listing every rule. Rules checked by the app (syntax, unknown variables, filter without indicator code, and similar structural issues) are always applied. Rules checked by the model can be switched off individually — a rule switched off has its findings hidden wherever they appear; switching it back on restores them without a new verification run.
+
+Findings can be dismissed individually from within the code editor: click **Dismiss** next to a finding to hide it. Dismissed findings are shown in a collapsed count beneath the open findings and can be restored with **Undo**.
+
 ### Code consistency
 
 When an indicator applies to multiple time points, FASTR tracks whether extraction code is consistent. Inconsistent code may be intentional (survey questions change between rounds), but it's worth reviewing. Use **Revalidate all** after making changes to refresh validation across all indicators.
