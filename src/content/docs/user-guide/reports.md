@@ -116,6 +116,8 @@ The **AI** button opens an assistant that can help as you write. It can rewrite 
 
 When you open a new report that has not yet had any content added, the assistant works through a brief, sections, plan, and draft sequence before writing the full document. It first asks questions using interactive prompts, reviews the data, agrees a section structure with you, then proposes a detailed plan for your approval. If you prefer to skip straight to a draft, just say so.
 
+When you ask the assistant to write a full report, it writes the body once and then checks it automatically — laying out the pages and reviewing any new figures against the data. If the pages have problems or the figures need checking, the draft is held rather than proposed immediately. The assistant then asks you to fix specific passages using small, targeted edits. Once the draft passes its checks, it is proposed to you for acceptance or rejection in the usual diff view.
+
 See [AI assistant](/user-guide/ai-assistant/) for the full picture.
 
 ## Undo and redo

@@ -116,6 +116,8 @@ Le bouton **IA** ouvre un assistant qui peut vous aider pendant que vous rédige
 
 Lorsque vous ouvrez un nouveau rapport qui ne contient encore aucun contenu, l'assistant suit une séquence de questions, sections, plan et brouillon avant de rédiger le document complet. Il pose d'abord des questions sous forme d'invites interactives, consulte les données, s'accorde sur une structure de sections, puis propose un plan détaillé pour votre approbation. Si vous préférez passer directement au brouillon, il vous suffit de le préciser.
 
+Lorsque vous demandez à l'assistant de rédiger un rapport complet, il écrit le corps une seule fois, puis le vérifie automatiquement — en mettant en page les pages et en comparant les nouvelles figures aux données. Si les pages présentent des problèmes ou si les figures nécessitent une vérification, le brouillon est conservé plutôt que proposé immédiatement. L'assistant vous demande ensuite de corriger des passages spécifiques à l'aide de petites modifications ciblées. Une fois que le brouillon a passé ses vérifications, il vous est proposé pour acceptation ou refus dans la vue diff habituelle.
+
 Consultez [Assistant IA](/user-guide/ai-assistant/) pour une vue d'ensemble complète.
 
 ## Annuler et rétablir
