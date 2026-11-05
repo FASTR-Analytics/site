@@ -28,11 +28,15 @@ Pour intégrer un grand nombre d'utilisateurs, utilisez **Importer par lot depui
 
 ## Modifier l'adresse e-mail d'un utilisateur
 
-Les utilisateurs peuvent modifier leur propre adresse e-mail depuis leur profil. Ouvrez votre profil en cliquant sur votre nom ou votre avatar dans la barre de navigation supérieure, puis trouvez la carte **Adresse e-mail**. Cliquez sur **Changer d'e-mail** pour ouvrir la boîte de dialogue de changement d'e-mail.
+Les utilisateurs peuvent modifier leur propre adresse e-mail depuis leur profil. Ouvrez votre profil en cliquant sur l'icône de compte dans la barre de navigation supérieure et en choisissant **Votre profil**, puis trouvez la carte **Adresse e-mail**. Cliquez sur **Changer d'e-mail** pour ouvrir la boîte de dialogue de changement d'e-mail.
 
 Le changement s'applique à toutes les instances FASTR auxquelles l'utilisateur a accès, en conservant toutes les permissions et l'historique. Le processus comporte trois étapes : saisir la nouvelle adresse et confirmer la liste des instances concernées ; vérifier le code envoyé à la nouvelle adresse ; puis examiner le résultat par instance. Si une instance n'a pas pu être mise à jour, l'ancienne adresse reste sur le compte et une option **Réessayer** est disponible. Une fois que toutes les instances signalent un succès, la page se recharge automatiquement.
 
 Les administrateurs disposant de la permission **Configurer les utilisateurs** peuvent également renommer l'adresse e-mail d'un autre utilisateur directement depuis l'onglet **Utilisateurs** à l'aide de l'action **Renommer l'e-mail**. Cela effectue le même renommage sur l'ensemble du réseau sans que l'utilisateur ait besoin de l'initier lui-même — utile comme solution de secours lorsqu'un utilisateur ne peut pas se connecter avec son ancienne adresse. Seul un administrateur global peut renommer l'adresse e-mail d'un autre administrateur global.
+
+## Modifier le nom d'un utilisateur
+
+Les administrateurs peuvent modifier le nom d'affichage d'un autre utilisateur directement depuis l'onglet Utilisateurs. Ouvrez le profil de l'utilisateur en cliquant sur sa ligne, puis cliquez sur **Modifier le nom** dans la section **Données de connexion**. Saisissez le nouveau prénom et nom et cliquez sur **Enregistrer**. Le changement de nom s'applique au compte de l'utilisateur sur toutes les instances FASTR. Un utilisateur peut modifier son propre nom via son profil Clerk.
 
 ## Permissions d'instance
 <!-- help#users-instance-permissions -->
@@ -88,7 +92,7 @@ Cela fait gagner du temps lorsque votre organisation ajoute fréquemment des pro
 
 ## Organisation
 
-Chaque utilisateur peut renseigner son organisation depuis son profil. Ouvrez votre profil en cliquant sur votre nom ou votre avatar dans la barre de navigation supérieure, puis faites défiler jusqu'à la section **Compte**. Cliquez sur **Modifier** à côté de **Organisation** pour mettre à jour la valeur directement. Ce champ contient les propres mots de l'utilisateur et est visible par les administrateurs sur la page **Utilisateurs**.
+Chaque utilisateur peut renseigner son organisation depuis son profil. Ouvrez votre profil en cliquant sur l'icône de compte dans la barre de navigation supérieure et en choisissant **Votre profil**, puis faites défiler jusqu'à la section **Compte**. Cliquez sur **Modifier** à côté de **Organisation** pour mettre à jour la valeur directement. Ce champ contient les propres mots de l'utilisateur et est visible par les administrateurs sur la page **Utilisateurs**.
 
 ## Jetons d'accès personnels
 

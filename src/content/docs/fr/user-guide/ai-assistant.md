@@ -10,9 +10,9 @@ L'assistant IA vous aide à explorer et à interpréter vos données par le biai
 ## Ouvrir l'assistant
 <!-- help#ai-open -->
 
-Cliquez sur le bouton **Demander à l'IA** en bas à droite de l'écran pour ouvrir le panneau de l'assistant. Le panneau s'affiche en regard de votre vue actuelle. Pour le fermer, cliquez sur le bouton chevron dans l'en-tête du panneau ou cliquez à nouveau sur le bouton **Demander à l'IA**.
+Cliquez sur le bouton **IA** en bas à droite de l'écran pour ouvrir le panneau de l'assistant. Le panneau s'affiche en regard de votre vue actuelle. Pour le fermer, cliquez sur le bouton chevron dans l'en-tête du panneau ou cliquez à nouveau sur le bouton **IA**.
 
-Le panneau mémorise son état ouvert ou fermé. Si vous l'avez fermé lors d'une session précédente, il reste fermé jusqu'à ce que vous l'ouvriez à nouveau ; si vous l'avez laissé ouvert, il se rouvre automatiquement à votre prochaine visite.
+Le panneau démarre fermé lors d'une première utilisation dans un navigateur et s'ouvre une fois que vous l'avez utilisé. Si vous l'avez fermé lors d'une session précédente, il reste fermé jusqu'à ce que vous l'ouvriez à nouveau ; si vous l'avez laissé ouvert, il se rouvre automatiquement à votre prochaine visite. Vous pouvez faire glisser le bouton **IA** de haut en bas sur le bord droit pour le positionner où vous le souhaitez — la position est mémorisée par navigateur.
 
 L'assistant est sensible au contexte : chaque message lui indique la vue actuelle et, lorsqu'un paquet de résultats est en vue, le paquet et la portée sous lesquels chaque lecture de données se résout. Vous n'avez pas besoin de préciser quel paquet utiliser.
 
@@ -62,7 +62,7 @@ Dans l'éditeur de rapport, l'assistant peut réécrire des passages, insérer d
 
 Chaque visualisation d'un rapport est résolue sous le paquet de résultats et la portée propres à ce rapport. Lorsque l'assistant insère ou remplace une visualisation, il utilise automatiquement le paquet associé au rapport.
 
-Lorsque vous ouvrez un nouveau rapport qui ne contient encore aucun contenu, l'assistant suit une séquence de questions, plan et brouillon avant d'écrire. Il pose d'abord quelques questions courtes sur le public visé, la longueur et le contenu ; consulte ensuite les données pertinentes ; puis propose un plan pour votre approbation avant de rédiger le document complet. Si vous préférez passer directement au brouillon, il vous suffit de le préciser.
+Lorsque vous ouvrez un nouveau rapport qui ne contient encore aucun contenu, l'assistant suit une séquence de questions, sections, plan et brouillon avant de rédiger. Il pose d'abord des questions sur le public visé, la longueur et le contenu sous forme d'invites interactives ; consulte ensuite les données pertinentes ; s'accorde sur une structure de sections ; puis propose un plan complet pour votre approbation avant de rédiger le document entier avec toutes les figures incluses. Si vous préférez passer directement au brouillon, il vous suffit de le préciser.
 
 ## Consulter les produits
 

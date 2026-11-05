@@ -10,9 +10,9 @@ The AI assistant helps you explore and interpret your data through conversation.
 ## Opening the assistant
 <!-- help#ai-open -->
 
-Click the **Ask AI** button at the bottom-right edge of the screen to open the assistant panel. The panel slides in alongside your current view. To close it, click the chevron button in the panel header or click the **Ask AI** button again.
+Click the **AI** button at the bottom-right edge of the screen to open the assistant panel. The panel slides in alongside your current view. To close it, click the chevron button in the panel header or click the **AI** button again.
 
-The panel remembers whether you left it open or closed. If you closed it in a previous session, it stays closed until you open it again; if you left it open, it reopens automatically on your next visit.
+The panel starts closed on a fresh browser and opens once you have used it. If you closed it in a previous session, it stays closed until you open it again; if you left it open, it reopens automatically on your next visit. You can drag the **AI** button up and down the right edge to position it wherever is most convenient — the spot is remembered per browser.
 
 The assistant is context-aware: each message tells it the current view and, where a results package is in view, the package and scope every data read resolves under. You do not need to specify which package to use.
 
@@ -62,7 +62,7 @@ In the report editor, the assistant can rewrite passages, insert new visualizati
 
 Every visualization in a report is resolved under that report's own results package and scope. When the assistant inserts or replaces a visualization, it uses the report's attached package automatically.
 
-When you open a new report that has not yet had any content added, the assistant works through a brief, outline, and draft sequence before writing. It first asks a few short questions about the intended audience, length, and focus; then looks at the relevant data; then proposes an outline for your approval before writing the full document. If you prefer to skip straight to a draft, just say so.
+When you open a new report that has not yet had any content added, the assistant works through a brief, sections, plan, and draft sequence before writing. It first asks questions about the intended audience, length, and focus using interactive prompts; then looks at the relevant data; then agrees a section structure; then proposes a full plan for your approval before writing the complete document with all figures included. If you prefer to skip straight to a draft, just say so.
 
 ## Listing products
 

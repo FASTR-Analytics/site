@@ -16,11 +16,11 @@ Modules are included when generating a results package at the instance level. A 
 ## Configuring module defaults
 <!-- help#amod-configure -->
 
-Instance administrators can set default module selections and parameter values that pre-fill the results package generation wizard. Navigate to **Results packages** at the instance level and click **Module defaults**. Select which modules are pre-checked by default and set default parameter values for each.
+Instance administrators can set default parameter values that pre-fill the results package generation wizard. Navigate to **Results packages** at the instance level and click **Module defaults**. The editor shows every module that takes parameters, one at a time, in a sidebar layout. Select a module on the left to view and edit its parameters on the right.
 
-These defaults configure the generation wizard when a new results package is generated. Module parameter values are set only here and apply to every package that includes the module — they are not editable in the wizard itself.
+Parameter values are set only here and apply to every results package that includes the module — they are not editable in the wizard itself. The generation wizard turns on every module the data supports; the module defaults editor no longer controls which modules are pre-selected.
 
-If the fleet's global defaults are published — a file recording the parameter value most countries use for each module parameter — the editor shows a panel at the top. When any parameter value differs from the global default, the panel shows a count of differing parameters and offers a **Reset all to global defaults** button to restore every parameter at once. Individual parameters that differ from the global default are marked inline with a badge, the global default value, and a reset button. You can also reset an entire module's parameters to the global defaults using the **Reset to global defaults** button next to that module. Resetting to the global default sets each parameter to the value most countries use: unpinned when that equals the current definition default (so it follows the definition automatically), pinned otherwise.
+A parameter whose value differs from its definition default (the module's own default value) is marked with a badge, the default value, and a reset button that unpins it so it follows the definition again. The **Reset all to definition defaults** button in the header resets every parameter across every module at once. Any change or reset activates an **Apply** button in the header; click it to save and close, or click **Cancel** to close without saving.
 
 ## Generating a results package
 <!-- help#amod-install -->
@@ -35,11 +35,11 @@ After you click **Launch generation**, the new package's page opens automaticall
 
 ### Step 1 — Choose data
 
-Select which data families this results package is generated from. Each included family is captured in full. Only families that have data uploaded to the instance are available for selection. If a DHIS2 import is currently running, HMIS data is temporarily unavailable and a note explains why — you must wait for the import to finish before generating a package that includes HMIS data.
+Select which data families this results package is generated from. Each included family is captured in full. Only families that have data uploaded to the instance are available for selection. The wizard turns on every available family by default. If a DHIS2 import is currently running, HMIS data is temporarily unavailable and a note explains why — you must wait for the import to finish before generating a package that includes HMIS data.
 
 ### Step 2 — Configure modules
 
-Choose which modules to run. The selection list shows every available module organised by data family, with primary modules first and supporting analyses beneath them. Select a module by checking its box. Selecting a module automatically includes all modules it depends on; a module cannot be unchecked while another selected module depends on it. Modules that require data families not chosen in step 1 are shown as unavailable, with a note naming which family is missing so you can go back to step 1 and add it.
+Choose which modules to run. The selection list shows every available module organised by data family, with primary modules first and supporting analyses beneath them. The wizard pre-selects every module that the chosen data can run. Select a module by checking its box. Selecting a module automatically includes all modules it depends on; a module cannot be unchecked while another selected module depends on it. Modules that require data families not chosen in step 1 are shown as unavailable, with a note naming which family is missing so you can go back to step 1 and add it.
 
 If any selected module has parameter values stored in the module defaults that fail validation, those module names are listed below the selection with a prompt to fix them in **Module defaults** before launching. Parameter values are not editable in the wizard.
 
@@ -84,13 +84,13 @@ Each module in a results package displays its current generation status:
 - **Running** indicates the module is currently generating. Progress messages show which step is executing.
 - **Error** signals something went wrong during generation.
 
-Once a package is fully generated its status is shown on the results packages catalogue page. Opening a package from the catalogue shows a status bar with the generation progress, module chips grouped by data family for a ready package, the live R output line while a script is running, which products use the package, and the population stamp if applicable.
+Once a package is fully generated its status is shown on the results packages catalogue page. Opening a package from the catalogue shows a status bar with the generation progress, the run time, module chips grouped by data family for a ready package, the live R output line while a script is running, which products use the package, and the population stamp if applicable. Click any module chip (except those still pending) to open that module's logs in a modal, where a **Refresh** button re-reads the log while the package is still generating.
 
 ![Module Status](/images/module-status-en.png)
 
 ## Viewing logs and diagnostics
 
-When a module errors or produces unexpected results, check the logs from the results package detail view. Access **Logs** to see R console output, warnings, errors, and timing information.
+When a module errors or produces unexpected results, check the logs from the results package detail view. Access **Logs** to see R console output, warnings, errors, and timing information. You can also click a module's chip in the status bar to open its logs directly in a modal.
 
 For complex issues, view **Script** to see the exact R code that ran. The **Files** option shows data files the module produced, useful for manual inspection of intermediate results.
 

@@ -9,7 +9,7 @@ The FASTR platform helps health program managers and analysts turn routine healt
 
 ## Who this guide is for
 
-This section is written for anyone who works with FASTR analytical outputs. That includes program officers reviewing performance data, data analysts creating custom visualizations, and managers preparing reports for stakeholders. You don't need to manage users, upload data, or configure system settings - those tasks are covered in the Admin guide.
+This section is written for anyone who works with FASTR analytical outputs. That includes program officers reviewing performance data, data analysts creating custom visualizations, and managers preparing reports for stakeholders. You don't need to manage users, upload data, or configure system settings — those tasks are covered in the Admin guide.
 
 Your role in FASTR determines what you can do. **Viewers** can browse visualizations and export reports but can't make changes. **Editors** can create and modify visualizations, build slide decks, and save their work. **Admins** have full access including module configuration and project settings. Your administrator assigns these roles when they add you to a project.
 
@@ -49,6 +49,7 @@ The following pages walk through each part of the platform in more detail.
 - [Dashboards](/user-guide/dashboards/) - Assembling visualizations into live, shareable dashboards
 - [Slide decks](/user-guide/slide-decks/) - Building presentations and exporting documents
 - [Reports](/user-guide/reports/) - Writing long-form documents with embedded live visualizations
+- [Visualizations (saved)](/user-guide/visualizations/) - Creating standalone saved visualizations as products
 - [AI assistant](/user-guide/ai-assistant/) - Getting help interpreting your data
 
 Start with Projects if you're new to FASTR. If you already know your way around and want to create a specific output, jump directly to Visualizations, Dashboards, Slide decks, or Reports.

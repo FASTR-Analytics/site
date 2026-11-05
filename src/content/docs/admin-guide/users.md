@@ -28,11 +28,15 @@ For bulk onboarding, use **Batch import from CSV** to upload a file containing e
 
 ## Changing a user's email address
 
-Users can change their own email address from their profile. Open your profile by clicking your name or avatar in the top navigation bar, then find the **Email address** card. Click **Change email** to open the change email dialog.
+Users can change their own email address from their profile. Open your profile by clicking the account icon in the top navigation bar and choosing **Your profile**, then find the **Email address** card. Click **Change email** to open the change email dialog.
 
 The change applies to every FASTR instance the user has access to, keeping all permissions and history. The process has three steps: enter the new address and confirm the list of affected instances; verify the code sent to the new address; then review the per-instance outcome. If any instance could not be updated, the old address stays on the account and a **Retry** option is available. Once all instances report success, the page reloads automatically.
 
 Administrators with the **Configure users** permission can also rename another user's email address directly from the **Users** tab using the **Rename email** action. This performs the same fleet-wide rename without requiring the user to initiate it themselves — useful as a support fallback when a user cannot log in under their old address. Only a global administrator can rename another global administrator's email address.
+
+## Editing a user's name
+
+Administrators can edit another user's display name directly from the Users tab. Open the user's profile by clicking their row, then click **Edit name** in the **Sign-in details** section. Enter the new first and last name and click **Save**. The name change applies to the user's account across every FASTR instance. A user can change their own name through their Clerk profile.
 
 ## Instance permissions
 <!-- help#users-instance-permissions -->
@@ -88,7 +92,7 @@ This saves time when your organization adds projects frequently - you don't have
 
 ## Organisation
 
-Each user can record their organisation from their profile. Open your profile by clicking your name or avatar in the top navigation bar and scroll to the **Account** section. Click **Edit** next to **Organisation** to update the value in place. This field contains the user's own words and is visible to administrators on the **Users** page.
+Each user can record their organisation from their profile. Open your profile by clicking the account icon in the top navigation bar and choosing **Your profile**, then scroll to the **Account** section. Click **Edit** next to **Organisation** to update the value in place. This field contains the user's own words and is visible to administrators on the **Users** page.
 
 ## Personal access tokens
 

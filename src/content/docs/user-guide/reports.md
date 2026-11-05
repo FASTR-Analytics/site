@@ -12,7 +12,7 @@ A report is the right tool when you need prose around your numbers. If you mainl
 ## Creating a report
 <!-- help#report-create -->
 
-Open the **Products** tab on your instance home screen. Reports appear as cards in the product explorer alongside slide decks. Click **New** and choose **New report** to create one — a dialog opens where you name the report, choose its results package, and set its scope before the editor opens. You can organise reports into folders using **New folder**, and move them between folders from their card menu.
+Open the **Products** tab on your instance home screen. Reports appear as cards in the product explorer alongside slide decks and visualizations. Click **New** and choose **New report** to create one — a dialog opens where you name the report, choose its folder, results package, and scope before the editor opens. You can organise reports into folders using **New folder**, and move them between folders from their card menu.
 
 To create reports, at least one results package and one scope must exist at the instance level.
 
@@ -47,12 +47,12 @@ The toolbar row shows text controls (heading style, bold, italic, underline, tex
 
 Reports hold two kinds of visual content, and the difference matters. A **visualization** is a live chart or map from the product's results package - it renders from current data and updates when that data changes. An **image** is a static file you upload, such as a diagram or a photo.
 
-To add a visualization, open the **Figures** menu and choose **Visualization…**, then pick a visualization from the product's results package. To add a picture, choose **Image…** and upload a file or choose one from your project's assets. Either way, the item appears in the document as a card you can select.
+To add a visualization, open the **Figures** menu and choose **Visualization…**. A menu lets you choose between inserting a **New visualization…** (the metric and preset wizard) or an **Existing visualization…** (a copy of a saved visualization product). To add a picture, choose **Image…** and upload a file or choose one from your project's assets. Either way, the item appears in the document as a card you can select.
 
 Selecting a visualization or image reveals controls in the toolbar for working with it:
 
 - **Edit visualization** opens the visualization's settings - adjust the period, disaggregation, or styling
-- **Switch** replaces the visualization with a different one
+- **Switch** replaces the visualization with a different one, again offering new or existing
 - **Size** (FASTR Markdown only, when the embed is on its own line) sets how wide the figure is on the page: **Small**, **Medium**, **Full width** (the column, which is the default), or **Edge to edge** (the full sheet width)
 - **Delete** removes the visualization or image from the report
 
@@ -112,9 +112,9 @@ If the report has unsaved live edits that cannot be saved at the moment you requ
 
 ## AI assistance
 
-The **Ask AI** button opens an assistant that can help as you write. It can rewrite a passage you've selected, insert or replace visualizations, and edit existing visualizations in place - for example, changing the replicant a chart displays, adjusting its filters, or updating captions. The assistant proposes text changes for you to accept or reject in a modal before anything is applied; visualization edits are applied immediately to the live preview and saved.
+The **AI** button opens an assistant that can help as you write. It can rewrite a passage you've selected, insert or replace visualizations, and edit existing visualizations in place - for example, changing the replicant a chart displays, adjusting its filters, or updating captions. The assistant proposes text changes for you to accept or reject in a modal before anything is applied; visualization edits are applied immediately to the live preview and saved.
 
-When you open a new report that has not yet had any content added, the assistant works through a brief, outline, and draft sequence before writing the full document. It asks a few short questions first, then reviews the data, then proposes an outline for your approval. If you prefer to skip straight to a draft, just say so.
+When you open a new report that has not yet had any content added, the assistant works through a brief, sections, plan, and draft sequence before writing the full document. It first asks questions using interactive prompts, reviews the data, agrees a section structure with you, then proposes a detailed plan for your approval. If you prefer to skip straight to a draft, just say so.
 
 See [AI assistant](/user-guide/ai-assistant/) for the full picture.
 

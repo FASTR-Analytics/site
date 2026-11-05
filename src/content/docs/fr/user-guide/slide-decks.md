@@ -10,7 +10,7 @@ Les présentations vous permettent d'assembler des visualisations en présentati
 ## Créer une présentation
 <!-- help#deck-create -->
 
-Ouvrez l'onglet **Produits** sur l'écran d'accueil de votre instance. Les présentations apparaissent sous forme de cartes dans l'explorateur de produits, aux côtés des rapports. Cliquez sur **Nouveau** et choisissez **Nouvelle présentation** pour en créer une — une boîte de dialogue s'ouvre dans laquelle vous nommez la présentation, choisissez son lot de résultats et définissez sa portée avant que l'éditeur s'ouvre. Vous pouvez organiser les présentations dans des dossiers à l'aide de **Nouveau dossier** et les déplacer entre dossiers depuis le menu de leur carte.
+Ouvrez l'onglet **Produits** sur l'écran d'accueil de votre instance. Les présentations apparaissent sous forme de cartes dans l'explorateur de produits, aux côtés des rapports et des visualisations. Cliquez sur **Nouveau** et choisissez **Nouvelle présentation** pour en créer une — une boîte de dialogue s'ouvre dans laquelle vous nommez la présentation, choisissez son dossier, son lot de résultats et définissez sa portée avant que l'éditeur s'ouvre. Vous pouvez organiser les présentations dans des dossiers à l'aide de **Nouveau dossier** et les déplacer entre dossiers depuis le menu de leur carte.
 
 Une nouvelle présentation démarre vide. Lorsque vous ouvrez une nouvelle présentation pour la première fois, FASTR vous demande de choisir un thème avant de commencer — cela garantit que la présentation démarre avec l'apparence souhaitée plutôt qu'avec une apparence par défaut. Un rail sur la gauche affiche vos diapositives, et la zone principale à côté affiche la diapositive actuellement ouverte pour l'édition. Vous construirez la présentation en ajoutant différents types de diapositives.
 
@@ -29,7 +29,7 @@ Lorsque vous ajoutez une diapositive, vous en choisissez le type. Vous pouvez co
 
 Les diapositives de contenu utilisent un système de mise en page flexible composé d'un ou plusieurs blocs de contenu. Un bloc peut contenir du texte (mis en forme avec Markdown), une visualisation issue du lot de résultats de la présentation ou une image téléversée.
 
-Pour ajouter une visualisation à un bloc vide, cliquez sur **Insérer une visualisation** et choisissez un indicateur et une configuration depuis le lot de résultats du produit. Si vous devez ajuster l'affichage — période différente ou désagrégation différente — vous pouvez modifier la visualisation intégrée directement depuis la diapositive à l'aide de **Modifier la visualisation**. Pour remplacer une visualisation existante par une autre, utilisez **Remplacer la visualisation** depuis le même panneau.
+Pour ajouter une visualisation à un bloc vide, cliquez sur **Insérer une visualisation** et choisissez entre **Nouvelle visualisation…** (l'assistant de métrique et de préréglage) ou **Visualisation existante…** (une copie d'une visualisation enregistrée). Si vous devez ajuster l'affichage — période différente ou désagrégation différente — vous pouvez modifier la visualisation intégrée directement depuis la diapositive à l'aide de **Modifier la visualisation**. Pour remplacer une visualisation existante par une autre, utilisez **Remplacer la visualisation** depuis le même panneau, qui propose également les deux options nouvelle et existante.
 
 Faites un clic droit sur un bloc pour accéder aux options de mise en page comme « Diviser gauche/droite » ou « Supprimer le bloc ». Vous pouvez faire glisser les séparateurs entre les blocs pour ajuster leurs tailles relatives.
 
@@ -69,7 +69,7 @@ Pour modifier le lot de résultats ou la portée, cliquez sur **Paquet, portée 
 
 ## Choisir un thème
 
-Le menu **Présentation** contient une option **Thème** qui vous permet de choisir parmi dix thèmes intégrés. Chaque thème définit en une seule fois les couleurs, la typographie, la mise en page et les éléments de page de la présentation. Un aperçu de chaque thème s'affiche pendant que vous parcourez les options, afin de voir le résultat avant de l'appliquer. Vous pouvez changer de thème à tout moment et la mise à jour s'applique immédiatement à toutes les diapositives.
+Le menu **Présentation** contient une option **Thème** qui vous permet de choisir parmi onze thèmes intégrés. Chaque thème définit en une seule fois les couleurs, la typographie, la mise en page et les éléments de page de la présentation. Un aperçu de chaque thème s'affiche pendant que vous parcourez les options, afin de voir le résultat avant de l'appliquer. Vous pouvez changer de thème à tout moment et la mise à jour s'applique immédiatement à toutes les diapositives.
 
 ## Présenter des diapositives
 

@@ -12,7 +12,7 @@ Un rapport est l'outil approprié lorsque vous avez besoin de texte rédigé aut
 ## Créer un rapport
 <!-- help#report-create -->
 
-Ouvrez l'onglet **Produits** sur l'écran d'accueil de votre instance. Les rapports apparaissent sous forme de cartes dans l'explorateur de produits, aux côtés des présentations. Cliquez sur **Nouveau** et choisissez **Nouveau rapport** pour en créer un — une boîte de dialogue s'ouvre dans laquelle vous nommez le rapport, choisissez son lot de résultats et définissez sa portée avant que l'éditeur s'ouvre. Vous pouvez organiser les rapports dans des dossiers à l'aide de **Nouveau dossier** et les déplacer entre dossiers depuis le menu de leur carte.
+Ouvrez l'onglet **Produits** sur l'écran d'accueil de votre instance. Les rapports apparaissent sous forme de cartes dans l'explorateur de produits, aux côtés des présentations et des visualisations. Cliquez sur **Nouveau** et choisissez **Nouveau rapport** pour en créer un — une boîte de dialogue s'ouvre dans laquelle vous nommez le rapport, choisissez son dossier, son lot de résultats et définissez sa portée avant que l'éditeur s'ouvre. Vous pouvez organiser les rapports dans des dossiers à l'aide de **Nouveau dossier** et les déplacer entre dossiers depuis le menu de leur carte.
 
 Pour créer des rapports, au moins un lot de résultats et une portée doivent exister au niveau de l'instance.
 
@@ -47,12 +47,12 @@ La rangée de la barre d'outils affiche les commandes de texte (style de titre, 
 
 Les rapports peuvent contenir deux types de contenu visuel, et la distinction est importante. Une **visualisation** est un graphique ou une carte dynamique issue du lot de résultats du produit - elle se génère à partir des données actuelles et se met à jour lorsque ces données changent. Une **image** est un fichier statique que vous téléversez, comme un schéma ou une photo.
 
-Pour ajouter une visualisation, ouvrez le menu **Figures** et choisissez **Visualisation…**, puis sélectionnez une visualisation dans le lot de résultats du produit. Pour ajouter une image, choisissez **Image…** et téléversez un fichier ou choisissez-en un parmi les ressources de votre projet. Dans les deux cas, l'élément apparaît dans le document sous forme de carte que vous pouvez sélectionner.
+Pour ajouter une visualisation, ouvrez le menu **Figures** et choisissez **Visualisation…**. Un menu vous propose d'insérer une **Nouvelle visualisation…** (l'assistant de métrique et de préréglage) ou une **Visualisation existante…** (une copie d'une visualisation enregistrée). Pour ajouter une image, choisissez **Image…** et téléversez un fichier ou choisissez-en un parmi les ressources de votre projet. Dans les deux cas, l'élément apparaît dans le document sous forme de carte que vous pouvez sélectionner.
 
 La sélection d'une visualisation ou d'une image fait apparaître des commandes dans la barre d'outils pour la manipuler :
 
 - **Modifier la visualisation** ouvre les paramètres de la visualisation - ajustez la période, la désagrégation ou le style
-- **Changer** remplace la visualisation par une autre
+- **Changer** remplace la visualisation par une autre, en proposant à nouveau nouvelle ou existante
 - **Taille** (FASTR Markdown uniquement, lorsque l'élément est sur sa propre ligne) définit la largeur de la figure sur la page : **Petite**, **Moyenne**, **Pleine largeur** (la colonne, valeur par défaut) ou **Bord à bord** (toute la largeur de la feuille)
 - **Supprimer** retire la visualisation ou l'image du rapport
 
@@ -112,9 +112,9 @@ Si le rapport contient des modifications en direct qui ne peuvent pas être enre
 
 ## Assistance par IA
 
-Le bouton **Demander à l'IA** ouvre un assistant qui peut vous aider pendant que vous rédigez. Il peut reformuler un passage sélectionné, insérer ou remplacer des visualisations, et modifier des visualisations existantes directement sans les reconstruire - par exemple, changer le réplicant affiché par un graphique, ajuster ses filtres ou mettre à jour des légendes. L'assistant propose les modifications de texte dans une fenêtre modale que vous acceptez ou refusez avant toute application ; les modifications de visualisations sont appliquées immédiatement à l'aperçu en direct et enregistrées.
+Le bouton **IA** ouvre un assistant qui peut vous aider pendant que vous rédigez. Il peut reformuler un passage sélectionné, insérer ou remplacer des visualisations, et modifier des visualisations existantes directement sans les reconstruire - par exemple, changer le réplicant affiché par un graphique, ajuster ses filtres ou mettre à jour des légendes. L'assistant propose les modifications de texte dans une fenêtre modale que vous acceptez ou refusez avant toute application ; les modifications de visualisations sont appliquées immédiatement à l'aperçu en direct et enregistrées.
 
-Lorsque vous ouvrez un nouveau rapport qui ne contient encore aucun contenu, l'assistant suit une séquence de questions, plan et brouillon avant de rédiger le document complet. Il pose d'abord quelques questions courtes sur le public visé, la longueur et le contenu ; consulte ensuite les données pertinentes ; puis propose un plan pour votre approbation. Si vous préférez passer directement au brouillon, il vous suffit de le préciser.
+Lorsque vous ouvrez un nouveau rapport qui ne contient encore aucun contenu, l'assistant suit une séquence de questions, sections, plan et brouillon avant de rédiger le document complet. Il pose d'abord des questions sous forme d'invites interactives, consulte les données, s'accorde sur une structure de sections, puis propose un plan détaillé pour votre approbation. Si vous préférez passer directement au brouillon, il vous suffit de le préciser.
 
 Consultez [Assistant IA](/user-guide/ai-assistant/) pour une vue d'ensemble complète.
 

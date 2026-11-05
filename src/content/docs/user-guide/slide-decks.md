@@ -10,7 +10,7 @@ Slide decks let you assemble visualizations into polished presentations for stak
 ## Creating a slide deck
 <!-- help#deck-create -->
 
-Open the **Products** tab on your instance home screen. Slide decks appear as cards in the product explorer alongside reports. Click **New** and choose **New deck** to create one — a dialog opens where you name the deck, choose its results package, and set its scope before the editor opens. You can organise decks into folders using **New folder**, and move them between folders from their card menu.
+Open the **Products** tab on your instance home screen. Slide decks appear as cards in the product explorer alongside reports and visualizations. Click **New** and choose **New deck** to create one — a dialog opens where you name the deck, choose its folder, results package, and set its scope before the editor opens. You can organise decks into folders using **New folder**, and move them between folders from their card menu.
 
 A new deck starts empty. When you open a new deck for the first time, FASTR asks you to choose a theme before you begin — this ensures the deck starts with a look you intend rather than a default. A rail on the left shows your slides, and the main area beside it shows the slide currently open for editing. You'll build out the deck by adding different slide types.
 
@@ -29,7 +29,7 @@ When you add a slide, you choose its type. You can convert between types later u
 
 Content slides use a flexible layout system with one or more content blocks. A block can hold text (formatted with markdown), a visualization from the deck's results package, or an uploaded image.
 
-To add a visualization to an empty figure block, click **Insert visualization** and choose a metric and configuration from the product's results package. If you need to adjust the display — different time period or disaggregation — you can edit the embedded visualization directly from the slide using **Edit visualization**. To swap an existing visualization for a different one, use **Replace visualization** from the same panel.
+To add a visualization to an empty figure block, click **Insert visualization** and choose between inserting a **New visualization…** (the metric and preset wizard) or an **Existing visualization…** (a copy of a saved visualization product). If you need to adjust the display — different time period or disaggregation — you can edit the embedded visualization directly from the slide using **Edit visualization**. To swap an existing visualization for a different one, use **Replace visualization** from the same panel, which also offers both new and existing options.
 
 Right-click on a block to access layout options like "Split left/right" or "Delete block." You can drag dividers between blocks to adjust their relative sizes.
 
@@ -69,7 +69,7 @@ To change the results package or scope, click **Package, scope and folder** from
 
 ## Choosing a theme
 
-The **Deck** menu contains a **Theme** option that lets you pick from ten built-in themes. Each theme sets the deck's colours, typeface, layout and page furniture all at once. A preview of each theme is shown as you browse so you can see the result before applying it. You can change the theme at any time and the update applies to every slide immediately.
+The **Deck** menu contains a **Theme** option that lets you pick from eleven built-in themes. Each theme sets the deck's colours, typeface, layout and page furniture all at once. A preview of each theme is shown as you browse so you can see the result before applying it. You can change the theme at any time and the update applies to every slide immediately.
 
 ## Presenting slides
 

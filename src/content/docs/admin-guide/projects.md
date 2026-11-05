@@ -72,4 +72,4 @@ FASTR's AI assistant can interpret charts and suggest insights, but its response
 
 ## Appearance
 
-Each user can switch between light, dark, and system-default appearance from their profile. Open your profile by clicking your avatar in the top bar, then go to the **Appearance** section and choose **Light**, **Dark**, or **System** to follow your operating system's preference. The setting is saved per browser and takes effect immediately — all charts, maps, and tables adapt to the selected theme.
+Each user can switch between light, dark, and system-default appearance from their profile. Open your profile by clicking the account icon in the top bar, then go to the **Appearance** section and choose **Light**, **Dark**, or **System** to follow your operating system's preference. The setting is saved per browser and takes effect immediately — all charts, maps, and tables adapt to the selected theme.

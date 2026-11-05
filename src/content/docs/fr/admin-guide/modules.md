@@ -16,11 +16,11 @@ Les modules sont inclus lors de la génération d'un lot de résultats au niveau
 ## Configurer les paramètres par défaut des modules
 <!-- help#amod-configure -->
 
-Les administrateurs de l'instance peuvent définir des sélections de modules par défaut et des valeurs de paramètres qui préremplissent l'assistant de génération de lots de résultats. Accédez à **Lots de résultats** au niveau de l'instance et cliquez sur **Paramètres par défaut des modules**. Sélectionnez les modules qui sont pré-cochés par défaut et définissez les valeurs de paramètres par défaut pour chacun.
+Les administrateurs de l'instance peuvent définir des valeurs de paramètres par défaut qui préremplissent l'assistant de génération de lots de résultats. Accédez à **Lots de résultats** au niveau de l'instance et cliquez sur **Paramètres par défaut des modules**. L'éditeur affiche chaque module qui prend des paramètres, un à la fois, dans une disposition en barre latérale. Sélectionnez un module sur la gauche pour afficher et modifier ses paramètres sur la droite.
 
-Ces valeurs par défaut configurent l'assistant de génération lors de la création d'un nouveau lot de résultats. Les valeurs des paramètres des modules se règlent uniquement ici et s'appliquent à chaque lot qui inclut le module — elles ne sont pas modifiables dans l'assistant lui-même.
+Les valeurs des paramètres se règlent uniquement ici et s'appliquent à chaque lot de résultats qui inclut le module — elles ne sont pas modifiables dans l'assistant lui-même. L'assistant de génération active tous les modules que les données permettent ; l'éditeur de paramètres par défaut des modules ne contrôle plus quels modules sont pré-sélectionnés.
 
-Si les valeurs par défaut globales du réseau sont publiées — un fichier enregistrant la valeur de paramètre utilisée par la plupart des pays pour chaque paramètre de module — l'éditeur affiche un panneau en haut. Lorsqu'une valeur de paramètre diffère de la valeur par défaut globale, le panneau affiche un comptage des paramètres différents et propose un bouton **Tout réinitialiser aux valeurs par défaut globales** pour restaurer tous les paramètres en une seule fois. Les paramètres individuels qui diffèrent de la valeur par défaut globale sont signalés en ligne par un badge, la valeur par défaut globale et un bouton de réinitialisation. Vous pouvez également réinitialiser l'ensemble des paramètres d'un module aux valeurs par défaut globales à l'aide du bouton **Réinitialiser aux valeurs par défaut globales** situé à côté de ce module. La réinitialisation à la valeur par défaut globale définit chaque paramètre à la valeur utilisée par la plupart des pays : non épinglé lorsque cette valeur est égale à la valeur par défaut de la définition actuelle (de sorte qu'il suit automatiquement la définition), épinglé sinon.
+Un paramètre dont la valeur diffère de la valeur par défaut de sa définition (la valeur par défaut propre au module) est signalé par un badge, la valeur par défaut et un bouton de réinitialisation qui le désépingle afin qu'il suive à nouveau la définition. Le bouton **Tout réinitialiser aux valeurs par défaut de la définition** dans l'en-tête réinitialise tous les paramètres de tous les modules en une seule fois. Toute modification ou réinitialisation active un bouton **Appliquer** dans l'en-tête ; cliquez dessus pour enregistrer et fermer, ou cliquez sur **Annuler** pour fermer sans enregistrer.
 
 ## Générer un lot de résultats
 <!-- help#amod-install -->
@@ -35,11 +35,11 @@ Après avoir cliqué sur **Lancer la génération**, la page du nouveau lot s'ou
 
 ### Étape 1 — Choisir les données
 
-Sélectionnez les familles de données à partir desquelles ce lot de résultats est généré. Chaque famille incluse est capturée dans son intégralité. Seules les familles pour lesquelles des données ont été téléversées sur l'instance sont disponibles à la sélection. Si une importation DHIS2 est en cours, les données HMIS sont temporairement indisponibles et une note l'explique — vous devez attendre la fin de l'importation avant de générer un lot incluant les données HMIS.
+Sélectionnez les familles de données à partir desquelles ce lot de résultats est généré. Chaque famille incluse est capturée dans son intégralité. Seules les familles pour lesquelles des données ont été téléversées sur l'instance sont disponibles à la sélection. L'assistant active toutes les familles disponibles par défaut. Si une importation DHIS2 est en cours, les données HMIS sont temporairement indisponibles et une note l'explique — vous devez attendre la fin de l'importation avant de générer un lot incluant les données HMIS.
 
 ### Étape 2 — Configurer les modules
 
-Choisissez les modules à exécuter. La liste de sélection affiche chaque module disponible organisé par famille de données, avec les modules principaux en premier et les analyses complémentaires en dessous. Sélectionnez un module en cochant sa case. La sélection d'un module inclut automatiquement tous les modules dont il dépend ; un module ne peut pas être désélectionné tant qu'un autre module sélectionné en dépend. Les modules qui nécessitent des familles de données non choisies à l'étape 1 sont affichés comme indisponibles, avec une note indiquant quelle famille est manquante afin que vous puissiez revenir à l'étape 1 pour l'ajouter.
+Choisissez les modules à exécuter. La liste de sélection affiche chaque module disponible organisé par famille de données, avec les modules principaux en premier et les analyses complémentaires en dessous. L'assistant présélectionne tous les modules que les données choisies peuvent exécuter. Sélectionnez un module en cochant sa case. La sélection d'un module inclut automatiquement tous les modules dont il dépend ; un module ne peut pas être désélectionné tant qu'un autre module sélectionné en dépend. Les modules qui nécessitent des familles de données non choisies à l'étape 1 sont affichés comme indisponibles, avec une note indiquant quelle famille est manquante afin que vous puissiez revenir à l'étape 1 pour l'ajouter.
 
 Si un module sélectionné a des valeurs de paramètres enregistrées dans les paramètres par défaut des modules qui échouent à la validation, les noms de ces modules sont listés sous la sélection avec une invite à les corriger dans **Paramètres par défaut des modules** avant de lancer. Les valeurs des paramètres ne sont pas modifiables dans l'assistant.
 
@@ -84,13 +84,13 @@ Chaque module dans un lot de résultats affiche son état de génération actuel
 - **En cours d'exécution** indique que le module génère actuellement des résultats. Des messages de progression montrent quelle étape est en cours.
 - **Erreur** signale qu'un problème est survenu lors de la génération.
 
-Une fois qu'un lot est entièrement généré, son statut s'affiche sur la page du catalogue des lots de résultats. L'ouverture d'un lot depuis le catalogue affiche une barre d'état avec la progression de la génération, les puces de modules regroupées par famille de données pour un lot prêt, la ligne de sortie R en direct pendant l'exécution d'un script, les produits qui utilisent le lot et le tampon de population le cas échéant.
+Une fois qu'un lot est entièrement généré, son statut s'affiche sur la page du catalogue des lots de résultats. L'ouverture d'un lot depuis le catalogue affiche une barre d'état avec la progression de la génération, la durée d'exécution, les puces de modules regroupées par famille de données pour un lot prêt, la ligne de sortie R en direct pendant l'exécution d'un script, les produits qui utilisent le lot et le tampon de population le cas échéant. Cliquez sur la puce d'un module (sauf ceux encore en attente) pour ouvrir ses journaux dans une fenêtre modale, où un bouton **Actualiser** relit le journal pendant que le lot est encore en cours de génération.
 
 ![État d'un module](/images/module-status-en.png)
 
 ## Consulter les journaux et les diagnostics
 
-Lorsqu'un module produit une erreur ou des résultats inattendus, consultez les journaux depuis la vue de détail du lot de résultats. Accédez aux **Journaux** pour voir la sortie de la console R, les avertissements, les erreurs et les informations de minutage.
+Lorsqu'un module produit une erreur ou des résultats inattendus, consultez les journaux depuis la vue de détail du lot de résultats. Accédez aux **Journaux** pour voir la sortie de la console R, les avertissements, les erreurs et les informations de minutage. Vous pouvez également cliquer sur la puce d'un module dans la barre d'état pour ouvrir directement ses journaux dans une fenêtre modale.
 
 Pour les problèmes complexes, affichez le **Script** pour voir le code R exact qui a été exécuté. L'option **Fichiers** montre les fichiers de données produits par le module, utiles pour inspecter manuellement les résultats intermédiaires.
 
