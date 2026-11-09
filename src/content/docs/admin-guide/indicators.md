@@ -126,7 +126,7 @@ To assign a variant group to an indicator, open the indicator's code editor and 
 
 ### Verifying indicator code
 
-The HFA indicator manager includes a **Verify** button in the code editor toolbar and a **Verify all** option in the manager's action menu. Verification runs the model against each indicator's code and reports findings — problems and warnings — alongside the relevant field in the editor.
+The HFA indicator manager includes a **Verify** button in the code editor toolbar. Verification runs the model against the indicator's code and reports findings — problems and warnings — alongside the relevant field in the editor. Select one or more indicators in the manager's table and use the **Verify** bulk action to check a set of indicators at once; selecting all filtered rows is also how you verify every indicator in the list.
 
 A **Findings** column in the indicator list shows each indicator's verification status: problems are shown in red, warnings in amber, and verified indicators with no findings show a muted note. The column is sortable and filterable so you can focus on indicators that need attention.
 

@@ -120,7 +120,7 @@ Un indicateur peut être associé à un **groupe de variantes**, qui définit un
 
 ### Vérifier le code des indicateurs
 
-Le gestionnaire d'indicateurs HFA propose un bouton **Vérifier** dans la barre d'outils de l'éditeur de code et une option **Tout vérifier** dans le menu d'actions du gestionnaire. La vérification soumet le code de chaque indicateur au modèle et rapporte les constats — problèmes et avertissements — à côté du champ concerné dans l'éditeur.
+Le gestionnaire d'indicateurs HFA propose un bouton **Vérifier** dans la barre d'outils de l'éditeur de code. La vérification soumet le code de l'indicateur au modèle et rapporte les constats — problèmes et avertissements — à côté du champ concerné dans l'éditeur. Sélectionnez un ou plusieurs indicateurs dans le tableau du gestionnaire et utilisez l'action groupée **Vérifier** pour contrôler un ensemble d'indicateurs à la fois ; sélectionner toutes les lignes filtrées permet également de vérifier tous les indicateurs de la liste.
 
 Une colonne **Constats** dans la liste des indicateurs affiche le statut de vérification de chaque indicateur : les problèmes s'affichent en rouge, les avertissements en orange, et les indicateurs vérifiés sans constat affichent une note discrète. La colonne est triable et filtrable afin de concentrer l'attention sur les indicateurs nécessitant une intervention.
 

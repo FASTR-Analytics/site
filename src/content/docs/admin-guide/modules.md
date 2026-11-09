@@ -73,7 +73,7 @@ The pinned package is also the package the FASTR MCP connector reads. When you c
 
 ## Scopes
 
-A scope sets which part of a results package a slide deck or report may show — for example one region, certain years, or certain modules and indicators. Scopes are created and managed by holders of the **Configure data** permission from the **Scopes** tab in the main navigation. The scope called **All data** is always present and limits nothing; it is displayed as a fixed panel above the scopes table rather than as a row within it. On the Users page, a user can also be limited to certain scopes so they see only products that use those scopes.
+A scope sets which part of a results package a slide deck or report may show — for example one region, certain years, or certain modules and indicators. Every approved user sees the **Scopes** tab in the main navigation. Unrestricted users (those with access to all data) can create, edit, and delete scopes; a restricted user can view the scopes they hold but cannot write them. The scope called **All data** is always present and limits nothing; it is displayed as a fixed panel above the scopes table rather than as a row within it. On the Users page, a user can also be limited to certain scopes so they see only products that use those scopes.
 
 ## Module execution and status
 <!-- help#amod-status -->
