@@ -50,11 +50,17 @@ The assistant is particularly helpful when building slide decks. You can ask it 
 
 When you ask the assistant to create a slide, it drafts the content and shows a preview. If the deck is currently open and you can edit it, you can add the draft to it directly from the preview card.
 
-When working in the deck editor, the assistant can read the open slide's current content — including any unsaved edits shown on the canvas — and modify slides throughout the deck. It can change text, update layouts, tweak existing visualizations (replicant, filters, disaggregation, period, captions), and edit any slide in the deck whether or not it is currently open, saving those changes immediately. For the open slide, changes appear on the canvas at once and save automatically.
+When working in the deck editor, the assistant can read one or more slides' current content — including any unsaved edits shown on the canvas — and modify slides throughout the deck. It can change text, settings, update layouts, tweak existing visualizations (replicant, filters, disaggregation, period, captions), and edit any slide in the deck whether or not it is currently open, saving those changes immediately. For the open slide, changes appear on the canvas at once and save automatically.
+
+The deck's own settings — its logos, footer text, and watermark — can also be changed by the assistant using a dedicated tool. These changes apply immediately across every slide and are saved automatically.
 
 When the assistant creates a content slide that includes a figure built from a metric with multiple indicators, it filters the figure to the indicators named in the slide's text. An unfiltered multi-indicator metric draws one panel per indicator, which can overflow the slide's layout.
 
 Every visualization in a slide deck is resolved under that deck's own results package and scope. When the assistant creates or edits a visualization, it uses the deck's attached package automatically — you do not need to specify which package to use.
+
+Content slides can also include **image blocks** that show one of the instance's uploaded image assets. The assistant can add image blocks when asked, using file names from the instance's assets.
+
+After building or restructuring a content slide that holds a dense table or several blocks, you can ask the assistant to look at it — it will inspect the slide's rendered image and report what it sees, letting you catch overflow or layout problems before exporting.
 
 ## Working with reports
 
@@ -63,6 +69,8 @@ In the report editor, the assistant can rewrite passages, insert new visualizati
 Every visualization in a report is resolved under that report's own results package and scope. When the assistant inserts or replaces a visualization, it uses the report's attached package automatically.
 
 When you open a new report that has not yet had any content added, the assistant works through a brief, sections, plan, and draft sequence before writing. It first asks questions about the intended audience, length, and focus using interactive prompts; then looks at the relevant data; then agrees a section structure; then proposes a full plan for your approval before writing the complete document with all figures included. If you prefer to skip straight to a draft, just say so.
+
+After inserting or changing a figure whose legibility its configuration cannot tell — a dense table, many series, or long labels — you can ask the assistant to look at it. It will inspect the rendered image and report what it sees.
 
 ## Listing products
 

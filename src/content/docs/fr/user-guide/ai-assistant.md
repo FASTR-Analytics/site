@@ -50,11 +50,17 @@ L'assistant est particulièrement utile lors de la création de présentations. 
 
 Lorsque vous demandez à l'assistant de créer une diapositive, il en rédige le contenu et affiche un aperçu. Si la présentation est ouverte et que vous pouvez la modifier, vous pouvez ajouter le brouillon directement depuis la carte d'aperçu.
 
-Dans l'éditeur de présentation, l'assistant peut lire le contenu actuel de la diapositive ouverte — y compris les modifications non enregistrées affichées sur le canevas — et modifier les diapositives dans toute la présentation. Il peut changer le texte, mettre à jour les mises en page, ajuster des visualisations existantes (réplicant, filtres, désagrégation, période, légendes) et modifier n'importe quelle diapositive de la présentation qu'elle soit ouverte ou non, en enregistrant ces modifications immédiatement. Pour la diapositive ouverte, les modifications apparaissent sur le canevas immédiatement et sont enregistrées automatiquement.
+Dans l'éditeur de présentation, l'assistant peut lire le contenu actuel d'une ou plusieurs diapositives — y compris les modifications non enregistrées affichées sur le canevas — et modifier les diapositives dans toute la présentation. Il peut changer le texte, les paramètres, mettre à jour les mises en page, ajuster des visualisations existantes (réplicant, filtres, désagrégation, période, légendes) et modifier n'importe quelle diapositive de la présentation qu'elle soit ouverte ou non, en enregistrant ces modifications immédiatement. Pour la diapositive ouverte, les modifications apparaissent sur le canevas immédiatement et sont enregistrées automatiquement.
+
+Les paramètres propres à la présentation — ses logos, le texte de pied de page et le filigrane — peuvent également être modifiés par l'assistant à l'aide d'un outil dédié. Ces modifications s'appliquent immédiatement sur toutes les diapositives et sont enregistrées automatiquement.
 
 Lorsque l'assistant crée une diapositive de contenu comprenant une figure issue d'un indicateur à plusieurs sous-indicateurs, il filtre la figure sur les sous-indicateurs nommés dans le texte de la diapositive. Un indicateur multi-panneaux non filtré génère un panneau par sous-indicateur, ce qui peut faire déborder la mise en page de la diapositive.
 
 Chaque visualisation d'une présentation est résolue sous le paquet de résultats et la portée propres à cette présentation. Lorsque l'assistant crée ou modifie une visualisation, il utilise automatiquement le paquet associé à la présentation — vous n'avez pas besoin de préciser quel paquet utiliser.
+
+Les diapositives de contenu peuvent également contenir des **blocs image** qui affichent l'une des ressources image téléversées sur l'instance. L'assistant peut ajouter des blocs image sur demande, en utilisant les noms de fichiers des ressources de l'instance.
+
+Après avoir construit ou restructuré une diapositive de contenu contenant un tableau dense ou plusieurs blocs, vous pouvez demander à l'assistant de l'examiner — il inspecte l'image rendue de la diapositive et vous indique ce qu'il voit, ce qui vous permet de détecter les débordements ou les problèmes de mise en page avant d'exporter.
 
 ## Travailler avec les rapports
 
@@ -63,6 +69,8 @@ Dans l'éditeur de rapport, l'assistant peut réécrire des passages, insérer d
 Chaque visualisation d'un rapport est résolue sous le paquet de résultats et la portée propres à ce rapport. Lorsque l'assistant insère ou remplace une visualisation, il utilise automatiquement le paquet associé au rapport.
 
 Lorsque vous ouvrez un nouveau rapport qui ne contient encore aucun contenu, l'assistant suit une séquence de questions, sections, plan et brouillon avant de rédiger. Il pose d'abord des questions sur le public visé, la longueur et le contenu sous forme d'invites interactives ; consulte ensuite les données pertinentes ; s'accorde sur une structure de sections ; puis propose un plan complet pour votre approbation avant de rédiger le document entier avec toutes les figures incluses. Si vous préférez passer directement au brouillon, il vous suffit de le préciser.
+
+Après avoir inséré ou modifié une figure dont la lisibilité ne peut pas être évaluée depuis sa seule configuration — un tableau dense, de nombreuses séries ou de longues étiquettes — vous pouvez demander à l'assistant de l'examiner. Il inspectera l'image rendue et vous indiquera ce qu'il voit.
 
 ## Consulter les produits
 
