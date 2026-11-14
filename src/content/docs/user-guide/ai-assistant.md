@@ -91,3 +91,5 @@ AI usage is subject to daily limits that apply across your instance. A usage ind
 Ask specific questions rather than broad ones. Reference specific metrics, time periods, and geographic areas when relevant. When asking for interpretation, include context about your audience - "explain this for a ministry presentation" produces different output than "summarize for the technical team."
 
 If you get an unexpected result, try rephrasing. Using the exact metric names and terminology from your modules often helps the assistant find the right information.
+
+When a query returns too many items, the assistant will suggest adding filters, narrowing the period, or removing disaggregations to bring results within range.

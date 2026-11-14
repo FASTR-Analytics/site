@@ -91,3 +91,5 @@ L'utilisation de l'IA est soumise à des limites quotidiennes qui s'appliquent �
 Posez des questions précises plutôt que générales. Faites référence à des indicateurs, des périodes et des zones géographiques spécifiques lorsque cela est pertinent. Lorsque vous demandez une interprétation, précisez le contexte relatif à votre public - « explique ceci pour une présentation au ministère » produit un résultat différent de « résume pour l'équipe technique ».
 
 Si vous obtenez un résultat inattendu, essayez de reformuler. Utiliser les noms et la terminologie exacts des indicateurs de vos modules aide souvent l'assistant à trouver la bonne information.
+
+Lorsqu'une requête renvoie trop d'éléments, l'assistant suggère d'ajouter des filtres, de réduire la période ou de supprimer des désagrégations pour ramener les résultats dans les limites.
