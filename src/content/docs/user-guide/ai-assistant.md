@@ -74,7 +74,7 @@ After inserting or changing a figure whose legibility its configuration cannot t
 
 ## Listing products
 
-On the Products page, you can ask the assistant to list every product you can see, along with its folder, results package, scope, and your access level. The assistant cannot open products for you — you do that by clicking them — but it can describe what is available and help you decide where to find what you need.
+On the Products page, you can ask the assistant to list every product you can see — slide decks, reports, and saved visualizations — along with its folder, results package, scope, and your access level. The assistant cannot open products for you — you do that by clicking them — but it can describe what is available and help you decide where to find what you need.
 
 ## Conversations and history
 

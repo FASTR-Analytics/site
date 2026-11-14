@@ -74,7 +74,7 @@ Après avoir inséré ou modifié une figure dont la lisibilité ne peut pas êt
 
 ## Consulter les produits
 
-Sur la page Produits, vous pouvez demander à l'assistant de lister tous les produits que vous pouvez voir, avec leur dossier, leur paquet de résultats, leur portée et votre niveau d'accès. L'assistant ne peut pas ouvrir les produits à votre place — vous le faites en cliquant dessus — mais il peut décrire ce qui est disponible et vous aider à décider où trouver ce dont vous avez besoin.
+Sur la page Produits, vous pouvez demander à l'assistant de lister tous les produits que vous pouvez voir — présentations, rapports et visualisations enregistrées — avec leur dossier, leur paquet de résultats, leur portée et votre niveau d'accès. L'assistant ne peut pas ouvrir les produits à votre place — vous le faites en cliquant dessus — mais il peut décrire ce qui est disponible et vous aider à décider où trouver ce dont vous avez besoin.
 
 ## Conversations et historique
 
