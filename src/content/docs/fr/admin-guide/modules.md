@@ -53,6 +53,12 @@ Les modules disponibles comprennent :
 
 Saisissez un libellé pour le lot de résultats et vérifiez les sélections de données et de modules. L'assistant propose un libellé basé sur la date du jour. Cliquez sur **Lancer la génération** pour démarrer.
 
+## Catalogue des lots de résultats
+
+Le catalogue des lots de résultats liste chaque lot généré pour l'instance. Chaque ligne affiche le libellé du lot ainsi que ce qu'il contient — les familles de données capturées (comme HMIS, HFA ou ICEH) et le nombre de modules inclus — afin de distinguer les lots d'un coup d'œil sans avoir à les ouvrir un par un. La ligne indique également la date de création du lot et s'il s'agit du lot épinglé.
+
+Lorsque vous utilisez le sélecteur de lots dans une présentation, un rapport ou un projet, chaque option de lot affiche de même son libellé, ses familles de données et son nombre de modules aux côtés de la date de création et du statut d'épinglage.
+
 ## Données de population et valeurs des indicateurs
 
 Lorsqu'une ou plusieurs formules d'indicateurs font référence à un terme de population, le module d'utilisation des services nécessite que des données de population soient importées au niveau de l'instance avant la génération. La génération échoue si une population est référencée mais qu'aucune donnée n'est présente pour une zone de la structure HMIS actuelle au niveau de population configuré.

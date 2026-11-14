@@ -53,6 +53,12 @@ Available modules include:
 
 Enter a label for the results package and review the data and module selections. The wizard suggests a label based on the current date. Click **Launch generation** to start.
 
+## Results packages catalogue
+
+The Results packages catalogue lists every package generated for the instance. Each row shows the package label along with what the package contains — the data families it captured (such as HMIS, HFA, or ICEH) and how many modules it includes — so you can tell packages apart at a glance without opening each one. The row also shows the date the package was created and whether it is the pinned package.
+
+When you use the package picker in a slide deck, report, or project, each package option likewise shows its label, data families, and module count alongside the creation date and pinned status.
+
 ## Population data and indicator values
 
 When one or more indicator formulas reference a population term, the service utilization module requires population data to be imported at the instance level before generation. The generation will fail if population data is referenced but not present for any area of the current HMIS structure at the configured population level.
