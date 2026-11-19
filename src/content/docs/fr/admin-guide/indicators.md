@@ -44,7 +44,9 @@ Une formule peut utiliser `+`, `-`, `*`, `/`, des parenthèses et des nombres, d
 
 Une formule peut aussi utiliser un terme de population, par exemple `population_pregnancies`. Les populations proviennent de la page Population de l'instance.
 
-Pour un indicateur calculé, vous définissez également le format d'affichage (nombre, pourcentage ou taux pour 10 000), une valeur cible facultative, et si vous le souhaitez une règle de mise en forme conditionnelle. Le champ **direction** s'applique à chaque type d'indicateur.
+Pour un indicateur calculé, vous définissez également le format d'affichage (nombre, pourcentage ou taux pour 10 000), une valeur cible facultative, et si vous le souhaitez une règle de mise en forme conditionnelle. Le champ **direction** indique si une valeur plus élevée est meilleure ou pire. Choisir « Non définie » signifie que personne n'a encore fait ce choix, et l'assistant IA déduira la direction à partir de ce que l'indicateur mesure. Une règle de mise en forme conditionnelle nécessite qu'une direction soit définie : enregistrer une règle sans direction est refusé. La direction s'applique à chaque type d'indicateur et est suivie par la règle de mise en forme conditionnelle.
+
+Lorsque vous ajoutez des indicateurs depuis DHIS2 en décomposant un indicateur DHIS2 en ses opérandes et un indicateur calculé, tous les indicateurs créés de cette façon — aussi bien les indicateurs d'élément pour les opérandes que l'indicateur calculé — ont leur direction laissée non déclarée.
 
 La colonne **Statut** de la liste indique si chaque indicateur calculé peut être évalué.
 
@@ -120,21 +122,21 @@ Un indicateur peut être associé à un **groupe de variantes**, qui définit un
 
 ### Vérifier le code des indicateurs
 
-Le gestionnaire d'indicateurs HFA propose un bouton **Vérifier** dans la barre d'outils de l'éditeur de code. La vérification soumet le code de l'indicateur au modèle et rapporte les constats — problèmes et avertissements — à côté du champ concerné dans l'éditeur. Sélectionnez un ou plusieurs indicateurs dans le tableau du gestionnaire et utilisez l'action groupée **Vérifier** pour contrôler un ensemble d'indicateurs à la fois ; sélectionner toutes les lignes filtrées permet également de vérifier tous les indicateurs de la liste.
+Le gestionnaire d'indicateurs HFA propose un bouton **Vérifier** dans la barre d'outils de l'éditeur de code. La vérification soumet le code de l'indicateur au modèle et rapporte les constats — problèmes et avertissements — à côté du champ concerné dans l'éditeur. Sélectionnez un ou plusieurs indicateurs dans le tableau du gestionnaire et utilisez l'action groupée **Vérifier** pour contrôler un ensemble d'indicateurs à la fois.
 
-Une colonne **Constats** dans la liste des indicateurs affiche le statut de vérification de chaque indicateur : les problèmes s'affichent en rouge, les avertissements en orange, et les indicateurs vérifiés sans constat affichent une note discrète. La colonne est triable et filtrable afin de concentrer l'attention sur les indicateurs nécessitant une intervention.
+Une colonne **Constats** dans la liste des indicateurs affiche le statut de vérification de chaque indicateur : les problèmes s'affichent en rouge, les avertissements en orange, et les indicateurs vérifiés sans constat affichent une note discrète.
 
-Depuis l'éditeur de code, cliquez sur **Vérifier** pour contrôler l'indicateur ouvert, ou sur **Proposer une correction** pour demander au modèle de suggérer une correction des constats ouverts. La correction proposée s'applique dans l'éditeur comme un brouillon non enregistré — vérifiez les modifications listées dans la bannière, puis cliquez sur **Enregistrer** pour les conserver ou sur **Rejeter** pour les annuler. Le bouton de correction est désactivé en présence de modifications non enregistrées, car le modèle prépare la correction à partir de la version enregistrée.
+Depuis l'éditeur de code, cliquez sur **Vérifier** pour contrôler l'indicateur ouvert, ou sur **Proposer une correction** pour demander au modèle de suggérer une correction des constats ouverts. La correction proposée s'applique dans l'éditeur comme un brouillon non enregistré. Le bouton de correction est désactivé en présence de modifications non enregistrées.
 
-L'option **Règles de vérification** du menu d'actions du gestionnaire ouvre une fenêtre listant chaque règle. Les règles vérifiées par l'application (syntaxe, variables inconnues, code filtre sans code d'indicateur et problèmes structurels similaires) sont toujours appliquées. Les règles vérifiées par le modèle peuvent être désactivées individuellement — une règle désactivée masque ses constats partout où ils apparaissent ; la réactiver les restaure sans nouvelle vérification.
+L'option **Règles de vérification** du menu d'actions du gestionnaire ouvre une fenêtre listant chaque règle. Les règles vérifiées par l'application sont toujours appliquées. Les règles vérifiées par le modèle peuvent être désactivées individuellement.
 
-Les constats peuvent être écartés individuellement depuis l'éditeur de code : cliquez sur **Écarter** à côté d'un constat pour le masquer. Les constats écartés apparaissent sous forme d'un comptage réduit sous les constats ouverts et peuvent être rétablis via **Rétablir**.
+Les constats peuvent être écartés individuellement depuis l'éditeur de code : cliquez sur **Écarter** à côté d'un constat pour le masquer.
 
 ### Cohérence du code
 
 Lorsqu'un indicateur s'applique à plusieurs points temporels, FASTR vérifie si le code d'extraction est cohérent. Utilisez **Tout revalider** après avoir effectué des modifications.
 
-La liste des indicateurs affiche un résumé de l'état du code : **prêt** (aucune erreur), **type incohérent** (le type de résultat du code ne correspond pas au type déclaré de l'indicateur) et **erreur** (erreurs de syntaxe ou de variables inconnues). Les boutons **Tout revalider**, **Vérifier les variables inutilisées**, **Télécharger Excel** et **Importer Excel** sont désactivés lorsqu'aucun point temporel HFA n'est encore défini. Ajoutez un point temporel depuis **HFA → Points temporels** pour les activer.
+La liste des indicateurs affiche un résumé de l'état du code : **prêt** (aucune erreur), **type incohérent** et **erreur**. Les boutons **Tout revalider**, **Vérifier les variables inutilisées**, **Télécharger Excel** et **Importer Excel** sont désactivés lorsqu'aucun point temporel HFA n'est encore défini.
 
 ### Importer les indicateurs par défaut
 
@@ -142,17 +144,17 @@ Le gestionnaire d'indicateurs HFA comprend un bouton **Importer les indicateurs 
 
 ### Supprimer des indicateurs
 
-Avant de supprimer un indicateur ou un ensemble d'indicateurs, FASTR vérifie si d'autres indicateurs font référence aux identifiants supprimés dans leur code d'indicateur ou leur code de variante. Si des références sont trouvées, la boîte de dialogue de confirmation liste les indicateurs concernés et avertit que leur code échouera à la validation après la suppression. Vous pouvez supprimer un indicateur individuel depuis son éditeur de code à l'aide du bouton **Supprimer** dans l'en-tête, ou depuis la boîte de dialogue de modification via le bouton **Supprimer** dans le pied de page. Plusieurs indicateurs peuvent être supprimés simultanément à l'aide de l'action groupée dans la liste des indicateurs.
+Avant de supprimer un indicateur ou un ensemble d'indicateurs, FASTR vérifie si d'autres indicateurs font référence aux identifiants supprimés dans leur code d'indicateur ou leur code de variante. Si des références sont trouvées, la boîte de dialogue de confirmation liste les indicateurs concernés.
 
 ### Assistant IA pour les indicateurs
 
-L'assistant IA dans le gestionnaire d'indicateurs HFA peut améliorer les libellés, organiser les indicateurs en catégories et créer de nouveaux indicateurs à partir du jeu de données d'enquête. Il lit et écrit les indicateurs via un ensemble d'outils dédiés, en validant le code des indicateurs par rapport au dictionnaire de données et en affichant une boîte de dialogue de confirmation avec une vue diff côte à côte avant d'appliquer toute modification. La vue diff met en évidence exactement ce qui a changé et réduit les sections inchangées, ce qui facilite la révision d'un lot de nombreux indicateurs à la fois. Lors de l'application de mises à jour groupées, toutes les modifications sont envoyées au serveur en une seule opération transactionnelle.
+L'assistant IA dans le gestionnaire d'indicateurs HFA peut améliorer les libellés, organiser les indicateurs en catégories et créer de nouveaux indicateurs à partir du jeu de données d'enquête. Il lit et écrit les indicateurs via un ensemble d'outils dédiés, en validant le code des indicateurs par rapport au dictionnaire de données et en affichant une boîte de dialogue de confirmation avec une vue diff côte à côte avant d'appliquer toute modification.
 
-L'éditeur de code possède également ses propres outils IA. Lorsque vous ouvrez l'éditeur de code d'un indicateur, l'assistant peut lire le brouillon actuel de l'éditeur et y appliquer des modifications — libellés, type et agrégation, assignations de catégories, et modifications de code par round — comme si vous les aviez effectuées vous-même. Les modifications s'appliquent dans le brouillon de l'éditeur sans être enregistrées : vous les conservez avec **Enregistrer** ou les annulez avec **Annuler**.
+L'éditeur de code possède également ses propres outils IA. Lorsque vous ouvrez l'éditeur de code d'un indicateur, l'assistant peut lire le brouillon actuel de l'éditeur et y appliquer des modifications.
 
 ### Variables inutilisées
 
-Cliquez sur **Vérifier les variables inutilisées** depuis le menu de débordement pour ouvrir une fenêtre listant les variables d'enquête qu'aucun indicateur ne référence actuellement, regroupées par point temporel. Les variables structurelles utilisées en interne par l'analyse sont exclues de cette liste.
+Cliquez sur **Vérifier les variables inutilisées** depuis le menu de débordement pour ouvrir une fenêtre listant les variables d'enquête qu'aucun indicateur ne référence actuellement, regroupées par point temporel.
 
 ### Gérer les catégories de service
 
@@ -173,17 +175,13 @@ Les indicateurs HFA prennent en charge la création par lot via un classeur Exce
 - **Variant items** : id, groupId, label (facultatif)
 - **Indicators** : indicatorId (laisser vide pour un nouvel indicateur ; la plateforme en attribue un), categoryId, subCategoryId, serviceCategoryId (séparés par | pour plusieurs), shortLabel, label, type, aggregation, variantGroupId (facultatif), code__&lt;point temporel&gt; et filter_code__&lt;point temporel&gt; (facultatif) pour chaque point temporel, variant_code__&lt;itemId&gt;__&lt;point temporel&gt; (facultatif) pour chaque élément de variante et chaque point temporel
 
-Les colonnes de texte telles que `label` et `shortLabel` peuvent également être fournies par langue à l'aide de noms de colonnes suffixés : `label_en`, `label_fr` et `label_pt`. Lorsque des colonnes par langue sont présentes, l'importation lit la colonne correspondant à la langue de l'instance et se rabat sur l'anglais si cette colonne est vide ou absente. Cela permet à un seul classeur de servir toutes les instances, quelle que soit leur langue configurée.
+Les colonnes de texte telles que `label` et `shortLabel` peuvent également être fournies par langue à l'aide de noms de colonnes suffixés : `label_en`, `label_fr` et `label_pt`.
 
 Si les feuilles Service categories, Variant groups ou Variant items sont omises, les indicateurs sont importés sans catégories de service ni assignations de variantes.
 
-Les colonnes de code de variante utilisent le format `variant_code__<itemId>__<point temporel>`. Chaque colonne de code de variante doit référencer un identifiant d'élément de la feuille Variant items, et la feuille Indicators doit aussi contenir une colonne `code__` pour le même point temporel. Un indicateur avec un code de variante doit également avoir un `variantGroupId` correspondant au groupe de l'élément. Si la feuille Indicators contient une colonne qui n'est pas décrite ci-dessus, l'importation s'arrête et le message d'erreur indique le nom de cette colonne. L'importation s'arrête aussi si une colonne `filter_code__` n'a pas de colonne `code__` pour le même point temporel.
+Les colonnes de code de variante utilisent le format `variant_code__<itemId>__<point temporel>`. Si la feuille Indicators contient une colonne non décrite ci-dessus, l'importation s'arrête et le message d'erreur indique le nom de cette colonne.
 
-Lors de l'importation, choisissez entre les modes **Ajouter aux existants** et **Remplacer tous les existants**. En mode **Ajouter aux existants**, les indicateurs dont les identifiants existent déjà sur la plateforme sont ignorés — seuls les nouveaux sont créés. Après l'importation, un résumé liste les indicateurs ignorés. En mode **Remplacer tous les existants**, tous les indicateurs, catégories, sous-catégories et catégories de service existants sont définitivement supprimés avant l'importation. Pour confirmer une importation de remplacement complet, vous devez saisir la phrase de confirmation affichée dans le champ avant que le bouton **Importer** devienne actif.
-
-FASTR détecte les colonnes de points temporels intégrées dans le fichier et présente une étape de correspondance dans laquelle vous confirmez à quel point temporel de la plateforme chaque colonne doit être importée. Si les libellés des colonnes correspondent exactement à vos points temporels de plateforme, la correspondance est pré-remplie automatiquement. Chaque point temporel de la plateforme peut recevoir au plus une colonne du classeur. Lorsque le classeur n'a qu'une seule colonne de code, vous pouvez l'appliquer à tous les points temporels en choisissant **Appliquer aux N points temporels**, où N est le nombre de points temporels.
-
-Si le classeur contient une colonne que l'importation ne reconnaît pas — par exemple une colonne au format ancien `r_code__` — l'importation est refusée et la colonne inconnue est nommée dans le message d'erreur. Cela empêche qu'une colonne de code mal nommée importe silencieusement des indicateurs sans code.
+Lors de l'importation, choisissez entre les modes **Ajouter aux existants** et **Remplacer tous les existants**. FASTR détecte les colonnes de points temporels intégrées dans le fichier et présente une étape de correspondance. Si le classeur contient une colonne que l'importation ne reconnaît pas, l'importation est refusée.
 
 ## Libellés des variables XLSForm
 
@@ -195,4 +193,4 @@ FASTR supprime également les balises HTML et normalise les espaces dans les lib
 
 Choisissez des identifiants d'indicateurs courts mais descriptifs. Évitez les espaces et les caractères spéciaux - tenez-vous-en aux lettres minuscules, aux chiffres et aux tirets bas.
 
-Vérifiez les identifiants DHIS2 dans la liste lorsque des éléments de données sont modifiés ou remplacés sur le serveur DHIS2. Utilisez **Actualiser les noms DHIS2** régulièrement pour maintenir les noms DHIS2 stockés à jour. Si l'actualisation révèle des indicateurs pointant vers des formules DHIS2 ou des identifiants introuvables, contactez l'équipe FASTR pour exécuter la réparation des identifiants DHIS2. La réparation corrige les identifiants DHIS2 sous-jacents — y compris les identifiants pointant vers des formules DHIS2 plutôt que vers des éléments de données, les identifiants ne correspondant à rien dans DHIS2, et les cas où un opérande UID.COC avec une combo de catégorie par défaut duplique l'élément nu — tout en conservant les données déjà importées. Après la réparation, une importation DHIS2 de suivi récupère à nouveau les données pour les indicateurs concernés.
+Vérifiez les identifiants DHIS2 dans la liste lorsque des éléments de données sont modifiés ou remplacés sur le serveur DHIS2. Utilisez **Actualiser les noms DHIS2** régulièrement pour maintenir les noms DHIS2 stockés à jour. Si l'actualisation révèle des indicateurs pointant vers des formules DHIS2 ou des identifiants introuvables, contactez l'équipe FASTR pour exécuter la réparation des identifiants DHIS2. La réparation corrige les identifiants DHIS2 sous-jacents tout en conservant les données déjà importées. Après la réparation, une importation DHIS2 de suivi récupère à nouveau les données pour les indicateurs concernés.

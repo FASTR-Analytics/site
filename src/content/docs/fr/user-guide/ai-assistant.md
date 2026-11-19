@@ -74,7 +74,11 @@ Après avoir inséré ou modifié une figure dont la lisibilité ne peut pas êt
 
 ## Consulter les produits
 
-Sur la page Produits, vous pouvez demander à l'assistant de lister tous les produits que vous pouvez voir — présentations, rapports et visualisations enregistrées — avec leur dossier, leur paquet de résultats, leur portée et votre niveau d'accès. L'assistant ne peut pas ouvrir les produits à votre place — vous le faites en cliquant dessus — mais il peut décrire ce qui est disponible et vous aider à décider où trouver ce dont vous avez besoin.
+Sur la page Produits, vous pouvez demander à l'assistant de lister les produits que vous pouvez voir — présentations, rapports et visualisations enregistrées — avec leur dossier, leur paquet de résultats, leur portée et votre niveau d'accès. Vous pouvez également effectuer une recherche par mot-clé pour affiner la liste. L'assistant ne peut pas ouvrir les produits à votre place — vous le faites en cliquant dessus — mais il peut décrire ce qui est disponible et vous aider à décider où trouver ce dont vous avez besoin.
+
+## Trouver les valeurs d'une dimension
+
+Lorsque vous travaillez sur des visualisations, des filtres ou des sélections de réplicant, vous pouvez demander à l'assistant de lister les valeurs que prend une dimension — par exemple, les indicateurs d'une métrique, ou les zones administratives disponibles sous la portée actuelle. L'assistant utilise un outil dédié qui lit les valeurs directement depuis le paquet de résultats, de sorte que la liste reflète ce qui se trouve réellement dans les données.
 
 ## Conversations et historique
 
@@ -92,4 +96,4 @@ Posez des questions précises plutôt que générales. Faites référence à des
 
 Si vous obtenez un résultat inattendu, essayez de reformuler. Utiliser les noms et la terminologie exacts des indicateurs de vos modules aide souvent l'assistant à trouver la bonne information.
 
-Lorsqu'une requête renvoie trop d'éléments, l'assistant suggère d'ajouter des filtres, de réduire la période ou de supprimer des désagrégations pour ramener les résultats dans les limites.
+Lorsqu'une requête renvoie trop de lignes, l'assistant suggère d'ajouter des filtres, de réduire la période ou de supprimer des désagrégations pour ramener les résultats dans les limites.

@@ -44,7 +44,9 @@ A formula can use `+`, `-`, `*`, `/`, parentheses and numbers, comparison operat
 
 A formula can also divide by a population term, for example `population_pregnancies`. Populations come from the instance's Population page (Data → Population): annual population counts per admin area and population type, uploaded as a CSV.
 
-For a calculated indicator you also set the display format (number, percent, or rate per 10,000), an optional target value, and optionally a conditional formatting rule for colour coding. The **direction** field (higher is better or lower is better) applies to every indicator type and is used by the conditional formatting rule.
+For a calculated indicator you also set the display format (number, percent, or rate per 10,000), an optional target value, and optionally a conditional formatting rule for colour coding. The **direction** field says whether a higher value is better or worse. Setting direction to "Not set" means no one has yet chosen, and the AI assistant will infer the direction from what the indicator measures. A conditional-formatting rule requires a direction to be set, so saving a rule without a direction is refused. The direction applies to every indicator type and is used by the conditional formatting rule.
+
+When you add indicators from DHIS2 by decomposing a DHIS2 indicator into its operands and a calculated indicator, every indicator created this way — both the element indicators for the operands and the calculated indicator — has its direction left undeclared.
 
 The **Status** column in the list says whether each calculated indicator can be computed. A calculated indicator cannot be computed if an indicator it uses has no data. A warning above the list says when any calculated indicator cannot be computed.
 

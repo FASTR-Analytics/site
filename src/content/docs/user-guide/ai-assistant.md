@@ -74,7 +74,11 @@ After inserting or changing a figure whose legibility its configuration cannot t
 
 ## Listing products
 
-On the Products page, you can ask the assistant to list every product you can see — slide decks, reports, and saved visualizations — along with its folder, results package, scope, and your access level. The assistant cannot open products for you — you do that by clicking them — but it can describe what is available and help you decide where to find what you need.
+On the Products page, you can ask the assistant to list the products you can see — slide decks, reports, and saved visualizations — along with each product's folder, results package, scope, and your access level. You can also search by keyword to narrow the list. The assistant cannot open products for you — you do that by clicking them — but it can describe what is available and help you decide where to find what you need.
+
+## Finding dimension values
+
+When working with visualizations, filters, or replicant selections, you can ask the assistant to list the values a dimension takes — for example, the indicators in a metric, or the admin areas available under the current scope. The assistant uses a dedicated tool that reads values directly from the results package, so the list reflects what is actually in the data.
 
 ## Conversations and history
 
@@ -92,4 +96,4 @@ Ask specific questions rather than broad ones. Reference specific metrics, time 
 
 If you get an unexpected result, try rephrasing. Using the exact metric names and terminology from your modules often helps the assistant find the right information.
 
-When a query returns too many items, the assistant will suggest adding filters, narrowing the period, or removing disaggregations to bring results within range.
+When a query returns too many rows, the assistant will suggest adding filters, narrowing the period, or removing disaggregations to bring results within range.
