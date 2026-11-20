@@ -20,7 +20,7 @@ To create slide decks, at least one results package and one scope must exist at 
 
 ## Slide types
 
-Decks contain three types of slides. **Cover slides** introduce the presentation with a title, subtitle, optional presenter name, and date. **Section slides** divide content into logical groups with a section title. Both use a bold, full-bleed design. **Content slides** are where your data lives - these contain visualizations, text, and images.
+Decks contain three types of slides. **Cover slides** introduce the presentation with a title, optional subtitle, presenter name, and date. **Section slides** divide content into logical groups with a section title and optional section subtitle. Both use a bold, full-bleed design. **Content slides** are where your data lives - these contain visualizations, text, and images.
 
 When you add a slide, you choose its type. You can convert between types later using the **Slide** menu in the slide toolbar.
 

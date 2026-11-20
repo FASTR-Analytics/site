@@ -20,7 +20,7 @@ Pour créer des présentations, au moins un lot de résultats et une portée doi
 
 ## Types de diapositives
 
-Les présentations contiennent trois types de diapositives. Les **diapositives de couverture** introduisent la présentation avec un titre, un sous-titre, le nom du présentateur (facultatif) et une date. Les **diapositives de section** divisent le contenu en groupes logiques avec un titre de section. Les deux utilisent un design affirmé, en pleine page. Les **diapositives de contenu** sont l'endroit où vivent vos données - elles contiennent des visualisations, du texte et des images.
+Les présentations contiennent trois types de diapositives. Les **diapositives de couverture** introduisent la présentation avec un titre, un sous-titre optionnel, le nom du présentateur (facultatif) et une date. Les **diapositives de section** divisent le contenu en groupes logiques avec un titre de section et un sous-titre de section optionnel. Les deux utilisent un design affirmé, en pleine page. Les **diapositives de contenu** sont l'endroit où vivent vos données - elles contiennent des visualisations, du texte et des images.
 
 Lorsque vous ajoutez une diapositive, vous en choisissez le type. Vous pouvez convertir un type en un autre par la suite à l'aide du menu **Diapositive** dans la barre d'outils de la diapositive.
 

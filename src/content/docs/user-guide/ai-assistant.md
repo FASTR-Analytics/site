@@ -62,6 +62,11 @@ Content slides can also include **image blocks** that show one of the instance's
 
 After building or restructuring a content slide that holds a dense table or several blocks, you can ask the assistant to look at it — it will inspect the slide's rendered image and report what it sees, letting you catch overflow or layout problems before exporting.
 
+When the assistant creates or proposes a slide, it uses the following field names for each slide type:
+- **Cover slides** use `title` (required) and optionally `subtitle`, `presenter`, and `date`.
+- **Section slides** use `sectionTitle` (required) and optionally `sectionSubtitle`.
+- **Content slides** use `header` (optional) and a `blocks` array.
+
 ## Working with reports
 
 In the report editor, the assistant can rewrite passages, insert new visualizations, and edit existing visualizations in place. When you ask it to change text, it proposes a diff in a modal that you accept or reject before anything changes. When you ask it to edit a visualization - for example, to change its replicant or period filter - it applies the change directly to the live preview and saves immediately, without a diff step. To replace a visualization with a completely different chart or metric, ask the assistant to replace the visualization rather than edit it.

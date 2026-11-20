@@ -62,6 +62,11 @@ Les diapositives de contenu peuvent également contenir des **blocs image** qui 
 
 Après avoir construit ou restructuré une diapositive de contenu contenant un tableau dense ou plusieurs blocs, vous pouvez demander à l'assistant de l'examiner — il inspecte l'image rendue de la diapositive et vous indique ce qu'il voit, ce qui vous permet de détecter les débordements ou les problèmes de mise en page avant d'exporter.
 
+Lorsque l'assistant crée ou propose une diapositive, il utilise les noms de champs suivants pour chaque type de diapositive :
+- Les **diapositives de couverture** utilisent `title` (obligatoire) et optionnellement `subtitle`, `presenter` et `date`.
+- Les **diapositives de section** utilisent `sectionTitle` (obligatoire) et optionnellement `sectionSubtitle`.
+- Les **diapositives de contenu** utilisent `header` (optionnel) et un tableau `blocks`.
+
 ## Travailler avec les rapports
 
 Dans l'éditeur de rapport, l'assistant peut réécrire des passages, insérer de nouvelles visualisations et modifier des visualisations existantes directement. Lorsque vous lui demandez de modifier du texte, il propose un diff dans une fenêtre modale que vous acceptez ou refusez avant toute application. Lorsque vous lui demandez de modifier une visualisation - par exemple, changer son réplicant ou son filtre de période - il applique la modification directement à l'aperçu en direct et enregistre immédiatement, sans étape de diff. Pour remplacer une visualisation par un graphique ou un indicateur entièrement différent, demandez à l'assistant de remplacer la visualisation plutôt que de la modifier.
