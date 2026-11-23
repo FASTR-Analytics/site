@@ -42,7 +42,11 @@ async function newPage({ width = 1440, height = 900, persona = CONFIG.persona } 
   await page.clock.install({ time: new Date(META.clockTime) });
   page.on("dialog", (d) => d.accept());
   await page.goto(`${BASE}/?persona=${persona}`, { waitUntil: "load" });
-  await page.waitForTimeout(9000);
+  // The app must actually render (header with the instance name, real page text),
+  // otherwise every later step clicks into a blank page.
+  await page.waitForFunction(() => (document.body?.innerText ?? "").includes("Demo") && document.body.innerText.length > 60, null, { timeout: 60000 })
+    .catch(async () => { await ctx.close(); throw new Error("the app did not render (blank page): check the client log"); });
+  await page.waitForTimeout(6000);
   // Hide the AI button's "not opened yet" pulse dot.
   await page.addStyleTag({ content: ".fixed.right-0 .bg-warning{display:none!important}" });
   return { ctx, page };
@@ -292,13 +296,13 @@ for (const [name, { opts, fn }] of Object.entries(SHOTS)) {
   if (!named && !(WANT.includes("all") && !MANUAL.includes(name))) continue;
   // A failed shot must not leave an older capture behind for postprocess.py to reuse.
   rmSync(`${OUT}/${name}-${LANG}.png`, { force: true });
-  const { ctx, page } = await newPage(opts);
-  try { await fn(page); } catch (e) {
+  let ctx, page;
+  try { ({ ctx, page } = await newPage(opts)); await fn(page); } catch (e) {
     failed.push(name);
     console.log("FAIL", name, e.message.split("\n")[0]);
-    await page.screenshot({ path: `${OUT}/_fail_${name}-${LANG}.png` }).catch(() => {});
+    await page?.screenshot({ path: `${OUT}/_fail_${name}-${LANG}.png` }).catch(() => {});
   }
-  await ctx.close();
+  await ctx?.close();
 }
 await browser.close();
 writeFileSync(`${OUT}/_failed-${LANG}.json`, JSON.stringify(failed));

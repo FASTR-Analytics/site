@@ -40,20 +40,24 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 120
     steps:
+      # Checked out side by side: the platform must not sit inside the site repo,
+      # or Vite picks up the site's Astro tsconfig.json and the client fails to compile.
       - uses: actions/checkout@v4
+        with:
+          path: site
 
       - name: Check out the platform
         uses: actions/checkout@v4
         with:
           repository: FASTR-Analytics/platform
           ref: ${{ inputs.platform_ref || 'main' }}
-          path: _platform
+          path: platform
 
       - name: Check out the module definitions
         uses: actions/checkout@v4
         with:
           repository: FASTR-Analytics/modules
-          path: _modules
+          path: modules
 
       - uses: denoland/setup-deno@v2
         with:
@@ -64,46 +68,46 @@ jobs:
           node-version: 20
           cache: npm
           cache-dependency-path: |
-            _platform/client/package-lock.json
-            screenshots/package-lock.json
+            platform/client/package-lock.json
+            site/screenshots/package-lock.json
 
       - name: Cache the platform's Deno and npm dependencies
         uses: actions/cache@v4
         with:
           path: |
             ~/.cache/deno
-            _platform/node_modules
-          key: platform-deps-${{ hashFiles('_platform/deno.lock') }}
+            platform/node_modules
+          key: platform-deps-${{ hashFiles('platform/deno.lock') }}
           restore-keys: platform-deps-
 
       - name: Install
         run: |
-          npm ci --prefix _platform/client --no-audit --no-fund
-          npm ci --prefix screenshots --no-audit --no-fund
-          (cd screenshots && npx playwright-core install --with-deps chromium-headless-shell)
+          npm ci --prefix platform/client --no-audit --no-fund
+          npm ci --prefix site/screenshots --no-audit --no-fund
+          (cd site/screenshots && npx playwright-core install --with-deps chromium-headless-shell)
           pip install pillow
 
       - name: Boot the demo instance
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          SHOTS_MODULES_DIR: _modules
+          SHOTS_MODULES_DIR: modules
         run: |
-          node screenshots/prepare_platform.mjs _platform
-          bash screenshots/boot.sh _platform
-          node screenshots/labels.mjs _platform
+          node site/screenshots/prepare_platform.mjs platform
+          bash site/screenshots/boot.sh platform
+          node site/screenshots/labels.mjs platform
 
       - name: Capture
         run: |
           SHOTS="${{ inputs.shots || 'all' }}"
-          node screenshots/capture.mjs en "$SHOTS" || true
-          node screenshots/capture.mjs fr "$SHOTS" || true
-          python3 screenshots/postprocess.py
+          node site/screenshots/capture.mjs en "$SHOTS" || true
+          node site/screenshots/capture.mjs fr "$SHOTS" || true
+          python3 site/screenshots/postprocess.py
 
       - name: Open a pull request with the changed images
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          cd screenshots
+          cd site/screenshots
           FAILED=$(node -e "const fs=require('fs');const f=['en','fr'].flatMap(l=>{try{return JSON.parse(fs.readFileSync('out/raw/_failed-'+l+'.json')).map(s=>s+' ('+l+')')}catch{return []}});console.log(f.join(', '))")
           echo "FAILED=$FAILED" >> "$GITHUB_ENV"
           if [ ! -s out/changed.txt ]; then
@@ -111,8 +115,8 @@ jobs:
             exit 0
           fi
           cd ..
-          PLATFORM_SHA=$(git -C _platform rev-parse --short HEAD)
-          PLATFORM_VERSION=$(cat _platform/VERSION)
+          PLATFORM_SHA=$(git -C ../platform rev-parse --short HEAD)
+          PLATFORM_VERSION=$(cat ../platform/VERSION)
           BRANCH="screenshots/${{ github.run_id }}"
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -149,8 +153,8 @@ jobs:
         with:
           name: screenshots
           path: |
-            screenshots/out/
-            _platform/_screenshots_data/*.log
+            site/screenshots/out/
+            platform/_screenshots_data/*.log
           retention-days: 14
 
       - name: Report shots that could not be captured
@@ -161,4 +165,4 @@ jobs:
 
       - name: Stop the demo instance
         if: always()
-        run: bash screenshots/stop.sh _platform || true
+        run: bash site/screenshots/stop.sh platform || true
