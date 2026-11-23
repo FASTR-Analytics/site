@@ -36,7 +36,8 @@ jobs:
   capture:
     # On a push, only the docs sync bot's commits: a person editing wording doesn't need new screenshots.
     if: "github.event_name != 'push' || startsWith(github.event.head_commit.message, 'docs: sync documentation')"
-    runs-on: ubuntu-latest
+    # Pinned: Playwright 1.57 has no browser build for newer Ubuntu runner images.
+    runs-on: ubuntu-24.04
     timeout-minutes: 120
     steps:
       - uses: actions/checkout@v4
