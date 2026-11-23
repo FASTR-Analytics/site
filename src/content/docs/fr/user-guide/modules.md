@@ -1,49 +1,51 @@
 ---
 title: Modules
-description: Comprendre les sorties des modules et les résultats analytiques.
+description: D'où viennent les résultats, et comment trouver les sorties d'un module.
 sidebar:
   order: 2
 ---
 
-Les modules sont les moteurs analytiques qui transforment les données de santé brutes en sorties exploitables. Ils exécutent des scripts R en arrière-plan pour calculer des taux de couverture, des scores de qualité, des analyses de tendances et d'autres indicateurs. En tant qu'utilisateur, vous n'avez pas besoin d'écrire ni de comprendre du code - vous devez seulement savoir comment trouver et exploiter les résultats produits par les modules.
+Les modules sont les analyses derrière chaque chiffre de FASTR. Lorsque votre administrateur génère un paquet de résultats, chaque module exécute un script R sur les données de l'instance - vérification de la qualité des données, ajustement des volumes de services pour les valeurs aberrantes et les rapports manquants, estimation de la couverture, analyse des cycles d'enquête - et enregistre ce qu'il trouve. Vous n'avez pas besoin d'écrire ni de lire du code pour utiliser les résultats. Il est utile de savoir de quel module provient un chiffre lorsque vous voulez le comprendre ou le vérifier.
 
 ## Ce que produisent les modules
 
-Chaque module traite les données de votre projet et génère des **objets de résultats** - des jeux de données structurés contenant des valeurs calculées. Un module de qualité des données peut produire des scores de complétude pour chaque établissement et chaque mois. Un module de couverture peut calculer des taux de vaccination par district et par trimestre. Ces résultats deviennent la matière première des visualisations.
+Chaque module produit des **métriques** : les valeurs que vous pouvez afficher dans une visualisation, comme la complétude de la notification, les volumes de services ajustés ou la couverture de la première consultation prénatale. Un seul module peut produire des dizaines de métriques.
 
-Les objets de résultats contiennent des **métriques** - les valeurs précises que vous pouvez visualiser. Un seul module peut produire des dizaines de métriques réparties dans plusieurs objets de résultats. Par exemple, un module de qualité des données peut générer en une seule fois des métriques de taux de notification, de score de valeurs aberrantes et de cohérence interne. Lorsque vous créez une visualisation, vous sélectionnez l'une de ces métriques comme point de départ.
+Les modules sont regroupés selon le type de données qu'ils utilisent. **Utilisation des services** est le module HMIS principal, avec des analyses complémentaires pour la qualité des données, les ajustements de la qualité des données, la détection des perturbations et la couverture. **Évaluation des établissements de santé** analyse les cycles d'enquête FOSA, et **Analyse de l'enquête ICEH** analyse les données d'équité ICEH. Un paquet de résultats ne contient que les modules choisis par votre administrateur et permis par les données : un module peut donc manquer dans un paquet et figurer dans un autre.
 
-![Module Status FR](/images/modules-status-fr.png)
+Pour le fonctionnement de chaque analyse, consultez la section [Méthodologie](/fr/methodology/00_introduction/).
 
 ## État des modules
 <!-- help#umod-status -->
 
-L'onglet **Lot de résultats** affiche le lot auquel votre projet est associé, notamment les modules qu'il contient et leur état de génération :
+Les résultats d'un module sont disponibles lorsque le paquet auquel il appartient est **Prêt**. Chaque produit indique le paquet qu'il utilise dans l'étiquette de l'en-tête de son éditeur - voir [Produits](/fr/user-guide/products/).
 
-- **Prêt** - Les résultats sont disponibles ; vous pouvez créer des visualisations immédiatement
-- **Indisponible** - Les résultats du module ne sont pas disponibles dans ce lot ; contactez votre administrateur pour plus de détails
-- **Erreur** - Un problème est survenu lors de la génération ; contactez votre administrateur pour plus de détails
+Si vous avez l'autorisation **Voir les données**, la page **Résultats** liste tous les paquets et leur état, et l'ouverture d'un paquet montre les modules qu'il contient. Si la génération d'un paquet a échoué, les résultats de ses modules ne sont pas disponibles - demandez à votre administrateur, qui peut voir ce qui s'est passé dans les journaux.
 
-## Quand les résultats se mettent à jour
+## Quand les résultats changent
 
-Les résultats des modules sont fixes au sein d'un lot de résultats. Les résultats se mettent à jour lorsque votre administrateur génère un nouveau lot avec des données fraîches et l'associe au projet. Si votre projet suit le lot épinglé de l'instance, il bascule automatiquement chaque fois qu'un administrateur épingle un nouveau lot. Vous verrez le lot de résultats changer dans l'onglet **Lot de résultats** lorsque cela se produit.
+Les résultats des modules ne changent jamais à l'intérieur d'un paquet. De nouveaux résultats arrivent lorsque votre administrateur génère un nouveau paquet, généralement après l'importation de nouvelles données ou l'amélioration d'un module. Vos produits conservent leur paquet jusqu'à ce qu'un éditeur les passe à un paquet plus récent ; leurs visualisations sont alors marquées comme obsolètes pour que vous puissiez les mettre à jour.
 
 ## Consulter les sorties des modules
 <!-- help#umod-outputs -->
 
-Bien que vous interagissiez généralement avec les résultats des modules par l'intermédiaire des visualisations, vous pouvez inspecter les sorties brutes depuis l'onglet **Lot de résultats** si vous disposez des permissions appropriées. Accédez aux **Journaux** (sortie de la console R), aux **Fichiers** (résultats CSV téléchargeables) ou au **Script** (le code R lui-même) depuis la vue de détail du lot. Ces trois accès nécessitent la permission **Consulter les données**.
+Le moyen le plus simple de parcourir les résultats d'un module est la page [Explorer](/fr/user-guide/explore/), qui présente les résultats de chaque module sous forme de tableaux, de graphiques et de cartes prêts à l'emploi.
 
-![Module Logs FR](/images/modules-logs-fr.png)
+Si vous avez l'autorisation **Voir les données**, vous pouvez aussi regarder ce qu'il y a derrière les résultats. Sur la page **Résultats**, ouvrez un paquet et sélectionnez un module à gauche. Sous ses visualisations prédéfinies, vous trouverez :
+
+- **Paramètres** - les paramètres avec lesquels le module a été exécuté, comme les seuils de valeurs aberrantes.
+- **Script et journaux** - le code R exécuté et sa sortie console.
+- **Fichiers de sortie** - les fichiers de résultats du module, que vous pouvez télécharger.
+
+![Paramètres, script, journaux et fichiers d'un module](/images/modules-package-module-fr.png)
 
 ## Métriques et visualisations
 <!-- help#umod-metrics -->
 
-Le lien entre les modules et les visualisations passe par les métriques. Lorsque vous créez une visualisation, vous sélectionnez d'abord une métrique parmi les résultats d'un module. La visualisation interroge ensuite cette métrique selon vos choix de configuration.
+Chaque visualisation part d'une métrique. Lorsque vous en créez une, vous parcourez les métriques par module ou les recherchez, puis vous choisissez l'un des **préréglages** du module - des graphiques, cartes et tableaux prêts à l'emploi que les auteurs du module ont conçus comme points de départ. Voir [Visualisations](/fr/user-guide/visualizations/).
 
-Comprendre cet enchaînement aide à résoudre les problèmes. Si une visualisation affiche « aucune donnée », vérifiez si le lot de résultats contient des résultats pour cette métrique. Si les résultats semblent dépassés, vérifiez si le projet a été mis à jour avec un lot plus récent. S'il vous manque une métrique attendue, assurez-vous que le module concerné a bien été inclus lors de la génération du lot.
+Connaître cette chaîne aide lorsque quelque chose semble anormal :
 
-Certaines métriques sont accompagnées de **préréglages** - des modèles de visualisation préconfigurés créés par les auteurs des modules. Les préréglages représentent des façons courantes de visualiser cette sortie et constituent un bon point de départ lorsque vous ne connaissez pas encore les dimensions d'une métrique.
-
-## Mises à jour des modules
-
-Les modules évoluent au fil du temps à mesure que les méthodologies s'améliorent. Les résultats des modules mis à jour deviennent disponibles lorsque votre administrateur génère un nouveau lot de résultats avec les définitions de modules à jour et l'associe à votre projet. Si vous estimez que les résultats de modules mis à jour sont importants pour votre travail, contactez l'administrateur de votre projet.
+- **Une métrique attendue est absente** - le paquet ne contient pas le module qui la produit, ou votre portée l'exclut.
+- **Une visualisation n'affiche aucune donnée** - le paquet n'a pas de résultats pour cette métrique avec la portée et les filtres du produit.
+- **Les chiffres semblent anciens** - le produit utilise un paquet plus ancien. Vérifiez l'étiquette dans l'en-tête de l'éditeur.

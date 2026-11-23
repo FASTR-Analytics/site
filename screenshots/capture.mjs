@@ -120,6 +120,43 @@ S("users-profile", { height: 900 }, async (p) => { await rail(p, "Users"); await
 S("scopes-editor", {}, async (p) => { await rail(p, "Scopes"); await p.getByText("Northern region", { exact: true }).first().click(); await wait(p, 1500); await card(p, "scopes-editor", L("Edit scope"), L("Limit years")); });
 S("results-packages-generate", { height: 640 }, async (p) => { await rail(p, "Results"); await p.getByRole("button", { name: L("Generate new results package") }).click(); await wait(p, 2500); await card(p, "results-packages-generate", L("Generate results package"), L("Choose data")); });
 S("results-packages-package-page", {}, async (p) => { await rail(p, "Results"); await p.getByText("April 2025", { exact: true }).first().click(); await wait(p, 9000); await full(p, "results-packages-package-page"); });
+// Module names come from the package or module definition, which may be in the
+// instance language rather than the UI language: match either.
+const M = (en) => new RegExp(`^(${en}|${L(en).replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})$`);
+// Module defaults with one value changed (never applied), so the "Differs from default" marker shows.
+S("modules-defaults", { height: 560 }, async (p) => {
+  await rail(p, "Results"); await p.getByRole("button", { name: L("Module defaults") }).click(); await wait(p, 4000);
+  await p.getByText(M("Data quality assessment")).first().click(); await wait(p, 1500);
+  const inputs = p.locator("input"); let idx = -1; for (let i = 0; i < await inputs.count(); i++) if (await inputs.nth(i).inputValue().catch(() => "") === "0.8") { idx = i; break; }
+  if (idx < 0) throw new Error("outlier threshold input (0.8) not found"); await inputs.nth(idx).fill("0.9"); await inputs.nth(idx).evaluate((e) => e.blur()); await wait(p, 1200);
+  await full(p, "modules-defaults");
+  await p.getByRole("button", { name: L("Cancel") }).first().click().catch(() => {});
+});
+S("modules-wizard", { height: 760 }, async (p) => {
+  await rail(p, "Results"); await p.getByRole("button", { name: L("Generate new results package") }).click(); await wait(p, 2500);
+  await p.getByRole("button", { name: L("Next") }).click(); await wait(p, 2000);
+  await card(p, "modules-wizard", L("Generate results package"), L("Configure modules"));
+});
+async function toPackage(p) { await rail(p, "Results"); await p.getByText("April 2025", { exact: true }).first().click(); await wait(p, 9000); }
+// The module list entry, not the status-bar chip of the same name (the chip opens the logs).
+S("modules-package-module", { width: 1100, height: 1000 }, async (p) => {
+  await toPackage(p); await p.addStyleTag({ content: ".fixed.right-0{display:none!important}" }); await p.getByText(M("Data quality assessment")).last().click(); await wait(p, 3000);
+  await p.getByText(L("Settings"), { exact: true }).last().evaluate((e) => e.scrollIntoView({ block: "start" })); await wait(p, 1500); await settle(p);
+  // From the Settings caption to the end of the output files list, across the module pane.
+  const box = await p.evaluate(([a, b]) => {
+    const cap = (t) => [...document.querySelectorAll("div")].filter((e) => e.children.length === 0 && e.innerText.trim() === t).pop();
+    const A = cap(a), B = cap(b); if (!A || !B) return null;
+    const pane = A.parentElement.parentElement.getBoundingClientRect(), top = A.getBoundingClientRect(), end = B.parentElement.getBoundingClientRect();
+    return { x: pane.x, y: top.y, w: pane.width, h: end.bottom - top.y };
+  }, [L("Settings"), L("Output files")]);
+  if (!box) throw new Error("module pane sections not found");
+  await p.screenshot({ path: `${OUT}/modules-package-module-${LANG}.png`, clip: { x: box.x - 16, y: Math.max(0, box.y - 16), width: box.w + 32, height: box.h + 32 } });
+  console.log("saved clip modules-package-module");
+});
+S("modules-logs", { height: 760 }, async (p) => {
+  await toPackage(p); await p.getByText(M("Data quality assessment")).first().click(); await wait(p, 3500);
+  await full(p, "modules-logs");
+});
 S("data-hmis-data-page", {}, async (p) => { await rail(p, "Data"); await collapseRail(p); await full(p, "data-hmis-data-page"); });
 S("admin-areas", {}, async (p) => { await toDataRow(p, "Facilities", 0); await clipTexts(p, "admin-areas", L("Imports"), L("Derived from the facility rows — created and removed automatically by imports.").slice(0, 25)); });
 S("managing-existing-facilities", {}, async (p) => { await toDataRow(p, "Facilities", 0); await full(p, "managing-existing-facilities"); });

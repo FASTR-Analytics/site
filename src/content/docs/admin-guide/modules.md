@@ -1,107 +1,80 @@
 ---
 title: Modules
-description: Installing and managing analytical modules.
+description: The analysis modules, their settings, and their logs.
 sidebar:
   order: 7
 ---
 
-Modules are the analytical engine of FASTR. Each module runs R scripts that process your project's data - calculating indicators, detecting outliers, generating coverage estimates, or performing other statistical analyses. The results become metrics that power your visualizations and reports. Modules are configured at the instance level through results packages, which are then read by slide decks and reports.
+Modules are the analyses FASTR runs when it generates a results package. Each module is an R script that reads the instance's data, or the output of other modules, and produces results files - outlier lists, adjusted service counts, coverage estimates, survey indicators. Those results become the metrics people use in visualizations, slide decks, and reports.
 
-## Understanding module architecture
+You don't install or update modules yourself. FASTR offers the same set of modules on every instance, and each new results package runs the current version of each module. Your job is to choose their settings and to check their output when something looks wrong.
 
-A module has two parts. The **compute definition** contains the R scripts that process data and produce results - these run in isolated Docker containers. The **presentation definition** specifies which metrics the module produces and how they can be visualized.
+## The modules
 
-Modules are included when generating a results package at the instance level. A results package bundles together the outputs of all selected modules for a chosen set of data. Every slide deck and report reads its figures from an attached results package.
+Modules are grouped by the type of data they use. Within each group, one primary module produces the main results, and supporting analyses feed it or add to it.
+
+| Data | Module | What it does |
+|---|---|---|
+| HMIS | **Service utilization** (primary) | Service volumes and indicator values for each area and period. Indicators whose formulas use population terms need population data - see [Indicators](/admin-guide/indicators/). |
+| HMIS | **Data quality assessment** | Outliers, reporting completeness, and internal consistency between related indicators. |
+| HMIS | **Data quality adjustments** | Service counts adjusted for outliers and for incomplete reporting. |
+| HMIS | **Disruption detection** | Expected service volumes, to show where services fell short. |
+| HMIS | **Coverage denominators** | Target populations used to calculate coverage. |
+| HMIS | **Coverage estimates** | Coverage of key services, compared with survey estimates. |
+| HFA | **Health facility assessment** | Indicators from the health facility assessment survey rounds. |
+| ICEH | **ICEH survey analysis** | Equity indicators from ICEH survey data. |
+
+Some modules need others to run first. Data quality adjustments needs the data quality assessment, and disruption detection, service utilization, and coverage denominators all use the adjusted counts. Coverage estimates needs the coverage denominators. FASTR handles this for you when you generate a package.
+
+For how each analysis works, see the [Methodology](/methodology/00_introduction/) section.
 
 ## Configuring module defaults
 <!-- help#amod-configure -->
 
-Instance administrators can set default parameter values that pre-fill the results package generation wizard. Navigate to **Results packages** at the instance level and click **Module defaults**. The editor shows every module that takes parameters, one at a time, in a sidebar layout. Select a module on the left to view and edit its parameters on the right.
+Module settings - thresholds, which indicators to check, which admin level to analyse at - are set in one place and used by every results package you generate. You need the **Configure data** permission.
 
-Parameter values are set only here and apply to every results package that includes the module — they are not editable in the wizard itself. The generation wizard turns on every module the data supports; the module defaults editor no longer controls which modules are pre-selected.
+On the **Results** page, click **Module defaults**. The modules that have settings are listed on the left, grouped by data type. Select one to see its settings on the right.
 
-A parameter whose value differs from its definition default (the module's own default value) is marked with a badge, the default value, and a reset button that unpins it so it follows the definition again. The **Reset all to definition defaults** button in the header resets every parameter across every module at once. Any change or reset activates an **Apply** button in the header; click it to save and close, or click **Cancel** to close without saving.
+Every setting starts at the default chosen by the module's authors. When you change one, it is marked **Differs from default**, with the default value beside it and a button to put it back. The list on the left shows how many settings you have changed in each module. **Reset to definition defaults** puts every setting in the current module back, and **Reset all to definition defaults** does the same for every module.
 
-## Generating a results package
+Click **Apply** to save your changes, or **Cancel** to discard them. New settings apply to the next package you generate; existing packages keep the settings they were generated with.
+
+![Module defaults](/images/modules-defaults-en.png)
+
+## Choosing modules when you generate
 <!-- help#amod-install -->
 
-To produce module outputs, generate a new results package from the instance **Results packages** page. Click **Generate new results package** to open the wizard. The wizard walks you through three steps: selecting which data families to include (HMIS, HFA, ICEH equity data), choosing which modules to run, and confirming the label.
+The second step of the generate wizard, **Configure modules**, lists every module by data type. Every module the chosen data can run starts ticked. When you tick a module, the modules it depends on are ticked too, and you can't untick a module while another ticked module needs it - the list shows which modules require it.
 
-The wizard is an ephemeral modal — nothing is saved to the server before you click **Launch generation**. The entire configuration (data family selections, module choices, and label) is submitted in a single step. If you close the wizard before launching, nothing is stored.
+A module is greyed out if it needs data you didn't choose in the first step, with a note naming the missing data. Go **Back** to add it.
 
-After you click **Launch generation**, the new package's page opens automatically once the SSE notification arrives. You can leave the page and follow progress on the Results packages surface.
+The wizard doesn't let you change settings. If a module's stored settings aren't valid, the wizard names the module, and you fix it in **Module defaults** before launching.
 
-![Installing Modules](/images/installing-modules-en.png)
+See [Results packages](/admin-guide/results-packages/) for the rest of the wizard.
 
-### Step 1 — Choose data
-
-Select which data families this results package is generated from. Each included family is captured in full. Only families that have data uploaded to the instance are available for selection. The wizard turns on every available family by default. If a DHIS2 import is currently running, HMIS data is temporarily unavailable and a note explains why — you must wait for the import to finish before generating a package that includes HMIS data.
-
-### Step 2 — Configure modules
-
-Choose which modules to run. The selection list shows every available module organised by data family, with primary modules first and supporting analyses beneath them. The wizard pre-selects every module that the chosen data can run. Select a module by checking its box. Selecting a module automatically includes all modules it depends on; a module cannot be unchecked while another selected module depends on it. Modules that require data families not chosen in step 1 are shown as unavailable, with a note naming which family is missing so you can go back to step 1 and add it.
-
-If any selected module has parameter values stored in the module defaults that fail validation, those module names are listed below the selection with a prompt to fix them in **Module defaults** before launching. Parameter values are not editable in the wizard.
-
-Available modules include:
-
-- **Disruption detection** — detects service disruptions using a Negative Binomial Bayesian model. Produces observed, expected, lower bound, and upper bound series that power the Bayesian disruptions chart. Requires the data quality adjustments module as a prerequisite.
-- **Coverage estimates** — computes coverage estimates. Requires the coverage denominators module as a prerequisite.
-- **Service utilization** — computes derived common indicator values by applying each indicator's formula to the summed ingredients from the HMIS extract. Requires the data quality adjustments module as a prerequisite. When population terms are used in indicator formulas, this module uses person-years data from the population store; areas and months not covered by the population store are dropped for those indicators.
-
-### Step 3 — Confirm and launch
-
-Enter a label for the results package and review the data and module selections. The wizard suggests a label based on the current date. Click **Launch generation** to start.
-
-## Results packages catalogue
-
-The Results packages catalogue lists every package generated for the instance. Each row shows the package label along with what the package contains — the data families it captured (such as HMIS, HFA, or ICEH) and how many modules it includes — so you can tell packages apart at a glance without opening each one. The row also shows the date the package was created and whether it is the pinned package.
-
-When you use the package picker in a slide deck, report, or project, each package option likewise shows its label, data families, and module count alongside the creation date and pinned status.
-
-## Population data and indicator values
-
-When one or more indicator formulas reference a population term, the service utilization module requires population data to be imported at the instance level before generation. The generation will fail if population data is referenced but not present for any area of the current HMIS structure at the configured population level.
-
-The population level must be set on the instance Population page and must not be deeper than the HMIS structure's admin area depth. If the population level is deeper than the structure, generation fails with a clear message explaining the mismatch.
-
-For areas and months where population data exists, the module computes the indicator. For areas or months where the population store has no coverage, the module drops those cells for population-dependent indicators rather than failing the whole generation. The results package records which population types were active and what coverage was achieved.
-
-## Deleting results packages in bulk
-
-As you generate packages over time, old ones accumulate. Select the packages you no longer need in the Results packages table and use the **Delete** bulk action. The guard checks each package in turn — packages that are pinned, still generating, or attached to a product are refused with the reason shown, while the rest are deleted. Nothing is refetched after each deletion; the list shrinks live as each package is removed.
-
-## Pinning a results package
-
-Administrators can designate one ready package as the instance's **pinned package**. New slide decks and reports start on the pinned package. Existing products keep their own package unless an editor manually switches them. To pin a package, open its detail view on the Results packages page and click **Pin**. To unpin, click **Unpin** on the currently pinned package.
-
-The pinned package is also the package the FASTR MCP connector reads. When you connect a compatible AI client to your instance's MCP endpoint, it reads metrics and data from whichever package is currently pinned.
-
-## Scopes
-
-A scope sets which part of a results package a slide deck or report may show — for example one region, certain years, or certain modules and indicators. Every approved user sees the **Scopes** tab in the main navigation. Unrestricted users (those with access to all data) can create, edit, and delete scopes; a restricted user can view the scopes they hold but cannot write them. The scope called **All data** is always present and limits nothing; it is displayed as a fixed panel above the scopes table rather than as a row within it. On the Users page, a user can also be limited to certain scopes so they see only products that use those scopes.
+![Configure modules step](/images/modules-wizard-en.png)
 
 ## Module execution and status
 <!-- help#amod-status -->
 
-Each module in a results package displays its current generation status:
+While a package is generating, its page shows a progress bar and the latest line of output from the module that is running. Generation runs in the background, so you can leave the page.
 
-- **Ready** means results are available. You'll see timestamps and which data and parameter versions produced the output.
-- **Running** indicates the module is currently generating. Progress messages show which step is executing.
-- **Error** signals something went wrong during generation.
+When the package is ready, the **Modules** row at the top of its page lists every module it includes, grouped by data type. Click a module to open its logs.
 
-Once a package is fully generated its status is shown on the results packages catalogue page. Opening a package from the catalogue shows a status bar with the generation progress, the run time, module chips grouped by data family for a ready package, the live R output line while a script is running, which products use the package, and the population stamp if applicable. Click any module chip (except those still pending) to open that module's logs in a modal, where a **Refresh** button re-reads the log while the package is still generating.
+If a module fails, the package fails with it. The page shows **Generation failed** with the logs of the module that stopped, so you can see what went wrong. Fix the cause - often the data or a module setting - and generate a new package.
 
-![Module Status](/images/module-status-en.png)
+## Settings, scripts, and logs
 
-## Viewing logs and diagnostics
+Each tab of a package page lists its modules on the left. Select one to see, below its preset visualizations:
 
-When a module errors or produces unexpected results, check the logs from the results package detail view. Access **Logs** to see R console output, warnings, errors, and timing information. You can also click a module's chip in the status bar to open its logs directly in a modal.
+- **Settings** - the setting values this package was generated with.
+- **Script and logs** - **Script** shows the exact R code that ran, and **Logs** shows its console output, including warnings and errors.
+- **Output files** - the results files the module produced, which you can download for your own checks.
 
-For complex issues, view **Script** to see the exact R code that ran. The **Files** option shows data files the module produced, useful for manual inspection of intermediate results.
+Script, logs, and files need the **View data** permission.
 
-Script, file, and log access all require the **View data** permission. These permissions apply whether you are browsing from the instance catalogue or from a product's Results package tab.
+![A module's settings, script, logs, and files](/images/modules-package-module-en.png)
 
-## Deleting results packages
+Logs are the first place to look when a module's results seem wrong. They show each step the script took, how much data it found, and any warnings it raised along the way.
 
-To remove a results package, open it from the instance results packages catalogue and click **Delete**. FASTR refuses to delete a package while any product is using it, while it is pinned, or while it is still generating. The detail view explains the reason when deletion is blocked. Deletion permanently removes the package's files and cached results and cannot be undone.
+![Module logs](/images/modules-logs-en.png)

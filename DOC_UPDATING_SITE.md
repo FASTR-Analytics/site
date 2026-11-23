@@ -65,7 +65,7 @@ Use this to route a changelog entry to the right place. If a feature has no obvi
 | `data-hmis.md` | Data page layout, DHIS2 connection, HMIS imports (CSV / DHIS2, scheduled), population |
 | `data-hfa.md` | HFA imports, time points, the auto-maintained HFA facility list |
 | `results-packages.md` | Results page: generating, pinning, the package page, deleting |
-| `modules.md` | Installing, configuring, and running analysis modules |
+| `modules.md` | The modules, module defaults, and module logs |
 | `scopes.md` | Scopes page: creating and editing scopes, granted-scope rules |
 
 **User guide** (`src/content/docs/user-guide/`)

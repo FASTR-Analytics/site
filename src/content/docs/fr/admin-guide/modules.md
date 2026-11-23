@@ -1,107 +1,80 @@
 ---
 title: Modules
-description: Installation et gestion des modules analytiques.
+description: Les modules d'analyse, leurs paramètres et leurs journaux.
 sidebar:
   order: 7
 ---
 
-Les modules sont le moteur analytique de FASTR. Chaque module exécute des scripts R qui traitent les données de votre projet - calcul d'indicateurs, détection de valeurs aberrantes, génération d'estimations de couverture ou réalisation d'autres analyses statistiques. Les résultats deviennent des métriques qui alimentent vos visualisations et vos rapports. Les modules sont configurés au niveau de l'instance via les lots de résultats, qui sont ensuite lus par les présentations et les rapports.
+Les modules sont les analyses que FASTR exécute lorsqu'il génère un paquet de résultats. Chaque module est un script R qui lit les données de l'instance, ou les sorties d'autres modules, et produit des fichiers de résultats - listes de valeurs aberrantes, volumes de services ajustés, estimations de couverture, indicateurs d'enquête. Ces résultats deviennent les métriques utilisées dans les visualisations, les présentations et les rapports.
 
-## Comprendre l'architecture d'un module
+Vous n'installez ni ne mettez à jour les modules vous-même. FASTR propose le même ensemble de modules sur chaque instance, et chaque nouveau paquet de résultats exécute la version actuelle de chaque module. Votre rôle est de choisir leurs paramètres et de vérifier leurs sorties lorsque quelque chose semble anormal.
 
-Un module comporte deux parties. La **définition de calcul** contient les scripts R qui traitent les données et produisent des résultats - ceux-ci s'exécutent dans des conteneurs Docker isolés. La **définition de présentation** précise quelles métriques le module produit et comment elles peuvent être visualisées.
+## Les modules
 
-Les modules sont inclus lors de la génération d'un lot de résultats au niveau de l'instance. Un lot de résultats regroupe les sorties de tous les modules sélectionnés pour un ensemble de données choisi. Chaque présentation et chaque rapport lit ses figures à partir d'un lot de résultats associé.
+Les modules sont regroupés selon le type de données qu'ils utilisent. Dans chaque groupe, un module principal produit les résultats essentiels, et des analyses complémentaires l'alimentent ou le complètent.
+
+| Données | Module | Ce qu'il fait |
+|---|---|---|
+| HMIS | **Utilisation des services** (principal) | Volumes de services et valeurs des indicateurs pour chaque zone et chaque période. Les indicateurs dont les formules utilisent des termes de population nécessitent des données de population - voir [Indicateurs](/fr/admin-guide/indicators/). |
+| HMIS | **Évaluation de la qualité des données** | Valeurs aberrantes, complétude de la notification et cohérence interne entre indicateurs liés. |
+| HMIS | **Ajustements de la qualité des données** | Volumes de services ajustés pour les valeurs aberrantes et la notification incomplète. |
+| HMIS | **Détection des perturbations** | Volumes de services attendus, pour montrer où les services ont été insuffisants. |
+| HMIS | **Dénominateurs de couverture** | Populations cibles utilisées pour calculer la couverture. |
+| HMIS | **Estimations de couverture** | Couverture des services clés, comparée aux estimations d'enquête. |
+| FOSA | **Évaluation des établissements de santé** | Indicateurs issus des cycles de l'enquête d'évaluation des établissements de santé. |
+| ICEH | **Analyse de l'enquête ICEH** | Indicateurs d'équité issus des données d'enquête ICEH. |
+
+Certains modules ont besoin que d'autres s'exécutent d'abord. Les ajustements de la qualité des données nécessitent l'évaluation de la qualité des données, et la détection des perturbations, l'utilisation des services et les dénominateurs de couverture utilisent tous les volumes ajustés. Les estimations de couverture nécessitent les dénominateurs de couverture. FASTR s'en charge pour vous lorsque vous générez un paquet.
+
+Pour le fonctionnement de chaque analyse, consultez la section [Méthodologie](/fr/methodology/00_introduction/).
 
 ## Configurer les paramètres par défaut des modules
 <!-- help#amod-configure -->
 
-Les administrateurs de l'instance peuvent définir des valeurs de paramètres par défaut qui préremplissent l'assistant de génération de lots de résultats. Accédez à **Lots de résultats** au niveau de l'instance et cliquez sur **Paramètres par défaut des modules**. L'éditeur affiche chaque module qui prend des paramètres, un à la fois, dans une disposition en barre latérale. Sélectionnez un module sur la gauche pour afficher et modifier ses paramètres sur la droite.
+Les paramètres des modules - seuils, indicateurs à vérifier, niveau administratif d'analyse - se règlent à un seul endroit et servent à chaque paquet de résultats que vous générez. Vous avez besoin de l'autorisation **Configurer les données**.
 
-Les valeurs des paramètres se règlent uniquement ici et s'appliquent à chaque lot de résultats qui inclut le module — elles ne sont pas modifiables dans l'assistant lui-même. L'assistant de génération active tous les modules que les données permettent ; l'éditeur de paramètres par défaut des modules ne contrôle plus quels modules sont pré-sélectionnés.
+Sur la page **Résultats**, cliquez sur **Paramètres par défaut des modules**. Les modules qui ont des paramètres sont listés à gauche, regroupés par type de données. Sélectionnez-en un pour voir ses paramètres à droite.
 
-Un paramètre dont la valeur diffère de la valeur par défaut de sa définition (la valeur par défaut propre au module) est signalé par un badge, la valeur par défaut et un bouton de réinitialisation qui le désépingle afin qu'il suive à nouveau la définition. Le bouton **Tout réinitialiser aux valeurs par défaut de la définition** dans l'en-tête réinitialise tous les paramètres de tous les modules en une seule fois. Toute modification ou réinitialisation active un bouton **Appliquer** dans l'en-tête ; cliquez dessus pour enregistrer et fermer, ou cliquez sur **Annuler** pour fermer sans enregistrer.
+Chaque paramètre part de la valeur par défaut choisie par les auteurs du module. Lorsque vous en modifiez un, il est marqué **Diffère de la valeur par défaut**, avec la valeur par défaut à côté et un bouton pour la rétablir. La liste de gauche indique combien de paramètres vous avez modifiés dans chaque module. **Réinitialiser aux valeurs par défaut de la définition** rétablit tous les paramètres du module affiché, et **Tout réinitialiser aux valeurs par défaut de la définition** fait de même pour tous les modules.
 
-## Générer un lot de résultats
+Cliquez sur **Appliquer** pour enregistrer vos modifications, ou sur **Annuler** pour les abandonner. Les nouveaux paramètres s'appliquent au prochain paquet que vous générez ; les paquets existants conservent les paramètres avec lesquels ils ont été générés.
+
+![Paramètres par défaut des modules](/images/modules-defaults-fr.png)
+
+## Choisir les modules lors de la génération
 <!-- help#amod-install -->
 
-Pour produire des résultats de modules, générez un nouveau lot de résultats depuis la page **Lots de résultats** de l'instance. Cliquez sur **Générer un nouveau lot de résultats** pour ouvrir l'assistant. L'assistant vous guide en trois étapes : sélectionner les familles de données à inclure (HMIS, HFA, données d'équité ICEH), choisir les modules à exécuter, puis confirmer le libellé.
+La deuxième étape de l'assistant de génération, **Configurer les modules**, liste tous les modules par type de données. Tous les modules que les données choisies permettent d'exécuter sont cochés au départ. Lorsque vous cochez un module, les modules dont il dépend sont cochés aussi, et vous ne pouvez pas décocher un module tant qu'un autre module coché en a besoin - la liste indique quels modules le requièrent.
 
-L'assistant est une fenêtre modale éphémère — rien n'est enregistré sur le serveur avant que vous ne cliquiez sur **Lancer la génération**. L'ensemble de la configuration (sélections de familles de données, choix de modules et libellé) est soumis en une seule étape. Si vous fermez l'assistant avant de lancer, rien n'est conservé.
+Un module est grisé s'il a besoin de données que vous n'avez pas choisies à la première étape, avec une note qui nomme les données manquantes. Cliquez sur **Retour** pour les ajouter.
 
-Après avoir cliqué sur **Lancer la génération**, la page du nouveau lot s'ouvre automatiquement dès que la notification SSE arrive. Vous pouvez quitter la page et suivre la progression sur la page Lots de résultats.
+L'assistant ne permet pas de modifier les paramètres. Si les paramètres enregistrés d'un module ne sont pas valides, l'assistant nomme le module, et vous les corrigez dans **Paramètres par défaut des modules** avant de lancer la génération.
 
-![Installer des modules](/images/installing-modules-en.png)
+Consultez [Paquets de résultats](/fr/admin-guide/results-packages/) pour le reste de l'assistant.
 
-### Étape 1 — Choisir les données
-
-Sélectionnez les familles de données à partir desquelles ce lot de résultats est généré. Chaque famille incluse est capturée dans son intégralité. Seules les familles pour lesquelles des données ont été téléversées sur l'instance sont disponibles à la sélection. L'assistant active toutes les familles disponibles par défaut. Si une importation DHIS2 est en cours, les données HMIS sont temporairement indisponibles et une note l'explique — vous devez attendre la fin de l'importation avant de générer un lot incluant les données HMIS.
-
-### Étape 2 — Configurer les modules
-
-Choisissez les modules à exécuter. La liste de sélection affiche chaque module disponible organisé par famille de données, avec les modules principaux en premier et les analyses complémentaires en dessous. L'assistant présélectionne tous les modules que les données choisies peuvent exécuter. Sélectionnez un module en cochant sa case. La sélection d'un module inclut automatiquement tous les modules dont il dépend ; un module ne peut pas être désélectionné tant qu'un autre module sélectionné en dépend. Les modules qui nécessitent des familles de données non choisies à l'étape 1 sont affichés comme indisponibles, avec une note indiquant quelle famille est manquante afin que vous puissiez revenir à l'étape 1 pour l'ajouter.
-
-Si un module sélectionné a des valeurs de paramètres enregistrées dans les paramètres par défaut des modules qui échouent à la validation, les noms de ces modules sont listés sous la sélection avec une invite à les corriger dans **Paramètres par défaut des modules** avant de lancer. Les valeurs des paramètres ne sont pas modifiables dans l'assistant.
-
-Les modules disponibles comprennent :
-
-- **Détection des perturbations** — détecte les perturbations de service à l'aide d'un modèle bayésien binomial négatif. Produit les séries observée, attendue, borne inférieure et borne supérieure qui alimentent le graphique des perturbations bayésien. Nécessite le module d'ajustements de la qualité des données comme prérequis.
-- **Estimations de couverture** — calcule les estimations de couverture. Nécessite le module de dénominateurs de couverture comme prérequis.
-- **Utilisation des services** — calcule les valeurs des indicateurs communs dérivés en appliquant la formule de chaque indicateur aux ingrédients additionnés issus de l'extraction HMIS. Nécessite le module d'ajustements de la qualité des données comme prérequis. Lorsque des termes de population sont utilisés dans les formules d'indicateurs, ce module utilise les données de personnes-années issues du magasin de population ; les zones et les mois non couverts par le magasin de population sont exclus pour ces indicateurs.
-
-### Étape 3 — Confirmer et lancer
-
-Saisissez un libellé pour le lot de résultats et vérifiez les sélections de données et de modules. L'assistant propose un libellé basé sur la date du jour. Cliquez sur **Lancer la génération** pour démarrer.
-
-## Catalogue des lots de résultats
-
-Le catalogue des lots de résultats liste chaque lot généré pour l'instance. Chaque ligne affiche le libellé du lot ainsi que ce qu'il contient — les familles de données capturées (comme HMIS, HFA ou ICEH) et le nombre de modules inclus — afin de distinguer les lots d'un coup d'œil sans avoir à les ouvrir un par un. La ligne indique également la date de création du lot et s'il s'agit du lot épinglé.
-
-Lorsque vous utilisez le sélecteur de lots dans une présentation, un rapport ou un projet, chaque option de lot affiche de même son libellé, ses familles de données et son nombre de modules aux côtés de la date de création et du statut d'épinglage.
-
-## Données de population et valeurs des indicateurs
-
-Lorsqu'une ou plusieurs formules d'indicateurs font référence à un terme de population, le module d'utilisation des services nécessite que des données de population soient importées au niveau de l'instance avant la génération. La génération échoue si une population est référencée mais qu'aucune donnée n'est présente pour une zone de la structure HMIS actuelle au niveau de population configuré.
-
-Le niveau de population doit être défini sur la page Population de l'instance et ne doit pas être plus profond que le niveau de profondeur administrative de la structure HMIS. Si le niveau de population est plus profond que la structure, la génération échoue avec un message clair expliquant l'incompatibilité.
-
-Pour les zones et les mois pour lesquels des données de population existent, le module calcule l'indicateur. Pour les zones ou les mois non couverts par le magasin de population, le module exclut ces cellules pour les indicateurs dépendant de la population au lieu de faire échouer l'ensemble de la génération. Le lot de résultats enregistre les types de population actifs et la couverture obtenue.
-
-## Supprimer des lots de résultats en masse
-
-Au fil des générations, les anciens lots s'accumulent. Sélectionnez les lots dont vous n'avez plus besoin dans le tableau des lots de résultats et utilisez l'action groupée **Supprimer**. La vérification s'effectue lot par lot — les lots épinglés, encore en cours de génération ou associés à un produit sont refusés avec la raison indiquée, tandis que les autres sont supprimés. La liste se réduit en direct à chaque suppression sans rechargement.
-
-## Épingler un lot de résultats
-
-Les administrateurs peuvent désigner un lot prêt comme **lot épinglé** de l'instance. Les nouvelles présentations et les nouveaux rapports démarrent sur le lot épinglé. Les produits existants conservent leur propre lot, sauf si un éditeur les bascule manuellement. Pour épingler un lot, ouvrez sa vue de détail sur la page Lots de résultats et cliquez sur **Épingler**. Pour désépingler, cliquez sur **Désépingler** sur le lot actuellement épinglé.
-
-Le lot épinglé est également le lot que le connecteur MCP de FASTR utilise. Lorsque vous connectez un client IA compatible au point d'accès MCP de votre instance, il lit les métriques et les données à partir du lot actuellement épinglé.
-
-## Portées
-
-Une portée définit quelle partie d'un lot de résultats une présentation ou un rapport peut afficher — par exemple une région, certaines années, ou certains modules et indicateurs. Tout utilisateur approuvé voit l'onglet **Portées** dans la navigation principale. Les utilisateurs non restreints (ceux ayant accès à toutes les données) peuvent créer, modifier et supprimer des portées ; un utilisateur restreint peut consulter les portées qu'il détient, mais ne peut pas les modifier. La portée appelée **Toutes les données** est toujours présente et ne limite rien ; elle est affichée sous forme de panneau fixe au-dessus du tableau des portées plutôt que comme une ligne dans ce tableau. Sur la page Utilisateurs, un utilisateur peut également être limité à certaines portées afin de ne voir que les produits qui utilisent ces portées.
+![Étape Configurer les modules](/images/modules-wizard-fr.png)
 
 ## Exécution et état des modules
 <!-- help#amod-status -->
 
-Chaque module dans un lot de résultats affiche son état de génération actuel :
+Pendant la génération d'un paquet, sa page affiche une barre de progression et la dernière ligne de sortie du module en cours d'exécution. La génération se déroule en arrière-plan : vous pouvez quitter la page.
 
-- **Prêt** signifie que les résultats sont disponibles. Vous verrez les horodatages et les versions de données et de paramètres qui ont produit la sortie.
-- **En cours d'exécution** indique que le module génère actuellement des résultats. Des messages de progression montrent quelle étape est en cours.
-- **Erreur** signale qu'un problème est survenu lors de la génération.
+Lorsque le paquet est prêt, la ligne **Modules** en haut de sa page liste tous les modules qu'il contient, regroupés par type de données. Cliquez sur un module pour ouvrir ses journaux.
 
-Une fois qu'un lot est entièrement généré, son statut s'affiche sur la page du catalogue des lots de résultats. L'ouverture d'un lot depuis le catalogue affiche une barre d'état avec la progression de la génération, la durée d'exécution, les puces de modules regroupées par famille de données pour un lot prêt, la ligne de sortie R en direct pendant l'exécution d'un script, les produits qui utilisent le lot et le tampon de population le cas échéant. Cliquez sur la puce d'un module (sauf ceux encore en attente) pour ouvrir ses journaux dans une fenêtre modale, où un bouton **Actualiser** relit le journal pendant que le lot est encore en cours de génération.
+Si un module échoue, le paquet échoue avec lui. La page affiche **Échec de la génération** avec les journaux du module qui s'est arrêté, pour que vous puissiez voir ce qui s'est passé. Corrigez la cause - souvent les données ou un paramètre de module - et générez un nouveau paquet.
 
-![État d'un module](/images/module-status-en.png)
+## Paramètres, scripts et journaux
 
-## Consulter les journaux et les diagnostics
+Chaque onglet de la page d'un paquet liste ses modules à gauche. Sélectionnez-en un pour voir, sous ses visualisations prédéfinies :
 
-Lorsqu'un module produit une erreur ou des résultats inattendus, consultez les journaux depuis la vue de détail du lot de résultats. Accédez aux **Journaux** pour voir la sortie de la console R, les avertissements, les erreurs et les informations de minutage. Vous pouvez également cliquer sur la puce d'un module dans la barre d'état pour ouvrir directement ses journaux dans une fenêtre modale.
+- **Paramètres** - les valeurs des paramètres avec lesquelles ce paquet a été généré.
+- **Script et journaux** - **Script** affiche le code R exact qui a été exécuté, et **Journaux** affiche sa sortie console, y compris les avertissements et les erreurs.
+- **Fichiers de sortie** - les fichiers de résultats produits par le module, que vous pouvez télécharger pour vos propres vérifications.
 
-Pour les problèmes complexes, affichez le **Script** pour voir le code R exact qui a été exécuté. L'option **Fichiers** montre les fichiers de données produits par le module, utiles pour inspecter manuellement les résultats intermédiaires.
+Le script, les journaux et les fichiers nécessitent l'autorisation **Voir les données**.
 
-L'accès au script, aux fichiers et aux journaux requiert la permission **Consulter les données**. Ces permissions s'appliquent que vous consultiez depuis le catalogue de l'instance ou depuis l'onglet Lot de résultats d'un produit.
+![Paramètres, script, journaux et fichiers d'un module](/images/modules-package-module-fr.png)
 
-## Supprimer des lots de résultats
+Les journaux sont le premier endroit à consulter lorsque les résultats d'un module semblent erronés. Ils montrent chaque étape du script, la quantité de données trouvée et les avertissements émis en cours de route.
 
-Pour supprimer un lot de résultats, ouvrez-le depuis le catalogue des lots de résultats de l'instance et cliquez sur **Supprimer**. FASTR refuse la suppression tant qu'un produit utilise le lot, tant que celui-ci est épinglé, ou tant que la génération est encore en cours. La vue de détail explique la raison lorsque la suppression est bloquée. La suppression retire définitivement les fichiers et les résultats en cache du lot et ne peut pas être annulée.
+![Journaux d'un module](/images/modules-logs-fr.png)

@@ -9,12 +9,13 @@
     "slide-decks-editor", "slide-decks-layout-menu", "slide-decks-download",
     "reports-editor", "reports-download",
     "visualizations-types", "visualizations-create", "visualizations-editor",
-    "explore-page", "ai-panel", "ai-prompt-library"
+    "explore-page", "ai-panel", "ai-prompt-library",
+    "modules-defaults", "modules-wizard", "modules-package-module", "modules-logs"
   ],
   "crops": [
     "scopes-editor", "results-packages-generate", "admin-areas", "hfa-upload", "hfa-upload-round",
     "data-hfa-changes", "products-manage-access", "slide-decks-download", "reports-download",
-    "ai-prompt-library", "visualizations-create"
+    "ai-prompt-library", "visualizations-create", "modules-wizard", "modules-package-module"
   ],
   "montage": {
     "name": "visualizations-types",
