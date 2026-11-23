@@ -1,55 +1,50 @@
 ---
 title: User guide
-description: Working with projects, visualizations, and reports in FASTR.
+description: Working with products, visualizations, and data in FASTR.
 sidebar:
   order: 0
 ---
 
-The FASTR platform helps health program managers and analysts turn routine health data into actionable insights. This guide covers the day-to-day tasks you'll perform as a user - navigating projects, understanding analytical outputs, creating visualizations, and building reports.
+The FASTR platform helps health programme managers and analysts turn routine health data into actionable insights. This guide covers the day-to-day tasks you'll perform as a user - finding and sharing work, exploring results, creating visualizations, and building slide decks and reports.
 
 ## Who this guide is for
 
-This section is written for anyone who works with FASTR analytical outputs. That includes program officers reviewing performance data, data analysts creating custom visualizations, and managers preparing reports for stakeholders. You don't need to manage users, upload data, or configure system settings — those tasks are covered in the Admin guide.
-
-Your role in FASTR determines what you can do. **Viewers** can browse visualizations and export reports but can't make changes. **Editors** can create and modify visualizations, build slide decks, and save their work. **Admins** have full access including module configuration and project settings. Your administrator assigns these roles when they add you to a project.
+This section is for anyone who works with FASTR's analytical outputs: programme officers reviewing performance data, analysts building visualizations, and managers preparing presentations and reports. You don't need to import data, generate results, or manage users - those tasks are covered in the [Admin guide](/admin-guide/).
 
 ## What you'll need
 
-Before diving in, make sure you can sign in to your organization's FASTR instance. Your administrator should have sent you an invitation email with instructions. If you're having trouble accessing the platform, contact your administrator - they can verify your account status and permissions.
+Make sure you can sign in to your organization's FASTR instance. If you see a message saying you are not yet approved, ask your administrator to add you on the Users page.
 
-You'll also need access to at least one project. Projects are workspaces where data, modules, and visualizations come together. If you can sign in but don't see any projects on your landing page, ask your administrator to add you to the relevant project.
+Once you're in, you can create your own products and open anything that has been shared with you. If you expect to see a deck or report and it isn't there, ask its owner to share it with you.
 
-![User Guide Projects ](/images/user-guide-projects-en.png)
+![Products page](/images/user-index-products-en.png)
 
 ## How FASTR works
 
-Understanding the platform's structure will help you navigate it more effectively. FASTR organizes work around three main concepts.
+A few ideas explain most of what you'll see.
 
-**Projects** are self-contained analytical workspaces. Each project pulls a specific subset of your organization's data - perhaps a particular time period, set of districts, or group of indicators. Everything you create in a project uses that data window, which ensures consistency across all outputs.
+**Results packages** hold the analysis results. Your administrator generates a package from the instance's data, and it doesn't change afterwards. This means a finished report keeps showing the same numbers until someone deliberately moves it to a newer package.
 
-**Modules** are the analytical engines that process your data. They run R scripts that transform raw health data into meaningful outputs - coverage rates, quality scores, trend analyses, and more. You don't need to write code yourself; modules produce results automatically once configured by an administrator.
+**Scopes** are named data windows - for example, one region, a set of years, or a group of indicators. The scope **All data** has no limits. Some people are limited to particular scopes and only see products and data inside them.
 
-**Visualizations** turn module outputs into charts, maps, and tables you can explore, customize, and share. They're the primary way you'll interact with analytical results day-to-day.
+**Products** are the things you make: **slide decks**, **reports**, and **visualizations**. Every product uses one results package and one scope, and has an owner who decides who else can view or edit it.
 
-## What's New announcements
+**Visualizations** are charts, maps, and tables built from a package's metrics. You can save one as a product of its own, or place them inside decks and reports.
 
-When FASTR is updated, a bell icon appears in the top navigation bar. A yellow dot on the bell means there are unread release announcements. Click the bell to browse all announcements, or click through to any individual post to read the full details. New announcements may also appear automatically when you sign in after an update.
+## Getting around
 
-## Getting help
+The navigation rail on the left takes you to each part of the platform. **Products** is where you'll spend most of your time. **Explore** lets you browse a package's results without creating anything. Depending on your permissions, you may also see **Results**, **Scopes**, **Data**, **Assets**, and **Users**.
 
-Click **Help** in the top navigation bar to open a menu with several options. **Guided tours** walks you through key areas of the platform step by step and can be replayed at any time. **Ask for help** sends a support request to the FASTR team. **Send feedback** lets you report a bug, a suggestion, or ask a general question. **Documentation** opens this documentation site.
+When FASTR is updated, a bell icon in the header shows release announcements; a dot on the bell means there are posts you haven't read. The **AI** button on the right edge of the screen opens the AI assistant on any page. The **Help** menu in the header has **Guided tours** of each page, a way to ask for help or send feedback, and a link to this documentation. Use the language menu to switch between English, French, and Portuguese.
 
 ## In this section
 
-The following pages walk through each part of the platform in more detail.
-
-- [Projects](/user-guide/projects/) - Navigating projects and understanding data windows
+- [Products](/user-guide/products/) - Creating, organizing, and sharing your work
 - [Modules](/user-guide/modules/) - Understanding module outputs and results
 - [Visualizations](/user-guide/visualizations/) - Creating and customizing charts, maps, and tables
-- [Dashboards](/user-guide/dashboards/) - Assembling visualizations into live, shareable dashboards
-- [Slide decks](/user-guide/slide-decks/) - Building presentations and exporting documents
-- [Reports](/user-guide/reports/) - Writing long-form documents with embedded live visualizations
-- [Visualizations (saved)](/user-guide/visualizations/) - Creating standalone saved visualizations as products
-- [AI assistant](/user-guide/ai-assistant/) - Getting help interpreting your data
+- [Explore](/user-guide/explore/) - Browsing a results package's tables, charts, and maps
+- [Slide decks](/user-guide/slide-decks/) - Building, presenting, and exporting presentations
+- [Reports](/user-guide/reports/) - Writing long-form documents with live visualizations
+- [AI assistant](/user-guide/ai-assistant/) - Getting help analysing data and drafting content
 
-Start with Projects if you're new to FASTR. If you already know your way around and want to create a specific output, jump directly to Visualizations, Dashboards, Slide decks, or Reports.
+Start with Products if you're new to FASTR. If you already know your way around, jump straight to the page for what you want to make.

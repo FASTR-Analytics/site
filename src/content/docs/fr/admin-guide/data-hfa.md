@@ -13,7 +13,7 @@ Les enquêtes HFA recueillent des informations sur les établissements qui ne so
 
 ## La liste des établissements HFA
 
-Les établissements HFA sont créés et mis à jour par l'importation des données de chaque point temporel. Contrairement aux établissements SNIS, ils ne sont pas importés via un assistant d'importation distinct. Ouvrez la ligne **Établissements Enquêtes FOSA** dans la section Données pour consulter et modifier la liste des établissements HFA. Un administrateur global peut cliquer sur une ligne pour modifier les unités administratives et les colonnes facultatives de l'établissement — toute valeur modifiée devient une valeur définie par l'utilisateur, de sorte que les importations ultérieures la conservent par défaut.
+Les établissements HFA sont créés et mis à jour par l'importation des données de chaque point temporel. Contrairement aux établissements SNIS, ils ne sont pas importés via un assistant d'importation distinct. Ouvrez la ligne **Établissements Enquêtes FOSA** dans la section Données pour consulter et modifier la liste des établissements HFA. Un utilisateur disposant de l'autorisation **Configurer les données** peut cliquer sur une ligne pour modifier les unités administratives et les colonnes facultatives de l'établissement — toute valeur modifiée devient une valeur définie par l'utilisateur, de sorte que les importations ultérieures la conservent par défaut.
 
 Le panneau de gauche propose une section **Établissements inutilisés** qui apparaît lorsque des établissements existent. Un bouton **Supprimer** compte puis confirme la suppression des établissements qui n'ont ni données ni pondérations. Les unités administratives laissées sans établissement sont également supprimées.
 
@@ -36,11 +36,15 @@ L'assistant d'importation collecte toutes les informations nécessaires avant d'
 
 Sélectionnez ou chargez votre fichier de données CSV et votre fichier de questionnaire XLSForm. Les deux fichiers doivent être présents avant que l'assistant puisse continuer ; il analyse les en-têtes du CSV par rapport au XLSForm dès que les deux sont sélectionnés. Si les fichiers ne peuvent pas être analysés ensemble, une erreur s'affiche. FASTR pré-remplit la colonne d'identifiant d'établissement à partir du choix de la dernière importation et des noms de colonnes standard du questionnaire.
 
+![Assistant d'importation HFA, étape Téléversement](/images/hfa-upload-fr.png)
+
 ### Étape 2 — Correspondances
 
 Indiquez quelle colonne CSV contient les identifiants d'établissement, sélectionnez le point temporel auquel ces données appartiennent et ajoutez des conditions de filtre de lignes facultatives. Chaque condition spécifie une colonne, un opérateur (égal à ou différent de) et une valeur. Les lignes ne satisfaisant pas toutes les conditions sont supprimées avant le traitement des doublons.
 
 Si aucun point temporel n'existe encore, vous pouvez en créer un directement dans cette étape en cliquant sur **Ajouter un point temporel** à côté du sélecteur. Un petit formulaire s'ouvre dans lequel vous saisissez un libellé, une année et un mois. Le nouveau point temporel est sélectionné automatiquement une fois enregistré.
+
+![Assistant d'importation HFA, étape Correspondances](/images/hfa-upload-round-fr.png)
 
 ### Étape 3 — Établissements
 
@@ -68,6 +72,8 @@ Si aucun des identifiants d'établissement du fichier ne correspond à la liste 
 
 Pour les nouveaux établissements et les modifications que vous prenez, vous pouvez réassigner les valeurs établissement par établissement dans la section **Réassigner des valeurs**. Cochez les valeurs qui nécessitent une réassignation et, pour chaque établissement concerné, choisissez une valeur cible dans le menu déroulant. Des colonnes supplémentaires de votre fichier peuvent être affichées à côté du tableau pour aider à identifier les établissements.
 
+![Assistant d'importation HFA, étape Modifications](/images/data-hfa-changes-fr.png)
+
 ### Étape 6 — Vérifier et lancer
 
 Un résumé affiche tous les choix : le fichier de données, le fichier XLSForm, la colonne d'identifiant d'établissement, le point temporel, les filtres de lignes, les colonnes d'établissements associées, le nombre de nouveaux établissements, les modifications prises par colonne et les réassignations de valeurs. Lisez la notice : l'importation remplace toutes les données existantes du point temporel sélectionné et écrit les nouveaux établissements et les modifications prises dans la liste des établissements HFA. Cliquez sur **Démarrer l'importation** pour lancer.
@@ -86,10 +92,6 @@ Lorsque certaines lignes n'ont pas d'identifiant d'établissement ou que de nouv
 
 Pendant qu'une importation est en cours, un bouton **Annuler l'importation** s'affiche. L'annulation arrête l'exécution ; rien de ce qui a déjà été fusionné n'est affecté.
 
-![Chargement des fichiers HFA](/images/hfa-upload-en.png)
-
-![Sélection du round HFA](/images/hfa-upload-round-en.png)
-
 ## Points temporels
 <!-- help#hfa-time-points -->
 
@@ -99,7 +101,7 @@ Vous pouvez créer un point temporel directement dans l'assistant d'importation,
 
 Si aucun point temporel n'existe encore, la page des points temporels affiche un message vous invitant à en ajouter un. Vous pouvez également en ajouter depuis l'assistant d'importation.
 
-![Points temporels HFA](/images/hfa-timepoints-en.png)
+![Points temporels HFA](/images/hfa-timepoints-fr.png)
 
 ## Supprimer des données HFA
 

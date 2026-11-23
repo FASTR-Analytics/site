@@ -69,7 +69,7 @@ Après une intégration réussie, si des limites de cartes GeoJSON ne correspond
 
 ## Établissements Enquêtes FOSA
 
-Les établissements Enquêtes FOSA sont créés et mis à jour par l'importation des données de chaque point temporel, et non via un assistant d'importation distinct. Ouvrez la ligne **Établissements Enquêtes FOSA** dans la section Données pour consulter et modifier la liste des établissements HFA. Un administrateur global peut cliquer sur une ligne pour modifier les unités administratives et les colonnes facultatives de l'établissement.
+Les établissements Enquêtes FOSA sont créés et mis à jour par l'importation des données de chaque point temporel, et non via un assistant d'importation distinct. Ouvrez la ligne **Établissements Enquêtes FOSA** dans la section Données pour consulter et modifier la liste des établissements HFA. Un utilisateur disposant de l'autorisation **Configurer les données** peut cliquer sur une ligne pour modifier les unités administratives et les colonnes facultatives de l'établissement.
 
 Le panneau de gauche explique le fonctionnement de la gestion des établissements HFA. Si des établissements existent, une section **Établissements inutilisés** apparaît avec un bouton **Supprimer** qui compte puis confirme la suppression des établissements sans données ni pondérations.
 
@@ -79,13 +79,13 @@ Le mot de passe DHIS2 est chiffré et stocké sur le serveur, et n'est jamais re
 
 Une fois importés, les établissements apparaissent sous forme de tableau consultable affichant tous les enregistrements avec leurs rattachements aux zones administratives et leurs attributs. Pour mettre à jour les établissements SNIS - ajouter des établissements, corriger des rattachements ou actualiser des attributs - lancez un nouvel import avec le mode d'intégration approprié.
 
-Pour supprimer tous les établissements d'un registre, ouvrez la ligne de ce registre et cliquez sur **Supprimer les établissements**. Cela supprime uniquement les établissements de ce registre ; les zones administratives encore référencées par l'autre registre sont conservées. Seuls les administrateurs globaux peuvent supprimer des établissements.
+Pour supprimer tous les établissements d'un registre, ouvrez la ligne de ce registre et cliquez sur **Supprimer les établissements**. Cela supprime uniquement les établissements de ce registre ; les zones administratives encore référencées par l'autre registre sont conservées. Seuls les utilisateurs disposant de l'autorisation **Configurer les données** peuvent supprimer des établissements.
 
 ![Managing Existing Facilities FR](/images/managing-existing-facilities-fr.png)
 
 ## Pondérations d'échantillonnage des établissements HFA
 
-Pour les analyses HFA nécessitant des estimations pondérées, vous pouvez téléverser des pondérations d'échantillonnage par établissement. Accédez à la section **Données** et cliquez sur la ligne **Pondérations d'échantillonnage** pour ouvrir le gestionnaire de pondérations. Seuls les administrateurs globaux peuvent importer ou supprimer des pondérations ; tous les utilisateurs disposant d'un accès aux données peuvent consulter le tableau et télécharger les pondérations actuelles au format CSV.
+Pour les analyses HFA nécessitant des estimations pondérées, vous pouvez téléverser des pondérations d'échantillonnage par établissement. Accédez à la section **Données** et cliquez sur la ligne **Pondérations d'échantillonnage** pour ouvrir le gestionnaire de pondérations. Seuls les utilisateurs disposant de l'autorisation **Configurer les données** peuvent importer ou supprimer des pondérations ; tous les utilisateurs disposant d'un accès aux données peuvent consulter le tableau et télécharger les pondérations actuelles au format CSV.
 
 Préparez un fichier CSV avec une colonne d'identifiant d'établissement, une colonne de pondération et, facultativement, une colonne de strate d'échantillonnage. Chaque importation couvre un point temporel. Importez d'abord les données du point temporel : l'importation des données crée les établissements HFA, et une pondération pour un établissement absent de la liste est ignorée. Une cellule de pondération vide signifie que l'établissement n'est pas dans l'échantillon de ce round et sera ignorée.
 

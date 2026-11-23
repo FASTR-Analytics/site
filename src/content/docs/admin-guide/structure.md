@@ -69,7 +69,7 @@ After a successful integration, if any previously uploaded GeoJSON map boundarie
 
 ## HFA facilities
 
-HFA facilities are created and updated by each time point's data import rather than through a separate facility import wizard. Open the **HFA Facilities** row in the Data section to view and edit the HFA facility list. A global administrator can click any row to edit that facility's admin areas and optional columns.
+HFA facilities are created and updated by each time point's data import rather than through a separate facility import wizard. Open the **HFA Facilities** row in the Data section to view and edit the HFA facility list. A user with the **Configure data** permission can click any row to edit that facility's admin areas and optional columns.
 
 The panel on the left shows an explanation of how HFA facilities are managed. If facilities exist, an **Unused facilities** section appears with a **Remove** button that counts and then confirms the deletion of facilities that have no data and no weights.
 
@@ -79,13 +79,13 @@ For DHIS2 import, FASTR uses the instance's stored DHIS2 connection. The DHIS2 p
 
 Once imported, facilities appear as a searchable table showing all records with their admin area assignments and attributes. To update HMIS facilities — adding facilities, correcting assignments, or updating attributes — run another import with the appropriate integration mode.
 
-To delete all facilities in a registry, open that registry's row and click **Delete facilities**. This removes only the facilities in that registry; admin areas that are still referenced by the other registry are preserved. Only global administrators can delete facilities.
+To delete all facilities in a registry, open that registry's row and click **Delete facilities**. This removes only the facilities in that registry; admin areas that are still referenced by the other registry are preserved. Only users with the **Configure data** permission can delete facilities.
 
 ![Managing Existing Facilities](/images/managing-existing-facilities-en.png)
 
 ## HFA facility sampling weights
 
-For HFA analyses that require weighted estimates, you can upload per-facility sampling weights. Open the **Data** section and click the **Sampling weights** row to open the weights manager. Only global administrators can import or delete weights; all users with data access can view the weights table and download the current weights as a CSV.
+For HFA analyses that require weighted estimates, you can upload per-facility sampling weights. Open the **Data** section and click the **Sampling weights** row to open the weights manager. Only users with the **Configure data** permission can import or delete weights; all users with data access can view the weights table and download the current weights as a CSV.
 
 Prepare a CSV file with a facility ID column, a weight column, and optionally a sampling stratum column. Each import covers one time point. Import the time point's data first: the data import creates the HFA facilities, and a weight for a facility not in the HFA facility list is skipped. To upload weights, select or upload your CSV, then map the facility ID column, the weight column, the stratum column (optional), and the target time point. A blank weight cell means the facility is not in that round's sample and will be skipped.
 

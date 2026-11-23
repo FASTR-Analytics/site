@@ -1,121 +1,82 @@
 ---
 title: Users
-description: Managing user accounts and permissions.
+description: Managing user accounts, permissions, and scope access.
 sidebar:
   order: 1
 ---
 
-Every person who accesses your FASTR instance needs a user account. This page covers how to add users, configure what they can do at the instance level, and assign them to specific projects with appropriate permissions.
+Every person who uses your FASTR instance needs to be listed on the **Users** page. This page covers how to add people, what the instance permissions allow, and how to limit someone to specific scopes.
 
-## Understanding the permission model
+## Understanding access
 
-FASTR uses a two-level permission system. Instance-level permissions control what someone can do across the entire platform - things like viewing user lists, uploading data, or creating projects. Project-level permissions control what they can do within individual projects - viewing visualizations, running modules, or changing settings.
+Three separate things decide what a person can do in FASTR, and it helps to keep them apart.
 
-Instance administrators have full access to everything and don't need individual permissions configured. For everyone else, you'll set both instance permissions (what they can access globally) and project permissions (what they can do in each project they're assigned to).
+**Instance permissions** control access to the parts of the platform that affect everyone: the data, the results packages, and the user list. Most people who only build slide decks and reports need none of them.
 
-This separation means you can have someone who manages data uploads instance-wide but only has viewer access to certain projects, or someone who administers one project but has no access to another. The flexibility is useful when different teams work with different data or when you need to restrict sensitive analyses.
+**Scope access** controls which data a person can reach. By default everyone has access to all data. You can instead limit someone to one or more scopes - for example, a regional team that should only see its own region. A person limited to scopes sees only products that use those scopes, and reads data only through them.
+
+**Product access** controls who can view or edit each slide deck, report, or visualization. It is set by the product's owner, not on the Users page - see [Products](/user-guide/products/) in the User guide.
+
+**Instance administrators** have full access to everything: every permission, all data, and owner access to every product.
 
 ## Adding users
 <!-- help#users-add -->
 
-Open the **Users** tab from the main navigation. Click **Add users** to open the add dialog. Enter one or more email addresses - you can paste a list separated by commas, semicolons, or line breaks. Click **Add** to create the accounts.
+Open the **Users** page and click **Add users**. Enter one or more email addresses - you can paste a list separated by commas, semicolons, or line breaks - and click **Save**.
 
-![Add Users](/images/users-en.png)
+New users have no instance permissions and access to all data. They can sign in, open any product that is shared with everyone, and create their own products. Someone who signs in before they've been added sees a message asking them to wait for an administrator.
 
-New users are created with no special permissions - they can log in but won't see any projects or data until you configure their access. After adding someone, click on their row in the user list to open their profile and set up permissions.
+For larger groups, click **Batch import** and upload a CSV file with two columns: `email` and `is_global_admin` (`true` or `false`). The **Replace all existing users** option removes everyone not in the file, so use it with care.
 
-For bulk onboarding, use **Batch import from CSV** to upload a file containing email addresses and admin status. The CSV needs two columns: `email` and `is_global_admin`. This is faster than adding users one by one when you're setting up a new instance or onboarding a large team.
-
-## Changing a user's email address
-
-Users can change their own email address from their profile. Open your profile by clicking the account icon in the top navigation bar and choosing **Your profile**, then find the **Email address** card. Click **Change email** to open the change email dialog.
-
-The change applies to every FASTR instance the user has access to, keeping all permissions and history. The process has three steps: enter the new address and confirm the list of affected instances; verify the code sent to the new address; then review the per-instance outcome. If any instance could not be updated, the old address stays on the account and a **Retry** option is available. Once all instances report success, the page reloads automatically.
-
-Administrators with the **Configure users** permission can also rename another user's email address directly from the **Users** tab using the **Rename email** action. This performs the same fleet-wide rename without requiring the user to initiate it themselves — useful as a support fallback when a user cannot log in under their old address. Only a global administrator can rename another global administrator's email address.
-
-## Editing a user's name
-
-Administrators can edit another user's display name directly from the Users tab. Open the user's profile by clicking their row, then click **Edit name** in the **Sign-in details** section. Enter the new first and last name and click **Save**. The name change applies to the user's account across every FASTR instance. A user can change their own name through their Clerk profile.
+![Users page](/images/users-table-en.png)
 
 ## Instance permissions
 <!-- help#users-instance-permissions -->
 
-Instance permissions determine what someone can access across your entire FASTR instance. Click on a user in the list to open their profile, then scroll to the permissions section.
+Click a user's row to open their profile. If you can manage users, the **User Permissions** card shows four checkboxes:
 
-If you toggle **Instance administrator**, that user gets full access to everything - they can manage users, upload data, configure settings, and access all products. Use this for people who need to maintain the platform itself, not for regular analysts. Only a global administrator can grant or revoke the administrator flag.
+- **View data** - open the **Data** and **Results** pages, look inside results packages, and download data files
+- **Configure data** - import and delete data, edit facilities, indicators, and maps, change instance settings, and generate, pin, and delete results packages
+- **View users** - open the **Users** page
+- **Configure users** - add and remove users, change their permissions, and set their scope access
 
-For non-administrators, you can enable specific permissions:
+Configure includes view: someone with **Configure data** can also do everything **View data** allows. Click **Save changes** after ticking boxes.
 
-- **Configure users** - Add, remove, and modify other user accounts
-- **View users** - See the user list without making changes
-- **Configure data** - Import and modify structure and datasets
-- **View data** - Access data pages and results packages without modifying
+The **Instance permissions** card shows whether the user is an instance administrator. Only administrators can use **Make admin** or **Make non-admin**. Reserve administrator access for people who maintain the platform itself.
 
-Most analysts need only "View data" at the instance level. Their main work happens within products and projects where you'll configure more detailed permissions.
+You cannot change your own permissions, and only an administrator can change another administrator's account.
 
-![Instance Users Permissions](/images/user-permissions-instance-en.png)
+![User profile](/images/users-profile-en.png)
 
 ## Scope access
+<!-- help#users-scopes -->
 
-Global administrators can restrict which scopes a user may access. By default every user has access to all scopes. To restrict a user, open their profile and scroll to the **Scopes** card. Uncheck **All data** and select the specific scopes the user may use. A restricted user sees only products that carry one of their granted scopes, and data reads pass only through those scopes — including in Explore. The **View data** and **Configure data** permission bits are suppressed for a restricted user regardless of what is stored, because those permissions expose raw package data that bypasses scope filtering. A restricted user also cannot view or configure data, view logs, or change scopes, whatever their other permissions say.
+The **Scopes** card on a user's profile controls which data they can reach. Leave **All data** ticked for full access. Untick it to choose one or more scopes from the list; the user then sees only products that carry one of those scopes, and reads data only through them, including on the **Explore** page.
 
-Scope access can only be set by a global administrator, even if another user holds the **Configure users** permission. A restricted user who holds the **Configure users** permission cannot grant the global administrator flag to others, because doing so would effectively lift their own scope restriction. A restricted manager also cannot create new users or change any user's scope access, since new users would otherwise be unrestricted.
+Limiting someone to scopes also removes their instance permissions, whatever the checkboxes say. They can't open the Data, Results, or Users pages, and they can't create or change scopes. If you untick **All data** and choose no scopes, the user sees no products at all.
 
-## Project permissions
-<!-- help#users-project-permissions -->
-
-While instance permissions control platform-wide access, project permissions determine what someone can do within specific projects. From a user's profile, scroll to the project permissions section to see a grid of all projects.
-
-Click on any project to open the permission editor for that user-project combination. You'll see checkboxes grouped into three categories:
-
-- **Analytical Products** controls access to visualizations, reports, and slide decks. "View" permissions let users see existing content; "Configure" permissions let them create and modify.
-- **Data & Modules** controls access to underlying data and analytical processing. Users who need to understand methodology might need "View metrics" or "View script code" but not "Configure modules".
-- **Project Administration** covers settings, user management within the project, logs, and backups.
-
-![Project Users Permissions](/images/user-permissions-project-en.png)
-
-Rather than checking individual boxes, you can use the preset buttons at the top:
-
-- **No access** - Removes all permissions (user won't see the project)
-- **Viewer** - Can view visualizations, reports, and data but not modify anything
-- **Editor** - Can create and modify visualizations, reports, and slide decks
-- **Admin** - Full access to everything in the project
-
-These presets cover most common scenarios. Use custom combinations when you need finer control - for example, giving someone editor access to visualizations but not reports.
-
-## Default project permissions
-
-When you create a new project, existing users get default permissions based on their profile settings. Click the "New projects (default)" button at the bottom of a user's project grid to configure what permissions they'll receive automatically when new projects are created.
-
-This saves time when your organization adds projects frequently - you don't have to manually assign every user to every new project. Set defaults to "Viewer" for people who should see all analyses, or "No access" for people who only work with specific projects.
-
-## Organisation
-
-Each user can record their organisation from their profile. Open your profile by clicking the account icon in the top navigation bar and choosing **Your profile**, then scroll to the **Account** section. Click **Edit** next to **Organisation** to update the value in place. This field contains the user's own words and is visible to administrators on the **Users** page.
-
-## Personal access tokens
-
-FASTR supports personal access tokens (PATs) for integrations and API access. From your profile, navigate to the **Personal access tokens** section to create, list, and revoke tokens. Each token has a label you choose when creating it. The raw token value is shown only once at creation — copy it immediately. A token's last-used date updates each time it authenticates, making it easy to identify tokens that are no longer in use. Revoke any token you no longer need.
-
-Personal access tokens are self-service: you can only manage your own tokens, not those of other users.
+The scopes themselves are defined on the **Scopes** page - see [Scopes](/admin-guide/scopes/).
 
 ## Bulk operations
 
-The user list supports bulk selection for common operations. Check the boxes next to multiple users, then use the action buttons that appear:
+Tick several users in the table to act on all of them at once:
 
-- **Make admin** / **Make non-admin** - Toggle administrator status (global administrators only)
-- **Edit permissions** - Update instance permissions for all selected users at once
-- **Edit scopes** - Replace the scope access of all selected users at once. Global administrators always have every scope and are skipped. This action is available to global administrators and to holders of the **Configure users** permission who are not themselves scope-restricted.
-- **Download users** - Export a CSV of selected users
-- **Remove** - Delete selected user accounts
+- **Make admin** / **Make non-admin** - change administrator status (administrators only)
+- **Edit permissions** - set the four permissions; each box cycles between unchanged, on, and off
+- **Edit scopes** - replace the selected users' scope access in one step
+- **Download users** - export the selected users as a CSV file
+- **Remove** - delete the selected accounts
 
-Bulk operations are useful when onboarding teams or when access policies change. For example, if a new project starts and several people need editor access, select them all and update their permissions in one step.
+**Download** in the toolbar exports the whole visible list.
 
-![Project Users Permissions Bulk](/images/user-permissions-project-multiple-en.png)
+## Names, email addresses, and organisation
+
+People manage their own details from their profile: click the account icon in the header and choose **Your profile**. There they can set their **Organisation** and use **Change email** to move their account to a new address. The new address is confirmed with a code, and the change applies on every FASTR instance the person uses, keeping their access and history.
+
+Administrators can correct another person's name: open the user's profile on the **Users** page and click **Edit name** in the **Login details** card. The new name applies on every FASTR instance.
 
 ## Removing users
 
-To remove a single user, open their profile and click **Remove this user** at the bottom. For multiple users, select them in the list and use the bulk **Remove** action. Removing a user deletes their account and revokes all access immediately - they won't be able to log in and any active sessions will end.
+To remove a single user, open their profile and click **Remove this user**. For several users, select them and use **Remove**. Removal takes effect immediately - the person can no longer open the instance.
 
-Removal is permanent. If someone needs temporary access suspension, consider setting their permissions to "No access" on all projects instead of deleting the account. This preserves their login if they need to return later.
+Products the person owned stay in place but no longer have an owner. Administrators can still manage them and can set a new owner from **Manage access…**.

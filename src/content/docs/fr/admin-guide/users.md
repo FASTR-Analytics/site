@@ -1,121 +1,82 @@
 ---
 title: Utilisateurs
-description: Gestion des comptes utilisateurs et des permissions.
+description: Gestion des comptes utilisateurs, des permissions et de l'accès par portée.
 sidebar:
   order: 1
 ---
 
-Toute personne qui accède à votre instance FASTR a besoin d'un compte utilisateur. Cette page explique comment ajouter des utilisateurs, configurer ce qu'ils peuvent faire au niveau de l'instance et les affecter à des projets spécifiques avec les permissions appropriées.
+Toute personne qui utilise votre instance FASTR doit figurer sur la page **Utilisateurs**. Cette page explique comment ajouter des personnes, ce que permettent les permissions d'instance et comment limiter quelqu'un à certaines portées.
 
-## Comprendre le modèle de permissions
+## Comprendre les accès
 
-FASTR utilise un système de permissions à deux niveaux. Les permissions au niveau de l'instance déterminent ce qu'une personne peut faire sur l'ensemble de la plateforme - comme consulter les listes d'utilisateurs, charger des données ou créer des projets. Les permissions au niveau du projet déterminent ce qu'elle peut faire au sein de chaque projet - consulter les visualisations, exécuter des modules ou modifier des paramètres.
+Trois éléments distincts déterminent ce qu'une personne peut faire dans FASTR, et il est utile de bien les distinguer.
 
-Les administrateurs de l'instance disposent d'un accès complet à tout et n'ont pas besoin de permissions individuelles configurées. Pour tous les autres, vous définirez à la fois les permissions d'instance (ce à quoi ils peuvent accéder globalement) et les permissions de projet (ce qu'ils peuvent faire dans chaque projet auquel ils sont affectés).
+Les **permissions d'instance** contrôlent l'accès aux parties de la plateforme qui concernent tout le monde : les données, les paquets de résultats et la liste des utilisateurs. La plupart des personnes qui se contentent de créer des présentations et des rapports n'en ont besoin d'aucune.
 
-Cette séparation vous permet d'avoir une personne qui gère les chargements de données à l'échelle de l'instance, mais qui ne dispose que d'un accès en lecture à certains projets, ou une personne qui administre un projet mais n'a aucun accès à un autre. Cette flexibilité est utile lorsque différentes équipes travaillent avec des données différentes ou lorsque vous devez restreindre l'accès à des analyses sensibles.
+L'**accès par portée** contrôle les données auxquelles une personne peut accéder. Par défaut, tout le monde a accès à toutes les données. Vous pouvez à la place limiter quelqu'un à une ou plusieurs portées - par exemple, une équipe régionale qui ne doit voir que sa propre région. Une personne limitée à des portées ne voit que les produits qui utilisent ces portées et ne consulte les données qu'à travers elles.
+
+L'**accès aux produits** détermine qui peut consulter ou modifier chaque présentation, rapport ou visualisation. Il est défini par le propriétaire du produit, et non sur la page Utilisateurs - voir [Produits](/fr/user-guide/products/) dans le Guide de l'utilisateur.
+
+Les **administrateurs de l'instance** ont un accès complet à tout : toutes les permissions, toutes les données et un accès propriétaire à chaque produit.
 
 ## Ajouter des utilisateurs
 <!-- help#users-add -->
 
-Ouvrez l'onglet **Utilisateurs** depuis la navigation principale. Cliquez sur **Ajouter des utilisateurs** pour ouvrir la boîte de dialogue d'ajout. Saisissez une ou plusieurs adresses e-mail - vous pouvez coller une liste séparée par des virgules, des points-virgules ou des sauts de ligne. Cliquez sur **Ajouter** pour créer les comptes.
+Ouvrez la page **Utilisateurs** et cliquez sur **Ajouter des utilisateurs**. Saisissez une ou plusieurs adresses e-mail - vous pouvez coller une liste séparée par des virgules, des points-virgules ou des sauts de ligne - puis cliquez sur **Sauvegarder**.
 
-![Ajouter des utilisateurs](/images/users-en.png)
+Les nouveaux utilisateurs n'ont aucune permission d'instance et ont accès à toutes les données. Ils peuvent se connecter, ouvrir tout produit partagé avec tout le monde et créer leurs propres produits. Une personne qui se connecte avant d'avoir été ajoutée voit un message lui demandant d'attendre l'intervention d'un administrateur.
 
-Les nouveaux utilisateurs sont créés sans permission particulière - ils peuvent se connecter, mais ne verront aucun projet ni aucune donnée tant que vous n'aurez pas configuré leur accès. Après avoir ajouté quelqu'un, cliquez sur sa ligne dans la liste des utilisateurs pour ouvrir son profil et définir ses permissions.
+Pour des groupes plus importants, cliquez sur **Importation groupée** et téléversez un fichier CSV à deux colonnes : `email` et `is_global_admin` (`true` ou `false`). L'option **Remplacer tous les utilisateurs existants** supprime toutes les personnes absentes du fichier ; utilisez-la donc avec précaution.
 
-Pour intégrer un grand nombre d'utilisateurs, utilisez **Importer par lot depuis un CSV** afin de charger un fichier contenant les adresses e-mail et le statut d'administrateur. Le fichier CSV doit comporter deux colonnes : `email` et `is_global_admin`. C'est plus rapide que d'ajouter les utilisateurs un par un lorsque vous configurez une nouvelle instance ou intégrez une équipe nombreuse.
-
-## Modifier l'adresse e-mail d'un utilisateur
-
-Les utilisateurs peuvent modifier leur propre adresse e-mail depuis leur profil. Ouvrez votre profil en cliquant sur l'icône de compte dans la barre de navigation supérieure et en choisissant **Votre profil**, puis trouvez la carte **Adresse e-mail**. Cliquez sur **Changer d'e-mail** pour ouvrir la boîte de dialogue de changement d'e-mail.
-
-Le changement s'applique à toutes les instances FASTR auxquelles l'utilisateur a accès, en conservant toutes les permissions et l'historique. Le processus comporte trois étapes : saisir la nouvelle adresse et confirmer la liste des instances concernées ; vérifier le code envoyé à la nouvelle adresse ; puis examiner le résultat par instance. Si une instance n'a pas pu être mise à jour, l'ancienne adresse reste sur le compte et une option **Réessayer** est disponible. Une fois que toutes les instances signalent un succès, la page se recharge automatiquement.
-
-Les administrateurs disposant de la permission **Configurer les utilisateurs** peuvent également renommer l'adresse e-mail d'un autre utilisateur directement depuis l'onglet **Utilisateurs** à l'aide de l'action **Renommer l'e-mail**. Cela effectue le même renommage sur l'ensemble du réseau sans que l'utilisateur ait besoin de l'initier lui-même — utile comme solution de secours lorsqu'un utilisateur ne peut pas se connecter avec son ancienne adresse. Seul un administrateur global peut renommer l'adresse e-mail d'un autre administrateur global.
-
-## Modifier le nom d'un utilisateur
-
-Les administrateurs peuvent modifier le nom d'affichage d'un autre utilisateur directement depuis l'onglet Utilisateurs. Ouvrez le profil de l'utilisateur en cliquant sur sa ligne, puis cliquez sur **Modifier le nom** dans la section **Données de connexion**. Saisissez le nouveau prénom et nom et cliquez sur **Enregistrer**. Le changement de nom s'applique au compte de l'utilisateur sur toutes les instances FASTR. Un utilisateur peut modifier son propre nom via son profil Clerk.
+![Page Utilisateurs](/images/users-table-fr.png)
 
 ## Permissions d'instance
 <!-- help#users-instance-permissions -->
 
-Les permissions d'instance déterminent ce à quoi une personne peut accéder sur l'ensemble de votre instance FASTR. Cliquez sur un utilisateur dans la liste pour ouvrir son profil, puis faites défiler jusqu'à la section des permissions.
+Cliquez sur la ligne d'un utilisateur pour ouvrir son profil. Si vous pouvez gérer les utilisateurs, la carte **Droits d'accès de l'utilisateur** affiche quatre cases à cocher :
 
-Si vous activez **Administrateur de l'instance**, cet utilisateur obtient un accès complet à tout - il peut gérer les utilisateurs, charger des données, configurer les paramètres et accéder à tous les produits. Réservez cette option aux personnes qui doivent maintenir la plateforme elle-même, et non aux analystes ordinaires. Seul un administrateur global peut accorder ou révoquer le statut d'administrateur.
+- **Voir les données** - ouvrir les pages **Données** et **Résultats**, consulter le contenu des paquets de résultats et télécharger des fichiers de données
+- **Configurer les données** - importer et supprimer des données, modifier les établissements, les indicateurs et les cartes, changer les paramètres de l'instance, et générer, épingler et supprimer des paquets de résultats
+- **Voir les utilisateurs** - ouvrir la page **Utilisateurs**
+- **Configurer les utilisateurs** - ajouter et retirer des utilisateurs, modifier leurs permissions et définir leur accès par portée
 
-Pour les non-administrateurs, vous pouvez activer des permissions spécifiques :
+La configuration inclut la consultation : une personne disposant de **Configurer les données** peut aussi faire tout ce que permet **Voir les données**. Cliquez sur **Sauvegarder les modifications** après avoir coché les cases.
 
-- **Configurer les utilisateurs** - Ajouter, supprimer et modifier d'autres comptes utilisateurs
-- **Consulter les utilisateurs** - Voir la liste des utilisateurs sans apporter de modifications
-- **Configurer les données** - Importer et modifier la structure et les jeux de données
-- **Consulter les données** - Accéder aux pages de données et aux lots de résultats sans les modifier
+La carte **Droits d'accès à l'instance** indique si l'utilisateur est administrateur de l'instance. Seuls les administrateurs peuvent utiliser **Attribuer le rôle d'administrateur** ou **Retirer le rôle d'administrateur**. Réservez l'accès administrateur aux personnes qui assurent la maintenance de la plateforme elle-même.
 
-La plupart des analystes n'ont besoin que de « Consulter les données » au niveau de l'instance. Leur travail principal se déroule au sein des produits et des projets, où vous configurerez des permissions plus détaillées.
+Vous ne pouvez pas modifier vos propres permissions, et seul un administrateur peut modifier le compte d'un autre administrateur.
 
-![Permissions d'instance des utilisateurs](/images/user-permissions-instance-en.png)
+![Profil utilisateur](/images/users-profile-fr.png)
 
-## Accès aux portées
+## Accès par portée
+<!-- help#users-scopes -->
 
-Les administrateurs globaux peuvent restreindre les portées auxquelles un utilisateur peut accéder. Par défaut, chaque utilisateur a accès à toutes les portées. Pour restreindre un utilisateur, ouvrez son profil et faites défiler jusqu'à la carte **Portées**. Décochez **Toutes les données** et sélectionnez les portées spécifiques auxquelles l'utilisateur peut accéder. Un utilisateur restreint ne voit que les produits portant l'une de ses portées accordées, et les lectures de données ne passent que par ces portées — y compris dans Explorer. Les bits de permission **Consulter les données** et **Configurer les données** sont supprimés pour un utilisateur restreint, quel que soit ce qui est enregistré, car ces permissions exposent des données de paquet brutes qui contournent le filtrage des portées. Un utilisateur restreint ne peut pas non plus consulter ni configurer les données, consulter les journaux ni modifier les portées, quelles que soient ses autres permissions.
+La carte **Portées** du profil d'un utilisateur contrôle les données auxquelles il peut accéder. Laissez **Toutes les données** coché pour un accès complet. Décochez-la pour choisir une ou plusieurs portées dans la liste ; l'utilisateur ne voit alors que les produits associés à l'une de ces portées et ne consulte les données qu'à travers elles, y compris sur la page **Explorer**.
 
-L'accès aux portées ne peut être défini que par un administrateur global, même si un autre utilisateur dispose de la permission **Configurer les utilisateurs**. Un utilisateur restreint disposant de la permission **Configurer les utilisateurs** ne peut pas accorder le statut d'administrateur global à d'autres utilisateurs, car cela lui permettrait de lever sa propre restriction de portée. Un gestionnaire restreint ne peut pas non plus créer de nouveaux utilisateurs ni modifier l'accès aux portées d'un autre utilisateur, car les nouveaux utilisateurs seraient autrement sans restriction.
+Limiter quelqu'un à des portées lui retire également ses permissions d'instance, quel que soit l'état des cases à cocher. Il ne peut pas ouvrir les pages Données, Résultats ou Utilisateurs, ni créer ou modifier des portées. Si vous décochez **Toutes les données** sans choisir de portée, l'utilisateur ne voit aucun produit.
 
-## Permissions de projet
-<!-- help#users-project-permissions -->
+Les portées elles-mêmes sont définies sur la page **Portées** - voir [Portées](/fr/admin-guide/scopes/).
 
-Alors que les permissions d'instance contrôlent l'accès à l'échelle de la plateforme, les permissions de projet déterminent ce qu'une personne peut faire au sein de projets spécifiques. Depuis le profil d'un utilisateur, faites défiler jusqu'à la section des permissions de projet pour voir une grille de tous les projets.
+## Opérations groupées
 
-Cliquez sur un projet pour ouvrir l'éditeur de permissions pour cette combinaison utilisateur-projet. Vous verrez des cases à cocher regroupées en trois catégories :
+Cochez plusieurs utilisateurs dans le tableau pour agir sur tous à la fois :
 
-- **Produits analytiques** contrôle l'accès aux visualisations, aux rapports et aux présentations. Les permissions « Consulter » permettent aux utilisateurs de voir le contenu existant ; les permissions « Configurer » leur permettent de créer et de modifier.
-- **Données et modules** contrôle l'accès aux données sous-jacentes et au traitement analytique. Les utilisateurs qui ont besoin de comprendre la méthodologie peuvent avoir besoin de « Consulter les métriques » ou « Consulter le code du script », mais pas de « Configurer les modules ».
-- **Administration du projet** couvre les paramètres, la gestion des utilisateurs au sein du projet, les journaux et les sauvegardes.
+- **Attribuer le rôle d'administrateur** / **Retirer le rôle d'administrateur** - modifier le statut d'administrateur (administrateurs uniquement)
+- **Modifier les droits d'accès** - définir les quatre permissions ; chaque case alterne entre inchangé, activé et désactivé
+- **Modifier les portées** - remplacer en une seule étape l'accès par portée des utilisateurs sélectionnés
+- **Télécharger les utilisateurs** - exporter les utilisateurs sélectionnés dans un fichier CSV
+- **Supprimer** - supprimer les comptes sélectionnés
 
-![Permissions de projet des utilisateurs](/images/user-permissions-project-en.png)
+**Télécharger**, dans la barre d'outils, exporte l'ensemble de la liste affichée.
 
-Plutôt que de cocher des cases individuelles, vous pouvez utiliser les boutons prédéfinis en haut :
+## Noms, adresses e-mail et organisation
 
-- **Aucun accès** - Supprime toutes les permissions (l'utilisateur ne verra pas le projet)
-- **Lecteur** - Peut consulter les visualisations, les rapports et les données, mais ne peut rien modifier
-- **Éditeur** - Peut créer et modifier les visualisations, les rapports et les présentations
-- **Administrateur** - Accès complet à tout dans le projet
+Chaque personne gère ses propres informations depuis son profil : cliquez sur l'icône de compte dans l'en-tête et choisissez **Votre profil**. Elle peut y indiquer son **Organisation** et utiliser **Changer d'e-mail** pour transférer son compte vers une nouvelle adresse. La nouvelle adresse est confirmée par un code, et le changement s'applique sur toutes les instances FASTR que la personne utilise, en conservant ses accès et son historique.
 
-Ces préréglages couvrent la plupart des scénarios courants. Utilisez des combinaisons personnalisées lorsque vous avez besoin d'un contrôle plus fin - par exemple, en donnant à quelqu'un un accès éditeur aux visualisations, mais pas aux rapports.
+Les administrateurs peuvent corriger le nom d'une autre personne : ouvrez son profil depuis la page **Utilisateurs** et cliquez sur **Modifier le nom** dans la carte **Identifiants**. Le nouveau nom s'applique sur toutes les instances FASTR.
 
-## Permissions de projet par défaut
+## Retirer des utilisateurs
 
-Lorsque vous créez un nouveau projet, les utilisateurs existants reçoivent des permissions par défaut en fonction des paramètres de leur profil. Cliquez sur le bouton « Nouveaux projets (par défaut) » au bas de la grille de projets d'un utilisateur pour configurer les permissions qu'il recevra automatiquement lors de la création de nouveaux projets.
+Pour retirer un seul utilisateur, ouvrez son profil et cliquez sur **Supprimer cet utilisateur**. Pour plusieurs utilisateurs, sélectionnez-les et utilisez **Supprimer**. Le retrait prend effet immédiatement - la personne ne peut plus ouvrir l'instance.
 
-Cela fait gagner du temps lorsque votre organisation ajoute fréquemment des projets - vous n'avez pas à affecter manuellement chaque utilisateur à chaque nouveau projet. Définissez les valeurs par défaut sur « Lecteur » pour les personnes qui doivent voir toutes les analyses, ou sur « Aucun accès » pour celles qui ne travaillent que sur des projets spécifiques.
-
-## Organisation
-
-Chaque utilisateur peut renseigner son organisation depuis son profil. Ouvrez votre profil en cliquant sur l'icône de compte dans la barre de navigation supérieure et en choisissant **Votre profil**, puis faites défiler jusqu'à la section **Compte**. Cliquez sur **Modifier** à côté de **Organisation** pour mettre à jour la valeur directement. Ce champ contient les propres mots de l'utilisateur et est visible par les administrateurs sur la page **Utilisateurs**.
-
-## Jetons d'accès personnels
-
-FASTR prend en charge les jetons d'accès personnels (PAT) pour les intégrations et l'accès à l'API. Depuis votre profil, accédez à la section **Jetons d'accès personnels** pour créer, consulter et révoquer des jetons. Chaque jeton porte un libellé que vous choisissez à sa création. La valeur brute du jeton n'est affichée qu'une seule fois à la création — copiez-la immédiatement. La date de dernière utilisation d'un jeton se met à jour à chaque authentification, ce qui permet d'identifier facilement les jetons qui ne sont plus utilisés. Révoquez tout jeton dont vous n'avez plus besoin.
-
-Les jetons d'accès personnels sont en libre-service : vous ne pouvez gérer que vos propres jetons, pas ceux des autres utilisateurs.
-
-## Opérations par lot
-
-La liste des utilisateurs prend en charge la sélection par lot pour les opérations courantes. Cochez les cases à côté de plusieurs utilisateurs, puis utilisez les boutons d'action qui apparaissent :
-
-- **Définir comme administrateur** / **Retirer le statut d'administrateur** - Activer ou désactiver le statut d'administrateur (administrateurs globaux uniquement)
-- **Modifier les permissions** - Mettre à jour les permissions d'instance de tous les utilisateurs sélectionnés en une seule fois
-- **Modifier les portées** - Remplacer l'accès aux portées de tous les utilisateurs sélectionnés en une seule fois. Les administrateurs globaux ont toujours accès à toutes les portées et sont ignorés. Cette action est disponible pour les administrateurs globaux et pour les titulaires de la permission **Configurer les utilisateurs** qui ne sont pas eux-mêmes restreints par portée.
-- **Télécharger les utilisateurs** - Exporter un fichier CSV des utilisateurs sélectionnés
-- **Supprimer** - Supprimer les comptes utilisateurs sélectionnés
-
-Les opérations par lot sont utiles lors de l'intégration d'équipes ou lorsque les politiques d'accès changent. Par exemple, si un nouveau projet démarre et que plusieurs personnes ont besoin d'un accès éditeur, sélectionnez-les toutes et mettez à jour leurs permissions en une seule étape.
-
-![Permissions de projet des utilisateurs par lot](/images/user-permissions-project-multiple-en.png)
-
-## Supprimer des utilisateurs
-
-Pour supprimer un seul utilisateur, ouvrez son profil et cliquez sur **Supprimer cet utilisateur** en bas. Pour plusieurs utilisateurs, sélectionnez-les dans la liste et utilisez l'action de suppression par lot **Supprimer**. La suppression d'un utilisateur supprime son compte et révoque immédiatement tous ses accès - il ne pourra plus se connecter et toutes les sessions actives prendront fin.
-
-La suppression est définitive. Si une personne a besoin d'une suspension temporaire de son accès, envisagez de définir ses permissions sur « Aucun accès » pour tous les projets au lieu de supprimer le compte. Cela préserve son identifiant de connexion au cas où elle aurait besoin de revenir plus tard.
+Les produits dont la personne était propriétaire restent en place mais n'ont plus de propriétaire. Les administrateurs peuvent toujours les gérer et désigner un nouveau propriétaire depuis **Gérer l'accès…**.

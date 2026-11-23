@@ -1,54 +1,50 @@
 ---
 title: Guide utilisateur
-description: Travailler avec les projets, les visualisations et les rapports dans FASTR.
+description: Travailler avec les produits, les visualisations et les données dans FASTR.
 sidebar:
   order: 0
 ---
 
-La plateforme FASTR aide les gestionnaires de programmes de santé et les analystes à transformer les données sanitaires de routine en informations exploitables. Ce guide couvre les tâches quotidiennes que vous effectuerez en tant qu'utilisateur - naviguer dans les projets, comprendre les résultats analytiques, créer des visualisations et élaborer des rapports.
+La plateforme FASTR aide les gestionnaires de programmes de santé et les analystes à transformer les données sanitaires de routine en informations exploitables. Ce guide couvre les tâches quotidiennes que vous effectuez en tant qu'utilisateur - retrouver et partager du travail, explorer les résultats, créer des visualisations, et élaborer des présentations et des rapports.
 
 ## À qui s'adresse ce guide
 
-Cette section est destinée à toute personne qui travaille avec les résultats analytiques de FASTR. Cela inclut les responsables de programmes qui examinent les données de performance, les analystes de données qui créent des visualisations personnalisées et les gestionnaires qui préparent des rapports pour les parties prenantes. Vous n'avez pas besoin de gérer les utilisateurs, de charger des données ou de configurer les paramètres du système - ces tâches sont traitées dans le guide administrateur.
+Cette section s'adresse à toute personne qui travaille avec les productions analytiques de FASTR : chargés de programme qui examinent les données de performance, analystes qui créent des visualisations, et responsables qui préparent des présentations et des rapports. Vous n'avez pas besoin d'importer des données, de générer des résultats ni de gérer des utilisateurs - ces tâches sont traitées dans le [Guide administrateur](/fr/admin-guide/).
 
-Votre rôle dans FASTR détermine ce que vous pouvez faire. Les **lecteurs** peuvent parcourir les visualisations et exporter des rapports, mais ne peuvent rien modifier. Les **éditeurs** peuvent créer et modifier des visualisations, élaborer des présentations et enregistrer leur travail. Les **administrateurs** disposent d'un accès complet, y compris la configuration des modules et les paramètres des projets. Votre administrateur attribue ces rôles lorsqu'il vous ajoute à un projet.
+## Ce dont vous avez besoin
 
-## Ce dont vous aurez besoin
+Assurez-vous de pouvoir vous connecter à l'instance FASTR de votre organisation. Si un message indique que votre compte n'est pas encore approuvé, demandez à votre administrateur de vous ajouter sur la page Utilisateurs.
 
-Avant de commencer, assurez-vous de pouvoir vous connecter à l'instance FASTR de votre organisation. Votre administrateur devrait vous avoir envoyé un courriel d'invitation accompagné des instructions. Si vous rencontrez des difficultés pour accéder à la plateforme, contactez votre administrateur - il peut vérifier l'état de votre compte et vos permissions.
+Une fois connecté, vous pouvez créer vos propres produits et ouvrir tout ce qui a été partagé avec vous. Si vous vous attendez à voir une présentation ou un rapport et qu'il n'apparaît pas, demandez à son propriétaire de le partager avec vous.
 
-Vous aurez également besoin d'accéder à au moins un projet. Les projets sont des espaces de travail où se rejoignent les données, les modules et les visualisations. Si vous parvenez à vous connecter mais qu'aucun projet n'apparaît sur votre page d'accueil, demandez à votre administrateur de vous ajouter au projet concerné.
+![Page Produits](/images/user-index-products-fr.png)
 
-![User Guide Projects FR ](/images/user-guide-projects-fr.png)
+## Fonctionnement de FASTR
 
-## Comment fonctionne FASTR
+Quelques notions suffisent à expliquer l'essentiel de ce que vous verrez.
 
-Comprendre la structure de la plateforme vous aidera à y naviguer plus efficacement. FASTR organise le travail autour de trois concepts principaux.
+Les **paquets de résultats** contiennent les résultats d'analyse. Votre administrateur génère un paquet à partir des données de l'instance, et ce paquet ne change plus ensuite. Ainsi, un rapport finalisé continue d'afficher les mêmes chiffres jusqu'à ce que quelqu'un le rattache délibérément à un paquet plus récent.
 
-Les **projets** sont des espaces de travail analytiques autonomes. Chaque projet extrait un sous-ensemble spécifique des données de votre organisation - peut-être une période particulière, un ensemble de districts ou un groupe d'indicateurs. Tout ce que vous créez dans un projet utilise cette fenêtre de données, ce qui garantit la cohérence entre tous les résultats.
+Les **portées** sont des fenêtres de données nommées - par exemple, une région, un ensemble d'années ou un groupe d'indicateurs. La portée **Toutes les données** n'a aucune limite. Certaines personnes sont limitées à des portées particulières et ne voient que les produits et les données qu'elles contiennent.
 
-Les **modules** sont les moteurs analytiques qui traitent vos données. Ils exécutent des scripts R qui transforment les données sanitaires brutes en résultats pertinents - taux de couverture, scores de qualité, analyses de tendances, et bien plus. Vous n'avez pas besoin d'écrire de code vous-même ; les modules produisent automatiquement des résultats une fois configurés par un administrateur.
+Les **produits** sont ce que vous créez : **présentations**, **rapports** et **visualisations**. Chaque produit utilise un paquet de résultats et une portée, et a un propriétaire qui décide qui d'autre peut le consulter ou le modifier.
 
-Les **visualisations** transforment les résultats des modules en graphiques, cartes et tableaux que vous pouvez explorer, personnaliser et partager. C'est le principal moyen par lequel vous interagirez au quotidien avec les résultats analytiques.
+Les **visualisations** sont des graphiques, des cartes et des tableaux construits à partir des métriques d'un paquet. Vous pouvez en enregistrer une comme produit à part entière, ou les insérer dans des présentations et des rapports.
 
-## Annonces de nouveautés
+## Se repérer
 
-Lorsque FASTR est mis à jour, une icône de cloche apparaît dans la barre de navigation supérieure. Un point jaune sur la cloche indique la présence d'annonces non lues. Cliquez sur la cloche pour parcourir toutes les annonces, ou cliquez sur une publication pour en lire les détails complets. De nouvelles annonces peuvent également s'afficher automatiquement lors de votre connexion après une mise à jour.
+La barre de navigation à gauche vous mène à chaque partie de la plateforme. **Produits** est l'endroit où vous passerez le plus de temps. **Explorer** vous permet de parcourir les résultats d'un paquet sans rien créer. Selon vos permissions, vous pouvez aussi voir **Résultats**, **Portées**, **Données**, **Ressources** et **Utilisateurs**.
 
-## Obtenir de l'aide
-
-Cliquez sur **Aide** dans la barre de navigation supérieure pour ouvrir un menu proposant plusieurs options. **Visites guidées** vous accompagne pas à pas dans les zones clés de la plateforme et peut être relancé à tout moment. **Demander de l'aide** envoie une demande d'assistance à l'équipe FASTR. **Envoyer un commentaire** vous permet de signaler un bug, une suggestion ou de poser une question générale. **Documentation** ouvre ce site de documentation.
+Lorsque FASTR est mis à jour, une icône en forme de cloche dans l'en-tête affiche les annonces de nouveautés ; un point sur la cloche signale des annonces que vous n'avez pas encore lues. Le bouton **IA**, sur le bord droit de l'écran, ouvre l'assistant IA sur n'importe quelle page. Le menu **Aide** de l'en-tête propose des **Visites guidées** de chaque page, un moyen de demander de l'aide ou d'envoyer des commentaires, et un lien vers cette documentation. Utilisez le menu des langues pour passer de l'anglais au français ou au portugais.
 
 ## Dans cette section
 
-Les pages suivantes présentent chaque partie de la plateforme plus en détail.
+- [Produits](/fr/user-guide/products/) - Créer, organiser et partager votre travail
+- [Modules](/fr/user-guide/modules/) - Comprendre les productions et les résultats des modules
+- [Visualisations](/fr/user-guide/visualizations/) - Créer et personnaliser des graphiques, des cartes et des tableaux
+- [Explorer](/fr/user-guide/explore/) - Parcourir les tableaux, graphiques et cartes d'un paquet de résultats
+- [Présentations](/fr/user-guide/slide-decks/) - Élaborer, présenter et exporter des présentations
+- [Rapports](/fr/user-guide/reports/) - Rédiger des documents longs comportant des visualisations dynamiques
+- [Assistant IA](/fr/user-guide/ai-assistant/) - Obtenir de l'aide pour analyser des données et rédiger du contenu
 
-- [Projets](/fr/user-guide/projects/) - Naviguer dans les projets et comprendre les fenêtres de données
-- [Modules](/fr/user-guide/modules/) - Comprendre les résultats des modules
-- [Visualisations](/fr/user-guide/visualizations/) - Créer et personnaliser des graphiques, cartes et tableaux
-- [Tableaux de bord](/fr/user-guide/dashboards/) - Assembler des visualisations en tableaux de bord interactifs et partageables
-- [Présentations](/fr/user-guide/slide-decks/) - Élaborer des présentations et exporter des documents
-- [Rapports](/fr/user-guide/reports/) - Rédiger des documents détaillés intégrant des visualisations dynamiques
-- [Assistant IA](/fr/user-guide/ai-assistant/) - Obtenir de l'aide pour interpréter vos données
-
-Commencez par Projets si vous débutez avec FASTR. Si vous maîtrisez déjà la plateforme et souhaitez créer un résultat précis, rendez-vous directement à Visualisations, Tableaux de bord, Présentations ou Rapports.
+Commencez par Produits si vous découvrez FASTR. Si vous connaissez déjà la plateforme, rendez-vous directement à la page correspondant à ce que vous souhaitez créer.

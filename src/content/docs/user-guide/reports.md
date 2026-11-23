@@ -1,152 +1,84 @@
 ---
 title: Reports
-description: Writing long-form documents with embedded live figures.
+description: Writing long-form documents with live visualizations.
 sidebar:
   order: 6
 ---
 
-Reports are long-form documents you write inside FASTR - a quarterly review, a country brief, an analytical narrative. You write the text in markdown and drop in live visualizations, so the charts in the document stay tied to your data instead of being pasted-in pictures that go stale. When the report is ready, export it as a PDF, a Word document, or an HTML file.
+Reports are long-form documents you write inside FASTR - a quarterly review, a country brief, an assessment report. You write and format text much as you would in a word processor, and place live visualizations from your results package alongside it. The editor lays the document out as printed pages while you work, and you can download it as a PDF, a Word document, or an HTML file.
 
-A report is the right tool when you need prose around your numbers. If you mainly want charts on a page, a [dashboard](/user-guide/dashboards/) fits better; if you're presenting to a room, a [slide deck](/user-guide/slide-decks/) does. Reports are for the written word.
+A report is the right tool when you need prose around your numbers. If you're presenting to a room, a [slide deck](/user-guide/slide-decks/) fits better.
 
 ## Creating a report
 <!-- help#report-create -->
 
-Open the **Products** tab on your instance home screen. Reports appear as cards in the product explorer alongside slide decks and visualizations. Click **New** and choose **New report** to create one — a dialog opens where you name the report, choose its folder, results package, and scope before the editor opens. You can organise reports into folders using **New folder**, and move them between folders from their card menu.
+On the **Products** page, click **New** and choose **New report**. Give it a name, choose a folder, results package, and scope, and click **Create** - see [Products](/user-guide/products/). The report opens straight into the editor and asks you to choose a theme. Click **Apply theme**; you can change it later from the **Page** menu.
 
-To create reports, at least one results package and one scope must exist at the instance level.
+If you leave a new report without adding anything, FASTR asks whether to **Keep** it or **Delete** it.
 
-When you leave a report you created in the same session while it is still completely empty, FASTR asks whether you want to keep it or delete it.
+## The report editor
 
-## Writing in the editor
+At the top, the header shows the report's name (click it to rename), its package and scope, who else is editing, the save status, and **History**. Below are four menus - **File**, **Widgets**, **Figures**, and **Page** - and a formatting toolbar with text styles, bold, italic, underline, text size and colour, highlight, links, lists, quotes, tables, and alignment.
 
-The editor uses FASTR Markdown, so you write plain text and format it with simple marks - `#` for headings, `-` for bullet lists, `1.` for numbered lists, and pipes for tables. Bold, italic, and inline code work the way they do anywhere else. FASTR Markdown also supports `:::` blocks for callouts, stat tiles, bands, cover pages, and other structured content — the **Widgets** menu lists them all.
+The **Report tabs** panel on the left lists your headings. Click one to jump to it.
 
-Your work saves on its own as you type. A status indicator in the header shows where things stand - **Saving** while a change is in flight, **Saved** with the time of the last save once it lands, and a clear error state if a save ever fails so you know to check your connection rather than lose work.
+The report is laid out on A4 pages exactly as it will appear in the PDF, so what you see is what you'll get. Your work saves as you type, and colleagues can edit the same report at the same time - each person's **Undo** only undoes their own changes.
 
-When live collaboration is active, the save indicator changes: it shows **Live** with a green dot while edits are streaming to the server continuously, **Offline — reconnecting…** with a yellow dot if the connection drops, and **Not saving — retrying…** with a red dot if the server-side checkpoint is failing. In Live mode the REST autosave is replaced by the room's continuous checkpoint, so the indicator no longer cycles through Saving/Saved.
+![Report editor](/images/reports-editor-en.png)
 
-## Edit mode
+## Widgets and page templates
+<!-- help#report-widgets -->
 
-FASTR Markdown reports open directly in **Edit** mode — the finished page layout is what you see as you type. The markdown editor and the rendered preview are one and the same: page boxes, live visualizations, and all block styling appear in place while you write, so there is no separate View or Split toggle for this format.
+The **Widgets** menu adds structured content that would be hard to build by hand:
 
-Older plain Markdown and HTML reports retain the **Edit / Split / View** toggle. **Edit** shows the markdown source. **Split** shows the editor and rendered preview side by side. **View** renders the report as it will read when finished.
+- **Callout** - a coloured box for a note, good news, or a caution
+- **Tiles** and **Statistic** - key numbers displayed prominently
+- **Columns** - side-by-side text
+- **Pull quote** and **Full-width band** - emphasis and visual breaks
+- **Cover page** - a title page, in one of several layouts
+- **Logos…** - a row of logos, including the FASTR logos
+- **Numbered steps**, **Table of contents**, **Page break**, and **Table**
 
-![Edit and View Modes](/images/edit-and-view-modes-en.png)
+**Page template** inserts a whole pre-designed page - such as **Executive summary**, **Key findings**, **District profile**, or **Scorecard** - with marked areas for your text and visualizations. Choose where the new page should go, then click into each area to fill it.
 
-## The toolbar
-
-FASTR Markdown reports include a toolbar above the editor with two rows. The **menu row** contains **File**, **Widgets**, **Figures**, and **Page** menus. The **toolbar row** is a persistent row of formatting controls that adapts to the cursor's context.
-
-The **File** menu holds whole-document operations: download, email, rename, manage access, and duplicate. The **Widgets** menu lists every block type you can add — headings, callouts, stat tiles, tables, links, logos, cover pages, and more. The **Figures** menu lets you insert a visualization or an image. The **Page** menu controls the document's theme, background, orientation, and numbered sections.
-
-The toolbar row shows text controls (heading style, bold, italic, underline, text size, highlight, link, text colour, and list types) whenever the cursor is on a regular text line and no embed is selected. When the cursor sits on a block's own fence line or on a figure or image line, the text controls are hidden and only the block's own controls appear. When the cursor is inside a `:::` block on a text line, the block's name and its own controls appear appended to the right of the text controls. When a visualization or image is selected, the embed's controls replace the text controls entirely.
+When your cursor is inside a widget, the toolbar shows that widget's options, such as the callout type or the number of columns.
 
 ## Adding visualizations and images
 <!-- help#report-figures -->
 
-Reports hold two kinds of visual content, and the difference matters. A **visualization** is a live chart or map from the product's results package - it renders from current data and updates when that data changes. An **image** is a static file you upload, such as a diagram or a photo.
+Open the **Figures** menu and choose **New visualization…**, **Existing visualization…**, or **Image…**. A new visualization starts with the metric and preset steps described in [Visualizations](/user-guide/visualizations/). An existing visualization is inserted as a copy. Images can be uploaded or picked from your assets, with alt text for screen readers.
 
-To add a visualization, open the **Figures** menu and choose **Visualization…**. A menu lets you choose between inserting a **New visualization…** (the metric and preset wizard) or an **Existing visualization…** (a copy of a saved visualization product). To add a picture, choose **Image…** and upload a file or choose one from your project's assets. Either way, the item appears in the document as a card you can select.
+Click a visualization in the report to select it. Use **Edit visualization** to change its data or styling, **Replace visualization** to swap it, and **Size** to make it **Small**, **Medium**, **Full width**, or **Edge to edge**.
 
-Selecting a visualization or image reveals controls in the toolbar for working with it:
+Visualizations stay linked to the report's results package. When the report moves to a newer package, they show as out of date - update them one at a time or use **Update all visualizations** in the header.
 
-- **Edit visualization** opens the visualization's settings - adjust the period, disaggregation, or styling
-- **Switch** replaces the visualization with a different one, again offering new or existing
-- **Size** (FASTR Markdown only, when the embed is on its own line) sets how wide the figure is on the page: **Small**, **Medium**, **Full width** (the column, which is the default), or **Edge to edge** (the full sheet width)
-- **Delete** removes the visualization or image from the report
+## Themes and page setup
 
-Because visualizations stay linked to the results package, a report you wrote last quarter shows this quarter's numbers the next time you open it - no manual updating, no re-pasting charts.
-
-If a visualization or image cannot be loaded when you export the report, FASTR replaces it with a short notice in place of the missing item rather than aborting the export. The rest of the report exports normally.
-
-![Adding Figures and Images](/images/adding-figures-and-images-en.png)
-
-## Where the numbers come from
-
-Every visualization in a report takes its numbers from the results package and scope the report is set to use. The package and scope are shown at the top of the report. If you can edit the report, click there to change either one. Visualizations made before the change are then out of date, and an **Update all visualizations** button appears so you can refresh them together.
-
-## Adding logos
-
-FASTR Markdown reports support a **Logos** block that renders a row of logos — your organization's, partners', or FASTR's. Insert one from the **Widgets** menu. Clicking an empty logos row, or double-clicking one that already has logos, opens the logo picker where you choose which logos appear and in what order. The picker shows FASTR's built-in logos and all image files you have uploaded to the instance. Upload a new logo directly from the picker using **Upload logo**. Drag items in the chosen list to reorder them.
-
-When a logos block is selected, the toolbar shows alignment and size controls for the row.
-
-## The document outline
-
-When editing a FASTR Markdown report, a document outline sidebar appears on the left side of the editor. The outline lists every heading in the report, indented by level, and highlights the section you are currently reading. Click any heading in the outline to jump the editor to that line. To collapse the outline, click the chevron button in its header; a small **Report tabs** button on the left edge of the editor re-opens it.
-
-## Report settings
-
-Click **Settings** in the report header to open the report settings panel. Here you can change the report's name and move it to a different folder. To change the results package or geographic scope, click **Results package and scope…** from the report's card menu. Changing the package or scope affects every visualization in the report — visualizations that came from a different package or scope show an update badge.
-
-## Managing access
-
-Open the **File** menu and choose **Manage access…** to control who can view and edit the report. This opens the product access panel where you can set per-user permission levels.
-
-## Choosing a theme
-
-FASTR Markdown reports have a design theme that controls fonts, colours, and the look of every block. Open the **Page** menu and choose **Theme** to switch between built-in themes or apply a saved custom style. A custom style contributes its colour palette to a FASTR Markdown report. You can re-theme a report at any time without touching the body text.
-
-The theme picker also shows any custom styles saved by your instance's administrators. Saved styles appear alongside the built-in themes in the picker.
-
-## Viewer access
-
-When you open a report as a viewer (without edit permission), the editor loads in read-only mode. For FASTR Markdown reports, the toolbar shows only the **File** menu with download, email, and other non-editing options. The text formatting controls and widget menus are hidden.
-
-## Collaborating on a report
-
-When multiple people have the same report open, you can see where colleagues are working. Live cursors appear in the editor pane, so you know at a glance whether someone else is editing the section you are about to change. A small presence avatar also appears on the report card in the list view. Collaborators who are currently viewing the same report appear as avatar icons in the header.
-
-The editor is collaborative: remote collaborators' text selections are highlighted in their color, and hovering over a highlighted selection shows the person's name. When the AI assistant proposes a text edit that you accept, the change is rebased over any concurrent edits your colleagues made while the proposal was open - if a hunk could not be applied cleanly, the assistant lets you know which lines were skipped.
-
-When a collaborator has a visualization selected, a colored presence border appears around that visualization in the editor, with their name shown above it. If they have the visualization editor open, the border is labeled with an edit indicator so others know the visualization configuration is being actively changed.
-
-## Version history
-
-Click **History** in the report header to open the version history panel. Versions are saved automatically at the end of each editing session and grouped by day on the left side. Select any version to see a diff of what that session changed - added text is highlighted in the editor's color, removed text is shown struck through, and hovering over a change shows who made it.
-
-From the version preview you can also switch to a **Preview** view that renders the full report snapshot as it looked at that point. Use **Restore** to reset the report to that version (your current content is saved as a new version first, so nothing is lost), or **Restore as copy** to create a brand-new report from the snapshot while leaving the current one untouched.
-
-If the report has unsaved live edits that cannot be saved at the moment you request a restore, FASTR will let you know and ask you to retry once saving has recovered.
+The **Page** menu controls the look of the whole report. **Theme** applies one of a set of designed themes, each with its own fonts and colours; **All themes and saved styles…** shows them all. The same menu sets the page **Background**, turns **Numbered sections** on or off, and switches **Orientation** between portrait and landscape. **Document details** shows word, heading, and visualization counts.
 
 ## AI assistance
 
-The **AI** button opens an assistant that can help as you write. It can rewrite a passage you've selected, insert or replace visualizations, and edit existing visualizations in place - for example, changing the replicant a chart displays, adjusting its filters, or updating captions. The assistant proposes text changes for you to accept or reject in a modal before anything is applied; visualization edits are applied immediately to the live preview and saved.
+Open the AI assistant with the **AI** button on the right edge of the screen. In a report it can answer questions about the content, rewrite a section, edit wording, and add or replace visualizations. Select some text first and it works on just that part.
 
-When you open a new report that has not yet had any content added, the assistant works through a brief, sections, plan, and draft sequence before writing the full document. It first asks questions using interactive prompts, reviews the data, agrees a section structure with you, then proposes a detailed plan for your approval. If you prefer to skip straight to a draft, just say so.
+Changes to the text are shown as a proposal first - click **Accept** to apply them or **Reject** to discard them. Asked to write a report from scratch, the assistant first asks about the audience and focus, then proposes an outline before drafting. See [AI assistant](/user-guide/ai-assistant/).
 
-When you ask the assistant to write a full report, it writes the body once and then checks it automatically — laying out the pages and reviewing any new figures against the data. If the pages have problems or the figures need checking, the draft is held rather than proposed immediately. The assistant then asks you to fix specific passages using small, targeted edits. Once the draft passes its checks, it is proposed to you for acceptance or rejection in the usual diff view.
-
-See [AI assistant](/user-guide/ai-assistant/) for the full picture.
-
-## Undo and redo
-
-The report toolbar includes **Undo** and **Redo** buttons that reverse your own body-text changes without affecting your colleagues' edits. These buttons appear only when you have permission to edit the report. They operate the same history as the keyboard shortcuts Ctrl+Z and Ctrl+Shift+Z inside the editor.
-
-## Find and replace
-
-Press **Ctrl+F** (or **Cmd+F** on Mac) while the editor is focused to open the find-and-replace panel over the source text. Unlike the browser's own Ctrl+F, this panel reaches text inside collapsed blocks that are not visible in the rendered preview.
-
-## Sharing by email
-
-Click **Email** from the **File** menu to send the report as an email attachment. Enter one or more recipient addresses and an optional message. FASTR attaches the report as a PDF and sends it on your behalf.
-
-## Exporting
+## Downloading and sharing
 <!-- help#report-export -->
 
-Click **Download** to open the export options. FASTR Markdown reports offer **PDF** (paginated exactly as the editor shows), **Word (.docx)**, and **HTML file**. The PDF has exactly the pages the editor shows. The Word file keeps headings, text, tables and visualizations editable; covers, bands and tiles are pictures with their text in editable boxes on top. The HTML file is self-contained with visualizations embedded as images and reads as one continuous page.
+Choose **File** > **Download…** and pick a format:
 
-Live visualizations are rendered into the document at export time.
+- **PDF** - exactly the pages the editor shows. Best for a final document you're distributing.
+- **Word (.docx)** - a plain, editable document for colleagues who need to edit or comment. Covers, tiles, and other widgets become the text they contain.
+- **HTML file (.html)** - a single self-contained web page.
 
-![Exporting Reports](/images/exporting-reports-en.png)
+**File** > **Email this file…** sends the report to colleagues as a PDF attachment. **Make a copy…** creates your own copy. People with view access see the report read-only, with a File menu for downloading, emailing, and copying.
+
+![Download report dialog](/images/reports-download-en.png)
 
 ## Common issues
 
-**A visualization shows nothing or looks wrong**: The visualization behind it has no data for the current window, or its configuration needs a change. Select the visualization and use **Edit visualization** - see [Visualizations](/user-guide/visualizations/).
+**A visualization shows nothing or looks wrong**: Its data or filters need adjusting. Select it and click **Edit visualization** - see [Visualizations](/user-guide/visualizations/).
 
-**The status says "Save failed"**: A save didn't reach the server, usually a connection issue. Stay on the page, check your connection, and keep editing - FASTR retries; don't close the tab until you see **Saved**.
+**The status says "Save failed" or "Not saving - retrying"**: A change didn't reach the server, usually because of the connection. Keep the page open and check your connection; don't close the tab until the status shows the report is saved.
 
-**The exported file doesn't match what I see**: Export renders the current saved version. Make sure the header shows **Saved**, then download again.
-
-**Restore says saving must recover first**: If the report has live edits that are currently failing to save, the safety version cannot be created until saving resumes. Wait for the **Not saving** indicator to clear, then retry the restore.
+**A block says it continues on the next page**: The content is longer than a page. Shorten it, make a visualization smaller, or add a page break.

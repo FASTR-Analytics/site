@@ -22,9 +22,9 @@ Pour définir l'ordre de la liste utilisé par chaque axe d'indicateurs dans cha
 
 Pour voir ce qu'implique chaque type, cliquez sur **Types d'indicateurs** dans la barre d'en-tête. Pour voir les identifiants d'indicateurs spéciaux, les termes de population et les mots réservés, cliquez sur **Indicateurs spéciaux et mots réservés**.
 
-Les administrateurs globaux peuvent sélectionner des lignes dans la liste et utiliser l'action groupée **Supprimer** pour retirer les indicateurs sélectionnés, sous réserve des vérifications de dépendances habituelles. Les indicateurs individuels peuvent également être supprimés depuis l'éditeur d'indicateurs à l'aide du bouton **Supprimer** dans le pied de page. Les actions groupées **Inclure dans l'analyse** et **Exclure de l'analyse** basculent l'indicateur sur les lignes sélectionnées. L'action groupée **Importation de données DHIS2** ouvre l'assistant d'importation DHIS2 présélectionné avec les indicateurs choisis.
+Les utilisateurs disposant de l'autorisation **Configurer les données** peuvent sélectionner des lignes dans la liste et utiliser l'action groupée **Supprimer** pour retirer les indicateurs sélectionnés, sous réserve des vérifications de dépendances habituelles. Les indicateurs individuels peuvent également être supprimés depuis l'éditeur d'indicateurs à l'aide du bouton **Supprimer** dans le pied de page. Les actions groupées **Inclure dans l'analyse** et **Exclure de l'analyse** basculent l'indicateur sur les lignes sélectionnées. L'action groupée **Importation de données DHIS2** ouvre l'assistant d'importation DHIS2 présélectionné avec les indicateurs choisis.
 
-Depuis le menu de débordement de la barre d'outils, les administrateurs globaux ont également accès à deux actions de maintenance occasionnelles : **Télécharger** exporte le dictionnaire d'indicateurs au format CSV et **Actualiser les noms DHIS2** lit le nom actuel de chaque indicateur élément DHIS2 depuis DHIS2 et le stocke avec l'indicateur. Après l'actualisation, le résultat indique combien de noms ont été actualisés, combien étaient déjà à jour, quels indicateurs pointent vers des formules DHIS2 plutôt que vers des éléments de données, et quels identifiants n'ont pas été trouvés dans DHIS2. Si des indicateurs pointent vers des formules DHIS2 ou des identifiants introuvables, contactez l'équipe FASTR pour exécuter la réparation des identifiants DHIS2, qui corrige les identifiants tout en conservant les données déjà importées.
+Depuis le menu de débordement de la barre d'outils, les utilisateurs disposant de l'autorisation **Configurer les données** ont également accès à deux actions de maintenance occasionnelles : **Télécharger** exporte le dictionnaire d'indicateurs au format CSV et **Actualiser les noms DHIS2** lit le nom actuel de chaque indicateur élément DHIS2 depuis DHIS2 et le stocke avec l'indicateur. Après l'actualisation, le résultat indique combien de noms ont été actualisés, combien étaient déjà à jour, quels indicateurs pointent vers des formules DHIS2 plutôt que vers des éléments de données, et quels identifiants n'ont pas été trouvés dans DHIS2. Si des indicateurs pointent vers des formules DHIS2 ou des identifiants introuvables, contactez l'équipe FASTR pour exécuter la réparation des identifiants DHIS2, qui corrige les identifiants tout en conservant les données déjà importées.
 
 #### Types d'indicateurs
 
@@ -87,7 +87,7 @@ Chaque indicateur HFA possède un identifiant d'indicateur attribué par la plat
 
 Le champ **catégories de service** est facultatif et fournit une classification transversale supplémentaire, indépendante de la hiérarchie catégorie/sous-catégorie. Un indicateur peut appartenir à plusieurs catégories de service simultanément.
 
-![HFA Indicators](/images/hfa-indicators-en.png)
+![HFA Indicators](/images/hfa-indicators-fr.png)
 
 ### Rechercher des indicateurs
 
@@ -108,7 +108,7 @@ Les avertissements de type incohérent (affichés en orange) sont consultatifs e
 
 Le panneau droit de l'éditeur de code liste les variables d'enquête et les autres indicateurs ; cliquez sur n'importe quelle entrée pour insérer son identifiant dans le code à la position du curseur.
 
-![Code d'un indicateur HFA](/images/hfa-code-en.png)
+![Code d'un indicateur HFA](/images/hfa-code-fr.png)
 
 ### Code filtre
 

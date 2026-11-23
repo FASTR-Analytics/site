@@ -10,6 +10,14 @@ export default defineConfig({
   redirects: {
     "/resources": "/resources/videos/",
     "/fr/resources": "/fr/resources/videos/",
+    // Pages removed in the v2 rewrite: projects became products, results
+    // packages and scopes; dashboards no longer exist.
+    "/user-guide/projects": "/user-guide/products/",
+    "/fr/user-guide/projects": "/fr/user-guide/products/",
+    "/user-guide/dashboards": "/user-guide/products/",
+    "/fr/user-guide/dashboards": "/fr/user-guide/products/",
+    "/admin-guide/projects": "/admin-guide/results-packages/",
+    "/fr/admin-guide/projects": "/fr/admin-guide/results-packages/",
   },
   vite: {
     plugins: [tailwindcss()],

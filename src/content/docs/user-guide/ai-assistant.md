@@ -1,104 +1,56 @@
 ---
 title: AI assistant
-description: Getting AI-powered insights from your data.
+description: Getting AI-powered help with your data, slide decks, and reports.
 sidebar:
   order: 7
 ---
 
-The AI assistant helps you explore and interpret your data through conversation. It is available across the entire platform — in slide decks, reports, the Explore page, the Results packages page, the Products page, and individual package views — so you can ask questions wherever you are working.
+The AI assistant helps you explore your data and build your products through conversation. It can read the metrics in a results package, explain what modules measure, and work directly in your slide decks, reports, and visualizations. Ask "which districts have the lowest ANC1 coverage?" or "add a slide on immunization trends" and it works from your actual results.
 
 ## Opening the assistant
 <!-- help#ai-open -->
 
-Click the **AI** button at the bottom-right edge of the screen to open the assistant panel. The panel slides in alongside your current view. To close it, click the chevron button in the panel header or click the **AI** button again.
+Click the **AI** button on the right edge of the screen. The assistant opens in a panel beside whatever you're working on, on every page of the platform. Drag the panel's edge to resize it, or drag the AI button up or down if it covers something.
 
-The panel starts closed on a fresh browser and opens once you have used it. If you closed it in a previous session, it stays closed until you open it again; if you left it open, it reopens automatically on your next visit. You can drag the **AI** button up and down the right edge to position it wherever is most convenient — the spot is remembered per browser.
+One conversation follows you as you move around - the assistant knows which page, product, or visualization you have open, and adjusts what it can do. The text in the input box tells you what it is focused on, such as "Ask about this slide deck...".
 
-The assistant is context-aware: each message tells it the current view and, where a results package is in view, the package and scope every data read resolves under. You do not need to specify which package to use.
+![AI panel beside a slide deck](/images/ai-panel-en.png)
 
-![Opening the Assistant](/images/opening-the-assistant-en.png)
-
-## Asking questions
+## What it can do
 <!-- help#ai-ask -->
 
-Type your question in the input field at the bottom of the panel. The assistant can explain what specific metrics measure, describe patterns in your data, answer questions about module outputs, and help draft narrative content for reports.
+On any page, the assistant can answer questions, read FASTR methodology and reference documents, and look up metrics and data from the results package in view. What else it can do depends on where you are:
 
-Good questions are specific. Instead of "tell me about the data," try "what does the OPD utilization rate in Region X look like compared to last year?" The more context you provide, the more useful the response.
+- **In a slide deck**, it can read and create slides, edit text and layouts, add visualizations, and change deck settings such as logos and footers. It can look at slides as images to judge whether they read well.
+- **In a report**, it can rewrite sections, edit wording, and add or replace visualizations. Proposed text changes are shown for you to **Accept** or **Reject**.
+- **In a visualization editor**, it can change the visualization's settings for you.
+- **On the Explore page and results package pages**, it can read and explain the results, and draft slides to add to a deck later.
+
+The assistant can only change products you can edit. If you have view access, it can still answer questions about them.
+
+Good questions are specific. Instead of "tell me about the data", try "how did OPD visits in Region X change between 2024 and 2025?" Mention the audience when asking for writing - "for a ministry presentation" produces different text from "for the technical team".
 
 ## The prompt library
 <!-- help#ai-prompt-library -->
 
-The prompt library contains pre-written prompts for common analysis tasks. Click the menu icon in the AI panel header and select **Prompt library** to browse. Prompts are organized by category - interpretation, comparison, data quality checks, and more.
+The prompt library holds ready-made prompts for common tasks. Open the **⋮** menu in the panel header and choose **Prompt library**. Prompts are grouped into **My prompts**, **Country prompts** shared across your instance, and shared FASTR categories. Choose **Run as new chat** or **Run in current chat**.
 
-When you select a prompt, you can customize it before running. You can also save your own prompts to the library for reuse. Prompts can be saved as **My prompts** (private, visible only to you) or **Country prompts** (shared with all users in your instance). Only administrators can save country-scoped prompts.
+To keep a prompt you've written, use **Save to prompt library** on any message you sent. Saving to **Country prompts** makes it available to everyone in the instance, and needs the **Configure data** permission.
 
-![Prompt Library](/images/prompt-library-en.png)
+![Prompt library](/images/ai-prompt-library-en.png)
 
-## Attaching documents
+## Conversations and files
 
-You can attach PDF documents to a conversation to give the assistant additional context - for example, a policy brief, a protocol, or a background report. Click the document icon in the chat input area to open the document selector.
+The **⋮** menu also lets you start a **New conversation**, **Switch conversation** to an earlier one, or **Delete conversation**. Conversations are saved in your browser.
 
-The selector shows PDF files available in your instance's assets. Select one or more files to attach them, or upload a new PDF directly from your device. Documents you attach are pending until you send your next message. Pending attachments appear as chips in the input area and can be removed before sending by clicking the **×** on each chip.
+To have the assistant consider a document, choose **Include file** and upload a PDF or pick one from your assets.
 
-Once a message is sent with attachments, those documents are shown in the conversation history without a remove option - they have already been sent to the assistant. Pending attachments that have not yet been sent can still be removed.
-
-Each conversation tracks its own set of attachments. When you switch to a different conversation, the pending attachments update to reflect that conversation's state.
-
-## Working with slides
-
-The assistant is particularly helpful when building slide decks. You can ask it to draft content for slides, suggest visualizations that support a narrative, or help structure your presentation. It knows which slides you've already added and can reference available metrics.
-
-When you ask the assistant to create a slide, it drafts the content and shows a preview. If the deck is currently open and you can edit it, you can add the draft to it directly from the preview card.
-
-When working in the deck editor, the assistant can read one or more slides' current content — including any unsaved edits shown on the canvas — and modify slides throughout the deck. It can change text, settings, update layouts, tweak existing visualizations (replicant, filters, disaggregation, period, captions), and edit any slide in the deck whether or not it is currently open, saving those changes immediately. For the open slide, changes appear on the canvas at once and save automatically.
-
-The deck's own settings — its logos, footer text, and watermark — can also be changed by the assistant using a dedicated tool. These changes apply immediately across every slide and are saved automatically.
-
-When the assistant creates a content slide that includes a figure built from a metric with multiple indicators, it filters the figure to the indicators named in the slide's text. An unfiltered multi-indicator metric draws one panel per indicator, which can overflow the slide's layout.
-
-Every visualization in a slide deck is resolved under that deck's own results package and scope. When the assistant creates or edits a visualization, it uses the deck's attached package automatically — you do not need to specify which package to use.
-
-Content slides can also include **image blocks** that show one of the instance's uploaded image assets. The assistant can add image blocks when asked, using file names from the instance's assets.
-
-After building or restructuring a content slide that holds a dense table or several blocks, you can ask the assistant to look at it — it will inspect the slide's rendered image and report what it sees, letting you catch overflow or layout problems before exporting.
-
-When the assistant creates or proposes a slide, it uses the following field names for each slide type:
-- **Cover slides** use `title` (required) and optionally `subtitle`, `presenter`, and `date`.
-- **Section slides** use `sectionTitle` (required) and optionally `sectionSubtitle`.
-- **Content slides** use `header` (optional) and a `blocks` array.
-
-## Working with reports
-
-In the report editor, the assistant can rewrite passages, insert new visualizations, and edit existing visualizations in place. When you ask it to change text, it proposes a diff in a modal that you accept or reject before anything changes. When you ask it to edit a visualization - for example, to change its replicant or period filter - it applies the change directly to the live preview and saves immediately, without a diff step. To replace a visualization with a completely different chart or metric, ask the assistant to replace the visualization rather than edit it.
-
-Every visualization in a report is resolved under that report's own results package and scope. When the assistant inserts or replaces a visualization, it uses the report's attached package automatically.
-
-When you open a new report that has not yet had any content added, the assistant works through a brief, sections, plan, and draft sequence before writing. It first asks questions about the intended audience, length, and focus using interactive prompts; then looks at the relevant data; then agrees a section structure; then proposes a full plan for your approval before writing the complete document with all figures included. If you prefer to skip straight to a draft, just say so.
-
-After inserting or changing a figure whose legibility its configuration cannot tell — a dense table, many series, or long labels — you can ask the assistant to look at it. It will inspect the rendered image and report what it sees.
-
-## Listing products
-
-On the Products page, you can ask the assistant to list the products you can see — slide decks, reports, and saved visualizations — along with each product's folder, results package, scope, and your access level. You can also search by keyword to narrow the list. The assistant cannot open products for you — you do that by clicking them — but it can describe what is available and help you decide where to find what you need.
-
-## Finding dimension values
-
-When working with visualizations, filters, or replicant selections, you can ask the assistant to list the values a dimension takes — for example, the indicators in a metric, or the admin areas available under the current scope. The assistant uses a dedicated tool that reads values directly from the results package, so the list reflects what is actually in the data.
-
-## Conversations and history
-
-Each conversation is saved automatically. You can start new conversations and switch between past ones using the menu in the panel header. The assistant remembers what you've discussed within a conversation, so you can build on previous questions.
-
-Only one browser tab can run the AI chat at a time. If you open FASTR in multiple tabs, the tab where the assistant is active shows the full chat; other tabs show a notice. If the active tab is still generating a response, the notice explains that the AI is answering there and asks you to wait before moving the chat. Once it is idle, click **Use it here** to move the chat to the current tab.
+The chat can only be open in one browser tab at a time. If you open FASTR in a second tab, click **Use it here** to move the chat to that tab.
 
 ## Usage limits
 
-AI usage is subject to daily limits that apply across your instance. A usage indicator at the bottom of the panel shows how much of your daily limit you've consumed. If you reach the limit, wait until it resets - typically at midnight UTC. You can adjust the model, maximum token budget, and reasoning effort in the AI settings panel, accessible from the panel header menu.
+AI usage has a daily limit for each person and a weekly limit for the whole country. A ring at the bottom of the panel shows how much of your daily limit you've used, and when it resets. If you reach a limit, the chat tells you when you can continue. Your profile shows your usage for today and the country's for this week.
 
 ## Tips for better results
 
-Ask specific questions rather than broad ones. Reference specific metrics, time periods, and geographic areas when relevant. When asking for interpretation, include context about your audience - "explain this for a ministry presentation" produces different output than "summarize for the technical team."
-
-If you get an unexpected result, try rephrasing. Using the exact metric names and terminology from your modules often helps the assistant find the right information.
-
-When a query returns too many rows, the assistant will suggest adding filters, narrowing the period, or removing disaggregations to bring results within range.
+Reference specific metrics, time periods, and areas. If the assistant misunderstands, rephrase using the exact names shown in the platform. For larger tasks, such as drafting a whole report, let it ask its clarifying questions and review its outline before it writes - the result is much closer to what you need.

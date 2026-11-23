@@ -1,125 +1,78 @@
 ---
 title: Slide decks
-description: Building slide decks and exporting documents.
+description: Building, presenting, and exporting slide decks.
 sidebar:
   order: 5
 ---
 
-Slide decks let you assemble visualizations into polished presentations for stakeholders. Instead of exporting individual charts and manually arranging them in PowerPoint, you build the deck directly in FASTR - complete with consistent styling, cover pages, and section dividers. When you're done, export the whole thing as a PDF or PowerPoint file.
+Slide decks let you build a presentation directly in FASTR, with live visualizations drawn from your results package. Instead of exporting charts one by one and arranging them in PowerPoint, you build the deck in one place with a consistent theme, then present it from the browser or download it as a PDF or PowerPoint file.
 
 ## Creating a slide deck
 <!-- help#deck-create -->
 
-Open the **Products** tab on your instance home screen. Slide decks appear as cards in the product explorer alongside reports and visualizations. Click **New** and choose **New deck** to create one — a dialog opens where you name the deck, choose its folder, results package, and set its scope before the editor opens. You can organise decks into folders using **New folder**, and move them between folders from their card menu.
+On the **Products** page, click **New** and choose **New deck**. Give the deck a name, choose a folder, results package, and scope, and click **Create** - see [Products](/user-guide/products/) for what the package and scope mean.
 
-A new deck starts empty. When you open a new deck for the first time, FASTR asks you to choose a theme before you begin — this ensures the deck starts with a look you intend rather than a default. A rail on the left shows your slides, and the main area beside it shows the slide currently open for editing. You'll build out the deck by adding different slide types.
+The deck opens straight away and asks you to choose a theme. Pick one and click **Apply theme**; you can change it later from the **Deck** menu.
 
-To create slide decks, at least one results package and one scope must exist at the instance level.
+## The deck editor
 
-![Creating Slide Deck](/images/creating-slide-deck-en.png)
+The editor has a **slide rail** on the left, listing your slides as thumbnails, and the open slide beside it. Above them, the header holds the deck name (click it to rename), the package and scope label, the save status, **Present**, and **History**. Below the header is a row of menus - **Add slide**, **File**, **Deck**, and, for the open slide, **Slide**, **Insert**, and **Split panel** - and a formatting toolbar.
+
+In the rail, click a card to open that slide and drag cards to reorder them. Select several slides with Ctrl/Cmd-click or Shift-click, and right-click to duplicate or delete them.
+
+There is no Save button. Changes save as you work, and other people can edit the same deck with you at the same time. **Undo** and **Redo** in the toolbar (or Ctrl/Cmd+Z) only affect your own changes.
+
+![Slide deck editor](/images/slide-decks-editor-en.png)
 
 ## Slide types
 
-Decks contain three types of slides. **Cover slides** introduce the presentation with a title, optional subtitle, presenter name, and date. **Section slides** divide content into logical groups with a section title and optional section subtitle. Both use a bold, full-bleed design. **Content slides** are where your data lives - these contain visualizations, text, and images.
+Click **Add slide** and choose a slide type. A **Cover slide** opens the presentation with a title, subtitle, presenter, and date. A **Section slide** divides the deck into parts. A **Content slide** is where your data lives - it holds text, visualizations, and images.
 
-When you add a slide, you choose its type. You can convert between types later using the **Slide** menu in the slide toolbar.
+To change the type of the open slide, use **Slide** > **Slide type**. If you switch and then switch back, the earlier content returns.
 
 ## Building content slides
 <!-- help#deck-content-slides -->
 
-Content slides use a flexible layout system with one or more content blocks. A block can hold text (formatted with markdown), a visualization from the deck's results package, or an uploaded image.
+A content slide is made of one or more blocks. Each block holds text, a visualization, or an image - choose with **Content type** in the toolbar when a block is selected. To change the layout, click **Layout** (or right-click the slide) and use **Split** to divide a block into rows or columns, **Add** to insert a column or row next to it, **Move** to shift it, or **Delete this cell**. Drag the dividers between blocks to resize them, and drag one block onto another to swap them.
 
-To add a visualization to an empty figure block, click **Insert visualization** and choose between inserting a **New visualization…** (the metric and preset wizard) or an **Existing visualization…** (a copy of a saved visualization product). If you need to adjust the display — different time period or disaggregation — you can edit the embedded visualization directly from the slide using **Edit visualization**. To swap an existing visualization for a different one, use **Replace visualization** from the same panel, which also offers both new and existing options.
+To write, double-click a text block or title and type directly on the slide. The toolbar has text styles, bold, italic, lists, and quotes. Body text resizes itself to fit its block.
 
-Right-click on a block to access layout options like "Split left/right" or "Delete block." You can drag dividers between blocks to adjust their relative sizes.
+Use **Insert** to add the slide's header, sub-header, date, or footer. **Split panel** adds a coloured, patterned, or image panel down one side of a content slide.
 
-If a visualization or image cannot be rendered - for example because of a data error or a missing file - FASTR shows a short notice in the block rather than leaving it blank or stopping the export.
+![Layout menu on a content slide](/images/slide-decks-layout-menu-en.png)
 
-![Building Content Slides](/images/building-content-slides-en.png)
+## Adding visualizations
+<!-- help#deck-visualizations -->
 
-## Editing slides
+Select an empty visualization block and choose either:
 
-The deck editor shows all your slides in a rail on the left. Click any slide thumbnail to open it for editing in the main area beside the rail. The current slide is highlighted with a ring in the rail and its number is shown in bold. A toolbar spanning the full width of the editor shows formatting controls for the open slide. The toolbar has two rows: a **menu row** (with **Slide**, **Insert**, and **Split panel** menus) above a **formatting row** that adapts to what is selected on the canvas.
+- **Insert new visualization** - pick a metric and a preset, then adjust it in the visualization editor. See [Visualizations](/user-guide/visualizations/).
+- **Insert existing visualization** - pick one of the saved visualizations on the Products page. FASTR inserts a copy, so later changes to the saved visualization don't affect the slide, and changes on the slide don't affect the saved one.
 
-To type directly on the slide, double-click a text block or title field on the canvas. A dashed outline marks the area being edited, and the caret appears inside it. Press **Escape** or click outside to finish.
+Once a block holds a visualization, select it and use **Edit visualization** to change its period, filters, or styling, or **Replace visualization** to swap it for another.
 
-## The slide toolbar
+If the deck is moved to a newer results package, its visualizations are marked as out of date. Update them one at a time from the badge on each block, or all at once with **Update all visualizations** in the header.
 
-The toolbar's menu row contains three menus.
+## Deck themes and settings
 
-- **Slide** lets you change the slide type (cover, section, or content) and control logo visibility for headers and footers.
-- **Insert** lists every text field available on the current slide type — click an entry to jump to it or add it if it is absent. When a content slide is open, **Insert** also contains a **New slide** section listing the three slide types so you can insert a new slide immediately after the current one without returning to the header.
-- **Split panel** (content slides only) adds a decorative strip on the left or right of the slide, with controls for its size and fill (plain colour, pattern, or image).
+The **Deck** menu controls how the whole deck looks. **Theme** offers a set of ready-made designs. **Logos** chooses which logos appear on cover slides, content headers, and footers. **Footer & page numbers** sets one footer for every content slide and turns page numbers on or off. Changes apply immediately. **All deck settings…** opens the same options on a single screen.
 
-Below the menu row, a formatting row shows controls that follow your selection. While typing in a text block it shows bold, italic, text style, text size, bullet list, numbered list, and quote controls. While a title field is selected it shows font size and weight controls. While a content block is selected it shows the block type (text, visualization, or image), a **Layout** button to split, add, move, or delete blocks, and controls for the selected block type.
+## Copying slides to another deck
 
-The slide toolbar and its **Add slide** button are visible only when you have edit permission on the deck. When you open a deck as a viewer, these controls are hidden.
+To reuse slides, select them in the rail and choose **File** > **Copy N slides to deck…**. Pick a destination deck you can edit and click **Save**. Visualizations are copied as they are; if the destination uses a different package or scope, they show an update button there.
 
-## Where the numbers come from
+## Presenting
+<!-- help#deck-present -->
 
-Every visualization in a slide deck takes its numbers from the results package and scope the deck is set to use. The package and scope are shown in the deck header. If you can edit the deck, click there to change either one. Visualizations made before the change are then out of date, and an **Update all visualizations** button appears so you can refresh them together.
+Click **Present** to show the deck full screen. Use the arrow keys, Space, or Page Up and Page Down to move between slides, and Esc to leave.
 
-## Deck settings
-
-The deck header contains a **Deck** menu that gives quick access to theme, logos, and footer settings for the whole deck without opening the full settings panel. Each change you make in this menu applies straight away. The **Deck** menu is visible only when you have edit permission on the deck. For complete configuration, click **All deck settings…** in the **Deck** menu to open the full settings panel.
-
-To rename a deck, use **File** > **Name and folder**, or click the deck's own title in its header. The deck settings panel covers the deck while it is open, so those rename options are behind it. To leave the settings panel, click **Save** to keep your changes or **Cancel** to discard them.
-
-To change the results package or scope, click **Package, scope and folder** from the deck's overflow menu. This opens the product settings panel where you can update those properties. Changing the package or scope affects every visualization in the deck — visualizations that came from a different package or scope show an update badge.
-
-## Choosing a theme
-
-The **Deck** menu contains a **Theme** option that lets you pick from eleven built-in themes. Each theme sets the deck's colours, typeface, layout and page furniture all at once. A preview of each theme is shown as you browse so you can see the result before applying it. You can change the theme at any time and the update applies to every slide immediately.
-
-## Presenting slides
-
-Click **Present** in the slide list toolbar to open the fullscreen presenter. The presenter shows one slide at a time and preloads neighbouring slides so navigation is instant. Use the arrow keys or the on-screen controls to move between slides. Press **Escape** or click the close button to exit. Click the maximize icon to enter true fullscreen mode; pressing **Escape** while in fullscreen exits the presentation entirely.
-
-When collaborators add, remove, or reorder slides while the presenter is open, the presenter picks up those changes automatically. The slide list and page counter update to reflect the current deck, and cached renders are refreshed whenever a peer edits a slide you have already loaded.
-
-## Collaborating on a slide deck
-
-When multiple people have the same slide deck open, each person's cursor appears as a colored arrow with their name on the slide canvas. You can also see who is currently editing a specific slide - a small presence avatar appears at the bottom of slide thumbnails in the rail. Avatar icons in the deck toolbar show who else has the deck open at the same time. This makes it easy to coordinate without overwriting someone else's work.
-
-When a slide is open for editing, text fields for the slide title, header, and other root-level text are collaboratively bound: remote collaborators' carets appear inside the same text field you are typing in, so you can see exactly where they are. Body text blocks on content slides work the same way.
-
-The AI assistant will not edit a slide that another collaborator currently has open in the editor, to avoid overwriting live in-progress changes. If you ask the AI to modify a slide being edited by a colleague, it will let you know and wait for you to try again once the slide is free.
-
-## Undo and redo in the slide editor
-
-The slide toolbar includes **Undo** and **Redo** buttons. These reverse your own slide changes - adding blocks, changing layouts, moving visualizations, and text typed in any text field on the slide - without affecting edits made by collaborators. The buttons appear only when you have permission to edit the deck. You can also use Ctrl+Z and Ctrl+Shift+Z (or Cmd+Z and Cmd+Shift+Z on Mac) as keyboard shortcuts; these work both while focus is on the slide canvas and while you are typing inside a text field on the slide.
-
-## Copying slides between decks
-
-To copy slides from one deck to another, select the slides you want in the slide rail, then open the **File** menu and choose **Copy to deck…**. A dialog lets you pick the destination deck. Only decks you can edit are listed as destinations. The slides are copied with their visualizations intact; the visualizations will resolve under the destination deck's own results package and scope.
-
-## Viewer access
-
-When you open a deck as a viewer (without edit permission), the slide rail and editor load in read-only mode. You can browse slides and use the presenter, but the toolbar shows only the **File** menu — with download, share, and other non-editing options. The **Add slide** button and the **Deck** menu are hidden. An empty deck shows a message indicating that no slides have been added yet.
-
-## Managing access
-
-Open the **File** menu and choose **Manage access…** to control who can view and edit the deck. This opens the product access panel where you can set per-user permission levels.
-
-## Version history
-
-Click **History** in the deck toolbar to open the version history panel. Versions are saved automatically at the end of each editing session and grouped by day on the left. Select a version to see a grid of all slide thumbnails as they looked at that point. New, edited, and removed slides are badged with the name of the collaborator who made the change. Click any thumbnail to open a full-size view; edited slides also show a breakdown of which text fields and blocks changed within that session.
-
-The change breakdown now detects layout changes more precisely. Wrapping blocks into columns, unwrapping a container, or resizing a layout container are all reported as arrangement changes in the session diff, even when the order of the individual content blocks did not change.
-
-Use **Restore** to reset the deck to that version (your current content is saved as a new version first), or **Restore as copy** to create a new deck from the snapshot.
-
-If the deck has unsaved live edits that cannot be saved at the moment you request a restore, FASTR will let you know and ask you to retry once saving has recovered.
-
-## Exporting and sharing
+## Downloading and sharing
 <!-- help#deck-export -->
 
-Click **Download** to export your deck. **Native PDF** produces a high-quality vector file where text stays sharp at any zoom level. **PPTX with raster visualizations** creates a PowerPoint file with visualizations embedded as images - useful if recipients need to make edits.
+Choose **File** > **Download…** to export the deck. **Native PDF** is recommended - text stays sharp at any zoom. **Native PPTX with raster visualizations** creates a PowerPoint file in which charts are images, useful when someone needs to edit the slides.
 
-You can also share decks directly by email. Open the **File** menu, choose **Share…**, select recipients from your instance's user list or add email addresses, and optionally include a message. FASTR validates email addresses before generating the PDF, so any invalid addresses are flagged immediately rather than after a lengthy export. FASTR generates a PDF and sends it as an attachment.
+To email the deck, choose **File** > **Share…**. Select people from the instance or type email addresses, add an optional message, and click **Send**. Each recipient receives the deck as a PDF attachment.
 
-![Exporting and Sharing](/images/exporting-and-sharing-en.png)
+Viewers can also present, download, and share a deck, and can copy its slides into a deck of their own.
 
-## Organisation
-
-Use folders to keep decks organized as your project grows. In the Products explorer, click **New** and choose **New folder** to create one, then use a deck's card menu to move it. You can duplicate decks when creating variations for different audiences. The search box filters decks by name. Use the sort control to order decks by name or by recently updated.
+![Download slide deck dialog](/images/slide-decks-download-en.png)

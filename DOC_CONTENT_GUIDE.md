@@ -6,8 +6,8 @@ Reference for writing and maintaining content on the FASTR docs site.
 
 The docs site serves two audiences:
 
-1. **Administrators** — Setting up and managing FASTR instances (users, structure, data imports, projects, modules)
-2. **Users** — Working with projects, creating visualizations, building slide decks, using AI assistant
+1. **Administrators** — Setting up and managing FASTR instances (users, structure, data imports, results packages, scopes, modules)
+2. **Users** — Working with products, creating visualizations, building slide decks and reports, using AI assistant
 
 The site also hosts the FASTR Methodology (reference material), which is synced from a separate source and not covered by this guide.
 
@@ -247,13 +247,19 @@ Use these terms consistently:
 | Term | Not |
 |------|-----|
 | Instance | Organization, workspace |
-| Project | Analysis, workspace |
+| Product (a slide deck, report, or visualization) | Document, item, project |
+| Folder | Project, workspace |
+| Results package | Run, analysis, project |
+| Scope | Data window, filter, project |
 | Admin area | Region, geography (unless referring to specific level) |
 | Facility | Health facility, site |
 | Module | Script, analysis (when referring to the platform feature) |
 | Slide deck | Report, presentation |
-| Visualization | Chart, graph (when referring generically) |
-| Data window | Filter, scope |
+| Report | Document, brief (when referring to the platform feature) |
+| Visualization | Chart, graph, figure (when referring generically) |
+| Preset | Default visualization |
+
+"Project" and "dashboard" name nothing in FASTR since version 2 - don't use them.
 
 ## Localization
 

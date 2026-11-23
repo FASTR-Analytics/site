@@ -3,28 +3,40 @@
 //
 // Astro's content layer cache lives in node_modules/.astro/. Netlify caches
 // node_modules between builds, which is great for normal commits but causes
-// deleted methodology pages to keep being generated until the cache is
-// manually cleared (see Astro issues #9061 and #12761).
+// deleted pages to keep being generated until the cache is manually cleared
+// (see Astro issues #9061 and #12761).
 //
-// sync-methodology.ts writes a fresh UUID to .methodology-sync-id every run,
-// which is committed alongside the methodology changes. Here we compare the
-// committed marker against the value stashed in the Astro cache last time we
-// built. If it changed, the cache is stale relative to the latest sync and
-// we wipe it before building.
+// The cache key has two parts: the methodology sync marker (sync-methodology.ts
+// writes a fresh UUID to .methodology-sync-id every run, committed alongside the
+// methodology changes) and the sorted list of files under src/content/docs/, so
+// adding, deleting or renaming any docs page also invalidates the cache. We
+// compare the key against the value stashed in the Astro cache last time we
+// built. If it changed, the cache may hold pages that no longer exist and we
+// wipe it before building.
 import { spawnSync } from "node:child_process";
-import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { createHash } from "node:crypto";
+import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 
 const MARKER_SRC = ".methodology-sync-id";
+const DOCS_DIR = "src/content/docs";
 const ASTRO_CACHE = "node_modules/.astro";
 const MARKER_CACHED = `${ASTRO_CACHE}/.last-sync-id`;
 
 const read = (p) => (existsSync(p) ? readFileSync(p, "utf8").trim() : "");
 
-const current = read(MARKER_SRC);
+const docFiles = existsSync(DOCS_DIR)
+  ? readdirSync(DOCS_DIR, { recursive: true, withFileTypes: true })
+    .filter((d) => d.isFile())
+    .map((d) => `${d.parentPath ?? d.path}/${d.name}`)
+    .sort()
+  : [];
+const docsHash = createHash("sha256").update(docFiles.join("\n")).digest("hex").slice(0, 16);
+
+const current = `${read(MARKER_SRC)}:${docsHash}`;
 const cached = read(MARKER_CACHED);
 
-if (current && current !== cached) {
-  console.log(`Methodology sync marker changed (${cached || "none"} → ${current}); clearing Astro cache.`);
+if (current !== cached) {
+  console.log(`Content cache key changed (${cached || "none"} → ${current}); clearing Astro cache.`);
   rmSync(ASTRO_CACHE, { recursive: true, force: true });
   mkdirSync(ASTRO_CACHE, { recursive: true });
   writeFileSync(MARKER_CACHED, current);

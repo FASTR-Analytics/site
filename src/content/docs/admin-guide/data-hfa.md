@@ -13,7 +13,7 @@ HFA surveys collect information about facilities not captured in routine reporti
 
 ## The HFA facility list
 
-HFA facilities are created and updated by each time point's data import. Unlike HMIS facilities, they are not imported through a separate facility import wizard. Open the **HFA Facilities** row in the Data section to view a table of all HFA facilities with their admin areas and attributes. A global administrator can click any row to edit that facility's admin areas and optional columns - any value you change becomes a user-set value, so later imports keep it by default.
+HFA facilities are created and updated by each time point's data import. Unlike HMIS facilities, they are not imported through a separate facility import wizard. Open the **HFA Facilities** row in the Data section to view a table of all HFA facilities with their admin areas and attributes. A user with the **Configure data** permission can click any row to edit that facility's admin areas and optional columns - any value you change becomes a user-set value, so later imports keep it by default.
 
 The **Unused facilities** panel lets you remove facilities that have no data and no sampling weights. Click **Remove** to count and then confirm the deletion. Admin areas that are left with no facility are removed at the same time.
 
@@ -36,11 +36,15 @@ The import wizard collects everything needed before any data is sent to the serv
 
 Select or upload your CSV data file and your XLSForm questionnaire file. Both files must be present before the wizard can proceed; the wizard parses the CSV headers against the XLSForm as soon as both are selected. If the files cannot be parsed together, an error appears and you should verify the XLSForm matches the CSV. FASTR pre-fills the facility ID column based on the latest import's column choice and the questionnaire's standard column names.
 
+![HFA import wizard, Upload step](/images/hfa-upload-en.png)
+
 ### Step 2 — Mappings
 
 Specify which CSV column contains facility identifiers, select the time point this data belongs to, and add optional row filter conditions. Each condition specifies a column, an operator (equals or does not equal), and a value. Rows that fail any condition are dropped before duplicate handling.
 
 If no time points exist yet, you can create one directly in this step by clicking **Add time point** next to the time point selector. This opens a small form where you provide a label, year, and month. The new time point is selected automatically once saved.
+
+![HFA import wizard, Mappings step](/images/hfa-upload-round-en.png)
 
 ### Step 3 — Facilities
 
@@ -68,6 +72,8 @@ If none of the file's facility IDs match the existing facility list and you expe
 
 For new facilities and the changes you take, you can reassign values facility by facility in the **Reassign values** section. Check the values that need reassigning, and for each affected facility choose a target value from the dropdown. Extra columns from your file can be shown alongside the table to help identify facilities.
 
+![HFA import wizard, Changes step](/images/data-hfa-changes-en.png)
+
 ### Step 6 — Review and launch
 
 A summary shows all choices: the data file, XLSForm file, facility ID column, time point, row filters, the facility column mappings, the count of new facilities, the changes taken per column, and any value reassignments. Read the notice: the import replaces all existing data for the selected time point and writes the new facilities and taken changes to the HFA facility list. Click **Start import** to launch.
@@ -85,10 +91,6 @@ When some rows have no facility ID, or new facilities have no complete admin are
 ### Cancelling a running import
 
 While an import is running, a **Cancel import** button appears. Cancelling stops the run; nothing already merged is affected.
-
-![HFA Upload](/images/hfa-upload-en.png)
-
-![HFA Upload Round](/images/hfa-upload-round-en.png)
 
 ## Time points
 <!-- help#hfa-time-points -->

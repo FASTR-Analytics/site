@@ -23,7 +23,7 @@ Le sélecteur d'indicateurs en haut filtre à la fois le graphique linéaire et 
 
 L'onglet Registre affiche le registre des importations par indicateur. Chaque ligne couvre un identifiant de données sur la fenêtre de périodes du jeu de données, avec des colonnes pour l'identifiant de l'indicateur, le libellé, l'identifiant DHIS2 (pour les indicateurs de type élément DHIS2), les mois avec données, la dernière importation, les mois en échec et les valeurs ignorées. Cliquez sur une ligne pour ouvrir le détail mensuel et accéder aux actions de réimportation et de réessai.
 
-Pour les administrateurs globaux, la barre d'en-tête affiche un bouton **Importations**, un badge **Importation en cours** lorsqu'une importation est active, et **Supprimer les données**.
+Pour les utilisateurs disposant de l'autorisation **Configurer les données**, la barre d'en-tête affiche un bouton **Importations**, un badge **Importation en cours** lorsqu'une importation est active, et **Supprimer les données**.
 
 ## Méthodes d'importation
 
@@ -39,7 +39,7 @@ Cliquez sur **Importations** dans la barre d'en-tête pour ouvrir la vue des imp
 - **À venir** liste les importations planifiées : les calendriers récurrents et les exécutions ponctuelles qui n'ont pas encore démarré. **Modifier** ouvre l'assistant pré-rempli avec les paramètres de la planification, et l'icône poubelle la supprime. Une planification refusée, manquée, ou dont la dernière exécution a échoué est mise en évidence en rouge avec l'erreur sous son statut, et un avis rouge au-dessus des onglets signale qu'une importation planifiée nécessite votre attention.
 - **Historique** liste chaque exécution qui a démarré, y compris celle en cours, avec sa date de début, la personne qui l'a lancée, son origine (DHIS2 ou CSV), sa sélection, le nombre de paires récupérées et en échec pour une exécution DHIS2, son statut, et un bouton **Version** qui ouvre les informations d'importation de la version du jeu de données créée par l'exécution. Cliquez sur une ligne pour voir son détail.
 
-Les importations s'exécutent en arrière-plan, une à la fois. Si une importation est déjà en cours, la nouvelle est mise en file d'attente et démarre lorsque la précédente se termine. Si une importation DHIS2 est en cours, la génération d'un nouveau lot de résultats incluant les données HMIS est temporairement bloquée — un message l'explique lorsque vous tentez de lancer la génération.
+Les importations s'exécutent en arrière-plan, une à la fois. Si une importation est déjà en cours, la nouvelle est mise en file d'attente et démarre lorsque la précédente se termine. Si une importation DHIS2 est en cours, la génération d'un nouveau paquet de résultats incluant les données HMIS est temporairement bloquée — un message l'explique lorsque vous tentez de lancer la génération.
 
 ## Processus d'importation CSV
 <!-- help#hmis-csv -->
@@ -95,8 +95,8 @@ Pour une importation DHIS2, le détail de l'exécution affiche le résumé, les 
 
 Chaque importation qui fusionne des données crée une nouvelle version du jeu de données. L'onglet **Historique** de la vue des importations liste chaque exécution, et le bouton **Version** d'une exécution ouvre les informations d'importation de sa version, avec le nombre de lignes insérées, mises à jour ou supprimées. Pour voir l'état d'importation de chaque indicateur mois par mois, et pour réimporter un indicateur, utilisez l'onglet **Registre** de la page Données HMIS.
 
-Pour supprimer des données, cliquez sur **Supprimer les données** dans la barre d'en-tête, choisissez les indicateurs et la plage de périodes à supprimer, puis saisissez la phrase de confirmation affichée dans le champ pour confirmer. Seul un administrateur global peut supprimer des données. La suppression est irréversible et est refusée tant qu'une importation est en cours.
+Pour supprimer des données, cliquez sur **Supprimer les données** dans la barre d'en-tête, choisissez les indicateurs et la plage de périodes à supprimer, puis saisissez la phrase de confirmation affichée dans le champ pour confirmer. Seuls les utilisateurs disposant de l'autorisation **Configurer les données** peuvent supprimer des données. La suppression est irréversible et est refusée tant qu'une importation est en cours.
 
 ## Après l'importation
 
-Une fois les données intégrées, elles deviennent disponibles pour la génération d'un lot de résultats. Générez un nouveau lot de résultats depuis la page **Lots de résultats** de l'instance pour inclure les données fraîches dans vos projets.
+Une fois les données intégrées, elles deviennent disponibles pour la génération d'un paquet de résultats. Générez un nouveau paquet de résultats depuis la page **Résultats** pour rendre les nouvelles données disponibles dans les présentations, rapports et visualisations.

@@ -23,7 +23,7 @@ The indicator selector at the top filters both the line graph and the heat map.
 
 The Ledger tab shows the import ledger pivoted by indicator. Each row covers one data id across the dataset's period window, with columns for the indicator ID, label, DHIS2 id (for DHIS2 element indicators), months with data, latest import, failed months, and skipped values. Click any row to open the per-month detail and access the re-import and retry actions.
 
-For global administrators, the heading bar shows an **Imports** button, an **Import running** badge when an import is active, and **Delete data**.
+For users with the **Configure data** permission, the heading bar shows an **Imports** button, an **Import running** badge when an import is active, and **Delete data**.
 
 ## Import methods
 
@@ -95,8 +95,8 @@ For a DHIS2 import, the run detail shows the summary, any indicators pointing to
 
 Each import that merges data creates a new dataset version. The **History** tab of the imports view lists every run, and a run's **Version** button opens the import information for its version, with the number of rows inserted, updated or removed. To see the import status of each indicator month by month, and to re-import an indicator, use the **Ledger** tab on the HMIS Data page.
 
-To delete data, click **Delete data** in the heading bar, choose the indicators and period range to remove, and type the confirmation phrase shown in the input box to confirm. Only a global administrator can delete data. Deleting is irreversible and is refused while an import is running.
+To delete data, click **Delete data** in the heading bar, choose the indicators and period range to remove, and type the confirmation phrase shown in the input box to confirm. Only users with the **Configure data** permission can delete data. Deleting is irreversible and is refused while an import is running.
 
 ## After importing
 
-Once data is integrated, it becomes available for use when generating a results package. Generate a new results package from the instance **Results packages** page to include the fresh data in your projects.
+Once data is integrated, it becomes available for use when generating a results package. Generate a new results package from the **Results** page to make the fresh data available to slide decks, reports, and visualizations.
