@@ -46,7 +46,7 @@ Do this after each app release (or in a batch every few releases — the version
 4. **Decide new page vs. edit.** If the feature fits an existing page's scope, edit it. If it's a new top-level capability (like Reports), add a page and register it in the sidebar in [astro.config.mjs](astro.config.mjs).
 5. **Write the content** following [DOC_CONTENT_GUIDE.md](DOC_CONTENT_GUIDE.md) — audience, prose-vs-bullets, length targets, terminology.
 6. **Mirror in French.** Every English page needs its `src/content/docs/fr/` counterpart at the same path. Falling back to English is not acceptable (see [CLAUDE.md](CLAUDE.md)).
-7. **Mark screenshots.** New or changed screens need new captures. Use the `:::caution[Screenshot needed]` placeholder (see DOC_CONTENT_GUIDE) so gaps are visible rather than silently missing.
+7. **Screenshots.** Existing screenshots are recaptured automatically: the **Screenshots** workflow runs after each docs sync and weekly, and opens a pull request with any images that changed (see [screenshots/README.md](screenshots/README.md)). For a new screen, add a capture function and reference `/images/<name>-en.png` / `-fr.png`; until it exists, use the `:::caution[Screenshot needed]` placeholder (see DOC_CONTENT_GUIDE) so the gap is visible.
 8. **Add help tags where the app links in.** If a new section is one the app should deep-link to from a help button, drop a `<!-- help#some-id -->` tag under its heading in both the EN and FR page (see [Help buttons](#help-buttons--deep-links-from-the-app) below). New or renamed UI usually means a new or moved help target.
 9. **Deploy.** Push to `main`; Netlify rebuilds (~2 min). See [README.md](README.md).
 
@@ -119,4 +119,5 @@ Don't tag **Methodology** pages — they're vendored and overwritten on each syn
 - [DOC_HELP_BUTTONS.md](DOC_HELP_BUTTONS.md) — how to mark sections as in-app help targets (the `<!-- help#id -->` tags).
 - [CLAUDE.md](CLAUDE.md) — bilingual rule, vendored methodology, light-only theme, asset paths.
 - [README.md](README.md) — local dev, deploy, methodology sync.
+- [screenshots/README.md](screenshots/README.md) — the demo instance and workflow that capture the guide screenshots.
 - `../wb-fastr/CHANGELOG_AUTO.txt` and `../wb-fastr/VERSION` — the app-side feed driving all of the above.

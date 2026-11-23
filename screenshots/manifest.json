@@ -1,0 +1,23 @@
+{
+  "languages": ["en", "fr"],
+  "images": [
+    "admin-index-navigation", "users-table", "users-profile", "scopes-editor",
+    "results-packages-generate", "results-packages-package-page",
+    "admin-areas", "managing-existing-facilities", "health-facilities", "structure-import", "geojson",
+    "hfa-upload", "hfa-upload-round", "data-hfa-changes", "hfa-timepoints", "hfa-indicators", "hfa-code",
+    "user-index-products", "products-new-menu", "products-manage-access", "products-version-history",
+    "slide-decks-editor", "slide-decks-layout-menu", "slide-decks-download",
+    "reports-editor", "reports-download",
+    "visualizations-types", "visualizations-create", "visualizations-editor",
+    "explore-page", "ai-panel", "ai-prompt-library"
+  ],
+  "crops": [
+    "scopes-editor", "results-packages-generate", "admin-areas", "hfa-upload", "hfa-upload-round",
+    "data-hfa-changes", "products-manage-access", "slide-decks-download", "reports-download",
+    "ai-prompt-library", "visualizations-create"
+  ],
+  "montage": {
+    "name": "visualizations-types",
+    "rows": [["vt-bar", "vt-map"], ["vt-timeseries", "vt-table"]]
+  }
+}

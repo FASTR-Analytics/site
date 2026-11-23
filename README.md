@@ -57,6 +57,8 @@ Just edit the `.md` file. Save, push, done. Push your changes when ready (see De
 
 ## Screenshots, videos, and other static assets
 
+The Admin and User guide screenshots (`public/images/*-en.png` / `*-fr.png`) are captured automatically from a demo instance; see [screenshots/README.md](screenshots/README.md) before replacing one by hand.
+
 Anything in [public/](public/) is served at the matching URL with no processing.
 
 | Type        | Put it in            | Reference as                |

@@ -1,0 +1,9 @@
+{
+  "name": "fastr-docs-screenshots",
+  "private": true,
+  "type": "module",
+  "description": "Captures the FASTR docs screenshots from a demo instance. See README.md.",
+  "dependencies": {
+    "playwright-core": "1.57.0"
+  }
+}
