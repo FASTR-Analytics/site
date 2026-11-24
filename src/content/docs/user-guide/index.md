@@ -46,5 +46,6 @@ When FASTR is updated, a bell icon in the header shows release announcements; a 
 - [Slide decks](/user-guide/slide-decks/) - Building, presenting, and exporting presentations
 - [Reports](/user-guide/reports/) - Writing long-form documents with live visualizations
 - [AI assistant](/user-guide/ai-assistant/) - Getting help analysing data and drafting content
+- [Email about a new sign-in](/user-guide/new-sign-in-email/) - What the email means and what to do if you pressed its button
 
 Start with Products if you're new to FASTR. If you already know your way around, jump straight to the page for what you want to make.

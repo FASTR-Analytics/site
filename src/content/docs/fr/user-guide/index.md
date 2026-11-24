@@ -46,5 +46,6 @@ Lorsque FASTR est mis à jour, une icône en forme de cloche dans l'en-tête aff
 - [Présentations](/fr/user-guide/slide-decks/) - Élaborer, présenter et exporter des présentations
 - [Rapports](/fr/user-guide/reports/) - Rédiger des documents longs comportant des visualisations dynamiques
 - [Assistant IA](/fr/user-guide/ai-assistant/) - Obtenir de l'aide pour analyser des données et rédiger du contenu
+- [E-mail signalant une nouvelle connexion](/fr/user-guide/new-sign-in-email/) - Ce que signifie cet e-mail et que faire si vous avez appuyé sur son bouton
 
 Commencez par Produits si vous découvrez FASTR. Si vous connaissez déjà la plateforme, rendez-vous directement à la page correspondant à ce que vous souhaitez créer.
