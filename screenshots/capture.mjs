@@ -33,19 +33,37 @@ const browser = await chromium.launch({
   args: ["--no-sandbox", "--disable-gpu", "--hide-scrollbars"],
 });
 
-async function newPage({ width = 1440, height = 900, persona = CONFIG.persona } = {}) {
+// Thrown when the app itself never renders: every later shot would fail the same
+// way after its own 60s wait, so the run stops at the first one.
+class AppDidNotRender extends Error {}
+
+async function newPage({ width = 1440, height = 900, persona = CONFIG.persona } = {}, name = "shot") {
   // Fixed timezone and a clock that starts at the fixture's time, so dates and
   // "last active" readings come out the same on every run.
   const ctx = await browser.newContext({ viewport: { width, height }, deviceScaleFactor: 2, colorScheme: "light", timezoneId: "UTC", locale: "en-US" });
   await ctx.addInitScript((lang) => { try { localStorage.setItem("fastrLanguage", lang); } catch {} }, LANG);
   const page = await ctx.newPage();
+  // Kept so a page that never renders can say why.
+  const problems = [];
+  page.on("console", (m) => { if (m.type() === "error" || m.type() === "warning") problems.push(`console.${m.type()}: ${m.text()}`); });
+  page.on("pageerror", (e) => problems.push(`pageerror: ${e.message}`));
+  page.on("requestfailed", (r) => problems.push(`requestfailed: ${r.method()} ${r.url()} ${r.failure()?.errorText ?? ""}`));
+  page.on("response", (r) => { if (r.status() >= 400) problems.push(`http ${r.status()}: ${r.request().method()} ${r.url()}`); });
   await page.clock.install({ time: new Date(META.clockTime) });
   page.on("dialog", (d) => d.accept());
   await page.goto(`${BASE}/?persona=${persona}`, { waitUntil: "load" });
   // The app must actually render (header with the instance name, real page text),
   // otherwise every later step clicks into a blank page.
   await page.waitForFunction(() => (document.body?.innerText ?? "").includes("Demo") && document.body.innerText.length > 60, null, { timeout: 60000 })
-    .catch(async () => { await ctx.close(); throw new Error("the app did not render (blank page): check the client log"); });
+    .catch(async () => {
+      await page.screenshot({ path: `${OUT}/_fail_${name}-${LANG}.png` }).catch(() => {});
+      const text = await page.evaluate(() => document.body?.innerText ?? "").catch(() => "(unreadable)");
+      const report = [`url: ${page.url()}`, `visible text: ${JSON.stringify(text.slice(0, 1500))}`, ...problems.slice(0, 80)].join("\n");
+      writeFileSync(`${OUT}/_did_not_render-${LANG}.txt`, report + "\n");
+      console.log("---- the app did not render ----\n" + report + "\n--------------------------------");
+      await ctx.close();
+      throw new AppDidNotRender("the app did not render: see out/raw/_did_not_render-" + LANG + ".txt");
+    });
   await page.waitForTimeout(6000);
   // Hide the AI button's "not opened yet" pulse dot.
   await page.addStyleTag({ content: ".fixed.right-0 .bg-warning{display:none!important}" });
@@ -328,16 +346,19 @@ S("visualizations-create", { height: 820 }, async (p) => {
 
 // ---------- run ----------
 const failed = [];
+let appBroken = false;
 for (const [name, { opts, fn }] of Object.entries(SHOTS)) {
   const named = WANT.includes(name);
   if (!named && !(WANT.includes("all") && !MANUAL.includes(name))) continue;
   // A failed shot must not leave an older capture behind for postprocess.py to reuse.
   rmSync(`${OUT}/${name}-${LANG}.png`, { force: true });
+  if (appBroken) { failed.push(name); continue; }
   let ctx, page;
-  try { ({ ctx, page } = await newPage(opts)); await fn(page); } catch (e) {
+  try { ({ ctx, page } = await newPage(opts, name)); await fn(page); } catch (e) {
     failed.push(name);
     console.log("FAIL", name, e.message.split("\n")[0]);
     await page?.screenshot({ path: `${OUT}/_fail_${name}-${LANG}.png` }).catch(() => {});
+    if (e instanceof AppDidNotRender) { appBroken = true; console.log("Skipping the remaining shots: the app itself did not render."); }
   }
   await ctx?.close();
 }
