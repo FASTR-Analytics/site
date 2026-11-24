@@ -3,15 +3,25 @@
 The screenshots in the Admin and User guides (`public/images/*-en.png` and
 `*-fr.png`) are captured automatically from a demo instance of the platform. The
 **Screenshots** workflow (`.github/workflows/screenshots.yml`) recaptures them
-and opens a pull request with any images that changed. It runs:
+and opens a pull request with any images that changed, then merges it, so the
+new images go live on the next Netlify deploy. It runs:
 
 - after the platform's docs sync pushes changes to the guides,
 - every Monday, to catch interface changes the docs sync didn't mention,
 - by hand from the Actions tab (choose a platform branch, and `all` or a list of shots).
 
-Review the images in the pull request's **Files changed** tab before merging.
+Only images whose pixels changed are committed, and `capture.mjs` refuses to save a
+screen that is still loading or shows an error. Each merged pull request (label
+`screenshots`) lists what changed; check it there, and revert it if an image is
+wrong. If the repository doesn't let Actions open pull requests (Settings > Actions >
+General > "Allow GitHub Actions to create and approve pull requests"), the run
+pushes the commit to `main` directly and says so in a warning.
+
 If a shot can't be captured (usually because the interface changed), the run
-fails and names it; update its function in `capture.mjs`.
+fails and names it; update its function in `capture.mjs`. The images that did
+capture are still merged. If the app itself doesn't render, the run stops at the
+first shot and leaves `out/raw/_did_not_render-<lang>.txt` (the page text and
+browser errors) in the run's `screenshots` artifact.
 
 ## The demo instance
 

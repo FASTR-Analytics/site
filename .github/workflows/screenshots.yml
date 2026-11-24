@@ -1,7 +1,7 @@
 name: Screenshots
 
-# Recaptures the docs screenshots from a demo instance of the platform and opens a
-# pull request with the images that changed. See screenshots/README.md.
+# Recaptures the docs screenshots from a demo instance of the platform, opens a
+# pull request with the images that changed and merges it. See screenshots/README.md.
 
 on:
   # After the platform's docs sync updates the guides.
@@ -103,7 +103,7 @@ jobs:
           node site/screenshots/capture.mjs fr "$SHOTS" || true
           python3 site/screenshots/postprocess.py
 
-      - name: Open a pull request with the changed images
+      - name: Open and merge a pull request with the changed images
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -143,9 +143,21 @@ jobs:
           for n in $(gh pr list --label screenshots --state open --json number -q '.[].number'); do
             gh pr close "$n" --delete-branch --comment "Superseded by a newer screenshot run." || true
           done
-          gh pr create --base main --head "$BRANCH" --label screenshots \
-            --title "Docs screenshots: platform $PLATFORM_VERSION" --body-file /tmp/pr_body.md \
-          || echo "::warning::Could not open the pull request (Settings > Actions > General > 'Allow GitHub Actions to create and approve pull requests' may be off). Open it here: ${{ github.server_url }}/${{ github.repository }}/compare/main...$BRANCH?expand=1"
+          # Merged straight away: the commit holds only images whose pixels changed, and
+          # capture.mjs refuses to save loading or error screens. Netlify deploys main.
+          # --repo keeps gh away from the local checkout's branches.
+          if PR_URL=$(gh pr create --base main --head "$BRANCH" --label screenshots \
+              --title "Docs screenshots: platform $PLATFORM_VERSION" --body-file /tmp/pr_body.md); then
+            gh pr merge "$PR_URL" --repo "${{ github.repository }}" --squash --delete-branch
+            echo "Merged $PR_URL"
+          else
+            # Actions may not open pull requests (Settings > Actions > General > "Allow GitHub
+            # Actions to create and approve pull requests" is off): put the commit on main directly.
+            echo "::warning::Could not open a pull request, so the screenshots were pushed to main directly. Turn on Settings > Actions > General > 'Allow GitHub Actions to create and approve pull requests' to get a pull request per run."
+            git pull -q --rebase origin main
+            git push -q origin HEAD:main
+            git push -q origin --delete "$BRANCH" || true
+          fi
 
       - name: Upload raw captures and logs
         if: always()
