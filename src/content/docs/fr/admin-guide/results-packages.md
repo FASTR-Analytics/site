@@ -45,7 +45,7 @@ Si la génération a échoué, la page affiche **Échec de la génération** ave
 ## Épingler un paquet
 <!-- help#results-pin -->
 
-Un seul paquet peut être épinglé. Le paquet épinglé est celui utilisé par défaut pour les nouvelles présentations et les nouveaux rapports : épinglez donc le paquet sur lequel vous souhaitez que les utilisateurs travaillent - généralement le plus récent qui semble correct.
+Un seul paquet peut être épinglé. Le paquet épinglé est celui utilisé par défaut pour les nouveaux produits : épinglez donc le paquet sur lequel vous souhaitez que les utilisateurs travaillent - généralement le plus récent qui semble correct.
 
 Ouvrez un paquet prêt et cliquez sur **Épingler**. L'épinglage ne modifie jamais les produits existants ; ils conservent le paquet sur lequel ils ont été construits. Pour retirer l'épingle, cliquez sur **Désépingler**. FASTR n'épingle jamais un paquet automatiquement : après en avoir généré un nouveau, c'est vous qui choisissez le moment de basculer.
 

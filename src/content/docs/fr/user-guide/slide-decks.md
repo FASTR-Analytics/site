@@ -53,6 +53,15 @@ Lorsqu'un bloc contient une visualisation, sélectionnez-le et utilisez **Modifi
 
 Si la présentation est déplacée vers un paquet de résultats plus récent, ses visualisations sont signalées comme obsolètes. Mettez-les à jour une par une depuis le badge de chaque bloc, ou toutes à la fois avec **Mettre à jour toutes les visualisations** dans l'en-tête.
 
+## Appliquer un modèle
+<!-- help#deck-blueprint -->
+
+Un modèle est un gabarit réutilisable créé à partir d'une présentation existante dans un autre pays. Il contient les sujets de la présentation, les dispositions des diapositives et les consignes de rédaction, mais aucune donnée de ce pays - l'IA construit tout à partir de votre propre paquet de résultats lorsqu'elle applique le modèle.
+
+Pour créer un modèle à partir de la présentation ouverte, choisissez **Fichier** > **Créer un modèle…**. L'IA lit les diapositives et prépare les sujets, les objectifs, les règles de mise à l'échelle et les consignes de rédaction ; une boîte de dialogue de progression affiche chaque étape. Relisez le résultat, modifiez les sujets ou les consignes, puis cliquez sur **Télécharger le fichier du modèle** pour enregistrer un fichier `.fastr-blueprint.json` que vous pouvez partager.
+
+Pour appliquer un modèle à la présentation ouverte, choisissez **Fichier** > **Appliquer un modèle…** (ou utilisez l'action **Appliquer un modèle à cette présentation…** dans le menu du panneau IA). Choisissez le fichier du modèle, relisez ses sujets et ses rôles de période, définissez la période de rapport, puis cliquez sur **Appliquer avec l'IA**. Le panneau IA ouvre une nouvelle conversation, lit le modèle, vérifie les données de la présentation et propose une carte de plan indiquant le nombre de diapositives prévues par sujet. Modifiez les comptages et les remplacements sur la carte, puis cliquez sur **Créer** pour laisser l'IA créer les diapositives. Le contenu précédent de la présentation peut être remplacé ou conservé, et l'apparence du modèle peut être appliquée ou ignorée - la carte vous donne les deux choix.
+
 ## Thèmes et paramètres de la présentation
 
 Le menu **Présentation** définit l'apparence de l'ensemble de la présentation. **Thème** propose un ensemble de designs prêts à l'emploi. **Logos** choisit les logos qui apparaissent sur les diapositives de couverture, les en-têtes de contenu et les pieds de page. **Pied de page et numéros** définit un pied de page unique pour toutes les diapositives de contenu et active ou désactive les numéros de page. Les modifications s'appliquent immédiatement. **Tous les paramètres…** ouvre les mêmes options sur un seul écran.

@@ -54,13 +54,19 @@ Les visualisations restent liées au paquet de résultats du rapport. Lorsque le
 
 ## Thèmes et mise en page
 
-Le menu **Page** définit l'apparence de l'ensemble du rapport. **Thème** applique l'un des thèmes conçus, chacun avec ses propres polices et couleurs ; **Tous les thèmes et styles enregistrés…** les affiche tous. Le même menu définit le **Fond** de la page, active ou désactive les **Sections numérotées** et fait passer l'**Orientation** du portrait au paysage. **Détails du document** affiche le nombre de mots, de titres et de visualisations.
+Le menu **Page** définit l'apparence de l'ensemble du rapport. **Thème** applique l'un des thèmes conçus, chacun avec ses propres polices et couleurs ; **Tous les thèmes et styles enregistrés…** les affiche tous, y compris les ossatures de rapport créées par votre administrateur. Le même menu définit le **Fond** de la page, active ou désactive les **Sections numérotées** et fait passer l'**Orientation** du portrait au paysage. **Détails du document** affiche le nombre de mots, de titres et de visualisations.
+
+## Ossatures de rapport et styles maison
+
+Une ossature de rapport est un style enregistré qui indique à l'IA comment rédiger un rapport : son apparence, sa longueur, sa structure, les types de graphiques préférés et le ton. Lorsque vous appliquez une ossature (via **Tous les thèmes et styles enregistrés…** dans le menu Page), elle définit la mise en forme du rapport et ajoute une ligne de configuration dans le corps du document que l'IA lit lorsqu'elle rédige ou modifie.
+
+Les ossatures sont créées par les administrateurs via **Nouvelle ossature de rapport** dans le sélecteur de styles. Elles peuvent être préparées par l'IA à partir d'un PDF exemple, ou mesurées à partir du rapport ouvert. Chaque paramètre - thème, mise en page de la couverture, éléments de page, structure des sections et ton de rédaction - est modifiable avant l'enregistrement.
 
 ## Assistance IA
 
 Ouvrez l'assistant IA avec le bouton **IA** sur le bord droit de l'écran. Dans un rapport, il peut répondre à des questions sur le contenu, réécrire une section, modifier la formulation, et ajouter ou remplacer des visualisations. Sélectionnez d'abord du texte pour qu'il ne travaille que sur cette partie.
 
-Les modifications du texte sont d'abord présentées sous forme de proposition - cliquez sur **Accepter** pour les appliquer ou sur **Rejeter** pour les écarter. Lorsqu'on lui demande de rédiger un rapport à partir de zéro, l'assistant pose d'abord des questions sur le public et l'orientation, puis propose un plan avant de rédiger. Voir [Assistant IA](/fr/user-guide/ai-assistant/).
+Les modifications du texte sont d'abord présentées sous forme de proposition - cliquez sur **Accepter** pour les appliquer ou sur **Rejeter** pour les écarter. Lorsqu'on lui demande de rédiger un rapport à partir de zéro, l'assistant pose d'abord des questions sur le public et l'orientation, puis propose un plan avant de rédiger. Lorsqu'une ossature de rapport est appliquée, l'IA rédige automatiquement selon son style maison. Voir [Assistant IA](/fr/user-guide/ai-assistant/).
 
 ## Téléchargement et partage
 <!-- help#report-export -->

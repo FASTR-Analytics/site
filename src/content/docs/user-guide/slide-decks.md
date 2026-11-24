@@ -53,6 +53,15 @@ Once a block holds a visualization, select it and use **Edit visualization** to 
 
 If the deck is moved to a newer results package, its visualizations are marked as out of date. Update them one at a time from the badge on each block, or all at once with **Update all visualizations** in the header.
 
+## Applying a blueprint
+<!-- help#deck-blueprint -->
+
+A blueprint is a reusable template made from an existing deck in another country. It carries the deck's topics, slide layouts, and writing briefs, but none of that country's data - the AI builds everything from your own results package when it applies the blueprint.
+
+To make a blueprint from the open deck, choose **File** > **Make blueprint…**. The AI reads the deck's slides and drafts topics, purposes, scaling rules, and writing briefs; a progress dialog shows each stage. Review the result, edit any topic or brief, and click **Download blueprint file** to save a `.fastr-blueprint.json` file you can share.
+
+To apply a blueprint to the open deck, choose **File** > **Apply blueprint…** (or use the **Apply a blueprint to this deck…** action in the AI panel's menu). Choose the blueprint file, review its topics and period roles, set the reporting period, and click **Apply with AI**. The AI panel opens a new conversation, reads the blueprint, checks the deck's data, and proposes an outline card showing how many slides it plans per topic. Edit the counts and stand-ins on the card, then click **Build** to let the AI create the slides. The deck's previous content can be replaced or kept, and the blueprint's look can be applied or skipped - the card gives you both choices.
+
 ## Deck themes and settings
 
 The **Deck** menu controls how the whole deck looks. **Theme** offers a set of ready-made designs. **Logos** chooses which logos appear on cover slides, content headers, and footers. **Footer & page numbers** sets one footer for every content slide and turns page numbers on or off. Changes apply immediately. **All deck settings…** opens the same options on a single screen.

@@ -22,7 +22,7 @@ FASTR remembers the data type, module, view, and display type you chose the next
 
 The toolbar above the results lets you change the geographic level (**National** or a lower admin area level), pick particular areas or indicators, choose a time period such as **Last 12 months** or **Last year**, and set the time grain to **Month**, **Quarter**, or **Year**.
 
-In table view, click a column header to sort, use **Find column** to jump to a column, and click **Download** to save the table as a CSV file.
+In table view, click a column header to sort, use **Find column** to jump to a column, and click **Download** to save the table as a CSV file. Nothing you choose in Explore changes any product.
 
 ## Explore and your scope
 

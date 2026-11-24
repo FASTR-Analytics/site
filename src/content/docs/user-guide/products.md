@@ -40,7 +40,16 @@ The Products page shows a folder tree. Click a folder to open or close it, and c
 
 Type at least three letters in the search box to find products by name. Matching products stay in their place in the tree, and the folders above them open so you can see where they live.
 
-Each row also shows your access to that product - **Owner**, **Editor**, or **Viewer** - and a lock icon if the product is restricted to specific people.
+Each row also shows your access to that product - **Owner**, **Editor**, or **Viewer** - unless you are an administrator, and a lock icon if the product is restricted to specific people.
+
+## Selecting products in bulk
+
+Click **Select** in the toolbar to enter select mode. In this mode, clicking a product row toggles its checkbox instead of opening the editor. Once you have a selection, the bar below the toolbar shows how many products are selected and offers two actions:
+
+- **Move** - move the selected products you can edit to a different folder
+- **Delete** - delete the selected products you own
+
+If your selection includes products you cannot move or delete, the bar tells you how many will be acted on and how many will be skipped. Click **Clear selection** to deselect everything, or click **Select** again to leave select mode.
 
 ## Organizing with folders
 <!-- help#products-folders -->
@@ -66,12 +75,14 @@ Open a product's menu with the **⋮** button or by right-clicking its row. What
 ## Sharing and access
 <!-- help#products-access -->
 
-Every product has an owner - usually the person who created it - and a list of people who can view or edit it. New products start **Restricted**, so only you and administrators can open them until you share them.
+Every product has an owner - usually the person who created it - and a list of people and teams who can view or edit it. New products start **Restricted**, so only you and administrators can open them until you share them.
 
 To share, choose **Manage access…** from the product's menu or from the **File** menu inside the editor. The dialog has two parts:
 
 - **General access** sets a baseline for everyone in the instance: **Restricted**, **Anyone in this instance can view**, or **Anyone in this instance can edit**.
-- **People with access** lists individuals. Click **Add a person…** to add someone, then choose **Can view** or **Can edit** for them. A person can be given more access than the general setting, never less.
+- **People and teams with access** lists individuals and teams. Click **Add a person or team…** to add someone, then choose **Can view** or **Can edit** for them. A person or team can be given more access than the general setting, never less.
+
+To add a team, search for its name in the same box. Every current and future member of that team holds the access level you set for as long as they are in the team. The dialog shows each team's size and how many members lack the product's scope. A person's effective level is the highest of any row that applies to them.
 
 Click **Save** to apply your changes. The owner can also use **Transfer ownership…** to hand the product to someone else; the previous owner keeps edit access.
 
@@ -81,7 +92,7 @@ The three access levels work like this:
 - **Editors** can also change the content, rename and move it, change its package and scope, restore earlier versions, and manage access.
 - **Owners** can also delete the product and transfer ownership. Administrators have owner access to every product.
 
-People who are limited to specific scopes can only open products whose scope they hold. If you add such a person, the dialog warns that they have no access to this product's scope.
+People who are limited to specific scopes can only open products whose scope they hold. If you add such a person or a team that includes such a person, the dialog warns that some members have no access to this product's scope.
 
 ![Manage access dialog](/images/products-manage-access-en.png)
 

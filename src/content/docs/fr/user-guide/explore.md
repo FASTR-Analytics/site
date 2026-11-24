@@ -22,7 +22,7 @@ FASTR mémorise le type de données, le module, la vue et le type d'affichage ch
 
 La barre d'outils au-dessus des résultats vous permet de changer le niveau géographique (**National** ou un niveau de zone administrative inférieur), de sélectionner des zones ou des indicateurs particuliers, de choisir une période telle que **12 derniers mois** ou **Dernière année**, et de régler la granularité temporelle sur **Mois**, **Trimestre** ou **Année**.
 
-En vue tableau, cliquez sur un en-tête de colonne pour trier, utilisez **Chercher une colonne** pour accéder directement à une colonne, et cliquez sur **Télécharger** pour enregistrer le tableau au format CSV.
+En vue tableau, cliquez sur un en-tête de colonne pour trier, utilisez **Chercher une colonne** pour accéder directement à une colonne, et cliquez sur **Télécharger** pour enregistrer le tableau au format CSV. Rien de ce que vous choisissez dans Explorer ne modifie un produit.
 
 ## Explorer et votre portée
 

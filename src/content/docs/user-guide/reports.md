@@ -54,13 +54,19 @@ Visualizations stay linked to the report's results package. When the report move
 
 ## Themes and page setup
 
-The **Page** menu controls the look of the whole report. **Theme** applies one of a set of designed themes, each with its own fonts and colours; **All themes and saved styles…** shows them all. The same menu sets the page **Background**, turns **Numbered sections** on or off, and switches **Orientation** between portrait and landscape. **Document details** shows word, heading, and visualization counts.
+The **Page** menu controls the look of the whole report. **Theme** applies one of a set of designed themes, each with its own fonts and colours; **All themes and saved styles…** shows them all, including any report backbones your administrator has created. The same menu sets the page **Background**, turns **Numbered sections** on or off, and switches **Orientation** between portrait and landscape. **Document details** shows word, heading, and visualization counts.
+
+## Report backbones and house styles
+
+A report backbone is a saved style that tells the AI how to write a report: its look, length, structure, preferred chart types, and voice. When you apply a backbone (through **All themes and saved styles…** in the Page menu), it sets the report's formatting and adds a configuration line to the document body that the AI reads when writing or editing.
+
+Backbones are created by administrators using **New report backbone** in the style picker. They can be drafted by the AI from an example PDF, or measured from the open report. Every setting - theme, cover layout, page furniture, section structure, and writing tone - is editable before saving.
 
 ## AI assistance
 
 Open the AI assistant with the **AI** button on the right edge of the screen. In a report it can answer questions about the content, rewrite a section, edit wording, and add or replace visualizations. Select some text first and it works on just that part.
 
-Changes to the text are shown as a proposal first - click **Accept** to apply them or **Reject** to discard them. Asked to write a report from scratch, the assistant first asks about the audience and focus, then proposes an outline before drafting. See [AI assistant](/user-guide/ai-assistant/).
+Changes to the text are shown as a proposal first - click **Accept** to apply them or **Reject** to discard them. Asked to write a report from scratch, the assistant first asks about the audience and focus, then proposes an outline before drafting. When a report backbone is applied, the AI writes to its house style automatically. See [AI assistant](/user-guide/ai-assistant/).
 
 ## Downloading and sharing
 <!-- help#report-export -->

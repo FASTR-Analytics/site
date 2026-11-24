@@ -36,7 +36,7 @@ La barre de navigation à gauche liste les pages principales. Ce que vous voyez 
 - **Produits** liste les présentations, rapports et visualisations dans une arborescence de dossiers. Tout le monde y a accès.
 - **Explorer** permet à chacun de parcourir les tableaux, graphiques et cartes d'un paquet de résultats.
 - **Résultats** liste les paquets de résultats et permet d'en générer de nouveaux. Cette page nécessite la permission **Voir les données**.
-- **Portées** liste les portées de l'instance. Tout le monde y a accès ; les personnes ayant accès à toutes les données peuvent les créer et les modifier.
+- **Portées** liste les portées de l'instance et permet de définir la partie des données qu'un produit peut afficher. Tout le monde y a accès ; les personnes ayant accès à toutes les données peuvent les créer et les modifier.
 - **Données** regroupe les établissements, les indicateurs, les cartes, les importations et les paramètres de l'instance. Cette page nécessite **Voir les données**.
 - **Ressources** regroupe les fichiers téléversés, tels que les fichiers CSV, les feuilles de calcul et les images. Tout le monde y a accès.
 - **Utilisateurs** liste toutes les personnes ayant accès à l'instance. Cette page nécessite **Voir les utilisateurs**.

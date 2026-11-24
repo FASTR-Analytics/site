@@ -40,7 +40,16 @@ La page Produits affiche une arborescence de dossiers. Cliquez sur un dossier po
 
 Saisissez au moins trois lettres dans la zone de recherche pour trouver des produits par leur nom. Les produits correspondants restent à leur place dans l'arborescence, et les dossiers qui les contiennent s'ouvrent pour que vous voyiez où ils se trouvent.
 
-Chaque ligne indique aussi votre accès au produit - **Propriétaire**, **Éditeur** ou **Lecteur** - ainsi qu'une icône de cadenas si le produit est réservé à certaines personnes.
+Chaque ligne indique aussi votre accès au produit - **Propriétaire**, **Éditeur** ou **Lecteur** - sauf si vous êtes administrateur, ainsi qu'une icône de cadenas si le produit est réservé à certaines personnes.
+
+## Sélectionner des produits en masse
+
+Cliquez sur **Sélectionner** dans la barre d'outils pour entrer en mode de sélection. Dans ce mode, cliquer sur une ligne de produit coche ou décoche sa case au lieu d'ouvrir l'éditeur. Une fois votre sélection faite, la barre sous la barre d'outils indique le nombre de produits sélectionnés et propose deux actions :
+
+- **Déplacer** - déplacer les produits sélectionnés que vous pouvez modifier vers un autre dossier
+- **Supprimer** - supprimer les produits sélectionnés dont vous êtes propriétaire
+
+Si votre sélection comprend des produits que vous ne pouvez pas déplacer ou supprimer, la barre vous indique combien seront traités et combien seront ignorés. Cliquez sur **Effacer la sélection** pour tout désélectionner, ou cliquez à nouveau sur **Sélectionner** pour quitter le mode de sélection.
 
 ## Organiser avec des dossiers
 <!-- help#products-folders -->
@@ -66,12 +75,14 @@ Ouvrez le menu d'un produit avec le bouton **⋮** ou par un clic droit sur sa l
 ## Partage et accès
 <!-- help#products-access -->
 
-Chaque produit a un propriétaire - généralement la personne qui l'a créé - et une liste de personnes autorisées à le consulter ou à le modifier. Les nouveaux produits sont **Restreint** au départ : seuls vous et les administrateurs pouvez les ouvrir tant que vous ne les avez pas partagés.
+Chaque produit a un propriétaire - généralement la personne qui l'a créé - et une liste de personnes et d'équipes autorisées à le consulter ou à le modifier. Les nouveaux produits sont **Restreint** au départ : seuls vous et les administrateurs pouvez les ouvrir tant que vous ne les avez pas partagés.
 
 Pour partager, choisissez **Gérer l'accès…** dans le menu du produit ou dans le menu **Fichier** de l'éditeur. La boîte de dialogue comporte deux parties :
 
 - **Accès général** définit un niveau de base pour toute l'instance : **Restreint**, **Tout le monde dans cette instance peut consulter** ou **Tout le monde dans cette instance peut modifier**.
-- **Personnes ayant accès** liste les personnes individuelles. Cliquez sur **Ajouter une personne…** pour ajouter quelqu'un, puis choisissez **Peut consulter** ou **Peut modifier**. Une personne peut recevoir plus d'accès que le niveau général, jamais moins.
+- **Personnes et équipes ayant accès** liste les personnes et les équipes individuelles. Cliquez sur **Ajouter une personne ou une équipe…** pour ajouter quelqu'un, puis choisissez **Peut consulter** ou **Peut modifier**. Une personne ou une équipe peut recevoir plus d'accès que le niveau général, jamais moins.
+
+Pour ajouter une équipe, recherchez son nom dans la même zone de recherche. Chaque membre actuel et futur de cette équipe détient le niveau d'accès que vous avez défini tant qu'il fait partie de l'équipe. La boîte de dialogue indique la taille de chaque équipe et combien de ses membres n'ont pas la portée du produit. Le niveau effectif d'une personne est le plus élevé parmi toutes les lignes qui s'appliquent à elle.
 
 Cliquez sur **Sauvegarder** pour appliquer vos modifications. Le propriétaire peut aussi utiliser **Transférer la propriété…** pour confier le produit à quelqu'un d'autre ; l'ancien propriétaire conserve un accès en modification.
 
@@ -81,7 +92,7 @@ Les trois niveaux d'accès fonctionnent ainsi :
 - Les **Éditeurs** peuvent en plus modifier le contenu, le renommer et le déplacer, changer son paquet et sa portée, restaurer des versions antérieures et gérer l'accès.
 - Les **Propriétaires** peuvent en plus supprimer le produit et transférer sa propriété. Les administrateurs disposent d'un accès propriétaire à tous les produits.
 
-Les personnes limitées à certaines portées ne peuvent ouvrir que les produits dont elles détiennent la portée. Si vous ajoutez une telle personne, la boîte de dialogue vous avertit qu'elle n'a pas accès à la portée de ce produit.
+Les personnes limitées à certaines portées ne peuvent ouvrir que les produits dont elles détiennent la portée. Si vous ajoutez une telle personne ou une équipe qui comprend une telle personne, la boîte de dialogue vous avertit que certains membres n'ont pas accès à la portée de ce produit.
 
 ![Boîte de dialogue Gérer l'accès](/images/products-manage-access-fr.png)
 

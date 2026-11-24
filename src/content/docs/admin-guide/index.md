@@ -36,7 +36,7 @@ The navigation rail on the left lists the main pages. What you see depends on yo
 - **Products** lists slide decks, reports, and visualizations in a folder tree. Everyone sees it.
 - **Explore** lets anyone browse a results package's tables, charts, and maps.
 - **Results** lists results packages, and is where new ones are generated. It needs the **View data** permission.
-- **Scopes** lists the instance's scopes. Everyone sees it; people with access to all data can create and edit them.
+- **Scopes** lists the instance's scopes and lets you set which part of the data a product may show. Everyone sees it; people with access to all data can create and edit them.
 - **Data** holds facilities, indicators, maps, imports, and instance settings. It needs **View data**.
 - **Assets** holds uploaded files such as CSV files, spreadsheets, and images. Everyone sees it.
 - **Users** lists everyone with access to the instance. It needs **View users**.

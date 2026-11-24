@@ -45,7 +45,7 @@ If generation failed, the page shows **Generation failed** with the logs of the 
 ## Pinning a package
 <!-- help#results-pin -->
 
-One package can be pinned. The pinned package is the default for new slide decks and reports, so pin the package you want people to build on - usually the latest one that looks right.
+One package can be pinned. The pinned package is the default for new products, so pin the package you want people to build on - usually the latest one that looks right.
 
 Open a ready package and click **Pin**. Pinning never changes existing products; they keep the package they were built on. To remove the pin, click **Unpin**. FASTR never pins a package automatically, so after generating a new one you choose when to switch.
 
