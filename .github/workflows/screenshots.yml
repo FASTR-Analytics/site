@@ -1,7 +1,8 @@
 name: Screenshots
 
-# Recaptures the docs screenshots from a demo instance of the platform, opens a
-# pull request with the images that changed and merges it. See screenshots/README.md.
+# Recaptures the docs screenshots from a demo instance of the platform and
+# commits the images that changed straight to main, as the platform's docs sync
+# does. See screenshots/README.md.
 
 on:
   # After the platform's docs sync updates the guides.
@@ -26,7 +27,6 @@ on:
 
 permissions:
   contents: write
-  pull-requests: write
 
 concurrency:
   group: screenshots
@@ -103,9 +103,7 @@ jobs:
           node site/screenshots/capture.mjs fr "$SHOTS" || true
           python3 site/screenshots/postprocess.py
 
-      - name: Open and merge a pull request with the changed images
-        env:
-          GH_TOKEN: ${{ github.token }}
+      - name: Commit the changed images to main
         run: |
           cd site/screenshots
           FAILED=$(node -e "const fs=require('fs');const f=['en','fr'].flatMap(l=>{try{return JSON.parse(fs.readFileSync('out/raw/_failed-'+l+'.json')).map(s=>s+' ('+l+')')}catch{return []}});console.log(f.join(', '))")
@@ -117,47 +115,30 @@ jobs:
           cd ..
           PLATFORM_SHA=$(git -C ../platform rev-parse --short HEAD)
           PLATFORM_VERSION=$(cat ../platform/VERSION)
-          BRANCH="screenshots/${{ github.run_id }}"
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git checkout -b "$BRANCH"
-          git add public/images
-          git commit -q -m "Update docs screenshots from platform $PLATFORM_VERSION ($PLATFORM_SHA)"
-          git push -q origin "$BRANCH"
+          # The commit message is the run's record: what changed, what could not
+          # be captured, and where the raw captures are.
           {
-            echo "Screenshots recaptured from a demo instance of platform **$PLATFORM_VERSION** (\`$PLATFORM_SHA\`)."
+            echo "Update docs screenshots from platform $PLATFORM_VERSION ($PLATFORM_SHA)"
             echo
-            echo "Only images whose pixels changed are included. Check them in the **Files changed** tab before merging."
+            echo "Only images whose pixels changed are included."
             echo
-            echo "**Changed images**"
+            echo "Changed images:"
             sed 's/^/- /' screenshots/out/changed.txt
             if [ -n "$FAILED" ]; then
               echo
-              echo "**Shots that could not be captured** (the interface probably changed; update \`screenshots/capture.mjs\`): $FAILED"
+              echo "Shots that could not be captured (the interface probably changed; update screenshots/capture.mjs): $FAILED"
             fi
             echo
-            echo "Raw captures and logs: the \`screenshots\` artifact of [this run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})."
-          } > /tmp/pr_body.md
-          gh label create screenshots --color 0E8A16 --description "Automated screenshot updates" --force >/dev/null 2>&1 || true
-          # Supersede earlier screenshot PRs that are still open.
-          for n in $(gh pr list --label screenshots --state open --json number -q '.[].number'); do
-            gh pr close "$n" --delete-branch --comment "Superseded by a newer screenshot run." || true
-          done
-          # Merged straight away: the commit holds only images whose pixels changed, and
-          # capture.mjs refuses to save loading or error screens. Netlify deploys main.
-          # --repo keeps gh away from the local checkout's branches.
-          if PR_URL=$(gh pr create --base main --head "$BRANCH" --label screenshots \
-              --title "Docs screenshots: platform $PLATFORM_VERSION" --body-file /tmp/pr_body.md); then
-            gh pr merge "$PR_URL" --repo "${{ github.repository }}" --squash --delete-branch
-            echo "Merged $PR_URL"
-          else
-            # Actions may not open pull requests (Settings > Actions > General > "Allow GitHub
-            # Actions to create and approve pull requests" is off): put the commit on main directly.
-            echo "::warning::Could not open a pull request, so the screenshots were pushed to main directly. Turn on Settings > Actions > General > 'Allow GitHub Actions to create and approve pull requests' to get a pull request per run."
-            git pull -q --rebase origin main
-            git push -q origin HEAD:main
-            git push -q origin --delete "$BRANCH" || true
-          fi
+            echo "Raw captures and logs: the screenshots artifact of ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          } > /tmp/commit_msg.txt
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/images
+          git commit -q -F /tmp/commit_msg.txt
+          # Rebase over anything that landed since checkout, then push.
+          git pull -q --rebase origin main
+          git push -q origin HEAD:main
+          echo "Pushed $(git rev-parse --short HEAD) to main"
 
       - name: Upload raw captures and logs
         if: always()
